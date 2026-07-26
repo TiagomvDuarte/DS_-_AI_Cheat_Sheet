@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -26,7 +26,7 @@ const AttentionDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Self-Attention em ViT — Patches como Tokens</p>
     <svg viewBox="0 0 540 145" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr7v" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arr7v" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Image divided into patches */}
@@ -43,21 +43,21 @@ const AttentionDiagram = () => (
       <text x="55" y="130" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">16 patches de 16×16px</text>
 
       {/* Arrow */}
-      <line x1="112" y1="75" x2="138" y2="75" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr7v)"/>
+      <line x1="112" y1="75" x2="138" y2="75" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr7v)"/>
 
       {/* Patch embeddings */}
       <text x="190" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Embeddings lineares</text>
       {[0,1,2,3,4].map(i => (
-        <rect key={i} x={148} y={22+i*20} width={80} height={16} rx="3" fill={`rgba(249,115,22,0.10)`} stroke="#f97316" strokeWidth="1"/>
+        <rect key={i} x={148} y={22+i*20} width={80} height={16} rx="3" fill={`rgba(74,158,237,0.10)`} stroke="#4a9eed" strokeWidth="1"/>
       ))}
       <text x="188" y="127" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">+ [CLS] token + pos embedding</text>
 
       {/* Arrow */}
-      <line x1="234" y1="75" x2="258" y2="75" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr7v)"/>
+      <line x1="234" y1="75" x2="258" y2="75" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr7v)"/>
 
       {/* Transformer block */}
-      <rect x="262" y="20" width="110" height="110" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2"/>
-      <text x="317" y="38" textAnchor="middle" fill="#f97316" fontSize="8.5" fontWeight="700">Transformer Block</text>
+      <rect x="262" y="20" width="110" height="110" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="317" y="38" textAnchor="middle" fill="#4a9eed" fontSize="8.5" fontWeight="700">Transformer Block</text>
       {[
         { y: 50, label: 'Layer Norm' },
         { y: 65, label: 'Multi-Head Attention' },
@@ -65,22 +65,22 @@ const AttentionDiagram = () => (
         { y: 95, label: 'MLP (Feed-Forward)' },
       ].map(({ y, label }) => (
         <g key={y}>
-          <rect x="272" y={y-8} width="90" height="14" rx="3" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="0.8"/>
+          <rect x="272" y={y-8} width="90" height="14" rx="3" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="0.8"/>
           <text x="317" y={y+2} textAnchor="middle" fill="var(--text-primary)" fontSize="6.5">{label}</text>
         </g>
       ))}
       <text x="317" y="122" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">× 12 blocos (ViT-Base)</text>
 
       {/* Arrow */}
-      <line x1="374" y1="75" x2="398" y2="75" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr7v)"/>
+      <line x1="374" y1="75" x2="398" y2="75" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr7v)"/>
 
       {/* Output */}
-      <rect x="402" y="45" width="70" height="80" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="437" y="65" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">[CLS]</text>
+      <rect x="402" y="45" width="70" height="80" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="437" y="65" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">[CLS]</text>
       <text x="437" y="78" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">token de</text>
       <text x="437" y="88" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">classificação</text>
-      <rect x="412" y="98" width="50" height="14" rx="3" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
-      <text x="437" y="108" textAnchor="middle" fill="#f97316" fontSize="6.5">MLP head</text>
+      <rect x="412" y="98" width="50" height="14" rx="3" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
+      <text x="437" y="108" textAnchor="middle" fill="#4a9eed" fontSize="6.5">MLP head</text>
     </svg>
   </div>
 );
@@ -90,68 +90,68 @@ const PatchEmbedDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Patch Embedding — de Imagem 224×224×3 a 196 Tokens</p>
     <svg viewBox="0 0 560 185" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrpe" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrpe" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Original image */}
-      <rect x="10" y="20" width="100" height="100" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
+      <rect x="10" y="20" width="100" height="100" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
       {Array.from({length:7}).map((_,i) => (
         <g key={`g-${i}`}>
-          <line x1={10+i*14.3} y1="20" x2={10+i*14.3} y2="120" stroke="#f97316" strokeWidth="0.4" opacity="0.4"/>
-          <line x1="10" y1={20+i*14.3} x2="110" y2={20+i*14.3} stroke="#f97316" strokeWidth="0.4" opacity="0.4"/>
+          <line x1={10+i*14.3} y1="20" x2={10+i*14.3} y2="120" stroke="#4a9eed" strokeWidth="0.4" opacity="0.4"/>
+          <line x1="10" y1={20+i*14.3} x2="110" y2={20+i*14.3} stroke="#4a9eed" strokeWidth="0.4" opacity="0.4"/>
         </g>
       ))}
-      <text x="60" y="14" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">224 × 224 × 3</text>
+      <text x="60" y="14" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">224 × 224 × 3</text>
       <text x="60" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">grelha 14×14 de patches 16×16</text>
-      <rect x="10" y="20" width="14.3" height="14.3" fill="#f97316" opacity="0.5"/>
+      <rect x="10" y="20" width="14.3" height="14.3" fill="#4a9eed" opacity="0.5"/>
 
       {/* Arrow */}
-      <line x1="118" y1="70" x2="148" y2="70" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
+      <line x1="118" y1="70" x2="148" y2="70" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
       <text x="133" y="60" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">conv k=16,s=16</text>
 
       {/* Single patch flattened */}
-      <rect x="155" y="40" width="46" height="46" rx="3" fill="#f97316" opacity="0.5" stroke="#f97316" strokeWidth="1"/>
+      <rect x="155" y="40" width="46" height="46" rx="3" fill="#4a9eed" opacity="0.5" stroke="#4a9eed" strokeWidth="1"/>
       <text x="178" y="38" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">1 patch 16×16×3</text>
       <text x="178" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">= 768 valores</text>
 
       {/* Arrow to flatten vector */}
-      <line x1="206" y1="63" x2="232" y2="63" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
+      <line x1="206" y1="63" x2="232" y2="63" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
       <text x="219" y="53" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">flatten</text>
 
       {/* Flattened vector */}
-      <rect x="238" y="50" width="14" height="80" rx="2" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
+      <rect x="238" y="50" width="14" height="80" rx="2" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
       <text x="245" y="142" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">vector 768-d</text>
 
       {/* Arrow */}
-      <line x1="258" y1="90" x2="284" y2="90" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
+      <line x1="258" y1="90" x2="284" y2="90" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
       <text x="271" y="80" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">W·x</text>
 
       {/* Linear projection box */}
-      <rect x="290" y="50" width="70" height="80" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="325" y="75" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Projeção</text>
-      <text x="325" y="88" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Linear</text>
+      <rect x="290" y="50" width="70" height="80" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="325" y="75" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Projeção</text>
+      <text x="325" y="88" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Linear</text>
       <text x="325" y="105" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">768 → D</text>
       <text x="325" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">(D=768 base)</text>
 
       {/* Arrow */}
-      <line x1="364" y1="90" x2="390" y2="90" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
+      <line x1="364" y1="90" x2="390" y2="90" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrpe)"/>
 
       {/* Token embedding */}
-      <rect x="396" y="75" width="60" height="20" rx="3" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2"/>
-      <text x="426" y="89" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">token (D)</text>
+      <rect x="396" y="75" width="60" height="20" rx="3" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2"/>
+      <text x="426" y="89" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">token (D)</text>
 
       {/* Final sequence */}
       <text x="490" y="50" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Sequência final</text>
       {Array.from({length:6}).map((_,i) => (
-        <rect key={`tok-${i}`} x={465} y={58+i*12} width={55} height={10} rx="2" fill={i===0 ? 'rgba(249,115,22,0.10)' : `rgba(249,115,22,0.10)`} stroke={i===0 ? '#f97316' : '#f97316'} strokeWidth="0.8"/>
+        <rect key={`tok-${i}`} x={465} y={58+i*12} width={55} height={10} rx="2" fill={i===0 ? 'rgba(74,158,237,0.10)' : `rgba(74,158,237,0.10)`} stroke={i===0 ? '#4a9eed' : '#4a9eed'} strokeWidth="0.8"/>
       ))}
-      <text x="492" y="65" textAnchor="middle" fill="#f97316" fontSize="6">[CLS]</text>
+      <text x="492" y="65" textAnchor="middle" fill="#4a9eed" fontSize="6">[CLS]</text>
       <text x="492" y="77" textAnchor="middle" fill="var(--text-secondary)" fontSize="6">patch 1</text>
       <text x="492" y="89" textAnchor="middle" fill="var(--text-secondary)" fontSize="6">patch 2</text>
       <text x="492" y="101" textAnchor="middle" fill="var(--text-secondary)" fontSize="6">patch 3</text>
       <text x="492" y="113" textAnchor="middle" fill="var(--text-secondary)" fontSize="6">patch 4</text>
       <text x="492" y="125" textAnchor="middle" fill="var(--text-secondary)" fontSize="6">... (196)</text>
-      <line x1="426" y1="95" x2="490" y2="95" stroke="#f97316" strokeWidth="1" strokeDasharray="2,2"/>
+      <line x1="426" y1="95" x2="490" y2="95" stroke="#4a9eed" strokeWidth="1" strokeDasharray="2,2"/>
 
       <text x="280" y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">A "convolução" com kernel=stride=16 não tem sobreposição → cada patch é processado uma única vez,</text>
       <text x="280" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">equivalente a achatar o patch e multiplicar por uma matriz de pesos partilhada W (768×D)</text>
@@ -166,35 +166,35 @@ const SwinDiagram = () => (
       {/* Layer L: regular windows */}
       <text x="120" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Camada L — janelas regulares (W-MSA)</text>
       {Array.from({length:8}).map((_,r) => Array.from({length:8}).map((_,c) => (
-        <rect key={`l-${r}-${c}`} x={20+c*15} y={22+r*15} width={14} height={14} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth="0.4"/>
+        <rect key={`l-${r}-${c}`} x={20+c*15} y={22+r*15} width={14} height={14} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth="0.4"/>
       )))}
       {/* window borders for layer L: 2x2 grid of 4x4 windows */}
       {[0,1].map(wr => [0,1].map(wc => (
-        <rect key={`wl-${wr}-${wc}`} x={20+wc*60} y={22+wr*60} width="60" height="60" fill="none" stroke="#f97316" strokeWidth="2"/>
+        <rect key={`wl-${wr}-${wc}`} x={20+wc*60} y={22+wr*60} width="60" height="60" fill="none" stroke="#4a9eed" strokeWidth="2"/>
       )))}
       <text x="120" y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">Self-attention calculada apenas DENTRO de</text>
       <text x="120" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">cada janela 4×4 — não entre janelas</text>
 
       {/* Arrow */}
-      <text x="270" y="100" textAnchor="middle" fill="#f97316" fontSize="20" fontWeight="700">→</text>
+      <text x="270" y="100" textAnchor="middle" fill="#4a9eed" fontSize="20" fontWeight="700">→</text>
       <text x="270" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">shift de</text>
       <text x="270" y="128" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">(⌊M/2⌋,⌊M/2⌋)</text>
 
       {/* Layer L+1: shifted windows */}
       <text x="420" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Camada L+1 — janelas deslocadas (SW-MSA)</text>
       {Array.from({length:8}).map((_,r) => Array.from({length:8}).map((_,c) => (
-        <rect key={`s-${r}-${c}`} x={320+c*15} y={22+r*15} width={14} height={14} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth="0.4"/>
+        <rect key={`s-${r}-${c}`} x={320+c*15} y={22+r*15} width={14} height={14} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth="0.4"/>
       )))}
       {/* shifted window borders - offset by 2 cells (half of 4) */}
-      <rect x="320" y="22" width="30" height="30" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
-      <rect x="350" y="22" width="60" height="30" fill="none" stroke="#f97316" strokeWidth="2"/>
-      <rect x="410" y="22" width="30" height="30" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
-      <rect x="320" y="52" width="30" height="60" fill="none" stroke="#f97316" strokeWidth="2"/>
-      <rect x="350" y="52" width="60" height="60" fill="none" stroke="#f97316" strokeWidth="2"/>
-      <rect x="410" y="52" width="30" height="60" fill="none" stroke="#f97316" strokeWidth="2"/>
-      <rect x="320" y="112" width="30" height="30" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
-      <rect x="350" y="112" width="60" height="30" fill="none" stroke="#f97316" strokeWidth="2"/>
-      <rect x="410" y="112" width="30" height="30" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
+      <rect x="320" y="22" width="30" height="30" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
+      <rect x="350" y="22" width="60" height="30" fill="none" stroke="#4a9eed" strokeWidth="2"/>
+      <rect x="410" y="22" width="30" height="30" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
+      <rect x="320" y="52" width="30" height="60" fill="none" stroke="#4a9eed" strokeWidth="2"/>
+      <rect x="350" y="52" width="60" height="60" fill="none" stroke="#4a9eed" strokeWidth="2"/>
+      <rect x="410" y="52" width="30" height="60" fill="none" stroke="#4a9eed" strokeWidth="2"/>
+      <rect x="320" y="112" width="30" height="30" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
+      <rect x="350" y="112" width="60" height="30" fill="none" stroke="#4a9eed" strokeWidth="2"/>
+      <rect x="410" y="112" width="30" height="30" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
       <text x="380" y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">Novas janelas cruzam as fronteiras anteriores</text>
       <text x="380" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">→ tokens de janelas vizinhas trocam informação</text>
     </svg>
@@ -206,7 +206,7 @@ const SwinHierarchyDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Hierarquia tipo CNN — resolução diminui, canais aumentam</p>
     <svg viewBox="0 0 560 150" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrsh" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrsh" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
       {[
         { x: 20, size: 96, label: 'Stage 1', res: '56×56', dim: 'C', grid: 8 },
@@ -216,11 +216,11 @@ const SwinHierarchyDiagram = () => (
       ].map((st, i) => (
         <g key={st.label}>
           {Array.from({length: st.grid}).map((_,r) => Array.from({length: st.grid}).map((_,c) => (
-            <rect key={`${i}-${r}-${c}`} x={st.x + c*(st.size/st.grid)} y={20 + r*(st.size/st.grid)} width={st.size/st.grid - 1} height={st.size/st.grid - 1} fill={`rgba(249,115,22,0.10)`} stroke="#f97316" strokeWidth="0.4"/>
+            <rect key={`${i}-${r}-${c}`} x={st.x + c*(st.size/st.grid)} y={20 + r*(st.size/st.grid)} width={st.size/st.grid - 1} height={st.size/st.grid - 1} fill={`rgba(74,158,237,0.10)`} stroke="#4a9eed" strokeWidth="0.4"/>
           )))}
           <text x={st.x + st.size/2} y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">{st.label}</text>
           <text x={st.x + st.size/2} y={20 + st.size + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">{st.res}, dim {st.dim}</text>
-          {i < 3 && <line x1={st.x + st.size + 5} y1={20 + st.size/2} x2={st.x + st.size + 25} y2={20 + st.size/2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrsh)"/>}
+          {i < 3 && <line x1={st.x + st.size + 5} y1={20 + st.size/2} x2={st.x + st.size + 25} y2={20 + st.size/2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrsh)"/>}
         </g>
       ))}
       <text x="450" y="50" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Patch Merging</text>
@@ -242,15 +242,15 @@ const PositionalEncodingDiagram = () => (
       <g>
         {[0,1,2,3].map(i => (
           <g key={`np-${i}`}>
-            <rect x={20+i*60} y="30" width="50" height="36" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
-            <text x={45+i*60} y="52" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">P{i+1}</text>
+            <rect x={20+i*60} y="30" width="50" height="36" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
+            <text x={45+i*60} y="52" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">P{i+1}</text>
           </g>
         ))}
       </g>
       <text x="120" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Self-attention vê o conjunto {'{P1,P2,P3,P4}'}</text>
       <text x="120" y="106" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">— qualquer permutação destes patches</text>
       <text x="120" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">produz exactamente o mesmo resultado</text>
-      <text x="120" y="142" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">→ "imagem com céu em cima" = "céu em baixo"</text>
+      <text x="120" y="142" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">→ "imagem com céu em cima" = "céu em baixo"</text>
 
       {/* divider */}
       <line x1="270" y1="20" x2="270" y2="150" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3"/>
@@ -260,16 +260,16 @@ const PositionalEncodingDiagram = () => (
       <g>
         {[0,1,2,3].map(i => (
           <g key={`wp-${i}`}>
-            <rect x={310+i*60} y="30" width="50" height="36" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
-            <text x={335+i*60} y="46" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">P{i+1}</text>
-            <text x={335+i*60} y="58" textAnchor="middle" fill="#f97316" fontSize="6">+ pos{i+1}</text>
+            <rect x={310+i*60} y="30" width="50" height="36" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
+            <text x={335+i*60} y="46" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">P{i+1}</text>
+            <text x={335+i*60} y="58" textAnchor="middle" fill="#4a9eed" fontSize="6">+ pos{i+1}</text>
           </g>
         ))}
       </g>
       <text x="410" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Cada token recebe um vector adicional</text>
       <text x="410" y="106" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">codificando a sua posição (linha, coluna)</text>
       <text x="410" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">na grelha original 14×14</text>
-      <text x="410" y="142" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">→ ordem espacial preservada</text>
+      <text x="410" y="142" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">→ ordem espacial preservada</text>
     </svg>
   </div>
 );
@@ -279,41 +279,41 @@ const HybridDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Arquitectura Híbrida — Convolução em Profundidade Inicial, Attention no Topo</p>
     <svg viewBox="0 0 540 130" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrhy" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrhy" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
       {/* Input */}
-      <rect x="10" y="45" width="50" height="40" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="35" y="68" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Imagem</text>
+      <rect x="10" y="45" width="50" height="40" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="35" y="68" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Imagem</text>
 
-      <line x1="62" y1="65" x2="84" y2="65" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
+      <line x1="62" y1="65" x2="84" y2="65" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
 
       {/* Conv stages */}
-      <rect x="90" y="30" width="130" height="70" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="155" y="46" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Camadas Convolucionais</text>
+      <rect x="90" y="30" width="130" height="70" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="155" y="46" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Camadas Convolucionais</text>
       <text x="155" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">resolução alta</text>
       <text x="155" y="74" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">features locais</text>
       <text x="155" y="86" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">eficientes (custo linear)</text>
 
-      <line x1="222" y1="65" x2="244" y2="65" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
+      <line x1="222" y1="65" x2="244" y2="65" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
 
       {/* Downsample to tokens */}
       <text x="265" y="58" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">downsample</text>
       <text x="265" y="70" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">→ tokens</text>
 
-      <line x1="288" y1="65" x2="310" y2="65" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
+      <line x1="288" y1="65" x2="310" y2="65" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
 
       {/* Attention stages */}
-      <rect x="316" y="30" width="130" height="70" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="381" y="46" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Blocos de Self-Attention</text>
+      <rect x="316" y="30" width="130" height="70" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="381" y="46" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Blocos de Self-Attention</text>
       <text x="381" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">resolução baixa (poucos tokens)</text>
       <text x="381" y="74" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">contexto global</text>
       <text x="381" y="86" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">custo quadrático controlado</text>
 
-      <line x1="448" y1="65" x2="470" y2="65" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
+      <line x1="448" y1="65" x2="470" y2="65" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrhy)"/>
 
       {/* Output */}
-      <rect x="476" y="45" width="55" height="40" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="503" y="68" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Output</text>
+      <rect x="476" y="45" width="55" height="40" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="503" y="68" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Output</text>
 
       <text x="270" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Ideia chave: attention é O(N²) no nº de tokens — aplicar só depois de reduzir N via convolução torna-a viável</text>
     </svg>
@@ -324,23 +324,23 @@ export default function CV7() {
   const [sel, setSel] = useState(0);
   const archs = [
     {
-      name: 'EfficientNet', year: '2019', color: '#f97316',
-      what: 'Em vez de escalar arbitrariamente uma dimensão (profundidade, largura ou resolução), o EfficientNet propõe compound scaling: escalar as três dimensões simultaneamente usando um coeficiente φ com relações fixas (depth ~ 1.2^φ, width ~ 1.1^φ, resolution ~ 1.15^φ). A arquitectura base (EfficientNet-B0) é encontrada por Neural Architecture Search.',
-      key: 'EfficientNet-B7 superou todo o estado da arte em ImageNet com menos parâmetros do que qualquer competidor. O scaling law prova que a relação entre as 3 dimensões importa tanto quanto a arquitectura em si.',
+      name: 'EfficientNet', year: '2019', color: '#4a9eed',
+      what: 'Escala profundidade, largura e resolução simultaneamente (compound scaling) em vez de arbitrariamente uma só dimensão, com a base B0 encontrada por Neural Architecture Search.',
+      key: 'A derivação completa do compound scaling, o bloco MBConv e os números de eficiência (MACs, latência em hardware móvel) são aprofundados no curso de Edge AI, módulo "Efficient Neural Architectures" — aqui interessa sobretudo a posição desta arquitectura na linha temporal.',
       params: 'B0: 5.3M → B7: 66M',
       top1: 'B0: 77.1% → B7: 84.4%',
       block: 'MBConv (Mobile Inverted Bottleneck) + Squeeze-and-Excitation',
     },
     {
-      name: 'MobileNet V1-V3', year: '2017-2019', color: '#f97316',
-      what: 'Designed para mobile/edge devices. MobileNetV1 introduz depthwise separable convolutions: em vez de 1 filtro 3×3×C_in, usa um filtro 3×3 por canal (depthwise) + filtro 1×1 para combinar canais (pointwise). Reduz FLOPs por factor de ~8-9×.',
-      key: 'Depthwise separable conv: custo de K×K×C_in×C_out → K×K×C_in + C_in×C_out. Para K=3 e C_in=C_out=256, redução de 8-9×. V3 adiciona SE blocks e hard-swish activation.',
+      name: 'MobileNet V1-V3', year: '2017-2019', color: '#4a9eed',
+      what: 'Desenhado para mobile/edge devices: introduz depthwise separable convolutions (um filtro 3×3 por canal + um filtro 1×1 para combinar canais) em vez de uma convolução standard.',
+      key: 'A derivação do custo computacional das depthwise separable convolutions e a evolução V1→V3 (inverted residuals, SE blocks, hard-swish) são aprofundadas no curso de Edge AI, módulo "Efficient Neural Architectures".',
       params: 'V1: 4.2M (α=1.0)',
       top1: 'V3-Large: 75.2%',
       block: 'Depthwise Separable Conv + Linear Bottleneck + SE',
     },
     {
-      name: 'Vision Transformer (ViT)', year: '2020', color: '#f97316',
+      name: 'Vision Transformer (ViT)', year: '2020', color: '#4a9eed',
       what: 'Aplica o Transformer (originalmente para NLP) directamente a imagens. A imagem é dividida em patches de 16×16 píxeis, cada patch é linearmente embebido num vector, e a sequência de embeddings é processada por blocos de self-attention. Sem nenhuma convolução.',
       key: 'Self-attention permite a cada patch "ver" todos os outros — receptive field global desde a primeira camada, ao contrário das CNNs que constroem contexto progressivamente. Para dados limitados, ViT fica atrás das CNNs; com pré-treino massivo (JFT-300M), supera tudo.',
       params: 'ViT-Base: 86M (patches 16×16)',
@@ -348,7 +348,7 @@ export default function CV7() {
       block: 'Patch Embedding + Multi-Head Self-Attention + MLP',
     },
     {
-      name: 'Swin Transformer', year: '2021', color: '#f97316',
+      name: 'Swin Transformer', year: '2021', color: '#4a9eed',
       what: 'Reintroduz hierarquia e localidade no transformer: a self-attention é calculada apenas dentro de janelas locais (window self-attention), e as janelas alternam posição entre camadas (shifted windows) para permitir troca de informação entre janelas vizinhas. A resolução é reduzida progressivamente via patch merging, tal como numa CNN.',
       key: 'Custo computacional linear na resolução da imagem (em vez de quadrático como ViT), permitindo aplicar a inputs de alta resolução e usar como backbone genérico para detecção e segmentação. Tornou-se o backbone dominante em muitas tasks densas até ConvNeXt aparecer.',
       params: 'Swin-B: 88M',
@@ -356,7 +356,7 @@ export default function CV7() {
       block: 'Window MSA + Shifted Window MSA + Patch Merging',
     },
     {
-      name: 'ConvNeXt', year: '2022', color: '#f97316',
+      name: 'ConvNeXt', year: '2022', color: '#4a9eed',
       what: '"A ConvNet for the 2020s". Liu et al. tomaram uma ResNet-50 e aplicaram progressivamente cada inovação dos ViTs (patchify stem, depthwise conv, inverted bottleneck, GELU, LayerNorm, etc.) e obtiveram uma CNN que iguala ou supera Swin Transformer em todos os benchmarks.',
       key: 'Prova que as CNNs não estão ultrapassadas — as melhorias dos ViTs são transferíveis para CNNs. O design space moderno é partilhado. ConvNeXt usa kernel 7×7 depthwise (contexto largo) e inverted bottleneck.',
       params: 'ConvNeXt-B: 89M',
@@ -372,7 +372,6 @@ export default function CV7() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 7</div>
         <h1 style={S.h1}>Arquitecturas Modernas</h1>
-        <p style={S.lead}>Após o ResNet, a evolução das arquitecturas dividiu-se em duas direcções: CNNs mais eficientes (EfficientNet, MobileNet) e transformers aplicados a imagens (ViT, Swin). Em 2022, as duas convergiram — ConvNeXt mostra que os princípios de design são os mesmos independentemente da operação base, e os modelos híbridos combinam ambos. Este módulo explora cada família em profundidade, desde o mecanismo exacto do patch embedding até às tendências dos modelos multimodais actuais.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Explorador de Arquitecturas</h2>
@@ -393,7 +392,7 @@ export default function CV7() {
                 ))}
               </div>
               <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7, marginBottom: '0.75rem' }}><strong style={{ color: a.color }}>Como funciona:</strong> {a.what}</p>
-              <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7 }}><strong style={{ color: '#f97316' }}>Contribuição chave:</strong> {a.key}</p>
+              <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7 }}><strong style={{ color: '#4a9eed' }}>Contribuição chave:</strong> {a.key}</p>
             </div>
           </div>
 
@@ -412,7 +411,7 @@ export default function CV7() {
                   ['2022-23', 'CoAtNet / LeViT', 'Conv nas camadas iniciais + attention nas finais', 'Híbrido'],
                   ['2023-25', 'CLIP ViT / SigLIP', 'Vision encoders para modelos multimodais', 'CV → Multimodal'],
                 ].map(([y, m, i, o]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{y}</td><td style={{ ...S.td, fontWeight: 600 }}>{m}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontStyle: 'italic' }}>{o}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{y}</td><td style={{ ...S.td, fontWeight: 600 }}>{m}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontStyle: 'italic' }}>{o}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -439,7 +438,7 @@ export default function CV7() {
                   ['ViT-Large', '24', '1024', '16', '307M'],
                   ['ViT-Huge', '32', '1280', '16', '632M'],
                 ].map(([m, l, d, h, p]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 600 }}>{m}</td><td style={S.td}>{l}</td><td style={S.td}>{d}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: '#f97316', fontWeight: 600 }}>{p}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 600 }}>{m}</td><td style={S.td}>{l}</td><td style={S.td}>{d}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600 }}>{p}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -469,7 +468,7 @@ export default function CV7() {
                   ['5. Adicionar [CLS]', 'Token aprendível adicionado ao início da sequência', '197 tokens × D'],
                   ['6. Somar pos. embedding', 'Vector posicional aprendível somado a cada token', '197 × D (inalterado)'],
                 ].map(([s, op, dim]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{s}</td><td style={S.td}>{op}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>{dim}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{s}</td><td style={S.td}>{op}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>{dim}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -549,7 +548,7 @@ export default function CV7() {
                   ['MobileViT (2022)', 'Combina blocos MobileNet (eficientes, locais) com blocos de transformer leves intercalados — pensado para mobile, mantém o tamanho reduzido típico de MobileNets'],
                   ['BoTNet (2021)', 'Substitui apenas as convoluções 3×3 nos últimos blocos de uma ResNet por Multi-Head Self-Attention, mantendo o resto da arquitectura ResNet inalterado'],
                 ].map(([m, d]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{m}</td><td style={S.td}>{d}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{m}</td><td style={S.td}>{d}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -567,7 +566,7 @@ export default function CV7() {
                   ['Latência em edge/mobile', 'Boa', 'Fraca', 'Boa a moderada (depende do design)'],
                   ['Facilidade de implementação', 'Madura, muitas optimizações', 'Madura', 'Mais complexa — duas "linguagens" arquitecturais'],
                 ].map(([c, cn, vt, hy]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{c}</td><td style={S.td}>{cn}</td><td style={{ ...S.td, color: '#f97316' }}>{vt}</td><td style={{ ...S.td, color: '#f97316' }}>{hy}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{c}</td><td style={S.td}>{cn}</td><td style={{ ...S.td, color: '#4a9eed' }}>{vt}</td><td style={{ ...S.td, color: '#4a9eed' }}>{hy}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -594,7 +593,7 @@ export default function CV7() {
                   ['Normalização típica', 'BatchNorm', 'LayerNorm', 'LayerNorm'],
                   ['Activação típica', 'ReLU', 'GELU', 'GELU'],
                 ].map(([a, c, v, n]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{a}</td><td style={S.td}>{c}</td><td style={{ ...S.td, color: '#f97316' }}>{v}</td><td style={{ ...S.td, color: '#f97316' }}>{n}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{a}</td><td style={S.td}>{c}</td><td style={{ ...S.td, color: '#4a9eed' }}>{v}</td><td style={{ ...S.td, color: '#4a9eed' }}>{n}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -632,11 +631,11 @@ export default function CV7() {
           <p style={S.p}>Um dos custos dominantes do ViT é a quantidade de tokens processados em cada camada (196 para 224×224). Muitos tokens correspondem a regiões redundantes (fundo uniforme, céu, etc.). Duas famílias de técnicas reduzem este custo dinamicamente, durante a inferência:</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
             <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid var(--card-border)' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Token Pruning</div>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Token Pruning</div>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>Tokens considerados pouco informativos (baixa attention para o [CLS], por exemplo) são <strong>descartados</strong> progressivamente em camadas mais profundas. Reduz o número de tokens processados — e portanto o custo — sem retreinar a arquitectura de raiz.</p>
             </div>
             <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid var(--card-border)' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Token Merging (ToMe)</div>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Token Merging (ToMe)</div>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>Em vez de descartar, tokens semanticamente semelhantes são <strong>fundidos</strong> (ex: via similaridade de cosseno entre embeddings) — preserva mais informação do que pruning puro, geralmente com menor perda de accuracy para o mesmo speedup.</p>
             </div>
           </div>
@@ -654,7 +653,7 @@ export default function CV7() {
                   ['Classificação com poucos dados', 'CNN ou ConvNeXt', 'Inductive bias de localidade ajuda com datasets pequenos'],
                   ['Investigação / SOTA em benchmarks', 'ViT de grande escala + pré-treino massivo', 'Escalabilidade superior com dados/parâmetros suficientes'],
                 ].map(([c, e, r]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{e}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{r}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{e}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{r}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -665,23 +664,7 @@ export default function CV7() {
 
         
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>EfficientNet: compound scaling das 3 dimensões (depth/width/resolution). NAS para arquitectura base. Pareto-optimal entre accuracy e parâmetros.</li>
-            <li>MobileNet: depthwise separable convolutions — 8-9× menos FLOPs. Designed para edge devices.</li>
-            <li>ViT: imagem → patches → tokens → transformer. Self-attention global. Precisa de pré-treino massivo.</li>
-            <li>Patch embedding: imagem 224×224×3 → 196 patches 16×16×3 → flatten para 768 → projeção linear partilhada para D → + [CLS] + positional embedding. "Conv k=stride=16" é só uma implementação eficiente desta projeção.</li>
-            <li>Embeddings posicionais são essenciais porque a self-attention é permutation-invariant — sem eles, a ordem espacial dos patches perde-se completamente.</li>
-            <li>Swin Transformer: window attention (custo linear) + shifted windows (troca de informação entre janelas) + patch merging (hierarquia tipo CNN, mapas multi-escala).</li>
-            <li>ConvNeXt (2022): CNN com princípios de ViT. Prova que CNNs não estão ultrapassadas — design space é partilhado.</li>
-            <li>Híbridos (CoAtNet, LeViT, MobileViT, BoTNet): conv nas camadas iniciais (eficiente, alta resolução), attention nas finais (contexto global, baixa resolução).</li>
-            <li>Tendências 2023-2025: ViTs como vision encoders multimodais (CLIP, SigLIP); eficiência via token pruning/merging; escolha CNN vs Transformer agora é pragmática, não ideológica.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

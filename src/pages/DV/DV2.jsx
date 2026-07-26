@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -104,19 +104,19 @@ const LineChartSVG = () => {
       <text x="8" y={padT + chartH / 2} textAnchor="middle" fontSize="9" fill="var(--text-secondary)" transform={`rotate(-90, 8, ${padT + chartH / 2})`}>Vendas (k€)</text>
       {/* Linhas */}
       <path d={pathA} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-      <path d={pathB} fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+      <path d={pathB} fill="none" stroke="#1e3a8a" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
       {/* Pontos série A */}
       {serieA.map((v, i) => (
         <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill={color} stroke="#fff" strokeWidth="1.5" />
       ))}
       {/* Pontos série B */}
       {serieB.map((v, i) => (
-        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#f59e0b" stroke="#fff" strokeWidth="1.5" />
+        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#1e3a8a" stroke="#fff" strokeWidth="1.5" />
       ))}
       {/* Legenda */}
       <rect x={padL + 10} y={padT + 4} width="10" height="10" rx="2" fill={color} />
       <text x={padL + 24} y={padT + 13} fontSize="10" fill="var(--text-primary)" fontWeight="600">Vendas Online</text>
-      <rect x={padL + 110} y={padT + 4} width="10" height="10" rx="2" fill="#f59e0b" />
+      <rect x={padL + 110} y={padT + 4} width="10" height="10" rx="2" fill="#1e3a8a" />
       <text x={padL + 124} y={padT + 13} fontSize="10" fill="var(--text-primary)" fontWeight="600">Vendas Loja</text>
       {/* Eixos */}
       <line x1={padL} y1={padT} x2={padL} y2={padT + chartH} stroke="var(--text-secondary)" strokeWidth="1.5" />
@@ -175,8 +175,8 @@ const ScatterPlotSVG = () => {
       <text x={padL + chartW / 2} y={H - 6} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Altura (cm)</text>
       <text x="12" y={padT + chartH / 2} textAnchor="middle" fontSize="10" fill="var(--text-secondary)" transform={`rotate(-90, 12, ${padT + chartH / 2})`}>Peso (kg)</text>
       {/* Linha de tendência */}
-      <line x1={xP(tX1)} y1={yP(tY1)} x2={xP(tX2)} y2={yP(tY2)} stroke="#f97316" strokeWidth="1.8" strokeDasharray="6 4" opacity="0.8" />
-      <text x={xP(175)} y={yP(tY1 + (tY2 - tY1) * 0.78) - 8} fontSize="9" fill="#f97316" fontWeight="600">tendência</text>
+      <line x1={xP(tX1)} y1={yP(tY1)} x2={xP(tX2)} y2={yP(tY2)} stroke="#4a9eed" strokeWidth="1.8" strokeDasharray="6 4" opacity="0.8" />
+      <text x={xP(175)} y={yP(tY1 + (tY2 - tY1) * 0.78) - 8} fontSize="9" fill="#4a9eed" fontWeight="600">tendência</text>
       {/* Pontos */}
       {pontos.map(([x, y], i) => (
         <circle key={i} cx={xP(x)} cy={yP(y)} r="5" fill={color} opacity="0.75" stroke="#fff" strokeWidth="1.5" />
@@ -271,7 +271,7 @@ const BoxPlotSVG = () => {
             <line x1={cx} y1={yP(g.wMin)} x2={cx} y2={yP(g.q1)} stroke={color} strokeWidth="1.8" />
             <line x1={cx - 8} y1={yP(g.wMin)} x2={cx + 8} y2={yP(g.wMin)} stroke={color} strokeWidth="1.8" />
             {/* Caixa */}
-            <rect x={x1} y={yP(g.q3)} width={boxW} height={yP(g.q1) - yP(g.q3)} fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="2" rx="2" />
+            <rect x={x1} y={yP(g.q3)} width={boxW} height={yP(g.q1) - yP(g.q3)} fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="2" rx="2" />
             {/* Mediana */}
             <line x1={x1} y1={yP(g.med)} x2={x2} y2={yP(g.med)} stroke={color} strokeWidth="2.5" />
             {/* Whisker superior */}
@@ -279,7 +279,7 @@ const BoxPlotSVG = () => {
             <line x1={cx - 8} y1={yP(g.wMax)} x2={cx + 8} y2={yP(g.wMax)} stroke={color} strokeWidth="1.8" />
             {/* Outliers */}
             {g.outliers.map((o, j) => (
-              <circle key={j} cx={cx} cy={yP(o)} r="4.5" fill="none" stroke="#f97316" strokeWidth="2" />
+              <circle key={j} cx={cx} cy={yP(o)} r="4.5" fill="none" stroke="#4a9eed" strokeWidth="2" />
             ))}
             {/* Label */}
             <text x={cx} y={H - padB + 16} textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-secondary)">{g.nome}</text>
@@ -290,7 +290,7 @@ const BoxPlotSVG = () => {
       <line x1={padL} y1={padT} x2={padL} y2={padT + chartH} stroke="var(--text-secondary)" strokeWidth="1.5" />
       <line x1={padL} y1={padT + chartH} x2={W - padR} y2={padT + chartH} stroke="var(--text-secondary)" strokeWidth="1.5" />
       {/* Legenda outliers */}
-      <circle cx={W - padR - 60} cy={padT + 10} r="4" fill="none" stroke="#f97316" strokeWidth="2" />
+      <circle cx={W - padR - 60} cy={padT + 10} r="4" fill="none" stroke="#4a9eed" strokeWidth="2" />
       <text x={W - padR - 52} y={padT + 14} fontSize="9" fill="var(--text-secondary)">outlier</text>
     </svg>
   );
@@ -299,10 +299,10 @@ const BoxPlotSVG = () => {
 /* ─── SECTION 6: Donut Chart ───────────────────────────────────────────── */
 const DonutChartSVG = () => {
   const dados = [
-    { nome: 'Chrome',  pct: 65, cor: '#f97316' },
-    { nome: 'Safari',  pct: 19, cor: '#fb923c' },
-    { nome: 'Firefox', pct: 8,  cor: '#fbbf24' },
-    { nome: 'Edge',    pct: 5,  cor: '#f59e0b' },
+    { nome: 'Chrome',  pct: 65, cor: '#4a9eed' },
+    { nome: 'Safari',  pct: 19, cor: '#38bdf8' },
+    { nome: 'Firefox', pct: 8,  cor: '#7dd3fc' },
+    { nome: 'Edge',    pct: 5,  cor: '#0284c7' },
     { nome: 'Outros',  pct: 3,  cor: '#cbd5e1' },
   ];
   const cx = 110, cy = 110, r = 80, ri = 48;
@@ -366,11 +366,11 @@ const HeatmapSVG = () => {
   const W = 380, H = 300;
 
   const cellColor = (v) => {
-    if (v === 1) return '#ea580c';
+    if (v === 1) return '#0369a1';
     if (v >= 0) {
-      // white → orange: rgba(249,115,22, opacity)
+      // white → orange: rgba(74,158,237, opacity)
       const t = v;
-      return `rgba(249,115,22,${(0.12 + t * 0.75).toFixed(2)})`;
+      return `rgba(74,158,237,${(0.12 + t * 0.75).toFixed(2)})`;
     } else {
       // negative: slate blue-gray scale
       const t = -v;
@@ -464,9 +464,9 @@ const AreaChartSVG = () => {
         </g>
       ))}
       {/* Áreas empilhadas */}
-      <polygon points={polyMobile}  fill="#f97316" opacity="0.85" />
-      <polygon points={polyDesktop} fill="#f97316" opacity="0.85" />
-      <polygon points={polyTablet}  fill="#f59e0b" opacity="0.85" />
+      <polygon points={polyMobile}  fill="#7dd3fc" opacity="0.85" />
+      <polygon points={polyDesktop} fill="#4a9eed" opacity="0.85" />
+      <polygon points={polyTablet}  fill="#1e3a8a" opacity="0.85" />
       {/* Labels eixo X */}
       {trimestres.map((t, i) => (
         <text key={t} x={xP(i)} y={padT + chartH + 14} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{t}</text>
@@ -475,11 +475,11 @@ const AreaChartSVG = () => {
       <line x1={padL} y1={padT} x2={padL} y2={padT + chartH} stroke="var(--text-secondary)" strokeWidth="1.5" />
       <line x1={padL} y1={padT + chartH} x2={W - padR} y2={padT + chartH} stroke="var(--text-secondary)" strokeWidth="1.5" />
       {/* Legenda */}
-      <rect x={padL + 10} y={padT + 170} width="10" height="10" rx="2" fill="#f97316" opacity="0.85" />
+      <rect x={padL + 10} y={padT + 170} width="10" height="10" rx="2" fill="#7dd3fc" opacity="0.85" />
       <text x={padL + 24} y={padT + 178} fontSize="9" fill="var(--text-primary)" fontWeight="600">Mobile</text>
-      <rect x={padL + 76} y={padT + 170} width="10" height="10" rx="2" fill="#f97316" opacity="0.85" />
+      <rect x={padL + 76} y={padT + 170} width="10" height="10" rx="2" fill="#4a9eed" opacity="0.85" />
       <text x={padL + 90} y={padT + 178} fontSize="9" fill="var(--text-primary)" fontWeight="600">Desktop</text>
-      <rect x={padL + 150} y={padT + 170} width="10" height="10" rx="2" fill="#f59e0b" opacity="0.85" />
+      <rect x={padL + 150} y={padT + 170} width="10" height="10" rx="2" fill="#1e3a8a" opacity="0.85" />
       <text x={padL + 164} y={padT + 178} fontSize="9" fill="var(--text-primary)" fontWeight="600">Tablet</text>
     </svg>
   );
@@ -495,11 +495,6 @@ export default function DV2() {
         <Link to="/dv" style={S.back}><ArrowLeft size={16} /> Voltar para Visualização de Dados</Link>
         <div style={S.tag}>MÓDULO 02</div>
         <h1 style={S.h1}>Tipos de Gráficos</h1>
-        <p style={S.lead}>
-          Escolher o gráfico errado para os seus dados é tão prejudicial quanto usar a escala errada — pode inverter
-          completamente a mensagem. Este módulo percorre os oito tipos de gráfico mais importantes, com exemplos
-          reais em SVG, regras claras de quando usar cada um, e uma tabela de síntese final para consulta rápida.
-        </p>
 
         {/* ── Secção 1: Bar Chart ─────────────────────────────────────────── */}
         <div style={S.section}>
@@ -607,9 +602,9 @@ export default function DV2() {
                   ['Usar linha em categorias nominais', 'A linha implica ordem que não existe entre nomes', 'Usar bar chart para variáveis nominais'],
                 ].map(([e, c, s]) => (
                   <tr key={e}>
-                    <td style={{ ...S.td, fontWeight: 600, color: '#f97316', fontSize: '0.85rem' }}>{e}</td>
+                    <td style={{ ...S.td, fontWeight: 600, color: '#4a9eed', fontSize: '0.85rem' }}>{e}</td>
                     <td style={{ ...S.td, fontSize: '0.85rem' }}>{c}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{s}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{s}</td>
                   </tr>
                 ))}
               </tbody>
@@ -761,7 +756,7 @@ export default function DV2() {
               <div><strong style={{ color }}>Caixa (box):</strong> vai de Q1 a Q3 — contém os 50% centrais dos dados (IQR).</div>
               <div><strong style={{ color }}>Linha central:</strong> a mediana (Q2) — o valor a meio da distribuição.</div>
               <div><strong style={{ color }}>Whiskers:</strong> estendem-se até Q1 − 1,5·IQR (inferior) e Q3 + 1,5·IQR (superior).</div>
-              <div><strong style={{ color: '#f97316' }}>Outliers:</strong> pontos além dos whiskers; representados como círculos individuais.</div>
+              <div><strong style={{ color: '#4a9eed' }}>Outliers:</strong> pontos além dos whiskers; representados como círculos individuais.</div>
             </div>
           </div>
 
@@ -980,7 +975,7 @@ export default function DV2() {
                 </ul>
               </div>
               <div>
-                <strong style={{ color: '#f97316' }}>Line chart — preferir quando:</strong>
+                <strong style={{ color: '#4a9eed' }}>Line chart — preferir quando:</strong>
                 <ul style={{ margin: '0.4rem 0 0', paddingLeft: '1.2rem' }}>
                   <li>Quer comparar as séries entre si</li>
                   <li>Os valores absolutos são o foco</li>
@@ -1007,51 +1002,7 @@ export default function DV2() {
             e o gráfico torna-se incompreensível. Para comparar séries absolutas, use sempre line chart.
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* ── Síntese do Módulo ────────────────────────────────────────────── */}
-        <div style={S.section}>
-          <h2 style={S.h2}> 9. Síntese do Módulo </h2>
-          <p style={S.p}>
-            A tabela seguinte resume os oito tipos de gráfico abordados neste módulo, com o tipo de dado adequado,
-            o objectivo comunicativo, e as situações a evitar. Guarde-a como referência para as suas próximas
-            visualizações.
-          </p>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead>
-                <tr>
-                  <th style={S.th}>Tipo de Gráfico</th>
-                  <th style={S.th}>Tipo de Dado</th>
-                  <th style={S.th}>Objectivo / Pergunta</th>
-                  <th style={S.th}>Evitar quando</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Bar Chart', 'Categórico + numérico', '"Qual categoria é maior?" Comparação de magnitudes', 'Mais de 20 categorias; nunca 3D'],
-                  ['Line Chart', 'Temporal / ordenado + numérico', '"Qual é a tendência ao longo do tempo?"', 'Variável X é nominal; mais de 7 séries sobrepostas'],
-                  ['Scatter Plot', 'Dois numéricos contínuos', '"Existe correlação entre X e Y?"', 'N > 50.000 sem anti-overplotting; variáveis categóricas'],
-                  ['Histogram', 'Uma variável contínua', '"Qual a forma da distribuição?"', 'N < 30; variáveis discretas (usar bar chart)'],
-                  ['Box Plot', 'Numérico + categórico (grupos)', '"Como se comparam as distribuições?"', 'N < 20 por grupo (mostrar pontos directamente)'],
-                  ['Pie / Donut', 'Partes de um todo (proporções)', '"Qual é a fatia maior do total?"', 'Mais de 5 categorias; diferenças pequenas entre valores'],
-                  ['Heatmap', 'Dois categóricos + numérico', '"Onde estão os padrões na matriz?"', 'Valores sem estrutura de grelha; paletas rainbow'],
-                  ['Área Empilhada', 'Temporal + múltiplas séries', '"Como evolui a composição ao longo do tempo?"', 'Comparação precisa entre séries; mais de 5 séries'],
-                ].map(([t, d, o, e]) => (
-                  <tr key={t}>
-                    <td style={{ ...S.td, fontWeight: 700, color, whiteSpace: 'nowrap' }}>{t}</td>
-                    <td style={{ ...S.td, fontSize: '0.85rem' }}>{d}</td>
-                    <td style={{ ...S.td, fontSize: '0.85rem' }}>{o}</td>
-                    <td style={{ ...S.td, fontSize: '0.85rem', color: '#f97316' }}>{e}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* ── Pontos-chave ─────────────────────────────────────────────────── */}
+{/* ── Pontos-chave ─────────────────────────────────────────────────── */}
         <div style={S.highlight}>
           <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 2 }}>
             <li>Comece sempre pela <strong>pergunta</strong>, não pelo gráfico: comparação → barras; tendência → linha; relação → scatter; distribuição → histogram/boxplot; composição → empilhado/donut.</li>

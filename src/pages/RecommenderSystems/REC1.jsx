@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import { modules } from './RecommenderSystems';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -10,12 +12,13 @@ const S = {
   h1: { fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.4rem' },
   sub: { color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' },
   section: { marginBottom: '2.5rem' },
-  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, marginBottom: '1rem' },
+  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, borderLeft: `3px solid ${C}`, paddingLeft: '0.85rem', marginBottom: '1rem' },
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
   diagram: { background: 'var(--bg-secondary)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
+  math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1rem 0', overflowX: 'auto' },
 };
 
 export default function REC1() {
@@ -24,7 +27,6 @@ export default function REC1() {
       <Link to="/recommender" style={S.back}>← Recommender Systems</Link>
       <div style={S.badge}>MÓDULO {modules[0].num}</div>
       <h1 style={S.h1}>{modules[0].title}</h1>
-      <p style={S.sub}>{modules[0].subtitle}</p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Collaborative Filtering — Conceito</h2>
@@ -63,7 +65,7 @@ export default function REC1() {
                 const y = 64 + ri * 46;
                 const isRecommend = ri === 0 && ci === 2;
                 const isSimilarRow = ri === 1 || ri === 2;
-                const fill = isRecommend ? `${C}35` : isSimilarRow ? 'rgba(249,115,22,0.12)' : 'rgba(249,115,22,0.04)';
+                const fill = isRecommend ? `${C}35` : isSimilarRow ? 'rgba(74,158,237,0.12)' : 'rgba(74,158,237,0.04)';
                 const stroke = isRecommend ? C : isSimilarRow ? `${C}60` : 'var(--card-border)';
                 return (
                   <g key={`${ri}-${ci}`}>
@@ -91,11 +93,14 @@ export default function REC1() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Matrix Factorization</h2>
         <p style={S.p}>
-          Matrix Factorization (MF) decompõe a matriz utilizador-item (U×I) em dois embeddings: <strong>P</strong> (U×k) para utilizadores e <strong>Q</strong> (I×k) para itens, onde k é a dimensão latente. O rating estimado é r̂_ui = p_u · q_i.
+          Matrix Factorization (MF) decompõe a matriz utilizador-item (<InlineMath math="U \times I" />) em dois embeddings: <strong>P</strong> (<InlineMath math="U \times k" />) para utilizadores e <strong>Q</strong> (<InlineMath math="I \times k" />) para itens, onde k é a dimensão latente. O rating estimado é <InlineMath math="\hat{r}_{ui} = p_u \cdot q_i" />.
         </p>
+        <div style={S.math}>
+          <BlockMath math="\hat{r}_{ui} = p_u \cdot q_i" />
+        </div>
         <div style={S.highlight}>
           <p style={{ ...S.p, marginBottom: 0 }}>
-            <strong>Função objetivo:</strong> minimizar Σ(r_ui − p_u · q_i)² + λ(‖p_u‖² + ‖q_i‖²) via SGD ou ALS. O termo de regularização λ previne overfitting ao penalizar embeddings de grande magnitude.
+            <strong>Função objetivo:</strong> minimizar <InlineMath math="\sum (r_{ui} - p_u \cdot q_i)^2 + \lambda(\lVert p_u \rVert^2 + \lVert q_i \rVert^2)" /> via SGD ou ALS. O termo de regularização λ previne overfitting ao penalizar embeddings de grande magnitude.
           </p>
         </div>
         <p style={S.p}>
@@ -111,22 +116,40 @@ export default function REC1() {
           <svg viewBox="0 0 680 210" style={{ width: '100%', height: 'auto' }}>
             <rect width="680" height="210" fill="var(--bg-secondary)" />
             <text x="310" y="10" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="600">R ≈ P × Qᵀ — Decomposição em Fatores Latentes</text>
-            <rect x="30" y="38" width="110" height="120" rx="6" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="30" y="38" width="110" height="120" rx="6" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="85" y="33" textAnchor="middle" fill="#cbd5e1" fontSize="11">R (U × I)</text>
+            {['i₁','i₂','i₃'].map((lbl, j) => (
+              <text key={`rc${j}`} x={36 + j * 32 + 13} y="44" textAnchor="middle" fill="#64748b" fontSize="8">{lbl}</text>
+            ))}
+            {['u₁','u₂','u₃','u₄'].map((lbl, i) => (
+              <text key={`rr${i}`} x="34" y={46 + i * 26 + 12} textAnchor="end" fill="#64748b" fontSize="8">{lbl}</text>
+            ))}
             {[0,1,2,3].map(i => [0,1,2].map(j => (
               <rect key={`r${i}${j}`} x={36 + j * 32} y={46 + i * 26} width={26} height={18} rx={3} fill="var(--bg-secondary)" stroke="var(--card-border)" />
             )))}
             <text x="85" y="172" textAnchor="middle" fill="#475569" fontSize="10">esparsa</text>
             <text x="155" y="103" textAnchor="middle" fill="#94a3b8" fontSize="20">≈</text>
-            <rect x="170" y="38" width="75" height="120" rx="6" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="1.5" />
+            <rect x="170" y="38" width="75" height="120" rx="6" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="1.5" />
             <text x="207" y="33" textAnchor="middle" fill={C} fontSize="11">P (U × k)</text>
+            {['k₁','k₂'].map((lbl, j) => (
+              <text key={`pc${j}`} x={176 + j * 32 + 13} y="44" textAnchor="middle" fill={`${C}90`} fontSize="8">{lbl}</text>
+            ))}
+            {['u₁','u₂','u₃','u₄'].map((lbl, i) => (
+              <text key={`pr${i}`} x="174" y={46 + i * 26 + 12} textAnchor="end" fill={`${C}90`} fontSize="8">{lbl}</text>
+            ))}
             {[0,1,2,3].map(i => [0,1].map(j => (
               <rect key={`p${i}${j}`} x={176 + j * 32} y={46 + i * 26} width={26} height={18} rx={3} fill={`${C}20`} stroke={`${C}40`} />
             )))}
             <text x="207" y="172" textAnchor="middle" fill={C} fontSize="10">utilizadores</text>
             <text x="258" y="103" textAnchor="middle" fill="#94a3b8" fontSize="20">×</text>
-            <rect x="272" y="58" width="125" height="70" rx="6" fill="rgba(249,115,22,0.06)" stroke={`${C}70`} strokeWidth="1.5" />
+            <rect x="272" y="58" width="125" height="70" rx="6" fill="rgba(74,158,237,0.06)" stroke={`${C}70`} strokeWidth="1.5" />
             <text x="334" y="53" textAnchor="middle" fill={`${C}cc`} fontSize="11">Qᵀ (k × I)</text>
+            {['i₁','i₂','i₃'].map((lbl, j) => (
+              <text key={`qc${j}`} x={278 + j * 38 + 16} y="64" textAnchor="middle" fill={`${C}90`} fontSize="8">{lbl}</text>
+            ))}
+            {['k₁','k₂'].map((lbl, i) => (
+              <text key={`qr${i}`} x="276" y={65 + i * 28 + 13} textAnchor="end" fill={`${C}90`} fontSize="8">{lbl}</text>
+            ))}
             {[0,1].map(i => [0,1,2].map(j => (
               <rect key={`q${i}${j}`} x={278 + j * 38} y={65 + i * 28} width={32} height={20} rx={3} fill={`${C}18`} stroke={`${C}35`} />
             )))}
@@ -137,7 +160,7 @@ export default function REC1() {
             <text x="490" y="95" fill={C} fontSize="11">• género de conteúdo</text>
             <text x="490" y="113" fill={C} fontSize="11">• época / estilo</text>
             <text x="490" y="131" fill={C} fontSize="11">• popularidade</text>
-            <text x="490" y="158" fill="#e2e8f0" fontSize="12" fontWeight="700">r̂_ui = p_u · q_i</text>
+            <text x="490" y="158" fill="#e2e8f0" fontSize="12" fontWeight="700">r̂<tspan fontSize="8" dy="2">ui</tspan><tspan dy="-2"> = p</tspan><tspan fontSize="8" dy="2">u</tspan><tspan dy="-2"> · q</tspan><tspan fontSize="8" dy="2">i</tspan></text>
           </svg>
         </div>
       </div>
@@ -147,15 +170,18 @@ export default function REC1() {
       <div style={S.section}>
         <h2 style={S.h2}>3. ALS — Alternating Least Squares</h2>
         <p style={S.p}>
-          ALS é uma alternativa ao SGD para treinar Matrix Factorization: fixa Q e resolve P em closed-form (mínimos quadrados), depois fixa P e resolve Q. Repete até convergir. Cada linha de P tem solução analítica: p_u = (QᵀQ + λI)⁻¹ Qᵀ r_u.
+          ALS é uma alternativa ao SGD para treinar Matrix Factorization: fixa <InlineMath math="Q" /> e resolve <InlineMath math="P" /> em closed-form (mínimos quadrados), depois fixa <InlineMath math="P" /> e resolve <InlineMath math="Q" />. Repete até convergir. Cada linha de <InlineMath math="P" /> tem solução analítica:
         </p>
+        <div style={S.math}>
+          <BlockMath math="p_u = (Q^\top Q + \lambda I)^{-1} Q^\top r_u" />
+        </div>
         <div style={S.note}>
           <p style={{ ...S.p, marginBottom: 0 }}>
             <strong>Vantagem chave:</strong> ALS é paralelizável por utilizador e por item — cada linha de P/Q é independente dado a outra matriz. Implementado no Apache Spark MLlib para escala horizontal com dezenas de milhões de utilizadores.
           </p>
         </div>
         <p style={S.p}>
-          <strong>Implicit ALS</strong> (Hu, Koren, Volinsky 2008): versão para feedback implícito (cliques, plays, compras). Define confiança c_ui = 1 + α × r_ui onde r_ui é a frequência de interação e α é hiperparâmetro. Preferência binária p_ui ∈ {'{0,1}'}. Padrão em serviços de streaming como Spotify e Apple Music.
+          <strong>Implicit ALS</strong> (Hu, Koren, Volinsky 2008): versão para feedback implícito (cliques, plays, compras). Define confiança <InlineMath math="c_{ui} = 1 + \alpha \cdot r_{ui}" /> onde <InlineMath math="r_{ui}" /> é a frequência de interação e α é hiperparâmetro. Preferência binária <InlineMath math="p_{ui} \in \{0,1\}" />. Padrão em serviços de streaming como Spotify e Apple Music.
         </p>
         <div style={S.highlight}>
           <p style={{ ...S.p, marginBottom: 0 }}>
@@ -198,7 +224,7 @@ export default function REC1() {
               { label: '#6', relevant: false },
             ].map((item, i) => {
               const inK = i < 3;
-              const fill = inK && item.relevant ? `${C}25` : 'rgba(249,115,22,0.04)';
+              const fill = inK && item.relevant ? `${C}25` : 'rgba(74,158,237,0.04)';
               const stroke = inK && item.relevant ? C : inK ? 'var(--card-border)' : '#334155';
               const sw = inK && item.relevant ? 2 : 1;
               const tickColor = item.relevant ? (inK ? C : '#64748b') : '#334155';
@@ -213,25 +239,14 @@ export default function REC1() {
                 </g>
               );
             })}
-            <line x1="325" y1="36" x2="325" y2="132" stroke="#f59e0b" strokeWidth="2" strokeDasharray="5,3" />
-            <text x="334" y="148" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">K = 3</text>
+            <line x1="325" y1="36" x2="325" y2="132" stroke="#0284c7" strokeWidth="2" strokeDasharray="5,3" />
+            <text x="334" y="148" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">K = 3</text>
             <text x="110" y="172" textAnchor="middle" fill={C} fontSize="11" fontWeight="700">Precision@3 = 2/3 = 0.67</text>
             <text x="400" y="172" textAnchor="middle" fill="#94a3b8" fontSize="11">NDCG penaliza relevância em posições mais baixas</text>
           </svg>
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Collaborative Filtering — Conceito</strong> — recomenda itens com base no comportamento colectivo de utilizadores similares, sem necessitar de conhecer o conteúdo dos itens; distingue-se entre a variante user-based (similaridade entre utilizadores) e item-based (similaridade entre itens, mais estável e usada pela Amazon).</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Matrix Factorization</strong> — decompõe a matriz utilizador-item em dois embeddings latentes (P e Q) cujo produto interno estima ratings; treina minimizando o erro quadrático com regularização L2, sendo o Simon Funk SVD (Netflix Prize, 2006) a variante estocástica que ignora entradas vazias.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>ALS — Alternating Least Squares</strong> — alternativa ao SGD que fixa uma das matrizes e resolve a outra em closed-form de forma iterativa; é paralelizável por utilizador ou item e a base do Implicit ALS (Hu et al., 2008) para feedback implícito como cliques e streams.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Avaliação de CF</strong> — métricas de rating (RMSE, MAE) avaliam precisão de previsão mas não utilidade real; métricas de ranking (Precision@K, Recall@K, NDCG@K) são mais alinhadas com a experiência do utilizador, e o split temporal é obrigatório para evitar data leakage.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

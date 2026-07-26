@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -74,7 +74,7 @@ function PDFShaded() {
   const [muX] = toSVG(0, 0, xMin, xMax, 0, yMax, W, H, pad);
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
-      <path d={shadeD} fill="rgba(249,115,22,0.10)" />
+      <path d={shadeD} fill="rgba(74,158,237,0.10)" />
       <path d={pathD(pts)} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad} y1={baseY} x2={W - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1={ax} y1={baseY - 4} x2={ax} y2={baseY + 4} stroke={color} strokeWidth="1.5" />
@@ -176,14 +176,14 @@ function EmpiricalRule() {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
-      {shadeArea(-3, 3, 'rgba(249,115,22,0.10)')}
-      {shadeArea(-2, 2, 'rgba(249,115,22,0.10)')}
-      {shadeArea(-1, 1, 'rgba(249,115,22,0.10)')}
+      {shadeArea(-3, 3, 'rgba(74,158,237,0.10)')}
+      {shadeArea(-2, 2, 'rgba(74,158,237,0.10)')}
+      {shadeArea(-1, 1, 'rgba(74,158,237,0.10)')}
       <path d={curveD} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad} y1={baseY} x2={W - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x={W / 2} y={baseY + 14} fontSize="10" fill={color} textAnchor="middle" fontWeight="700">68%</text>
-      <text x={W / 2} y={baseY + 26} fontSize="10" fill="rgba(249,115,22,0.10)" textAnchor="middle">95%</text>
-      <text x={W / 2} y={baseY + 38} fontSize="10" fill="rgba(249,115,22,0.10)" textAnchor="middle">99,7%</text>
+      <text x={W / 2} y={baseY + 14} fontSize="10" fill="#1c5cab" textAnchor="middle" fontWeight="700">68%</text>
+      <text x={W / 2} y={baseY + 26} fontSize="10" fill="#3987e5" textAnchor="middle" fontWeight="700">95%</text>
+      <text x={W / 2} y={baseY + 38} fontSize="10" fill="#86b6ef" textAnchor="middle" fontWeight="700">99,7%</text>
       <text x={W / 2} y={12} fontSize="11" fill={color} textAnchor="middle" fontWeight="700">Regra 68-95-99,7</text>
       {[-3, -2, -1, 0, 1, 2, 3].map(v => {
         const [px] = toSVG(v, 0, xMin, xMax, 0, yMax, W, H - 20, pad);
@@ -218,7 +218,7 @@ function StandardNormalTail({ alpha }) {
   const shadeD = shadePts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ') + ' Z';
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
-      <path d={shadeD} fill="rgba(249,115,22,0.10)" />
+      <path d={shadeD} fill="rgba(74,158,237,0.10)" />
       <path d={pathD(pts)} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad} y1={baseY} x2={W - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1={zx} y1={baseY} x2={zx} y2={pad + 20} stroke={color} strokeWidth="1.5" strokeDasharray="4,3" />
@@ -300,7 +300,7 @@ function TLCPanels() {
     return (
       <g key={label}>
         <rect x={panelX} y={pad - 4} width={panelW} height={panelH + 8} rx="6" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1" />
-        <path d={fillD} fill="rgba(249,115,22,0.10)" />
+        <path d={fillD} fill="rgba(74,158,237,0.10)" />
         <path d={d} fill="none" stroke={color} strokeWidth="1.8" />
         <line x1={panelX + pad} y1={baseY} x2={panelX + panelW - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
         <text x={panelX + panelW / 2} y={pad + panelH + 16} fontSize="10" fill={color} textAnchor="middle" fontWeight="700">{label}</text>
@@ -317,9 +317,9 @@ function TLCPanels() {
   ];
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
+    <svg viewBox={`0 0 ${W} ${H + 7}`} style={{ width: '100%', maxWidth: '100%' }}>
       {panels.map((p, i) => uniformBell(p.sub, pad + i * (panelW + pad), p.label, p.bellness))}
-      <text x={W / 2} y={H - 2} fontSize="10" fill="var(--text-secondary)" textAnchor="middle">Convergência para Normal pelo TLC</text>
+      <text x={W / 2} y={H + 5} fontSize="10" fill="var(--text-secondary)" textAnchor="middle">Convergência para Normal pelo TLC</text>
     </svg>
   );
 }
@@ -345,11 +345,11 @@ function NormalVsT() {
   const baseY = H - pad;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
-      <path d={pathD(tPts)} fill="none" stroke="rgba(249,115,22,0.10)" strokeWidth="2" strokeDasharray="6,3" />
+      <path d={pathD(tPts)} fill="none" stroke="#86b6ef" strokeWidth="2" strokeDasharray="6,3" />
       <path d={pathD(normPts)} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad} y1={baseY} x2={W - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
       <text x={W - pad - 5} y={40} fontSize="10" fill={color} textAnchor="end">Normal</text>
-      <text x={W - pad - 5} y={56} fontSize="10" fill="rgba(249,115,22,0.10)" textAnchor="end">t(df=3) - - -</text>
+      <text x={W - pad - 5} y={56} fontSize="10" fill="#86b6ef" textAnchor="end">t(df=3) - - -</text>
       <text x={W / 2} y={12} fontSize="11" fill={color} textAnchor="middle" fontWeight="700">Normal vs t-Student (caudas mais pesadas)</text>
     </svg>
   );
@@ -381,8 +381,8 @@ function ChiSquaredCurves() {
 
   const configs = [
     { k: 1, stroke: color, dash: 'none' },
-    { k: 5, stroke: 'rgba(249,115,22,0.60)', dash: '5,3' },
-    { k: 10, stroke: 'rgba(249,115,22,0.35)', dash: '3,2' },
+    { k: 5, stroke: 'rgba(74,158,237,0.60)', dash: '5,3' },
+    { k: 10, stroke: 'rgba(74,158,237,0.35)', dash: '3,2' },
   ];
 
   const yMax = 0.35;
@@ -405,10 +405,10 @@ function ChiSquaredCurves() {
       <line x1={pad} y1={baseY} x2={W - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1={W - pad - 55} y1={30} x2={W - pad - 35} y2={30} stroke={color} strokeWidth="2" />
       <text x={W - pad - 30} y={34} fontSize="10" fill={color}>k=1</text>
-      <line x1={W - pad - 55} y1={46} x2={W - pad - 35} y2={46} stroke="rgba(249,115,22,0.60)" strokeWidth="2" strokeDasharray="5,3" />
-      <text x={W - pad - 30} y={50} fontSize="10" fill="rgba(249,115,22,0.60)">k=5</text>
-      <line x1={W - pad - 55} y1={62} x2={W - pad - 35} y2={62} stroke="rgba(249,115,22,0.35)" strokeWidth="2" strokeDasharray="3,2" />
-      <text x={W - pad - 30} y={66} fontSize="10" fill="rgba(249,115,22,0.35)">k=10</text>
+      <line x1={W - pad - 55} y1={46} x2={W - pad - 35} y2={46} stroke="rgba(74,158,237,0.60)" strokeWidth="2" strokeDasharray="5,3" />
+      <text x={W - pad - 30} y={50} fontSize="10" fill="rgba(74,158,237,0.60)">k=5</text>
+      <line x1={W - pad - 55} y1={62} x2={W - pad - 35} y2={62} stroke="rgba(74,158,237,0.35)" strokeWidth="2" strokeDasharray="3,2" />
+      <text x={W - pad - 30} y={66} fontSize="10" fill="rgba(74,158,237,0.35)">k=10</text>
       <text x={W / 2} y={12} fontSize="11" fill={color} textAnchor="middle" fontWeight="700">Distribuição Chi-Quadrado χ²(k)</text>
     </svg>
   );
@@ -449,45 +449,11 @@ function FDistCurve() {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
-      <path d={fillD} fill="rgba(249,115,22,0.10)" />
+      <path d={fillD} fill="rgba(74,158,237,0.10)" />
       <path d={pathD(pts)} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad} y1={baseY} x2={W - pad} y2={baseY} stroke="var(--text-secondary)" strokeWidth="1" />
       <text x={W / 2} y={12} fontSize="11" fill={color} textAnchor="middle" fontWeight="700">Distribuição F(5, 10)</text>
       <text x={W - pad} y={baseY + 14} fontSize="10" fill="var(--text-secondary)" textAnchor="end">x</text>
-    </svg>
-  );
-}
-
-// SVG: QQ Plot
-function QQPlot() {
-  const W = 320, H = 260, pad = 40;
-  const pts = [
-    [-2.2, -2.4], [-1.5, -1.6], [-1.0, -1.1], [-0.5, -0.45],
-    [0, 0.05], [0.5, 0.6], [1.0, 1.05], [1.5, 1.7], [2.2, 2.5],
-  ];
-  const xMin = -2.5, xMax = 2.5, yMin = -2.8, yMax = 2.8;
-
-  function toP(x, y) {
-    const px = pad + ((x - xMin) / (xMax - xMin)) * (W - 2 * pad);
-    const py = H - pad - ((y - yMin) / (yMax - yMin)) * (H - 2 * pad);
-    return [px, py];
-  }
-
-  const [x1, y1] = toP(-2.5, -2.5);
-  const [x2, y2] = toP(2.5, 2.5);
-
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }}>
-      <line x1={pad} y1={H - pad} x2={W - pad} y2={H - pad} stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1={pad} y1={pad} x2={pad} y2={H - pad} stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={color} strokeWidth="1.5" strokeDasharray="5,3" />
-      {pts.map(([x, y], i) => {
-        const [px, py] = toP(x, y);
-        return <circle key={i} cx={px} cy={py} r="4" fill={color} fillOpacity="0.7" />;
-      })}
-      <text x={W / 2} y={H - 10} fontSize="10" fill="var(--text-secondary)" textAnchor="middle">Quantis Teóricos (Normal)</text>
-      <text x={14} y={H / 2} fontSize="10" fill="var(--text-secondary)" textAnchor="middle" transform={`rotate(-90, 14, ${H / 2})`}>Quantis Empíricos</text>
-      <text x={W / 2} y={16} fontSize="11" fill={color} textAnchor="middle" fontWeight="700">QQ-Plot</text>
     </svg>
   );
 }
@@ -503,12 +469,6 @@ export default function ST3() {
       <div>
         <span style={S.tag}>MÓDULO 03</span>
         <h1 style={S.h1}>Distribuições Contínuas</h1>
-        <p style={S.lead}>
-          As distribuições contínuas descrevem variáveis aleatórias cujo espaço amostral é um intervalo
-          real. A probabilidade deixa de ser calculada ponto a ponto e passa a ser uma área sob uma
-          função de densidade. Este módulo cobre a Normal, t-Student, Chi-quadrado, F e outras distribuições
-          fundamentais para a inferência estatística.
-        </p>
       </div>
 
       {/* 1. PDF e CDF */}
@@ -554,9 +514,7 @@ export default function ST3() {
           controlar a dispersão:
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0, fontFamily: 'monospace' }}>
-            f(x) = (1 / (σ√(2π))) · exp(−(x−μ)² / (2σ²))
-          </p>
+          <BlockMath math="f(x) = \frac{1}{\sigma\sqrt{2\pi}} \, \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)" />
         </div>
         <div style={S.diagram}>
           <NormalBellLabeled />
@@ -628,9 +586,7 @@ export default function ST3() {
           Qualquer Normal X ~ N(μ, σ²) pode ser estandardizada mediante a transformação linear:
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0, fontFamily: 'monospace' }}>
-            Z = (X − μ) / σ  →  Z ~ N(0, 1)
-        </p>
+          <BlockMath math="Z = \frac{X - \mu}{\sigma} \;\rightarrow\; Z \sim N(0, 1)" />
         </div>
         <p style={S.p}>
           A Normal Padrão Z tem média 0 e desvio-padrão 1. A sua CDF, Φ(z) = P(Z ≤ z),
@@ -639,12 +595,12 @@ export default function ST3() {
         </p>
         <h3 style={S.h3}>Valores Críticos Interativos</h3>
         <p style={S.p}>
-          Em testes de hipóteses, o <strong>valor crítico</strong> z_α é o limiar acima do qual
+          Em testes de hipóteses, o <strong>valor crítico</strong> <InlineMath math="z_\alpha" /> é o limiar acima do qual
           se rejeita H₀ com nível de significância α. Selecione α:
         </p>
         <CriticalValueSelector />
         <div style={S.note}>
-          Para testes bilaterais, usa-se z_{'{'}α/2{'}'} em cada cauda. Por exemplo, com α=0,05,
+          Para testes bilaterais, usa-se <InlineMath math="z_{\alpha/2}" /> em cada cauda. Por exemplo, com α=0,05,
           rejeita-se H₀ se |z| {'>'} 1,96.
         </div>
       </section>
@@ -660,9 +616,7 @@ export default function ST3() {
           da média converge para uma Normal à medida que o tamanho amostral n aumenta:
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0, fontFamily: 'monospace' }}>
-            X̄_n = (X₁ + X₂ + ... + Xₙ) / n  →  N(μ, σ²/n)  quando n → ∞
-          </p>
+          <BlockMath math="\bar{X}_n = \frac{X_1 + X_2 + \cdots + X_n}{n} \;\rightarrow\; N\!\left(\mu, \frac{\sigma^2}{n}\right) \quad \text{quando } n \to \infty" />
         </div>
         <p style={S.p}>
           Condições: X₁, ..., Xₙ independentes e identicamente distribuídas (i.i.d.) com
@@ -694,9 +648,7 @@ export default function ST3() {
           t-Student com ν = n − 1 graus de liberdade:
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0, fontFamily: 'monospace' }}>
-            t = (X̄ − μ) / (s / √n)  ~  t(ν = n − 1)
-          </p>
+          <BlockMath math="t = \frac{\bar{X} - \mu}{s / \sqrt{n}} \;\sim\; t(\nu = n - 1)" />
         </div>
         <p style={S.p}>
           A t-Student tem caudas mais pesadas do que a Normal padrão, refletindo a incerteza
@@ -753,9 +705,7 @@ export default function ST3() {
           liberdade:
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0, fontFamily: 'monospace' }}>
-            χ²(k) = Z₁² + Z₂² + ... + Z_k²
-          </p>
+          <BlockMath math="\chi^2(k) = Z_1^2 + Z_2^2 + \cdots + Z_k^2" />
         </div>
         <p style={S.p}>
           A distribuição é assimétrica à direita e definida apenas para valores positivos. A
@@ -793,14 +743,14 @@ export default function ST3() {
         <ul style={{ ...S.p, paddingLeft: '1.5rem' }}>
           <li style={{ marginBottom: '0.5rem' }}>
             <strong>Teste de aderência (goodness-of-fit):</strong> compara frequências observadas
-            com esperadas — χ² = Σ (O_i − E_i)² / E_i
+            com esperadas — <InlineMath math="\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}" />
           </li>
           <li style={{ marginBottom: '0.5rem' }}>
             <strong>Teste de independência:</strong> verifica se duas variáveis categóricas numa
             tabela de contingência são independentes.
           </li>
           <li>
-            <strong>Intervalo de confiança para σ²:</strong> baseado em (n−1)s²/σ² ~ χ²(n−1).
+            <strong>Intervalo de confiança para σ²:</strong> baseado em <InlineMath math="(n-1)s^2/\sigma^2 \sim \chi^2(n-1)" />.
           </li>
         </ul>
       </section>
@@ -815,9 +765,7 @@ export default function ST3() {
           cada uma dividida pelos seus graus de liberdade:
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0, fontFamily: 'monospace' }}>
-            F = (χ²(d₁) / d₁) / (χ²(d₂) / d₂)  ~  F(d₁, d₂)
-          </p>
+          <BlockMath math="F = \frac{\chi^2(d_1) / d_1}{\chi^2(d_2) / d_2} \;\sim\; F(d_1, d_2)" />
         </div>
         <p style={S.p}>
           Tal como a Chi-Quadrado, é definida para valores positivos e assimétrica à direita.
@@ -857,198 +805,6 @@ export default function ST3() {
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* 8. Outras Distribuições */}
-      <section style={S.section}>
-        <h2 style={S.h2}>8. Outras Distribuições Contínuas Importantes</h2>
-        <p style={S.p}>
-          Além da família Normal, existem outras distribuições contínuas com aplicações específicas
-          em modelação estatística:
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Distribuição</th>
-              <th style={S.th}>PDF f(x)</th>
-              <th style={S.th}>E[X]</th>
-              <th style={S.th}>Var[X]</th>
-              <th style={S.th}>Suporte</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>Uniforme</strong> U(a,b)</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>1/(b−a)</td>
-              <td style={S.td}>(a+b)/2</td>
-              <td style={S.td}>(b−a)²/12</td>
-              <td style={S.td}>[a, b]</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Exponencial</strong> Exp(λ)</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>λ·e^(−λx)</td>
-              <td style={S.td}>1/λ</td>
-              <td style={S.td}>1/λ²</td>
-              <td style={S.td}>[0, +∞)</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Beta</strong> Beta(α,β)</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>x^(α−1)(1−x)^(β−1)/B(α,β)</td>
-              <td style={S.td}>α/(α+β)</td>
-              <td style={S.td}>αβ/((α+β)²(α+β+1))</td>
-              <td style={S.td}>[0, 1]</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Gamma</strong> Γ(α,β)</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>x^(α−1)e^(−x/β)/(β^α·Γ(α))</td>
-              <td style={S.td}>αβ</td>
-              <td style={S.td}>αβ²</td>
-              <td style={S.td}>[0, +∞)</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 style={S.h3}>Propriedade da Falta de Memória (Exponencial)</h3>
-        <p style={S.p}>
-          A distribuição Exponencial é única por possuir a propriedade da <strong>ausência de
-          memória</strong>: P(X {'>'} s + t | X {'>'} s) = P(X {'>'} t). O tempo restante de espera
-          não depende do tempo já decorrido. Esta propriedade torna-a ideal para modelar
-          tempos entre eventos de Poisson, tempo de vida de componentes sem desgaste, etc.
-        </p>
-        <h3 style={S.h3}>Distribuição Beta para Proporções</h3>
-        <p style={S.p}>
-          A distribuição Beta é muito versátil para modelar probabilidades ou proporções (suporte
-          em [0,1]). É usada como distribuição a priori em estatística bayesiana e para modelar
-          taxas de sucesso. A sua forma pode ser uniforme (α=β=1), em U (α,β {'<'} 1), ou em sino
-          (α,β {'>'} 1).
-        </p>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* 9. QQ-Plot */}
-      <section style={S.section}>
-        <h2 style={S.h2}>9. QQ-Plot: Diagnóstico de Normalidade</h2>
-        <p style={S.p}>
-          O gráfico quantil-quantil (QQ-plot) é uma ferramenta visual para verificar se um
-          conjunto de dados segue uma distribuição normal (ou outra distribuição teórica). Representa
-          os quantis empíricos dos dados contra os quantis teóricos da distribuição esperada.
-        </p>
-        <p style={S.p}>
-          Se os dados seguirem a distribuição teórica, os pontos devem alinhar-se aproximadamente
-          ao longo da diagonal. Desvios sistemáticos revelam afastamentos da normalidade.
-        </p>
-        <div style={S.diagram}>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <QQPlot />
-          </div>
-        </div>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Padrão no QQ-Plot</th>
-              <th style={S.th}>Interpretação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Pontos na diagonal</td>
-              <td style={S.td}>Distribuição Normal — boa adequação</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Curva em S (assimetria positiva)</td>
-              <td style={S.td}>Cauda direita pesada (right-skewed)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Curva em S invertida</td>
-              <td style={S.td}>Cauda esquerda pesada (left-skewed)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Pontos afastados nas extremidades</td>
-              <td style={S.td}>Caudas mais pesadas do que a Normal (leptocúrtica)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Pontos próximos no centro, afastados nas bordas</td>
-              <td style={S.td}>Distribuição platicúrtica (caudas leves)</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style={S.note}>
-          Para confirmação formal da normalidade, use testes como Shapiro-Wilk (amostras pequenas,
-          n {'<'} 50) ou Kolmogorov-Smirnov (amostras maiores). O QQ-plot é complementar, não
-          substituto dos testes formais.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* 10. Síntese */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Este módulo cobriu as distribuições contínuas mais relevantes para a inferência estatística.
-          A compreensão de cada distribuição — a sua forma, parâmetros e condições de uso — é
-          essencial para escolher o teste correto em cada situação.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Distribuição</th>
-              <th style={S.th}>Notação</th>
-              <th style={S.th}>Quando usar</th>
-              <th style={S.th}>R (quantil)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>Normal</strong></td>
-              <td style={S.td}>N(μ, σ²)</td>
-              <td style={S.td}>σ² conhecida, n grande (TLC)</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>qnorm()</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>t-Student</strong></td>
-              <td style={S.td}>t(ν)</td>
-              <td style={S.td}>σ² desconhecida, teste de média</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>qt()</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Chi-Quadrado</strong></td>
-              <td style={S.td}>χ²(k)</td>
-              <td style={S.td}>Teste de independência, IC para σ²</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>qchisq()</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>F de Snedecor</strong></td>
-              <td style={S.td}>F(d₁,d₂)</td>
-              <td style={S.td}>ANOVA, regressão, comparar variâncias</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>qf()</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Exponencial</strong></td>
-              <td style={S.td}>Exp(λ)</td>
-              <td style={S.td}>Tempos entre eventos, falta de memória</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>qexp()</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Beta</strong></td>
-              <td style={S.td}>Beta(α,β)</td>
-              <td style={S.td}>Proporções, priori Bayesiana</td>
-              <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem' }}>qbeta()</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem', fontWeight: 700 }}>Conceitos-chave do módulo:</p>
-          <ul style={{ ...S.p, paddingLeft: '1.25rem', marginBottom: 0 }}>
-            <li>P(X = x) = 0 para variáveis contínuas; probabilidade = área sob f(x)</li>
-            <li>A Normal N(μ, σ²) é definida pela regra 68-95-99,7 e pela estandardização Z = (X−μ)/σ</li>
-            <li>O TLC garante que X̄ ~ N(μ, σ²/n) para n suficientemente grande, independentemente da população</li>
-            <li>A t-Student substitui a Normal quando σ² é desconhecida; converge para N(0,1) quando ν → ∞</li>
-            <li>Chi-Quadrado e F surgem de somas de quadrados de Normais e são fundamentais para ANOVA e testes de variância</li>
-            <li>O QQ-plot é o diagnóstico visual padrão de normalidade; complementar ao teste de Shapiro-Wilk</li>
-          </ul>
-        </div>
-      </section>
     </div>
   );
 }

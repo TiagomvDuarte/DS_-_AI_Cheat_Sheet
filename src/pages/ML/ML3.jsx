@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -36,52 +36,52 @@ const PipelinesDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
         <marker id="arrPL2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
 
       {/* FILTER row — boxes at x=85,235,390; w=140 each */}
-      <text x="8" y="28" fill="#f97316" fontSize="12" fontWeight="800">FILTER</text>
-      <rect x="85" y="10" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="155" y="30" textAnchor="middle" fill="#f97316" fontSize="10">Dados (todas features)</text>
+      <text x="8" y="28" fill="#4a9eed" fontSize="12" fontWeight="800">FILTER</text>
+      <rect x="85" y="10" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="155" y="30" textAnchor="middle" fill="#4a9eed" fontSize="10">Dados (todas features)</text>
       <line x1="225" y1="26" x2="233" y2="26" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="235" y="10" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="305" y="30" textAnchor="middle" fill="#f97316" fontSize="10">Score estatístico</text>
+      <rect x="235" y="10" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="305" y="30" textAnchor="middle" fill="#4a9eed" fontSize="10">Score estatístico</text>
       <line x1="375" y1="26" x2="383" y2="26" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="385" y="10" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="455" y="30" textAnchor="middle" fill="#f97316" fontSize="10">Top-k features</text>
+      <rect x="385" y="10" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="455" y="30" textAnchor="middle" fill="#4a9eed" fontSize="10">Top-k features</text>
       <line x1="455" y1="42" x2="455" y2="60" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="385" y="60" width="140" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="455" y="78" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Modelo final</text>
+      <rect x="385" y="60" width="140" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="455" y="78" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Modelo final</text>
 
       {/* WRAPPER row */}
-      <text x="8" y="128" fill="#f97316" fontSize="12" fontWeight="800">WRAPPER</text>
-      <rect x="85" y="110" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="155" y="130" textAnchor="middle" fill="#f97316" fontSize="10">Subset candidato</text>
+      <text x="8" y="128" fill="#4a9eed" fontSize="12" fontWeight="800">WRAPPER</text>
+      <rect x="85" y="110" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="155" y="130" textAnchor="middle" fill="#4a9eed" fontSize="10">Subset candidato</text>
       <line x1="225" y1="126" x2="233" y2="126" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="235" y="110" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="305" y="130" textAnchor="middle" fill="#f97316" fontSize="10">Treina + avalia modelo</text>
-      <path d="M 305 142 C 305 172, 155 172, 155 142" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrPL2)" />
-      <text x="230" y="185" textAnchor="middle" fill="#f97316" fontSize="9">repete (loop de busca)</text>
+      <rect x="235" y="110" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="305" y="130" textAnchor="middle" fill="#4a9eed" fontSize="10">Treina + avalia modelo</text>
+      <path d="M 305 142 C 305 172, 155 172, 155 142" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrPL2)" />
+      <text x="230" y="185" textAnchor="middle" fill="#4a9eed" fontSize="9">repete (loop de busca)</text>
       <line x1="375" y1="126" x2="383" y2="126" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="385" y="110" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="455" y="130" textAnchor="middle" fill="#f97316" fontSize="10">Melhor subset</text>
+      <rect x="385" y="110" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="455" y="130" textAnchor="middle" fill="#4a9eed" fontSize="10">Melhor subset</text>
       <line x1="455" y1="142" x2="455" y2="160" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="385" y="160" width="140" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="455" y="178" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Modelo final</text>
+      <rect x="385" y="160" width="140" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="455" y="178" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Modelo final</text>
 
       {/* EMBEDDED row */}
-      <text x="8" y="232" fill="#f97316" fontSize="12" fontWeight="800">EMBEDDED</text>
-      <rect x="85" y="214" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="155" y="234" textAnchor="middle" fill="#f97316" fontSize="10">Dados (todas features)</text>
+      <text x="8" y="232" fill="#4a9eed" fontSize="12" fontWeight="800">EMBEDDED</text>
+      <rect x="85" y="214" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="155" y="234" textAnchor="middle" fill="#4a9eed" fontSize="10">Dados (todas features)</text>
       <line x1="225" y1="230" x2="233" y2="230" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="235" y="214" width="140" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="305" y="227" textAnchor="middle" fill="#f97316" fontSize="10">Treino com</text>
-      <text x="305" y="240" textAnchor="middle" fill="#f97316" fontSize="10">regularização (L1/L2)</text>
+      <rect x="235" y="214" width="140" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="305" y="227" textAnchor="middle" fill="#4a9eed" fontSize="10">Treino com</text>
+      <text x="305" y="240" textAnchor="middle" fill="#4a9eed" fontSize="10">regularização (L1/L2)</text>
       <line x1="375" y1="230" x2="383" y2="230" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL)" />
-      <rect x="385" y="210" width="140" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="455" y="227" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Modelo final</text>
-      <text x="455" y="241" textAnchor="middle" fill="#f97316" fontSize="9">(features já seleccionadas)</text>
+      <rect x="385" y="210" width="140" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="455" y="227" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Modelo final</text>
+      <text x="455" y="241" textAnchor="middle" fill="#4a9eed" fontSize="9">(features já seleccionadas)</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       Nos métodos <strong>Filter</strong>, a selecção é feita uma única vez, antes de qualquer modelo, usando
@@ -116,7 +116,7 @@ const CurseDiagram = () => {
           <svg viewBox="0 0 140 140" width="140" height="140">
             <rect x="15" y="15" width="110" height="110" fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
             {[[30, 30], [95, 50], [55, 100], [105, 110], [25, 105]].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r="4" fill="#f59e0b" />
+              <circle key={i} cx={x} cy={y} r="4" fill="#0284c7" />
             ))}
           </svg>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>2D: 5 pontos já cobrem mal o quadrado</p>
@@ -131,7 +131,7 @@ const CurseDiagram = () => {
             <line x1="95" y1="110" x2="110" y2="130" stroke="var(--text-secondary)" strokeWidth="1.2" />
             <line x1="95" y1="30" x2="110" y2="50" stroke="var(--text-secondary)" strokeWidth="1.2" />
             {[[45, 60], [85, 95]].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r="4" fill="#f97316" />
+              <circle key={i} cx={x} cy={y} r="4" fill="#4a9eed" />
             ))}
           </svg>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>3D: apenas 2 pontos "perdidos" no cubo</p>
@@ -149,60 +149,6 @@ const CurseDiagram = () => {
   );
 };
 
-// === Diagram: PCA projection onto principal axis ===
-const PCADiagram = () => {
-  // synthetic 2D point cloud roughly along a diagonal
-  const points = [
-    [40, 110], [55, 95], [60, 105], [75, 80], [85, 88],
-    [95, 65], [105, 72], [115, 50], [125, 58], [135, 35],
-    [70, 100], [100, 60], [50, 102], [120, 45], [90, 75],
-  ];
-  // principal axis roughly y = -0.7x + 145 (in svg coords, going up-right)
-  return (
-    <div style={S.diagram}>
-      <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>PCA — Projecção num Eixo Principal</p>
-      <svg viewBox="0 0 220 160" style={{ maxWidth: '100%', height: 'auto' }}>
-        <line x1="15" y1="140" x2="200" y2="140" stroke="var(--text-secondary)" strokeWidth="1" />
-        <line x1="15" y1="140" x2="15" y2="15" stroke="var(--text-secondary)" strokeWidth="1" />
-        <text x="205" y="144" fontSize="9" fill="var(--text-secondary)">x₁</text>
-        <text x="8" y="14" fontSize="9" fill="var(--text-secondary)">x₂</text>
-
-        {/* principal component axis (PC1) */}
-        <line x1="25" y1="125" x2="150" y2="30" stroke="#f59e0b" strokeWidth="2" />
-        <text x="155" y="28" fontSize="9" fill="#f59e0b" fontWeight="700">PC1</text>
-        {/* secondary axis (PC2), perpendicular, much shorter */}
-        <line x1="80" y1="60" x2="100" y2="80" stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,2" />
-        <text x="103" y="85" fontSize="9" fill="#f97316" fontWeight="700">PC2</text>
-
-        {points.map(([x, y], i) => {
-          // project (x,y) onto line through (25,125)-(150,30): direction d
-          const x0 = 25, y0 = 125, dx = 150 - 25, dy = 30 - 125;
-          const len2 = dx * dx + dy * dy;
-          const t = ((x - x0) * dx + (y - y0) * dy) / len2;
-          const px = x0 + t * dx, py = y0 + t * dy;
-          return (
-            <g key={i}>
-              <line x1={x} y1={y} x2={px} y2={py} stroke="var(--text-secondary)" strokeWidth="0.6" strokeDasharray="2,2" />
-              <circle cx={x} cy={y} r="2.6" fill={color} />
-              <circle cx={px} cy={py} r="2" fill="#f59e0b" opacity="0.7" />
-            </g>
-          );
-        })}
-      </svg>
-      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
-        Os pontos azuis representam observações em 2 dimensões (<InlineMath math="x_1, x_2" />). A
-        <strong> primeira componente principal (PC1)</strong>, em laranja, é a direcção ao longo da qual os
-        dados têm <strong>maior variância</strong> — projectando cada ponto nessa recta (pontos laranja
-        pequenos, ligados por linhas tracejadas), perde-se relativamente pouca informação. A
-        <strong> segunda componente principal (PC2)</strong>, perpendicular à primeira, capta a variância
-        restante — normalmente muito menor. Em PCA com muitas dimensões, mantemos apenas as primeiras
-        componentes (que concentram a maior parte da variância) e descartamos as restantes, reduzindo a
-        dimensionalidade com perda mínima de informação.
-      </p>
-    </div>
-  );
-};
-
 // === Diagram: L1 (diamond) vs L2 (circle) constraint regions ===
 const RegularizationGeometryDiagram = () => (
   <div style={S.diagram}>
@@ -215,15 +161,15 @@ const RegularizationGeometryDiagram = () => (
           <text x="148" y="84" fontSize="9" fill="var(--text-secondary)">β₁</text>
           <text x="84" y="14" fontSize="9" fill="var(--text-secondary)">β₂</text>
           {/* L1 diamond */}
-          <polygon points="80,30 130,80 80,130 30,80" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
+          <polygon points="80,30 130,80 80,130 30,80" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
           {/* elliptical contours of loss, off-center, intersecting a corner */}
           {[1, 2, 3].map((s, i) => (
             <ellipse key={i} cx="110" cy="55" rx={20 + s * 14} ry={14 + s * 9} fill="none" stroke={color} strokeWidth="1" opacity={0.5} />
           ))}
-          <circle cx="80" cy="30" r="4" fill="#f97316" />
-          <text x="80" y="22" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">solução (β₁=0)</text>
+          <circle cx="80" cy="30" r="4" fill="#4a9eed" />
+          <text x="80" y="22" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">solução (β₁=0)</text>
         </svg>
-        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f97316', margin: 0 }}>L1 — região em diamante</p>
+        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed', margin: 0 }}>L1 — região em diamante</p>
         <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: 0 }}>vértices nos eixos → coeficientes exactamente 0</p>
       </div>
       <div>
@@ -233,14 +179,14 @@ const RegularizationGeometryDiagram = () => (
           <text x="148" y="84" fontSize="9" fill="var(--text-secondary)">β₁</text>
           <text x="84" y="14" fontSize="9" fill="var(--text-secondary)">β₂</text>
           {/* L2 circle */}
-          <circle cx="80" cy="80" r="50" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
+          <circle cx="80" cy="80" r="50" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
           {[1, 2, 3].map((s, i) => (
             <ellipse key={i} cx="110" cy="55" rx={20 + s * 14} ry={14 + s * 9} fill="none" stroke={color} strokeWidth="1" opacity={0.5} />
           ))}
-          <circle cx="100" cy="48" r="4" fill="#f97316" />
-          <text x="100" y="40" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">solução (β≠0)</text>
+          <circle cx="100" cy="48" r="4" fill="#4a9eed" />
+          <text x="100" y="40" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">solução (β≠0)</text>
         </svg>
-        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f97316', margin: 0 }}>L2 — região circular</p>
+        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed', margin: 0 }}>L2 — região circular</p>
         <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: 0 }}>fronteira suave → coeficientes pequenos, raramente 0</p>
       </div>
     </div>
@@ -267,20 +213,20 @@ const WrapperSearchDiagram = () => (
         </marker>
       </defs>
       {/* Forward */}
-      <text x="10" y="20" fill="#f97316" fontSize="11" fontWeight="800">Forward</text>
+      <text x="10" y="20" fill="#4a9eed" fontSize="11" fontWeight="800">Forward</text>
       {['{}', '{x₂}', '{x₂,x₅}', '{x₂,x₅,x₁}'].map((label, i) => (
         <g key={i}>
-          <rect x={10 + i * 135} y="30" width="120" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-          <text x={70 + i * 135} y="48" textAnchor="middle" fill="#f97316" fontSize="11" fontFamily="monospace">{label}</text>
+          <rect x={10 + i * 135} y="30" width="120" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+          <text x={70 + i * 135} y="48" textAnchor="middle" fill="#4a9eed" fontSize="11" fontFamily="monospace">{label}</text>
           {i < 3 && <line x1={130 + i * 135} y1="44" x2={145 + i * 135} y2="44" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrWS)" />}
         </g>
       ))}
       {/* Backward */}
-      <text x="10" y="85" fill="#f97316" fontSize="11" fontWeight="800">Backward</text>
+      <text x="10" y="85" fill="#4a9eed" fontSize="11" fontWeight="800">Backward</text>
       {['{x₁..x₅}', '{x₁,x₂,x₃,x₅}', '{x₁,x₂,x₅}', '{x₂,x₅}'].map((label, i) => (
         <g key={i}>
-          <rect x={10 + i * 135} y="95" width="120" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-          <text x={70 + i * 135} y="113" textAnchor="middle" fill="#f97316" fontSize="11" fontFamily="monospace">{label}</text>
+          <rect x={10 + i * 135} y="95" width="120" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+          <text x={70 + i * 135} y="113" textAnchor="middle" fill="#4a9eed" fontSize="11" fontFamily="monospace">{label}</text>
           {i < 3 && <line x1={130 + i * 135} y1="109" x2={145 + i * 135} y2="109" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrWS)" />}
         </g>
       ))}
@@ -365,57 +311,6 @@ export default function ML3() {
           <BlockMath math="r_{XY} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \cdot \sum_{i=1}^{n}(y_i - \bar{y})^2}}" />
         </div>
 
-        <h3 style={S.h3}>Exemplo Numérico — Pearson Passo a Passo</h3>
-        <p style={S.p}>
-          Considere um dataset com 5 observações de uma feature <InlineMath math="X" /> ("horas de estudo") e
-          o target <InlineMath math="Y" /> ("nota no exame", de 0 a 20):
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Observação</th><th style={S.th}>X (horas)</th><th style={S.th}>Y (nota)</th></tr></thead>
-            <tbody>
-              {[['1', '1', '8'], ['2', '2', '10'], ['3', '3', '12'], ['4', '4', '15'], ['5', '5', '18']].map(([i, x, y]) => (
-                <tr key={i}><td style={S.td}>{i}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{x}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{y}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo 1 — médias:</strong></p>
-          <BlockMath math="\bar{x} = \frac{1+2+3+4+5}{5} = 3 \qquad \bar{y} = \frac{8+10+12+15+18}{5} = 12.6" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 2 — desvios e produtos:</strong></p>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead><tr><th style={S.th}>xᵢ−x̄</th><th style={S.th}>yᵢ−ȳ</th><th style={S.th}>(xᵢ−x̄)(yᵢ−ȳ)</th><th style={S.th}>(xᵢ−x̄)²</th><th style={S.th}>(yᵢ−ȳ)²</th></tr></thead>
-              <tbody>
-                {[
-                  ['-2', '-4.6', '9.2', '4', '21.16'],
-                  ['-1', '-2.6', '2.6', '1', '6.76'],
-                  ['0', '-0.6', '0', '0', '0.36'],
-                  ['1', '2.4', '2.4', '1', '5.76'],
-                  ['2', '5.4', '10.8', '4', '29.16'],
-                ].map((row, i) => (
-                  <tr key={i}>{row.map((v, j) => <td key={j} style={{ ...S.td, fontFamily: 'monospace' }}>{v}</td>)}</tr>
-                ))}
-                <tr>
-                  <td style={{ ...S.td, fontWeight: 700 }}>—</td>
-                  <td style={{ ...S.td, fontWeight: 700 }}>—</td>
-                  <td style={{ ...S.td, fontWeight: 700, color }}>Σ = 25.0</td>
-                  <td style={{ ...S.td, fontWeight: 700 }}>Σ = 10</td>
-                  <td style={{ ...S.td, fontWeight: 700 }}>Σ = 63.2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 3 — aplicar a fórmula:</strong></p>
-          <BlockMath math="r_{XY} = \frac{25.0}{\sqrt{10 \times 63.2}} = \frac{25.0}{\sqrt{632}} = \frac{25.0}{25.14} \approx 0.994" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Um valor de <InlineMath math="r \approx 0.994" /> indica uma relação linear positiva quase
-            perfeita: à medida que as horas de estudo aumentam, a nota aumenta de forma quase proporcional.
-            Esta feature seria, portanto, um excelente candidato a manter.
-          </p>
-        
-
         <h3 style={S.h3}>Spearman e Kendall — Correlações de Rank</h3>
         <p style={S.p}>
           A correlação de Pearson só capta relações <strong>lineares</strong>. Se a relação entre
@@ -494,35 +389,6 @@ export default function ML3() {
           <BlockMath math="\chi^2 = \sum_{i=1}^{r}\sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}} \qquad E_{ij} = \frac{(\text{total linha}_i)(\text{total coluna}_j)}{N}" />
         </div>
 
-        <h3 style={S.h3}>Exemplo Numérico — Chi-Quadrado Passo a Passo</h3>
-        <p style={S.p}>
-          Suponha que queremos saber se "Fuma" (Sim/Não) está associado a "Tem Doença Cardíaca" (Sim/Não), com
-          base num conjunto de 100 pacientes:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Observado (O)</th><th style={S.th}>Doença = Sim</th><th style={S.th}>Doença = Não</th><th style={S.th}>Total</th></tr></thead>
-            <tbody>
-              <tr><td style={{ ...S.td, fontWeight: 700 }}>Fuma = Sim</td><td style={{ ...S.td, fontFamily: 'monospace' }}>30</td><td style={{ ...S.td, fontFamily: 'monospace' }}>10</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>40</td></tr>
-              <tr><td style={{ ...S.td, fontWeight: 700 }}>Fuma = Não</td><td style={{ ...S.td, fontFamily: 'monospace' }}>20</td><td style={{ ...S.td, fontFamily: 'monospace' }}>40</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>60</td></tr>
-              <tr><td style={{ ...S.td, fontWeight: 700 }}>Total</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>50</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>50</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>100</td></tr>
-            </tbody>
-          </table>
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo 1 — calcular frequências esperadas:</strong></p>
-          <BlockMath math="E_{\text{Fuma=Sim, Doença=Sim}} = \frac{40 \times 50}{100} = 20 \qquad E_{\text{Fuma=Sim, Doença=Não}} = \frac{40 \times 50}{100} = 20" />
-          <BlockMath math="E_{\text{Fuma=Não, Doença=Sim}} = \frac{60 \times 50}{100} = 30 \qquad E_{\text{Fuma=Não, Doença=Não}} = \frac{60 \times 50}{100} = 30" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 2 — somar (O−E)²/E para cada célula:</strong></p>
-          <BlockMath math="\chi^2 = \frac{(30-20)^2}{20} + \frac{(10-20)^2}{20} + \frac{(20-30)^2}{30} + \frac{(40-30)^2}{30}" />
-          <BlockMath math="\chi^2 = \frac{100}{20} + \frac{100}{20} + \frac{100}{30} + \frac{100}{30} = 5 + 5 + 3.33 + 3.33 \approx 16.67" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Com 1 grau de liberdade <InlineMath math="((r-1)(c-1) = 1)" />, um <InlineMath math="\chi^2 \approx 16.67" /> está
-            muito acima do valor crítico a 5% (≈3.84) — rejeitamos a hipótese de independência. "Fuma" e "Tem
-            Doença Cardíaca" estão fortemente associados, sugerindo que esta feature é informativa.
-          </p>
-        
-
         <h3 style={S.h3}>Informação Mútua (Mutual Information)</h3>
         <p style={S.p}>
           A Informação Mútua mede quanta <strong>incerteza sobre Y é reduzida</strong> ao conhecermos
@@ -534,37 +400,6 @@ export default function ML3() {
           <BlockMath math="I(X;Y) = \sum_{x \in X}\sum_{y \in Y} p(x,y) \cdot \log_2\left(\frac{p(x,y)}{p(x)\,p(y)}\right)" />
         </div>
 
-        <h3 style={S.h3}>Exemplo Numérico — Informação Mútua Passo a Passo</h3>
-        <p style={S.p}>
-          Considere duas variáveis binárias: <InlineMath math="X" /> = "Email contém a palavra 'gratuito'"
-          (Sim/Não) e <InlineMath math="Y" /> = "Email é Spam" (Sim/Não), com a seguinte tabela de
-          probabilidades conjuntas (estimadas a partir de 200 emails):
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>p(X,Y)</th><th style={S.th}>Y = Spam</th><th style={S.th}>Y = Não Spam</th><th style={S.th}>p(X)</th></tr></thead>
-            <tbody>
-              <tr><td style={{ ...S.td, fontWeight: 700 }}>X = "gratuito"</td><td style={{ ...S.td, fontFamily: 'monospace' }}>0.30</td><td style={{ ...S.td, fontFamily: 'monospace' }}>0.05</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>0.35</td></tr>
-              <tr><td style={{ ...S.td, fontWeight: 700 }}>X = sem "gratuito"</td><td style={{ ...S.td, fontFamily: 'monospace' }}>0.10</td><td style={{ ...S.td, fontFamily: 'monospace' }}>0.55</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>0.65</td></tr>
-              <tr><td style={{ ...S.td, fontWeight: 700 }}>p(Y)</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>0.40</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>0.60</td><td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>1.00</td></tr>
-            </tbody>
-          </table>
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo 1 — calcular cada termo p(x,y)·log₂(p(x,y)/(p(x)p(y))):</strong></p>
-          <BlockMath math="(X{=}\text{sim}, Y{=}\text{spam}): 0.30 \cdot \log_2\!\left(\frac{0.30}{0.35 \times 0.40}\right) = 0.30 \cdot \log_2(2.143) \approx 0.30 \times 1.099 \approx 0.330" />
-          <BlockMath math="(X{=}\text{sim}, Y{=}\text{não}): 0.05 \cdot \log_2\!\left(\frac{0.05}{0.35 \times 0.60}\right) = 0.05 \cdot \log_2(0.238) \approx 0.05 \times (-2.070) \approx -0.103" />
-          <BlockMath math="(X{=}\text{não}, Y{=}\text{spam}): 0.10 \cdot \log_2\!\left(\frac{0.10}{0.65 \times 0.40}\right) = 0.10 \cdot \log_2(0.385) \approx 0.10 \times (-1.379) \approx -0.138" />
-          <BlockMath math="(X{=}\text{não}, Y{=}\text{não}): 0.55 \cdot \log_2\!\left(\frac{0.55}{0.65 \times 0.60}\right) = 0.55 \cdot \log_2(1.410) \approx 0.55 \times 0.495 \approx 0.272" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 2 — somar todos os termos:</strong></p>
-          <BlockMath math="I(X;Y) \approx 0.330 - 0.103 - 0.138 + 0.272 \approx 0.361 \text{ bits}" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            <InlineMath math="I(X;Y) \approx 0.361" /> bits {'>'} 0 confirma que a presença da palavra
-            "gratuito" e o email ser spam <strong>não são independentes</strong> — saber se um email contém
-            essa palavra reduz substancialmente a incerteza sobre ser spam. Quanto maior o valor (sempre
-            ≥ 0), maior a dependência.
-          </p>
-        
 
         <div style={{ overflowX: 'auto' }}>
           <table style={S.table}>
@@ -751,120 +586,6 @@ export default function ML3() {
           <strong> combina-as</strong> em novas variáveis que concentram a informação mais relevante: a
           redução de dimensionalidade.
         </p>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* === SECTION 7: PCA === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>7. Redução de Dimensionalidade — Intuição do PCA</h2>
-        <p style={S.p}>
-          A <strong>Análise de Componentes Principais (PCA)</strong> é a técnica de redução de dimensionalidade
-          mais usada. Em vez de seleccionar um subconjunto das features originais, o PCA constrói
-          <strong> novas variáveis</strong> (componentes principais) que são combinações lineares das
-          originais, ordenadas pela quantidade de <strong>variância</strong> dos dados que conseguem explicar.
-        </p>
-        <PCADiagram />
-        <p style={S.p}>
-          Formalmente, o PCA encontra os <strong>vectores próprios (eigenvectors)</strong> da matriz de
-          covariância dos dados, <InlineMath math="\Sigma" />. Cada vector próprio <InlineMath math="\mathbf{v}" /> e
-          o seu <strong>valor próprio (eigenvalue)</strong> correspondente <InlineMath math="\lambda" /> satisfazem:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\Sigma \mathbf{v} = \lambda \mathbf{v}" />
-        </div>
-        <p style={S.p}>
-          Os vectores próprios definem as <strong>direcções</strong> das componentes principais (PC1, PC2,
-          ...), e os valores próprios indicam <strong>quanta variância</strong> dos dados é explicada por cada
-          direcção. Ordenando os componentes por valor próprio decrescente, podemos reter apenas os primeiros
-          <InlineMath math="k" /> componentes (com <InlineMath math="k \ll p" />, onde <InlineMath math="p" /> é
-          o número de features originais) que capturam, por exemplo, 95% da variância total:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\text{Variância explicada por PC}_k = \frac{\lambda_k}{\sum_{i=1}^{p}\lambda_i}" />
-        </div>
-        <div style={S.note}>
-          PCA e selecção de features <strong>não são mutuamente exclusivos</strong> — podem ser usados em
-          conjunto (por exemplo, aplicar selecção de features para remover variáveis claramente irrelevantes,
-          e depois PCA para comprimir as restantes). A principal desvantagem do PCA é a perda de
-          interpretabilidade: cada componente principal é uma combinação linear de <em>todas</em> as features
-          originais, o que torna difícil explicar "o que" cada componente representa em termos do domínio do
-          problema — ao contrário da selecção de features, que mantém as variáveis originais e o seu
-          significado.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* === SECTION 8: Tabela de decisão === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Tabela de Decisão — Que Método Usar?</h2>
-        <p style={S.p}>
-          Não existe um método "melhor" universalmente — a escolha depende do tamanho do dataset, do número
-          de features, dos requisitos de interpretabilidade e do orçamento computacional disponível. A tabela
-          seguinte resume linhas-guia práticas:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Cenário</th>
-                <th style={S.th}>Recomendação</th>
-                <th style={S.th}>Justificação</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Dataset muito grande (milhões de linhas / centenas de features)', 'Filter (Pearson/MI/χ²) como primeiro corte', 'Custo computacional baixo; reduz rapidamente a dimensão antes de qualquer modelo'],
-                ['Poucas features (< 20), modelo rápido de treinar', 'Wrapper (Forward/Backward)', 'Custo computacional aceitável; encontra interacções entre features'],
-                ['Muitas features, modelo linear, precisa de interpretabilidade', 'Embedded — LASSO', 'Selecção automática + coeficientes interpretáveis directamente'],
-                ['Features fortemente correlacionadas entre si (multicolinearidade)', 'Embedded — Ridge ou Elastic Net', 'Ridge estabiliza; Elastic Net combina estabilidade com selecção'],
-                ['Necessidade de manter nomes/significado das variáveis originais', 'Filter, Wrapper ou Embedded (não PCA)', 'PCA cria combinações lineares sem significado directo no domínio'],
-                ['Muitas features altamente correlacionadas, interpretabilidade não é prioridade', 'PCA (redução de dimensionalidade)', 'Concentra variância em poucos componentes; reduz drasticamente a dimensão'],
-                ['Modelo baseado em árvores (Random Forest, XGBoost)', 'Embedded — importância de features nativa', 'A importância já é calculada durante o treino, sem custo extra'],
-                ['Orçamento computacional muito limitado e exploração inicial', 'Filter rápido (Pearson para contínuas, χ² para categóricas)', 'Resultado imediato, sem treinar modelos'],
-              ].map(([scenario, rec, just], i) => (
-                <tr key={i}>
-                  <td style={S.td}>{scenario}</td>
-                  <td style={{ ...S.td, fontWeight: 700, color }}>{rec}</td>
-                  <td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{just}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Fluxo de trabalho prático recomendado:</strong></p>
-          <ol style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Comece com métodos <strong>Filter</strong> para eliminar features claramente irrelevantes ou redundantes (correlação muito baixa, χ² não significativo)</li>
-            <li>Se o número de features ainda for grande e o orçamento computacional permitir, aplique <strong>Wrapper</strong> (RFE) ou <strong>Embedded</strong> (LASSO/Elastic Net) para refinar a selecção considerando o modelo final</li>
-            <li>Avalie se a <strong>redução de dimensionalidade</strong> (PCA) faz sentido como passo adicional — especialmente se a interpretabilidade não for crítica e houver multicolinearidade residual</li>
-            <li>Valide sempre com validação cruzada — a selecção de features deve ser parte do pipeline de treino, nunca feita olhando para o conjunto de teste</li>
-          </ol>
-        </div>
-      </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. Síntese do Módulo</h2>
-        <p style={S.p}>
-          A selecção (e redução) de features é um dos passos com maior retorno em projectos de machine
-          learning: melhora interpretabilidade, reduz custo computacional, combate overfitting e mitiga a
-          curse of dimensionality — frequentemente com um esforço muito menor do que ajustar o modelo em si.
-        </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li><strong>Filter</strong> — avalia cada feature isoladamente com testes estatísticos (Pearson, Spearman, Kendall, ANOVA F, χ², Informação Mútua); rápido e independente do modelo</li>
-            <li><strong>Wrapper</strong> — usa o desempenho real do modelo para guiar a busca (Forward Selection, Backward Elimination, RFE); mais preciso, mais caro</li>
-            <li><strong>Embedded</strong> — integra a selecção no próprio treino via regularização (LASSO/L1 zera coeficientes, Ridge/L2 encolhe, Elastic Net combina ambos)</li>
-            <li>Geometricamente, a região de restrição em diamante (L1) tem vértices nos eixos, o que leva a coeficientes exactamente zero — a base da selecção automática do LASSO</li>
-            <li><strong>Curse of dimensionality</strong> — em alta dimensão, os dados tornam-se exponencialmente esparsos, prejudicando métodos baseados em distância e aumentando o risco de overfitting</li>
-            <li><strong>PCA</strong> oferece uma alternativa complementar: em vez de eliminar features, projecta os dados nas direcções de maior variância (eigenvectors da matriz de covariância), com perda de interpretabilidade directa</li>
-            <li>Regra prática: Filter primeiro (corte rápido), depois Wrapper/Embedded para refinamento, considerando PCA quando a interpretabilidade não for prioridade</li>
-          </ul>
-        </div>
-
       </div>
     </div>
   );

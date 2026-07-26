@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -32,36 +32,36 @@ const AEDiagram = () => (
     <svg viewBox="0 0 560 220" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="aearr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* Input layer */}
       {[0, 1, 2, 3, 4, 5].map((i) => (
-        <circle key={`in${i}`} cx={50} cy={20 + i * 32} r="9" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+        <circle key={`in${i}`} cx={50} cy={20 + i * 32} r="9" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       ))}
       <text x="50" y="208" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Input x (6-dim)</text>
 
       {/* Encoder hidden layer */}
       {[0, 1, 2, 3].map((i) => (
-        <circle key={`h1${i}`} cx={170} cy={44 + i * 44} r="9" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+        <circle key={`h1${i}`} cx={170} cy={44 + i * 44} r="9" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       ))}
       <text x="170" y="208" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Encoder (4)</text>
 
       {/* Bottleneck */}
       {[0, 1].map((i) => (
-        <circle key={`z${i}`} cx={280} cy={84 + i * 50} r="11" fill="#f97316" stroke="#f97316" strokeWidth="1.5" />
+        <circle key={`z${i}`} cx={280} cy={84 + i * 50} r="11" fill="#4a9eed" stroke="#4a9eed" strokeWidth="1.5" />
       ))}
-      <text x="280" y="208" textAnchor="middle" fill="#f97316" fontWeight="700" fontSize="10">Latente z (2-dim)</text>
+      <text x="280" y="208" textAnchor="middle" fill="#4a9eed" fontWeight="700" fontSize="10">Latente z (2-dim)</text>
 
       {/* Decoder hidden layer */}
       {[0, 1, 2, 3].map((i) => (
-        <circle key={`h2${i}`} cx={390} cy={44 + i * 44} r="9" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+        <circle key={`h2${i}`} cx={390} cy={44 + i * 44} r="9" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       ))}
       <text x="390" y="208" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Decoder (4)</text>
 
       {/* Output layer */}
       {[0, 1, 2, 3, 4, 5].map((i) => (
-        <circle key={`out${i}`} cx={510} cy={20 + i * 32} r="9" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+        <circle key={`out${i}`} cx={510} cy={20 + i * 32} r="9" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       ))}
       <text x="510" y="208" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Output x̂ (6-dim)</text>
 
@@ -80,39 +80,14 @@ const AEDiagram = () => (
       )))}
 
       {/* Bracket labels */}
-      <text x="110" y="10" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Encoder</text>
-      <text x="450" y="10" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Decoder</text>
+      <text x="110" y="10" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Encoder</text>
+      <text x="450" y="10" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Decoder</text>
       <line x1="295" y1="6" x2="295" y2="214" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3" />
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
       O encoder comprime progressivamente a informação até ao <strong>bottleneck</strong> (espaço latente z, aqui com apenas 2 dimensões).
       O decoder faz o caminho inverso, expandindo z até reconstruir um vector x̂ com a mesma forma de x.
     </p>
-  </div>
-);
-
-// === Diagram: numeric reconstruction example table ===
-const ReconstructionTable = () => (
-  <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
-    <table style={S.table}>
-      <thead>
-        <tr><th style={S.th}>Componente</th><th style={S.th}>x₁</th><th style={S.th}>x₂</th><th style={S.th}>x₃</th><th style={S.th}>x₄</th><th style={S.th}>x₅</th><th style={S.th}>x₆</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style={S.td}><strong>Input x</strong></td>
-          <td style={S.td}>0.90</td><td style={S.td}>0.10</td><td style={S.td}>0.85</td><td style={S.td}>0.05</td><td style={S.td}>0.80</td><td style={S.td}>0.15</td>
-        </tr>
-        <tr>
-          <td style={S.td}><strong>Reconstrução x̂</strong></td>
-          <td style={S.td}>0.87</td><td style={S.td}>0.12</td><td style={S.td}>0.83</td><td style={S.td}>0.09</td><td style={S.td}>0.78</td><td style={S.td}>0.18</td>
-        </tr>
-        <tr>
-          <td style={S.td}><strong>Erro (x − x̂)²</strong></td>
-          <td style={S.td}>0.0009</td><td style={S.td}>0.0004</td><td style={S.td}>0.0004</td><td style={S.td}>0.0016</td><td style={S.td}>0.0004</td><td style={S.td}>0.0009</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 );
 
@@ -123,36 +98,36 @@ const DenoisingDiagram = () => (
     <svg viewBox="0 0 560 130" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="dnarr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* x clean */}
-      <rect x="10" y="35" width="90" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="55" y="60" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">x (limpo)</text>
-      <text x="55" y="78" textAnchor="middle" fill="#f97316" fontSize="9">dado original</text>
+      <rect x="10" y="35" width="90" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="55" y="60" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">x (limpo)</text>
+      <text x="55" y="78" textAnchor="middle" fill="#4a9eed" fontSize="9">dado original</text>
 
       <line x1="100" y1="65" x2="135" y2="65" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#dnarr)" />
       <text x="117" y="55" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">+ ruído</text>
 
       {/* x̃ corrupted */}
-      <rect x="140" y="35" width="100" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="190" y="60" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">x̃ (corrompido)</text>
-      <text x="190" y="78" textAnchor="middle" fill="#f97316" fontSize="9">input da rede</text>
+      <rect x="140" y="35" width="100" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="190" y="60" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">x̃ (corrompido)</text>
+      <text x="190" y="78" textAnchor="middle" fill="#4a9eed" fontSize="9">input da rede</text>
 
-      <line x1="245" y1="65" x2="280" y2="65" stroke="#f97316" strokeWidth="1.2" markerEnd="url(#dnarr)" />
+      <line x1="245" y1="65" x2="280" y2="65" stroke="#4a9eed" strokeWidth="1.2" markerEnd="url(#dnarr)" />
 
       {/* Encoder/decoder block */}
-      <rect x="285" y="20" width="130" height="90" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="350" y="50" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Encoder</text>
-      <text x="350" y="68" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">→ z →</text>
-      <text x="350" y="86" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Decoder</text>
+      <rect x="285" y="20" width="130" height="90" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="350" y="50" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Encoder</text>
+      <text x="350" y="68" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">→ z →</text>
+      <text x="350" y="86" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Decoder</text>
 
       <line x1="420" y1="65" x2="455" y2="65" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#dnarr)" />
 
       {/* x̂ reconstructed clean */}
-      <rect x="460" y="35" width="95" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="507" y="60" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">x̂ (limpo)</text>
-      <text x="507" y="78" textAnchor="middle" fill="#f97316" fontSize="9">target = x original</text>
+      <rect x="460" y="35" width="95" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="507" y="60" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">x̂ (limpo)</text>
+      <text x="507" y="78" textAnchor="middle" fill="#4a9eed" fontSize="9">target = x original</text>
 
       <text x="280" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Loss = ‖x − x̂‖² — compara com o original LIMPO, não com x̃</text>
     </svg>
@@ -173,7 +148,7 @@ const SparseDiagram = () => {
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
               <span style={{ width: 28, fontSize: '0.75rem', color: 'var(--text-secondary)', fontFamily: 'monospace' }}>z{i + 1}</span>
               <div style={{ flex: 1, height: 14, background: 'var(--bg-primary)', borderRadius: 7, overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: `${v * 100}%`, background: '#f97316', borderRadius: 7 }} />
+                <div style={{ height: '100%', width: `${v * 100}%`, background: '#4a9eed', borderRadius: 7 }} />
               </div>
               <span style={{ width: 36, fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{v.toFixed(2)}</span>
             </div>
@@ -185,7 +160,7 @@ const SparseDiagram = () => {
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
               <span style={{ width: 28, fontSize: '0.75rem', color: 'var(--text-secondary)', fontFamily: 'monospace' }}>z{i + 1}</span>
               <div style={{ flex: 1, height: 14, background: 'var(--bg-primary)', borderRadius: 7, overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: `${v * 100}%`, background: v > 0.5 ? '#f97316' : '#f97316', borderRadius: 7 }} />
+                <div style={{ height: '100%', width: `${v * 100}%`, background: v > 0.5 ? '#4a9eed' : '#4a9eed', borderRadius: 7 }} />
               </div>
               <span style={{ width: 36, fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{v.toFixed(2)}</span>
             </div>
@@ -212,10 +187,10 @@ const PointVsDistributionDiagram = () => (
       </defs>
       {/* AE side */}
       <text x="140" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="12" fontWeight="700">Autoencoder vanilla</text>
-      <rect x="40" y="40" width="100" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="90" y="70" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Encoder</text>
+      <rect x="40" y="40" width="100" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="90" y="70" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Encoder</text>
       <line x1="140" y1="65" x2="180" y2="65" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#pvarr)" />
-      <circle cx="200" cy="65" r="6" fill="#f97316" />
+      <circle cx="200" cy="65" r="6" fill="#4a9eed" />
       <text x="200" y="95" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">z = ponto único</text>
       <text x="200" y="110" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">(determinístico)</text>
 
@@ -224,13 +199,13 @@ const PointVsDistributionDiagram = () => (
 
       {/* VAE side */}
       <text x="420" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="12" fontWeight="700">VAE</text>
-      <rect x="320" y="40" width="100" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="370" y="70" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Encoder</text>
+      <rect x="320" y="40" width="100" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="370" y="70" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Encoder</text>
       <line x1="420" y1="65" x2="460" y2="65" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#pvarr)" />
       {/* Gaussian bump */}
-      <path d="M 460 90 Q 490 30 520 90" fill="none" stroke="#f97316" strokeWidth="2" />
-      <line x1="490" y1="90" x2="490" y2="60" stroke="#f97316" strokeWidth="1" strokeDasharray="2,2" />
-      <text x="490" y="105" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">μ</text>
+      <path d="M 460 90 Q 490 30 520 90" fill="none" stroke="#4a9eed" strokeWidth="2" />
+      <line x1="490" y1="90" x2="490" y2="60" stroke="#4a9eed" strokeWidth="1" strokeDasharray="2,2" />
+      <text x="490" y="105" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">μ</text>
       <text x="490" y="125" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">N(μ, σ²) = distribuição</text>
       <text x="490" y="140" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">(amostra-se z desta gaussiana)</text>
     </svg>
@@ -251,55 +226,55 @@ const ReparamDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
         <marker id="rparrRed" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* Without trick */}
-      <text x="140" y="18" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Sem reparametrização</text>
-      <rect x="30" y="35" width="90" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="75" y="60" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">μ, σ</text>
-      <line x1="120" y1="55" x2="160" y2="55" stroke="#f97316" strokeWidth="1.2" markerEnd="url(#rparrRed)" />
-      <ellipse cx="195" cy="55" rx="38" ry="25" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" />
-      <text x="195" y="50" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">z ~ N(μ,σ²)</text>
-      <text x="195" y="64" textAnchor="middle" fill="#f97316" fontSize="9">amostragem</text>
+      <text x="140" y="18" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Sem reparametrização</text>
+      <rect x="30" y="35" width="90" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="75" y="60" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">μ, σ</text>
+      <line x1="120" y1="55" x2="160" y2="55" stroke="#4a9eed" strokeWidth="1.2" markerEnd="url(#rparrRed)" />
+      <ellipse cx="195" cy="55" rx="38" ry="25" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" />
+      <text x="195" y="50" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">z ~ N(μ,σ²)</text>
+      <text x="195" y="64" textAnchor="middle" fill="#4a9eed" fontSize="9">amostragem</text>
       <line x1="233" y1="55" x2="273" y2="55" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#rparr)" />
-      <rect x="278" y="35" width="80" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="318" y="60" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Decoder</text>
-      <text x="195" y="100" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">✗ não há gradiente através do "amostrar"</text>
+      <rect x="278" y="35" width="80" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="318" y="60" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Decoder</text>
+      <text x="195" y="100" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">✗ não há gradiente através do "amostrar"</text>
       <text x="195" y="116" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">backprop não pode atravessar um nó estocástico</text>
 
       <line x1="0" y1="135" x2="560" y2="135" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3" />
 
       {/* With trick */}
-      <text x="140" y="155" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Com reparametrização: z = μ + σ·ε</text>
+      <text x="140" y="155" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Com reparametrização: z = μ + σ·ε</text>
     </svg>
     <div style={{ marginTop: '0.5rem' }}>
       <svg viewBox="0 0 560 110" style={{ maxWidth: '100%', height: 'auto' }}>
         <defs>
           <marker id="rparrGreen" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+            <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
           </marker>
           <marker id="rparrOrange" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+            <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
           </marker>
         </defs>
-        <rect x="20" y="30" width="90" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-        <text x="65" y="55" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">μ, σ</text>
+        <rect x="20" y="30" width="90" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+        <text x="65" y="55" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">μ, σ</text>
         <text x="65" y="22" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">caminho com gradiente</text>
 
-        <rect x="20" y="80" width="90" height="28" rx="6" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3,2" />
-        <text x="65" y="98" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">ε ~ N(0,I)</text>
+        <rect x="20" y="80" width="90" height="28" rx="6" fill="rgba(2,132,199,0.1)" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="3,2" />
+        <text x="65" y="98" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">ε ~ N(0,I)</text>
 
-        <ellipse cx="225" cy="50" rx="55" ry="28" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-        <text x="225" y="46" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">z = μ + σ·ε</text>
-        <text x="225" y="59" textAnchor="middle" fill="#f97316" fontSize="9">determinístico em μ,σ</text>
+        <ellipse cx="225" cy="50" rx="55" ry="28" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+        <text x="225" y="46" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">z = μ + σ·ε</text>
+        <text x="225" y="59" textAnchor="middle" fill="#4a9eed" fontSize="9">determinístico em μ,σ</text>
 
-        <line x1="110" y1="50" x2="177" y2="50" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#rparrGreen)" />
-        <line x1="110" y1="94" x2="207" y2="76" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3,2" markerEnd="url(#rparrOrange)" />
+        <line x1="110" y1="50" x2="177" y2="50" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#rparrGreen)" />
+        <line x1="110" y1="94" x2="207" y2="76" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="3,2" markerEnd="url(#rparrOrange)" />
 
-        <line x1="273" y1="50" x2="330" y2="50" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#rparrGreen)" />
-        <rect x="335" y="30" width="90" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-        <text x="380" y="55" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Decoder</text>
+        <line x1="273" y1="50" x2="330" y2="50" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#rparrGreen)" />
+        <rect x="335" y="30" width="90" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+        <text x="380" y="55" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Decoder</text>
 
         <text x="255" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">∂z/∂μ = 1, ∂z/∂σ = ε → gradiente flui livremente para μ e σ</text>
       </svg>
@@ -310,10 +285,10 @@ const ReparamDiagram = () => (
 // === Diagram: latent space organization comparison ===
 const LatentSpaceDiagram = () => {
   const aePoints = [
-    [60, 50, '#f97316'], [75, 55, '#f97316'], [65, 65, '#f97316'],
-    [200, 30, '#f97316'], [215, 25, '#f97316'],
-    [120, 130, '#f97316'], [135, 140, '#f97316'], [110, 150, '#f97316'],
-    [240, 110, '#f97316'],
+    [60, 50, '#4a9eed'], [75, 55, '#4a9eed'], [65, 65, '#4a9eed'],
+    [200, 30, '#4a9eed'], [215, 25, '#4a9eed'],
+    [120, 130, '#4a9eed'], [135, 140, '#4a9eed'], [110, 150, '#4a9eed'],
+    [240, 110, '#4a9eed'],
   ];
   return (
     <div style={S.diagram}>
@@ -333,21 +308,21 @@ const LatentSpaceDiagram = () => {
           <svg viewBox="0 0 280 180" style={{ maxWidth: '100%', height: 'auto', background: 'var(--bg-primary)', borderRadius: 8 }}>
             <defs>
               <radialGradient id="vaeGrad" cx="50%" cy="50%" r="60%">
-                <stop offset="0%" stopColor="#f97316" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#f97316" stopOpacity="0.02" />
+                <stop offset="0%" stopColor="#4a9eed" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#4a9eed" stopOpacity="0.02" />
               </radialGradient>
               <marker id="lsarr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+                <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
               </marker>
             </defs>
             <circle cx="140" cy="90" r="80" fill="url(#vaeGrad)" />
-            {[[100, 60, '#f97316'], [115, 70, '#f97316'], [105, 80, '#f97316'], [180, 100, '#f97316'], [190, 110, '#f97316'], [175, 120, '#f97316']].map(([x, y, c], i) => (
+            {[[100, 60, '#4a9eed'], [115, 70, '#4a9eed'], [105, 80, '#4a9eed'], [180, 100, '#4a9eed'], [190, 110, '#4a9eed'], [175, 120, '#4a9eed']].map(([x, y, c], i) => (
               <circle key={i} cx={x} cy={y} r="6" fill={c} opacity="0.85" />
             ))}
             {/* interpolation path */}
-            <line x1="105" y1="80" x2="180" y2="100" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#lsarr)" />
-            <circle cx="142" cy="90" r="5" fill="#f97316" />
-            <text x="162" y="78" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">z interpolado</text>
+            <line x1="105" y1="80" x2="180" y2="100" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#lsarr)" />
+            <circle cx="142" cy="90" r="5" fill="#4a9eed" />
+            <text x="162" y="78" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">z interpolado</text>
             <text x="140" y="170" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">denso, contínuo — todo o espaço é "decodificável"</text>
           </svg>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>VAE: a regularização KL preenche o espaço — qualquer z ~ N(0,I) decodifica algo plausível.</p>
@@ -367,8 +342,8 @@ const InterpolationDiagram = () => (
         const cx = 50 + i * 85;
         return (
           <g key={i}>
-            <rect x={cx - 30} y="10" width="60" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" opacity={0.4 + 0.6 * (1 - Math.abs(t - 0.5) * 0.6)} />
-            <text x={cx} y="45" textAnchor="middle" fill="#f97316" fontSize="20" fontWeight="700" opacity={0.4 + 0.6 * (1 - Math.abs(t - 0.5) * 0.6)}>
+            <rect x={cx - 30} y="10" width="60" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" opacity={0.4 + 0.6 * (1 - Math.abs(t - 0.5) * 0.6)} />
+            <text x={cx} y="45" textAnchor="middle" fill="#4a9eed" fontSize="20" fontWeight="700" opacity={0.4 + 0.6 * (1 - Math.abs(t - 0.5) * 0.6)}>
               {i === 0 ? '0' : i === 6 ? '8' : '~'}
             </text>
             <text x={cx} y="88" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">t={t.toFixed(2)}</text>
@@ -388,15 +363,8 @@ export default function DL5() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 05</div>
+      <div style={S.tag}>MÓDULO 05</div>
       <h1 style={S.h1}>Autoencoders &amp; VAEs</h1>
-      <p style={S.lead}>
-        Como é que uma rede neuronal aprende a "resumir" os dados sem qualquer label? Os <strong>autoencoders</strong> respondem
-        a esta pergunta forçando a informação a passar por um gargalo — o espaço latente. Neste módulo construímos essa ideia
-        do zero, exploramos variantes que adicionam robustez (denoising) e interpretabilidade (sparsity), e culminamos nos{' '}
-        <strong>Variational Autoencoders</strong>, que transformam o espaço latente numa estrutura probabilística contínua,
-        capaz de gerar dados novos por amostragem e interpolação.
-      </p>
 
       {/* === SECTION 1: AE architecture === */}
       <div style={S.section}>
@@ -418,19 +386,6 @@ export default function DL5() {
         <div style={S.math}>
           <BlockMath math={`\\mathcal{L}_{recon} = \\| x - \\hat{x} \\|^2 \\quad\\text{(MSE)} \\qquad \\text{ou} \\qquad \\mathcal{L}_{recon} = -\\sum_i x_i \\log \\hat{x}_i + (1-x_i)\\log(1-\\hat{x}_i) \\quad\\text{(BCE)}`} />
         </div>
-
-        <h3 style={S.h3}>Exemplo numérico de reconstrução</h3>
-        <p style={S.p}>
-          Suponhamos um vector de input com 6 valores (por exemplo, pixels normalizados entre 0 e 1). O encoder comprime-o
-          para apenas 2 valores latentes (z₁, z₂); o decoder reconstrói os 6 valores originais a partir desses 2 números:
-        </p>
-        <ReconstructionTable />
-        <p style={S.p}>
-          Apesar de z ter apenas <InlineMath math="2" /> dimensões — uma compressão de <InlineMath math="6 \to 2" />, ou seja
-          3× — a reconstrução está muito próxima do original (erro quadrático médio ≈ 0.0008). Isto só é possível porque
-          os 6 valores de x não são independentes: existe <strong>redundância e estrutura</strong> nos dados, e o encoder
-          aprendeu a capturá-la em apenas duas "coordenadas" latentes.
-        </p>
 
         <div style={S.highlight}>
           <strong>Porque é que o bottleneck força representações úteis?</strong>
@@ -591,16 +546,16 @@ export default function DL5() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid rgba(249,115,22,0.10)' }}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Termo de Reconstrução</div>
+          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid rgba(74,158,237,0.10)' }}>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Termo de Reconstrução</div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
               <InlineMath math="\mathbb{E}_{q(z|x)}[\log p(x|z)]" /> mede quão bem o decoder reconstrói x a partir de
               uma amostra z tirada de q(z|x). Na prática é o mesmo MSE/BCE de um autoencoder normal — quer que x̂
               seja parecido com x.
             </p>
           </div>
-          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid rgba(249,115,22,0.10)' }}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Termo de Regularização (KL)</div>
+          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid rgba(74,158,237,0.10)' }}>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Termo de Regularização (KL)</div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
               <InlineMath math="D_{KL}(q(z|x)\|p(z))" /> mede a distância entre a distribuição produzida pelo encoder
               e o prior <InlineMath math="p(z) = \mathcal{N}(0, I)" />. Penaliza distribuições que se afastam
@@ -781,18 +736,8 @@ export default function DL5() {
           </table>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <p style={{ ...S.p, marginBottom: 0 }}>
-              Todas estas arquitecturas partilham o esqueleto encoder–bottleneck–decoder, mas diferem em{' '}
-              <strong>que constrangimento adicional impõem ao espaço latente</strong>: o vanilla AE não impõe nenhum
-              (apenas a dimensão), o denoising AE impõe robustez via corrupção do input, o sparse AE impõe esparsidade
-              nas activações, e o VAE impõe uma forma probabilística específica via regularização KL — sendo esta
-              última condição precisamente o que torna a <strong>geração</strong> possível.
-            </p>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

@@ -5,14 +5,14 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem', transition: 'color 0.2s' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -21,7 +21,7 @@ const S = {
   tag: { display: 'inline-block', background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '0.2rem 0.6rem', fontSize: '0.8rem', fontWeight: 600, margin: '0.15rem', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const PipelineDiagram = () => {
@@ -66,7 +66,6 @@ export default function NLP2() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 2</div>
         <h1 style={S.h1}>Pré-processamento de Texto</h1>
-        <p style={S.lead}>Antes de qualquer modelo conseguir "ler" texto, é preciso limpá-lo e normalizá-lo. Esta lecture cobre o pipeline clássico de pré-processamento de texto.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -111,15 +110,7 @@ export default function NLP2() {
 
           <p style={S.p}>Com o texto limpo e normalizado, o próximo passo é transformá-lo em algo que um modelo consiga processar — números. É o que veremos no início da próxima lecture, com o <strong>Bag-of-Words</strong>.</p>
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>2. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>O Pipeline de Pré-processamento</strong> — conjunto de operações aplicadas ao texto bruto (tokenização, lowercase, remoção de stopwords, stemming/lematização) para reduzir ruído e normalizar o vocabulário antes da modelação.</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
     </div>
   );

@@ -7,19 +7,19 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -33,21 +33,21 @@ const SparkArchDiagram = () => (
         </marker>
       </defs>
       {/* Cluster Manager — top center */}
-      <rect x="225" y="15" width="130" height="44" rx="7" fill="rgba(234,179,8,0.15)" stroke="#eab308" strokeWidth="1.5" />
-      <text x="290" y="34" textAnchor="middle" fill="#eab308" fontSize="11" fontWeight="700">Cluster Manager</text>
+      <rect x="225" y="15" width="130" height="44" rx="7" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="290" y="34" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Cluster Manager</text>
       <text x="290" y="48" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">YARN / K8s / Standalone</text>
 
       {/* Driver — left middle */}
-      <rect x="20" y="95" width="140" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="90" y="118" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Driver</text>
+      <rect x="20" y="95" width="140" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="90" y="118" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Driver</text>
       <text x="90" y="134" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">SparkContext / SparkSession</text>
       <text x="90" y="146" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Plano DAG + Schedule</text>
 
       {/* Executors — right column */}
       {[60, 150].map((y, i) => (
         <g key={y}>
-          <rect x="420" y={y} width="140" height="55" rx="7" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="1.5" />
-          <text x="490" y={y + 22} textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="600">Executor {i + 1}</text>
+          <rect x="420" y={y} width="140" height="55" rx="7" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="1.5" />
+          <text x="490" y={y + 22} textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="600">Executor {i + 1}</text>
           <text x="490" y={y + 38} textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Tasks + Cache (RAM)</text>
         </g>
       ))}
@@ -72,25 +72,25 @@ const SparkArchDiagram = () => (
 const RDDExplorer = () => {
   const [active, setActive] = useState(null);
   const ops = [
-    { type: 'N', name: 'map(f)', desc: 'Narrow transformation. Aplica função f a cada elemento de forma independente. Cada partição de output depende de exactamente uma partição de input — sem shuffle, sem comunicação entre executors.', detail: 'Exemplo: converter strings para maiúsculas, multiplicar valores por 2, extrair campos de JSON. O paralelismo é total.', color: '#f97316' },
-    { type: 'N', name: 'filter(f)', desc: 'Narrow transformation. Mantém apenas elementos onde f retorna True. Reduz o volume de dados sem alterar o número de partições.', detail: 'Fundamental para aplicar filtros cedo no pipeline — reduz dados antes de operações caras (joins, shuffles).', color: '#f97316' },
-    { type: 'N', name: 'flatMap(f)', desc: 'Narrow transformation. Como map mas "achata" o resultado — f retorna uma lista e todos os elementos são incluídos no RDD resultado.', detail: 'Muito usado em processamento de texto: cada linha → lista de palavras. Uma frase de 10 palavras contribui com 10 elementos.', color: '#f97316' },
-    { type: 'N', name: 'union(rdd)', desc: 'Narrow transformation. Combina dois RDDs sem remover duplicados. Não há shuffle — as partições de ambos os RDDs são simplesmente concatenadas.', detail: 'Útil para combinar dados de múltiplas fontes antes de uma operação unificada.', color: '#f97316' },
-    { type: 'W', name: 'reduceByKey(f)', desc: 'Wide transformation. Causa shuffle — todas as tuplas com a mesma chave têm de ir para o mesmo executor para serem agregadas. Spark usa a função f para combinar parcialmente antes do shuffle (como um Combiner automático).', detail: 'Preferido a groupByKey porque o pré-agrupamento local reduz drasticamente o volume de dados no shuffle.', color: '#f97316' },
-    { type: 'W', name: 'groupByKey()', desc: 'Wide transformation. Causa shuffle. Agrupa todos os valores por chave sem agregação prévia. Envia TODOS os valores pela rede — muito mais caro que reduceByKey quando a agregação é possível.', detail: 'Evitar quando reduceByKey ou aggregateByKey são aplicáveis. Só usar quando precisar de todos os valores sem agregação.', color: '#f97316' },
-    { type: 'W', name: 'join(other)', desc: 'Wide transformation. Faz o shuffle de ambos os RDDs pela chave de join para garantir que todos os pares (k, v1, v2) ficam no mesmo executor.', detail: 'Se um dos RDDs for pequeno, usar broadcast join (ver Módulo 4) para evitar o shuffle completamente.', color: '#f97316' },
-    { type: 'A', name: 'count()', desc: 'Acção. Materializa e executa todo o plano DAG acumulado. Conta o número total de elementos. Retorna um único Long ao Driver.', detail: 'Trigger de execução: ao chamar count(), o Spark compila todo o plano lazy, optimiza, e distribui tasks pelos executors.', color: '#f97316' },
-    { type: 'A', name: 'collect()', desc: 'Acção. Traz TODOS os dados para a memória do Driver. Perigoso para RDDs grandes — pode causar OutOfMemoryError no Driver.', detail: 'Usar apenas para datasets pequenos (após filter/take) ou para testes. Em produção, usar write() para persistir.', color: '#f97316' },
-    { type: 'A', name: 'saveAsTextFile(path)', desc: 'Acção. Escreve o RDD para HDFS/S3 como ficheiros de texto. Cada partição produz um ficheiro parte-NNNNN.', detail: 'Persiste o resultado sem trazer dados para o Driver. Para formatos columnar (Parquet, ORC), usar DataFrame .write().', color: '#f97316' },
+    { type: 'N', name: 'map(f)', desc: 'Narrow transformation. Aplica função f a cada elemento de forma independente. Cada partição de output depende de exactamente uma partição de input — sem shuffle, sem comunicação entre executors.', detail: 'Exemplo: converter strings para maiúsculas, multiplicar valores por 2, extrair campos de JSON. O paralelismo é total.', color: '#4a9eed' },
+    { type: 'N', name: 'filter(f)', desc: 'Narrow transformation. Mantém apenas elementos onde f retorna True. Reduz o volume de dados sem alterar o número de partições.', detail: 'Fundamental para aplicar filtros cedo no pipeline — reduz dados antes de operações caras (joins, shuffles).', color: '#4a9eed' },
+    { type: 'N', name: 'flatMap(f)', desc: 'Narrow transformation. Como map mas "achata" o resultado — f retorna uma lista e todos os elementos são incluídos no RDD resultado.', detail: 'Muito usado em processamento de texto: cada linha → lista de palavras. Uma frase de 10 palavras contribui com 10 elementos.', color: '#4a9eed' },
+    { type: 'N', name: 'union(rdd)', desc: 'Narrow transformation. Combina dois RDDs sem remover duplicados. Não há shuffle — as partições de ambos os RDDs são simplesmente concatenadas.', detail: 'Útil para combinar dados de múltiplas fontes antes de uma operação unificada.', color: '#4a9eed' },
+    { type: 'W', name: 'reduceByKey(f)', desc: 'Wide transformation. Causa shuffle — todas as tuplas com a mesma chave têm de ir para o mesmo executor para serem agregadas. Spark usa a função f para combinar parcialmente antes do shuffle (como um Combiner automático).', detail: 'Preferido a groupByKey porque o pré-agrupamento local reduz drasticamente o volume de dados no shuffle.', color: '#4a9eed' },
+    { type: 'W', name: 'groupByKey()', desc: 'Wide transformation. Causa shuffle. Agrupa todos os valores por chave sem agregação prévia. Envia TODOS os valores pela rede — muito mais caro que reduceByKey quando a agregação é possível.', detail: 'Evitar quando reduceByKey ou aggregateByKey são aplicáveis. Só usar quando precisar de todos os valores sem agregação.', color: '#4a9eed' },
+    { type: 'W', name: 'join(other)', desc: 'Wide transformation. Faz o shuffle de ambos os RDDs pela chave de join para garantir que todos os pares (k, v1, v2) ficam no mesmo executor.', detail: 'Se um dos RDDs for pequeno, usar broadcast join (ver Módulo 4) para evitar o shuffle completamente.', color: '#4a9eed' },
+    { type: 'A', name: 'count()', desc: 'Acção. Materializa e executa todo o plano DAG acumulado. Conta o número total de elementos. Retorna um único Long ao Driver.', detail: 'Trigger de execução: ao chamar count(), o Spark compila todo o plano lazy, optimiza, e distribui tasks pelos executors.', color: '#4a9eed' },
+    { type: 'A', name: 'collect()', desc: 'Acção. Traz TODOS os dados para a memória do Driver. Perigoso para RDDs grandes — pode causar OutOfMemoryError no Driver.', detail: 'Usar apenas para datasets pequenos (após filter/take) ou para testes. Em produção, usar write() para persistir.', color: '#4a9eed' },
+    { type: 'A', name: 'saveAsTextFile(path)', desc: 'Acção. Escreve o RDD para HDFS/S3 como ficheiros de texto. Cada partição produz um ficheiro parte-NNNNN.', detail: 'Persiste o resultado sem trazer dados para o Driver. Para formatos columnar (Parquet, ORC), usar DataFrame .write().', color: '#4a9eed' },
   ];
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>RDD — Transformações (lazy) vs. Acções (trigger de execução)</p>
       <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>Clica em cada operação para ver descrição, comportamento de particionamento e exemplos de uso.</p>
       <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
-        <span style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid #fb923c', color: '#f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.15rem 0.6rem', borderRadius: 12 }}>N — Narrow (sem shuffle)</span>
-        <span style={{ background: 'rgba(234,179,8,0.15)', border: '1px solid #eab308', color: '#f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.15rem 0.6rem', borderRadius: 12 }}>W — Wide (com shuffle)</span>
-        <span style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid #f97316', color: '#f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.15rem 0.6rem', borderRadius: 12 }}>A — Action (executa DAG)</span>
+        <span style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid #38bdf8', color: '#4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.15rem 0.6rem', borderRadius: 12 }}>N — Narrow (sem shuffle)</span>
+        <span style={{ background: 'rgba(2,132,199,0.15)', border: '1px solid #0284c7', color: '#4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.15rem 0.6rem', borderRadius: 12 }}>W — Wide (com shuffle)</span>
+        <span style={{ background: 'rgba(74,158,237,0.15)', border: '1px solid #4a9eed', color: '#4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.15rem 0.6rem', borderRadius: 12 }}>A — Action (executa DAG)</span>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', justifyContent: 'center', marginBottom: '1rem' }}>
         {ops.map((op, i) => (
@@ -116,27 +116,27 @@ const DAGDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
       </defs>
-      <rect x="10" y="5" width="230" height="150" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" strokeDasharray="5,3" />
-      <text x="125" y="20" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">STAGE 1 — Narrow (no shuffle)</text>
-      <rect x="20" y="30" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="60" y="48" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">textFile()</text>
+      <rect x="10" y="5" width="230" height="150" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" strokeDasharray="5,3" />
+      <text x="125" y="20" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">STAGE 1 — Narrow (no shuffle)</text>
+      <rect x="20" y="30" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="60" y="48" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">textFile()</text>
       <line x1="100" y1="44" x2="120" y2="44" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-dag)" />
-      <rect x="122" y="30" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="162" y="48" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">flatMap()</text>
+      <rect x="122" y="30" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="162" y="48" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">flatMap()</text>
       <line x1="202" y1="44" x2="222" y2="44" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-dag)" />
-      <rect x="122" y="90" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="162" y="108" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">map(w&#8594;(w,1))</text>
+      <rect x="122" y="90" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="162" y="108" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">map(w&#8594;(w,1))</text>
       <line x1="202" y1="104" x2="222" y2="64" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-dag)" />
-      <line x1="250" y1="10" x2="250" y2="150" stroke="#eab308" strokeWidth="2" strokeDasharray="4,3" />
-      <text x="250" y="7" textAnchor="middle" fill="#eab308" fontSize="8" fontWeight="700">SHUFFLE</text>
-      <rect x="260" y="5" width="290" height="150" rx="8" fill="rgba(249,115,22,0.04)" stroke="#f97316" strokeWidth="1" strokeDasharray="5,3" />
-      <text x="405" y="20" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">STAGE 2 — Wide (após shuffle)</text>
-      <rect x="270" y="30" width="100" height="28" rx="5" fill="rgba(234,179,8,0.15)" stroke="#eab308" strokeWidth="1.5" />
-      <text x="320" y="48" textAnchor="middle" fill="#eab308" fontSize="9" fontWeight="600">reduceByKey()</text>
+      <line x1="250" y1="10" x2="250" y2="150" stroke="#0284c7" strokeWidth="2" strokeDasharray="4,3" />
+      <text x="250" y="7" textAnchor="middle" fill="#0284c7" fontSize="8" fontWeight="700">SHUFFLE</text>
+      <rect x="260" y="5" width="290" height="150" rx="8" fill="rgba(74,158,237,0.04)" stroke="#4a9eed" strokeWidth="1" strokeDasharray="5,3" />
+      <text x="405" y="20" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">STAGE 2 — Wide (após shuffle)</text>
+      <rect x="270" y="30" width="100" height="28" rx="5" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="320" y="48" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="600">reduceByKey()</text>
       <line x1="370" y1="44" x2="390" y2="44" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-dag)" />
-      <rect x="392" y="30" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="432" y="48" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">collect()</text>
-      <text x="432" y="80" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">ACTION</text>
+      <rect x="392" y="30" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="432" y="48" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">collect()</text>
+      <text x="432" y="80" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">ACTION</text>
       <text x="432" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">executa o DAG</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Transformações narrow no mesmo stage (sem dados a cruzar a rede). Wide transformations criam um novo stage — os dados de todas as partições têm de ser redistribuídos pelos executors antes de continuar.</p>
@@ -153,10 +153,10 @@ const CatalystDiagram = () => (
         </marker>
       </defs>
       {[
-        { label: 'Analysis', sub: 'Resolve nomes\ne tipos', x: 65, color: '#f97316' },
-        { label: 'Logical Opt.', sub: 'Predicate pushdown\nColumn pruning', x: 205, color: '#f97316' },
-        { label: 'Physical Plan', sub: 'BroadcastJoin vs\nSortMergeJoin', x: 345, color: '#f97316' },
-        { label: 'Code Gen', sub: 'Bytecode JVM\noptimizado (Tungsten)', x: 485, color: '#f97316' },
+        { label: 'Analysis', sub: 'Resolve nomes\ne tipos', x: 65, color: '#4a9eed' },
+        { label: 'Logical Opt.', sub: 'Predicate pushdown\nColumn pruning', x: 205, color: '#4a9eed' },
+        { label: 'Physical Plan', sub: 'BroadcastJoin vs\nSortMergeJoin', x: 345, color: '#4a9eed' },
+        { label: 'Code Gen', sub: 'Bytecode JVM\noptimizado (Tungsten)', x: 485, color: '#4a9eed' },
       ].map(({ label, sub, x, color }) => (
         <g key={label}>
           <rect x={x - 55} y="10" width="110" height="50" rx="7" fill={`${color}15`} stroke={color} strokeWidth="1.5" />
@@ -180,10 +180,10 @@ export default function CBD4() {
     { label: 'Join (2 tabelas)', rdd: '6.8s', df: '1.8s', speedup: '3.8×', reason: 'Catalyst escolhe BroadcastHashJoin automaticamente para a tabela menor; RDD usa sempre shuffle join' },
   ];
   const memTabs = [
-    { name: 'Execution Memory', color: '#f97316', desc: 'Memória usada durante o processamento de operações: sorting, hashing, joins, aggregations. É dinâmica — pode crescer usando memória do pool de Storage se necessário.', detail: 'Se insuficiente, o Spark faz spill para disco automaticamente — degradando performance mas sem falhar. Aumentar executor memory resolve OOM errors em shuffles e sorts.' },
-    { name: 'Storage Memory', color: '#f97316', desc: 'Memória usada para cache de RDDs/DataFrames (.cache() e .persist()). Partilhada com Execution Memory no Unified Memory Model (Spark 1.6+).', detail: 'Quando Execution Memory precisa de crescer, pode evictar blocos de Storage para disco (LRU). Um RDD em cache pode ser recalculado se evictado — sem erro, mas com lentidão.' },
-    { name: 'Off-Heap Memory', color: '#f97316', desc: 'Memória fora da JVM heap, gerida directamente pelo Tungsten (Project Tungsten). Evita o overhead do Garbage Collector da JVM para objectos de longa duração.', detail: 'Ativado com spark.memory.offHeap.enabled=true. Especialmente útil para DataFrames com dados binários grandes ou quando o GC é um bottleneck de performance.' },
-    { name: 'User Memory', color: '#f97316', desc: 'Memória reservada para estruturas de dados do utilizador: UDFs, acumuladores, dados em broadcast variables. Não é gerida pelo Spark — responsabilidade do programador.', detail: 'Broadcast variables grandes (> 500 MB) consomem esta área. Manter UDFs stateless e broadcast variables concisas.' },
+    { name: 'Execution Memory', color: '#4a9eed', desc: 'Memória usada durante o processamento de operações: sorting, hashing, joins, aggregations. É dinâmica — pode crescer usando memória do pool de Storage se necessário.', detail: 'Se insuficiente, o Spark faz spill para disco automaticamente — degradando performance mas sem falhar. Aumentar executor memory resolve OOM errors em shuffles e sorts.' },
+    { name: 'Storage Memory', color: '#4a9eed', desc: 'Memória usada para cache de RDDs/DataFrames (.cache() e .persist()). Partilhada com Execution Memory no Unified Memory Model (Spark 1.6+).', detail: 'Quando Execution Memory precisa de crescer, pode evictar blocos de Storage para disco (LRU). Um RDD em cache pode ser recalculado se evictado — sem erro, mas com lentidão.' },
+    { name: 'Off-Heap Memory', color: '#4a9eed', desc: 'Memória fora da JVM heap, gerida directamente pelo Tungsten (Project Tungsten). Evita o overhead do Garbage Collector da JVM para objectos de longa duração.', detail: 'Ativado com spark.memory.offHeap.enabled=true. Especialmente útil para DataFrames com dados binários grandes ou quando o GC é um bottleneck de performance.' },
+    { name: 'User Memory', color: '#4a9eed', desc: 'Memória reservada para estruturas de dados do utilizador: UDFs, acumuladores, dados em broadcast variables. Não é gerida pelo Spark — responsabilidade do programador.', detail: 'Broadcast variables grandes (> 500 MB) consomem esta área. Manter UDFs stateless e broadcast variables concisas.' },
   ];
 
   return (
@@ -192,7 +192,6 @@ export default function CBD4() {
         <Link to="/cloud-bigdata" style={S.back}><ArrowLeft size={16} /> Voltar a Cloud &amp; Big Data</Link>
         <div style={S.tag}>Module 4</div>
         <h1 style={S.h1}>Apache Spark — Core</h1>
-        <p style={S.lead}>Do MapReduce ao Spark: a filosofia in-memory, o modelo de programação RDD, lazy evaluation e o DAG optimizer, DataFrames com schema, e o Catalyst + Tungsten que transformam queries em código JVM de alta performance.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. A Origem do Spark</h2>
@@ -201,8 +200,8 @@ export default function CBD4() {
           <p style={S.p}>Em 2014, o Spark tornou-se o projecto Apache de maior crescimento da história. Em 2015, os autores fundaram o Databricks. Hoje, o Spark é o motor de processamento distribuído dominante — adoptado pela Netflix, Uber, Airbnb, e praticamente todas as organizações com dados em escala.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>MapReduce — Limitações</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>MapReduce — Limitações</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>Disco I/O entre cada fase Map e Reduce</li>
                 <li>Apenas batch — sem streaming interactivo</li>
@@ -212,8 +211,8 @@ export default function CBD4() {
                 <li>Sem suporte SQL nativo</li>
               </ul>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Apache Spark — Melhorias</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Apache Spark — Melhorias</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>In-memory: até 100× mais rápido em algoritmos iterativos</li>
                 <li>Batch + Streaming + SQL unificados na mesma API</li>
@@ -238,10 +237,10 @@ export default function CBD4() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              ['Resilient — Tolerância a Falhas via Lineage', 'Cada RDD conhece a sequência de transformações (lineage) que o criou a partir do RDD original. Se uma partição for perdida (nó que falhou), o Spark não precisa de replicar os dados — recalcula apenas a partição perdida aplicando a lineage ao dado original. Recuperação granular sem overhead de replicação.', '#f97316'],
-              ['Distributed — Partições em Paralelo', 'Um RDD é dividido em N partições, cada uma processada por um executor em paralelo. O número de partições determina o grau de paralelismo. Por defeito, 2 partições por CPU do cluster. Partições demasiado poucas subaproveitam o cluster; demasiadas criam overhead de scheduling.', '#f97316'],
-              ['Immutable — Sem Race Conditions', 'Transformações sobre um RDD nunca modificam o original — criam sempre um novo RDD. A imutabilidade elimina a necessidade de locks e sincronização entre executors. Permite também reproduzir qualquer estado da computação recalculando a lineage desde o início.', '#f97316'],
-              ['Lazy Evaluation — Optimização Global', 'Quando se chama map(), filter(), ou join(), o Spark não executa nada — regista a transformação no plano DAG. Apenas quando uma Action (count, collect, save) é invocada é que o Spark compila e optimiza o plano completo. Isto permite optimizações impossíveis com execução eager (ex: fusão de múltiplos filtros num único passo).', '#f97316'],
+              ['Resilient — Tolerância a Falhas via Lineage', 'Cada RDD conhece a sequência de transformações (lineage) que o criou a partir do RDD original. Se uma partição for perdida (nó que falhou), o Spark não precisa de replicar os dados — recalcula apenas a partição perdida aplicando a lineage ao dado original. Recuperação granular sem overhead de replicação.', '#4a9eed'],
+              ['Distributed — Partições em Paralelo', 'Um RDD é dividido em N partições, cada uma processada por um executor em paralelo. O número de partições determina o grau de paralelismo. Por defeito, 2 partições por CPU do cluster. Partições demasiado poucas subaproveitam o cluster; demasiadas criam overhead de scheduling.', '#4a9eed'],
+              ['Immutable — Sem Race Conditions', 'Transformações sobre um RDD nunca modificam o original — criam sempre um novo RDD. A imutabilidade elimina a necessidade de locks e sincronização entre executors. Permite também reproduzir qualquer estado da computação recalculando a lineage desde o início.', '#4a9eed'],
+              ['Lazy Evaluation — Optimização Global', 'Quando se chama map(), filter(), ou join(), o Spark não executa nada — regista a transformação no plano DAG. Apenas quando uma Action (count, collect, save) é invocada é que o Spark compila e optimiza o plano completo. Isto permite optimizações impossíveis com execução eager (ex: fusão de múltiplos filtros num único passo).', '#4a9eed'],
             ].map(([t, d, c]) => (
               <div key={t} style={{ background: `${c}08`, border: `1px solid ${c}25`, borderRadius: 8, padding: '0.9rem' }}>
                 <div style={{ fontWeight: 700, color: c, marginBottom: '0.35rem', fontSize: '0.88rem' }}>{t}</div>
@@ -264,7 +263,7 @@ export default function CBD4() {
                   ['Narrow', 'map, filter, flatMap, union, mapPartitions, coalesce (reduce partitions)', 'Sem shuffle — processa localmente em cada executor. Múltiplas transformações narrow são "pipelined" no mesmo stage.', 'Baixo — apenas CPU local'],
                   ['Wide (Shuffle)', 'groupByKey, reduceByKey, join, sortBy, distinct, repartition, groupBy, orderBy', 'Requer shuffle — dados redistribuídos pela rede. Cria um boundary de stage no DAG. Implica escrita e leitura de disco (shuffle files).', 'Alto — I/O disco + rede + CPU sort'],
                 ].map(([t, o, b, c]) => (
-                  <tr key={t}><td style={{ ...S.td, fontWeight: 700, color: t === 'Narrow' ? '#f97316' : '#f97316' }}>{t}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{o}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: t === 'Narrow' ? '#f97316' : '#f97316', fontWeight: 600 }}>{c}</td></tr>
+                  <tr key={t}><td style={{ ...S.td, fontWeight: 700, color: t === 'Narrow' ? '#4a9eed' : '#4a9eed' }}>{t}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{o}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: t === 'Narrow' ? '#4a9eed' : '#4a9eed', fontWeight: 600 }}>{c}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -283,7 +282,7 @@ export default function CBD4() {
                   ['DISK_ONLY', 'Apenas disco local', 'Lento (disk I/O)', 'Checkpointing; dados raramente acedidos mas caros de recalcular'],
                   ['OFF_HEAP', 'Memória fora da JVM heap', 'Rápido, sem GC', 'Grandes DataFrames; quando GC é um bottleneck'],
                 ].map(([n, s, v, w]) => (
-                  <tr key={n}><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem', color: '#f97316', fontWeight: 700 }}>{n}</td><td style={S.td}>{s}</td><td style={S.td}>{v}</td><td style={S.td}>{w}</td></tr>
+                  <tr key={n}><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem', color: '#4a9eed', fontWeight: 700 }}>{n}</td><td style={S.td}>{s}</td><td style={S.td}>{v}</td><td style={S.td}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -300,25 +299,25 @@ export default function CBD4() {
           <h3 style={S.h3}>Benchmarks RDD vs. DataFrame</h3>
           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
             {perfData.map((p, i) => (
-              <button key={i} onClick={() => setPerfIdx(i)} style={{ padding: '0.35rem 0.9rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem', background: perfIdx === i ? '#f97316' : 'var(--bg-primary)', color: perfIdx === i ? 'white' : 'var(--text-primary)', border: `1.5px solid ${perfIdx === i ? '#f97316' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{p.label}</button>
+              <button key={i} onClick={() => setPerfIdx(i)} style={{ padding: '0.35rem 0.9rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem', background: perfIdx === i ? '#4a9eed' : 'var(--bg-primary)', color: perfIdx === i ? 'white' : 'var(--text-primary)', border: `1.5px solid ${perfIdx === i ? '#4a9eed' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{p.label}</button>
             ))}
           </div>
-          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.1rem', border: '1.5px solid rgba(249,115,22,0.10)' }}>
+          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.1rem', border: '1.5px solid rgba(74,158,237,0.10)' }}>
             <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', marginBottom: '0.75rem' }}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>RDD</div>
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#f97316' }}>{perfData[perfIdx].rdd}</div>
+                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#4a9eed' }}>{perfData[perfIdx].rdd}</div>
               </div>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>DataFrame</div>
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#f97316' }}>{perfData[perfIdx].df}</div>
+                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#4a9eed' }}>{perfData[perfIdx].df}</div>
               </div>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Speedup</div>
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#f97316' }}>{perfData[perfIdx].speedup}</div>
+                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#4a9eed' }}>{perfData[perfIdx].speedup}</div>
               </div>
             </div>
-            <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0, textAlign: 'center' }}><strong style={{ color: '#f97316' }}>Porquê:</strong> {perfData[perfIdx].reason}</p>
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0, textAlign: 'center' }}><strong style={{ color: '#4a9eed' }}>Porquê:</strong> {perfData[perfIdx].reason}</p>
           </div>
 
           <CatalystDiagram />
@@ -326,10 +325,10 @@ export default function CBD4() {
           <h3 style={S.h3}>As 4 Fases do Catalyst</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              ['1. Analysis', '#f97316', 'Resolve nomes de colunas e tipos de dados usando o Catalog (metastore). Detecta erros de schema antes de qualquer execução. Valida que todas as colunas referenciadas existem e têm tipos compatíveis.'],
-              ['2. Logical Optimization', '#f97316', 'Aplica regras algébricas independentes do hardware: predicate pushdown (filtrar antes de joins), column pruning (eliminar colunas não usadas), constant folding (calcular expressões constantes uma única vez), e fusão de projecções.'],
-              ['3. Physical Planning', '#f97316', 'Gera múltiplos planos físicos alternativos e escolhe o mais barato via modelo de custo. Decide entre BroadcastHashJoin (tabela pequena em broadcast) vs SortMergeJoin (ambas grandes). Escolhe entre HashAgg e SortAgg para aggregations.'],
-              ['4. Code Generation (Tungsten)', '#f97316', 'Gera bytecode JVM específico para o plano físico escolhido. Elimina o overhead de interpretação do Volcano model. Usa processamento vectorizado (columnar batches) e memória off-heap gerida manualmente para evitar overhead do GC.'],
+              ['1. Analysis', '#4a9eed', 'Resolve nomes de colunas e tipos de dados usando o Catalog (metastore). Detecta erros de schema antes de qualquer execução. Valida que todas as colunas referenciadas existem e têm tipos compatíveis.'],
+              ['2. Logical Optimization', '#4a9eed', 'Aplica regras algébricas independentes do hardware: predicate pushdown (filtrar antes de joins), column pruning (eliminar colunas não usadas), constant folding (calcular expressões constantes uma única vez), e fusão de projecções.'],
+              ['3. Physical Planning', '#4a9eed', 'Gera múltiplos planos físicos alternativos e escolhe o mais barato via modelo de custo. Decide entre BroadcastHashJoin (tabela pequena em broadcast) vs SortMergeJoin (ambas grandes). Escolhe entre HashAgg e SortAgg para aggregations.'],
+              ['4. Code Generation (Tungsten)', '#4a9eed', 'Gera bytecode JVM específico para o plano físico escolhido. Elimina o overhead de interpretação do Volcano model. Usa processamento vectorizado (columnar batches) e memória off-heap gerida manualmente para evitar overhead do GC.'],
             ].map(([t, c, d]) => (
               <div key={t} style={{ background: `${c}08`, border: `1px solid ${c}25`, borderRadius: 8, padding: '0.9rem' }}>
                 <div style={{ fontWeight: 700, color: c, marginBottom: '0.35rem' }}>{t}</div>
@@ -366,25 +365,13 @@ export default function CBD4() {
                   ['DataFrame', 'Python, Scala, Java, R, SQL', 'Schema com nomes e tipos', 'Catalyst automático + Tungsten', 'Analytics, ETL, ML feature engineering — 95% dos casos de uso'],
                   ['Dataset[T]', 'Scala, Java (type-safe)', 'Schema + type safety em compile time', 'Catalyst automático + Tungsten', 'Aplicações Scala empresariais onde erros de tipo em tempo de compilação são críticos'],
                 ].map(([a, l, s, o, w]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{a}</td><td style={S.td}>{l}</td><td style={S.td}>{s}</td><td style={S.td}>{o}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{w}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{a}</td><td style={S.td}>{l}</td><td style={S.td}>{s}</td><td style={S.td}>{o}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>A Origem do Spark</strong> — até 100× mais rápido que MapReduce em workloads iterativos graças ao processamento in-memory e à eliminação do disco entre fases; suporta streaming, ML e grafos numa única API unificada.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>RDDs</strong> — tolerância a falhas via lineage (recalcular partições perdidas), não via replicação — mais eficiente em memória; lazy evaluation permite ao Catalyst optimizar o plano completo antes de executar.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>DataFrames e Spark SQL</strong> — DataFrames + Catalyst + Tungsten são 3-5× mais rápidos que RDDs para a maioria dos workloads; narrow transformations são gratuitas (pipeline local); wide transformations (shuffle) são o custo dominante.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>RDD vs DataFrame vs Dataset</strong> — RDDs para controlo total ou dados não estruturados; DataFrames para SQL e analytics (preferir sempre em Python/SQL); Datasets para type-safety em Scala/Java com as optimizações de DataFrame.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

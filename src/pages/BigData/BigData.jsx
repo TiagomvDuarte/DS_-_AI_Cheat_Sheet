@@ -10,7 +10,7 @@ const lectures = [
     subtitle: '5Vs, Ecosistema, HDFS & MapReduce',
     topics: ['5 Vs do Big Data', 'Data Lake vs Warehouse vs Lakehouse', 'HDFS — NameNode & DataNodes', 'MapReduce — Word Count'],
     path: '/bigdata/lecture1',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture2',
@@ -19,7 +19,7 @@ const lectures = [
     subtitle: 'YARN, Hive, Pig & Sqoop',
     topics: ['Map → Shuffle → Reduce em profundidade', 'Combiner, Partitioner & Speculative Execution', 'YARN — ResourceManager & NodeManager', 'Hive, Pig Latin & Sqoop'],
     path: '/bigdata/lecture2',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture3',
@@ -28,7 +28,7 @@ const lectures = [
     subtitle: 'RDDs, DataFrames & Catalyst Optimizer',
     topics: ['RDDs — Resilient Distributed Datasets', 'Transformações vs Acções & DAG', 'DataFrames & Spark SQL', 'Catalyst Optimizer & Tungsten Engine'],
     path: '/bigdata/lecture3',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture4',
@@ -37,7 +37,7 @@ const lectures = [
     subtitle: 'Databricks, EMR, Dataproc + Tuning',
     topics: ['Databricks, AWS EMR, Google Dataproc', 'Shuffle — o custo oculto', 'Parquet, Partition Pruning & Caching', 'Broadcast Join & Key Salting'],
     path: '/bigdata/lecture4',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture5',
@@ -46,7 +46,7 @@ const lectures = [
     subtitle: 'CAP Theorem, Redis, MongoDB, Cassandra, Neo4j',
     topics: ['CAP Theorem & ACID vs BASE', 'Key-Value (Redis) & Document (MongoDB)', 'Wide-Column (Cassandra, HBase)', 'Graph (Neo4j) & DBs Especializados'],
     path: '/bigdata/lecture5',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture6',
@@ -55,7 +55,7 @@ const lectures = [
     subtitle: 'MLlib, Pipelines & MLflow',
     topics: ['Transformer vs Estimator vs Pipeline', 'StringIndexer, VectorAssembler, StandardScaler', 'Cross-Validation & ParamGridBuilder', 'MLflow — Track, Registry & Deploy'],
     path: '/bigdata/lecture6',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture7',
@@ -64,7 +64,7 @@ const lectures = [
     subtitle: 'GraphFrames, PageRank & BFS',
     topics: ['GraphX vs GraphFrames', 'PageRank — PR(v) = (1-d)/N + d·Σ', 'Connected Components & Triangle Counting', 'Motif Finding & BFS'],
     path: '/bigdata/lecture7',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture8',
@@ -73,7 +73,7 @@ const lectures = [
     subtitle: 'Structured Streaming, Kafka & Tendências',
     topics: ['Structured Streaming — unbounded table', 'Watermarks, Janelas & Exactly-once', 'Kafka → Spark → Parquet pipeline', 'Lakehouse, LLMs & Federated Learning'],
     path: '/bigdata/lecture8',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture9',
@@ -82,7 +82,7 @@ const lectures = [
     subtitle: 'DAGs, Operators, Backfill & Prefect / Dagster',
     topics: ['DAGs — Directed Acyclic Graphs', 'Operators: Python, Spark, Sensor, K8s', 'Backfill, Retries & SLAs', 'Airflow vs Prefect vs Dagster vs dbt'],
     path: '/bigdata/lecture9',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture10',
@@ -91,7 +91,7 @@ const lectures = [
     subtitle: 'ACID, Time Travel, MERGE & Great Expectations',
     topics: ['Transaction Log & ACID Transactions', 'Time Travel, Schema Evolution & MERGE', 'Medallion Architecture (Bronze/Silver/Gold)', 'Great Expectations, dbt tests & Soda'],
     path: '/bigdata/lecture10',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture11',
@@ -100,7 +100,7 @@ const lectures = [
     subtitle: 'Experiment Tracking, Model Registry & Serving com MLflow',
     topics: ['MLflow — Tracking, Projects, Registry, Serving', 'MLflow vs W&B vs DVC vs Neptune', 'MLflow em Databricks & Spark', 'AutoML, Feature Store & Unity Catalog'],
     path: '/bigdata/lecture11',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture12',
@@ -109,7 +109,7 @@ const lectures = [
     subtitle: 'Lakehouse, Unity Catalog, Workflows & Clusters',
     topics: ['Databricks vs Spark open-source — o que acrescenta', 'Unity Catalog — governança e data lineage', 'Workflows & Jobs — orquestração nativa', 'Clusters: All-Purpose vs Job, autoscaling & pools'],
     path: '/bigdata/lecture12',
-    color: '#f97316',
+    color: '#4a9eed',
   },
 ];
 

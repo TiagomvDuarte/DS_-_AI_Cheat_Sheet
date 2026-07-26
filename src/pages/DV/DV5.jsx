@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -30,9 +30,6 @@ export default function DV5() {
         <Link to="/dv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 05</div>
         <h1 style={S.h1}>Plotly &amp; Interactividade</h1>
-        <p style={S.lead}>
-          Plotly eleva a visualização de dados para além das imagens estáticas: cada gráfico gerado é por defeito interactivo, com hover detalhado, zoom, pan e filtros por legenda. Neste módulo exploramos a arquitectura do Plotly, a sua API de alto nível (Plotly Express), tipos de gráficos avançados como bubble charts, treemaps e mapas coropléticos, animações temporais com sliders, e a construção de dashboards web com Dash — tudo em Python puro, sem uma linha de JavaScript.
-        </p>
 
         {/* SECTION 1 */}
         <div style={S.section}>
@@ -54,19 +51,19 @@ export default function DV5() {
               {/* arrow */}
               <path d="M200 46 L200 62" stroke="#aaa" strokeWidth="2" fill="none" markerEnd="url(#arr)" />
               {/* Layer 3 */}
-              <rect x="80" y="62" width="240" height="36" rx="8" fill={`rgba(249,115,22,0.10)`} />
+              <rect x="80" y="62" width="240" height="36" rx="8" fill={`rgba(74,158,237,0.10)`} />
               <text x="200" y="85" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">plotly.graph_objects (go)</text>
               {/* arrow */}
               <path d="M200 98 L200 114" stroke="#aaa" strokeWidth="2" fill="none" markerEnd="url(#arr)" />
               {/* Layer 2 */}
-              <rect x="60" y="114" width="280" height="36" rx="8" fill={`rgba(249,115,22,0.10)`} />
+              <rect x="60" y="114" width="280" height="36" rx="8" fill={`rgba(74,158,237,0.10)`} />
               <text x="200" y="137" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">Plotly.js (JavaScript)</text>
               {/* arrow */}
               <path d="M200 150 L200 166" stroke="#aaa" strokeWidth="2" fill="none" markerEnd="url(#arr)" />
               {/* Layer 1 - bottom */}
-              <rect x="40" y="166" width="140" height="28" rx="6" fill={`rgba(249,115,22,0.15)`} stroke={color} strokeWidth="1" />
+              <rect x="40" y="166" width="140" height="28" rx="6" fill={`rgba(74,158,237,0.15)`} stroke={color} strokeWidth="1" />
               <text x="110" y="184" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">SVG</text>
-              <rect x="220" y="166" width="140" height="28" rx="6" fill={`rgba(249,115,22,0.15)`} stroke={color} strokeWidth="1" />
+              <rect x="220" y="166" width="140" height="28" rx="6" fill={`rgba(74,158,237,0.15)`} stroke={color} strokeWidth="1" />
               <text x="290" y="184" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">WebGL</text>
               <defs>
                 <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
@@ -139,14 +136,14 @@ export default function DV5() {
               <text x="220" y="228" textAnchor="middle" fill="#999" fontSize="11">PIB per capita</text>
               <text x="18" y="115" textAnchor="middle" fill="#999" fontSize="11" transform="rotate(-90,18,115)">Esp. Vida</text>
               {/* pontos scatter */}
-              <circle cx="90" cy="80" r="8" fill="#f97316" opacity="0.8" />
-              <circle cx="150" cy="100" r="14" fill="#f97316" opacity="0.8" />
-              <circle cx="300" cy="70" r="22" fill="#f97316" opacity="0.8" />
-              <circle cx="260" cy="90" r="7" fill="#f97316" opacity="0.8" />
-              <circle cx="80" cy="150" r="18" fill="#f97316" opacity="0.8" />
-              <circle cx="110" cy="130" r="20" fill="#f97316" opacity="0.8" />
-              <circle cx="340" cy="60" r="8" fill="#f97316" opacity="0.8" />
-              <circle cx="200" cy="110" r="9" fill="#f97316" opacity="0.8" />
+              <circle cx="90" cy="80" r="8" fill="#4a9eed" opacity="0.85" />
+              <circle cx="150" cy="100" r="14" fill="#7dd3fc" opacity="0.85" />
+              <circle cx="300" cy="70" r="22" fill="#4a9eed" opacity="0.85" />
+              <circle cx="260" cy="90" r="7" fill="#4a9eed" opacity="0.85" />
+              <circle cx="80" cy="150" r="18" fill="#0284c7" opacity="0.85" />
+              <circle cx="110" cy="130" r="20" fill="#0284c7" opacity="0.85" />
+              <circle cx="340" cy="60" r="8" fill="#4a9eed" opacity="0.85" />
+              <circle cx="200" cy="110" r="9" fill="#7dd3fc" opacity="0.85" />
               {/* tooltip fantasma */}
               <rect x="155" y="48" width="130" height="58" rx="6" fill={color} opacity="0.93" />
               <text x="220" y="67" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">EUA</text>
@@ -156,11 +153,11 @@ export default function DV5() {
               {/* linha de ligação tooltip */}
               <line x1="300" y1="70" x2="285" y2="75" stroke={color} strokeWidth="1.5" strokeDasharray="3,2" />
               {/* legenda */}
-              <circle cx="62" cy="240" r="5" fill="#f97316" />
+              <circle cx="62" cy="240" r="5" fill="#4a9eed" />
               <text x="72" y="244" fill="#888" fontSize="10">Europa/América Norte</text>
-              <circle cx="190" cy="240" r="5" fill="#f97316" />
+              <circle cx="190" cy="240" r="5" fill="#0284c7" />
               <text x="200" y="244" fill="#888" fontSize="10">América Sul</text>
-              <circle cx="290" cy="240" r="5" fill="#f97316" />
+              <circle cx="290" cy="240" r="5" fill="#7dd3fc" />
               <text x="300" y="244" fill="#888" fontSize="10">Ásia</text>
             </svg>
           </div>
@@ -210,45 +207,45 @@ export default function DV5() {
 
               {/* países: x mapeado 60-450, y mapeado 240 (50) a 20 (85) */}
               {/* Portugal: gdp=22k→x=250, life=81→y=68, pop=10M→r=12, azul */}
-              <circle cx="250" cy="68" r="12" fill="#f97316" opacity="0.82" />
-              <text x="250" y="52" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">PT</text>
+              <circle cx="250" cy="68" r="12" fill="#4a9eed" opacity="0.82" />
+              <text x="250" y="52" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">PT</text>
 
-              {/* Brasil: gdp=15k→x=190, life=75→y=120, pop=215M→r=28, laranja */}
-              <circle cx="190" cy="120" r="28" fill="#f97316" opacity="0.75" />
+              {/* Brasil: gdp=15k→x=190, life=75→y=120, pop=215M→r=28, América Sul */}
+              <circle cx="190" cy="120" r="28" fill="#0284c7" opacity="0.75" />
               <text x="190" y="116" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">BR</text>
 
-              {/* EUA: gdp=65k→x=420, life=79→y=88, pop=330M→r=34, azul */}
-              <circle cx="420" cy="88" r="34" fill="#f97316" opacity="0.72" />
+              {/* EUA: gdp=65k→x=420, life=79→y=88, pop=330M→r=34, Europa/Am. Norte */}
+              <circle cx="420" cy="88" r="34" fill="#4a9eed" opacity="0.72" />
               <text x="420" y="84" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">EUA</text>
 
-              {/* China: gdp=12k→x=160, life=77→y=104, pop=1400M→r=52, vermelho */}
-              <circle cx="160" cy="104" r="52" fill="#f97316" opacity="0.55" />
+              {/* China: gdp=12k→x=160, life=77→y=104, pop=1400M→r=52, Ásia */}
+              <circle cx="160" cy="104" r="52" fill="#7dd3fc" opacity="0.55" />
               <text x="160" y="100" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">CN</text>
 
-              {/* Nigéria: gdp=5k→x=80, life=55→y=202, pop=220M→r=29, verde */}
-              <circle cx="80" cy="202" r="29" fill="#f97316" opacity="0.75" />
+              {/* Nigéria: gdp=5k→x=80, life=55→y=202, pop=220M→r=29, África */}
+              <circle cx="80" cy="202" r="29" fill="#1e40af" opacity="0.75" />
               <text x="80" y="198" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">NG</text>
 
-              {/* Suécia: gdp=55k→x=340, life=83→y=56, pop=10M→r=12, azul */}
-              <circle cx="340" cy="56" r="12" fill="#f97316" opacity="0.82" />
-              <text x="340" y="40" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">SE</text>
+              {/* Suécia: gdp=55k→x=340, life=83→y=56, pop=10M→r=12, Europa/Am. Norte */}
+              <circle cx="340" cy="56" r="12" fill="#4a9eed" opacity="0.82" />
+              <text x="340" y="40" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">SE</text>
 
-              {/* India: gdp=8k→x=110, life=70→y=152, pop=1400M→r=52, vermelho */}
-              <circle cx="110" cy="152" r="52" fill="#f97316" opacity="0.45" />
+              {/* India: gdp=8k→x=110, life=70→y=152, pop=1400M→r=52, Ásia */}
+              <circle cx="110" cy="152" r="52" fill="#7dd3fc" opacity="0.45" />
               <text x="110" y="148" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">IN</text>
 
-              {/* Argentina: gdp=11k→x=148, life=76→y=112, pop=45M→r=16, laranja */}
-              <circle cx="148" cy="112" r="16" fill="#f97316" opacity="0.82" />
-              <text x="148" y="96" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">AR</text>
+              {/* Argentina: gdp=11k→x=148, life=76→y=112, pop=45M→r=16, América Sul */}
+              <circle cx="148" cy="112" r="16" fill="#0284c7" opacity="0.82" />
+              <text x="148" y="96" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">AR</text>
 
               {/* legenda */}
-              <circle cx="70" cy="278" r="5" fill="#f97316" />
+              <circle cx="70" cy="278" r="5" fill="#4a9eed" />
               <text x="80" y="282" fill="#888" fontSize="9">Europa/Am. Norte</text>
-              <circle cx="170" cy="278" r="5" fill="#f97316" />
+              <circle cx="170" cy="278" r="5" fill="#0284c7" />
               <text x="180" y="282" fill="#888" fontSize="9">América Sul</text>
-              <circle cx="265" cy="278" r="5" fill="#f97316" />
+              <circle cx="265" cy="278" r="5" fill="#7dd3fc" />
               <text x="275" y="282" fill="#888" fontSize="9">Ásia</text>
-              <circle cx="345" cy="278" r="5" fill="#f97316" />
+              <circle cx="345" cy="278" r="5" fill="#1e40af" />
               <text x="355" y="282" fill="#888" fontSize="9">África</text>
             </svg>
           </div>
@@ -279,32 +276,32 @@ export default function DV5() {
               <rect x="0" y="0" width="480" height="280" rx="10" fill="var(--bg-primary, #f9f9fd)" />
 
               {/* Pessoal 60% → largura ~288 */}
-              <rect x="8" y="30" width="288" height="238" rx="6" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+              <rect x="8" y="30" width="288" height="238" rx="6" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <text x="152" y="50" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Pessoal — 60%</text>
 
               {/* Salários 45% dentro de Pessoal → 45/60 = 75% de altura */}
-              <rect x="12" y="56" width="280" height="130" rx="4" fill={`rgba(249,115,22,0.10)`} />
+              <rect x="12" y="56" width="280" height="130" rx="4" fill={`rgba(74,158,237,0.10)`} />
               <text x="152" y="120" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">Salários</text>
               <text x="152" y="136" textAnchor="middle" fill="#fde8d8" fontSize="11">45%</text>
 
               {/* Seguros 15% */}
-              <rect x="12" y="192" width="280" height="72" rx="4" fill={`rgba(249,115,22,0.10)`} />
+              <rect x="12" y="192" width="280" height="72" rx="4" fill={`rgba(74,158,237,0.10)`} />
               <text x="152" y="231" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">Seguros — 15%</text>
 
               {/* Operações 25% → ~120px largura */}
-              <rect x="304" y="30" width="170" height="148" rx="6" fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth="1.5" />
-              <text x="389" y="50" textAnchor="middle" fill="#ea580c" fontSize="12" fontWeight="700">Operações — 25%</text>
+              <rect x="304" y="30" width="170" height="148" rx="6" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="1.5" />
+              <text x="389" y="50" textAnchor="middle" fill="#0369a1" fontSize="12" fontWeight="700">Operações — 25%</text>
 
               {/* Infra 15% */}
-              <rect x="308" y="56" width="162" height="66" rx="4" fill="rgba(249,115,22,0.38)" />
+              <rect x="308" y="56" width="162" height="66" rx="4" fill="rgba(74,158,237,0.38)" />
               <text x="389" y="93" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">Infra — 15%</text>
 
               {/* Marketing 10% */}
-              <rect x="308" y="128" width="162" height="46" rx="4" fill="rgba(249,115,22,0.55)" />
+              <rect x="308" y="128" width="162" height="46" rx="4" fill="rgba(74,158,237,0.55)" />
               <text x="389" y="155" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">Marketing — 10%</text>
 
               {/* Outros 15% */}
-              <rect x="304" y="184" width="170" height="84" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+              <rect x="304" y="184" width="170" height="84" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
               <text x="389" y="205" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">Outros</text>
               <text x="389" y="222" textAnchor="middle" fill="#fff" fontSize="11">15%</text>
 
@@ -352,7 +349,7 @@ export default function DV5() {
                 { id:'GR', x:232, y:214, w:40, h:38, v:0.38 },
                 { id:'PT', x:30,  y:180, w:28, h:44, v:0.40 },
               ].map(({ id, x, y, w, h, v }) => {
-                const fill = `rgba(249,115,22,${(0.12 + v * 0.88).toFixed(2)})`;
+                const fill = `rgba(74,158,237,${(0.12 + v * 0.88).toFixed(2)})`;
                 const textFill = v > 0.5 ? '#fff' : '#e2e8f0';
                 return (
                   <g key={id}>
@@ -364,8 +361,8 @@ export default function DV5() {
               {/* Legenda gradiente */}
               <defs>
                 <linearGradient id="legendGrad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="rgba(249,115,22,0.12)" />
-                  <stop offset="100%" stopColor="rgba(249,115,22,1)" />
+                  <stop offset="0%" stopColor="rgba(74,158,237,0.12)" />
+                  <stop offset="100%" stopColor="rgba(74,158,237,1)" />
                 </linearGradient>
               </defs>
               <text x="360" y="152" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="600">Inovação</text>
@@ -406,7 +403,7 @@ export default function DV5() {
               <line x1="60" y1="185" x2="465" y2="185" stroke="#ccc" strokeWidth="1" />
               {/* linha de dados */}
               <polyline points="80,160 130,140 180,120 230,100 280,88 330,76 380,65 430,58" stroke={color} strokeWidth="2.5" fill="none" />
-              <polyline points="80,170 130,165 180,155 230,148 280,138 330,125 380,112 430,100" stroke="#f97316" strokeWidth="2.5" fill="none" strokeDasharray="5,3" />
+              <polyline points="80,170 130,165 180,155 230,148 280,138 330,125 380,112 430,100" stroke="#4a9eed" strokeWidth="2.5" fill="none" strokeDasharray="5,3" />
               {/* pontos */}
               {[[80,160],[130,140],[180,120],[230,100],[280,88],[330,76],[380,65],[430,58]].map(([cx,cy]) => (
                 <circle key={cx} cx={cx} cy={cy} r="3.5" fill={color} />
@@ -414,7 +411,7 @@ export default function DV5() {
               {/* legenda interna */}
               <line x1="310" y1="40" x2="330" y2="40" stroke={color} strokeWidth="2.5" />
               <text x="335" y="44" fill="#fff" fontSize="10">Série A</text>
-              <line x1="310" y1="55" x2="330" y2="55" stroke="#f97316" strokeWidth="2.5" strokeDasharray="5,3" />
+              <line x1="310" y1="55" x2="330" y2="55" stroke="#4a9eed" strokeWidth="2.5" strokeDasharray="5,3" />
               <text x="335" y="59" fill="#fff" fontSize="10">Série B</text>
               {/* label ano activo */}
               <rect x="195" y="25" width="50" height="22" rx="4" fill={color} />
@@ -425,7 +422,7 @@ export default function DV5() {
               <polygon points="52,222 52,234 62,228" fill="#fff" />
               {/* barra slider */}
               <rect x="84" y="224" width="396" height="6" rx="3" fill="#e2e8f0" />
-              <rect x="84" y="224" width="200" height="6" rx="3" fill={`rgba(249,115,22,0.10)`} />
+              <rect x="84" y="224" width="200" height="6" rx="3" fill={`rgba(74,158,237,0.10)`} />
               {/* handle */}
               <circle cx="284" cy="227" r="9" fill={color} />
               {/* anos */}
@@ -454,14 +451,14 @@ export default function DV5() {
             <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>Arquitectura Dash — Fluxo de Reactitividade</p>
             <svg viewBox="0 0 680 180" style={{ width: '100%', display: 'block', margin: '0 auto' }}>
               {/* Browser */}
-              <rect x="10" y="60" width="110" height="55" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+              <rect x="10" y="60" width="110" height="55" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <text x="65" y="83" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Browser</text>
               <text x="65" y="100" textAnchor="middle" fill="#888" fontSize="9">React UI</text>
               {/* seta → */}
               <line x1="122" y1="88" x2="157" y2="88" stroke={color} strokeWidth="2" markerEnd="url(#a2)" />
               <text x="140" y="81" textAnchor="middle" fill="#999" fontSize="8">HTTP POST</text>
               {/* Callback */}
-              <rect x="160" y="48" width="130" height="75" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+              <rect x="160" y="48" width="130" height="75" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <text x="225" y="75" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">@callback</text>
               <text x="225" y="93" textAnchor="middle" fill="#888" fontSize="9">Input(s)</text>
               <text x="225" y="108" textAnchor="middle" fill="#888" fontSize="9">Output(s)</text>
@@ -469,7 +466,7 @@ export default function DV5() {
               <line x1="292" y1="88" x2="327" y2="88" stroke={color} strokeWidth="2" markerEnd="url(#a2)" />
               <text x="310" y="81" textAnchor="middle" fill="#999" fontSize="8">invoca</text>
               {/* Python fn */}
-              <rect x="330" y="55" width="120" height="65" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+              <rect x="330" y="55" width="120" height="65" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <text x="390" y="79" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Python</text>
               <text x="390" y="96" textAnchor="middle" fill="#888" fontSize="9">função</text>
               <text x="390" y="111" textAnchor="middle" fill="#888" fontSize="9">retorna fig</text>
@@ -477,7 +474,7 @@ export default function DV5() {
               <line x1="452" y1="88" x2="487" y2="88" stroke={color} strokeWidth="2" markerEnd="url(#a2)" />
               <text x="470" y="81" textAnchor="middle" fill="#999" fontSize="8">JSON</text>
               {/* Plotly */}
-              <rect x="490" y="60" width="110" height="55" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+              <rect x="490" y="60" width="110" height="55" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <text x="545" y="83" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Plotly</text>
               <text x="545" y="100" textAnchor="middle" fill="#888" fontSize="9">figura</text>
               {/* seta de volta */}
@@ -546,29 +543,7 @@ export default function DV5() {
             A escolha entre Dash e ipywidgets depende do destinatário final. Se o dashboard vai ser partilhado com não-programadores através de um URL, use Dash. Se é para uso interno de análise num notebook, ipywidgets é mais simples e não requer servidor.
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* SÍNTESE */}
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <p style={S.p}>
-            O Plotly representa uma mudança de paradigma na visualização de dados com Python: a interactividade deixa de ser uma funcionalidade opcional e passa a ser o comportamento por defeito. O Plotly Express permite criar em segundos gráficos que seriam horas de trabalho com outras ferramentas, e a integração com Dash transforma esses gráficos em aplicações web completas sem sair do ecossistema Python.
-          </p>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.6rem 0 0', paddingLeft: '1.2rem', fontSize: '0.92rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-              <li><strong>Arquitectura:</strong> Plotly Express → graph_objects → Plotly.js → SVG/WebGL. Figura = data + layout + config (JSON).</li>
-              <li><strong>Plotly Express:</strong> <code>px.scatter(df, x=, y=, color=, size=, facet_col=)</code> — interactivo por defeito.</li>
-              <li><strong>Bubble chart:</strong> parâmetro <code>size=</code> em px.scatter codifica uma 3ª variável no raio das bolhas.</li>
-              <li><strong>Treemap / Sunburst:</strong> <code>px.treemap(df, path=['nivel1','nivel2'], values=)</code> para hierarquias com área proporcional.</li>
-              <li><strong>Mapas:</strong> <code>px.choropleth(df, locations='iso', color=, scope='europe')</code> — sem shapefiles adicionais.</li>
-              <li><strong>Animações:</strong> <code>animation_frame='ano'</code> gera slider temporal automático. <code>fig.write_html()</code> exporta com interactividade completa.</li>
-              <li><strong>Dash:</strong> Layout (componentes) + <code>@app.callback(Output(...), Input(...))</code> = dashboard web reactivo em Python puro.</li>
-              <li><strong>ipywidgets:</strong> <code>@interact</code> e <code>FigureWidget</code> para interactividade leve em notebooks Jupyter.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+</div>
     </div>
   );
 }

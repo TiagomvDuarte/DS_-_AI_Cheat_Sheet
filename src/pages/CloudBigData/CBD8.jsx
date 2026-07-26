@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -16,8 +16,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(225,29,72,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -28,11 +28,6 @@ export default function CBD8() {
       <Link to="/cloud-bigdata" style={S.back}><ArrowLeft size={16} /> Voltar a Cloud &amp; Big Data</Link>
       <div style={S.tag}>MÓDULO 08</div>
       <h1 style={S.h1}>Databricks</h1>
-      <p style={S.lead}>
-        Databricks é uma plataforma de dados e IA construída sobre Apache Spark que unifica engenharia de dados,
-        ciência de dados e análise num único ambiente colaborativo. Neste módulo exploramos a arquitectura Lakehouse,
-        Unity Catalog, gestão de clusters, orquestração de workflows e as capacidades de produção ML integradas.
-      </p>
 
       {/* Section 1 */}
       <div style={S.section}>
@@ -117,22 +112,22 @@ export default function CBD8() {
         </p>
         <div style={S.diagram}>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <div style={{ flex: 1, minWidth: 200, background: 'rgba(234,88,12,0.1)', border: '1px solid rgba(234,88,12,0.3)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#ea580c', marginBottom: '0.5rem' }}>Bronze (Raw)</div>
+            <div style={{ flex: 1, minWidth: 200, background: 'rgba(180,83,9,0.08)', border: '1px solid rgba(180,83,9,0.35)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#b45309', marginBottom: '0.5rem' }}>Bronze (Raw)</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 Dados brutos ingeridos tal como chegam. Sem transformações. Schema-on-read. Serve como fonte de verdade imutável.
                 Retenção longa. Formatos: JSON, CSV, Avro, logs.
               </div>
             </div>
-            <div style={{ flex: 1, minWidth: 200, background: 'rgba(100,116,139,0.1)', border: '1px solid rgba(100,116,139,0.3)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#64748b', marginBottom: '0.5rem' }}>Silver (Cleansed)</div>
+            <div style={{ flex: 1, minWidth: 200, background: 'rgba(148,163,184,0.08)', border: '1px solid rgba(148,163,184,0.35)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#94a3b8', marginBottom: '0.5rem' }}>Silver (Cleansed)</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 Dados limpos, deduplicados e validados. Schema enforced. Joins entre domínios. Base para análises e ML.
                 Delta tables com ACID e Z-ordering.
               </div>
             </div>
-            <div style={{ flex: 1, minWidth: 200, background: 'rgba(234,179,8,0.1)', border: '1px solid rgba(234,179,8,0.3)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Gold (Aggregated)</div>
+            <div style={{ flex: 1, minWidth: 200, background: 'rgba(212,160,23,0.08)', border: '1px solid rgba(212,160,23,0.35)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#d4a017', marginBottom: '0.5rem' }}>Gold (Aggregated)</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 Agregações de negócio prontas a consumir. KPIs, métricas, feature tables. Optimizadas para dashboards,
                 relatórios e serving de modelos ML.
@@ -490,17 +485,6 @@ def gold_event_counts():
       <hr style={S.divider} />
 
       {/* Summary */}
-              <h2 style={{ ...S.h2, borderLeft: 'none', paddingLeft: 0 }}>7. Síntese do Módulo</h2>
-<div style={{ background: 'rgba(225,29,72,0.06)', border: '1px solid rgba(225,29,72,0.2)', borderRadius: 12, padding: '1.75rem 2rem' }}>
-        <ul style={{ paddingLeft: '1.25rem', margin: 0, lineHeight: 2, color: 'var(--text-primary)', fontSize: '1rem' }}>
-          <li>O Databricks acrescenta ao Spark open-source: clusters geridos, notebooks colaborativos, Delta Lake nativo, Unity Catalog e Workflows — eliminando a complexidade operacional e acelerando o time-to-value.</li>
-          <li>A arquitectura Medallion (Bronze / Silver / Gold) organiza os dados em camadas de qualidade crescente; o Delta Lake garante ACID transactions, time travel e CDC nativos sobre object storage.</li>
-          <li>O Unity Catalog centraliza a governança de dados com lineage ao nível de coluna, RBAC granular (tabela, coluna, row-level), column masking e audit logs de compliance — partilhado entre todos os workspaces.</li>
-          <li>A escolha do tipo de cluster (All-Purpose vs Job vs SQL Warehouse) e o uso de Cluster Pools e Photon engine determinam o equilíbrio entre performance, latência de arranque e custo em DBUs.</li>
-          <li>Os Databricks Workflows suportam orquestração nativa de DAGs multi-task com triggers, retry policies, run conditions e re-execução parcial de tasks falhadas — sem dependência de Airflow ou ferramentas externas.</li>
-          <li>Em produção, o ecossistema MLOps integrado (MLflow, Feature Store, AutoML, Model Serving) e o Delta Live Tables (DLT) com qualidade de dados declarativa formam uma plataforma end-to-end de dados e IA.</li>
-        </ul>
-      </div>
     </div>
   );
 }

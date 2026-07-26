@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -36,19 +36,19 @@ const BiasVarianceDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
       </defs>
-      <text x="130" y="20" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Alto Bias (underfit)</text>
-      <circle cx="80" cy="70" r="3" fill="#f97316" /><circle cx="100" cy="75" r="3" fill="#f97316" />
-      <circle cx="90" cy="60" r="3" fill="#f97316" /><circle cx="110" cy="65" r="3" fill="#f97316" />
-      <line x1="40" y1="100" x2="220" y2="100" stroke="#f97316" strokeWidth="2.5" />
+      <text x="130" y="20" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Alto Bias (underfit)</text>
+      <circle cx="80" cy="70" r="3" fill="#4a9eed" /><circle cx="100" cy="75" r="3" fill="#4a9eed" />
+      <circle cx="90" cy="60" r="3" fill="#4a9eed" /><circle cx="110" cy="65" r="3" fill="#4a9eed" />
+      <line x1="40" y1="100" x2="220" y2="100" stroke="#4a9eed" strokeWidth="2.5" />
       <text x="130" y="130" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">modelo simples (ex.: stump)</text>
       <text x="130" y="145" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">→ Boosting reduz bias</text>
 
       <line x1="260" y1="20" x2="260" y2="180" stroke="#94a3b8" strokeWidth="1" strokeDasharray="4,3" />
 
-      <text x="390" y="20" textAnchor="middle" fill="#f59e0b" fontSize="12" fontWeight="700">Alta Variância (overfit)</text>
-      <path d="M 310 60 C 340 110, 360 30, 390 90 C 420 140, 440 50, 470 100" fill="none" stroke="#f59e0b" strokeWidth="2.5" />
-      <circle cx="320" cy="80" r="3" fill="#f59e0b" /><circle cx="350" cy="60" r="3" fill="#f59e0b" />
-      <circle cx="380" cy="100" r="3" fill="#f59e0b" /><circle cx="420" cy="70" r="3" fill="#f59e0b" />
+      <text x="390" y="20" textAnchor="middle" fill="#0284c7" fontSize="12" fontWeight="700">Alta Variância (overfit)</text>
+      <path d="M 310 60 C 340 110, 360 30, 390 90 C 420 140, 440 50, 470 100" fill="none" stroke="#0284c7" strokeWidth="2.5" />
+      <circle cx="320" cy="80" r="3" fill="#0284c7" /><circle cx="350" cy="60" r="3" fill="#0284c7" />
+      <circle cx="380" cy="100" r="3" fill="#0284c7" /><circle cx="420" cy="70" r="3" fill="#0284c7" />
       <text x="390" y="130" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">modelo complexo (ex.: árvore profunda)</text>
       <text x="390" y="145" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">→ Bagging reduz variância</text>
     </svg>
@@ -86,8 +86,8 @@ const BootstrapDiagram = () => (
         <g key={i}>
           <rect x="40" y={row.y - 14} width="180" height="26" rx="5" fill={`${color}10`} stroke={color} strokeWidth="1" />
           <text x="130" y={row.y + 3} textAnchor="middle" fill={color} fontSize="10" fontWeight="600">{row.label}</text>
-          <rect x="240" y={row.y - 14} width="140" height="26" rx="5" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1" />
-          <text x="310" y={row.y + 3} textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="600">OOB = {'{' + row.oob + '}'}</text>
+          <rect x="240" y={row.y - 14} width="140" height="26" rx="5" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1" />
+          <text x="310" y={row.y + 3} textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="600">OOB = {'{' + row.oob + '}'}</text>
         </g>
       ))}
     </svg>
@@ -108,23 +108,23 @@ const BaggingDiagram = () => (
     <svg viewBox="0 0 540 180" style={{ maxWidth: '100%', height: 'auto' }}>
       <rect x="220" y="10" width="100" height="30" rx="6" fill={`${color}15`} stroke={color} strokeWidth="1.5" />
       <text x="270" y="29" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">Dataset D (N)</text>
-      {[60, 160, 260, 360, 420].map((x, i) => (
+      {[30, 120, 210, 300, 390].map((x, i) => (
         <line key={i} x1="270" y1="40" x2={x + 35} y2="75" stroke="#94a3b8" strokeWidth="1" />
       ))}
-      {[60, 160, 260, 360, 420].map((x, i) => (
+      {[30, 120, 210, 300, 390].map((x, i) => (
         <g key={i}>
           <rect x={x} y="75" width="70" height="24" rx="5" fill={`${color}10`} stroke={color} strokeWidth="1" />
           <text x={x + 35} y="91" textAnchor="middle" fill={color} fontSize="8" fontWeight="600">{`D'${i + 1}`}</text>
         </g>
       ))}
-      {[60, 160, 260, 360, 420].map((x, i) => (
+      {[30, 120, 210, 300, 390].map((x, i) => (
         <g key={i}>
           <line x1={x + 35} y1="99" x2={x + 35} y2="118" stroke="#94a3b8" strokeWidth="1" />
-          <rect x={x} y="118" width="70" height="24" rx="5" fill="rgba(16,185,129,0.15)" stroke="#f97316" strokeWidth="1" />
-          <text x={x + 35} y="134" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="600">{`h${i + 1}`}</text>
+          <rect x={x} y="118" width="70" height="24" rx="5" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="1" />
+          <text x={x + 35} y="134" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="600">{`h${i + 1}`}</text>
         </g>
       ))}
-      {[60, 160, 260, 360, 420].map((x, i) => (
+      {[30, 120, 210, 300, 390].map((x, i) => (
         <line key={i} x1={x + 35} y1="142" x2="270" y2="158" stroke="#94a3b8" strokeWidth="1" />
       ))}
       <rect x="195" y="158" width="150" height="16" rx="4" fill={color} />
@@ -149,11 +149,14 @@ const RandomForestDiagram = () => (
       <text x="140" y="42" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">1. Amostragem de linhas (Bagging)</text>
       <text x="140" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">cada árvore vê um D'_t diferente</text>
 
-      <rect x="280" y="20" width="240" height="60" rx="8" fill="rgba(16,185,129,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="400" y="42" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">2. Amostragem de colunas (Features)</text>
+      <rect x="280" y="20" width="240" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="400" y="42" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">2. Amostragem de colunas (Features)</text>
       <text x="400" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">em cada split, considerar só m de p features</text>
 
       <line x1="270" y1="80" x2="270" y2="105" stroke="#94a3b8" strokeWidth="1" />
+      {[90, 215, 340, 465].map((x, i) => (
+        <line key={i} x1="270" y1="105" x2={x} y2="110" stroke="#94a3b8" strokeWidth="1" />
+      ))}
 
       {[
         [40, 'Árvore 1\n(D\'₁, m feat.)'],
@@ -162,9 +165,9 @@ const RandomForestDiagram = () => (
         [415, '...\nÁrvore T'],
       ].map(([x, label], i) => (
         <g key={i}>
-          <rect x={x} y="110" width="100" height="50" rx="8" fill="rgba(245,158,11,0.10)" stroke="#f59e0b" strokeWidth="1.2" />
+          <rect x={x} y="110" width="100" height="50" rx="8" fill="rgba(2,132,199,0.10)" stroke="#0284c7" strokeWidth="1.2" />
           {String(label).split('\n').map((l, li) => (
-            <text key={li} x={x + 50} y={132 + li * 14} textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight={li === 0 ? '700' : '400'}>{l}</text>
+            <text key={li} x={x + 50} y={132 + li * 14} textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight={li === 0 ? '700' : '400'}>{l}</text>
           ))}
         </g>
       ))}
@@ -199,13 +202,13 @@ const AdaBoostDiagram = () => (
       </defs>
       {[
         [50, 'Ronda 1\nh₁, pesos iguais', color],
-        [220, 'Ronda 2\nh₂, erros de h₁ pesam mais', '#f97316'],
-        [390, 'Ronda 3\nh₃, foco nos casos difíceis', '#f97316'],
+        [220, 'Ronda 2\nh₂, erros de h₁\npesam mais', '#4a9eed'],
+        [390, 'Ronda 3\nh₃, foco nos\ncasos difíceis', '#4a9eed'],
       ].map(([x, label, c], i, arr) => (
         <g key={i}>
           <rect x={x} y="20" width="120" height="60" rx="8" fill={`${c}15`} stroke={c} strokeWidth="1.2" />
           {String(label).split('\n').map((l, li) => (
-            <text key={li} x={x + 60} y={42 + li * 16} textAnchor="middle" fill={c} fontSize="10" fontWeight={li === 0 ? '700' : '400'}>{l}</text>
+            <text key={li} x={x + 60} y={38 + li * 14} textAnchor="middle" fill={c} fontSize="9.5" fontWeight={li === 0 ? '700' : '400'}>{l}</text>
           ))}
           {i < arr.length - 1 && (
             <line x1={x + 120} y1="50" x2={arr[i + 1][0] - 5} y2="50" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrAB)" />
@@ -239,9 +242,9 @@ const GradientBoostingDiagram = () => (
       </defs>
       {[
         [20, 'F₀(x)\n= previsão\ninicial (média)', color],
-        [160, 'r₁ = y − F₀\nárvore h₁\nfit nos resíduos', '#f97316'],
-        [300, 'r₂ = y − F₁\nárvore h₂\nfit no novo resíduo', '#f97316'],
-        [440, 'F_M(x)\nprevisão\nfinal', '#f97316'],
+        [160, 'r₁ = y − F₀\nárvore h₁\nfit nos resíduos', '#4a9eed'],
+        [300, 'r₂ = y − F₁\nárvore h₂\nfit no novo resíduo', '#4a9eed'],
+        [440, 'F_M(x)\nprevisão\nfinal', '#4a9eed'],
       ].map(([x, label, c], i, arr) => (
         <g key={i}>
           <rect x={x} y="20" width="100" height="80" rx="8" fill={`${c}15`} stroke={c} strokeWidth="1.2" />
@@ -303,20 +306,20 @@ const TreeGrowthDiagram = () => {
         <line x1="290" y1="10" x2="290" y2="230" stroke="#94a3b8" strokeWidth="1" strokeDasharray="4,3" />
 
         {/* Leaf-wise tree */}
-        <text x="430" y="16" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Leaf-wise (por folha)</text>
+        <text x="430" y="16" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Leaf-wise (por folha)</text>
         <Edge x1={430} y1={40} x2={380} y2={90} />
         <Edge x1={430} y1={40} x2={480} y2={90} dim />
         <Edge x1={380} y1={90} x2={355} y2={140} />
         <Edge x1={380} y1={90} x2={405} y2={140} />
         <Edge x1={405} y1={140} x2={375} y2={190} />
         <Edge x1={405} y1={140} x2={440} y2={190} />
-        <Node x={430} y={40} label="raiz" c="#f59e0b" />
-        <Node x={380} y={90} label="split" c="#f59e0b" />
-        <Node x={480} y={90} label="folha" c="#f59e0b" dim />
-        <Node x={355} y={140} label="folha" c="#f59e0b" />
-        <Node x={405} y={140} label="split" c="#f59e0b" />
-        <Node x={375} y={190} label="folha" c="#f59e0b" />
-        <Node x={440} y={190} label="folha" c="#f59e0b" />
+        <Node x={430} y={40} label="raiz" c="#0284c7" />
+        <Node x={380} y={90} label="split" c="#0284c7" />
+        <Node x={480} y={90} label="folha" c="#0284c7" dim />
+        <Node x={355} y={140} label="folha" c="#0284c7" />
+        <Node x={405} y={140} label="split" c="#0284c7" />
+        <Node x={375} y={190} label="folha" c="#0284c7" />
+        <Node x={440} y={190} label="folha" c="#0284c7" />
         <text x="430" y="218" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Expande sempre a folha com</text>
         <text x="430" y="232" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">maior ganho → árvore assimétrica</text>
       </svg>
@@ -359,7 +362,7 @@ const HistogramBinningDiagram = () => {
           const x = chartX + i * (barW + barGap);
           const barH = h * scale;
           const isHighlight = i === 4;
-          const c = isHighlight ? '#f97316' : color;
+          const c = isHighlight ? '#4a9eed' : color;
           return (
             <g key={i}>
               <rect x={x} y={baseline - barH} width={barW} height={barH} rx="3" fill={`${c}25`} stroke={c} strokeWidth="1.3" />
@@ -367,8 +370,8 @@ const HistogramBinningDiagram = () => {
             </g>
           );
         })}
-        <line x1={chartX + 4 * (barW + barGap) - barGap / 2} y1="95" x2={chartX + 4 * (barW + barGap) - barGap / 2} y2="200" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,3" />
-        <text x={chartX + 4 * (barW + barGap) - barGap / 2 } y="220" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">candidato a split avaliado aqui</text>
+        <line x1={chartX + 4 * (barW + barGap) - barGap / 2} y1="95" x2={chartX + 4 * (barW + barGap) - barGap / 2} y2="200" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="4,3" />
+        <text x={chartX + 4 * (barW + barGap) - barGap / 2 } y="220" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">candidato a split avaliado aqui</text>
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
         Em vez de ordenar todos os valores de uma feature e avaliar o ganho em <strong>cada</strong> ponto possível
@@ -396,10 +399,10 @@ const StackingDiagram = () => (
       <text x="270" y="28" textAnchor="middle" fill="var(--text-secondary)" fontSize="10" fontWeight="700">Dados de treino X</text>
 
       {[
-        [50, 'h₁\n(KNN)', '#f97316'],
-        [180, 'h₂\n(Árvore)', '#f97316'],
-        [310, 'h₃\n(SVM)', '#f97316'],
-        [430, 'h₄\n(Linear)', '#f97316'],
+        [50, 'h₁\n(KNN)', '#4a9eed'],
+        [180, 'h₂\n(Árvore)', '#4a9eed'],
+        [310, 'h₃\n(SVM)', '#4a9eed'],
+        [430, 'h₄\n(Linear)', '#4a9eed'],
       ].map(([x, label, c], i) => (
         <g key={i}>
           <line x1="270" y1="38" x2={x + 40} y2="60" stroke="#94a3b8" strokeWidth="1" />
@@ -461,18 +464,8 @@ export default function ML10() {
     <div style={S.page}>
       <Link to="/ml" style={S.back}><ArrowLeft size={16} /> Voltar a Machine Learning</Link>
 
-      <div style={S.tag}>Module 10</div>
+      <div style={S.tag}>Módulo 11</div>
       <h1 style={S.h1}>Ensemble Learning</h1>
-      <p style={S.lead}>
-        Em vez de treinar um único modelo e esperar que seja perfeito, e se combinássemos as previsões de
-        muitos modelos diferentes? Esta é a ideia central do <strong>ensemble learning</strong>: a "sabedoria
-        das multidões" aplicada a machine learning. Neste módulo vamos perceber porque é que combinar modelos
-        funciona (ligando ao bias-variance tradeoff), explorar em detalhe o <strong>bagging</strong> (com
-        bootstrapping, Random Forests e Extra Trees), o <strong>boosting</strong> (AdaBoost, Gradient
-        Boosting, XGBoost e variantes modernas), e métodos de combinação como <strong>voting</strong> e
-        <strong> stacking</strong> — terminando com uma tabela mestre que organiza toda a "zoologia" de
-        ensembles.
-      </p>
 
       {/* === SECTION 1: Bias-Variance === */}
       <div style={S.section}>
@@ -525,40 +518,6 @@ export default function ML10() {
         </p>
         <BootstrapDiagram />
 
-        <h3 style={S.h3}>Exemplo Numérico: Probabilidade de "Ficar de Fora" (OOB)</h3>
-        <p style={S.p}>
-          Considere um conjunto de treino com <InlineMath math="N" /> exemplos. A probabilidade de <strong>um
-          exemplo específico não ser escolhido</strong> numa única extracção (de entre <InlineMath math="N" /> extracções
-          com reposição) é:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="P(\text{não escolhido em 1 extracção}) = 1 - \frac{1}{N}" />
-        </div>
-        <p style={S.p}>
-          Como são feitas <InlineMath math="N" /> extracções independentes (com reposição), a probabilidade de
-          o exemplo nunca ser escolhido em nenhuma das <InlineMath math="N" /> extracções é:
-        </p>
-        
-          <BlockMath math="P(\text{out-of-bag}) = \left(1 - \frac{1}{N}\right)^N" />
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>Quando <InlineMath math="N" /> é grande, este valor converge para:</p>
-          <BlockMath math="\lim_{N \to \infty} \left(1 - \frac{1}{N}\right)^N = e^{-1} \approx 0.368" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Logo, em média <InlineMath math="\approx 36.8\%" /> dos exemplos originais ficam <strong>fora</strong> de
-            cada amostra bootstrap (out-of-bag, OOB), e os restantes <InlineMath math="\approx 63.2\%" /> aparecem
-            (alguns repetidos) na amostra.
-          </p>
-        
-        <p style={S.p}>
-          Para confirmar com um valor pequeno de <InlineMath math="N" />, considere <InlineMath math="N = 5" />:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\left(1 - \frac{1}{5}\right)^5 = (0.8)^5 \approx 0.328" />
-        </div>
-        <p style={S.p}>
-          Já com <InlineMath math="N = 5" /> obtemos <InlineMath math="\approx 32.8\%" />, próximo do limite
-          assimptótico de 36.8% — e este valor converge rapidamente: para <InlineMath math="N = 50" /> já
-          obtemos <InlineMath math="\approx 36.4\%" />.
-        </p>
         <div style={S.note}>
           O conjunto <strong>out-of-bag (OOB)</strong> funciona como um "conjunto de validação gratuito" — para
           cada exemplo, podemos avaliar as previsões apenas dos modelos cujo bootstrap <em>não</em> o incluiu,
@@ -698,66 +657,6 @@ export default function ML10() {
           <BlockMath math="H(x) = \text{sign}\left(\sum_{t=1}^{T} \alpha_t h_t(x)\right)" />
         </div>
 
-        <h3 style={S.h3}>Exemplo Numérico Completo (2 rondas)</h3>
-        <p style={S.p}>
-          Considere 6 pontos numa dimensão, com labels <InlineMath math="y_i \in \{-1, +1\}" />, e classificadores
-          fracos do tipo "stump" (limiar num único atributo <InlineMath math="x" />):
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>i</th><th style={S.th}>x</th><th style={S.th}>y</th><th style={S.th}>w⁽¹⁾</th></tr></thead>
-            <tbody>
-              {[
-                [1, '1', '+1', '1/6 ≈ 0.167'],
-                [2, '2', '+1', '1/6 ≈ 0.167'],
-                [3, '3', '+1', '1/6 ≈ 0.167'],
-                [4, '4', '−1', '1/6 ≈ 0.167'],
-                [5, '5', '−1', '1/6 ≈ 0.167'],
-                [6, '6', '−1', '1/6 ≈ 0.167'],
-              ].map(([i, x, y, w]) => (
-                <tr key={i}><td style={S.td}>{i}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{x}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{y}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{w}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Ronda 1:</strong> suponha que o melhor stump é <InlineMath math="h_1(x) = +1 \text{ se } x < 3.5, \text{ senão } -1" />.</p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Este stump erra apenas no ponto 3 (<InlineMath math="x=3" />, prevê +1, correcto na verdade — vamos
-            assumir que erra no ponto 4, prevendo +1 quando <InlineMath math="y_4 = -1" />, devido a ruído).
-            Erro ponderado:
-          </p>
-          <BlockMath math="\varepsilon_1 = w_4^{(1)} = \frac{1}{6} \approx 0.167" />
-          <BlockMath math="\alpha_1 = \frac{1}{2}\ln\left(\frac{1-0.167}{0.167}\right) = \frac{1}{2}\ln(5) \approx 0.805" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '0.75rem' }}>
-            Actualização de pesos: para o ponto 4 (mal classificado), o peso <strong>aumenta</strong>; para os
-            restantes (bem classificados), <strong>diminui</strong>:
-          </p>
-          <BlockMath math="w_4^{(2)} \propto w_4^{(1)} \cdot e^{+\alpha_1} = 0.167 \times e^{0.805} \approx 0.372" />
-          <BlockMath math="w_i^{(2)} \propto w_i^{(1)} \cdot e^{-\alpha_1} = 0.167 \times e^{-0.805} \approx 0.075 \ \ (i \neq 4)" />
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '0.75rem' }}>
-            Normalizando (soma <InlineMath math="\approx 0.372 + 5 \times 0.075 = 0.747" />):
-            <InlineMath math="\ w_4^{(2)} \approx 0.498" />, <InlineMath math="w_i^{(2)} \approx 0.100" /> para os
-            restantes. O ponto 4 passou a ter quase metade do peso total — o próximo classificador é forçado a
-            tentar acertá-lo.
-          </p>
-        
-
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            <strong>Ronda 2:</strong> com os novos pesos, suponha que o melhor stump passa a ser
-            <InlineMath math="\ h_2(x) = -1 \text{ se } x < 4.5, \text{ senão } -1" /> ajustado de forma a
-            classificar correctamente o ponto 4, mas errando agora no ponto 1 (peso 0.100).
-          </p>
-          <BlockMath math="\varepsilon_2 = w_1^{(2)} \approx 0.100" />
-          <BlockMath math="\alpha_2 = \frac{1}{2}\ln\left(\frac{1-0.100}{0.100}\right) = \frac{1}{2}\ln(9) \approx 1.099" />
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '0.75rem' }}>
-            Note que <InlineMath math="\alpha_2 > \alpha_1" />: como <InlineMath math="h_2" /> tem um erro
-            ponderado menor (0.100 vs 0.167), recebe <strong>mais confiança</strong> no voto final
-            <InlineMath math="\ H(x) = \text{sign}(\alpha_1 h_1(x) + \alpha_2 h_2(x))" />.
-          </p>
-        
         <div style={S.note}>
           Se um classificador acertar sempre (<InlineMath math="\varepsilon_t = 0" />), <InlineMath math="\alpha_t \to \infty" />;
           se for tão bom como aleatório (<InlineMath math="\varepsilon_t = 0.5" />), <InlineMath math="\alpha_t = 0" /> (não
@@ -796,41 +695,6 @@ export default function ML10() {
           ou "shrinkage") — controla quanto cada nova árvore contribui para a previsão acumulada.
         </p>
 
-        <h3 style={S.h3}>Exemplo Numérico Mini</h3>
-        <p style={S.p}>
-          Considere 4 exemplos com valor real <InlineMath math="y" />, e <InlineMath math="\nu = 0.5" />:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>i</th><th style={S.th}>y</th><th style={S.th}>F₀ (média)</th><th style={S.th}>r⁽¹⁾ = y − F₀</th></tr></thead>
-            <tbody>
-              {[
-                [1, '10', '15', '−5'],
-                [2, '20', '15', '+5'],
-                [3, '12', '15', '−3'],
-                [4, '18', '15', '+3'],
-              ].map(([i, y, f0, r]) => (
-                <tr key={i}><td style={S.td}>{i}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{y}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{f0}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{r}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Suponha que a árvore <InlineMath math="h_1" /> consegue separar perfeitamente os dois grupos
-            (1,3) vs (2,4), prevendo <InlineMath math="h_1 = -4" /> para o grupo (1,3) e
-            <InlineMath math="\ h_1 = +4" /> para o grupo (2,4) (a média dos resíduos de cada grupo).
-            Actualização com <InlineMath math="\nu = 0.5" />:
-          </p>
-          <BlockMath math="F_1(x_1) = 15 + 0.5 \times (-4) = 13 \quad \Rightarrow \quad r_1^{(2)} = 10 - 13 = -3" />
-          <BlockMath math="F_1(x_2) = 15 + 0.5 \times (+4) = 17 \quad \Rightarrow \quad r_2^{(2)} = 20 - 17 = +3" />
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '0.5rem' }}>
-            Os resíduos diminuíram de <InlineMath math="\pm 5/\pm3" /> para <InlineMath math="\pm 3" /> —
-            o modelo está a aproximar-se de <InlineMath math="y" /> gradualmente. A próxima árvore
-            <InlineMath math="\ h_2" /> seria treinada para prever estes novos resíduos
-            <InlineMath math="\ r^{(2)}" />, e assim sucessivamente.
-          </p>
-        
         <div style={S.note}>
           Um <InlineMath math="\nu" /> pequeno (ex.: 0.01–0.1) requer muito mais árvores
           (<InlineMath math="M" /> grande) para convergir, mas tipicamente generaliza melhor — é o equivalente,
@@ -1031,74 +895,6 @@ export default function ML10() {
         </p>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 10: Tabela mestre === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Tabela Mestre — Bagging vs. Boosting vs. Stacking vs. Voting</h2>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Método</th>
-                <th style={S.th}>Como treina os modelos base</th>
-                <th style={S.th}>Como combina previsões</th>
-                <th style={S.th}>Efeito bias/variância</th>
-                <th style={S.th}>Exemplos</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Bagging', 'Em paralelo, em amostras bootstrap independentes', 'Voto maioritário / média', 'Reduz variância', 'Random Forest, Extra Trees'],
-                ['Boosting', 'Sequencialmente, cada um corrige os erros do anterior', 'Soma ponderada (αₜ ou aditivo)', 'Reduz bias (e algo de variância)', 'AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost'],
-                ['Voting', 'Em paralelo, modelos heterogéneos nos mesmos dados', 'Voto (hard) ou média de probabilidades (soft)', 'Reduz variância (se diversos)', 'VotingClassifier (sklearn)'],
-                ['Stacking', 'Em paralelo (nível 0) + meta-modelo treinado sobre as previsões (nível 1)', 'Meta-modelo aprendido (não é uma regra fixa)', 'Pode reduzir bias e variância', 'StackingClassifier, ensembles de Kaggle'],
-              ].map(([m, train, combine, effect, ex], i) => (
-                <tr key={i}>
-                  <td style={{ ...S.td, fontWeight: 700, color }}>{m}</td>
-                  <td style={S.td}>{train}</td>
-                  <td style={S.td}>{combine}</td>
-                  <td style={S.td}>{effect}</td>
-                  <td style={S.td}>{ex}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={S.note}>
-          Uma forma útil de pensar nestes quatro métodos: <strong>Bagging</strong> e <strong>Voting</strong> são
-          "democráticos" — todos os modelos têm o mesmo tipo de voz (peso igual ou simples), treinados
-          independentemente. <strong>Boosting</strong> é "meritocrático sequencial" — cada modelo é treinado em
-          função do desempenho dos anteriores, e o seu voto final é ponderado pelo seu mérito. <strong>Stacking</strong> é
-          o mais sofisticado — em vez de uma regra de combinação fixa, <em>aprende-se</em> a regra de
-          combinação a partir dos dados.
-        </div>
-      </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>11. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Ensemble learning parte de uma observação simples mas poderosa: combinar vários modelos imperfeitos
-          mas diversos produz, quase sempre, um modelo final melhor do que qualquer um individualmente. A
-          chave para entender <em>qual</em> técnica de ensemble usar está em perceber se o problema do modelo
-          base é principalmente <strong>bias</strong> (usar boosting) ou <strong>variância</strong> (usar
-          bagging).
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Erro = Bias² + Variância + Ruído — Bagging ataca a variância, Boosting ataca o bias</li>
-            <li>Bootstrap: amostragem com reposição; em média ≈63.2% dos exemplos originais entram em cada amostra, ≈36.8% ficam out-of-bag (OOB), com <InlineMath math="(1-1/N)^N \to e^{-1}" /></li>
-            <li>Bagging (Breiman 1994): T modelos independentes em amostras bootstrap, combinados por voto/média</li>
-            <li>Random Forest = Bagging de árvores + amostragem aleatória de features em cada split, decorrelacionando árvores; Extra Trees vai mais longe com cortes aleatórios</li>
-            <li>AdaBoost: re-pondera exemplos mal classificados; α_t = ½ln((1−ε_t)/ε_t) dá mais voz a classificadores melhores</li>
-            <li>Gradient Boosting: cada árvore ajusta o resíduo do modelo acumulado, escalado por uma taxa de aprendizagem ν</li>
-            <li>XGBoost (regularização), LightGBM (histogramas, leaf-wise), CatBoost (categóricas nativas) são evoluções de engenharia do Gradient Boosting</li>
-            <li>Voting: hard (maioria de classes) vs. soft (média de probabilidades); Stacking: meta-modelo aprendido sobre previsões de nível 0, com cross-validation para evitar leakage</li>
-          </ul>
-        
-      </div>
     </div>
   );
 }

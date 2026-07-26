@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -324,7 +324,7 @@ function DiagramaLCEL() {
         {boxes.map((b, i) => (
           <g key={i}>
             <rect x={b.x} y="28" width="150" height="52" rx="10"
-              fill="rgba(249,115,22,0.10)"
+              fill="rgba(74,158,237,0.10)"
               stroke={color} strokeWidth={i === 3 ? 2 : 1.5} />
             <text x={b.x + 75} y="52" textAnchor="middle" fontSize="11" fontWeight="700"
               fill={i === 3 ? color : 'var(--text-primary)'}>{b.label}</text>
@@ -527,9 +527,6 @@ export default function LLM5() {
 
       <div style={S.tag}>MÓDULO 05</div>
       <h1 style={S.h1}>LangChain e Frameworks de Orquestração</h1>
-      <p style={S.lead}>
-        Chamar um LLM directamente via API é apenas o ponto de partida. Frameworks como LangChain, LlamaIndex, Haystack e DSPy adicionam as camadas que transformam essa chamada simples num sistema completo: memória entre turnos, routing de intents, execução de ferramentas externas, retrieval de documentos e observabilidade de produção. Este módulo explora a arquitectura desses frameworks, os padrões que introduzem e como escolher entre eles.
-      </p>
 
       {/* ── Section 1 ── */}
       <div style={S.section}>
@@ -961,19 +958,6 @@ export default function LLM5() {
         <div style={S.highlight}>
           <strong>LangSmith em 2 linhas:</strong> basta definir as variáveis de ambiente <code>LANGCHAIN_TRACING_V2=true</code> e <code>LANGCHAIN_API_KEY=...</code> — todas as chains passam a ser registadas automaticamente sem alterar o código da aplicação.
         </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ── Síntese ── */}
-      <h2 style={S.h2}>Síntese do Módulo 05</h2>
-      <div style={{ ...S.highlight, padding: '1.5rem' }}>
-        <p style={{ ...S.p, marginTop: 0, marginBottom: '0.75rem' }}>
-          Frameworks de orquestração transformam chamadas isoladas a LLMs em sistemas completos e compostos. O <strong>LCEL</strong> do LangChain introduz uma filosofia de composição via pipe (<code>|</code>) onde todos os componentes implementam a interface Runnable, garantindo streaming automático, execução paralela e fallbacks integrados. Os <strong>Prompt Templates</strong> tornam os prompts reutilizáveis e type-safe; a <strong>Memory</strong> simula continuidade stateful (buffer, window, summary, vector store); as <strong>Tools</strong> permitem ao modelo invocar código Python e APIs externas num loop controlado pelo framework.
-        </p>
-        <p style={{ ...S.p, marginBottom: 0 }}>
-          Para escolher o framework certo: <strong>LangChain</strong> para orquestração geral e agents; <strong>LlamaIndex</strong> para RAG com múltiplas fontes; <strong>Haystack</strong> para pipelines enterprise com search; <strong>DSPy</strong> para optimização automática de prompts. Em produção, caching, retry com backoff, fallback chains e observabilidade via LangSmith ou Langfuse são os quatro pilares que separam um protótipo de um sistema fiável.
-        </p>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export const modules = [
     subtitle: 'Pipeline & Desafios da Linguagem Natural',
     topics: ['Text Mining vs NLP', 'Variabilidade & Ambiguidade', 'OOD & OOV', 'Pipeline: Corpus → Features → Task'],
     path: '/nlp/lecture1',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture2',
@@ -19,7 +19,7 @@ export const modules = [
     subtitle: 'Limpeza, Normalização & Bag-of-Words',
     topics: ['Tokenização & Lowercasing', 'Stop Words & Normalização (Regex)', 'Stemming vs Lemmatização & PoS Filtering', 'Bag-of-Words & Distância Euclidiana'],
     path: '/nlp/lecture2',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture3',
@@ -28,7 +28,7 @@ export const modules = [
     subtitle: 'Embeddings & Word2Vec (Skip-gram)',
     topics: ['4 Problemas do BoW', 'Matriz Termo-Termo & PPMI', 'Word2Vec — 5 passos', 'Negative Sampling & Arquitectura'],
     path: '/nlp/lecture3',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture4',
@@ -37,7 +37,7 @@ export const modules = [
     subtitle: 'BPE, WordPiece, SentencePiece, GloVe & FastText',
     topics: ['Byte-Pair Encoding passo a passo', 'WordPiece vs SentencePiece', 'GloVe — co-ocorrência global', 'FastText & subwords para OOV'],
     path: '/nlp/lecture4',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture5',
@@ -46,7 +46,7 @@ export const modules = [
     subtitle: 'Modelos Sequenciais',
     topics: ['RNN — equações & exemplos numéricos', 'Vanishing Gradients', '3 Portas da LSTM (forget, input, output)', 'Encoder–Decoder & Bottleneck'],
     path: '/nlp/lecture5',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture6',
@@ -55,7 +55,7 @@ export const modules = [
     subtitle: 'Bahdanau/Luong Attention + Arquitectura Transformer',
     topics: ['Bottleneck do Seq2Seq + Atenção de Bahdanau', 'Self-Attention matricial: Q, K, V e softmax(QKᵀ/√dₖ)V', 'Multi-Head Attention, Positional Encoding & Add/Norm', 'Encoder vs Decoder + Feed-Forward Network'],
     path: '/nlp/lecture6',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture7',
@@ -64,7 +64,7 @@ export const modules = [
     subtitle: 'Encoder-only e Decoder-only',
     topics: ['BERT — Embeddings, MLM, NSP & Fine-tuning', 'Variantes de BERT & Pooling Strategies', 'GPT — Geração Auto-Regressiva & Máscara Causal', 'Treino, Decoding & KV-Cache'],
     path: '/nlp/lecture7',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture8',
@@ -73,7 +73,7 @@ export const modules = [
     subtitle: 'Geração, RAG & Agentes',
     topics: ['GPT Evolution & Quantização', 'Temperature, top_p, top_k', 'Prompt Engineering & Few-shot', 'RAG Pipeline & AI Agents (ReAct, MAS)'],
     path: '/nlp/lecture8',
-    color: '#f97316',
+    color: '#4a9eed',
   },
   {
     id: 'lecture9',
@@ -82,7 +82,7 @@ export const modules = [
     subtitle: 'Transformers, Tokenizers, Hub & Fine-tuning',
     topics: ['pipeline() & AutoModel/AutoTokenizer', 'Tokenizers & Model Hub', 'Fine-tuning com Trainer & Datasets', 'push_to_hub & Model Cards'],
     path: '/nlp/lecture9',
-    color: '#f97316',
+    color: '#4a9eed',
   },
 ];
 

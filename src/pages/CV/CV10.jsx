@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
-  math: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem 1.25rem', margin: '1rem 0', textAlign: 'center', fontFamily: 'monospace', fontSize: '0.95rem', color: '#f97316', overflowX: 'auto' },
+  math: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem 1.25rem', margin: '1rem 0', textAlign: 'center', fontFamily: 'monospace', fontSize: '0.95rem', color: '#4a9eed', overflowX: 'auto' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -27,8 +29,8 @@ const UNetDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>U-Net — Encoder-Decoder com Skip Connections</p>
     <svg viewBox="0 0 520 145" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr10" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316"/></marker>
-        <marker id="arr10s" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316"/></marker>
+        <marker id="arr10" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed"/></marker>
+        <marker id="arr10s" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Encoder (left) — boxes shrink going down, left-aligned */}
@@ -40,20 +42,20 @@ const UNetDiagram = () => (
         { x: 35, y: 105, w: 40,  h: 18, label: '71×71×256' },
       ].map(({ x, y, w, h, label }) => (
         <g key={y}>
-          <rect x={x} y={y} width={w} height={h} rx="3" fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth="1.5"/>
-          <text x={x+w/2} y={y+h/2+3} textAnchor="middle" fill="#f97316" fontSize="6.5" fontWeight="600">{label}</text>
+          <rect x={x} y={y} width={w} height={h} rx="3" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="1.5"/>
+          <text x={x+w/2} y={y+h/2+3} textAnchor="middle" fill="#4a9eed" fontSize="6.5" fontWeight="600">{label}</text>
         </g>
       ))}
       {/* Down arrows encoder — in the gaps between boxes */}
       {[[39,45],[69,75],[97,103]].map(([y1,y2]) => (
-        <line key={y1} x1={55} y1={y1} x2={55} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr10)"/>
+        <line key={y1} x1={55} y1={y1} x2={55} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr10)"/>
       ))}
 
       {/* Bottleneck */}
-      <rect x={38} y={128} width={34} height={10} rx="2" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x={55} y={135} textAnchor="middle" fill="#f97316" fontSize="5.5" fontWeight="700">35×35×512</text>
+      <rect x={38} y={128} width={34} height={10} rx="2" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x={55} y={135} textAnchor="middle" fill="#4a9eed" fontSize="5.5" fontWeight="700">35×35×512</text>
       {/* Encoder to bottleneck */}
-      <line x1={55} y1={123} x2={55} y2={126} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr10)"/>
+      <line x1={55} y1={123} x2={55} y2={126} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr10)"/>
 
       {/* Decoder (right) — boxes grow going up, all centered at x=480 */}
       <text x="480" y="10" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5" fontWeight="700">Decoder (Upsampling)</text>
@@ -64,18 +66,18 @@ const UNetDiagram = () => (
         { x: 447, y: 15,  w: 66,  h: 24, label: '572×572×K' },
       ].map(({ x, y, w, h, label }) => (
         <g key={y}>
-          <rect x={x} y={y} width={w} height={h} rx="3" fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth="1.5"/>
-          <text x={x+w/2} y={y+h/2+3} textAnchor="middle" fill="#f97316" fontSize="6.5" fontWeight="600">{label}</text>
+          <rect x={x} y={y} width={w} height={h} rx="3" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="1.5"/>
+          <text x={x+w/2} y={y+h/2+3} textAnchor="middle" fill="#4a9eed" fontSize="6.5" fontWeight="600">{label}</text>
         </g>
       ))}
       {/* Up arrows decoder — in the gaps between boxes, centered at x=480 */}
       {[[103,100],[72,69],[45,39]].map(([y1,y2]) => (
-        <line key={y1} x1={480} y1={y1} x2={480} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr10)"/>
+        <line key={y1} x1={480} y1={y1} x2={480} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr10)"/>
       ))}
 
       {/* Bottleneck → first decoder box */}
-      <line x1={72} y1={133} x2={460} y2={133} stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2"/>
-      <line x1={460} y1={133} x2={460} y2={125} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr10)"/>
+      <line x1={72} y1={133} x2={460} y2={133} stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2"/>
+      <line x1={460} y1={133} x2={460} y2={125} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr10)"/>
 
       {/* Skip connections (horizontal dashed) */}
       {[
@@ -84,11 +86,11 @@ const UNetDiagram = () => (
         { y: 87,  lx: 85,  rx: 450 },
         { y: 114, lx: 75,  rx: 460 },
       ].map(({ y, lx, rx }) => (
-        <line key={y} x1={lx} y1={y} x2={rx} y2={y} stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arr10s)"/>
+        <line key={y} x1={lx} y1={y} x2={rx} y2={y} stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arr10s)"/>
       ))}
 
       {/* Skip label */}
-      <text x="262" y="53" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">skip connections</text>
+      <text x="262" y="53" textAnchor="middle" fill="#4a9eed" fontSize="7" fontWeight="700">skip connections</text>
       <text x="262" y="72" textAnchor="middle" fill="var(--text-secondary)" fontSize="6.5">(concatenar features do encoder)</text>
     </svg>
   </div>
@@ -98,10 +100,10 @@ const IoUDiagram = () => (
   <div style={{ ...S.diagram, textAlign: 'center' }}>
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>IoU (Jaccard) — Intersecção sobre União</p>
     <svg viewBox="0 0 480 150" style={{ maxWidth: '100%', height: 'auto' }}>
-      <circle cx="180" cy="70" r="55" fill="#f97316" opacity="0.25" stroke="#f97316" strokeWidth="2"/>
-      <text x="120" y="30" fill="#f97316" fontSize="11" fontWeight="700">Ground Truth</text>
-      <circle cx="250" cy="70" r="55" fill="#f97316" opacity="0.25" stroke="#f97316" strokeWidth="2"/>
-      <text x="280" y="30" fill="#f97316" fontSize="11" fontWeight="700">Predição</text>
+      <circle cx="180" cy="70" r="55" fill="#4a9eed" opacity="0.25" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="120" y="30" fill="#4a9eed" fontSize="11" fontWeight="700">Ground Truth</text>
+      <circle cx="250" cy="70" r="55" fill="#4a9eed" opacity="0.25" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="280" y="30" fill="#4a9eed" fontSize="11" fontWeight="700">Predição</text>
       <text x="215" y="74" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="800">∩</text>
 
       <text x="400" y="50" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="700">IoU =</text>
@@ -119,24 +121,24 @@ const ASPPDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>ASPP — Atrous Spatial Pyramid Pooling</p>
     <svg viewBox="0 0 540 220" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrA" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316"/></marker>
+        <marker id="arrA" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed"/></marker>
       </defs>
 
-      <rect x="10" y="80" width="70" height="60" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="45" y="105" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Feature</text>
-      <text x="45" y="118" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Map</text>
-      <text x="45" y="132" textAnchor="middle" fill="#f97316" fontSize="7.5">backbone</text>
+      <rect x="10" y="80" width="70" height="60" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="45" y="105" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Feature</text>
+      <text x="45" y="118" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Map</text>
+      <text x="45" y="132" textAnchor="middle" fill="#4a9eed" fontSize="7.5">backbone</text>
 
       {[20, 65, 110, 155, 200].map((y, i) => (
         <line key={i} x1="80" y1="110" x2="150" y2={y+15} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="2,2"/>
       ))}
 
       {[
-        { y: 5, label: '1×1 conv', sub: 'rate = 1', color: '#f97316' },
-        { y: 50, label: '3×3 conv', sub: 'rate = 6', color: '#f97316' },
-        { y: 95, label: '3×3 conv', sub: 'rate = 12', color: '#f97316' },
-        { y: 140, label: '3×3 conv', sub: 'rate = 18', color: '#f97316' },
-        { y: 185, label: 'Image Pooling', sub: 'global context', color: '#f97316' },
+        { y: 5, label: '1×1 conv', sub: 'rate = 1', color: '#4a9eed' },
+        { y: 50, label: '3×3 conv', sub: 'rate = 6', color: '#4a9eed' },
+        { y: 95, label: '3×3 conv', sub: 'rate = 12', color: '#4a9eed' },
+        { y: 140, label: '3×3 conv', sub: 'rate = 18', color: '#4a9eed' },
+        { y: 185, label: 'Image Pooling', sub: 'global context', color: '#4a9eed' },
       ].map(({ y, label, sub, color }) => (
         <g key={y}>
           <rect x="155" y={y} width="100" height="30" rx="4" fill={`${color}20`} stroke={color} strokeWidth="1.5"/>
@@ -151,9 +153,9 @@ const ASPPDiagram = () => (
       <text x="355" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">5 branches</text>
 
       <line x1="390" y1="110" x2="430" y2="110" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrA)"/>
-      <rect x="430" y="85" width="100" height="50" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="480" y="106" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">1×1 conv</text>
-      <text x="480" y="120" textAnchor="middle" fill="#f97316" fontSize="7.5">fusão final</text>
+      <rect x="430" y="85" width="100" height="50" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="480" y="106" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">1×1 conv</text>
+      <text x="480" y="120" textAnchor="middle" fill="#4a9eed" fontSize="7.5">fusão final</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Cada ramo "vê" o contexto a uma escala diferente sem reduzir a resolução espacial — depois concatenam-se e fundem-se todos os ramos numa única representação multi-escala.</p>
   </div>
@@ -164,9 +166,9 @@ const DilatedConvDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Convolução Dilatada (Atrous) — Campo Recetivo sem Perder Resolução</p>
     <svg viewBox="0 0 480 130" style={{ maxWidth: '100%', height: 'auto' }}>
       {[
-        { cx: 90, rate: 1, color: '#f97316', label: 'rate = 1 (normal)' },
-        { cx: 250, rate: 2, color: '#f97316', label: 'rate = 2' },
-        { cx: 410, rate: 3, color: '#f97316', label: 'rate = 3' },
+        { cx: 90, rate: 1, color: '#4a9eed', label: 'rate = 1 (normal)' },
+        { cx: 250, rate: 2, color: '#4a9eed', label: 'rate = 2' },
+        { cx: 410, rate: 3, color: '#4a9eed', label: 'rate = 3' },
       ].map(({ cx, rate, color, label }) => {
         const grid = [];
         const span = 5;
@@ -201,7 +203,7 @@ const DiffusionDiagram = () => (
     <svg viewBox="0 0 540 150" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrD" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--text-secondary)"/></marker>
-        <marker id="arrDr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316"/></marker>
+        <marker id="arrDr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {[0, 1, 2, 3, 4, 5].map(i => {
@@ -209,9 +211,9 @@ const DiffusionDiagram = () => (
         const noise = i / 5;
         return (
           <g key={i}>
-            <rect x={x} y="20" width="60" height="60" rx="6" fill={`rgba(249,115,22,0.10)`} stroke="#f97316" strokeWidth="1.2"/>
+            <rect x={x} y="20" width="60" height="60" rx="6" fill={`rgba(74,158,237,0.10)`} stroke="#4a9eed" strokeWidth="1.2"/>
             {Array.from({ length: Math.round(noise * 25) }).map((_, di) => (
-              <circle key={di} cx={x + 5 + (di * 37) % 50} cy={20 + 5 + (di * 53) % 50} r="1" fill="#f97316" opacity="0.6"/>
+              <circle key={di} cx={x + 5 + (di * 37) % 50} cy={20 + 5 + (di * 53) % 50} r="1" fill="#4a9eed" opacity="0.6"/>
             ))}
             <text x={x + 30} y="95" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">{i === 0 ? 'x₀ (imagem)' : i === 5 ? 'x_T (ruído)' : `x${i}`}</text>
           </g>
@@ -221,8 +223,8 @@ const DiffusionDiagram = () => (
       <line x1="30" y1="10" x2="510" y2="10" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrD)"/>
       <text x="270" y="6" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">forward: adicionar ruído gaussiano gradualmente (fixo, sem aprendizagem)</text>
 
-      <line x1="510" y1="115" x2="30" y2="115" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrDr)"/>
-      <text x="270" y="130" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">reverse: rede neuronal aprende a remover ruído passo-a-passo (denoising)</text>
+      <line x1="510" y1="115" x2="30" y2="115" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrDr)"/>
+      <text x="270" y="130" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">reverse: rede neuronal aprende a remover ruído passo-a-passo (denoising)</text>
     </svg>
   </div>
 );
@@ -232,22 +234,22 @@ const VideoDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>SAM 2 — Propagação de Prompts ao Longo do Tempo</p>
     <svg viewBox="0 0 540 150" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrV" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316"/></marker>
+        <marker id="arrV" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed"/></marker>
       </defs>
       {[0, 1, 2, 3, 4].map(i => {
         const x = 20 + i * 105;
         return (
           <g key={i}>
-            <rect x={x} y="20" width="80" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2"/>
-            <ellipse cx={x + 25 + i * 6} cy="50" rx="14" ry="14" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2"/>
+            <rect x={x} y="20" width="80" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2"/>
+            <ellipse cx={x + 25 + i * 6} cy="50" rx="14" ry="14" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2"/>
             <text x={x + 40} y="95" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">frame {i + 1}</text>
             {i === 0 && (
               <>
-                <circle cx={x + 25} cy="50" r="3" fill="#f97316"/>
-                <text x={x + 40} y="14" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">prompt (clique)</text>
+                <circle cx={x + 25} cy="50" r="3" fill="#4a9eed"/>
+                <text x={x + 40} y="14" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">prompt (clique)</text>
               </>
             )}
-            {i < 4 && <line x1={x + 80} y1="50" x2={x + 105} y2="50" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrV)"/>}
+            {i < 4 && <line x1={x + 80} y1="50" x2={x + 105} y2="50" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrV)"/>}
           </g>
         );
       })}
@@ -261,28 +263,28 @@ export default function CV10() {
   const [metricSel, setMetricSel] = useState(0);
   const models = [
     {
-      name: 'U-Net', color: '#f97316', year: '2015',
+      name: 'U-Net', color: '#4a9eed', year: '2015',
       task: 'Segmentação semântica (especialmente médica)',
       what: 'Arquitectura encoder-decoder simétrica em forma de U. O encoder (contraction path) reduz a resolução e aumenta canais como num classificador. O decoder (expansion path) recupera a resolução original usando transposed convolutions (upsampling). As skip connections copiam features do encoder para o decoder.',
       key: 'As skip connections fornecem ao decoder informação de alta resolução (detalhe local) que se perderia no bottleneck — o decoder usa contexto global do bottleneck + detalhe local das skips. Permite segmentação precisa mesmo com poucos dados de treino.',
       output: 'Mapa de classes pixel-a-pixel: mesma resolução que o input, com K canais (K classes).',
     },
     {
-      name: 'Mask R-CNN', color: '#f97316', year: '2017',
+      name: 'Mask R-CNN', color: '#4a9eed', year: '2017',
       task: 'Instance segmentation (máscara por instância)',
       what: 'Extensão do Faster R-CNN que, além da bounding box e classe, prevê uma máscara binária para cada instância detectada. Adiciona um terceiro "head" paralelo ao de classificação/regressão: para cada RoI, um FCN pequeno produz uma máscara de 28×28 pixels.',
       key: 'RoIAlign (em vez de RoI Pooling) elimina o misalignment causado pela quantização, dando masks muito mais precisas. A diferença para segmentação semântica: Mask R-CNN separa instâncias diferentes da mesma classe (2 pessoas = 2 máscaras diferentes).',
       output: 'Bounding box + classe + máscara binária 28×28 por instância detectada.',
     },
     {
-      name: 'SAM', color: '#f97316', year: '2023',
+      name: 'SAM', color: '#4a9eed', year: '2023',
       task: 'Segmentação zero-shot (qualquer coisa)',
       what: 'Segment Anything Model (Meta AI). Treinado em 11 milhões de imagens com 1 bilião de máscaras. Aceita prompts: pontos, bounding boxes, texto ou sem prompt (segmenta tudo). Backbone ViT grande, Prompt Encoder, e um Mask Decoder leve.',
       key: 'O primeiro modelo fundacional de segmentação. Generaliza para objectos nunca vistos sem fine-tuning. Pode ser usado como componente em pipelines mais complexos: detetor → SAM para obter máscaras de qualquer detecção.',
       output: 'Máscara binária (ou múltiplas alternativas com score) por prompt. SAM 2 (2024) estende para vídeo.',
     },
     {
-      name: 'DINOv2', color: '#f97316', year: '2023',
+      name: 'DINOv2', color: '#4a9eed', year: '2023',
       task: 'Features visuais universais (sem labels)',
       what: 'Pré-treino auto-supervisionado de ViTs com self-distillation. Treina um student e um teacher ViT; o student aprende a prever as activações do teacher em crops diferentes da mesma imagem. Sem labels — aprende representações puramente dos dados visuais.',
       key: 'As features do DINOv2 são excepcionalmente transferíveis: segmentação, estimativa de profundidade, correspondências, classificação — tudo com o mesmo backbone frozen. Visualizações de atenção mostram que o modelo aprende a segmentar objectos sem qualquer supervisão.',
@@ -293,26 +295,26 @@ export default function CV10() {
 
   const metrics = [
     {
-      name: 'Pixel Accuracy', color: '#f97316',
-      formula: 'Acc = (pixels corretos) / (total de pixels)',
+      name: 'Pixel Accuracy', color: '#4a9eed',
+      formula: '\\text{Acc} = \\dfrac{\\text{pixels corretos}}{\\text{total de pixels}}',
       desc: 'A métrica mais simples: percentagem de pixels classificados corretamente, ignorando completamente a classe.',
       problem: 'Em datasets desbalanceados (ex: 95% "fundo", 5% "tumor"), um modelo que prevê sempre "fundo" obtém 95% de accuracy mas é completamente inútil. Por isso raramente é usada sozinha.',
     },
     {
-      name: 'IoU / Jaccard', color: '#f97316',
-      formula: 'IoU = |Pred ∩ GT| / |Pred ∪ GT|',
+      name: 'IoU / Jaccard', color: '#4a9eed',
+      formula: '\\text{IoU} = \\dfrac{|\\text{Pred} \\cap \\text{GT}|}{|\\text{Pred} \\cup \\text{GT}|}',
       desc: 'Razão entre a área de sobreposição (interseção) e a área total combinada (união) entre a predição e o ground truth, por classe. Varia entre 0 (sem sobreposição) e 1 (perfeito).',
       problem: 'É a métrica standard em benchmarks (PASCAL VOC, Cityscapes, COCO). Penaliza tanto falsos positivos como falsos negativos de forma simétrica.',
     },
     {
-      name: 'mIoU (mean IoU)', color: '#f97316',
-      formula: 'mIoU = (1/K) Σ IoU_k  (para k=1..K classes)',
+      name: 'mIoU (mean IoU)', color: '#4a9eed',
+      formula: '\\text{mIoU} = \\dfrac{1}{K}\\sum_{k=1}^{K} \\text{IoU}_k',
       desc: 'Calcula-se o IoU para cada classe separadamente e depois faz-se a média. Cada classe pesa igualmente, independentemente de quantos pixels tem.',
       problem: 'Mais informativo que pixel accuracy em datasets desbalanceados — uma classe rara mas mal segmentada (ex: "peão") puxa a média para baixo mesmo que represente poucos pixels do dataset.',
     },
     {
-      name: 'Dice Coefficient (F1)', color: '#f97316',
-      formula: 'Dice = 2|Pred ∩ GT| / (|Pred| + |GT|)',
+      name: 'Dice Coefficient (F1)', color: '#4a9eed',
+      formula: '\\text{Dice} = \\dfrac{2|\\text{Pred} \\cap \\text{GT}|}{|\\text{Pred}| + |\\text{GT}|}',
       desc: 'Equivalente ao F1-score: dá o dobro do peso à interseção em relação ao IoU. Matematicamente relaciona-se com IoU por: Dice = 2·IoU / (1+IoU).',
       problem: 'É a métrica preferida em imagem médica, onde a estrutura de interesse (tumor, órgão) ocupa uma fração minúscula da imagem — o Dice é mais sensível a pequenas regiões corretamente identificadas e é a base de funções de loss (Dice Loss) que lidam bem com desequilíbrio de classes.',
     },
@@ -325,7 +327,6 @@ export default function CV10() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 10</div>
         <h1 style={S.h1}>Segmentação & Foundational Models</h1>
-        <p style={S.lead}>A segmentação é o problema mais difícil em CV: atribuir uma classe (ou identidade) a cada pixel. U-Net criou o paradigma encoder-decoder. Mask R-CNN separou instâncias. DeepLab introduziu convoluções dilatadas para capturar contexto multi-escala. SAM e DINOv2 mudaram o paradigma completamente — modelos treinados em dados massivos que generalizam para qualquer coisa sem fine-tuning. Este módulo termina com um olhar sobre tarefas relacionadas: profundidade monocular, modelos de difusão e segmentação de vídeo.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Tipos de Segmentação</h2>
@@ -339,7 +340,7 @@ export default function CV10() {
                   ['Instance', 'Máscara individual por instância detectada.', '2 pessoas → 2 máscaras separadas (pessoa 1 e pessoa 2)', 'Mask R-CNN, YOLACT'],
                   ['Panoptic', 'Combina semântica + instance: stuff (céu, estrada) em semântica, things (pessoas, carros) em instance.', 'Mapa completo com cada píxel classificado e instâncias separadas', 'Panoptic-FPN, Mask2Former'],
                 ].map(([t, o, e, mm]) => (
-                  <tr key={t}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{t}</td><td style={S.td}>{o}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{e}</td><td style={S.td}>{mm}</td></tr>
+                  <tr key={t}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{t}</td><td style={S.td}>{o}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{e}</td><td style={S.td}>{mm}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -380,9 +381,9 @@ export default function CV10() {
               ))}
             </div>
             <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: `1.5px solid ${met.color}30` }}>
-              <div style={{ ...S.math, marginTop: 0, color: met.color, borderColor: `${met.color}40` }}>{met.formula}</div>
+              <div style={{ ...S.math, marginTop: 0, color: met.color, borderColor: `${met.color}40` }}><InlineMath math={met.formula} /></div>
               <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7, marginBottom: '0.75rem' }}><strong style={{ color: met.color }}>O que mede:</strong> {met.desc}</p>
-              <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7 }}><strong style={{ color: '#f97316' }}>Quando usar / limitações:</strong> {met.problem}</p>
+              <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7 }}><strong style={{ color: '#4a9eed' }}>Quando usar / limitações:</strong> {met.problem}</p>
             </div>
           </div>
 
@@ -401,7 +402,7 @@ export default function CV10() {
                   ['Visão geral rápida / debugging', 'Pixel Accuracy', 'Simples e rápida, mas sempre complementar a outra métrica — nunca usar isolada'],
                   ['Comparar várias classes raras vs. comuns', 'mIoU por classe (tabela)', 'Identifica em que classes específicas o modelo falha, escondido pela média global'],
                 ].map(([c, mtr, why]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={{ ...S.td, color: '#f97316', fontWeight: 700 }}>{mtr}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{why}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={{ ...S.td, color: '#4a9eed', fontWeight: 700 }}>{mtr}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{why}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -434,7 +435,7 @@ export default function CV10() {
                   ['DeepLabv3', 'ASPP melhorado + batch normalization, remove o CRF', 'Mais simples e end-to-end treinável'],
                   ['DeepLabv3+', 'Adiciona um decoder simples (estilo encoder-decoder) para refinar fronteiras', 'Combina o melhor do ASPP (contexto) com skip connections (detalhe local)'],
                 ].map(([v, i, n]) => (
-                  <tr key={v}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{v}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{n}</td></tr>
+                  <tr key={v}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{v}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{n}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -464,7 +465,7 @@ export default function CV10() {
                 ))}
               </div>
               <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7, marginBottom: '0.75rem' }}><strong style={{ color: m.color }}>Como funciona:</strong> {m.what}</p>
-              <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7 }}><strong style={{ color: '#f97316' }}>Contribuição chave:</strong> {m.key}</p>
+              <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.7 }}><strong style={{ color: '#4a9eed' }}>Contribuição chave:</strong> {m.key}</p>
             </div>
           </div>
 
@@ -496,7 +497,7 @@ export default function CV10() {
                   ['Posição vertical na imagem', 'Em cenas com chão, objetos mais acima na imagem tendem a estar mais longe'],
                   ['Desfoque / profundidade de campo', 'Objetos fora de foco em fotos com pouca profundidade de campo estão a distâncias diferentes do plano focal'],
                 ].map(([c, e]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{c}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{e}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{c}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{e}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -514,7 +515,7 @@ export default function CV10() {
                   ['DPT (Dense Prediction Transformer)', '2021', 'Substitui o backbone CNN por um Vision Transformer, melhorando a consistência global do mapa de profundidade'],
                   ['Depth Anything', '2024', 'Modelo fundacional para profundidade monocular: combina dados rotulados com milhões de imagens não rotuladas via pseudo-labelling, generaliza extremamente bem (zero-shot) a cenas e domínios nunca vistos'],
                 ].map(([n, y, d]) => (
-                  <tr key={n}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{n}</td><td style={S.td}>{y}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{d}</td></tr>
+                  <tr key={n}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{n}</td><td style={S.td}>{y}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{d}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -550,7 +551,7 @@ export default function CV10() {
                   ['Super-resolução', 'O modelo aprende a fazer denoising condicionado numa versão de baixa resolução, "alucinando" detalhe de alta frequência plausível'],
                   ['Segmentação e estimativa de profundidade', 'Modelos experimentais tratam o mapa de segmentação/profundidade como a "imagem" a gerar, condicionado na imagem RGB de entrada — explorando a robustez do processo de denoising'],
                 ].map(([a, b]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{a}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{b}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{a}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{b}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -574,7 +575,7 @@ export default function CV10() {
                   ['3D-CNN / convoluções espácio-temporais', 'Os kernels de convolução ganham uma terceira dimensão (tempo): em vez de 3×3, são 3×3×3, processando vários frames em simultâneo e aprendendo padrões de movimento diretamente.', 'Captura movimento de forma nativa, mas é muito mais pesado computacionalmente e exige clips de vídeo curtos como input (não conseguem processar streams arbitrariamente longos)'],
                   ['Frame-a-frame + tracking temporal', 'Cada frame é processado individualmente por uma rede 2D (a mesma usada em imagens), e um módulo separado de tracking liga as deteções/máscaras entre frames consecutivos.', 'Reaproveita modelos de imagem já treinados, escala para vídeos longos, mas pode sofrer de inconsistências (flickering) entre frames se o tracking falhar'],
                 ].map(([a, b, c]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -597,7 +598,7 @@ export default function CV10() {
                   ['Componente novo', '—', 'Memory bank + memory attention para propagação temporal'],
                   ['Lida com oclusão', 'N/A', 'Sim — mantém a identidade do objeto mesmo quando temporariamente invisível'],
                 ].map(([a, b, c]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{b}</td><td style={{ ...S.td, color: '#f97316', fontWeight: 600 }}>{c}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{b}</td><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600 }}>{c}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -624,7 +625,7 @@ export default function CV10() {
                   ['Flexibilidade', 'Modelo fixo para uma task específica', 'Um modelo para múltiplas tasks (segmentação, classificação, depth, vídeo, etc.)'],
                   ['Exemplo de evolução', 'U-Net (2015) treinado de raiz por dataset médico', 'SAM/SAM 2/DINOv2/Depth Anything: um backbone, prompts ou fine-tuning leve'],
                 ].map(([a, c, f]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{a}</td><td style={{ ...S.td, color: '#f97316' }}>{c}</td><td style={{ ...S.td, color: '#f97316' }}>{f}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{a}</td><td style={{ ...S.td, color: '#4a9eed' }}>{c}</td><td style={{ ...S.td, color: '#4a9eed' }}>{f}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -635,24 +636,7 @@ export default function CV10() {
 
         
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>10. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Semântica vs. Instance vs. Panoptic: nível de granularidade crescente na segmentação ("stuff" vs. "things").</li>
-            <li>U-Net: encoder-decoder simétrico com skip connections. Features do encoder fornecem detalhe local ao decoder.</li>
-            <li>Métricas: Pixel Accuracy é enganadora em datasets desbalanceados; IoU/mIoU são o standard; Dice é preferido em imagem médica e como função de loss.</li>
-            <li>DeepLab/ASPP: convoluções dilatadas aumentam o campo recetivo sem perder resolução; ASPP combina várias taxas em paralelo para contexto multi-escala.</li>
-            <li>Mask R-CNN: Faster R-CNN + head de máscara. RoIAlign para masks precisas. Instance segmentation.</li>
-            <li>SAM (2023): foundational model de segmentação. 11M imagens, 1B máscaras. Zero-shot com prompts (Image Encoder + Prompt Encoder + Mask Decoder).</li>
-            <li>DINOv2: auto-supervisionado, sem labels (self-distillation). Features universais — um backbone para todas as tasks densas.</li>
-            <li>Profundidade monocular: tarefa de dense prediction como segmentação, mas com output contínuo. MiDaS/DPT/Depth Anything generalizam zero-shot.</li>
-            <li>Modelos de difusão: aprendem a remover ruído gradualmente (forward = adicionar ruído fixo, reverse = denoising aprendido por uma U-Net). Base do Stable Diffusion e com aplicações em segmentação/restauração.</li>
-            <li>Vídeo: dimensão temporal extra. SAM 2 propaga prompts ao longo do tempo via memory bank, mantendo identidade de objetos mesmo com oclusão.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

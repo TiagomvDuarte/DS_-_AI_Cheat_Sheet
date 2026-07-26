@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './Logic';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -14,7 +14,7 @@ const S = {
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
-  diagram: { background: '#0f172a', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
+  diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '0.75rem 1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '1rem', overflowX: 'auto', whiteSpace: 'pre' },
 };
@@ -22,12 +22,12 @@ const S = {
 /* SVG 1: Kautz spectrum */
 function SvgKautz() {
   const positions = [
-    { pos: 1, label: 'Symbolic\nNeuro',    example: 'Prolog+NN',  color: '#f97316' },
-    { pos: 2, label: 'Symbolic\n[Neuro]',  example: 'AlphaGo',   color: '#f97316' },
-    { pos: 3, label: 'Neuro|\nSymbolic',   example: 'DeepProbLog',color: '#f97316' },
+    { pos: 1, label: 'Symbolic\nNeuro',    example: 'Prolog+NN',  color: '#4a9eed' },
+    { pos: 2, label: 'Symbolic\n[Neuro]',  example: 'AlphaGo',   color: '#4a9eed' },
+    { pos: 3, label: 'Neuro|\nSymbolic',   example: 'DeepProbLog',color: '#4a9eed' },
     { pos: 4, label: 'Neuro:\nSymbolic',   example: 'LNN (IBM)', color: C },
-    { pos: 5, label: 'Neuro\n[Symbolic]',  example: 'NeSy nets',  color: '#f97316' },
-    { pos: 6, label: 'Neuro→\nSymbolic',   example: 'GPT-4',     color: '#f97316' },
+    { pos: 5, label: 'Neuro\n[Symbolic]',  example: 'NeSy nets',  color: '#4a9eed' },
+    { pos: 6, label: 'Neuro→\nSymbolic',   example: 'GPT-4',     color: '#4a9eed' },
   ];
   const barW = 70, gap = 16, ox = 30, oy = 30;
   return (
@@ -39,13 +39,13 @@ function SvgKautz() {
       {/* Gradient bar background */}
       <defs>
         <linearGradient id="kspec" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stopColor="#f97316" />
+          <stop offset="0%"   stopColor="#4a9eed" />
           <stop offset="100%" stopColor="#ef4444" />
         </linearGradient>
       </defs>
       <rect x={ox} y={oy + 10} width={(barW + gap) * 6 - gap} height="8" rx="4" fill="url(#kspec)" opacity="0.3" />
-      <text x={ox} y={oy + 5} fill="#f97316" fontSize="9">← mais simbólico</text>
-      <text x={ox + (barW + gap) * 6 - gap} y={oy + 5} textAnchor="end" fill="#f97316" fontSize="9">mais neural →</text>
+      <text x={ox} y={oy + 5} fill="#4a9eed" fontSize="9">← mais simbólico</text>
+      <text x={ox + (barW + gap) * 6 - gap} y={oy + 5} textAnchor="end" fill="#4a9eed" fontSize="9">mais neural →</text>
       {positions.map((p, i) => {
         const x = ox + i * (barW + gap);
         const barH = 60 + i * 8;
@@ -59,7 +59,7 @@ function SvgKautz() {
             {p.label.split('\n').map((line, li) => (
               <text key={li} x={x + barW / 2} y={yBar + barH + 14 + li * 12} textAnchor="middle" fill="#94a3b8" fontSize="8">{line}</text>
             ))}
-            <rect x={x + 4} y={yBar + barH - 24} width={barW - 8} height="20" rx="3" fill="rgba(249,115,22,0.06)" />
+            <rect x={x + 4} y={yBar + barH - 24} width={barW - 8} height="20" rx="3" fill="rgba(74,158,237,0.06)" />
             <text x={x + barW / 2} y={yBar + barH - 12} textAnchor="middle" dominantBaseline="middle" fill={p.color} fontSize="7.5">{p.example}</text>
           </g>
         );
@@ -79,11 +79,11 @@ function SvgLNN() {
     { id: 'C', label: 'Atom C', x: 60,  y: 200, val: '0.4' },
   ];
   const mid = [
-    { id: 'AND1', label: 'AND', x: 240, y: 95,  val: '0.6', color: '#f97316', note: 'max(0,a+b−1)' },
-    { id: 'NOT1', label: 'NOT', x: 240, y: 200, val: '0.6', color: '#fbbf24', note: '1−a' },
+    { id: 'AND1', label: 'AND', x: 210, y: 95,  val: '0.6', color: '#4a9eed', note: 'max(0,a+b−1)' },
+    { id: 'NOT1', label: 'NOT', x: 240, y: 200, val: '0.6', color: '#bae6fd', note: '1−a' },
   ];
   const out = [
-    { id: 'OR1', label: 'OR', x: 420, y: 147, val: '0.84', color: '#f59e0b', note: 'min(1,a+b)' },
+    { id: 'OR1', label: 'OR', x: 420, y: 147, val: '0.84', color: '#7dd3fc', note: 'min(1,a+b)' },
   ];
   return (
     <svg viewBox="0 0 540 335" style={{ width: '100%', display: 'block' }}>
@@ -116,24 +116,24 @@ function SvgLNN() {
       {/* Nodes */}
       {inputs.map(n => (
         <g key={n.id}>
-          <circle cx={n.x} cy={n.y} r="22" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+          <circle cx={n.x} cy={n.y} r="22" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="2" />
           <text x={n.x} y={n.y - 5} textAnchor="middle" dominantBaseline="middle" fill={C} fontSize="9" fontWeight="700">{n.label}</text>
-          <text x={n.x} y={n.y + 9} textAnchor="middle" dominantBaseline="middle" fill="#f59e0b" fontSize="9">{n.val}</text>
+          <text x={n.x} y={n.y + 9} textAnchor="middle" dominantBaseline="middle" fill="#7dd3fc" fontSize="9">{n.val}</text>
         </g>
       ))}
       {mid.map(n => (
         <g key={n.id}>
-          <circle cx={n.x} cy={n.y} r="26" fill="rgba(249,115,22,0.06)" stroke={n.color} strokeWidth="2" />
+          <circle cx={n.x} cy={n.y} r="26" fill="rgba(74,158,237,0.06)" stroke={n.color} strokeWidth="2" />
           <text x={n.x} y={n.y - 8} textAnchor="middle" dominantBaseline="middle" fill={n.color} fontSize="11" fontWeight="800">{n.label}</text>
-          <text x={n.x} y={n.y + 6} textAnchor="middle" dominantBaseline="middle" fill="#f59e0b" fontSize="9">{n.val}</text>
+          <text x={n.x} y={n.y + 6} textAnchor="middle" dominantBaseline="middle" fill="#7dd3fc" fontSize="9">{n.val}</text>
           <text x={n.x - 34} y={n.y} textAnchor="end" dominantBaseline="middle" fill="#64748b" fontSize="7">{n.note}</text>
         </g>
       ))}
       {out.map(n => (
         <g key={n.id}>
-          <circle cx={n.x} cy={n.y} r="28" fill="rgba(249,115,22,0.06)" stroke={n.color} strokeWidth="2.5" />
+          <circle cx={n.x} cy={n.y} r="28" fill="rgba(74,158,237,0.06)" stroke={n.color} strokeWidth="2.5" />
           <text x={n.x} y={n.y - 8} textAnchor="middle" dominantBaseline="middle" fill={n.color} fontSize="13" fontWeight="800">{n.label}</text>
-          <text x={n.x} y={n.y + 8} textAnchor="middle" dominantBaseline="middle" fill="#f59e0b" fontSize="10">{n.val}</text>
+          <text x={n.x} y={n.y + 8} textAnchor="middle" dominantBaseline="middle" fill="#7dd3fc" fontSize="10">{n.val}</text>
           <text x={n.x + 36} y={n.y} textAnchor="start" dominantBaseline="middle" fill="#64748b" fontSize="7">{n.note}</text>
         </g>
       ))}
@@ -152,11 +152,11 @@ function SvgLNN() {
 /* SVG 3: DeepProbLog pipeline */
 function SvgDeepProbLog() {
   const boxes = [
-    { id: 'img1', label: 'MNIST\nImagem X', x: 20,  y: 90,  w: 90,  h: 50, color: '#f97316' },
-    { id: 'img2', label: 'MNIST\nImagem Y', x: 20,  y: 170, w: 90,  h: 50, color: '#f97316' },
-    { id: 'cnn',  label: 'CNN\nDigit\nClassifier', x: 160, y: 100, w: 90,  h: 80, color: '#f97316' },
+    { id: 'img1', label: 'MNIST\nImagem X', x: 20,  y: 90,  w: 90,  h: 50, color: '#4a9eed' },
+    { id: 'img2', label: 'MNIST\nImagem Y', x: 20,  y: 170, w: 90,  h: 50, color: '#4a9eed' },
+    { id: 'cnn',  label: 'CNN\nDigit\nClassifier', x: 160, y: 100, w: 90,  h: 80, color: '#4a9eed' },
     { id: 'prob', label: 'ProbLog\nInferência\naddition(X,Y,Z)', x: 310, y: 100, w: 110, h: 80, color: C },
-    { id: 'loss', label: 'Loss\nP(Z=sum)', x: 475, y: 120, w: 80,  h: 40, color: '#f59e0b' },
+    { id: 'loss', label: 'Loss\nP(Z=sum)', x: 475, y: 120, w: 80,  h: 40, color: '#7dd3fc' },
   ];
   return (
     <svg viewBox="0 0 590 290" style={{ width: '100%', display: 'block' }}>
@@ -169,12 +169,12 @@ function SvgDeepProbLog() {
           <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8" />
         </marker>
         <marker id="arBP" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#bae6fd" />
         </marker>
       </defs>
       {boxes.map(b => (
         <g key={b.id}>
-          <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="6" fill="rgba(249,115,22,0.06)" stroke={b.color} strokeWidth="2" />
+          <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="6" fill="rgba(74,158,237,0.06)" stroke={b.color} strokeWidth="2" />
           {b.label.split('\n').map((line, li) => (
             <text key={li} x={b.x + b.w / 2} y={b.y + 18 + li * 14} textAnchor="middle" fill={b.color} fontSize="9" fontWeight="600">{line}</text>
           ))}
@@ -188,8 +188,8 @@ function SvgDeepProbLog() {
       <line x1="422" y1="140" x2="472" y2="140" stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#arDP)" />
       <text x="447" y="133" textAnchor="middle" fill="#64748b" fontSize="8">P(Z=z)</text>
       {/* Backward gradient arrow */}
-      <path d="M 475 168 C 440 205, 300 205, 252 165" fill="none" stroke="#fbbf24" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arBP)" />
-      <text x="360" y="215" textAnchor="middle" fill="#fbbf24" fontSize="9">gradiente ∂L/∂θ_CNN flui via inferência ProbLog</text>
+      <path d="M 475 168 C 440 205, 300 205, 252 165" fill="none" stroke="#bae6fd" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arBP)" />
+      <text x="360" y="215" textAnchor="middle" fill="#bae6fd" fontSize="9">gradiente ∂L/∂θ_CNN flui via inferência ProbLog</text>
       {/* Labels */}
       <text x="295" y="248" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600">
         addition(X,Y,Z) :- digit(X,D1), digit(Y,D2), Z is D1+D2.
@@ -207,10 +207,10 @@ function SvgDeepProbLog() {
 /* SVG 4: NN Verification */
 function SvgVerification() {
   const layers = [
-    { x: 40,  label: 'Input\nε-ball', nodes: [80, 130, 180, 230], color: '#f97316' },
-    { x: 180, label: 'Layer 1\nReLU',  nodes: [95, 155, 215],     color: '#f97316' },
+    { x: 40,  label: 'Input\nε-ball', nodes: [80, 130, 180, 230], color: '#4a9eed' },
+    { x: 180, label: 'Layer 1\nReLU',  nodes: [95, 155, 215],     color: '#4a9eed' },
     { x: 310, label: 'Layer 2\nReLU',  nodes: [115, 185],         color: C },
-    { x: 430, label: 'Output\nSet',    nodes: [150],               color: '#f59e0b' },
+    { x: 430, label: 'Output\nSet',    nodes: [150],               color: '#7dd3fc' },
   ];
   return (
     <svg viewBox="0 0 570 330" style={{ width: '100%', display: 'block' }}>
@@ -219,17 +219,17 @@ function SvgVerification() {
         Verificação Formal de NN — Propagação de Reachability
       </text>
       {/* ε-ball input region */}
-      <rect x="18" y="60" width="44" height="180" rx="5" fill={`${`#f97316`}15`} stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" />
-      <text x="40" y="52" textAnchor="middle" fill="#f97316" fontSize="8">ε-ball</text>
+      <rect x="16" y="52" width="65" height="204" rx="5" fill={`${`#4a9eed`}15`} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" />
+      <text x="48" y="44" textAnchor="middle" fill="#4a9eed" fontSize="8">ε-ball</text>
       {/* Output safe region — output space diagram */}
-      <rect x="455" y="85" width="100" height="165" rx="5" fill={`#f59e0b10`} stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,3" />
-      <text x="505" y="77" textAnchor="middle" fill="#f59e0b" fontSize="8">safe region</text>
+      <rect x="455" y="85" width="100" height="165" rx="5" fill={`#7dd3fc10`} stroke="#7dd3fc" strokeWidth="1.5" strokeDasharray="4,3" />
+      <text x="505" y="77" textAnchor="middle" fill="#7dd3fc" fontSize="8">safe region</text>
       {/* Reachable output set inside safe region */}
       <rect x="465" y="105" width="68" height="80" rx="3" fill={`${C}20`} stroke={C} strokeWidth="1.5" />
       <text x="499" y="99" textAnchor="middle" fill={C} fontSize="7">reachable</text>
       <text x="499" y="148" textAnchor="middle" dominantBaseline="middle" fill={C} fontSize="9" fontWeight="700">R(NN)</text>
       {/* Arrow from output node to reachable box */}
-      <line x1="444" y1="150" x2="463" y2="150" stroke="#f59e0b" strokeWidth="1.5" markerEnd="url(#arLNN)" />
+      <line x1="444" y1="150" x2="463" y2="150" stroke="#7dd3fc" strokeWidth="1.5" markerEnd="url(#arLNN)" />
       {/* Connections */}
       {layers.slice(0, -1).map((layer, li) => {
         const next = layers[li + 1];
@@ -244,7 +244,7 @@ function SvgVerification() {
       {layers.map((layer, li) =>
         layer.nodes.map((ny, ni) => (
           <g key={`${li}-${ni}`}>
-            <circle cx={layer.x} cy={ny} r="14" fill="rgba(249,115,22,0.06)" stroke={layer.color} strokeWidth="2" />
+            <circle cx={layer.x} cy={ny} r="14" fill="rgba(74,158,237,0.06)" stroke={layer.color} strokeWidth="2" />
             {li === 0 && <line x1={layer.x - 10} y1={ny} x2={layer.x + 10} y2={ny} stroke={layer.color} strokeWidth="1.5" />}
           </g>
         ))
@@ -253,7 +253,7 @@ function SvgVerification() {
       {layers.map(layer => (
         <g key={layer.label}>
           {layer.label.split('\n').map((line, li) => (
-            <text key={li} x={layer.x} y={258 + li * 13} textAnchor="middle" fill={layer.color} fontSize="9">{line}</text>
+            <text key={li} x={layer.x} y={264 + li * 13} textAnchor="middle" fill={layer.color} fontSize="9">{line}</text>
           ))}
         </g>
       ))}
@@ -270,10 +270,9 @@ export default function LOG7() {
   const mod = modules[6];
   return (
     <div style={S.page}>
-      <Link to="/logic" style={S.back}>← Lógica &amp; Raciocínio</Link>
-      <div style={S.badge}>{mod.num} — LÓGICA &amp; RACIOCÍNIO</div>
+      <Link to="/logic" style={S.back}>← Logic</Link>
+      <div style={S.badge}>MÓDULO {mod.num}</div>
       <h1 style={S.h1}>{mod.title}</h1>
-      <p style={S.sub}>{mod.subtitle}</p>
 
       {/* ── Secção 1 ── */}
       <div style={S.section}>
@@ -450,18 +449,6 @@ Codificação SMT equivalente (z3/dReal):
           verificação completa).
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Integração Neural-Simbólica — Motivação e Espectro</strong> — redes neuronais aprendem padrões mas falham em generalização composicional; sistemas simbólicos raciocinam com dados escassos mas não adquirem conhecimento de dados brutos; o espectro Kautz (2022) organiza sistemas NeSy pelas formas de integração, desde Prolog que chama classificadores até LLMs com raciocínio emergente.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Logical Neural Networks (IBM)</strong> — arquitectura onde cada nó é simultaneamente neurónio e operador lógico na lógica de Łukasiewicz com activações reais em [0,1]; pesos aprendíveis reflectem a força das premissas e a propagação bidirecional (ascendente e descendente) permite inferência e aprendizagem conjuntas.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>DeepProbLog e Gradientes Através da Inferência</strong> — integra redes neuronais como predicados probabilísticos dentro de ProbLog, permitindo que gradientes fluam pela inferência lógica via Weighted Model Count diferenciável; treina classificadores usando supervisão apenas no resultado lógico final, sem labels intermédias.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Verificação Formal de Redes Neuronais</strong> — codifica ReLU como MILP ou SMT para verificar que para todo input numa região ε a rede mantém a classificação correcta ou respeita limites de output; ferramentas como α,β-CROWN e Marabou verificam propriedades de robustez, monotonicidade e fairness em redes de centenas de milhares de neurónios.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

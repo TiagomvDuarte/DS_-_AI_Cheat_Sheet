@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -63,7 +63,7 @@ function FlowchartSVG() {
         return (
           <g key={i}>
             <rect x={x} y={cy - bh / 2} width={bw} height={bh} rx={8}
-              fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+              fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
             {lines.map((ln, j) => (
               <text key={j} x={cx} y={cy + (lines.length === 1 ? 5 : j === 0 ? -3 : 11)}
                 textAnchor="middle" fontSize={10} fill={color} fontWeight={600}>{ln}</text>
@@ -89,7 +89,7 @@ function FlowchartSVG() {
 
 /* ── SVG 2: p-value curve ─────────────────────────────────── */
 function PValueSVG() {
-  const W = 400, H = 160, ox = 200, oy = 148, sx = 55, sy = 310;
+  const W = 400, H = 180, ox = 200, oy = 148, sx = 55, sy = 310;
   const zObs = 1.65;
   const curvePts = normalPoints(0, 1, -3.5, 3.5, 120, sx, sy, ox, oy);
 
@@ -105,13 +105,13 @@ function PValueSVG() {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxHeight: H }}>
-      <path d={tailPath} fill="rgba(249,115,22,0.10)" />
+      <path d={tailPath} fill="rgba(74,158,237,0.10)" />
       <polyline points={curvePts} fill="none" stroke={color} strokeWidth={2} />
       <line x1={ox} y1={20} x2={ox} y2={oy} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3,3" />
       <line x1={ox - 3.5 * sx} y1={oy} x2={ox + 3.7 * sx} y2={oy} stroke="var(--text-secondary)" strokeWidth={1} />
       <line x1={ox + zObs * sx} y1={oy - normalY(zObs) * sy} x2={ox + zObs * sx} y2={oy}
         stroke={color} strokeWidth={1.5} strokeDasharray="4,3" />
-      <text x={ox + zObs * sx} y={oy + 14} textAnchor="middle" fontSize={10} fill={color}>z_obs</text>
+      <text x={ox + zObs * sx} y={oy + 16} textAnchor="middle" fontSize={10} fill={color}>z<tspan fontSize={7} dy={2}>obs</tspan></text>
       <text x={ox + zObs * sx + 28} y={oy - 22} fontSize={10} fill={color} fontWeight={700}>p-value</text>
     </svg>
   );
@@ -154,7 +154,7 @@ function CriticalRegionsSVG() {
 
         return (
           <g key={pi}>
-            {shadePaths.map((d, i) => <path key={i} d={d} fill="rgba(249,115,22,0.10)" />)}
+            {shadePaths.map((d, i) => <path key={i} d={d} fill="rgba(74,158,237,0.10)" />)}
             <polyline points={curve} fill="none" stroke={color} strokeWidth={1.5} />
             <line x1={ox - 3.5 * sx} y1={oy} x2={ox + 3.7 * sx} y2={oy}
               stroke="var(--text-secondary)" strokeWidth={1} />
@@ -179,10 +179,10 @@ function CriticalRegionsSVG() {
 function ErrorTableSVG() {
   const W = 420, H = 160;
   const cells = [
-    { x: 120, y: 30, w: 140, h: 55, fill: 'rgba(22,163,74,0.15)', stroke: '#f97316', label: 'Decisão Correta', sub: '(1 − α)', tx: 190, ty: 52, ts: 57 },
-    { x: 260, y: 30, w: 140, h: 55, fill: 'rgba(249,115,22,0.10)', stroke: color, label: 'Erro Tipo I', sub: '(α)', tx: 330, ty: 52, ts: 57 },
-    { x: 120, y: 85, w: 140, h: 55, fill: 'rgba(249,115,22,0.10)', stroke: color, label: 'Erro Tipo II', sub: '(β)', tx: 190, ty: 107, ts: 57 },
-    { x: 260, y: 85, w: 140, h: 55, fill: 'rgba(22,163,74,0.15)', stroke: '#f97316', label: 'Decisão Correta', sub: '(1 − β)', tx: 330, ty: 107, ts: 57 },
+    { x: 120, y: 30, w: 140, h: 55, fill: 'rgba(28,92,171,0.20)', stroke: '#1c5cab', label: 'Decisão Correta', sub: '(1 − α)', tx: 190, ty: 52, ts: 57 },
+    { x: 260, y: 30, w: 140, h: 55, fill: 'rgba(134,182,239,0.12)', stroke: '#86b6ef', label: 'Erro Tipo II', sub: '(β)', tx: 330, ty: 52, ts: 57 },
+    { x: 120, y: 85, w: 140, h: 55, fill: 'rgba(134,182,239,0.12)', stroke: '#86b6ef', label: 'Erro Tipo I', sub: '(α)', tx: 190, ty: 107, ts: 57 },
+    { x: 260, y: 85, w: 140, h: 55, fill: 'rgba(28,92,171,0.20)', stroke: '#1c5cab', label: 'Decisão Correta', sub: '(1 − β)', tx: 330, ty: 107, ts: 57 },
   ];
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: 600 }}>
@@ -193,7 +193,7 @@ function ErrorTableSVG() {
       <text x={60} y={113} textAnchor="middle" fontSize={9} fill="var(--text-secondary)" fontWeight={700}>Rejeitar H₀</text>
       {cells.map((c, i) => (
         <g key={i}>
-          <rect x={c.x} y={c.y} width={c.w} height={c.h} rx={6} fill={c.fill} stroke={c.stroke} strokeWidth={1.5} />
+          <rect x={c.x} y={c.y} width={c.w} height={c.h} fill={c.fill} stroke={c.stroke} strokeWidth={1.5} />
           <text x={c.tx} y={c.ty - 4} textAnchor="middle" fontSize={9} fontWeight={700} fill={c.stroke}>{c.label}</text>
           <text x={c.tx} y={c.ty + 10} textAnchor="middle" fontSize={9} fill={c.stroke}>{c.sub}</text>
         </g>
@@ -233,7 +233,7 @@ function PowerCurveSVG() {
       <line x1={ox} y1={oy - sy} x2={ox + 4 * sx} y2={oy - sy} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3,3" />
       <line x1={ox} y1={oy - sy / 2} x2={ox + 4 * sx} y2={oy - sy / 2} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3,3" />
       {/* Curves */}
-      <polyline points={pts(2.5, 1)} fill="none" stroke="rgba(249,115,22,0.45)" strokeWidth={2} strokeDasharray="5,3" />
+      <polyline points={pts(2.5, 1)} fill="none" stroke="rgba(74,158,237,0.45)" strokeWidth={2} strokeDasharray="5,3" />
       <polyline points={pts(5, 1)} fill="none" stroke={color} strokeWidth={2.5} />
       {/* Labels */}
       <text x={ox - 6} y={oy - sy + 4} textAnchor="end" fontSize={9} fill="var(--text-secondary)">1</text>
@@ -245,7 +245,7 @@ function PowerCurveSVG() {
       {/* Legend */}
       <line x1={260} y1={30} x2={285} y2={30} stroke={color} strokeWidth={2.5} />
       <text x={290} y={34} fontSize={9} fill="var(--text-primary)">n grande</text>
-      <line x1={260} y1={48} x2={285} y2={48} stroke="rgba(249,115,22,0.45)" strokeWidth={2} strokeDasharray="5,3" />
+      <line x1={260} y1={48} x2={285} y2={48} stroke="rgba(74,158,237,0.45)" strokeWidth={2} strokeDasharray="5,3" />
       <text x={290} y={52} fontSize={9} fill="var(--text-primary)">n pequeno</text>
     </svg>
   );
@@ -262,12 +262,6 @@ export default function ST5() {
 
       <span style={S.tag}>MÓDULO 05</span>
       <h1 style={S.h1}>Testes de Hipóteses</h1>
-      <p style={S.lead}>
-        Os testes de hipóteses são o motor da inferência estatística: permitem decidir, com base numa amostra,
-        se existe evidência suficiente para rejeitar uma afirmação sobre a população. Esta secção cobre a lógica
-        formal dos testes, o p-value, os erros de decisão, a potência e os principais procedimentos paramétricos
-        e não-paramétricos usados em ciência de dados.
-      </p>
 
       {/* ─── 1. Lógica dos Testes ─── */}
       <section style={S.section}>
@@ -304,7 +298,7 @@ export default function ST5() {
               ['2. Escolher α', 'Nível de significância — probabilidade máxima tolerada de erro tipo I (tipicamente 0,05 ou 0,01).'],
               ['3. Calcular a estatística de teste', 'Transformar os dados amostrais numa estatística (t, z, F, χ²) sob H₀.'],
               ['4. Comparar com o valor crítico', 'Determinar a região de rejeição ou calcular o p-value.'],
-              ['5. Decisão', 'Rejeitar H₀ se p &lt; α (ou se a estatística cair na região crítica); caso contrário, não rejeitar.'],
+              ['5. Decisão', 'Rejeitar H₀ se p < α (ou se a estatística cair na região crítica); caso contrário, não rejeitar.'],
             ].map(([p, d], i) => (
               <tr key={i}>
                 <td style={{ ...S.td, fontWeight: 600 }}>{p}</td>
@@ -341,15 +335,15 @@ export default function ST5() {
           </thead>
           <tbody>
             {[
-              ['p = 0,03 significa que H₀ tem 3 % de probabilidade de ser verdadeira.', '❌ Errada'],
-              ['p = 0,03 significa que, se H₀ for verdadeira, há 3 % de probabilidade de obter estes dados (ou mais extremos).', '✅ Correta'],
-              ['p pequeno implica que o efeito é grande.', '❌ Errada — p depende também de n.'],
-              ['p &gt; 0,05 prova que não há efeito.', '❌ Errada — apenas ausência de evidência suficiente.'],
-              ['p &lt; α justifica rejeitar H₀ ao nível α.', '✅ Correta'],
-            ].map(([a, c], i) => (
+              ['p = 0,03 significa que H₀ tem 3 % de probabilidade de ser verdadeira.', false, 'Errada'],
+              ['p = 0,03 significa que, se H₀ for verdadeira, há 3 % de probabilidade de obter estes dados (ou mais extremos).', true, 'Correta'],
+              ['p pequeno implica que o efeito é grande.', false, 'Errada — p depende também de n.'],
+              ['p > 0,05 prova que não há efeito.', false, 'Errada — apenas ausência de evidência suficiente.'],
+              ['p < α justifica rejeitar H₀ ao nível α.', true, 'Correta'],
+            ].map(([a, ok, c], i) => (
               <tr key={i}>
                 <td style={S.td}>{a}</td>
-                <td style={{ ...S.td, color: c.startsWith('✅') ? '#f97316' : color, fontWeight: 700 }}>{c}</td>
+                <td style={{ ...S.td, color: ok ? '#3ddc72' : '#f87171', fontWeight: 700 }}>{c}</td>
               </tr>
             ))}
           </tbody>
@@ -482,7 +476,7 @@ export default function ST5() {
             ].map(([f, e], i) => (
               <tr key={i}>
                 <td style={S.td}>{f}</td>
-                <td style={{ ...S.td, color: '#f97316', fontWeight: 600 }}>{e}</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontWeight: 600 }}>{e}</td>
               </tr>
             ))}
           </tbody>
@@ -622,10 +616,10 @@ export default function ST5() {
         <h3 style={S.h3}>Teste de independência — tabela de contingência</h3>
         <p style={S.p}>
           Para uma tabela r × c, os valores esperados calculam-se como:
-          <span style={{ fontFamily: 'monospace', display: 'block', margin: '0.5rem 0' }}>
-            E_ij = (Total linha i × Total coluna j) / Total geral
+          <span style={{ display: 'block', margin: '0.5rem 0' }}>
+            <BlockMath math="E_{ij} = \frac{\text{Total linha } i \times \text{Total coluna } j}{\text{Total geral}}" />
           </span>
-          e os graus de liberdade são df = (r−1)(c−1).
+          e os graus de liberdade são <InlineMath math="df = (r-1)(c-1)" />.
         </p>
 
         <h3 style={S.h3}>Exemplo — tabela 2×2</h3>
@@ -676,9 +670,9 @@ export default function ST5() {
 
         <h3 style={S.h3}>Porquê não fazer múltiplos testes t?</h3>
         <p style={S.p}>
-          Ao fazer C(k,2) testes t ao nível α, a probabilidade de pelo menos um falso positivo é
-          1 − (1−α)^{'{C(k,2)}'}, que cresce rapidamente. Para k=5 grupos e α=0,05, são 10 comparações
-          e a taxa de erro familiar sobe para ≈ 40 %.
+          Ao fazer <InlineMath math="\binom{k}{2}" /> testes t ao nível α, a probabilidade de pelo menos um falso
+          positivo é <InlineMath math="1 - (1-\alpha)^{\binom{k}{2}}" />, que cresce rapidamente. Para k=5 grupos
+          e α=0,05, são 10 comparações e a taxa de erro familiar sobe para ≈ 40 %.
         </p>
 
         <h3 style={S.h3}>Estatística F</h3>
@@ -795,113 +789,6 @@ export default function ST5() {
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ─── 11. Armadilhas Comuns ─── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Armadilhas Comuns e Crise de Replicação</h2>
-
-        <h3 style={S.h3}>p-hacking</h3>
-        <p style={S.p}>
-          O <strong>p-hacking</strong> (ou "data dredging") consiste em manipular os dados, variáveis,
-          subgrupos ou critérios de exclusão até obter p &lt; 0,05. Mesmo sem intenção de fraude, a análise
-          exploratória excessiva infla artificialmente a taxa de falsas descobertas. A solução passa pelo
-          pré-registo do protocolo de análise.
-        </p>
-
-        <h3 style={S.h3}>Comparações múltiplas</h3>
-        <p style={S.p}>
-          Realizar m testes independentes ao nível α resulta numa taxa de erro familiar (FWER) de
-          1 − (1−α)^m. Para controlar este problema:
-        </p>
-        
-          <strong>Correção de Bonferroni:</strong> usar <InlineMath math="\alpha' = \alpha / m" /> por teste.<br />
-          <strong>False Discovery Rate (Benjamini-Hochberg):</strong> controla a proporção esperada de falsas
-          descobertas entre os resultados significativos — menos conservador que Bonferroni, adequado para
-          análises de alto débito (genómica, neuroimagem).
-        
-
-        <h3 style={S.h3}>HARKing</h3>
-        <p style={S.p}>
-          <strong>HARKing</strong> (Hypothesizing After Results are Known) consiste em apresentar hipóteses
-          formuladas <em>após</em> ver os dados como se fossem a priori. Transforma análise confirmatória em
-          exploratória, invalidando as garantias do teste de hipóteses formal.
-        </p>
-
-        <h3 style={S.h3}>Crise de Replicação</h3>
-        <p style={S.p}>
-          Estudos sistemáticos (ex.: Reproducibility Project em psicologia, 2015) mostraram que apenas ≈ 36 %
-          dos resultados publicados se replicam com a mesma direção e significância. As causas incluem p-hacking,
-          viés de publicação (apenas resultados significativos são publicados), amostras pequenas e falta de
-          pré-registo.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Problema</th>
-              <th style={S.th}>Solução recomendada</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['p-hacking', 'Pré-registo; análise confirmatória separada da exploratória.'],
-              ['Comparações múltiplas', 'Correção de Bonferroni ou FDR; declarar número de testes.'],
-              ['Amostras pequenas', 'Análise de potência a priori; recolher dados suficientes.'],
-              ['Viés de publicação', 'Registar estudos nulos; meta-análises com funnel plots.'],
-              ['HARKing', 'Separar hipóteses a priori de explorações post-hoc.'],
-            ].map(([p, s], i) => (
-              <tr key={i}>
-                <td style={{ ...S.td, color, fontWeight: 600 }}>{p}</td>
-                <td style={S.td}>{s}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ─── 12. Síntese ─── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Os testes de hipóteses são uma ferramenta poderosa mas frequentemente mal aplicada. Os pontos
-          essenciais a reter:
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Conceito</th>
-              <th style={S.th}>Mensagem-chave</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['H₀ e H₁', 'Formular antes de ver os dados; H₀ é a hipótese que tentamos refutar.'],
-              ['p-value', 'Probabilidade dos dados (ou mais extremos) sob H₀ — não probabilidade de H₀.'],
-              ['α e β', 'Trade-off entre erro tipo I (α) e erro tipo II (β); n resolve o dilema.'],
-              ['Potência', '1 − β; planear a priori para potência ≥ 0,80.'],
-              ['Tamanho do efeito', 'Complementa o p-value; reportar sempre d, η² ou equivalente.'],
-              ['Teste t', 'Comparar 1 ou 2 médias; verificar normalidade e igualdade de variâncias.'],
-              ['χ²', 'Frequências observadas vs. esperadas em variáveis categóricas.'],
-              ['ANOVA + post-hoc', 'Comparar k médias controlando o erro familiar.'],
-              ['Não-paramétricos', 'Usar ranks quando os pressupostos paramétricos falham.'],
-              ['Boas práticas', 'Pré-registar, corrigir para múltiplas comparações, reportar tamanhos do efeito.'],
-            ].map(([c, m], i) => (
-              <tr key={i}>
-                <td style={{ ...S.td, fontWeight: 600, color }}>{c}</td>
-                <td style={S.td}>{m}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={{ ...S.highlight, marginTop: '1.5rem' }}>
-          <strong>Para levar:</strong> um p-value significativo não prova nada por si só. A inferência válida
-          requer hipóteses pré-especificadas, amostras adequadas, pressupostos verificados, tamanhos do efeito
-          reportados e replicação independente. Estatística é um instrumento de quantificação da incerteza —
-          não um oráculo de verdade.
-        </div>
-      </section>
     </div>
   );
 }

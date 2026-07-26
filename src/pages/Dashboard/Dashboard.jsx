@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import {
   Brain, MessageSquare, Eye, Database, BarChart3, Network, PieChart,
   Settings, Zap, ArrowRight, GitBranch, Layers, FlaskConical, Cpu,
-  Radio, Server, Code2, BookOpen, Calculator, Atom, HeartPulse,
-  Building2, Microscope, Factory, Landmark, Shield, Globe, Car,
-  ChevronRight, Bot, Cloud, Pickaxe, ShieldAlert, Leaf, Scale,
-  CircuitBoard, Dna, Grid3x3, Binary
+  Server, Code2, BookOpen, Calculator,
+  ChevronRight, Bot, Cloud, Pickaxe, Scale,
+  CircuitBoard, Grid3x3, Binary
 } from 'lucide-react';
 import { modules as laModules } from '../LinAlg/LinAlg.jsx';
 import { modules as calcModules } from '../Calculus/Calculus.jsx';
@@ -23,7 +22,6 @@ import { modules as nlpModules } from '../NLP/NLP.jsx';
 import { modules as cvModules } from '../CV/CV.jsx';
 import { modules as llmModules } from '../LLM/LLM.jsx';
 import { modules as xaiModules } from '../XAI/XAI.jsx';
-import { modules as dsmModules } from '../DSM/DSM.jsx';
 import { modules as dvModules } from '../DV/DV.jsx';
 import { modules as bdaModules } from '../BigDataAnalytics/BigDataAnalytics.jsx';
 import { modules as recModules } from '../RecommenderSystems/RecommenderSystems.jsx';
@@ -31,24 +29,10 @@ import { modules as cbdModules } from '../CloudBigData/CloudBigData.jsx';
 import { modules as bdmModules } from '../BigData/BigDataMgmt.jsx';
 import { modules as rdbModules } from '../RelDB/RelDB.jsx';
 import { modules as parModules } from '../Parallel/Parallel.jsx';
-import { modules as dtModules } from '../DigitalTwins/DigitalTwins.jsx';
-import { modules as aihModules } from '../AIHealth/AIHealth.jsx';
-import { modules as scModules } from '../SmartCities/SmartCities.jsx';
-import { modules as qaiModules } from '../QuantumAI/QuantumAI.jsx';
-import { modules as indModules } from '../Industry40/Industry40.jsx';
-import { modules as finModules } from '../FinTech/FinTech.jsx';
-import { modules as geoModules } from '../Geospatial/Geospatial.jsx';
-import { modules as avModules } from '../Autonomous/Autonomous.jsx';
-import { modules as cybModules } from '../Cybersecurity/Cybersecurity.jsx';
-import { modules as climModules } from '../ClimateAI/ClimateAI.jsx';
 import { modules as ethModules } from '../AIEthics/AIEthics.jsx';
 import { modules as edgeModules } from '../EdgeAI/EdgeAI.jsx';
-import { modules as bioModules } from '../Bioinformatics/Bioinformatics.jsx';
-import { modules as jusModules } from '../AIJustice/AIJustice.jsx';
 import { modules as logModules } from '../Logic/Logic.jsx';
 import { modules as audModules } from '../SpeechAudio/SpeechAudio.jsx';
-import { modules as gthModules } from '../GraphTheory/GraphTheory.jsx';
-import { modules as lorModules } from '../LogisticsOR/LogisticsOR.jsx';
 
 const CurveIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -74,90 +58,75 @@ const sections = [
   {
     id: 'fundamentos',
     label: 'Fundamentos',
-    color: '#f97316',
+    color: '#4a9eed',
     description: 'A matemática e programação por baixo de tudo',
     courses: [
       { id: 'linalg',     title: 'Linear Algebra',              subtitle: 'Vectores, matrizes, SVD e eigenvalues — a base do PCA e das redes neuronais.',        icon: Grid3x3,   count: laModules.length,   path: '/linalg' },
       { id: 'calculus',   title: 'Calculus',                    subtitle: 'Derivadas, gradientes, chain rule e integrais — o cálculo do gradient descent.',       icon: Calculator, count: calcModules.length, path: '/calculus' },
-      { id: 'statistics', title: 'Statistics for Data Science', subtitle: 'Distribuições, testes, regressão, inferência causal e séries temporais.',               icon: BarChart3,  count: stModules.length,   path: '/statistics' },
-      { id: 'pfds',  title: 'Programming for Data Science', subtitle: 'Python do zero ao avançado — OOP, FP, Pandas, NumPy, Scala e boas práticas.', icon: Code2,    count: pfdsModules.length, path: '/pfds' },
-      { id: 'logic',        title: 'Lógica & Raciocínio',              subtitle: 'Lógica formal, Prolog, ontologias, CSPs, raciocínio probabilístico e neuro-simbólico.',   icon: Binary, count: logModules.length,  path: '/logic' },
-      { id: 'graph-theory', title: 'Graph Theory & Network Science',   subtitle: 'Grafos, algoritmos clássicos, fluxo em redes, GNNs e redes complexas.',                   icon: Network,  count: gthModules.length,  path: '/graph-theory' },
+      { id: 'statistics', title: 'Statistics', subtitle: 'Distribuições, testes, regressão, inferência causal e séries temporais.',               icon: BarChart3,  count: stModules.length,   path: '/statistics' },
+      { id: 'pfds',  title: 'Programming', subtitle: 'Python do zero ao avançado — OOP, FP, Pandas, NumPy e boas práticas.', icon: Code2,    count: pfdsModules.length, path: '/pfds' },
+      { id: 'logic',        title: 'Logic',              subtitle: 'Lógica formal, Prolog, ontologias, CSPs, raciocínio probabilístico e neuro-simbólico.',   icon: Binary, count: logModules.length,  path: '/logic' },
     ]
   },
   {
-    id: 'modelos',
-    label: 'Modelos',
-    color: '#f97316',
-    description: 'Algoritmos de aprendizagem e arquitecturas de modelos',
+    id: 'ml-classico',
+    label: 'Machine Learning',
+    color: '#4a9eed',
+    description: 'Aprendizagem supervisionada, não-supervisionada, profunda, por reforço e computação evolutiva',
     courses: [
-      { id: 'ml',   title: 'ML & Supervised Learning',        subtitle: 'Regressão, classificação, SVM, árvores de decisão, ensembles e avaliação de modelos.', icon: Brain,     count: mlModules.length,    path: '/ml' },
+      { id: 'ml',   title: 'Supervised Learning',        subtitle: 'Regressão, classificação, SVM, árvores de decisão, ensembles e avaliação de modelos.', icon: Brain,     count: mlModules.length,    path: '/ml' },
+      { id: 'dm',    title: 'Unsupervised Learning', subtitle: 'Clustering, regras de associação, anomaly detection, LDA e Isolation Forest.', icon: Pickaxe, count: dmModules.length,  path: '/dm' },
       { id: 'dl',   title: 'Deep Learning',                  subtitle: 'Backprop, optimizadores, VAEs, GNNs, SSL, Federated Learning e DBNs.',           icon: Network,   count: dlModules.length,    path: '/dl' },
       { id: 'rl',   title: 'Reinforcement Learning',         subtitle: 'MDP, Q-Learning, DQN, Policy Gradient e Actor-Critic.',                         icon: GitBranch, count: rlModules.length,    path: '/rl' },
+      { id: 'cio',   title: 'Computational Intelligence for Optimization',    subtitle: 'Hill Climbing, Simulated Annealing, Algoritmos Genéticos e PSO.',                icon: CurveIcon, count: cioModules.length,   path: '/cio' },
       { id: 'nel',   title: 'Neural & Evolutionary Learning', subtitle: 'GP, GSGP, neuroevolução de pesos e topologia, NEAT e HyperNEAT.',               icon: NELIcon,   count: nelModules.length,   path: '/nel' },
-      { id: 'cio',   title: 'Computational Intelligence',    subtitle: 'Hill Climbing, Simulated Annealing, Algoritmos Genéticos e PSO.',                icon: CurveIcon, count: cioModules.length,   path: '/cio' },
-      { id: 'dm',    title: 'Unsupervised Learning & Data Mining', subtitle: 'Clustering, regras de associação, anomaly detection, LDA, ALS e Isolation Forest.', icon: Pickaxe, count: dmModules.length,  path: '/dm' },
-      { id: 'mlops', title: 'MLOps',                         subtitle: 'Desenvolvimento, deployment, monitorização de drift e model governance.',         icon: Settings,  count: mlopsModules.length, path: '/mlops' },
-      { id: 'ai-ethics', title: 'AI Ethics & Governance',   subtitle: 'EU AI Act, bias auditing, fairness, safety & alignment e desinformação.',          icon: Scale,     count: ethModules.length,   path: '/ai-ethics' },
     ]
   },
   {
-    id: 'ia-aplicada',
-    label: 'IA Aplicada',
-    color: '#f97316',
-    description: 'Linguagem natural, visão computacional, LLMs e explicabilidade',
+    id: 'visao-linguagem',
+    label: 'Visão & Linguagem',
+    color: '#4a9eed',
+    description: 'Modelos para imagem, texto e áudio',
     courses: [
-      { id: 'nlp', title: 'Natural Language Processing', subtitle: 'Text processing, sentiment, transformers e modelos de linguagem.',                      icon: MessageSquare, count: nlpModules.length, path: '/nlp' },
       { id: 'cv',  title: 'Computer Vision',             subtitle: 'Reconhecimento de imagem, detecção de objectos, segmentação e modelos generativos.',   icon: Eye,           count: cvModules.length,  path: '/cv' },
+      { id: 'nlp', title: 'Natural Language Processing', subtitle: 'Text processing, sentiment, transformers e modelos de linguagem.',                      icon: MessageSquare, count: nlpModules.length, path: '/nlp' },
       { id: 'llm', title: 'LLMs & Agents',               subtitle: 'Arquitectura de LLMs, fine-tuning, RAG, prompt engineering e sistemas multi-agente.',  icon: Bot,           count: llmModules.length, path: '/llm' },
-      { id: 'xai', title: 'Explainable AI',              subtitle: 'SHAP, LIME, feature importance, PDPs e responsible AI.',                               icon: FlaskConical,  count: xaiModules.length, path: '/xai' },
-      { id: 'dsm',          title: 'Data Stream Mining',    subtitle: 'Algoritmos online, concept drift, ADWIN e Hoeffding Trees.',                                                   icon: Radio,         count: dsmModules.length, path: '/dsm' },
       { id: 'speech-audio', title: 'Speech & Audio AI',    subtitle: 'ASR, TTS, síntese de voz, diarização, geração de música e deepfakes de voz.',                              icon: MessageSquare, count: audModules.length, path: '/speech-audio' },
     ]
   },
   {
-    id: 'analise-dados',
-    label: 'Análise de Dados',
-    color: '#f97316',
-    description: 'Visualização, análise em escala e sistemas de recomendação',
+    id: 'dados-engenharia',
+    label: 'Dados & Engenharia',
+    color: '#4a9eed',
+    description: 'Visualização, análise em escala, sistemas de recomendação e bases de dados',
     courses: [
+      { id: 'bigdata-mgmt',      title: 'Big Data Modelling & Management', subtitle: 'CAP theorem, NoSQL, Delta Lake, Medallion Architecture e qualidade de dados.',      icon: Database, count: bdmModules.length, path: '/bigdata-mgmt' },
+      { id: 'cloud-bigdata',     title: 'Cloud & Big Data',                subtitle: 'HDFS, MapReduce, Spark, Streaming, Databricks e deployment em AWS/GCP/Azure.',    icon: Cloud,    count: cbdModules.length, path: '/cloud-bigdata' },
       { id: 'dv',                title: 'Data Visualization',  subtitle: 'Matplotlib, Seaborn, Plotly, Altair, storytelling e plataformas de BI.',           icon: PieChart,  count: dvModules.length,  path: '/dv' },
       { id: 'bigdata-analytics', title: 'Big Data Analytics',  subtitle: 'MLlib, Graph Analytics, Airflow, MLflow, dbt e semantic layer.',                   icon: BarChart3, count: bdaModules.length, path: '/bigdata-analytics' },
       { id: 'recommender',       title: 'Recommender Systems', subtitle: 'Collaborative filtering, two-tower models, sistemas híbridos e avaliação em produção.', icon: Zap,   count: recModules.length, path: '/recommender' },
+      { id: 'reldb',    title: 'Relational Databases', subtitle: 'SQL avançado, indexação, transacções ACID, normalização e optimização de queries.', icon: Server, count: rdbModules.length, path: '/reldb' },
     ]
   },
   {
-    id: 'infraestrutura',
-    label: 'Infraestrutura',
-    color: '#f97316',
-    description: 'Sistemas distribuídos, pipelines e operações de ML',
+    id: 'mlops-producao',
+    label: 'MLOps & Sistemas em Produção',
+    color: '#4a9eed',
+    description: 'Deployment, monitorização e computação eficiente para ML em produção',
     courses: [
-      { id: 'cloud-bigdata',     title: 'Cloud & Big Data',                subtitle: 'HDFS, MapReduce, Spark, Streaming, Databricks e deployment em AWS/GCP/Azure.',    icon: Cloud,    count: cbdModules.length, path: '/cloud-bigdata' },
-      { id: 'bigdata-mgmt',      title: 'Big Data Modelling & Management', subtitle: 'CAP theorem, NoSQL, Delta Lake, Medallion Architecture e qualidade de dados.',      icon: Database, count: bdmModules.length, path: '/bigdata-mgmt' },
-      { id: 'reldb',    title: 'Relational Databases', subtitle: 'SQL avançado, indexação, transacções ACID, normalização e optimização de queries.', icon: Server, count: rdbModules.length, path: '/reldb' },
+      { id: 'mlops', title: 'MLOps',                         subtitle: 'Desenvolvimento, deployment, monitorização de drift e model governance.',         icon: Settings,  count: mlopsModules.length, path: '/mlops' },
       { id: 'parallel', title: 'Parallel & HPC',       subtitle: 'Threads, OpenMP, MPI, GPU computing com CUDA e frameworks distribuídos.',           icon: Cpu,    count: parModules.length, path: '/parallel' },
       { id: 'edge-ai',  title: 'Edge AI & TinyML',     subtitle: 'Inferência no dispositivo, modelos comprimidos, pruning, quantização e IoT.',         icon: CircuitBoard, count: edgeModules.length, path: '/edge-ai' },
     ]
   },
   {
-    id: 'dominios',
-    label: 'Aplicações',
-    color: '#f97316',
-    description: 'IA aplicada a sectores e desafios do mundo real',
+    id: 'etica-governanca',
+    label: 'Ética, Governança & Interpretabilidade',
+    color: '#4a9eed',
+    description: 'Explicabilidade, fairness, regulação e o impacto social da IA',
     courses: [
-      { id: 'digital-twins',   title: 'Digital Twins',           subtitle: 'Gémeos digitais, IoT, simulação em tempo real e plataformas de Digital Twin.',    icon: Microscope, count: dtModules.length,   path: '/digital-twins' },
-      { id: 'ai-health',       title: 'AI in Health',            subtitle: 'Medical imaging, EHR, drug discovery, NLP clínico e regulamentação.',             icon: HeartPulse, count: aihModules.length,  path: '/ai-health' },
-      { id: 'smart-cities',    title: 'Smart Cities',            subtitle: 'IoT urbano, mobilidade, energia, segurança e plataformas de cidade inteligente.',  icon: Building2,  count: scModules.length,   path: '/smart-cities' },
-      { id: 'quantum-ai',      title: 'Quantum AI',              subtitle: 'Qubits, algoritmos quânticos, Quantum ML e hardware quântico.',                   icon: Atom,       count: qaiModules.length,  path: '/quantum-ai' },
-      { id: 'industry40',      title: 'Industry 4.0',            subtitle: 'IIoT, predictive maintenance, robótica, supply chain e digital manufacturing.',   icon: Factory,    count: indModules.length,  path: '/industry40' },
-      { id: 'fintech',         title: 'FinTech & Finance',       subtitle: 'Algorithmic trading, credit scoring, NLP financeiro e compliance AML.',            icon: Landmark,   count: finModules.length,  path: '/fintech' },
-      { id: 'geospatial',      title: 'Geospatial Intelligence', subtitle: 'GIS, remote sensing, spatial ML, satellite imagery e visualização geoespacial.',   icon: Globe,      count: geoModules.length,  path: '/geospatial' },
-      { id: 'autonomous',     title: 'Autonomous Vehicles',     subtitle: 'Percepção, SLAM, LiDAR, planeamento de trajectória e simulação.',              icon: Car,          count: avModules.length,   path: '/autonomous' },
-      { id: 'cybersecurity',  title: 'Cybersecurity & AI',      subtitle: 'Detecção de intrusões, adversarial attacks, deepfakes e threat intelligence.',   icon: ShieldAlert,  count: cybModules.length,  path: '/cybersecurity' },
-      { id: 'climate-ai',     title: 'Climate & Sustainability', subtitle: 'Modelos climáticos, carbon footprint, ESG analytics e precisão agrícola.',       icon: Leaf,         count: climModules.length, path: '/climate-ai' },
-      { id: 'bioinformatics', title: 'Bioinformatics',           subtitle: 'Sequenciamento genómico, proteómica, ML em sequências biológicas e single-cell.', icon: Dna,          count: bioModules.length,  path: '/bioinformatics' },
-      { id: 'ai-justice',    title: 'AI & Justice',             subtitle: 'Policiamento preditivo, COMPAS, facial recognition, prática jurídica e accountability.',      icon: Scale,    count: jusModules.length,  path: '/ai-justice' },
-      { id: 'logistics-or', title: 'AI in Logistics & OR',    subtitle: 'Programação linear, VRP, scheduling, supply chain, RL para routing e last-mile delivery.',      icon: Factory,  count: lorModules.length,  path: '/logistics-or' },
+      { id: 'ai-ethics', title: 'AI Ethics & Governance',   subtitle: 'EU AI Act, bias auditing, fairness, safety & alignment e desinformação.',          icon: Scale,     count: ethModules.length,   path: '/ai-ethics' },
+      { id: 'xai', title: 'Explainable AI',              subtitle: 'SHAP, LIME, feature importance, PDPs e responsible AI.',                               icon: FlaskConical,  count: xaiModules.length, path: '/xai' },
     ]
   },
 ];
@@ -179,6 +148,7 @@ function CourseCard({ course, color, onClick }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        gridColumn: course.wide ? 'span 2' : undefined,
         background: hovered ? `${color}08` : 'var(--bg-secondary)',
         border: '1px solid var(--card-border)',
         borderTop: `3px solid ${hovered ? color : 'var(--card-border)'}`,

@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
 const S = {
   page:    { padding: '2rem 1rem', maxWidth: 860, margin: '0 auto' },
-  tag:     { display: 'inline-block', background: '#f97316', color: '#fff', fontSize: '0.72rem', fontWeight: 700, padding: '0.2rem 0.65rem', borderRadius: 20, marginBottom: '0.6rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag:     { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.72rem', fontWeight: 700, padding: '0.2rem 0.65rem', borderRadius: 20, marginBottom: '0.6rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1:      { fontSize: '1.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.4rem' },
   sub:     { fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.6 },
   section: { marginBottom: '2.5rem' },
-  h2:      { fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.9rem', paddingBottom: '0.4rem', borderBottom: '2px solid #f9731630' },
+  h2:      { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3:      { fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.5rem' },
   p:       { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.9rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.25rem', marginBottom: '1.25rem' },
   table:   { width: '100%', borderCollapse: 'collapse', fontSize: '0.88rem' },
-  th:      { background: 'rgba(249,115,22,0.12)', color: '#f97316', fontWeight: 700, padding: '0.55rem 0.75rem', textAlign: 'left', borderBottom: '2px solid rgba(249,115,22,0.2)' },
+  th:      { background: 'rgba(74,158,237,0.12)', color: '#4a9eed', fontWeight: 700, padding: '0.55rem 0.75rem', textAlign: 'left', borderBottom: '2px solid rgba(74,158,237,0.2)' },
   td:      { padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-secondary)', verticalAlign: 'top' },
-  code:    { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem 1.25rem', fontFamily: 'monospace', fontSize: '0.83rem', color: '#f97316', overflowX: 'auto', marginBottom: '1rem', whiteSpace: 'pre' },
+  code:    { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem 1.25rem', fontFamily: 'monospace', fontSize: '0.83rem', color: '#4a9eed', overflowX: 'auto', marginBottom: '1rem', whiteSpace: 'pre' },
 };
 
 /* ── Timeline ── */
@@ -31,11 +33,11 @@ const TimelineDiagram = () => (
   <div style={S.diagram}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Linha Temporal — Programação Evolutiva</p>
     <div style={{ position: 'relative', paddingLeft: '2rem' }}>
-      <div style={{ position: 'absolute', left: '0.6rem', top: 0, bottom: 0, width: 2, background: 'rgba(249,115,22,0.25)' }} />
+      <div style={{ position: 'absolute', left: '0.6rem', top: 0, bottom: 0, width: 2, background: 'rgba(74,158,237,0.25)' }} />
       {timeline.map((e, i) => (
         <div key={i} style={{ position: 'relative', marginBottom: '1.1rem', paddingLeft: '1.2rem' }}>
-          <div style={{ position: 'absolute', left: '-1.45rem', top: '0.3rem', width: 10, height: 10, borderRadius: '50%', background: '#f97316', border: '2px solid var(--bg-primary)' }} />
-          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#f97316', display: 'block' }}>{e.year} — {e.label}</span>
+          <div style={{ position: 'absolute', left: '-1.45rem', top: '0.3rem', width: 10, height: 10, borderRadius: '50%', background: '#4a9eed', border: '2px solid var(--bg-primary)' }} />
+          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#4a9eed', display: 'block' }}>{e.year} — {e.label}</span>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{e.desc}</span>
         </div>
       ))}
@@ -47,27 +49,34 @@ const TimelineDiagram = () => (
 const steps = [
   {
     title: '1. Inicialização',
-    color: '#f97316',
+    color: '#4a9eed',
     content: 'Criar população P de μ indivíduos. Cada indivíduo é um par (xᵢ, σᵢ) — vector de solução + vector de passos de mutação. σᵢ é inicializado com um valor heurístico (ex: 3).',
   },
   {
     title: '2. Avaliação',
-    color: '#f97316',
+    color: '#4a9eed',
     content: 'Calcular f(xᵢ) para cada indivíduo. Em EP não há selecção de pais — todos os μ indivíduos são pais.',
   },
   {
     title: '3. Mutação (Auto-adaptativa)',
-    color: '#f97316',
-    content: "Primeiro mutar σ, depois x:\n  σ'ᵢ = σᵢ · exp(τ' · N(0,1) + τ · Nᵢ(0,1))\n  x'ᵢ = xᵢ + σ'ᵢ · N(0,1)\nonde τ = 1/√(2n) e τ' = 1/√(2√n) são taxas de aprendizagem.",
+    color: '#4a9eed',
+    content: (
+      <>
+        Primeiro mutar σ, depois x:
+        <BlockMath math="\sigma_i' = \sigma_i \cdot \exp(\tau' \cdot N(0,1) + \tau \cdot N_i(0,1))" />
+        <BlockMath math="x_i' = x_i + \sigma_i' \cdot N(0,1)" />
+        onde <InlineMath math="\tau = 1/\sqrt{2n}" /> e <InlineMath math="\tau' = 1/\sqrt{2\sqrt{n}}" /> são taxas de aprendizagem.
+      </>
+    ),
   },
   {
     title: '4. Torneio Estocástico',
-    color: '#f97316',
+    color: '#4a9eed',
     content: 'Selecção por torneio probabilístico: cada indivíduo (original ou mutado) compete contra q oponentes aleatórios. O score é o número de vitórias. Os μ com maior score sobrevivem para a próxima geração.',
   },
   {
     title: '5. Critério de Paragem',
-    color: '#f97316',
+    color: '#4a9eed',
     content: 'Parar quando número máximo de avaliações é atingido, σᵢ converge para zero (sem variação), ou o fitness estagna durante k gerações.',
   },
 ];
@@ -86,7 +95,7 @@ const AlgorithmExplorer = () => {
         ))}
       </div>
       <div style={{ background: `${steps[sel].color}10`, border: `1px solid ${steps[sel].color}30`, borderRadius: 10, padding: '1rem 1.25rem' }}>
-        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.75, whiteSpace: 'pre-wrap', margin: 0, fontSize: '0.9rem' }}>{steps[sel].content}</p>
+        <div style={{ color: 'var(--text-secondary)', lineHeight: 1.75, whiteSpace: 'pre-wrap', margin: 0, fontSize: '0.9rem' }}>{steps[sel].content}</div>
       </div>
     </div>
   );
@@ -101,39 +110,39 @@ const MutationDiagram = () => (
     <svg viewBox="0 0 660 180" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-ep" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-          <path d="M0,0 L8,3 L0,6 Z" fill="#f97316"/>
+          <path d="M0,0 L8,3 L0,6 Z" fill="#4a9eed"/>
         </marker>
         <marker id="arr-ep-gr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-          <path d="M0,0 L8,3 L0,6 Z" fill="#f97316"/>
+          <path d="M0,0 L8,3 L0,6 Z" fill="#4a9eed"/>
         </marker>
       </defs>
 
       {/* Individual box */}
-      <rect x="20" y="55" width="140" height="70" rx="10" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="90" y="82" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Indivíduo</text>
+      <rect x="20" y="55" width="140" height="70" rx="10" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="90" y="82" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Indivíduo</text>
       <text x="90" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">x = (x₁,…,xₙ)</text>
-      <text x="90" y="116" textAnchor="middle" fill="#f97316" fontSize="10">σ = (σ₁,…,σₙ)</text>
+      <text x="90" y="116" textAnchor="middle" fill="#4a9eed" fontSize="10">σ = (σ₁,…,σₙ)</text>
 
       {/* Arrow 1: mutate σ */}
-      <line x1="160" y1="90" x2="250" y2="90" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr-ep)"/>
-      <text x="205" y="80" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">① mutar σ</text>
+      <line x1="160" y1="90" x2="250" y2="90" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr-ep)"/>
+      <text x="205" y="80" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">① mutar σ</text>
       <text x="205" y="106" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">σ' = σ·exp(τ·N(0,1))</text>
 
       {/* σ' box */}
-      <rect x="252" y="65" width="120" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="312" y="88" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">σ' actualizado</text>
+      <rect x="252" y="65" width="120" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="312" y="88" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">σ' actualizado</text>
       <text x="312" y="104" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">passos adaptativos</text>
 
       {/* Arrow 2: mutate x */}
-      <line x1="372" y1="90" x2="460" y2="90" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr-ep-gr)"/>
-      <text x="416" y="80" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">② mutar x</text>
+      <line x1="372" y1="90" x2="460" y2="90" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr-ep-gr)"/>
+      <text x="416" y="80" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">② mutar x</text>
       <text x="416" y="106" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">x' = x + σ'·N(0,1)</text>
 
       {/* x' box */}
-      <rect x="462" y="55" width="140" height="70" rx="10" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="532" y="82" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Filho</text>
+      <rect x="462" y="55" width="140" height="70" rx="10" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="532" y="82" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Filho</text>
       <text x="532" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">x' = (x'₁,…,x'ₙ)</text>
-      <text x="532" y="116" textAnchor="middle" fill="#f97316" fontSize="10">σ' = (σ'₁,…,σ'ₙ)</text>
+      <text x="532" y="116" textAnchor="middle" fill="#4a9eed" fontSize="10">σ' = (σ'₁,…,σ'ₙ)</text>
 
       {/* Note */}
       <text x="330" y="158" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Sem crossover — cada pai gera exactamente um filho por mutação</text>
@@ -144,7 +153,7 @@ const MutationDiagram = () => (
 /* ── Comparison explorer ── */
 const comparisons = [
   {
-    name: 'EP vs ES', color: '#f97316',
+    name: 'EP vs ES', color: '#4a9eed',
     rows: [
       ['Crossover', 'Nunca (EP) — opcional (ES)', 'ES usa crossover; EP rejeita-o por princípio'],
       ['Representação', 'Qualquer (EP) — vectores reais (ES)', 'EP foi concebido para FSMs e estruturas discretas'],
@@ -153,7 +162,7 @@ const comparisons = [
     ],
   },
   {
-    name: 'EP vs GA', color: '#f97316',
+    name: 'EP vs GA', color: '#4a9eed',
     rows: [
       ['Representação', 'Vectores reais / estruturas (EP) — binário / permutação (GA)', 'GA foi concebido para cadeias de bits'],
       ['Crossover', 'Ausente (EP) — central (GA)', 'Inversão de papéis: EP valoriza mutação, GA valoriza crossover'],
@@ -162,7 +171,7 @@ const comparisons = [
     ],
   },
   {
-    name: 'EP vs GP', color: '#f97316',
+    name: 'EP vs GP', color: '#4a9eed',
     rows: [
       ['Indivíduo', 'Vector numérico ou FSM (EP) — árvore sintáctica (GP)', 'Representações fundamentalmente distintas'],
       ['Crossover', 'Nenhum (EP) — subtree crossover (GP)', 'GP depende fortemente de crossover; EP não'],
@@ -221,14 +230,14 @@ const DistributionDiagram = () => (
 
       {/* Gaussian bell */}
       <path d="M 50,128 Q 100,128 130,100 Q 160,72 175,45 Q 190,25 215,20 Q 240,25 255,45 Q 270,72 300,100 Q 330,128 380,128"
-        fill="rgba(249,115,22,0.1)" stroke="#f97316" strokeWidth="2" fillRule="evenodd"/>
-      <text x="310" y="95" fill="#f97316" fontSize="9.5" fontWeight="700">Gaussiana</text>
+        fill="rgba(74,158,237,0.1)" stroke="#4a9eed" strokeWidth="2" fillRule="evenodd"/>
+      <text x="310" y="95" fill="#4a9eed" fontSize="9.5" fontWeight="700">Gaussiana</text>
       <text x="310" y="108" fill="var(--text-secondary)" fontSize="8">saltos pequenos, previsíveis</text>
 
       {/* Cauchy — wider tails */}
       <path d="M 50,126 Q 90,124 120,115 Q 150,105 175,80 Q 195,58 215,42 Q 235,58 255,80 Q 280,105 310,115 Q 340,124 380,126"
-        fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="6,3"/>
-      <text x="310" y="68" fill="#f97316" fontSize="9.5" fontWeight="700">Cauchy (Fast EP)</text>
+        fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="6,3"/>
+      <text x="310" y="68" fill="#4a9eed" fontSize="9.5" fontWeight="700">Cauchy (Fast EP)</text>
       <text x="310" y="81" fill="var(--text-secondary)" fontSize="8">caudas pesadas → saltos grandes</text>
 
       {/* Legend */}
@@ -244,13 +253,12 @@ export default function NEL9() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/nel" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' }}>
-          <ArrowLeft size={16} /> NEL — Neural and Evolutionary Learning
+          <ArrowLeft size={16} /> Voltar
         </Link>
 
         <div style={S.section}>
           <div style={S.tag}>MÓDULO 08</div>
           <h1 style={S.h1}>Programação Evolutiva</h1>
-          <p style={S.sub}>O paradigma evolutivo sem crossover — mutação auto-adaptativa, torneio estocástico e a filosofia de Fogel</p>
         </div>
 
         {/* Motivação */}
@@ -272,21 +280,6 @@ export default function NEL9() {
 
           <p style={S.p}>O torneio estocástico com q oponentes é chave: ao contrário do torneio determinístico do GA, aqui o número de vitórias é probabilístico — indivíduos fracos podem sobreviver ocasionalmente, mantendo diversidade. Tipicamente usa-se q = 10 (cada indivíduo compete contra 10 oponentes aleatórios do pool de 2μ).</p>
 
-          <div style={S.code}>{`# Pseudocódigo EP com auto-adaptação
-P = [(x_i, σ_i) for i in range(μ)]     # inicialização
-evaluate(P)
-
-while not termination():
-    Q = []
-    for (x, σ) in P:
-        σ' = σ * exp(τ' * N(0,1) + τ * N_i(0,1))  # mutar passos
-        x' = x + σ' * N(0,1)                        # mutar solução
-        Q.append((x', σ'))
-
-    evaluate(Q)
-    pool = P + Q                         # 2μ candidatos
-    wins = [q_tournament(i, pool, q=10) for i in range(2μ)]
-    P = select_top_μ(pool, wins)         # μ sobreviventes`}</div>
         </div>
 
         {/* Mutação */}
@@ -314,7 +307,7 @@ while not termination():
               ].map(([p, f, d], i) => (
                 <tr key={i}>
                   <td style={{ ...S.td, fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'monospace' }}>{p}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{f}</td>
+                  <td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed' }}>{f}</td>
                   <td style={S.td}>{d}</td>
                 </tr>
               ))}
@@ -366,42 +359,8 @@ while not termination():
             </tbody>
           </table>
         </div>
-
-        {/* Síntese */}
-        <div style={{ ...S.diagram, borderLeft: '4px solid #f97316' }}>
-          <h3 style={{ ...S.h3, color: '#f97316' }}>Síntese — o que distingue EP</h3>
-          <table style={S.table}>
-            <tbody>
-              {[
-                ['Sem crossover', 'Mutação é o único operador de variação — princípio filosófico, não limitação técnica'],
-                ['Auto-adaptação', 'σ evolui junto com x — o algoritmo aprende o seu próprio passo de mutação'],
-                ['Torneio estocástico', 'Selecção probabilística sobre pool de 2μ — mantém diversidade, evita convergência prematura'],
-                ['Generalidade', 'Funciona com qualquer representação onde se possa definir uma mutação razoável'],
-                ['Ligação à neuroevolução', 'EP foi precursor directo de OpenAI ES e outros métodos de perturbação de pesos de redes'],
-              ].map(([k, v], i) => (
-                <tr key={i}>
-                  <td style={{ ...S.td, fontWeight: 700, color: '#f97316', whiteSpace: 'nowrap', width: '30%' }}>{k}</td>
-                  <td style={S.td}>{v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>7. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Motivação e Filosofia</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>O Algoritmo</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Mutação Auto-Adaptativa</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Fast EP — Distribuição de Cauchy</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>EP vs Outros Paradigmas</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Aplicações e Quando Usar EP</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,11 +15,11 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
-  svgWrap: { background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(249,115,22,0.25)', borderRadius: 12, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
+  svgWrap: { background: 'rgba(74,158,237,0.06)', border: '1px solid rgba(74,158,237,0.25)', borderRadius: 12, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
 };
 
 // ── SVG 1: DataFrame & Series structure ───────────────────────────────────────
@@ -35,7 +35,7 @@ function SvgDataFrame() {
       {cols.map((c, ci) => (
         <g key={c}>
           <rect x={10 + ci * cellW} y={26} width={cellW} height={cellH}
-            fill={ci === 0 ? 'rgba(249,115,22,0.25)' : 'rgba(249,115,22,0.08)'}
+            fill={ci === 0 ? 'rgba(74,158,237,0.25)' : 'rgba(74,158,237,0.08)'}
             stroke={color} strokeWidth="1" />
           <text x={10 + ci * cellW + cellW / 2} y={26 + cellH / 2 + 5}
             textAnchor="middle" fill={ci === 0 ? color : 'var(--text-primary)'} fontWeight="700">{c}</text>
@@ -46,7 +46,7 @@ function SvgDataFrame() {
         row.map((val, ci) => (
           <g key={ri + '-' + ci}>
             <rect x={10 + ci * cellW} y={58 + ri * cellH} width={cellW} height={cellH}
-              fill={ci === 0 ? 'rgba(249,115,22,0.15)' : 'rgba(0,0,0,0)'}
+              fill={ci === 0 ? 'rgba(74,158,237,0.15)' : 'rgba(0,0,0,0)'}
               stroke="var(--text-secondary)" strokeWidth="1" />
             <text x={10 + ci * cellW + cellW / 2} y={58 + ri * cellH + cellH / 2 + 5}
               textAnchor="middle" fill={ci === 0 ? color : 'var(--text-primary)'}>{val}</text>
@@ -62,7 +62,7 @@ function SvgDataFrame() {
       {['Index', 'nome'].map((c, ci) => (
         <g key={'s' + c}>
           <rect x={370 + ci * cellW} y={26} width={cellW} height={cellH}
-            fill={ci === 0 ? 'rgba(249,115,22,0.25)' : 'rgba(249,115,22,0.08)'}
+            fill={ci === 0 ? 'rgba(74,158,237,0.25)' : 'rgba(74,158,237,0.08)'}
             stroke={color} strokeWidth="1" />
           <text x={370 + ci * cellW + cellW / 2} y={26 + cellH / 2 + 5}
             textAnchor="middle" fill={ci === 0 ? color : 'var(--text-primary)'} fontWeight="700">{c}</text>
@@ -72,7 +72,7 @@ function SvgDataFrame() {
         row.map((val, ci) => (
           <g key={'sv' + ri + ci}>
             <rect x={370 + ci * cellW} y={58 + ri * cellH} width={cellW} height={cellH}
-              fill={ci === 0 ? 'rgba(249,115,22,0.15)' : 'rgba(0,0,0,0)'}
+              fill={ci === 0 ? 'rgba(74,158,237,0.15)' : 'rgba(0,0,0,0)'}
               stroke="var(--text-secondary)" strokeWidth="1" />
             <text x={370 + ci * cellW + cellW / 2} y={58 + ri * cellH + cellH / 2 + 5}
               textAnchor="middle" fill={ci === 0 ? color : 'var(--text-primary)'}>{val}</text>
@@ -97,15 +97,16 @@ function SvgIndexing() {
   const hilightLoc = (ci, ri) => ci === 1 && ri === 1; // loc[1,'nome']
   const hilightIloc = (ci, ri) => ri >= 0 && ri <= 1 && ci >= 0 && ci <= 1; // iloc[:2,:2]
   const hilightBool = (ri) => ri === 2 || ri === 3; // age&gt;28
+  const locColor = '#4a9eed', ilocColor = '#7dd3fc', boolColor = '#1d4ed8';
   return (
-    <svg width="100%" viewBox="0 0 580 240" fontFamily="monospace" fontSize="11">
+    <svg width="100%" viewBox="0 0 580 270" fontFamily="monospace" fontSize="11">
       <text x="8" y="16" fontWeight="700" fill="var(--text-primary)" fontSize="12">Mesmo DataFrame — três formas de selecionar</text>
 
       {/* Table */}
       {cols.map((c, ci) => (
         <g key={'ih' + c}>
           <rect x={8 + ci * cellW} y={24} width={cellW} height={cellH}
-            fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1" />
+            fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1" />
           <text x={8 + ci * cellW + cellW / 2} y={24 + cellH / 2 + 5}
             textAnchor="middle" fill={color} fontWeight="700">{c}</text>
         </g>
@@ -115,7 +116,7 @@ function SvgIndexing() {
           const isLoc = hilightLoc(ci, ri);
           const isIloc = hilightIloc(ci, ri);
           const isBool = hilightBool(ri);
-          const bg = isLoc ? 'rgba(249,115,22,0.45)' : isIloc ? 'rgba(249,115,22,0.10)' : isBool ? 'rgba(16,185,129,0.18)' : 'rgba(0,0,0,0)';
+          const bg = isLoc ? `${locColor}73` : isIloc ? `${ilocColor}40` : isBool ? `${boolColor}30` : 'rgba(0,0,0,0)';
           return (
             <g key={'ir' + ri + ci}>
               <rect x={8 + ci * cellW} y={54 + ri * cellH} width={cellW} height={cellH}
@@ -128,19 +129,22 @@ function SvgIndexing() {
       )}
 
       {/* Legends */}
-      <rect x="310" y="60" width="14" height="14" fill="rgba(249,115,22,0.45)" stroke={color} strokeWidth="1" />
+      <rect x="310" y="60" width="14" height="14" fill={`${locColor}73`} stroke={locColor} strokeWidth="1" />
       <text x="330" y="72" fill="var(--text-primary)" fontSize="11">.loc[1, 'nome'] — por rótulo</text>
 
-      <rect x="310" y="82" width="14" height="14" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+      <rect x="310" y="82" width="14" height="14" fill={`${ilocColor}40`} stroke={ilocColor} strokeWidth="1" />
       <text x="330" y="94" fill="var(--text-primary)" fontSize="11">.iloc[:2, :2] — por posição</text>
 
-      <rect x="310" y="104" width="14" height="14" fill="rgba(16,185,129,0.18)" stroke="#f97316" strokeWidth="1" />
+      <rect x="310" y="104" width="14" height="14" fill={`${boolColor}30`} stroke={boolColor} strokeWidth="1" />
       <text x="330" y="116" fill="var(--text-primary)" fontSize="11">df[df['idade'] &gt; 28] — bool</text>
 
       <text x="310" y="145" fill="var(--text-secondary)" fontSize="10">.at[1,'nome'] → valor único (rótulo)</text>
       <text x="310" y="160" fill="var(--text-secondary)" fontSize="10">.iat[1,1]   → valor único (posição)</text>
 
-      <text x="8" y="218" fill="var(--text-secondary)" fontSize="10">loc — rótulo; iloc — posição inteira; bool indexing — expressão booleana; at/iat — acesso escalar eficiente</text>
+      <text x="8" y="235" fill="var(--text-secondary)" fontSize="10">
+        <tspan x="8" dy="0">loc — rótulo; iloc — posição inteira;</tspan>
+        <tspan x="8" dy="14">bool indexing — expressão booleana; at/iat — acesso escalar eficiente</tspan>
+      </text>
     </svg>
   );
 }
@@ -158,11 +162,11 @@ function SvgCleaning() {
       {steps.map((s, i) => (
         <g key={i}>
           <rect x={s.x} y={30} width={120} height={90} rx="8"
-            fill={i === 0 ? 'rgba(249,115,22,0.10)' : i === steps.length - 1 ? 'rgba(249,115,22,0.08)' : 'rgba(249,115,22,0.08)'}
-            stroke={i === 0 ? '#f97316' : i === steps.length - 1 ? '#f97316' : color}
+            fill={i === 0 ? 'rgba(74,158,237,0.10)' : i === steps.length - 1 ? 'rgba(74,158,237,0.08)' : 'rgba(74,158,237,0.08)'}
+            stroke={i === 0 ? '#4a9eed' : i === steps.length - 1 ? '#4a9eed' : color}
             strokeWidth="1.5" />
           <text x={s.x + 60} y={58} textAnchor="middle" fontWeight="700"
-            fill={i === 0 ? '#f97316' : i === steps.length - 1 ? '#f97316' : color} fontSize="11">
+            fill={i === 0 ? '#4a9eed' : i === steps.length - 1 ? '#4a9eed' : color} fontSize="11">
             {s.label.split('\n').map((line, li) => (
               <tspan key={li} x={s.x + 60} dy={li === 0 ? 0 : 14}>{line}</tspan>
             ))}
@@ -173,10 +177,10 @@ function SvgCleaning() {
           ))}
           {i < steps.length - 1 && (
             <g>
-              <line x1={s.x + 122} y1={70} x2={s.x + 148} y2={70}
-                stroke="var(--text-secondary)" strokeWidth="1.5" />
-              <polygon points={`${s.x + 148},65 ${s.x + 158},70 ${s.x + 148},75`}
-                fill="var(--text-secondary)" />
+              <line x1={s.x + 122} y1={70} x2={s.x + 142} y2={70}
+                stroke="#4a9eed" strokeWidth="1.5" />
+              <polygon points={`${s.x + 142},65 ${s.x + 150},70 ${s.x + 142},75`}
+                fill="#4a9eed" />
             </g>
           )}
         </g>
@@ -196,7 +200,7 @@ function SvgTransform() {
       <text x="10" y="18" fill={color} fontWeight="700" fontSize="13">Series.map / apply</text>
       {[10, 20, 30].map((v, i) => (
         <g key={i}>
-          <rect x="10" y={28 + i * 32} width="60" height="28" fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1" />
+          <rect x="10" y={28 + i * 32} width="60" height="28" fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1" />
           <text x="40" y={28 + i * 32 + 18} textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       ))}
@@ -205,12 +209,12 @@ function SvgTransform() {
       <text x="80" y="126" fill="var(--text-secondary)" fontSize="11">x * 2)</text>
       {[20, 40, 60].map((v, i) => (
         <g key={i}>
-          <rect x="160" y={28 + i * 32} width="60" height="28" fill="rgba(16,185,129,0.12)" stroke="#f97316" strokeWidth="1" />
+          <rect x="160" y={28 + i * 32} width="60" height="28" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1" />
           <text x="190" y={28 + i * 32 + 18} textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       ))}
-      <line x1="72" y1="70" x2="158" y2="70" stroke="var(--text-secondary)" strokeWidth="1.5" strokeDasharray="4 2" />
-      <polygon points="156,66 164,70 156,74" fill="var(--text-secondary)" />
+      <line x1="72" y1="70" x2="152" y2="70" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4 2" />
+      <polygon points="152,66 160,70 152,74" fill="#4a9eed" />
 
       {/* DataFrame apply */}
       <text x="280" y="18" fill={color} fontWeight="700" fontSize="13">DataFrame.apply</text>
@@ -218,7 +222,7 @@ function SvgTransform() {
         [1, 2, 3].map((val, ri) => (
           <g key={col + ri}>
             <rect x={280 + ci * 60} y={28 + ri * 32} width="56" height="28"
-              fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1" />
+              fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1" />
             <text x={280 + ci * 60 + 28} y={28 + ri * 32 + 18} textAnchor="middle" fill="var(--text-primary)">{val * (ci + 1)}</text>
           </g>
         ))
@@ -227,12 +231,12 @@ function SvgTransform() {
       <text x="406" y="94" fill="var(--text-secondary)" fontSize="10">sum, axis=0)</text>
       {[6, 12].map((v, ci) => (
         <g key={'res' + ci}>
-          <rect x={460 + ci * 60} y={54} width="56" height="28" fill="rgba(16,185,129,0.12)" stroke="#f97316" strokeWidth="1" />
+          <rect x={460 + ci * 60} y={54} width="56" height="28" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1" />
           <text x={460 + ci * 60 + 28} y={72} textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       ))}
-      <line x1="400" y1="70" x2="458" y2="70" stroke="var(--text-secondary)" strokeWidth="1.5" strokeDasharray="4 2" />
-      <polygon points="456,66 464,70 456,74" fill="var(--text-secondary)" />
+      <line x1="400" y1="70" x2="452" y2="70" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4 2" />
+      <polygon points="452,66 460,70 452,74" fill="#4a9eed" />
       <text x="400" y="160" fill="var(--text-secondary)" fontSize="10" textAnchor="middle">axis=0 → por coluna | axis=1 → por linha</text>
     </svg>
   );
@@ -247,46 +251,46 @@ function SvgGroupBy() {
       {[['A', 10], ['B', 20], ['A', 30], ['B', 40], ['A', 50]].map(([g, v], i) => (
         <g key={i}>
           <rect x="10" y={24 + i * 28} width="80" height="24"
-            fill={g === 'A' ? 'rgba(249,115,22,0.15)' : 'rgba(249,115,22,0.10)'}
-            stroke={g === 'A' ? color : '#f97316'} strokeWidth="1" />
+            fill={g === 'A' ? 'rgba(74,158,237,0.15)' : 'rgba(74,158,237,0.10)'}
+            stroke={g === 'A' ? color : '#4a9eed'} strokeWidth="1" />
           <text x="50" y={24 + i * 28 + 16} textAnchor="middle" fill="var(--text-primary)">{g} | {v}</text>
         </g>
       ))}
 
       {/* Arrow */}
-      <line x1="96" y1="90" x2="130" y2="90" stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <polygon points="128,86 136,90 128,94" fill="var(--text-secondary)" />
+      <line x1="96" y1="90" x2="124" y2="90" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="124,86 132,90 124,94" fill="#4a9eed" />
 
       {/* Groups */}
       <text x="138" y="18" fill={color} fontWeight="700" fontSize="12">APPLY</text>
       {[['A', [10, 30, 50]], ['B', [20, 40]]].map(([g, vals], gi) => (
         <g key={g}>
-          <text x={138 + gi * 120} y={36} fill={g === 'A' ? color : '#f97316'} fontWeight="700" fontSize="11">Grupo {g}</text>
+          <text x={138 + gi * 120} y={36} fill={g === 'A' ? color : '#4a9eed'} fontWeight="700" fontSize="11">Grupo {g}</text>
           {vals.map((v, vi) => (
             <g key={vi}>
               <rect x={138 + gi * 120} y={42 + vi * 26} width="90" height="22"
-                fill={g === 'A' ? 'rgba(249,115,22,0.12)' : 'rgba(249,115,22,0.10)'}
-                stroke={g === 'A' ? color : '#f97316'} strokeWidth="1" />
+                fill={g === 'A' ? 'rgba(74,158,237,0.12)' : 'rgba(74,158,237,0.10)'}
+                stroke={g === 'A' ? color : '#4a9eed'} strokeWidth="1" />
               <text x={138 + gi * 120 + 45} y={42 + vi * 26 + 15} textAnchor="middle" fill="var(--text-primary)">{v}</text>
             </g>
           ))}
           <text x={138 + gi * 120 + 45} y={130} textAnchor="middle" fill="var(--text-secondary)" fontSize="10">mean()</text>
           <rect x={138 + gi * 120} y={136} width="90" height="22"
-            fill="rgba(16,185,129,0.15)" stroke="#f97316" strokeWidth="1" />
+            fill="rgba(74,158,237,0.20)" stroke="#4a9eed" strokeWidth="1" />
           <text x={138 + gi * 120 + 45} y={151} textAnchor="middle" fill="var(--text-primary)">{g === 'A' ? 30 : 30}</text>
         </g>
       ))}
 
       {/* Arrow */}
-      <line x1="378" y1="97" x2="412" y2="97" stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <polygon points="410,93 418,97 410,101" fill="var(--text-secondary)" />
+      <line x1="378" y1="97" x2="406" y2="97" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="406,93 414,97 406,101" fill="#4a9eed" />
 
       {/* Result */}
       <text x="420" y="18" fill={color} fontWeight="700" fontSize="12">COMBINE</text>
       {[['A', 30], ['B', 30]].map(([g, v], i) => (
         <g key={g}>
           <rect x="420" y={71 + i * 28} width="100" height="24"
-            fill="rgba(16,185,129,0.12)" stroke="#f97316" strokeWidth="1" />
+            fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1" />
           <text x="470" y={71 + i * 28 + 16} textAnchor="middle" fill="var(--text-primary)">{g} → {v}</text>
         </g>
       ))}
@@ -301,10 +305,10 @@ function SvgGroupBy() {
 // ── SVG 6: Join types ─────────────────────────────────────────────────────────
 function SvgJoins() {
   const joinTypes = [
-    { label: 'INNER', desc: 'interseção', leftFill: 'rgba(249,115,22,0.1)', rightFill: 'rgba(249,115,22,0.1)', midFill: 'rgba(249,115,22,0.5)' },
-    { label: 'LEFT', desc: 'tudo da esq.', leftFill: 'rgba(249,115,22,0.10)', rightFill: 'rgba(0,0,0,0)', midFill: 'rgba(249,115,22,0.10)' },
-    { label: 'RIGHT', desc: 'tudo da dir.', leftFill: 'rgba(0,0,0,0)', rightFill: 'rgba(16,185,129,0.35)', midFill: 'rgba(16,185,129,0.35)' },
-    { label: 'OUTER', desc: 'união total', leftFill: 'rgba(245,158,11,0.3)', rightFill: 'rgba(245,158,11,0.3)', midFill: 'rgba(245,158,11,0.3)' },
+    { label: 'INNER', desc: 'interseção', leftFill: 'rgba(74,158,237,0.1)', rightFill: 'rgba(74,158,237,0.1)', midFill: 'rgba(74,158,237,0.5)' },
+    { label: 'LEFT', desc: 'tudo da esq.', leftFill: 'rgba(74,158,237,0.4)', rightFill: 'rgba(0,0,0,0)', midFill: 'rgba(74,158,237,0.4)' },
+    { label: 'RIGHT', desc: 'tudo da dir.', leftFill: 'rgba(0,0,0,0)', rightFill: 'rgba(74,158,237,0.4)', midFill: 'rgba(74,158,237,0.4)' },
+    { label: 'OUTER', desc: 'união total', leftFill: 'rgba(2,132,199,0.3)', rightFill: 'rgba(2,132,199,0.3)', midFill: 'rgba(2,132,199,0.3)' },
   ];
   return (
     <svg width="100%" viewBox="0 0 600 180" fontFamily="sans-serif" fontSize="12">
@@ -315,7 +319,7 @@ function SvgJoins() {
             <text x={ox + 62} y="16" textAnchor="middle" fill={color} fontWeight="700" fontSize="12">{j.label}</text>
             <text x={ox + 62} y="28" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">{j.desc}</text>
             {/* Left circle */}
-            <ellipse cx={ox + 42} cy={90} rx="40" ry="50" fill={j.leftFill} stroke="#f97316" strokeWidth="1.5" />
+            <ellipse cx={ox + 42} cy={90} rx="40" ry="50" fill={j.leftFill} stroke="#4a9eed" strokeWidth="1.5" />
             {/* Right circle */}
             <ellipse cx={ox + 82} cy={90} rx="40" ry="50" fill={j.rightFill} stroke={color} strokeWidth="1.5" />
             {/* Mid overlay */}
@@ -343,7 +347,7 @@ function SvgPivot() {
           {row.map((cell, ci) => (
             <g key={ci}>
               <rect x={10 + ci * 70} y={24 + ri * 28} width="68" height="26"
-                fill={ri === 0 ? 'rgba(249,115,22,0.15)' : 'rgba(0,0,0,0)'}
+                fill={ri === 0 ? 'rgba(74,158,237,0.15)' : 'rgba(0,0,0,0)'}
                 stroke={ri === 0 ? color : 'var(--card-border)'} strokeWidth="1" />
               <text x={10 + ci * 70 + 34} y={24 + ri * 28 + 17} textAnchor="middle"
                 fill={ri === 0 ? color : 'var(--text-primary)'} fontWeight={ri === 0 ? '700' : '400'}>{cell}</text>
@@ -354,8 +358,8 @@ function SvgPivot() {
 
       {/* Arrow */}
       <text x="248" y="90" fill="var(--text-secondary)" fontSize="10">pivot_table</text>
-      <line x1="240" y1="100" x2="300" y2="100" stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <polygon points="298,96 306,100 298,104" fill="var(--text-secondary)" />
+      <line x1="240" y1="100" x2="294" y2="100" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="294,96 302,100 294,104" fill="#4a9eed" />
 
       {/* Wide format */}
       <text x="318" y="18" fill={color} fontWeight="700" fontSize="12">Formato Wide</text>
@@ -364,10 +368,10 @@ function SvgPivot() {
           {row.map((cell, ci) => (
             <g key={ci}>
               <rect x={318 + ci * 80} y={24 + ri * 32} width="78" height="28"
-                fill={ri === 0 ? 'rgba(249,115,22,0.15)' : ci > 0 ? 'rgba(16,185,129,0.1)' : 'rgba(0,0,0,0)'}
-                stroke={ri === 0 ? color : ci > 0 ? '#f97316' : 'var(--card-border)'} strokeWidth="1" />
+                fill={ri === 0 ? 'rgba(74,158,237,0.15)' : ci > 0 ? 'rgba(74,158,237,0.20)' : 'rgba(0,0,0,0)'}
+                stroke={ri === 0 ? color : ci > 0 ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1" />
               <text x={318 + ci * 80 + 39} y={24 + ri * 32 + 18} textAnchor="middle"
-                fill={ri === 0 ? color : ci > 0 ? '#f97316' : 'var(--text-primary)'}
+                fill={ri === 0 ? color : ci > 0 ? '#4a9eed' : 'var(--text-primary)'}
                 fontWeight={ri === 0 ? '700' : '400'}>{cell}</text>
             </g>
           ))}
@@ -407,7 +411,7 @@ function SvgTimeSeries() {
       {monthly.map((v, i) => (
         <rect key={i} x={330 + i * 110} y={24 + h - (v / maxD) * h}
           width="90" height={(v / maxD) * h}
-          fill="#f97316" opacity="0.75" />
+          fill="#4a9eed" opacity="0.75" />
       ))}
       <line x1="330" y1={24 + h} x2={550} y2={24 + h} stroke="var(--text-secondary)" strokeWidth="1" />
 
@@ -431,7 +435,7 @@ function SvgPipeline() {
         return (
           <g key={s}>
             <rect x={x} y="30" width="100" height="50" rx="8"
-              fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1.5" />
+              fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1.5" />
             <text x={x + 50} y="60" textAnchor="middle" fontWeight="700" fill={color} fontSize="11">{s}</text>
             {i < steps.length - 1 && (
               <g>
@@ -452,12 +456,12 @@ function SvgPipeline() {
 // ── SVG 10: Workflow synthesis ────────────────────────────────────────────────
 function SvgWorkflow() {
   const steps = [
-    { label: 'Load', sub: 'read_csv\nread_excel', c: '#f97316' },
+    { label: 'Load', sub: 'read_csv\nread_excel', c: '#4a9eed' },
     { label: 'Inspect', sub: 'head\ninfo\ndescribe', c: color },
-    { label: 'Clean', sub: 'fillna\ndropna\nastype', c: '#f97316' },
+    { label: 'Clean', sub: 'fillna\ndropna\nastype', c: '#4a9eed' },
     { label: 'Transform', sub: 'apply\nmap\nrename', c: color },
-    { label: 'Aggregate', sub: 'groupby\npivot', c: '#f97316' },
-    { label: 'Export', sub: 'to_csv\nto_excel', c: '#f97316' },
+    { label: 'Aggregate', sub: 'groupby\npivot', c: '#4a9eed' },
+    { label: 'Export', sub: 'to_csv\nto_excel', c: '#4a9eed' },
   ];
   return (
     <svg width="100%" viewBox="0 0 600 140" fontFamily="sans-serif" fontSize="11">
@@ -493,13 +497,8 @@ export default function PfDS6() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <div style={S.tag}>MÓDULO 06</div>
+      <div style={S.tag}>MÓDULO 07</div>
       <h1 style={S.h1}>Pandas para Data Science</h1>
-      <p style={S.lead}>
-        Pandas é a biblioteca de eleição para manipulação e análise de dados tabulares em Python.
-        Este módulo cobre Series e DataFrame, indexação, limpeza, transformações, GroupBy,
-        merges, pivot tables, strings, time series, performance e boas práticas de pipeline.
-      </p>
 
       {/* ── 1. DataFrame e Series ─────────────────────────────────────────── */}
       <div style={S.section}>
@@ -1081,66 +1080,8 @@ resultado = (
         </div>
       </div>
 
-      <hr style={S.divider} />
 
-      {/* ── 12. Síntese ──────────────────────────────────────────────────── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>12. Síntese</h2>
-        <p style={S.p}>
-          Fluxo típico de um projeto de análise de dados com Pandas: do carregamento à exportação.
-        </p>
-        <div style={S.svgWrap}><SvgWorkflow /></div>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Fase</th>
-              <th style={S.th}>Operações principais</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Load', 'read_csv, read_excel, read_json, read_sql'],
-              ['Inspect', 'head, tail, info, describe, value_counts, shape, dtypes'],
-              ['Clean', 'isna, fillna, dropna, drop_duplicates, astype, replace'],
-              ['Index / Select', 'loc, iloc, boolean indexing, at, iat, query'],
-              ['Transform', 'apply, map, applymap, assign, rename, drop, str.*'],
-              ['Aggregate', 'groupby + agg/transform, pivot_table, crosstab'],
-              ['Combine', 'merge (inner/left/right/outer), concat, join'],
-              ['Time Series', 'to_datetime, resample, rolling, shift, diff'],
-              ['Performance', 'vectorized ops, categorical dtype, chunking, eval'],
-              ['Export', 'to_csv, to_excel, to_json, to_sql, to_parquet'],
-            ].map(([fase, ops]) => (
-              <tr key={fase}>
-                <td style={{ ...S.td, fontWeight: 600, color }}>{fase}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{ops}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.highlight}>
-          <p style={S.p}><strong>Regras de ouro:</strong></p>
-          <p style={S.p}>1. Nunca iterar com for sobre linhas — usar operações vetorizadas.</p>
-          <p style={S.p}>2. Preferir <code>.assign()</code> a atribuição direta dentro de chains.</p>
-          <p style={S.p}>3. Usar <code>category</code> dtype para colunas com baixa cardinalidade.</p>
-          <p style={S.p}>4. Verificar NaN após merges com <code>.isna().sum()</code>.</p>
-          <p style={{ ...S.p, marginBottom: 0 }}>5. Preferir <code>.loc[]</code> e <code>.iloc[]</code> explícitos a indexação ambígua.</p>
-        </div>
-      </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>13. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>DataFrame e Series</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Indexação e Seleção</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Limpeza de Dados</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Transformações</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>GroupBy — Split-Apply-Combine</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Merge e Join</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Pivot Tables e Crosstab</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

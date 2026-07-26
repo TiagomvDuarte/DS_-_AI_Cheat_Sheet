@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -36,18 +36,18 @@ const BayesDerivationDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
       </defs>
-      <rect x="20" y="15" width="260" height="40" rx="6" fill={`${color}15`} stroke="#f97316" strokeWidth="1.2" />
-      <text x="150" y="39" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">P(A ∩ B) = P(A) · P(B|A)</text>
+      <rect x="20" y="15" width="260" height="40" rx="6" fill={`${color}15`} stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="150" y="39" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">P(A ∩ B) = P(A) · P(B|A)</text>
 
-      <rect x="300" y="15" width="260" height="40" rx="6" fill={`${color}15`} stroke="#f97316" strokeWidth="1.2" />
-      <text x="430" y="39" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">P(A ∩ B) = P(B) · P(A|B)</text>
+      <rect x="300" y="15" width="260" height="40" rx="6" fill={`${color}15`} stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="430" y="39" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">P(A ∩ B) = P(B) · P(A|B)</text>
 
       <line x1="170" y1="55" x2="270" y2="92" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrB1)" />
       <line x1="410" y1="55" x2="310" y2="92" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrB1)" />
       <text x="290" y="75" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">mesma intersecção P(A ∩ B)</text>
 
-      <rect x="90" y="95" width="400" height="40" rx="6" fill={`${color}15`} stroke="#f97316" strokeWidth="1.2" />
-      <text x="290" y="119" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">P(A) · P(B|A) = P(B) · P(A|B)</text>
+      <rect x="90" y="95" width="400" height="40" rx="6" fill={`${color}15`} stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="290" y="119" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">P(A) · P(B|A) = P(B) · P(A|B)</text>
 
       <line x1="290" y1="135" x2="290" y2="172" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrB1)" />
       <text x="370" y="158" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">isolar P(A|B)</text>
@@ -126,11 +126,11 @@ const GaussianDiagram = () => {
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Distribuições Gaussianas por Classe (atributo "Temperatura")</p>
       <svg viewBox={`0 0 ${w} ${h}`} style={{ maxWidth: '100%', height: 'auto' }}>
         <line x1={pad} y1={h - pad} x2={w - pad} y2={h - pad} stroke="var(--text-secondary)" strokeWidth="1" />
-        <path d={makePath(70, 5, 900)} fill="none" stroke="#f97316" strokeWidth="2.5" />
+        <path d={makePath(70, 5, 900)} fill="none" stroke="#4a9eed" strokeWidth="2.5" />
         <path d={makePath(80, 6, 900)} fill="none" stroke={color} strokeWidth="2.5" />
-        <line x1={xToPx(70)} y1={h - pad} x2={xToPx(70)} y2={h - pad + 6} stroke="#f97316" strokeWidth="2" />
+        <line x1={xToPx(70)} y1={h - pad} x2={xToPx(70)} y2={h - pad + 6} stroke="#4a9eed" strokeWidth="2" />
         <line x1={xToPx(80)} y1={h - pad} x2={xToPx(80)} y2={h - pad + 6} stroke={color} strokeWidth="2" />
-        <text x={xToPx(70)} y={h - 6} textAnchor="middle" fill="#f97316" fontSize="10">μ=70 (Joga)</text>
+        <text x={xToPx(70)} y={h - 6} textAnchor="middle" fill="#4a9eed" fontSize="10">μ=70 (Joga)</text>
         <text x={xToPx(80)} y={h - 6} textAnchor="middle" fill={color} fontSize="10">μ=80 (Não Joga)</text>
         <text x={xToPx(74)} y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">x=74°F (instância nova)</text>
         <line x1={xToPx(74)} y1="26" x2={xToPx(74)} y2={h - pad} stroke="var(--text-secondary)" strokeWidth="1.2" strokeDasharray="3,2" />
@@ -160,20 +160,20 @@ const BayesNetDAGDiagram = () => (
       <line x1="345" y1="68" x2="262" y2="105" stroke="#94a3b8" strokeWidth="1.2" markerEnd="url(#arrBN)" />
       <line x1="225" y1="160" x2="155" y2="190" stroke="#94a3b8" strokeWidth="1.2" markerEnd="url(#arrBN)" />
       <line x1="258" y1="160" x2="330" y2="190" stroke="#94a3b8" strokeWidth="1.2" markerEnd="url(#arrBN)" />
-      <circle cx="120" cy="40" r="34" fill={`${color}1A`} stroke="#f97316" strokeWidth="1.5" />
-      <text x="120" y="44" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Assalto (B)</text>
+      <circle cx="120" cy="40" r="34" fill={`${color}1A`} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="120" y="44" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Assalto (B)</text>
 
-      <circle cx="360" cy="40" r="34" fill={`${color}1A`} stroke="#f97316" strokeWidth="1.5" />
-      <text x="360" y="44" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Sismo (E)</text>
+      <circle cx="360" cy="40" r="34" fill={`${color}1A`} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="360" y="44" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Sismo (E)</text>
 
       <circle cx="240" cy="130" r="34" fill={`${color}1A`} stroke={color} strokeWidth="1.5" />
       <text x="240" y="134" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Alarme (A)</text>
 
-      <circle cx="130" cy="215" r="34" fill={`${color}1A`} stroke="#f97316" strokeWidth="1.5" />
-      <text x="130" y="219" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">João Liga (J)</text>
+      <circle cx="130" cy="215" r="34" fill={`${color}1A`} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="130" y="219" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">João Liga (J)</text>
 
-      <circle cx="350" cy="215" r="34" fill={`${color}1A`} stroke="#f97316" strokeWidth="1.5" />
-      <text x="350" y="219" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Maria Liga (M)</text>
+      <circle cx="350" cy="215" r="34" fill={`${color}1A`} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="350" y="219" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Maria Liga (M)</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       Este é o exemplo clássico (Pearl): um <strong>Assalto</strong> ou um <strong>Sismo</strong> podem fazer
@@ -195,11 +195,11 @@ const MarkovChainDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
       </defs>
-      <circle cx="100" cy="100" r="42" fill={`${color}1A`} stroke="#f97316" strokeWidth="1.5" />
-      <text x="100" y="104" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Sol</text>
+      <circle cx="100" cy="100" r="42" fill={`${color}1A`} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="100" y="104" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Sol</text>
 
-      <circle cx="380" cy="100" r="42" fill={`${color}1A`} stroke="#f97316" strokeWidth="1.5" />
-      <text x="380" y="104" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Chuva</text>
+      <circle cx="380" cy="100" r="42" fill={`${color}1A`} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="380" y="104" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Chuva</text>
 
       <path d="M 140 85 Q 240 30 340 85" fill="none" stroke={color} strokeWidth="1.5" markerEnd="url(#arrMC)" />
       <text x="240" y="40" textAnchor="middle" fill={color} fontSize="11">0.3</text>
@@ -207,11 +207,11 @@ const MarkovChainDiagram = () => (
       <path d="M 340 115 Q 240 170 140 115" fill="none" stroke={color} strokeWidth="1.5" markerEnd="url(#arrMC)" />
       <text x="240" y="178" textAnchor="middle" fill={color} fontSize="11">0.4</text>
 
-      <path d="M 70 130 Q 15 100 70 70" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrMC)" />
-      <text x="22" y="104" textAnchor="middle" fill="#f97316" fontSize="11">0.7</text>
+      <path d="M 70 130 Q 15 100 70 70" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrMC)" />
+      <text x="22" y="104" textAnchor="middle" fill="#4a9eed" fontSize="11">0.7</text>
 
-      <path d="M 410 130 Q 465 100 410 70" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrMC)" />
-      <text x="450" y="104" textAnchor="middle" fill="#f97316" fontSize="11">0.6</text>
+      <path d="M 410 130 Q 465 100 410 70" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrMC)" />
+      <text x="450" y="104" textAnchor="middle" fill="#4a9eed" fontSize="11">0.6</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       Numa <strong>Cadeia de Markov</strong>, o estado seguinte depende apenas do estado actual (propriedade de
@@ -228,19 +228,8 @@ export default function ML6() {
     <div style={S.page}>
       <Link to="/ml" style={S.back}><ArrowLeft size={16} /> Voltar a Machine Learning</Link>
 
-      <div style={S.tag}>Module 06</div>
+      <div style={S.tag}>Módulo 06</div>
       <h1 style={S.h1}>Modelos Bayesianos</h1>
-      <p style={S.lead}>
-        Os classificadores probabilísticos abordam a aprendizagem supervisionada de um ângulo diferente dos
-        modelos geométricos ou baseados em árvores: em vez de procurar fronteiras de decisão explícitas, modelam
-        directamente a <strong>distribuição de probabilidade</strong> dos dados e usam o <strong>Teorema de Bayes</strong> para
-        "inverter" essa distribuição e responder à pergunta "qual é a classe mais provável, dados estes atributos?".
-        Neste módulo vamos derivar o Teorema de Bayes do zero, construir o classificador <strong>Naive Bayes</strong> passo
-        a passo (incluindo as suas variantes Gaussiana, Multinomial e Bernoulli), resolver o problema da
-        frequência zero com o <strong>estimador de Laplace</strong>, comparar <strong>MLE vs. MAP</strong> com um exemplo de
-        lançamentos de moeda, e terminar com <strong>Redes Bayesianas</strong> e uma breve introdução a
-        <strong> Cadeias de Markov / HMMs</strong> — preparando o terreno para o Módulo 07 (Instance-Based Learning & KNN).
-      </p>
 
       {/* === SECTION 1: Teorema de Bayes === */}
       <div style={S.section}>
@@ -331,109 +320,10 @@ export default function ML6() {
         </p>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 3: Exemplo numérico completo — Play Tennis === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>3. Exemplo Numérico Completo — "Jogar Tênis?"</h2>
-        <p style={S.p}>
-          Vamos aplicar Naive Bayes ao clássico dataset "Play Tennis" (10 dias de observações), com 4 atributos
-          categóricos: <strong>Tempo</strong> (Outlook), <strong>Temperatura</strong>, <strong>Humidade</strong> e
-          <strong> Vento</strong>, e a classe <strong>Joga</strong> (Sim/Não).
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Dia</th><th style={S.th}>Tempo</th><th style={S.th}>Temperatura</th>
-                <th style={S.th}>Humidade</th><th style={S.th}>Vento</th><th style={S.th}>Joga?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['1', 'Sol', 'Quente', 'Alta', 'Fraco', 'Não'],
-                ['2', 'Sol', 'Quente', 'Alta', 'Forte', 'Não'],
-                ['3', 'Nublado', 'Quente', 'Alta', 'Fraco', 'Sim'],
-                ['4', 'Chuva', 'Amena', 'Alta', 'Fraco', 'Sim'],
-                ['5', 'Chuva', 'Fria', 'Normal', 'Fraco', 'Sim'],
-                ['6', 'Chuva', 'Fria', 'Normal', 'Forte', 'Não'],
-                ['7', 'Nublado', 'Fria', 'Normal', 'Forte', 'Sim'],
-                ['8', 'Sol', 'Amena', 'Alta', 'Fraco', 'Não'],
-                ['9', 'Sol', 'Fria', 'Normal', 'Fraco', 'Sim'],
-                ['10', 'Chuva', 'Amena', 'Normal', 'Fraco', 'Sim'],
-              ].map(([d, o, t, h, w, p]) => (
-                <tr key={d}>
-                  <td style={S.td}>{d}</td><td style={S.td}>{o}</td><td style={S.td}>{t}</td>
-                  <td style={S.td}>{h}</td><td style={S.td}>{w}</td>
-                  <td style={{ ...S.td, fontWeight: 700, color: p === 'Sim' ? '#f97316' : '#f97316' }}>{p}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p style={S.p}>
-          Queremos prever a classe para uma <strong>nova instância</strong>:
-          <InlineMath math="\ X = (\text{Tempo}=\text{Sol}, \text{Temperatura}=\text{Fria}, \text{Humidade}=\text{Alta}, \text{Vento}=\text{Forte})" />.
-        </p>
-
-        <h3 style={S.h3}>Passo 1 — Priors</h3>
-        <p style={S.p}>Das 10 observações, 6 são "Sim" e 4 são "Não":</p>
-        <div style={S.math}>
-          <BlockMath math="P(\text{Sim}) = \frac{6}{10} = 0.6 \qquad P(\text{Não}) = \frac{4}{10} = 0.4" />
-        </div>
-
-        <h3 style={S.h3}>Passo 2 — Likelihoods para cada atributo</h3>
-        <p style={S.p}>
-          Para cada atributo, contamos quantas vezes o valor observado em <InlineMath math="X" /> ocorre dentro
-          de cada classe:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Atributo = valor</th><th style={S.th}>P(·|Sim)</th><th style={S.th}>P(·|Não)</th></tr></thead>
-            <tbody>
-              {[
-                ['Tempo = Sol', '1/6 = 0.167', '3/4 = 0.75'],
-                ['Temperatura = Fria', '2/6 = 0.333', '1/4 = 0.25'],
-                ['Humidade = Alta', '2/6 = 0.333', '3/4 = 0.75'],
-                ['Vento = Forte', '1/6 = 0.167', '2/4 = 0.5'],
-              ].map(([k, s, n]) => (
-                <tr key={k}><td style={S.td}><strong>{k}</strong></td><td style={{ ...S.td, fontFamily: 'monospace' }}>{s}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{n}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h3 style={S.h3}>Passo 3 — Combinar (likelihood conjunta × prior)</h3>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Classe "Sim":</strong></p>
-          <BlockMath math="P(\text{Sim}) \times P(\text{Sol}|\text{Sim}) \times P(\text{Fria}|\text{Sim}) \times P(\text{Alta}|\text{Sim}) \times P(\text{Forte}|\text{Sim})" />
-          <BlockMath math="= 0.6 \times 0.167 \times 0.333 \times 0.333 \times 0.167 \approx 0.00185" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Classe "Não":</strong></p>
-          <BlockMath math="P(\text{Não}) \times P(\text{Sol}|\text{Não}) \times P(\text{Fria}|\text{Não}) \times P(\text{Alta}|\text{Não}) \times P(\text{Forte}|\text{Não})" />
-          <BlockMath math="= 0.4 \times 0.75 \times 0.25 \times 0.75 \times 0.5 \approx 0.02813" />
-        
-
-        <h3 style={S.h3}>Passo 4 — Normalizar e decidir</h3>
-        <p style={S.p}>
-          Para obter probabilidades que somem 1, dividimos cada valor pela soma de ambos
-          (<InlineMath math="0.00185 + 0.02813 = 0.02998" />):
-        </p>
-        <div style={S.math}>
-          <BlockMath math="P(\text{Sim}|X) \approx \frac{0.00185}{0.02998} \approx 6.2\% \qquad P(\text{Não}|X) \approx \frac{0.02813}{0.02998} \approx 93.8\%" />
-        </div>
-        <div style={S.note}>
-          <strong>Decisão final:</strong> dado <InlineMath math="X" /> = (Sol, Fria, Alta, Forte), o Naive Bayes
-          classifica esta instância como <strong style={{ color: '#f97316' }}>"Não joga"</strong> — com cerca de 94%
-          de confiança posterior, baseando-se essencialmente na forte associação entre "Tempo=Sol" / "Humidade=Alta"
-          e "Não".
-        </div>
-      </div>
-
-      <hr style={S.divider} />
 
       {/* === SECTION 4: Zero-frequency / Laplace === */}
       <div style={S.section}>
-        <h2 style={S.h2}>4. O Problema da Frequência Zero e o Estimador de Laplace</h2>
+        <h2 style={S.h2}>3. O Problema da Frequência Zero e o Estimador de Laplace</h2>
         <p style={S.p}>
           Suponha agora que a nova instância tem <InlineMath math="\text{Tempo} = \text{Nublado}" /> e que, no
           conjunto de treino, <strong>nenhum</strong> dos 4 dias com "Não joga" teve Tempo = Nublado (de facto,
@@ -467,26 +357,8 @@ export default function ML6() {
           <InlineMath math="\ x_k" /> (para "Tempo", <InlineMath math="n_k = 3" />: Sol, Nublado, Chuva).
         </p>
 
-        <h3 style={S.h3}>Exemplo Numérico — Antes vs. Depois de Laplace</h3>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Cálculo</th><th style={S.th}>Sem Laplace</th><th style={S.th}>Com Laplace (+1, n=3)</th></tr></thead>
-            <tbody>
-              <tr>
-                <td style={S.td}><strong>P(Nublado|Não)</strong></td>
-                <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>0 / 4 = 0</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>(0+1) / (4+3) = 1/7 ≈ 0.143</td>
-              </tr>
-              <tr>
-                <td style={S.td}><strong>P(Sol|Não)</strong></td>
-                <td style={{ ...S.td, fontFamily: 'monospace' }}>3/4 = 0.75</td>
-                <td style={{ ...S.td, fontFamily: 'monospace' }}>(3+1)/(4+3) = 4/7 ≈ 0.571</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <div style={S.note}>
-          Note que com Laplace, <strong>todas</strong> as probabilidades — incluindo as que já eram diferentes de
+          Com Laplace, <strong>todas</strong> as probabilidades — incluindo as que já eram diferentes de
           zero — são ligeiramente ajustadas, porque o denominador também aumenta. O efeito é mais forte quando há
           poucos dados (datasets pequenos) e diminui à medida que o número de exemplos cresce. Algumas
           implementações usam um parâmetro <InlineMath math="\alpha" /> em vez de "+1" fixo (Laplace generalizado /
@@ -498,7 +370,7 @@ export default function ML6() {
 
       {/* === SECTION 5: Gaussian Naive Bayes === */}
       <div style={S.section}>
-        <h2 style={S.h2}>5. Naive Bayes Gaussiano — Atributos Contínuos</h2>
+        <h2 style={S.h2}>4. Naive Bayes Gaussiano — Atributos Contínuos</h2>
         <p style={S.p}>
           Os exemplos anteriores assumem atributos <strong>categóricos</strong>, onde contar frequências faz
           sentido. Para atributos <strong>contínuos</strong> (ex.: temperatura em graus, idade, peso), contar
@@ -516,38 +388,13 @@ export default function ML6() {
         </div>
         <GaussianDiagram />
 
-        <h3 style={S.h3}>Exemplo Numérico</h3>
-        <p style={S.p}>
-          Suponha que, para o atributo "Temperatura" (em °F), estimámos os seguintes parâmetros a partir dos
-          dados de treino:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Classe</th><th style={S.th}>μ (média)</th><th style={S.th}>σ (desvio-padrão)</th></tr></thead>
-            <tbody>
-              <tr><td style={S.td}>Joga = Sim</td><td style={{ ...S.td, fontFamily: 'monospace' }}>70</td><td style={{ ...S.td, fontFamily: 'monospace' }}>5</td></tr>
-              <tr><td style={S.td}>Joga = Não</td><td style={{ ...S.td, fontFamily: 'monospace' }}>80</td><td style={{ ...S.td, fontFamily: 'monospace' }}>6</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p style={S.p}>Para uma nova instância com Temperatura = 74°F, calculamos:</p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Likelihood dado "Sim" (μ=70, σ=5):</strong></p>
-          <BlockMath math="P(74|\text{Sim}) = \frac{1}{\sqrt{2\pi (5)^2}} \exp\left(-\frac{(74-70)^2}{2(5)^2}\right) = \frac{1}{12.53}\exp(-0.64) \approx 0.0633" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Likelihood dado "Não" (μ=80, σ=6):</strong></p>
-          <BlockMath math="P(74|\text{Não}) = \frac{1}{\sqrt{2\pi (6)^2}} \exp\left(-\frac{(74-80)^2}{2(6)^2}\right) = \frac{1}{15.04}\exp(-0.5) \approx 0.0403" />
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '1rem' }}>
-            Estes valores de densidade entram depois no produto com a prior e com as likelihoods dos outros
-            atributos, exactamente como no caso categórico — apenas a forma de calcular <InlineMath math="P(x_k|C)" /> muda.
-          </p>
-        
       </div>
 
       <hr style={S.divider} />
 
       {/* === SECTION 6: Multinomial & Bernoulli NB === */}
       <div style={S.section}>
-        <h2 style={S.h2}>6. Naive Bayes Multinomial e Bernoulli — Classificação de Texto</h2>
+        <h2 style={S.h2}>5. Naive Bayes Multinomial e Bernoulli — Classificação de Texto</h2>
         <p style={S.p}>
           Para tarefas de <strong>classificação de texto</strong> (ex.: filtros de spam, análise de sentimento),
           os atributos são tipicamente contagens ou presenças de <strong>palavras</strong> num documento. Duas
@@ -632,7 +479,7 @@ export default function ML6() {
 
       {/* === SECTION 7: MLE vs MAP === */}
       <div style={S.section}>
-        <h2 style={S.h2}>7. Estimação de Parâmetros: MLE vs. MAP</h2>
+        <h2 style={S.h2}>6. Estimação de Parâmetros: MLE vs. MAP</h2>
         <p style={S.p}>
           Quando estimamos probabilidades (priors, likelihoods) a partir de dados, estamos implicitamente a
           fazer <strong>estimação de parâmetros</strong>. Existem duas filosofias principais:
@@ -662,33 +509,13 @@ export default function ML6() {
           isso que "adicionar contagens fictícias" tem uma justificação Bayesiana rigorosa.
         </div>
 
-        <h3 style={S.h3}>Exemplo Numérico — Lançamentos de Moeda</h3>
-        <p style={S.p}>
-          Suponha que lançamos uma moeda 10 vezes e observamos 8 caras e 2 coroas. Seja
-          <InlineMath math="\ \theta = P(\text{cara})" />.
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>MLE — sem qualquer prior:</strong></p>
-          <BlockMath math="\hat{\theta}_{MLE} = \frac{\text{nº caras}}{\text{nº lançamentos}} = \frac{8}{10} = 0.8" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>MAP — com prior "a moeda é provavelmente justa" (equivalente a Laplace, 1 cara e 1 coroa fictícias):</strong>
-          </p>
-          <BlockMath math="\hat{\theta}_{MAP} = \frac{\text{nº caras} + 1}{\text{nº lançamentos} + 2} = \frac{8+1}{10+2} = \frac{9}{12} = 0.75" />
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '1rem' }}>
-            O MLE confia inteiramente nos 10 lançamentos observados e conclui <InlineMath math="\theta = 0.8" />. O
-            MAP "puxa" a estimativa ligeiramente para 0.5 (a crença prior de uma moeda justa), resultando em
-            <InlineMath math="\ \theta \approx 0.75" />. Com <strong>mais dados</strong> (ex.: 800 caras em 1000
-            lançamentos), o efeito do prior torna-se negligível e MLE ≈ MAP — o prior só importa quando os dados
-            são escassos, exactamente como vimos com Laplace smoothing em datasets pequenos.
-          </p>
-        
       </div>
 
       <hr style={S.divider} />
 
       {/* === SECTION 8: Bayesian Belief Networks === */}
       <div style={S.section}>
-        <h2 style={S.h2}>8. Redes Bayesianas (Bayesian Belief Networks)</h2>
+        <h2 style={S.h2}>7. Redes Bayesianas (Bayesian Belief Networks)</h2>
         <p style={S.p}>
           O Naive Bayes assume que <strong>todos</strong> os atributos são independentes dado a classe — uma
           simplificação útil, mas frequentemente irrealista. As <strong>Redes Bayesianas</strong> (Bayesian Belief
@@ -757,7 +584,7 @@ export default function ML6() {
 
       {/* === SECTION 9: Markov Chains / HMMs === */}
       <div style={S.section}>
-        <h2 style={S.h2}>9. Extensão: Cadeias de Markov e Hidden Markov Models</h2>
+        <h2 style={S.h2}>8. Extensão: Cadeias de Markov e Hidden Markov Models</h2>
         <p style={S.p}>
           As Redes Bayesianas que vimos modelam relações entre variáveis <strong>num único instante</strong>. Quando
           os dados têm uma estrutura <strong>sequencial</strong> (séries temporais, texto, sequências biológicas),
@@ -794,64 +621,6 @@ export default function ML6() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 10: Vantagens / Desvantagens === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Naive Bayes — Vantagens e Desvantagens</h2>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr><th style={S.th}>Vantagens</th><th style={S.th}>Desvantagens</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={S.td}>
-                  <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: 2 }}>
-                    <li>Fácil de implementar e extremamente rápido (treino e inferência)</li>
-                    <li>Funciona bem mesmo com poucos dados de treino</li>
-                    <li>Lida bem com muitos atributos (alta dimensionalidade)</li>
-                    <li>Robusto a atributos irrelevantes</li>
-                    <li>Produz probabilidades, não apenas classes</li>
-                    <li>Incremental — pode ser actualizado com novos dados</li>
-                  </ul>
-                </td>
-                <td style={S.td}>
-                  <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: 2 }}>
-                    <li>A assunção de independência condicional raramente é verdadeira</li>
-                    <li>Frequência zero exige Laplace smoothing</li>
-                    <li>As probabilidades de saída podem ser mal calibradas</li>
-                    <li>Atributos contínuos requerem uma assunção de distribuição (ex.: Gaussiana)</li>
-                    <li>Redes Bayesianas gerais são caras de aprender (estrutura + CPTs)</li>
-                  </ul>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>11. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Os classificadores probabilísticos partem de uma ideia simples — o Teorema de Bayes — e constroem em
-          torno dela uma família inteira de modelos, desde o extremamente simples (Naive Bayes) até ao
-          extremamente expressivo (Redes Bayesianas e HMMs).
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Teorema de Bayes: <InlineMath math="P(C|X) = \frac{P(X|C) \cdot P(C)}{P(X)}" /> — Posterior ∝ Likelihood × Prior</li>
-            <li>Naive Bayes assume independência condicional: <InlineMath math="P(X|C) = \prod_k P(x_k|C)" />, reduzindo de <InlineMath math="m k^n" /> para <InlineMath math="mnk" /> parâmetros</li>
-            <li>Frequência zero → Estimador de Laplace: <InlineMath math="\frac{\text{count}+1}{|C|+n_k}" /> — caso especial de MAP</li>
-            <li>Gaussian NB usa a densidade Normal para atributos contínuos; Multinomial/Bernoulli NB são standard em classificação de texto</li>
-            <li>MLE maximiza <InlineMath math="P(D|\theta)" />; MAP maximiza <InlineMath math="P(D|\theta)P(\theta)" /> — convergem com mais dados</li>
-            <li>Redes Bayesianas (DAG + CPTs) generalizam o Naive Bayes, permitindo qualquer estrutura de dependências, factorizando <InlineMath math="P(X_1,\dots,X_m) = \prod_i P(X_i|\text{pais}(X_i))" /></li>
-            <li>Cadeias de Markov / HMMs estendem a ideia de dependência probabilística ao longo do tempo, com estados (latentes) e emissões observadas</li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

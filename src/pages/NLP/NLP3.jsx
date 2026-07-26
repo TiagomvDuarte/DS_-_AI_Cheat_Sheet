@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem', transition: 'color 0.2s' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const BowDemo = () => {
@@ -58,8 +58,8 @@ const BowDemo = () => {
             <tr key={di}><td style={{ ...S.td, fontStyle: 'italic', color: 'var(--text-secondary)' }}>{doc}</td>
               {bow[di].map((val, vi) => (
                 <td key={vi} style={{ ...S.td, textAlign: 'center', fontFamily: 'monospace', fontWeight: 700,
-                  background: highlighted === vi ? (val ? 'rgba(249,115,22,0.2)' : 'rgba(249,115,22,0.10)') : 'transparent',
-                  color: highlighted === vi ? (val ? 'var(--accent-color)' : '#f97316') : 'var(--text-primary)', transition: 'all 0.2s', borderRadius: 4
+                  background: highlighted === vi ? (val ? 'rgba(74,158,237,0.2)' : 'rgba(74,158,237,0.10)') : 'transparent',
+                  color: highlighted === vi ? (val ? 'var(--accent-color)' : '#4a9eed') : 'var(--text-primary)', transition: 'all 0.2s', borderRadius: 4
                 }}>{val}</td>
               ))}
             </tr>
@@ -105,7 +105,7 @@ const TermTermMatrix = () => {
                   onMouseLeave={() => { setHovRow(null); setHovCol(null); }}
                   style={{
                     ...S.td, textAlign: 'center', fontFamily: 'monospace', cursor: 'default',
-                    background: hovRow === ri && hovCol === ci ? 'var(--accent-color)' : `rgba(249,115,22,${(val / maxVal) * 0.5})`,
+                    background: hovRow === ri && hovCol === ci ? 'var(--accent-color)' : `rgba(74,158,237,${(val / maxVal) * 0.5})`,
                     color: hovRow === ri && hovCol === ci ? 'white' : 'var(--text-primary)',
                     fontWeight: val > 4 ? 700 : 400, transition: 'all 0.15s', borderRadius: 4,
                   }}>{val}</td>
@@ -141,16 +141,16 @@ const Word2VecSkipgram = () => (
       })}
 
       {/* W matrix */}
-      <text x="175" y="18" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">W</text>
+      <text x="175" y="18" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">W</text>
       <text x="175" y="30" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">|V|×n</text>
-      <rect x="140" y="40" width="70" height="140" rx="6" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,2" />
+      <rect x="140" y="40" width="70" height="140" rx="6" fill="none" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="4,2" />
       {[0,1,2,3,4,5,6].map(i => (
         <rect key={i} x="143" y={44 + i*19} width="64" height="15" rx="2"
-          fill={i === 3 ? 'rgba(245,158,11,0.3)' : 'rgba(245,158,11,0.05)'}
-          stroke="rgba(245,158,11,0.2)" strokeWidth="1" />
+          fill={i === 3 ? 'rgba(2,132,199,0.3)' : 'rgba(2,132,199,0.05)'}
+          stroke="rgba(2,132,199,0.2)" strokeWidth="1" />
       ))}
-      <text x="175" y="87" textAnchor="middle" fill="#f59e0b" fontSize="8" fontWeight="bold">0.445 0.897</text>
-      <text x="220" y="85" textAnchor="start" fill="#f59e0b" fontSize="7">← master</text>
+      <text x="175" y="87" textAnchor="middle" fill="#0284c7" fontSize="8" fontWeight="bold">0.445 0.897</text>
+      <text x="220" y="85" textAnchor="start" fill="#0284c7" fontSize="7">← master</text>
 
       {/* Hidden (embedding) */}
       <text x="310" y="18" textAnchor="middle" fill="var(--accent-color)" fontSize="10" fontWeight="700">HIDDEN</text>
@@ -164,18 +164,18 @@ const Word2VecSkipgram = () => (
       <text x="310" y="137" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">0.966</text>
 
       {/* W' matrix */}
-      <text x="430" y="18" textAnchor="middle" fill="#fb923c" fontSize="10" fontWeight="700">W'</text>
+      <text x="430" y="18" textAnchor="middle" fill="#38bdf8" fontSize="10" fontWeight="700">W'</text>
       <text x="430" y="30" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">n×|V|</text>
-      <rect x="400" y="40" width="60" height="140" rx="6" fill="none" stroke="#fb923c" strokeWidth="1.5" strokeDasharray="4,2" />
+      <rect x="400" y="40" width="60" height="140" rx="6" fill="none" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4,2" />
       {[0,1,2,3,4,5,6].map(i => (
         <rect key={i} x="403" y={44 + i*19} width="54" height="15" rx="2"
-          fill="rgba(251,146,60,0.05)" stroke="rgba(251,146,60,0.2)" strokeWidth="1" />
+          fill="rgba(56,189,248,0.05)" stroke="rgba(56,189,248,0.2)" strokeWidth="1" />
       ))}
 
       {/* Output */}
       <text x="510" y="18" textAnchor="middle" fill="var(--text-secondary)" fontSize="10" fontWeight="600">OUTPUT</text>
       <text x="510" y="30" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">σ(w·c)</text>
-      {[['terrible', 1, '#f97316'], ['ring', 0, '#f97316'], ['but', 1, '#f97316'], ['late', 0, '#f97316']].map(([label, val, col], i) => (
+      {[['terrible', 1, '#4a9eed'], ['ring', 0, '#4a9eed'], ['but', 1, '#4a9eed'], ['late', 0, '#4a9eed']].map(([label, val, col], i) => (
         <g key={i}>
           <rect x="480" y={48 + i*28} width="65" height="22" rx="4" fill={`${col}18`} stroke={col} strokeWidth="1" />
           <text x="513" y={62 + i*28} textAnchor="middle" fill={col} fontSize="8" fontWeight="600">{label}: {val}</text>
@@ -199,7 +199,7 @@ const Word2VecSkipgram = () => (
 
 const CBOWDiagram = () => {
   const contextWords = ['a', 'terrible', 'but', 'an'];
-  const outputs = [['master', 1, '#f97316'], ['ring', 0, '#f97316'], ['terrible', 0, '#f97316'], ['castle', 0, '#f97316']];
+  const outputs = [['master', 1, '#4a9eed'], ['ring', 0, '#4a9eed'], ['terrible', 0, '#4a9eed'], ['castle', 0, '#4a9eed']];
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Arquitectura CBOW (Word2Vec)</p>
@@ -213,11 +213,11 @@ const CBOWDiagram = () => {
           ))}
         </div>
         <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: 0 }}>contexto (vetores one-hot, |V|×1 cada)</p>
-        <span style={{ color: '#f97316', fontSize: '1.2rem' }}>↓ W (pesos partilhados, |V|×n)</span>
+        <span style={{ color: '#4a9eed', fontSize: '1.2rem' }}>↓ W (pesos partilhados, |V|×n)</span>
         <div style={{ padding: '0.6rem 1.2rem', borderRadius: 8, fontSize: '0.85rem', fontWeight: 700, background: 'var(--accent-color)', color: 'white' }}>
           Média dos embeddings (n-dim)
         </div>
-        <span style={{ color: '#fb923c', fontSize: '1.2rem' }}>↓ W' (n×|V|)</span>
+        <span style={{ color: '#38bdf8', fontSize: '1.2rem' }}>↓ W' (n×|V|)</span>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           {outputs.map(([w, val, col]) => (
             <div key={w} style={{ padding: '0.4rem 0.8rem', borderRadius: 6, fontSize: '0.8rem', fontWeight: 600, fontFamily: 'monospace', background: `${col}18`, border: `1px solid ${col}`, color: col }}>{w}: {val}</div>
@@ -257,9 +257,9 @@ const SimilarityDemo = () => {
           <div key={similar} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
             <span style={{ width: 80, textAlign: 'right', fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.9rem' }}>{similar}</span>
             <div style={{ flex: 1, height: 16, background: 'var(--bg-primary)', borderRadius: 8, overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${Math.abs(score) * 100}%`, background: score > 0 ? 'var(--accent-color)' : '#f97316', borderRadius: 8, transition: 'width 0.4s' }} />
+              <div style={{ height: '100%', width: `${Math.abs(score) * 100}%`, background: score > 0 ? 'var(--accent-color)' : '#4a9eed', borderRadius: 8, transition: 'width 0.4s' }} />
             </div>
-            <span style={{ width: 42, fontSize: '0.82rem', fontFamily: 'monospace', color: score > 0 ? 'var(--accent-color)' : '#f97316', fontWeight: 600 }}>{score.toFixed(2)}</span>
+            <span style={{ width: 42, fontSize: '0.82rem', fontFamily: 'monospace', color: score > 0 ? 'var(--accent-color)' : '#4a9eed', fontWeight: 600 }}>{score.toFixed(2)}</span>
           </div>
         ))}
       </div>
@@ -274,7 +274,6 @@ export default function NLP3() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 3</div>
         <h1 style={S.h1}>Representações de Palavras, Word Embeddings e Word2Vec</h1>
-        <p style={S.lead}>Do vetor esparso de dimensão |V| ao vetor denso de 300 dimensões — como o Word2Vec revolucionou a representação do texto e abriu caminho para BERT e GPT.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -300,10 +299,10 @@ export default function NLP3() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              ['1', 'Maldição da Dimensionalidade', 'O vetor tem dimensão |V| — centenas de milhar de features. Tendência para overfitting.', '#f97316'],
-              ['2', 'Ausência de Relações Semânticas', '"Bom filme" e "Filme bom" produzem o mesmo vetor. A ordem é descartada.', '#f97316'],
-              ['3', 'Todas as palavras iguais', 'Stop words e termos raros são tratados de forma idêntica — sem pesos.', '#f97316'],
-              ['4', 'Contexto muda o significado', '"Banco" em "sentei num banco" vs. "fui ao banco" → mesma feature.', '#f97316'],
+              ['1', 'Maldição da Dimensionalidade', 'O vetor tem dimensão |V| — centenas de milhar de features. Tendência para overfitting.', '#4a9eed'],
+              ['2', 'Ausência de Relações Semânticas', '"Bom filme" e "Filme bom" produzem o mesmo vetor. A ordem é descartada.', '#4a9eed'],
+              ['3', 'Todas as palavras iguais', 'Stop words e termos raros são tratados de forma idêntica — sem pesos.', '#4a9eed'],
+              ['4', 'Contexto muda o significado', '"Banco" em "sentei num banco" vs. "fui ao banco" → mesma feature.', '#4a9eed'],
             ].map(([num, title, desc, color]) => (
               <div key={num} style={{ background: 'var(--bg-secondary)', border: `1.5px solid ${color}40`, borderRadius: 10, padding: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
@@ -338,7 +337,7 @@ export default function NLP3() {
               <div style={{ fontFamily: 'monospace', fontSize: '0.85rem', background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.75rem', color: 'var(--text-primary)', lineHeight: 1.8 }}>
                 king = [1,0,0,0,...,0,0,0]<br />
                 <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>dimensão: |V| = 50.000</span><br />
-                <span style={{ color: '#f97316', fontSize: '0.75rem' }}>99.998% zeros</span>
+                <span style={{ color: '#4a9eed', fontSize: '0.75rem' }}>99.998% zeros</span>
               </div>
             </div>
             <div>
@@ -346,7 +345,7 @@ export default function NLP3() {
               <div style={{ fontFamily: 'monospace', fontSize: '0.85rem', background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.75rem', color: 'var(--text-primary)', lineHeight: 1.8 }}>
                 king = [0.50, 0.69, -0.45, ...]<br />
                 <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>dimensão: n = 300</span><br />
-                <span style={{ color: '#f97316', fontSize: '0.75rem' }}>todos os valores activos</span>
+                <span style={{ color: '#4a9eed', fontSize: '0.75rem' }}>todos os valores activos</span>
               </div>
             </div>
           </div>
@@ -421,7 +420,7 @@ export default function NLP3() {
                   <tr key={`${w}-${c}`}>
                     <td style={{ ...S.td, fontFamily: 'monospace', color: 'var(--accent-color)', fontWeight: 600 }}>{w}</td>
                     <td style={{ ...S.td, fontFamily: 'monospace' }}>{c}</td>
-                    <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316', fontWeight: 700 }}>{t}</td>
+                    <td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed', fontWeight: 700 }}>{t}</td>
                   </tr>
                 ))}
               </tbody>
@@ -434,7 +433,7 @@ export default function NLP3() {
             <table style={S.table}>
               <thead><tr><th style={S.th}>Palavra</th><th style={S.th}>Contexto</th><th style={S.th}>Label</th></tr></thead>
               <tbody>
-                {[['master', 'terrible', 1, '#f97316'], ['master', 'ring', 0, '#f97316'], ['master', 'but', 1, '#f97316'], ['but', 'late', 0, '#f97316']].map(([w, c, t, col]) => (
+                {[['master', 'terrible', 1, '#4a9eed'], ['master', 'ring', 0, '#4a9eed'], ['master', 'but', 1, '#4a9eed'], ['but', 'late', 0, '#4a9eed']].map(([w, c, t, col]) => (
                   <tr key={`${w}-${c}`}>
                     <td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 600 }}>{w}</td>
                     <td style={{ ...S.td, fontFamily: 'monospace' }}>{c}</td>
@@ -558,20 +557,7 @@ export default function NLP3() {
             </ul>
           </div>
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>7. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Bag-of-Words: de Texto a Vetores</strong> — representa documentos como vectores de contagem de palavras, ignorando a ordem; simples e eficaz para tarefas como classificação de texto, mas produz vectores esparsos e de alta dimensionalidade.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Os 4 Problemas do Bag-of-Words</strong> — esparsidade (vectores maioritariamente a zero), ignorância da ordem das palavras, ausência de semântica (palavras sinónimas são tratadas como independentes) e sensibilidade a variações morfológicas.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Representações de Palavras: da Sparsidade à Densidade</strong> — em vez de vectores esparsos com milhares de dimensões, embeddings densos representam palavras em espaços de 100–300 dimensões onde palavras semanticamente próximas ficam geometricamente próximas.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>PPMI (Positive Pointwise Mutual Information)</strong> — métrica baseada em co-ocorrência que mede o quanto uma palavra e um contexto aparecem juntos mais do que seria esperado por acaso, filtrando associações negativas com max(0, PMI).</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Word2Vec — Skip-gram e CBOW</strong> — redes neuronais rasas que aprendem embeddings por predição: o Skip-gram prevê palavras de contexto a partir de uma palavra central, enquanto o CBOW prevê a palavra central a partir do contexto; ambas capturam relações semânticas e sintácticas.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Classificação com Word Embeddings</strong> — para classificar documentos com embeddings, agrega-se os vectores das palavras (e.g., pela média) e passa-se o vector resultante a um classificador como regressão logística ou rede neuronal.</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
     </div>
   );

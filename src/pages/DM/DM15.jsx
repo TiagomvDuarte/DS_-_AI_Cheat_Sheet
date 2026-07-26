@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
@@ -40,12 +40,6 @@ export default function DM15() {
       <Link to="/dm" style={S.back}><ArrowLeft size={16} /> Voltar a Data Mining</Link>
       <div style={S.tag}>MÓDULO 11</div>
       <h1 style={S.h1}>Isolation Forest e Deteção de Anomalias</h1>
-      <p style={S.lead}>
-        Isolation Forest é um algoritmo de anomaly detection baseado num insight elegante: anomalias são
-        "poucas e diferentes" — ficam em regiões esparsas do espaço de features e isolam-se com muito
-        menos splits aleatórios do que pontos normais. Sem pressupostos de distribuição, sem cálculo de
-        densidade, linear em tempo e memória — e surpreendentemente eficaz em alta dimensão.
-      </p>
 
       {/* ── SECTION 1: Paisagem de Anomaly Detection ── */}
       <div style={S.section}>
@@ -138,18 +132,18 @@ export default function DM15() {
             {/* Background */}
             <rect x="0" y="0" width="500" height="250" rx="8" fill="var(--bg-secondary)" />
             {/* Axis-aligned partition lines */}
-            <line x1="320" y1="20" x2="320" y2="230" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.8" />
-            <line x1="320" y1="60" x2="500" y2="60" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.8" />
-            <line x1="100" y1="75" x2="240" y2="75" stroke="#f97316" strokeWidth="1" strokeDasharray="4,3" opacity="0.5" />
-            <line x1="170" y1="75" x2="170" y2="150" stroke="#f97316" strokeWidth="1" strokeDasharray="4,3" opacity="0.5" />
+            <line x1="320" y1="20" x2="320" y2="230" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.8" />
+            <line x1="320" y1="60" x2="500" y2="60" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.8" />
+            <line x1="100" y1="75" x2="240" y2="75" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" opacity="0.5" />
+            <line x1="170" y1="75" x2="170" y2="150" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" opacity="0.5" />
             {/* Normal points (blue) */}
             {NORMAL_PTS.map(([cx, cy], i) => (
-              <circle key={i} cx={cx} cy={cy} r="5" fill="#f97316" opacity="0.75" />
+              <circle key={i} cx={cx} cy={cy} r="5" fill="#4a9eed" opacity="0.75" />
             ))}
             {/* Outlier (red) */}
             <circle cx={OUTLIER[0]} cy={OUTLIER[1]} r="7" fill={color} opacity="0.9" />
             {/* Labels */}
-            <text x="160" y="175" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">pontos normais</text>
+            <text x="160" y="175" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">pontos normais</text>
             <text x="160" y="189" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">(região densa — muitos splits)</text>
             <text x="435" y="75" textAnchor="middle" fontSize="11" fill={color} fontWeight="600">anomalia</text>
             <text x="415" y="89" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">(isolada com 2 splits)</text>
@@ -239,31 +233,31 @@ export default function DM15() {
             <text x="130" y="250" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Anomalia — isolada com 2 splits</text>
 
             {/* ── Normal point path (right side, deep) ── */}
-            <circle cx="420" cy="30" r="18" fill="#f97316" opacity="0.15" stroke="#f97316" strokeWidth="1.5" />
-            <text x="420" y="35" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">Raiz</text>
+            <circle cx="420" cy="30" r="18" fill="#4a9eed" opacity="0.15" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="420" y="35" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">Raiz</text>
 
-            <circle cx="360" cy="90" r="14" fill="#f97316" opacity="0.12" stroke="#f97316" strokeWidth="1" />
-            <circle cx="420" cy="90" r="14" fill="#f97316" opacity="0.12" stroke="#f97316" strokeWidth="1" />
+            <circle cx="360" cy="90" r="14" fill="#4a9eed" opacity="0.12" stroke="#4a9eed" strokeWidth="1" />
+            <circle cx="420" cy="90" r="14" fill="#4a9eed" opacity="0.12" stroke="#4a9eed" strokeWidth="1" />
             <circle cx="480" cy="90" r="14" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1" />
 
-            <circle cx="390" cy="155" r="14" fill="#f97316" opacity="0.12" stroke="#f97316" strokeWidth="1" />
-            <circle cx="450" cy="155" r="14" fill="#f97316" opacity="0.12" stroke="#f97316" strokeWidth="1" />
+            <circle cx="390" cy="155" r="14" fill="#4a9eed" opacity="0.12" stroke="#4a9eed" strokeWidth="1" />
+            <circle cx="450" cy="155" r="14" fill="#4a9eed" opacity="0.12" stroke="#4a9eed" strokeWidth="1" />
 
-            <circle cx="375" cy="215" r="14" fill="#f97316" opacity="0.9" />
+            <circle cx="375" cy="215" r="14" fill="#4a9eed" opacity="0.9" />
             <text x="375" y="220" textAnchor="middle" fontSize="9" fill="white" fontWeight="700">N3</text>
             <circle cx="415" cy="215" r="14" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1" />
             <text x="415" y="220" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">…</text>
 
             {/* Edges (normal tree) */}
-            <line x1="405" y1="42" x2="370" y2="78" stroke="#f97316" strokeWidth="1.5" />
-            <line x1="420" y1="48" x2="420" y2="78" stroke="#f97316" strokeWidth="1.5" />
+            <line x1="405" y1="42" x2="370" y2="78" stroke="#4a9eed" strokeWidth="1.5" />
+            <line x1="420" y1="48" x2="420" y2="78" stroke="#4a9eed" strokeWidth="1.5" />
             <line x1="435" y1="42" x2="470" y2="78" stroke="var(--text-secondary)" strokeWidth="1" />
-            <line x1="405" y1="101" x2="393" y2="141" stroke="#f97316" strokeWidth="1.5" />
-            <line x1="427" y1="101" x2="442" y2="141" stroke="#f97316" strokeWidth="1.5" />
-            <line x1="383" y1="168" x2="376" y2="201" stroke="#f97316" strokeWidth="1.5" />
+            <line x1="405" y1="101" x2="393" y2="141" stroke="#4a9eed" strokeWidth="1.5" />
+            <line x1="427" y1="101" x2="442" y2="141" stroke="#4a9eed" strokeWidth="1.5" />
+            <line x1="383" y1="168" x2="376" y2="201" stroke="#4a9eed" strokeWidth="1.5" />
             <line x1="398" y1="168" x2="408" y2="201" stroke="var(--text-secondary)" strokeWidth="1" />
 
-            <text x="375" y="248" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">h(N3) = 4</text>
+            <text x="375" y="248" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">h(N3) = 4</text>
             <text x="420" y="265" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Ponto normal — precisa de mais splits</text>
           </svg>
         </div>
@@ -355,11 +349,11 @@ export default function DM15() {
             <text x="132" y="22" textAnchor="middle" fontSize="11" fill="var(--text-secondary)" fontWeight="600">IF padrão — axis-aligned</text>
             {/* Cluster */}
             {[[80,100],[95,85],[95,115],[110,90],[110,110],[125,80],[125,120],[140,90],[140,110],[155,100]].map(([x,y],i) => (
-              <circle key={`l${i}`} cx={x} cy={y} r="5" fill="#f97316" opacity="0.7" />
+              <circle key={`l${i}`} cx={x} cy={y} r="5" fill="#4a9eed" opacity="0.7" />
             ))}
             {/* Axis-aligned splits */}
-            <line x1="165" y1="20" x2="165" y2="205" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5,3" />
-            <line x1="20" y1="65" x2="165" y2="65" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5,3" />
+            <line x1="165" y1="20" x2="165" y2="205" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="5,3" />
+            <line x1="20" y1="65" x2="165" y2="65" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="5,3" />
             {/* Ghost region highlight */}
             <rect x="165" y="65" width="80" height="140" fill={color} opacity="0.07" />
             <text x="205" y="148" textAnchor="middle" fontSize="9" fill={color}>"fantasma"</text>
@@ -372,11 +366,11 @@ export default function DM15() {
             <text x="407" y="22" textAnchor="middle" fontSize="11" fill={color} fontWeight="600">Extended IF — hiperplanos oblíquos</text>
             {/* Cluster (same positions offset by 275) */}
             {[[80,100],[95,85],[95,115],[110,90],[110,110],[125,80],[125,120],[140,90],[140,110],[155,100]].map(([x,y],i) => (
-              <circle key={`r${i}`} cx={x+275} cy={y} r="5" fill="#f97316" opacity="0.7" />
+              <circle key={`r${i}`} cx={x+275} cy={y} r="5" fill="#4a9eed" opacity="0.7" />
             ))}
             {/* Oblique splits */}
-            <line x1="310" y1="55" x2="500" y2="170" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-            <line x1="290" y1="150" x2="470" y2="55" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
+            <line x1="310" y1="55" x2="500" y2="170" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+            <line x1="290" y1="150" x2="470" y2="55" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
             <text x="407" y="205" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">sem artefactos — scores uniformes fora do cluster</text>
           </svg>
         </div>
@@ -510,21 +504,6 @@ export default function DM15() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Anomaly Detection — Paisagem</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Insight Central do Isolation Forest</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Isolation Tree — Construção</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Anomaly Score — Fórmula e Interpretação</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Extended Isolation Forest</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Comparação de Métodos de Anomaly Detection</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Guia de Decisão</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -73,19 +73,19 @@ const DataStructureExplorer = () => {
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Estruturas de Dados Redis — Cada Uma Optimizada para um Padrão de Acesso</p>
       <div style={{ display: 'flex', gap: '0.4rem', justifyContent: 'center', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
         {structures.map((s, i) => (
-          <button key={i} onClick={() => setDs(i)} style={{ padding: '0.35rem 0.75rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.78rem', background: ds === i ? '#f97316' : 'var(--bg-primary)', color: ds === i ? '#000' : 'var(--text-primary)', border: `1.5px solid ${ds === i ? '#f97316' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{s.name}</button>
+          <button key={i} onClick={() => setDs(i)} style={{ padding: '0.35rem 0.75rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.78rem', background: ds === i ? '#4a9eed' : 'var(--bg-primary)', color: ds === i ? '#000' : 'var(--text-primary)', border: `1.5px solid ${ds === i ? '#4a9eed' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{s.name}</button>
         ))}
       </div>
-      <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', textAlign: 'left', border: '1.5px solid rgba(249,115,22,0.25)' }}>
+      <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', textAlign: 'left', border: '1.5px solid rgba(74,158,237,0.25)' }}>
         <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginBottom: '0.75rem', fontStyle: 'italic' }}>{d.subtitle}</div>
         <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>{d.desc}</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
           <div>
-            <div style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontWeight: 700 }}>Comandos</div>
-            {d.commands.map(c => <div key={c} style={{ fontFamily: 'monospace', fontSize: '0.78rem', color: '#fb923c', marginBottom: '0.2rem', background: 'rgba(249,115,22,0.07)', padding: '0.15rem 0.4rem', borderRadius: 4 }}>{c}</div>)}
+            <div style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontWeight: 700 }}>Comandos</div>
+            {d.commands.map(c => <div key={c} style={{ fontFamily: 'monospace', fontSize: '0.78rem', color: '#bae6fd', marginBottom: '0.2rem', background: 'rgba(74,158,237,0.07)', padding: '0.15rem 0.4rem', borderRadius: 4 }}>{c}</div>)}
           </div>
           <div>
-            <div style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontWeight: 700 }}>Casos de uso</div>
+            <div style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontWeight: 700 }}>Casos de uso</div>
             {d.usecases.map(u => <div key={u} style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.2rem' }}>• {u}</div>)}
           </div>
         </div>
@@ -99,49 +99,49 @@ const CacheFlowDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Fluxo Cache Redis — HIT vs. MISS</p>
     <svg viewBox="0 0 500 220" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* Application */}
-      <rect x="180" y="10" width="120" height="40" rx="8" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="2" />
-      <text x="240" y="27" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Aplicação</text>
+      <rect x="180" y="10" width="120" height="40" rx="8" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="240" y="27" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Aplicação</text>
       <text x="240" y="42" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">faz pedido</text>
       {/* Arrow down to Redis */}
-      <line x1="240" y1="50" x2="240" y2="75" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#ra1)" />
-      <defs><marker id="ra1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
+      <line x1="240" y1="50" x2="240" y2="75" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#ra1)" />
+      <defs><marker id="ra1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#4a9eed" /></marker></defs>
       {/* Redis */}
-      <rect x="160" y="75" width="160" height="45" rx="8" fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="2" />
-      <text x="240" y="95" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="800">Redis (RAM)</text>
+      <rect x="160" y="75" width="160" height="45" rx="8" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="240" y="95" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="800">Redis (RAM)</text>
       <text x="240" y="112" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">chave existe?</text>
       {/* HIT arrow left */}
-      <line x1="160" y1="97" x2="80" y2="97" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#ra2)" />
-      <defs><marker id="ra2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
-      <text x="120" y="90" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">HIT</text>
+      <line x1="160" y1="97" x2="80" y2="97" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#ra2)" />
+      <defs><marker id="ra2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#4a9eed" /></marker></defs>
+      <text x="120" y="90" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">HIT</text>
       {/* HIT box */}
-      <rect x="10" y="75" width="70" height="45" rx="8" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="45" y="95" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">HIT</text>
+      <rect x="10" y="75" width="70" height="45" rx="8" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="45" y="95" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">HIT</text>
       <text x="45" y="110" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">devolve logo</text>
       {/* HIT response arrow back up */}
-      <path d="M45,75 Q45,40 180,30" fill="none" stroke="#f97316" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#ra3)" />
-      <defs><marker id="ra3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
+      <path d="M45,75 Q45,40 180,30" fill="none" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#ra3)" />
+      <defs><marker id="ra3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#4a9eed" /></marker></defs>
       <rect x="55" y="36" width="38" height="12" rx="2" fill="var(--bg-secondary)" />
-      <text x="74" y="46" textAnchor="middle" fill="#f97316" fontSize="8">guarda</text>
+      <text x="74" y="46" textAnchor="middle" fill="#4a9eed" fontSize="8">guarda</text>
       {/* MISS arrow right */}
-      <line x1="320" y1="97" x2="390" y2="97" stroke="#ea580c" strokeWidth="1.5" markerEnd="url(#ra4)" />
-      <defs><marker id="ra4" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ea580c" /></marker></defs>
-      <text x="355" y="90" textAnchor="middle" fill="#ea580c" fontSize="9" fontWeight="700">MISS</text>
+      <line x1="320" y1="97" x2="390" y2="97" stroke="#1d4ed8" strokeWidth="1.5" markerEnd="url(#ra4)" />
+      <defs><marker id="ra4" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1d4ed8" /></marker></defs>
+      <text x="355" y="90" textAnchor="middle" fill="#1d4ed8" fontSize="9" fontWeight="700">MISS</text>
       {/* DB box */}
-      <rect x="390" y="75" width="85" height="45" rx="8" fill="rgba(234,88,12,0.10)" stroke="#ea580c" strokeWidth="1.5" />
-      <text x="432" y="95" textAnchor="middle" fill="#ea580c" fontSize="10" fontWeight="700">Base de Dados</text>
+      <rect x="390" y="75" width="85" height="45" rx="8" fill="rgba(29,78,216,0.10)" stroke="#1d4ed8" strokeWidth="1.5" />
+      <text x="432" y="95" textAnchor="middle" fill="#1d4ed8" fontSize="10" fontWeight="700">Base de Dados</text>
       <text x="432" y="110" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">query SQL (lento)</text>
       {/* DB to store */}
-      <line x1="432" y1="120" x2="432" y2="155" stroke="#ea580c" strokeWidth="1.5" markerEnd="url(#ra5)" />
-      <defs><marker id="ra5" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ea580c" /></marker></defs>
+      <line x1="432" y1="120" x2="432" y2="155" stroke="#1d4ed8" strokeWidth="1.5" markerEnd="url(#ra5)" />
+      <defs><marker id="ra5" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1d4ed8" /></marker></defs>
       {/* Store box */}
-      <rect x="370" y="155" width="125" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="432" y="172" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Guarda no Redis</text>
+      <rect x="370" y="155" width="125" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="432" y="172" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Guarda no Redis</text>
       <text x="432" y="186" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">próximo pedido HIT</text>
       {/* Response back to app */}
-      <path d="M432,155 Q432,130 320,110" fill="none" stroke="#ea580c" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#ra6)" />
-      <defs><marker id="ra6" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ea580c" /></marker></defs>
+      <path d="M432,155 Q432,130 320,110" fill="none" stroke="#1d4ed8" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#ra6)" />
+      <defs><marker id="ra6" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1d4ed8" /></marker></defs>
       <rect x="375" y="121" width="40" height="12" rx="2" fill="var(--bg-secondary)" />
-      <text x="395" y="131" textAnchor="middle" fill="#ea580c" fontSize="8">resposta</text>
+      <text x="395" y="131" textAnchor="middle" fill="#1d4ed8" fontSize="8">resposta</text>
     </svg>
     <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>HIT: Redis devolve o valor em microsegundos sem tocar na base de dados. MISS: consulta a base de dados, guarda o resultado no Redis com TTL e devolve — o próximo pedido idêntico será HIT.</p>
   </div>
@@ -154,7 +154,6 @@ export default function BDM4() {
         <Link to="/bigdata-mgmt" style={S.back}><ArrowLeft size={16} /> Voltar a Big Data Mgmt</Link>
         <div style={S.tag}>Module 4</div>
         <h1 style={S.h1}>Key-Value Databases — Redis</h1>
-        <p style={S.lead}>Redis (Remote Dictionary Server) é a base de dados chave-valor mais popular. In-memory, extremamente rápida e surpreendentemente versátil. Das 6 estruturas de dados nativas ao padrão de cache HIT/MISS, persistência RDB/AOF, eviction policies e o ecossistema moderno com Redis Search e RAG.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O Conceito Base e Persistência</h2>
@@ -171,7 +170,7 @@ export default function BDM4() {
                   ['Desvantagem', 'Maior perda de dados (entre snapshots); snapshot pode ser lento com datasets grandes', 'Ficheiro maior que RDB; mais lento a recarregar após falha'],
                   ['Recomendação', 'Usar quando tolera perda de alguns minutos de dados', 'Usar quando quer durabilidade máxima; combinar com RDB'],
                 ].map(([a, r, f]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={S.td}>{r}</td><td style={{ ...S.td, color: '#f97316' }}>{f}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={S.td}>{r}</td><td style={{ ...S.td, color: '#4a9eed' }}>{f}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -188,8 +187,8 @@ export default function BDM4() {
               { name: 'TTL', desc: 'Elimina preferencialmente os dados com expiração mais próxima.' },
               { name: 'allkeys-lru', desc: 'LRU sobre todas as chaves (com e sem TTL). O mais comum em cache.' },
             ].map(({ name, desc }) => (
-              <div key={name} style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 8, padding: '0.75rem' }}>
-                <div style={{ fontWeight: 700, color: '#f97316', fontSize: '0.85rem', marginBottom: '0.3rem' }}>{name}</div>
+              <div key={name} style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(74,158,237,0.2)', borderRadius: 8, padding: '0.75rem' }}>
+                <div style={{ fontWeight: 700, color: '#4a9eed', fontSize: '0.85rem', marginBottom: '0.3rem' }}>{name}</div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>{desc}</p>
               </div>
             ))}
@@ -219,13 +218,13 @@ export default function BDM4() {
           <h3 style={S.h3}>Design de Chaves</h3>
           <p style={S.p}>A decisão de design de chaves é tão importante como o schema numa base de dados relacional. Duas opções principais:</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-            <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Opção 1 — Hash da query</div>
+            <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(74,158,237,0.2)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Opção 1 — Hash da query</div>
               <p style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', margin: 0 }}>Usar uma função de hash para criar uma chave curta e única a partir da query completa. Compacto mas opaco — difícil de debugar.</p>
             </div>
-            <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Opção 2 — Schema legível</div>
-              <div style={{ fontFamily: 'monospace', fontSize: '0.78rem', color: '#fb923c' }}>
+            <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(74,158,237,0.2)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Opção 2 — Schema legível</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '0.78rem', color: '#bae6fd' }}>
                 <div>customer:1982737:firstName</div>
                 <div>customer:1982737:shippingAddress</div>
               </div>
@@ -247,7 +246,7 @@ export default function BDM4() {
 
         <div style={S.section}>
           <h2 style={S.h2}>4. Escalabilidade e Ecossistema Moderno</h2>
-          <p style={S.p}><strong>Replicação:</strong> Redis usa arquitectura source/replica (anteriormente master/slave). Replicação assíncrona — mais rápida mas pode perder dados recentes em caso de falha. <strong>Cluster:</strong> distribui dados por múltiplos nós usando hashing das chaves em 16.384 slots. Hash Tags permitem co-localizar chaves relacionadas: chaves com <code style={{ color: '#f97316' }}>{'{customer}'}</code> ficam sempre no mesmo nó.</p>
+          <p style={S.p}><strong>Replicação:</strong> Redis usa arquitectura source/replica (anteriormente master/slave). Replicação assíncrona — mais rápida mas pode perder dados recentes em caso de falha. <strong>Cluster:</strong> distribui dados por múltiplos nós usando hashing das chaves em 16.384 slots. Hash Tags permitem co-localizar chaves relacionadas: chaves com <code style={{ color: '#4a9eed' }}>{'{customer}'}</code> ficam sempre no mesmo nó.</p>
 
           <h3 style={S.h3}>Redis no Ecossistema Moderno</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -257,8 +256,8 @@ export default function BDM4() {
               { name: 'Bloom Filters', desc: 'Estrutura probabilística que responde rapidamente a "este elemento está no conjunto?" com memória muito superior a um set convencional. Nunca há falsos negativos; podem existir falsos positivos.' },
               { name: 'Valkey (fork)', desc: 'Em Março de 2024, o Redis mudou de BSD-3 para licenciamento dual source-available. Em resposta, a Linux Foundation lançou Valkey como fork open-source, com Valkey 8.0 em Setembro de 2024 e Valkey 9.0 em Outubro de 2025.' },
             ].map(({ name, desc }) => (
-              <div key={name} style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 10, padding: '1rem' }}>
-                <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>{name}</div>
+              <div key={name} style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(74,158,237,0.2)', borderRadius: 10, padding: '1rem' }}>
+                <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>{name}</div>
                 <p style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', margin: 0 }}>{desc}</p>
               </div>
             ))}
@@ -277,27 +276,13 @@ export default function BDM4() {
                   ['Pub/Sub de eventos', 'Stream ou Pub/Sub', 'PUBLISH canal mensagem; SUBSCRIBE canal'],
                   ['Locks distribuídos', 'String atómica + TTL', 'SET lock:recurso 1 NX EX 30 — adquire apenas se não existe'],
                 ].map(([uc, st, p]) => (
-                  <tr key={uc}><td style={{ ...S.td, fontWeight: 600 }}>{uc}</td><td style={{ ...S.td, color: '#f97316', fontFamily: 'monospace', fontSize: '0.85rem' }}>{st}</td><td style={S.td}>{p}</td></tr>
+                  <tr key={uc}><td style={{ ...S.td, fontWeight: 600 }}>{uc}</td><td style={{ ...S.td, color: '#4a9eed', fontFamily: 'monospace', fontSize: '0.85rem' }}>{st}</td><td style={S.td}>{p}</td></tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
 
-        <hr style={S.divider} />
-
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ paddingLeft: '1.2rem', margin: 0, lineHeight: 1.9 }}>
-              <li style={{ marginBottom: '0.4rem' }}><strong>In-memory com persistência opcional</strong> — Redis mantém todos os dados em RAM — latências de leitura/escrita sub-milissegundo (tipicamente 100–500μs); persistência opcional: RDB (snapshot periódico — menor overhead, maior risco de perda) ou AOF (Append-Only File — log de cada operação, durabilidade quase total com `appendfsync always`); Redis 7+ suporta RDB+AOF híbrido; para dados que podem ser recriados (cache), desligar persistência maximiza throughput.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>6 estruturas de dados nativas</strong> — String (contador, cache simples, sessão), List (fila FIFO com LPUSH/RPOP, chat history), Hash (objecto com campos — perfil de utilizador), Set (membros únicos — tags, seguidores), Sorted Set/ZSet (ranking com score — leaderboards, rate limiting com janela deslizante), HyperLogLog (count-distinct aproximado com 12KB fixos independentemente do número de elementos únicos), Stream (log append-only para event sourcing).</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Padrão de cache HIT/MISS</strong> — Cache-Aside (Lazy Loading): aplicação tenta `GET key` → HIT retorna valor, MISS busca no DB, armazena com `SET key value EX ttl` e retorna; Write-Through: escreve no Redis e no DB em simultâneo — consistência máxima mas latência de write maior; Write-Behind: escreve no Redis e sincroniza com DB assincronamente — máximo throughput, risco de perda; TTL correcto é crítico — TTL muito longo = stale data, TTL muito curto = alta miss rate.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Eviction policies</strong> — quando a memória está cheia, Redis usa políticas de evicção: `allkeys-lru` (expulsa a chave menos recentemente usada — mais usado em cache pura), `volatile-lru` (LRU apenas em chaves com TTL), `allkeys-lfu` (menos frequentemente usada — melhor para acessos repetidos), `noeviction` (retorna erro quando cheia — para dados críticos); monitorizar `evicted_keys` e `used_memory` no INFO stats.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Ecossistema moderno</strong> — Redis Cluster distribui por até 16384 slots de hash entre shards sem proxy; Redis Sentinel monitora e faz failover automático em deployments não-cluster; Redis Stack adiciona módulos: RedisSearch (full-text + vector similarity search para RAG), RedisJSON (queries JSONPath nativas), RedisTimeSeries (métricas IoT); Dragonfly e KeyDB são substitutos drop-in com throughput multi-threaded superior em benchmarks.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

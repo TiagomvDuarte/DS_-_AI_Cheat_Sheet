@@ -8,105 +8,105 @@ export const modules = [
     title: 'Fundamentos da Inteligência Computacional',
     subtitle: 'Problema, Algoritmo, CI e o método computacional',
     topics: ['Problema vs Algoritmo vs Programa', 'Método clássico e as suas limitações', 'O que é Inteligência Computacional', 'Geração vs Avaliação de soluções'],
-    path: '/cio/lecture1', color: '#f97316',
+    path: '/cio/lecture1', color: '#4a9eed',
   },
   {
     id: 'cio2', num: '02',
     title: 'Espaço de Pesquisa & Fitness Landscape',
     subtitle: 'O.P. formal, No Free Lunch e topografia do problema',
     topics: ['Problema de Optimização (S, f)', 'Teorema No Free Lunch', 'Fitness Landscape — ler a topografia', 'Ótimo local vs global — bacias de atracção'],
-    path: '/cio/lecture2', color: '#f97316',
+    path: '/cio/lecture2', color: '#4a9eed',
   },
   {
     id: 'cio3', num: '03',
     title: 'Hill Climbing & Simulated Annealing',
     subtitle: 'Pesquisa local e escape de ótimos locais por aceitação probabilística',
     topics: ['Hill Climbing — variantes e limitações', 'Random Restart e plateaux', 'Simulated Annealing — P = e^(−Δf/T)', 'Cooling schedule e convergência'],
-    path: '/cio/lecture3', color: '#f97316',
+    path: '/cio/lecture3', color: '#4a9eed',
   },
   {
     id: 'cio4', num: '04',
     title: 'Tabu Search & Iterated Local Search',
     subtitle: 'Pesquisa local com memória e perturbação estruturada',
     topics: ['Lista Tabu e tenure τ', 'Critério de Aspiração', 'ILS — perturbação e critério de aceitação', 'Double-Bridge move para TSP'],
-    path: '/cio/lecture9', color: '#f97316',
+    path: '/cio/lecture9', color: '#4a9eed',
   },
   {
     id: 'cio5', num: '05',
     title: 'Modelação de Problemas: Knapsack & TSP',
     subtitle: 'As 4 perguntas, a Regra de Ouro e representação',
     topics: ['As 4 perguntas de design (S, repr., f, N)', 'Regra de Ouro — não resolver no fitness', 'Knapsack Problem — (S, f, N)', 'Travelling Salesman Problem — (S, f, N)'],
-    path: '/cio/lecture4', color: '#f97316',
+    path: '/cio/lecture4', color: '#4a9eed',
   },
   {
     id: 'cio6', num: '06',
     title: 'Algoritmos Genéticos — Fundamentos',
     subtitle: 'População, selecção, crossover e mutação',
     topics: ['De soluções únicas a populações', 'Selecção: roleta, torneio, rank', 'Crossover: 1-ponto, 2-pontos, uniforme', 'Mutação: bit-flip e exploração'],
-    path: '/cio/lecture5', color: '#f97316',
+    path: '/cio/lecture5', color: '#4a9eed',
   },
   {
     id: 'cio7', num: '07',
     title: 'AGs — Schema Theory & Parâmetros',
     subtitle: 'Porquê os AGs funcionam e como afinar',
     topics: ['Pseudocódigo completo e elitismo', 'Teoria dos Esquemas — esquemas e templates', 'Teorema dos Esquemas — crescimento exponencial', 'Building Blocks Hypothesis'],
-    path: '/cio/lecture6', color: '#f97316',
+    path: '/cio/lecture6', color: '#4a9eed',
   },
   {
     id: 'cio8', num: '08',
     title: 'Diversidade & Operadores para Permutações',
     subtitle: 'Fitness sharing, restricted mating, CX, PMX e multi-objectivo',
     topics: ['Convergência prematura e diversidade', 'Fitness Sharing e Restricted Mating', 'Cycle Crossover (CX) e PMX para TSP', 'Dominância de Pareto e multi-objectivo'],
-    path: '/cio/lecture7', color: '#f97316',
+    path: '/cio/lecture7', color: '#4a9eed',
   },
   {
     id: 'cio9', num: '09',
     title: 'Optimização Contínua & PSO',
     subtitle: 'Cromossomas reais e enxames de partículas',
     topics: ['Representação real — vectores em Rᵐ', 'Crossover aritmético e mutação gaussiana', 'Particle Swarm Optimization (PSO)', 'Velocidade, memória individual e colectiva'],
-    path: '/cio/lecture8', color: '#f97316',
+    path: '/cio/lecture8', color: '#4a9eed',
   },
   {
     id: 'cio10', num: '10',
     title: 'Ant Colony Optimization (ACO)',
     subtitle: 'Estigmergia, feromonas e inteligência de enxames',
     topics: ['Probabilidade de transição τ^α · η^β', 'Evaporação e depósito de feromonas', 'Ant System, ACS e MMAS', 'Aplicação ao TSP e VRP'],
-    path: '/cio/lecture10', color: '#f97316',
+    path: '/cio/lecture10', color: '#4a9eed',
   },
   {
     id: 'cio13', num: '11',
     title: 'Bee Algorithm',
     subtitle: 'Forrageio de abelhas, dança waggle e pesquisa local adaptativa',
     topics: ['Scout bees e exploração global', 'Dança waggle — ângulo e duração', 'Elite sites vs non-elite sites', 'Artificial Bee Colony (ABC) — variante popular'],
-    path: '/cio/lecture13', color: '#f97316',
+    path: '/cio/lecture13', color: '#4a9eed',
   },
   {
     id: 'cio14', num: '12',
     title: 'Fish School Search',
     subtitle: 'Cardume auto-organizado com pesos como memória de qualidade',
     topics: ['Individual movement — hill-climbing local', 'Feeding operator — peso ∝ Δfitness', 'Instinctive e Volitive collective movement', 'Equilíbrio automático exploração/exploitação'],
-    path: '/cio/lecture14', color: '#f97316',
+    path: '/cio/lecture14', color: '#4a9eed',
   },
   {
     id: 'cio11', num: '13',
     title: 'Estimation of Distribution Algorithms',
     subtitle: 'Estimation of Distribution Algorithms e o estado da arte contínuo',
     topics: ['UMDA, PBIL, BOA — família EDA', 'Problema do crossover disruptivo', 'CMA-ES — adaptação de σ e matriz C', 'Quando usar EDAs vs AG vs SA'],
-    path: '/cio/lecture11', color: '#f97316',
+    path: '/cio/lecture11', color: '#4a9eed',
   },
   {
     id: 'cio12', num: '14',
     title: 'Differential Evolution',
     subtitle: 'Perturbações dirigidas pela diferença entre vectores da população',
     topics: ['Mutação: v = xₐ + F·(x_b − x_c)', 'Crossover binomial com taxa CR', 'Selecção greedy — nunca piora', 'Estratégias: rand/1, best/1, self-adaptive'],
-    path: '/cio/lecture12', color: '#f97316',
+    path: '/cio/lecture12', color: '#4a9eed',
   },
   {
     id: 'cio15', num: '15',
     title: 'Sistemas Fuzzy',
     subtitle: 'Lógica fuzzy, inferência e controlo com incerteza linguística',
     topics: ['Conjuntos fuzzy — μ_A(x) ∈ [0,1]', 'Base de regras SE-ENTÃO linguísticas', 'Pipeline Mamdani: fuzzificação → inferência → defuzzificação', 'Mamdani vs Takagi-Sugeno'],
-    path: '/cio/lecture15', color: '#f97316',
+    path: '/cio/lecture15', color: '#4a9eed',
   },
 ];
 
@@ -119,8 +119,8 @@ export default function CIO() {
           <ArrowLeft size={16} /> Voltar ao Dashboard
         </Link>
         <div style={{ marginBottom: '3rem' }}>
-          <div style={{ display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-            Optimização
+          <div style={{ display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            Computational Intelligence for Optimization
           </div>
           <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Computational Intelligence for Optimization</h1>
           <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: 660 }}>

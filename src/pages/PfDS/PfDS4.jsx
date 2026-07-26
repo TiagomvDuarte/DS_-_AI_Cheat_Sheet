@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -14,8 +14,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   svgWrap: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1rem', margin: '1.25rem 0', overflowX: 'auto' },
@@ -23,20 +23,20 @@ const S = {
 
 /* ── SVG 1: Paradigmas de Programação ─────────────────────────── */
 function SvgParadigmas() {
-  const bx = { rx: 8, fill: 'rgba(249,115,22,0.10)', stroke: color, strokeWidth: 1.5 };
+  const bx = { rx: 8, fill: 'rgba(74,158,237,0.10)', stroke: color, strokeWidth: 1.5 };
   const label = { fontSize: 11, fill: color, fontWeight: 700, textAnchor: 'middle' };
   const body  = { fontSize: 10, fill: 'var(--text-primary)', textAnchor: 'middle' };
-  const arr   = { stroke: 'rgba(249,115,22,0.5)', strokeWidth: 1.5, fill: 'none', markerEnd: 'url(#arr)' };
+  const arr   = { stroke: 'rgba(74,158,237,0.5)', strokeWidth: 1.5, fill: 'none', markerEnd: 'url(#arr)' };
   return (
     <svg viewBox="0 0 680 230" width="100%" style={{ display: 'block' }}>
       <defs>
         <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L8,3 z" fill="rgba(249,115,22,0.6)" />
+          <path d="M0,0 L0,6 L8,3 z" fill="rgba(74,158,237,0.6)" />
         </marker>
       </defs>
 
       {/* Procedural */}
-      <rect x="20" y="20" width="180" height="190" rx="10" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="20" y="20" width="180" height="190" rx="10" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="110" y="42" style={label}>PROCEDURAL</text>
       <rect x="50" y="55" width="120" height="28" {...bx} />
       <text x="110" y="73" style={body}>1. ler_dados()</text>
@@ -52,26 +52,26 @@ function SvgParadigmas() {
       <text x="110" y="222" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>Top-down, sequencial</text>
 
       {/* OOP */}
-      <rect x="240" y="20" width="200" height="190" rx="10" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="240" y="20" width="200" height="190" rx="10" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="340" y="42" style={label}>OOP</text>
-      <rect x="260" y="55" width="80" height="70" rx="6" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth={1.5} />
+      <rect x="260" y="55" width="80" height="70" rx="6" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth={1.5} />
       <text x="300" y="73" style={{ fontSize: 10, fill: color, fontWeight: 700, textAnchor: 'middle' }}>Produto</text>
       <text x="300" y="88" style={body}>- nome</text>
       <text x="300" y="100" style={body}>- preco</text>
       <text x="300" y="112" style={body}>+ vender()</text>
-      <rect x="360" y="55" width="70" height="70" rx="6" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth={1.5} />
+      <rect x="360" y="55" width="70" height="70" rx="6" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth={1.5} />
       <text x="395" y="73" style={{ fontSize: 10, fill: color, fontWeight: 700, textAnchor: 'middle' }}>Cliente</text>
       <text x="395" y="88" style={body}>- nome</text>
       <text x="395" y="100" style={body}>- email</text>
       <text x="395" y="112" style={body}>+ comprar()</text>
-      <line x1="340" y1="125" x2="340" y2="155" stroke="rgba(249,115,22,0.4)" strokeWidth={1} strokeDasharray="4,2" />
-      <rect x="270" y="155" width="140" height="40" rx="6" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.4)" strokeWidth={1} />
+      <line x1="340" y1="125" x2="340" y2="155" stroke="rgba(74,158,237,0.4)" strokeWidth={1} strokeDasharray="4,2" />
+      <rect x="270" y="155" width="140" height="40" rx="6" fill="rgba(74,158,237,0.08)" stroke="rgba(74,158,237,0.4)" strokeWidth={1} />
       <text x="340" y="170" style={body}>Encomenda</text>
       <text x="340" y="185" style={body}>- produto, cliente</text>
       <text x="340" y="222" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>Objetos com estado + comportamento</text>
 
       {/* Functional */}
-      <rect x="470" y="20" width="190" height="190" rx="10" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="470" y="20" width="190" height="190" rx="10" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="565" y="42" style={label}>FUNCIONAL</text>
       <rect x="490" y="55" width="150" height="28" {...bx} />
       <text x="565" y="68" style={body}>dados = [1, 2, 3, 4]</text>
@@ -94,8 +94,8 @@ function SvgParadigmas() {
 
 /* ── SVG 2: Blueprint → Instâncias ────────────────────────────── */
 function SvgBlueprint() {
-  const box = { fill: 'rgba(249,115,22,0.10)', stroke: color, strokeWidth: 1.5, rx: 8 };
-  const inst = { fill: 'rgba(249,115,22,0.18)', stroke: color, strokeWidth: 1.5, rx: 8 };
+  const box = { fill: 'rgba(74,158,237,0.10)', stroke: color, strokeWidth: 1.5, rx: 8 };
+  const inst = { fill: 'rgba(74,158,237,0.18)', stroke: color, strokeWidth: 1.5, rx: 8 };
   const t = { fontSize: 10, fill: 'var(--text-primary)', textAnchor: 'middle' };
   const h = { fontSize: 11, fill: color, fontWeight: 700, textAnchor: 'middle' };
   return (
@@ -137,12 +137,12 @@ function SvgBlueprint() {
       <text x="330" y="197" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>instância 2</text>
 
       {/* Shared class attribute */}
-      <rect x="440" y="60" width="160" height="55" rx="8" fill="rgba(249,115,22,0.06)" stroke="rgba(249,115,22,0.4)" strokeWidth={1} strokeDasharray="5,3" />
+      <rect x="440" y="60" width="160" height="55" rx="8" fill="rgba(74,158,237,0.06)" stroke="rgba(74,158,237,0.4)" strokeWidth={1} strokeDasharray="5,3" />
       <text x="520" y="80" style={{ fontSize: 10, fill: color, fontWeight: 700, textAnchor: 'middle' }}>Atributo de Classe</text>
       <text x="520" y="97" style={{ fontSize: 10, fill: 'var(--text-primary)', textAnchor: 'middle' }}>instituicao = "Nova IMS"</text>
       <text x="520" y="110" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>partilhado por todas as instâncias</text>
-      <line x1="410" y1="55" x2="438" y2="75" stroke="rgba(249,115,22,0.4)" strokeWidth={1} strokeDasharray="4,2" fill="none" />
-      <line x1="410" y1="155" x2="438" y2="100" stroke="rgba(249,115,22,0.4)" strokeWidth={1} strokeDasharray="4,2" fill="none" />
+      <line x1="410" y1="55" x2="438" y2="75" stroke="rgba(74,158,237,0.4)" strokeWidth={1} strokeDasharray="4,2" fill="none" />
+      <line x1="410" y1="155" x2="438" y2="100" stroke="rgba(74,158,237,0.4)" strokeWidth={1} strokeDasharray="4,2" fill="none" />
     </svg>
   );
 }
@@ -153,11 +153,11 @@ function SvgEncapsulamento() {
   return (
     <svg viewBox="0 0 580 200" width="100%" style={{ display: 'block' }}>
       {/* Outer public layer */}
-      <rect x="20" y="20" width="540" height="160" rx="12" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1.5} strokeDasharray="6,3" />
+      <rect x="20" y="20" width="540" height="160" rx="12" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1.5} strokeDasharray="6,3" />
       <text x="290" y="14" style={{ fontSize: 10, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>Interface Pública</text>
 
       {/* Protected layer */}
-      <rect x="60" y="45" width="460" height="120" rx="10" fill="rgba(249,115,22,0.07)" stroke="rgba(249,115,22,0.4)" strokeWidth={1.5} strokeDasharray="5,3" />
+      <rect x="60" y="45" width="460" height="120" rx="10" fill="rgba(74,158,237,0.07)" stroke="rgba(74,158,237,0.4)" strokeWidth={1.5} strokeDasharray="5,3" />
       <text x="290" y="40" style={{ fontSize: 10, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>_protected (convenção)</text>
 
       {/* Private core */}
@@ -175,13 +175,13 @@ function SvgEncapsulamento() {
 function SvgHeranca() {
   const node = (x, y, label, sub) => (
     <g key={label}>
-      <rect x={x - 55} y={y - 18} width={110} height={sub ? 38 : 32} rx={7} fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth={1.5} />
+      <rect x={x - 55} y={y - 18} width={110} height={sub ? 38 : 32} rx={7} fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth={1.5} />
       <text x={x} y={y + (sub ? -2 : 5)} style={{ fontSize: 11, fill: color, fontWeight: 700, textAnchor: 'middle' }}>{label}</text>
       {sub && <text x={x} y={y + 14} style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>{sub}</text>}
     </g>
   );
   const line = (x1, y1, x2, y2) => (
-    <line key={`${x1}-${y1}-${x2}-${y2}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
+    <line key={`${x1}-${y1}-${x2}-${y2}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
   );
   return (
     <svg viewBox="0 0 600 270" width="100%" style={{ display: 'block' }}>
@@ -207,12 +207,12 @@ function SvgHeranca() {
 function SvgMRO() {
   const node = (x, y, label) => (
     <g key={label}>
-      <rect x={x - 45} y={y - 16} width={90} height={32} rx={7} fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth={1.5} />
+      <rect x={x - 45} y={y - 16} width={90} height={32} rx={7} fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth={1.5} />
       <text x={x} y={y + 5} style={{ fontSize: 11, fill: color, fontWeight: 700, textAnchor: 'middle' }}>{label}</text>
     </g>
   );
   const line = (x1, y1, x2, y2) => (
-    <line key={`${x1}${y1}${x2}${y2}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
+    <line key={`${x1}${y1}${x2}${y2}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
   );
   return (
     <svg viewBox="0 0 440 255" width="100%" style={{ display: 'block', margin: '0 auto' }}>
@@ -233,7 +233,7 @@ function SvgMRO() {
 
 /* ── SVG 6: Polimorfismo speak() ───────────────────────────────── */
 function SvgPolimorfismo() {
-  const box = { rx: 8, fill: 'rgba(249,115,22,0.10)', stroke: color, strokeWidth: 1.5 };
+  const box = { rx: 8, fill: 'rgba(74,158,237,0.10)', stroke: color, strokeWidth: 1.5 };
   const t = { fontSize: 10, textAnchor: 'middle', fill: 'var(--text-primary)' };
   return (
     <svg viewBox="0 0 580 180" width="100%" style={{ display: 'block' }}>
@@ -264,7 +264,7 @@ function SvgPolimorfismo() {
       <rect x="200" y="160" width="120" height="0" {...box} />
       <rect x="200" y="158" width="120" height="14" style={{ display: 'none' }} />
       {/* Bird real */}
-      <rect x="340" y="55" width="140" height="70" rx="8" fill="rgba(249,115,22,0.06)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="340" y="55" width="140" height="70" rx="8" fill="rgba(74,158,237,0.06)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="410" y="75" style={{ ...t, fill: color, fontWeight: 700 }}>Duck Typing</text>
       <text x="410" y="92" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>"Se tem falar(),</text>
       <text x="410" y="106" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>funciona — tipo real</text>
@@ -277,7 +277,7 @@ function SvgPolimorfismo() {
 
 /* ── SVG 7: Composição vs Herança ──────────────────────────────── */
 function SvgComposicao() {
-  const box = { rx: 8, fill: 'rgba(249,115,22,0.10)', stroke: color, strokeWidth: 1.5 };
+  const box = { rx: 8, fill: 'rgba(74,158,237,0.10)', stroke: color, strokeWidth: 1.5 };
   const t = { fontSize: 10, textAnchor: 'middle', fill: 'var(--text-primary)' };
   const h = { fontSize: 11, fontWeight: 700, textAnchor: 'middle', fill: color };
   return (
@@ -288,7 +288,7 @@ function SvgComposicao() {
       <text x="155" y="52" style={h}>Carro</text>
       <text x="155" y="68" style={t}>self.motor = Motor()</text>
       <text x="155" y="82" style={t}>self.rodas = Roda()</text>
-      <line x1="155" y1="90" x2="155" y2="118" stroke="rgba(249,115,22,0.5)" strokeWidth={2} fill="none" />
+      <line x1="155" y1="90" x2="155" y2="118" stroke="rgba(74,158,237,0.5)" strokeWidth={2} fill="none" />
       <text x="160" y="108" style={{ fontSize: 9, fill: color }}>tem um</text>
       <rect x="80" y="120" width="150" height="60" {...box} />
       <text x="155" y="142" style={h}>Motor</text>
@@ -301,7 +301,7 @@ function SvgComposicao() {
       <rect x="390" y="30" width="150" height="50" {...box} />
       <text x="465" y="52" style={h}>Carro</text>
       <text x="465" y="66" style={t}>acelerar(), travar()</text>
-      <line x1="465" y1="80" x2="465" y2="110" stroke="rgba(249,115,22,0.5)" strokeWidth={2} fill="none" />
+      <line x1="465" y1="80" x2="465" y2="110" stroke="rgba(74,158,237,0.5)" strokeWidth={2} fill="none" />
       <text x="475" y="100" style={{ fontSize: 9, fill: color }}>é um</text>
       <rect x="390" y="110" width="150" height="60" {...box} />
       <text x="465" y="132" style={h}>CarroElétrico</text>
@@ -317,13 +317,13 @@ function SvgComposicao() {
 
 /* ── SVG 8: Design Patterns ────────────────────────────────────── */
 function SvgPatterns() {
-  const box = { rx: 8, fill: 'rgba(249,115,22,0.10)', stroke: color, strokeWidth: 1.5 };
+  const box = { rx: 8, fill: 'rgba(74,158,237,0.10)', stroke: color, strokeWidth: 1.5 };
   const t = { fontSize: 9, fill: 'var(--text-primary)', textAnchor: 'middle' };
   const h = { fontSize: 10, fontWeight: 700, fill: color, textAnchor: 'middle' };
   return (
     <svg viewBox="0 0 620 220" width="100%" style={{ display: 'block' }}>
       {/* Singleton */}
-      <rect x="10" y="20" width="180" height="160" rx="10" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="10" y="20" width="180" height="160" rx="10" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="100" y="38" style={{ ...h, fontSize: 11 }}>Singleton</text>
       <rect x="25" y="48" width="150" height="95" {...box} />
       <text x="100" y="66" style={h}>Config</text>
@@ -335,13 +335,13 @@ function SvgPatterns() {
       <text x="100" y="195" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>Uma só instância global</text>
 
       {/* Factory */}
-      <rect x="215" y="20" width="185" height="160" rx="10" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="215" y="20" width="185" height="160" rx="10" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="307" y="38" style={{ ...h, fontSize: 11 }}>Factory Method</text>
       <rect x="230" y="48" width="155" height="40" {...box} />
       <text x="307" y="66" style={h}>AnimalFactory</text>
       <text x="307" y="82" style={t}>create(tipo) → Animal</text>
-      <line x1="307" y1="88" x2="265" y2="116" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
-      <line x1="307" y1="88" x2="350" y2="116" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="307" y1="88" x2="265" y2="116" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="307" y1="88" x2="350" y2="116" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
       <rect x="228" y="118" width="72" height="32" {...box} />
       <text x="264" y="134" style={t}>Cão()</text>
       <text x="264" y="146" style={t}>tipo=="cao"</text>
@@ -351,14 +351,14 @@ function SvgPatterns() {
       <text x="307" y="195" style={{ fontSize: 9, fill: 'var(--text-secondary)', textAnchor: 'middle' }}>Criar objetos sem especificar classe</text>
 
       {/* Observer */}
-      <rect x="425" y="20" width="185" height="160" rx="10" fill="rgba(249,115,22,0.04)" stroke="rgba(249,115,22,0.3)" strokeWidth={1} />
+      <rect x="425" y="20" width="185" height="160" rx="10" fill="rgba(74,158,237,0.04)" stroke="rgba(74,158,237,0.3)" strokeWidth={1} />
       <text x="517" y="38" style={{ ...h, fontSize: 11 }}>Observer</text>
       <rect x="445" y="48" width="145" height="40" {...box} />
       <text x="517" y="66" style={h}>EventEmitter</text>
       <text x="517" y="82" style={t}>listeners = []</text>
-      <line x1="517" y1="88" x2="473" y2="116" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
-      <line x1="517" y1="88" x2="517" y2="116" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
-      <line x1="517" y1="88" x2="562" y2="116" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="517" y1="88" x2="473" y2="116" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="517" y1="88" x2="517" y2="116" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="517" y1="88" x2="562" y2="116" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
       <rect x="438" y="118" width="55" height="30" {...box} />
       <text x="465" y="133" style={t}>Logger</text>
       <text x="465" y="145" style={t}>on_event()</text>
@@ -375,8 +375,8 @@ function SvgPatterns() {
 
 /* ── SVG 9: UML Shape Hierarchy ────────────────────────────────── */
 function SvgUML() {
-  const box = { rx: 8, fill: 'rgba(249,115,22,0.10)', stroke: color, strokeWidth: 1.5 };
-  const abs = { rx: 8, fill: 'rgba(249,115,22,0.06)', stroke: color, strokeWidth: 1.5, strokeDasharray: '5,3' };
+  const box = { rx: 8, fill: 'rgba(74,158,237,0.10)', stroke: color, strokeWidth: 1.5 };
+  const abs = { rx: 8, fill: 'rgba(74,158,237,0.06)', stroke: color, strokeWidth: 1.5, strokeDasharray: '5,3' };
   const t = { fontSize: 9, fill: 'var(--text-primary)', textAnchor: 'middle' };
   const h = { fontSize: 10, fontWeight: 700, fill: color, textAnchor: 'middle' };
   return (
@@ -391,9 +391,9 @@ function SvgUML() {
       <text x="310" y="85" style={t}>+ __str__(): str</text>
 
       {/* Lines to children */}
-      <line x1="310" y1="95" x2="100" y2="155" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
-      <line x1="310" y1="95" x2="310" y2="155" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
-      <line x1="310" y1="95" x2="520" y2="155" stroke="rgba(249,115,22,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="310" y1="95" x2="100" y2="155" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="310" y1="95" x2="310" y2="155" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
+      <line x1="310" y1="95" x2="520" y2="155" stroke="rgba(74,158,237,0.5)" strokeWidth={1.5} fill="none" />
 
       {/* Circle */}
       <rect x="20" y="157" width="160" height="90" {...box} />
@@ -432,13 +432,8 @@ export default function PfDS4() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <span style={S.tag}>MÓDULO 04</span>
+      <span style={S.tag}>MÓDULO 05</span>
       <h1 style={S.h1}>OOP — Programação Orientada a Objectos</h1>
-      <p style={S.lead}>
-        A Programação Orientada a Objectos organiza código em classes que encapsulam dados
-        (atributos) e comportamento (métodos). É o paradigma dominante em Python para construir
-        sistemas complexos e reutilizáveis.
-      </p>
 
       {/* ── 1. Paradigmas ── */}
       <section style={S.section}>
@@ -1059,145 +1054,8 @@ emitter.emit("compra", {"produto": "Livro", "valor": 20})
 # [EMAIL] Notificação: compra`}</div>
       </section>
 
-      <hr style={S.divider} />
 
-      {/* ── 11. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Síntese — Hierarquia Shape Completa</h2>
-        <p style={S.p}>
-          O diagrama abaixo mostra uma hierarquia UML completa: a classe abstracta
-          <code>Shape</code> define o contrato; <code>Circle</code>, <code>Rectangle</code> e
-          <code>Triangle</code> implementam-no. Cada subclasse adiciona atributos e métodos
-          próprios sem alterar a interface.
-        </p>
-        <div style={S.svgWrap}><SvgUML /></div>
-        <div style={S.code}>{`import math
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
 
-class Shape(ABC):
-    def __init__(self, cor="azul"):
-        self.cor = cor
-
-    @abstractmethod
-    def area(self) -> float: ...
-
-    @abstractmethod
-    def perimeter(self) -> float: ...
-
-    def __str__(self):
-        return (f"{self.__class__.__name__} | cor={self.cor} | "
-                f"área={self.area():.2f} | perímetro={self.perimeter():.2f}")
-
-@dataclass
-class Circle(Shape):
-    radius: float
-    cor: str = "azul"
-    def __post_init__(self): super().__init__(self.cor)
-    def area(self): return math.pi * self.radius ** 2
-    def perimeter(self): return 2 * math.pi * self.radius
-    def scale(self, f): return Circle(self.radius * f, self.cor)
-
-@dataclass
-class Rectangle(Shape):
-    w: float
-    h: float
-    cor: str = "azul"
-    def __post_init__(self): super().__init__(self.cor)
-    def area(self): return self.w * self.h
-    def perimeter(self): return 2 * (self.w + self.h)
-    def is_square(self): return self.w == self.h
-
-@dataclass
-class Triangle(Shape):
-    a: float; b: float; c: float
-    cor: str = "azul"
-    def __post_init__(self):
-        super().__init__(self.cor)
-        if self.a + self.b <= self.c:
-            raise ValueError("Triângulo inválido")
-    def area(self):
-        s = self.perimeter() / 2
-        return math.sqrt(s * (s-self.a) * (s-self.b) * (s-self.c))
-    def perimeter(self): return self.a + self.b + self.c
-    def is_equilateral(self): return self.a == self.b == self.c
-
-shapes: list[Shape] = [Circle(5), Rectangle(4, 6), Triangle(3, 4, 5)]
-for s in shapes:
-    print(s)
-# Circle | cor=azul | área=78.54 | perímetro=31.42
-# Rectangle | cor=azul | área=24.00 | perímetro=20.00
-# Triangle | cor=azul | área=6.00 | perímetro=12.00`}</div>
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Conceito</th>
-              <th style={S.th}>Procedural</th>
-              <th style={S.th}>OOP</th>
-              <th style={S.th}>Funcional</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Unidade de organização</td>
-              <td style={S.td}>Função</td>
-              <td style={S.td}>Classe / Objecto</td>
-              <td style={S.td}>Função pura</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Estado</td>
-              <td style={S.td}>Variáveis globais / parâmetros</td>
-              <td style={S.td}>Atributos do objecto</td>
-              <td style={S.td}>Dados imutáveis passados explicitamente</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Reutilização</td>
-              <td style={S.td}>Chamada de funções</td>
-              <td style={S.td}>Herança, composição</td>
-              <td style={S.td}>Composição de funções, higher-order</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Testabilidade</td>
-              <td style={S.td}>Média (depende de estado global)</td>
-              <td style={S.td}>Boa (mocking de objectos)</td>
-              <td style={S.td}>Excelente (sem side effects)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Exemplo Python</td>
-              <td style={S.td}>Scripts, automação</td>
-              <td style={S.td}>Django, sklearn Estimators</td>
-              <td style={S.td}>Pandas pipelines, map/filter</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style={S.highlight}>
-          <strong>Resumo dos princípios OOP:</strong>
-          <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', lineHeight: 2 }}>
-            <li><strong>Encapsulamento</strong> — esconder estado interno, expor interface controlada.</li>
-            <li><strong>Herança</strong> — reutilizar e especializar; usar <code>super()</code>; cuidado com hierarquias profundas.</li>
-            <li><strong>Polimorfismo</strong> — mesmo método, comportamento diferente por classe; duck typing em Python.</li>
-            <li><strong>Abstracção</strong> — definir contratos com ABC; ocultar complexidade de implementação.</li>
-            <li><strong>Composição</strong> — prefira HAS-A a IS-A quando possível; use Mixins para comportamento transversal.</li>
-          </ul>
-        </div>
-      </section>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>12. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Paradigmas de Programação</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Classes e Instâncias</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Atributos — Instância, Classe, Classmethods e Staticmethods</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Encapsulamento</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Herança e MRO</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Polimorfismo e Duck Typing</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Dunder Methods</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

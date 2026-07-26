@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -31,11 +31,8 @@ export default function LLM2() {
     <div style={S.page}>
       <Link to="/llm" style={S.back}><ArrowLeft size={16} /> Voltar a LLMs &amp; Agents</Link>
 
-      <div style={S.tag}>MÓDULO 02</div>
-      <h1 style={S.h1}>Pré-treino e Fine-tuning</h1>
-      <p style={S.lead}>
-        Os grandes modelos de linguagem são construídos em duas fases distintas: um pré-treino massivo em corpora não supervisionados que produz representações genéricas da linguagem, seguido de fine-tuning orientado para alinhar o modelo com tarefas específicas e preferências humanas. Compreender estas fases — e as técnicas eficientes que as acompanham — é essencial para escolher, adaptar e avaliar LLMs em contextos reais.
-      </p>
+      <div style={S.tag}>MÓDULO 01</div>
+      <h1 style={S.h1}>Pré-treino de LLMs</h1>
 
       {/* ── SECTION 1 ────────────────────────────────────────────────── */}
       <div style={S.section}>
@@ -57,53 +54,53 @@ export default function LLM2() {
         <div style={S.diagram}>
           <svg viewBox="0 0 760 175" width="100%" style={{ display: 'block' }}>
             {/* Box 1: Corpus */}
-            <rect x="10" y="55" width="130" height="65" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="75" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Corpus Massivo</text>
+            <rect x="10" y="55" width="130" height="65" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="75" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Corpus Massivo</text>
             <text x="75" y="93" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">CommonCrawl, livros,</text>
             <text x="75" y="108" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Wikipedia, código</text>
 
             {/* Arrow 1 */}
-            <path d="M 140 87 L 190 87" stroke="#f97316" strokeWidth="2" fill="none" markerEnd="url(#arr2a)" />
+            <path d="M 140 87 L 190 87" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arr2a)" />
             <defs>
               <marker id="arr2a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
               </marker>
             </defs>
             <text x="165" y="79" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">auto-sup.</text>
 
             {/* Box 2: Pré-treino */}
-            <rect x="190" y="55" width="140" height="65" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="260" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Pré-treino</text>
+            <rect x="190" y="55" width="140" height="65" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="260" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Pré-treino</text>
             <text x="260" y="93" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">CLM / MLM em</text>
             <text x="260" y="108" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">triliões de tokens</text>
 
             {/* Arrow 2 */}
-            <path d="M 330 87 L 385 87" stroke="#f97316" strokeWidth="2" fill="none" markerEnd="url(#arr2b)" />
+            <path d="M 330 87 L 385 87" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arr2b)" />
             <defs>
               <marker id="arr2b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
               </marker>
             </defs>
             <text x="357" y="79" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">SFT / RLHF</text>
 
             {/* Box 3: Fine-tuning */}
-            <rect x="385" y="55" width="140" height="65" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-            <text x="455" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Fine-tuning</text>
+            <rect x="385" y="55" width="140" height="65" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+            <text x="455" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Fine-tuning</text>
             <text x="455" y="93" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">instrução–resposta,</text>
             <text x="455" y="108" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">RLHF, PEFT</text>
 
             {/* Arrow 3 */}
-            <path d="M 525 87 L 580 87" stroke="#f97316" strokeWidth="2" fill="none" markerEnd="url(#arr2c)" />
+            <path d="M 525 87 L 580 87" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arr2c)" />
             <defs>
               <marker id="arr2c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
               </marker>
             </defs>
             <text x="552" y="79" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">deploy</text>
 
             {/* Box 4: Deployment */}
-            <rect x="580" y="55" width="160" height="65" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="660" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Deployment</text>
+            <rect x="580" y="55" width="160" height="65" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="660" y="76" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Deployment</text>
             <text x="660" y="93" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">API, produto,</text>
             <text x="660" y="108" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">adaptação contínua</text>
 
@@ -125,125 +122,7 @@ export default function LLM2() {
 
       {/* ── SECTION 2 ────────────────────────────────────────────────── */}
       <div style={S.section}>
-        <h2 style={S.h2}>2. BERT — Bidirectional Encoder</h2>
-
-        <p style={S.p}>
-          O <strong>BERT</strong> (Bidirectional Encoder Representations from Transformers, Devlin et al. 2018) revolucionou o NLP ao introduzir um encoder bidirecional pré-treinado com dois objectivos simultâneos: <em>Masked Language Modelling</em> e <em>Next Sentence Prediction</em>.
-        </p>
-
-        <h3 style={S.h3}>Masked Language Modelling (MLM)</h3>
-        <p style={S.p}>
-          Em cada sequência de treino, <strong>15% dos tokens</strong> são seleccionados aleatoriamente. Desses, 80% são substituídos por <code>[MASK]</code>, 10% por um token aleatório, e 10% mantidos inalterados. O modelo deve prever os tokens originais usando contexto bidirecional — tanto à esquerda como à direita.
-        </p>
-
-        <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{\\text{MLM}} = -\\sum_{i \\in \\mathcal{M}} \\log P(x_i \\mid x_{\\text{context}})"} />
-        </div>
-
-        <p style={S.p}>
-          onde <InlineMath math={"\\mathcal{M}"} /> é o conjunto de posições mascaradas e <InlineMath math={"x_{\\text{context}}"} /> representa todos os outros tokens da sequência.
-        </p>
-
-        {/* SVG: BERT tokens com [MASK] */}
-        <div style={S.diagram}>
-          <svg viewBox="0 0 720 180" width="100%" style={{ display: 'block' }}>
-            <text x="360" y="22" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--text-primary)">BERT — Masked Language Modelling</text>
-
-            {/* Input tokens */}
-            {[
-              { label: '[CLS]', x: 30, masked: false },
-              { label: 'O', x: 115, masked: false },
-              { label: 'gato', x: 195, masked: false },
-              { label: '[MASK]', x: 290, masked: true },
-              { label: 'no', x: 390, masked: false },
-              { label: '[MASK]', x: 475, masked: true },
-              { label: '[SEP]', x: 570, masked: false },
-            ].map(({ label, x, masked }) => (
-              <g key={x}>
-                <rect x={x} y="40" width={label === '[MASK]' ? 72 : label === '[CLS]' || label === '[SEP]' ? 58 : 48} height="32" rx="6"
-                  fill={masked ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'}
-                  stroke={masked ? '#f97316' : 'rgba(249,115,22,0.10)'} strokeWidth={masked ? 2 : 1} />
-                <text x={x + (label === '[MASK]' ? 36 : label === '[CLS]' || label === '[SEP]' ? 29 : 24)} y="61"
-                  textAnchor="middle" fontSize={label === '[MASK]' ? 9 : 10} fontWeight={masked ? 700 : 500}
-                  fill={masked ? '#f97316' : 'var(--text-primary)'}>{label}</text>
-              </g>
-            ))}
-
-            {/* Bidirectional arrows */}
-            <defs>
-              <marker id="arrL" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto">
-                <path d="M6,0 L0,3 L6,6 Z" fill="#f97316" />
-              </marker>
-              <marker id="arrR" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
-              </marker>
-            </defs>
-            <path d="M 65 100 Q 360 132 618 100" stroke="#f97316" strokeWidth="1.5" fill="none" strokeDasharray="4 3" markerEnd="url(#arrR)" />
-            <path d="M 618 114 Q 360 146 65 114" stroke="#f97316" strokeWidth="1.5" fill="none" strokeDasharray="4 3" markerEnd="url(#arrR)" />
-            <text x="360" y="148" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Atenção bidirecional — contexto completo disponível em ambas as direcções</text>
-
-            {/* Output heads */}
-            <text x="326" y="38" textAnchor="middle" fontSize="9" fill="#f97316">→ "senta"</text>
-            <text x="511" y="38" textAnchor="middle" fontSize="9" fill="#f97316">→ "tapete"</text>
-          </svg>
-        </div>
-
-        <h3 style={S.h3}>Next Sentence Prediction (NSP)</h3>
-        <p style={S.p}>
-          O segundo objectivo de pré-treino do BERT consiste em determinar se duas frases são consecutivas no texto original. O par é formatado como <code>[CLS] frase A [SEP] frase B [SEP]</code> e o token <code>[CLS]</code> é usado para classificação binária (<em>IsNext</em> / <em>NotNext</em>).
-        </p>
-
-        <p style={S.p}>
-          O objectivo total combina os dois termos:
-        </p>
-
-        <div style={S.math}>
-          <BlockMath math={"\\mathcal{L} = \\mathcal{L}_{\\text{MLM}} + \\mathcal{L}_{\\text{NSP}}"} />
-        </div>
-
-        <h3 style={S.h3}>Variantes do BERT</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Modelo</th>
-              <th style={S.th}>Diferença principal</th>
-              <th style={S.th}>Impacto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>RoBERTa</strong> (Meta, 2019)</td>
-              <td style={S.td}>Remove NSP; treina mais tempo com mais dados e batches maiores</td>
-              <td style={S.td}>Melhora consistentemente BERT em todos os benchmarks</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>DistilBERT</strong> (HuggingFace, 2019)</td>
-              <td style={S.td}>Destilação de conhecimento: 6 camadas em vez de 12</td>
-              <td style={S.td}>40% menos parâmetros, 60% mais rápido, 97% da performance</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>ALBERT</strong> (Google, 2019)</td>
-              <td style={S.td}>Partilha de parâmetros entre camadas; embeddings factorizados</td>
-              <td style={S.td}>Muito menos parâmetros com performance competitiva</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>DeBERTa</strong> (Microsoft, 2020)</td>
-              <td style={S.td}>Atenção disentangled; posição relativa explícita</td>
-              <td style={S.td}>State-of-the-art em tarefas de compreensão linguística</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style={S.note}>
-          A remoção do NSP no RoBERTa sugeriu que o NSP original do BERT é uma tarefa demasiado simples — o modelo aprende a distinguir frases de documentos diferentes por diferenças estilísticas superficiais, não por compreensão semântica real.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ── SECTION 3 ────────────────────────────────────────────────── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>3. GPT — Causal Language Model</h2>
+        <h2 style={S.h2}>2. GPT — Causal Language Model</h2>
 
         <p style={S.p}>
           A família <strong>GPT</strong> (Generative Pre-trained Transformer, OpenAI) utiliza arquitectura decoder-only com <em>causal language modelling</em>: o modelo aprende a distribuição conjunta de uma sequência de tokens factorizada auto-regressivamente.
@@ -259,6 +138,121 @@ export default function LLM2() {
 
         <div style={S.math}>
           <BlockMath math={"\\mathcal{L}_{\\text{CLM}} = -\\sum_{i=1}^{n} \\log P(x_i \\mid x_1, \\ldots, x_{i-1})"} />
+        </div>
+
+        <h3 style={S.h3}>Inputs, Outputs e Erro Durante o Treino</h3>
+        <p style={S.p}>
+          Na prática, o pré-treino não usa pares (pergunta, resposta) — usa apenas <strong>texto contínuo</strong>. O truque que transforma "prever o próximo token" num problema de treino supervisionado chama-se <strong>teacher forcing</strong>: a partir de uma única sequência de tokens, cria-se o input e o target simplesmente <em>desalinhando-os em uma posição</em>.
+        </p>
+
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Posição</th>
+              <th style={S.th}>1</th>
+              <th style={S.th}>2</th>
+              <th style={S.th}>3</th>
+              <th style={S.th}>4</th>
+              <th style={S.th}>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ ...S.td, fontWeight: 700 }}>Input (x)</td>
+              <td style={S.td}>O</td>
+              <td style={S.td}>gato</td>
+              <td style={S.td}>senta</td>
+              <td style={S.td}>no</td>
+              <td style={S.td}>tapete</td>
+            </tr>
+            <tr>
+              <td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>Target (y)</td>
+              <td style={S.td}>gato</td>
+              <td style={S.td}>senta</td>
+              <td style={S.td}>no</td>
+              <td style={S.td}>tapete</td>
+              <td style={S.td}>[EOS]</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style={S.p}>
+          O <strong>target é o próprio input, deslocado uma posição para a esquerda</strong> (<InlineMath math={"y_i = x_{i+1}"} />). Isto significa que uma única frase de <InlineMath math={"n"} /> tokens gera <InlineMath math={"n"} /> exemplos de treino simultaneamente — um por posição — sem qualquer anotação humana. É por isto que se chama <em>auto-supervisionado</em>: o próprio texto fornece o "label" a cada passo.
+        </p>
+
+        <div style={S.highlight}>
+          <strong>Não são frases aleatórias.</strong> O corpus de pré-treino (secção 3) é composto por texto real e coerente — artigos, livros, código, páginas web — cortado em blocos do tamanho do contexto do modelo (ex.: 2 048, 8 192 ou mais tokens seguidos, tal como aparecem no documento original). O modelo nunca vê palavras baralhadas ao acaso: vê linguagem genuína, com toda a sua estrutura gramatical, factual e lógica intacta. É precisamente <em>porque</em> o texto é coerente que prever o próximo token obriga o modelo a aprender sintaxe, semântica e conhecimento do mundo — prever a continuação de texto aleatório não ensinaria nada de útil.
+        </div>
+
+        <h3 style={S.h3}>Aprende a repetir frases, ou aprende um padrão geral?</h3>
+        <p style={S.p}>
+          A pergunta natural é: se o modelo vê sempre a mesma frase durante o treino, não estará simplesmente a <strong>memorizá-la e a repeti-la</strong>, sem realmente "aprender" nada? A resposta tem duas partes.
+        </p>
+        <p style={S.p}>
+          Primeiro, cada frase individual é vista <strong>muito poucas vezes</strong> — tipicamente 1 a 4 vezes em todo o treino, espalhadas por triliões de tokens de texto totalmente diferente entre cada visualização. Um único ajuste de pesos, com uma <em>learning rate</em> pequena, não é suficiente para o modelo "decorar" essa frase especificamente — o gradiente de uma frase é uma correcção minúscula, imediatamente sobreposta por milhões de outras correcções de frases completamente distintas antes de a mesma frase voltar a aparecer (se voltar).
+        </p>
+        <p style={S.p}>
+          Segundo, e mais importante: como o mesmo mecanismo de previsão (as mesmas matrizes de pesos) tem de funcionar para <strong>milhares de milhões de frases diferentes</strong>, os pesos só conseguem reduzir o erro médio se aprenderem <em>regularidades reutilizáveis</em> — que "de" é frequentemente seguido de um substantivo, que "Paris" está associado a "França", que código Python tem indentação consistente, que uma pergunta costuma ser seguida de uma resposta relevante. Memorizar frase a frase não reduziria o erro global; generalizar sim. O treino por gradiente descendente favorece naturalmente a solução que funciona bem <em>em média</em> sobre todo o corpus, não a solução que decora exemplos individuais.
+        </p>
+
+        <h3 style={S.h3}>O que o modelo produz e como se mede o erro</h3>
+        <p style={S.p}>
+          Em cada posição <InlineMath math={"i"} />, o modelo não produz um token — produz um <strong>vector de logits</strong> do tamanho do vocabulário (tipicamente 30 000–150 000 dimensões), que a softmax converte numa distribuição de probabilidade <InlineMath math={"P(\\cdot \\mid x_1, \\ldots, x_i)"} /> sobre <em>todos</em> os tokens possíveis para a posição seguinte.
+        </p>
+
+        <div style={S.diagram}>
+          <svg viewBox="0 0 700 240" width="100%" style={{ display: 'block' }}>
+            <text x="350" y="22" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--text-primary)">De um Token de Input a um Valor de Erro</text>
+
+            <text x="55" y="48" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)">token de input</text>
+            <rect x="10" y="55" width="90" height="34" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="55" y="76" textAnchor="middle" fontSize="10" fontWeight="700" fill="#4a9eed">"no"</text>
+
+            <path d="M 100 72 L 145 72" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arrIO1)" />
+            <defs><marker id="arrIO1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker></defs>
+
+            <rect x="147" y="50" width="110" height="44" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="202" y="68" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#4a9eed">Transformer</text>
+            <text x="202" y="81" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">(todas as camadas)</text>
+
+            <path d="M 257 72 L 300 72" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arrIO2)" />
+            <defs><marker id="arrIO2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker></defs>
+
+            <rect x="302" y="40" width="130" height="64" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="367" y="60" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#4a9eed">Logits → Softmax</text>
+            <text x="367" y="75" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">P(tapete)=0.62</text>
+            <text x="367" y="87" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">P(chão)=0.15 ...</text>
+            <text x="367" y="99" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">(sobre todo o vocabulário)</text>
+
+            <path d="M 432 72 L 475 72" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arrIO3)" />
+            <defs><marker id="arrIO3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker></defs>
+
+            <rect x="477" y="40" width="90" height="64" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+            <text x="522" y="62" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#4a9eed">Target real</text>
+            <text x="522" y="78" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)">"tapete"</text>
+            <text x="522" y="92" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">(y verdadeiro)</text>
+
+            <path d="M 367 104 L 367 125 L 522 125 L 522 104" stroke="#4a9eed" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
+            <path d="M 445 125 L 445 152" stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arrIO4)" />
+            <defs><marker id="arrIO4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker></defs>
+
+            <rect x="355" y="154" width="180" height="34" rx="7" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="2" />
+            <text x="445" y="175" textAnchor="middle" fontSize="10" fontWeight="700" fill="#4a9eed">erro = −log(0.62) ≈ 0.48</text>
+
+            <text x="350" y="220" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Este erro, e o seu gradiente, é o único sinal que actualiza os pesos do modelo</text>
+          </svg>
+        </div>
+
+        <p style={S.p}>
+          O <strong>erro</strong> (loss) nessa posição é simplesmente <InlineMath math={"-\\log P(\\text{tapete})"} /> — a log-probabilidade negativa que o modelo atribuiu ao token que <em>realmente</em> apareceu a seguir. Se o modelo tivesse atribuído probabilidade quase 1 ao token correcto, o erro seria próximo de 0; se tivesse atribuído probabilidade quase 0, o erro tende para infinito — uma penalização muito mais severa para erros "confiantes" do que para incerteza.
+        </p>
+
+        <p style={S.p}>
+          A perda final de um batch é a <strong>média</strong> deste erro por token, sobre todas as posições de todas as sequências do batch — exactamente o somatório <InlineMath math={"\\mathcal{L}_{\\text{CLM}}"} /> mostrado acima, normalizado pelo número total de tokens. É este valor escalar, e o seu gradiente em relação a cada peso do modelo, que a backpropagation usa para actualizar os parâmetros a cada passo de optimização.
+        </p>
+
+        <div style={S.note}>
+          Nada disto exige anotação humana: o "correcto" em cada posição é sempre o token seguinte real do corpus. É por esta razão que se pode pré-treinar em triliões de tokens de texto bruto — o próprio texto gera, de forma automática, tanto o input como o target em cada exemplo.
         </div>
 
         <h3 style={S.h3}>Geração auto-regressiva com causal mask</h3>
@@ -278,10 +272,10 @@ export default function LLM2() {
               return (
                 <g key={i}>
                   <rect x={x} y="40" width="90" height="34" rx="7"
-                    fill={isNext ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'}
-                    stroke={isNext ? '#f97316' : 'rgba(249,115,22,0.10)'} strokeWidth={isNext ? 2 : 1} />
+                    fill={isNext ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'}
+                    stroke={isNext ? '#4a9eed' : 'rgba(74,158,237,0.10)'} strokeWidth={isNext ? 2 : 1} />
                   <text x={x + 45} y="62" textAnchor="middle" fontSize="11"
-                    fontWeight={isNext ? 700 : 500} fill={isNext ? '#f97316' : 'var(--text-primary)'}>{tok}</text>
+                    fontWeight={isNext ? 700 : 500} fill={isNext ? '#4a9eed' : 'var(--text-primary)'}>{tok}</text>
                 </g>
               );
             })}
@@ -292,16 +286,16 @@ export default function LLM2() {
                 <line key={`${i}-${j}`}
                   x1={85 + j * 110} y1="90"
                   x2={85 + i * 110} y2="90"
-                  stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+                  stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               ))
             ))}
 
             {/* Main causal arrow flow */}
             <path d="M 85 90 L 195 90 L 305 90 L 415 90 L 525 90 L 635 90"
-              stroke="#f97316" strokeWidth="2" fill="none" markerEnd="url(#arrGPT)" strokeDasharray="6 3" />
+              stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arrGPT)" strokeDasharray="6 3" />
             <defs>
               <marker id="arrGPT" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
               </marker>
             </defs>
             <text x="360" y="112" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Cada posição só atende a posições anteriores (causal mask)</text>
@@ -312,7 +306,7 @@ export default function LLM2() {
             <text x="305" y="140" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">P(·|...)</text>
             <text x="415" y="140" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">P(·|...)</text>
             <text x="525" y="140" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">P(·|...)</text>
-            <text x="635" y="140" textAnchor="middle" fontSize="9" fontWeight="700" fill="#f97316">sample/argmax</text>
+            <text x="635" y="140" textAnchor="middle" fontSize="9" fontWeight="700" fill="#4a9eed">sample/argmax</text>
 
             <text x="360" y="175" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Token gerado é concatenado ao contexto → próxima iteração</text>
           </svg>
@@ -361,62 +355,193 @@ export default function LLM2() {
 
       <hr style={S.divider} />
 
-      {/* ── SECTION 4 ────────────────────────────────────────────────── */}
+      {/* ── SECTION 3 ────────────────────────────────────────────────── */}
       <div style={S.section}>
-        <h2 style={S.h2}>4. Instruction Tuning e SFT</h2>
+        <h2 style={S.h2}>3. Dados de Pré-treino — Corpus, Limpeza e Deduplicação</h2>
 
         <p style={S.p}>
-          Um modelo pré-treinado aprende a completar texto, não a seguir instruções. Se pedir "Traduz esta frase para francês:", o modelo pode continuar com mais exemplos de traduções em vez de traduzir. O <strong>Supervised Fine-Tuning (SFT)</strong> — também chamado <em>instruction tuning</em> — resolve este problema treinando o modelo em pares (instrução, resposta desejada).
+          A qualidade e composição do corpus de pré-treino determinam, mais do que qualquer escolha arquitectónica, o comportamento final do modelo. Um LLM não "sabe" nada que não esteja, directa ou indirectamente, representado no seu corpus de treino — e dados mal filtrados propagam-se em enviesamentos, erros factuais e vulnerabilidades que nenhum fine-tuning posterior remove por completo.
         </p>
 
-        <h3 style={S.h3}>Porque é que o pré-treino sozinho não basta</h3>
+        <h3 style={S.h3}>Fontes e mistura (data mixture)</h3>
         <p style={S.p}>
-          O pré-treino optimiza <InlineMath math={"P(\\text{próximo token} \\mid \\text{contexto})"} /> sem distinção entre tokens "bons" e "maus". A internet contém texto de baixa qualidade, desinformação e conteúdo nocivo — um modelo que aprende a imitar tudo isso não é um assistente útil. O SFT reorienta o modelo para o formato pergunta–resposta com demonstrações de alta qualidade.
+          O corpus típico de um LLM moderno combina várias fontes, cada uma com uma proporção (peso de amostragem) escolhida deliberadamente — não simplesmente proporcional ao tamanho bruto de cada fonte:
+        </p>
+
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Fonte</th>
+              <th style={S.th}>Contributo típico</th>
+              <th style={S.th}>Porquê</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>CommonCrawl (filtrado)</strong></td>
+              <td style={S.td}>~60–80% dos tokens</td>
+              <td style={S.td}>Maior volume disponível; cobre a diversidade natural da linguagem, mas exige filtragem agressiva</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Código (GitHub, etc.)</strong></td>
+              <td style={S.td}>~5–10%</td>
+              <td style={S.td}>Melhora raciocínio estruturado e desempenho em tarefas lógicas, mesmo fora de programação</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Livros e artigos científicos</strong></td>
+              <td style={S.td}>~5–10%</td>
+              <td style={S.td}>Texto longo, coerente e bem editado — contraste útil ao ruído da web</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Wikipedia</strong></td>
+              <td style={S.td}>~1–3%</td>
+              <td style={S.td}>Densidade factual alta; sobre-amostrada relativamente ao seu peso natural</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Fóruns e diálogo (Reddit, etc.)</strong></td>
+              <td style={S.td}>~2–5%</td>
+              <td style={S.td}>Regista estrutura conversacional, útil como precursor do comportamento de chat</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style={S.note}>
+          Fontes de maior qualidade (Wikipedia, livros) são tipicamente <strong>sobre-amostradas</strong> — repetidas mais vezes durante o treino do que o seu peso natural no corpus bruto sugeriria — porque a densidade de sinal por token é mais alta. Isto é uma decisão explícita de curriculum, não um acidente.
+        </div>
+
+        <h3 style={S.h3}>Pipeline de limpeza</h3>
+        <p style={S.p}>
+          O texto bruto de crawls da web contém uma proporção enorme de ruído: boilerplate HTML, texto duplicado, spam, e conteúdo de baixa qualidade linguística. Um pipeline típico de limpeza aplica, em sequência:
+        </p>
+
+        <div style={S.diagram}>
+          <svg viewBox="0 0 740 130" width="100%" style={{ display: 'block' }}>
+            {[
+              { label: 'Extracção', sub: 'HTML → texto' },
+              { label: 'Filtragem de qualidade', sub: 'classificador / heurísticas' },
+              { label: 'Deduplicação', sub: 'exacta + near-dup (MinHash)' },
+              { label: 'Filtragem de conteúdo', sub: 'PII, tóxico, NSFW' },
+              { label: 'Tokenização', sub: 'BPE / corpus final' },
+            ].map(({ label, sub }, i) => {
+              const x = 10 + i * 148;
+              return (
+                <g key={i}>
+                  <rect x={x} y="30" width="130" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+                  <text x={x + 65} y="55" textAnchor="middle" fontSize="10" fontWeight="700" fill="#4a9eed">{label}</text>
+                  <text x={x + 65} y="72" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)">{sub}</text>
+                  {i < 4 && (
+                    <path d={`M ${x + 140} 60 L ${x + 148} 60`} stroke="#4a9eed" strokeWidth="2" fill="none" markerEnd="url(#arrData)" />
+                  )}
+                </g>
+              );
+            })}
+            <defs>
+              <marker id="arrData" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
+              </marker>
+            </defs>
+            <text x="370" y="115" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Cada etapa remove tipicamente 30–70% do volume de entrada</text>
+          </svg>
+        </div>
+
+        <h3 style={S.h3}>Deduplicação</h3>
+        <p style={S.p}>
+          Documentos duplicados ou quase-duplicados (near-duplicates) são extremamente comuns em crawls da web — o mesmo artigo republicado em dezenas de sites, por exemplo. Sem deduplicação, o modelo memoriza esses trechos desproporcionalmente, o que piora a generalização e aumenta o risco de <em>regurgitação</em> verbatim de texto de treino.
+        </p>
+        <p style={S.p}>
+          A deduplicação exacta (hash do documento completo) é insuficiente porque não apanha duplicados com pequenas variações. Por isso usa-se tipicamente <strong>MinHash + Locality-Sensitive Hashing (LSH)</strong>: uma técnica de hashing aproximado que agrupa documentos com alta sobreposição de n-gramas sem comparar todos os pares (o que seria <InlineMath math={"O(n^2)"} /> e inviável à escala de triliões de tokens).
         </p>
 
         <div style={S.highlight}>
-          <strong>InstructGPT / ChatGPT:</strong> o trabalho seminal de Ouyang et al. (2022) mostrou que um modelo GPT-3 de 1.3B fine-tunado com SFT é preferido pelos utilizadores a um GPT-3 de 175B sem SFT — demonstrando que alinhamento supera escala bruta para utilidade prática.
+          <strong>Contaminação de benchmarks:</strong> se o corpus de pré-treino contém, mesmo que acidentalmente, os dados de teste de um benchmark popular, os resultados desse benchmark deixam de ser uma medida válida de generalização. A deduplicação entre o corpus de treino e os conjuntos de avaliação conhecidos é uma etapa standard — e ainda assim imperfeita, dado o tamanho dos corpora modernos.
         </div>
 
-        <h3 style={S.h3}>Formato e dados de SFT</h3>
+        <div style={S.note}>
+          O trabalho <strong>The Pile</strong> (EleutherAI) e <strong>FineWeb</strong> (HuggingFace) documentam publicamente estas decisões de curadoria, e são hoje referências de facto para entender a composição de corpora de pré-treino em detalhe.
+        </div>
+      </div>
+
+      <hr style={S.divider} />
+
+      {/* ── SECTION 4 ────────────────────────────────────────────────── */}
+      <div style={S.section}>
+        <h2 style={S.h2}>4. Leis de Escala — Kaplan e Chinchilla</h2>
+
         <p style={S.p}>
-          O dataset de SFT consiste em exemplos no formato instrução–resposta. O objectivo de treino é a log-verosimilhança da resposta dado o prompt (a perda sobre os tokens da instrução é tipicamente mascarada):
+          Uma das descobertas mais influentes em LLMs é que a perda de pré-treino segue relações previsíveis — <strong>leis de potência</strong> — em função do número de parâmetros do modelo, do número de tokens de treino, e do compute total. Isto permite prever o desempenho de um modelo maior <em>antes</em> de o treinar, algo raro em deep learning.
+        </p>
+
+        <h3 style={S.h3}>A lei de Kaplan et al. (2020)</h3>
+        <p style={S.p}>
+          Kaplan et al. mostraram que a perda de teste <InlineMath math={"L"} /> decresce como uma lei de potência em relação a cada um dos três factores, mantendo os outros suficientemente grandes para não serem o gargalo:
         </p>
 
         <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{\\text{SFT}} = -\\sum_{i} \\log P_{\\theta}(y_i \\mid x, y_{<i})"} />
+          <BlockMath math={"L(N) = \\left(\\frac{N_c}{N}\\right)^{\\alpha_N}, \\quad L(D) = \\left(\\frac{D_c}{D}\\right)^{\\alpha_D}, \\quad L(C) = \\left(\\frac{C_c}{C}\\right)^{\\alpha_C}"} />
         </div>
 
-        <div style={S.code}>{`# Pseudocódigo — Loop de SFT
-
-dataset = load_instruction_dataset("alpaca_52k.jsonl")
-model = load_pretrained("llama-2-7b")
-optimizer = AdamW(model.parameters(), lr=2e-5)
-
-for epoch in range(3):
-    for batch in dataloader(dataset, batch_size=4):
-        # Formatar como: [INST] instrução [/INST] resposta
-        input_ids  = tokenize(batch["instruction"])
-        labels     = tokenize(batch["output"])
-
-        # Máscara: só calcular loss nos tokens de resposta
-        loss_mask  = build_response_mask(input_ids, labels)
-
-        logits = model(input_ids).logits
-        loss   = cross_entropy(logits, labels, mask=loss_mask)
-
-        loss.backward()
-        optimizer.step()
-        optimizer.zero_grad()
-
-# Resultado: modelo que segue instruções no formato chat`}</div>
-
         <p style={S.p}>
-          Datasets populares: <strong>FLAN</strong> (Google, 1 800+ tarefas diversas), <strong>Alpaca</strong> (Stanford, 52K exemplos gerados com GPT-3.5), <strong>OpenHermes</strong>, <strong>ShareGPT</strong>. A pesquisa converge num ponto crítico: <em>qualidade supera quantidade</em> — 1 000 exemplos cuidadosamente seleccionados superam 100K exemplos ruidosos.
+          onde <InlineMath math={"N"} /> é o número de parâmetros, <InlineMath math={"D"} /> o número de tokens de treino, <InlineMath math={"C"} /> o compute total, e <InlineMath math={"N_c, D_c, C_c, \\alpha_N, \\alpha_D, \\alpha_C"} /> são constantes empíricas ajustadas a partir de centenas de treinos a diferentes escalas.
         </p>
 
         <div style={S.note}>
-          O trabalho LIMA (Zhou et al., 2023) demonstrou que apenas 1 000 exemplos de altíssima qualidade são suficientes para SFT competitivo — desafiando a premissa de que se precisam de dezenas de milhares de demonstrações.
+          A conclusão prática de Kaplan et al. foi que, dado um orçamento de compute fixo, é mais eficiente treinar modelos <strong>maiores</strong> com <strong>menos tokens</strong> do que modelos pequenos exaustivamente treinados. Esta conclusão viria a ser corrigida por Hoffmann et al. (Chinchilla) três anos depois.
+        </div>
+
+        <h3 style={S.h3}>A correcção Chinchilla (Hoffmann et al., 2022)</h3>
+        <p style={S.p}>
+          O trabalho Chinchilla repetiu a análise com uma grelha de treinos mais ampla e uma metodologia de ajuste diferente, e chegou a uma conclusão que contradiz directamente a prática da época: os modelos GPT-3 e semelhantes estavam <strong>substancialmente subtreinados</strong> — grandes demais para o número de tokens que tinham visto.
+        </p>
+
+        <p style={S.p}>
+          Para um orçamento de compute fixo <InlineMath math={"C \\approx 6ND"} /> (aproximação padrão de FLOPs por token num Transformer), a alocação óptima entre parâmetros e tokens satisfaz:
+        </p>
+
+        <div style={S.math}>
+          <BlockMath math={"N_{\\text{opt}} \\propto C^{0.5}, \\qquad D_{\\text{opt}} \\propto C^{0.5}"} />
+        </div>
+
+        <p style={S.p}>
+          Ou seja, parâmetros e tokens devem escalar <strong>na mesma proporção</strong> — ao contrário da recomendação de Kaplan, que favorecia escalar parâmetros mais rapidamente que dados. Na prática, isto traduz-se na regra popularizada de <strong>≈20 tokens de treino por parâmetro</strong>.
+        </p>
+
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Modelo</th>
+              <th style={S.th}>Parâmetros</th>
+              <th style={S.th}>Tokens de treino</th>
+              <th style={S.th}>Tokens/parâmetro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>GPT-3</strong> (2020, pré-Chinchilla)</td>
+              <td style={S.td}>175B</td>
+              <td style={S.td}>300B</td>
+              <td style={S.td}>≈1.7×  (subtreinado)</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Chinchilla</strong> (2022)</td>
+              <td style={S.td}>70B</td>
+              <td style={S.td}>1.4T</td>
+              <td style={S.td}>≈20×  (compute-óptimo)</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Llama 2/3</strong> e sucessores</td>
+              <td style={S.td}>7–70B</td>
+              <td style={S.td}>2–15T</td>
+              <td style={S.td}>&gt;20×  (além do óptimo — ver nota)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style={S.highlight}>
+          Chinchilla (70B) supera GPT-3 (175B) em benchmarks, apesar de ter menos de metade dos parâmetros — porque foi treinado com muito mais tokens para o mesmo orçamento de compute. É a demonstração empírica mais citada de que "mais parâmetros" não é sinónimo de "melhor modelo" sem dados suficientes para os acompanhar.
+        </div>
+
+        <div style={S.note}>
+          Modelos mais recentes (Llama 3, por exemplo) treinam deliberadamente <em>além</em> do ponto compute-óptimo de Chinchilla — aceitando um treino mais caro em troca de um modelo final mais pequeno e barato de <strong>inferir</strong> em produção. A óptica de Chinchilla optimiza o custo de treino; na prática, o custo de inferência acumulado ao longo da vida do modelo pesa cada vez mais nesta decisão.
         </div>
       </div>
 
@@ -424,361 +549,98 @@ for epoch in range(3):
 
       {/* ── SECTION 5 ────────────────────────────────────────────────── */}
       <div style={S.section}>
-        <h2 style={S.h2}>5. RLHF — Reinforcement Learning from Human Feedback</h2>
+        <h2 style={S.h2}>5. Codificação de Posição Moderna — RoPE e ALiBi</h2>
 
         <p style={S.p}>
-          O SFT melhora o seguimento de instruções mas não resolve preferências subjectivas humanas: criatividade, tom, segurança, equilíbrio de informação. O <strong>RLHF</strong> (Reinforcement Learning from Human Feedback) usa feedback humano directo para alinhar o modelo com preferências reais, num processo de três fases.
+          O positional encoding sinusoidal original do Transformer (Vaswani et al., 2017) funciona bem para os comprimentos de contexto vistos durante o treino, mas generaliza mal para sequências mais longas do que as usadas no pré-treino. LLMs modernos precisam de suportar contextos de dezenas ou centenas de milhares de tokens, o que motivou duas alternativas amplamente adoptadas.
         </p>
 
-        <h3 style={S.h3}>Fase 1 — SFT</h3>
+        <h3 style={S.h3}>O que é o Context Window, e porque é limitado?</h3>
         <p style={S.p}>
-          Como descrito na secção anterior: fine-tuning supervisionado com demonstrações humanas para obter um modelo base alinhado <InlineMath math={"\\pi_{\\text{SFT}}"} />.
+          O <strong>context window</strong> é o número máximo de tokens (prompt + histórico + resposta gerada até ao momento) que o modelo consegue processar de uma só vez. Os LLMs são <strong>stateless</strong>: entre chamadas à API não existe memória nenhuma — tudo o que o modelo "sabe" sobre a conversa tem de estar, literalmente, dentro dessa janela de tokens a cada chamada.
         </p>
-
-        <h3 style={S.h3}>Fase 2 — Reward Model</h3>
         <p style={S.p}>
-          Para cada prompt, geram-se múltiplas respostas. Anotadores humanos ordenam-nas por qualidade. Treina-se um <strong>Reward Model</strong> <InlineMath math={"r_{\\phi}(x, y)"} /> que aprende a atribuir scores consistentes com as preferências humanas:
+          O limite não é arbitrário: o self-attention calcula interacções entre <strong>todos os pares</strong> de tokens da sequência, um custo que cresce com <InlineMath math={"O(n^2)"} /> em tempo e memória, onde <InlineMath math={"n"} /> é o número de tokens. Duplicar o contexto quadruplica o custo do mecanismo de atenção — é por isso que aumentar o context window não é apenas "mudar um número", mas um problema de eficiência que motivou, entre outras coisas, o desenvolvimento do RoPE e do ALiBi abaixo (que permitem generalizar para contextos mais longos do que os vistos em treino) e de mecanismos de atenção mais eficientes (FlashAttention, atenção esparsa).
+        </p>
+        <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+          <table style={S.table}>
+            <thead><tr><th style={S.th}>Modelo</th><th style={S.th}>Ano</th><th style={S.th}>Context Window</th></tr></thead>
+            <tbody>
+              {[['GPT-3', '2020', '4.096 tokens'], ['GPT-4', '2023', '8k / 32k tokens'], ['Claude 3', '2024', '200k tokens'], ['Gemini 2.5', '2025', '1M tokens']].map(([m, y, c]) => (
+                <tr key={m}><td style={S.td}><strong>{m}</strong></td><td style={S.td}>{y}</td><td style={{ ...S.td, fontFamily: 'monospace', color, fontWeight: 600 }}>{c}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div style={S.note}>
+          Um context window maior não resolve tudo: modelos com janelas enormes ainda sofrem de{' '}
+          <em>"lost in the middle"</em> — informação colocada no meio de um contexto muito longo é
+          recuperada com menos fiabilidade do que informação no início ou no fim. Um contexto grande
+          aumenta o que <em>cabe</em>, mas não garante que o modelo use bem tudo o que lá está — daí a
+          relevância de técnicas de RAG (Módulo 04) para trazer só a informação relevante, em vez de
+          despejar tudo no prompt.
+        </div>
+
+        <h3 style={S.h3}>RoPE — Rotary Position Embedding</h3>
+        <p style={S.p}>
+          O <strong>RoPE</strong> (Su et al., 2021), usado em LLaMA, Mistral, Qwen e a maioria dos LLMs open-source actuais, codifica a posição rodando os vectores de query e key num espaço complexo, em vez de os somar a um vector de posição fixo:
         </p>
 
         <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{\\text{RM}} = -\\mathbb{E}_{(x, y_w, y_l)} \\left[ \\log \\sigma\\left( r_{\\phi}(x, y_w) - r_{\\phi}(x, y_l) \\right) \\right]"} />
+          <BlockMath math={"f(x, m) = \\left(x_1 \\cos m\\theta - x_2 \\sin m\\theta,\\; x_1 \\sin m\\theta + x_2 \\cos m\\theta\\right)"} />
         </div>
 
         <p style={S.p}>
-          onde <InlineMath math={"y_w"} /> é a resposta preferida (<em>winner</em>) e <InlineMath math={"y_l"} /> a rejeitada (<em>loser</em>).
+          onde <InlineMath math={"m"} /> é a posição do token e <InlineMath math={"\\theta"} /> uma frequência base. A propriedade chave é que o produto interno entre uma query na posição <InlineMath math={"m"} /> e uma key na posição <InlineMath math={"n"} /> depende apenas da <strong>distância relativa</strong> <InlineMath math={"m - n"} />, não das posições absolutas — o que generaliza naturalmente melhor para posições nunca vistas durante o treino.
         </p>
-
-        <h3 style={S.h3}>Fase 3 — PPO (Proximal Policy Optimization)</h3>
-        <p style={S.p}>
-          O modelo de linguagem <InlineMath math={"\\pi_{\\theta}"} /> é optimizado com PPO para maximizar o reward esperado, com uma penalidade KL que impede que o modelo se desvie demasiado do <InlineMath math={"\\pi_{\\text{SFT}}"} />:
-        </p>
-
-        <div style={S.math}>
-          <BlockMath math={"\\max_{\\pi_{\\theta}} \\; \\mathbb{E}_{x \\sim \\mathcal{D},\\, y \\sim \\pi_{\\theta}(\\cdot|x)} \\left[ r_{\\phi}(x, y) - \\beta \\cdot \\text{KL}\\left(\\pi_{\\theta}(\\cdot|x) \\,\\|\\, \\pi_{\\text{SFT}}(\\cdot|x)\\right) \\right]"} />
-        </div>
-
-        <p style={S.p}>
-          O coeficiente <InlineMath math={"\\beta"} /> controla o trade-off: valores altos preservam o comportamento SFT; valores baixos permitem mais optimização em direcção ao reward.
-        </p>
-
-        {/* SVG: Pipeline RLHF */}
-        <div style={S.diagram}>
-          <svg viewBox="0 0 720 215" width="100%" style={{ display: 'block' }}>
-            <defs>
-              <marker id="rA" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker>
-            </defs>
-
-            <text x="360" y="20" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--text-primary)">Pipeline RLHF — Três Fases</text>
-
-            {/* FASE 1 */}
-            <text x="90" y="42" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">FASE 1</text>
-            <rect x="20" y="52" width="140" height="44" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="90" y="71" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)">SFT Base</text>
-            <text x="90" y="86" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">π_SFT demonstrações</text>
-
-            {/* Arrow 1→2 */}
-            <path d="M 160 74 L 200 74" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#rA)" />
-
-            {/* FASE 2 */}
-            <text x="310" y="42" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">FASE 2</text>
-            <rect x="202" y="52" width="216" height="44" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="310" y="71" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)">Humano compara</text>
-            <text x="310" y="86" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">y_w &gt; y_l rankings</text>
-
-            <path d="M 310 96 L 310 126" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#rA)" />
-
-            <rect x="202" y="128" width="216" height="44" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="310" y="147" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)">Reward Model</text>
-            <text x="310" y="162" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">r_φ(x, y) → score</text>
-
-            {/* Arrow 2→3 */}
-            <path d="M 418 150 L 458 150" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#rA)" />
-
-            {/* FASE 3 */}
-            <text x="570" y="42" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">FASE 3</text>
-            <rect x="460" y="52" width="220" height="44" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="570" y="71" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)">PPO Update</text>
-            <text x="570" y="86" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">max E[r] − β·KL  |  KL penalty vs π_SFT</text>
-
-            <path d="M 570 96 L 570 126" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#rA)" />
-
-            <rect x="460" y="128" width="220" height="44" rx="8" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="2" />
-            <text x="570" y="147" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">π_RL Alinhado</text>
-            <text x="570" y="162" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">ChatGPT / Claude</text>
-
-            <text x="360" y="205" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">O loop PPO itera até convergência — tipicamente centenas de passos de optimização</text>
-          </svg>
-        </div>
-
-        <h3 style={S.h3}>DPO — Alternativa ao PPO</h3>
-        <p style={S.p}>
-          O <strong>Direct Preference Optimization</strong> (Rafailov et al., 2023) demonstrou que o objectivo RLHF tem uma solução de forma fechada que pode ser optimizada directamente com supervised learning sobre pares preferência–rejeição, sem Reward Model nem PPO explícito:
-        </p>
-
-        <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{\\text{DPO}} = -\\mathbb{E} \\left[ \\log \\sigma \\left( \\beta \\log \\frac{\\pi_{\\theta}(y_w|x)}{\\pi_{\\text{SFT}}(y_w|x)} - \\beta \\log \\frac{\\pi_{\\theta}(y_l|x)}{\\pi_{\\text{SFT}}(y_l|x)} \\right) \\right]"} />
-        </div>
 
         <div style={S.note}>
-          DPO simplifica muito o pipeline RLHF, eliminando a necessidade de treinar um Reward Model separado e de implementar PPO. Tornou-se o método preferido para alinhamento de modelos open-source como Llama, Mistral e Qwen.
+          Técnicas como <strong>Position Interpolation</strong> e <strong>NTK-aware scaling</strong> permitem estender um modelo treinado com RoPE para contextos muito mais longos do que o original, ajustando a frequência base <InlineMath math={"\\theta"} /> sem re-treinar do zero — a base técnica por trás de extensões de contexto como as usadas em versões "128K" ou "1M tokens" de modelos existentes.
         </div>
-      </div>
 
-      <hr style={S.divider} />
-
-      {/* ── SECTION 6 ────────────────────────────────────────────────── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>6. PEFT — Parameter-Efficient Fine-Tuning</h2>
-
+        <h3 style={S.h3}>ALiBi — Attention with Linear Biases</h3>
         <p style={S.p}>
-          Fine-tuning completo de um modelo de 70B parâmetros requer dezenas de GPUs de alto custo e semanas de compute — proibitivo para a maioria das organizações. O <strong>Parameter-Efficient Fine-Tuning (PEFT)</strong> adapta apenas uma pequena fracção dos parâmetros, atingindo performance próxima do full fine-tuning com uma fracção dos recursos.
-        </p>
-
-        <h3 style={S.h3}>LoRA — Low-Rank Adaptation</h3>
-        <p style={S.p}>
-          A intuição do <strong>LoRA</strong> (Hu et al., 2021) é que as actualizações de pesos durante o fine-tuning têm posto intrínseco baixo — são aproximáveis por matrizes de baixo rank. Em vez de actualizar <InlineMath math={"W \\in \\mathbb{R}^{d \\times k}"} /> directamente, congela-se <InlineMath math={"W"} /> e aprende-se a decomposição:
+          O <strong>ALiBi</strong> (Press et al., 2021) elimina qualquer embedding de posição explícito. Em vez disso, adiciona um <em>bias</em> linear negativo aos scores de atenção, proporcional à distância entre as posições:
         </p>
 
         <div style={S.math}>
-          <BlockMath math={"W' = W + \\Delta W = W + A \\cdot B"} />
+          <BlockMath math={"\\text{score}(q_i, k_j) = q_i \\cdot k_j - \\lambda \\, |i - j|"} />
         </div>
 
         <p style={S.p}>
-          onde <InlineMath math={"A \\in \\mathbb{R}^{d \\times r}"} />, <InlineMath math={"B \\in \\mathbb{R}^{r \\times k}"} />, e o rank <InlineMath math={"r \\ll \\min(d, k)"} />. Apenas <InlineMath math={"A"} /> e <InlineMath math={"B"} /> são treinados. O número de parâmetros treináveis é <InlineMath math={"r(d + k)"} /> em vez de <InlineMath math={"dk"} />.
+          onde <InlineMath math={"\\lambda"} /> é uma constante específica de cada cabeça de atenção. Quanto mais distantes dois tokens estão, maior a penalização — um enviesamento simples que favorece atenção local sem impedir atenção a longa distância quando necessário.
         </p>
 
-        {/* SVG: LoRA low-rank decomposition */}
-        <div style={S.diagram}>
-          <svg viewBox="0 0 700 210" width="100%" style={{ display: 'block' }}>
-            <text x="350" y="22" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--text-primary)">LoRA — Decomposição Low-Rank</text>
-
-            {/* Input */}
-            <rect x="10" y="85" width="70" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
-            <text x="45" y="110" textAnchor="middle" fontSize="10" fill="var(--text-primary)">x ∈ ℝᵈ</text>
-
-            {/* Arrow to W */}
-            <path d="M 80 105 L 120 105" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#lA)" />
-            <defs><marker id="lA" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
-
-            {/* W frozen */}
-            <rect x="120" y="65" width="100" height="80" rx="8" fill="rgba(100,100,100,0.10)" stroke="#888" strokeWidth="1.5" strokeDasharray="5 3" />
-            <text x="170" y="100" textAnchor="middle" fontSize="11" fontWeight="700" fill="#888">W</text>
-            <text x="170" y="116" textAnchor="middle" fontSize="9" fill="#888">d × k</text>
-            <text x="170" y="130" textAnchor="middle" fontSize="8" fill="#888">(congelado)</text>
-
-            {/* Arrow W to sum */}
-            <path d="M 220 105 L 360 105" stroke="#888" strokeWidth="1.5" fill="none" markerEnd="url(#lB)" strokeDasharray="4 3" />
-            <defs><marker id="lB" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#888" /></marker></defs>
-
-            {/* LoRA path: A then B */}
-            <path d="M 80 105 L 100 105 L 100 170 L 145 170" stroke="#f97316" strokeWidth="1.5" fill="none" />
-            <rect x="145" y="150" width="75" height="40" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="182" y="167" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">A</text>
-            <text x="182" y="181" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">d × r</text>
-
-            <path d="M 220 170 L 260 170" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#lC)" />
-            <defs><marker id="lC" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
-
-            <rect x="260" y="150" width="75" height="40" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="297" y="167" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">B</text>
-            <text x="297" y="181" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">r × k</text>
-
-            <path d="M 335 170 L 380 170 L 380 120" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#lD)" />
-            <defs><marker id="lD" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
-
-            {/* Sum circle */}
-            <circle cx="380" cy="105" r="18" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="380" y="110" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f97316">+</text>
-
-            {/* Arrow to output */}
-            <path d="M 398 105 L 450 105" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#lE)" />
-            <defs><marker id="lE" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f97316" /></marker></defs>
-
-            <rect x="450" y="82" width="110" height="46" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-            <text x="505" y="101" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">W·x + AB·x</text>
-            <text x="505" y="118" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">output ∈ ℝᵏ</text>
-
-            {/* rank annotation */}
-            <text x="182" y="205" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">r ≪ min(d,k)  — tipicamente r ∈ {"{4, 8, 16, 32}"}</text>
-          </svg>
-        </div>
-
-        <h3 style={S.h3}>Adapter Layers</h3>
-        <p style={S.p}>
-          Os <strong>Adapters</strong> (Houlsby et al., 2019) inserem pequenas MLPs entre as sub-camadas do Transformer (após atenção e após FFN). Cada adapter tem uma projecção de baixa dimensão (<em>bottleneck</em>), uma activação não-linear, e uma projecção de saída — com uma ligação residual que garante identidade aproximada no início do treino.
-        </p>
-
-        <h3 style={S.h3}>Prefix Tuning</h3>
-        <p style={S.p}>
-          O <strong>Prefix Tuning</strong> (Li &amp; Liang, 2021) não modifica os pesos do modelo. Em vez disso, adiciona vectores "soft" aprendíveis (<em>virtual tokens</em>) no início do contexto de cada camada. O modelo aprende estes prefixos; todos os pesos originais permanecem congelados.
-        </p>
-
-        <h3 style={S.h3}>Comparação de métodos PEFT</h3>
         <table style={S.table}>
           <thead>
             <tr>
               <th style={S.th}>Método</th>
-              <th style={S.th}>Parâm. treináveis</th>
-              <th style={S.th}>VRAM extra</th>
-              <th style={S.th}>Latência inferência</th>
-              <th style={S.th}>Performance</th>
+              <th style={S.th}>Mecanismo</th>
+              <th style={S.th}>Extrapolação além do contexto de treino</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}><strong>Full Fine-tuning</strong></td>
-              <td style={S.td}>100%</td>
-              <td style={S.td}>~80 GB (7B)</td>
-              <td style={S.td}>Nenhuma</td>
-              <td style={S.td}>Máxima (referência)</td>
+              <td style={S.td}><strong>Sinusoidal</strong> (original)</td>
+              <td style={S.td}>Soma vector fixo de seno/cosseno ao embedding</td>
+              <td style={S.td}>Fraca</td>
             </tr>
             <tr>
-              <td style={S.td}><strong>LoRA</strong> (r=16)</td>
-              <td style={S.td}>~0.5%</td>
-              <td style={S.td}>~16 GB (7B)</td>
-              <td style={S.td}>Nenhuma (merge)</td>
-              <td style={S.td}>≈ Full FT</td>
+              <td style={S.td}><strong>RoPE</strong></td>
+              <td style={S.td}>Rotação de Q/K dependente da posição relativa</td>
+              <td style={S.td}>Boa, especialmente com scaling (NTK/interpolation)</td>
             </tr>
             <tr>
-              <td style={S.td}><strong>QLoRA</strong> (4-bit)</td>
-              <td style={S.td}>~0.5%</td>
-              <td style={S.td}>~6 GB (7B)</td>
-              <td style={S.td}>Mínima</td>
-              <td style={S.td}>Ligeiramente inferior</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Adapters</strong></td>
-              <td style={S.td}>1–4%</td>
-              <td style={S.td}>~20 GB (7B)</td>
-              <td style={S.td}>+5–10% latência</td>
-              <td style={S.td}>Próxima de Full FT</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Prefix Tuning</strong></td>
-              <td style={S.td}>0.1–1%</td>
-              <td style={S.td}>Mínima</td>
-              <td style={S.td}>+tokens de contexto</td>
-              <td style={S.td}>Inferior em tarefas complexas</td>
+              <td style={S.td}><strong>ALiBi</strong></td>
+              <td style={S.td}>Bias linear no score de atenção, sem embedding</td>
+              <td style={S.td}>Muito boa, por construção</td>
             </tr>
           </tbody>
         </table>
 
-        <div style={S.highlight}>
-          <strong>QLoRA</strong> combina LoRA com quantização 4-bit (formato NF4 — Normal Float 4) do modelo base e double quantization. Permite fine-tuning de modelos de 65B num único GPU de 48 GB, democratizando o acesso ao fine-tuning de LLMs grandes.
-        </div>
-
         <div style={S.note}>
-          Após treino com LoRA, as matrizes <InlineMath math={"A"} /> e <InlineMath math={"B"} /> podem ser <em>merged</em> nos pesos originais: <InlineMath math={"W' = W + AB"} />. O resultado é um modelo com exactamente os mesmos parâmetros do original, sem overhead de latência em inferência.
+          A escolha entre RoPE e ALiBi é hoje sobretudo uma questão de ecossistema: RoPE domina os LLMs open-source mais recentes (LLaMA, Mistral, Qwen, DeepSeek), enquanto ALiBi teve maior adopção em alguns modelos focados especificamente em extrapolação de contexto (ex.: BLOOM, MPT).
         </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ── SECTION 7 ────────────────────────────────────────────────── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>7. Avaliação de LLMs</h2>
-
-        <p style={S.p}>
-          Avaliar LLMs é notoriamente difícil: as capacidades emergentes, a natureza aberta das respostas, e a dependência do prompt tornam métricas únicas insuficientes. A comunidade converge num conjunto de benchmarks standardizados, métricas probabilísticas, e análise crítica das suas limitações.
-        </p>
-
-        <h3 style={S.h3}>Benchmarks principais</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Benchmark</th>
-              <th style={S.th}>Foco</th>
-              <th style={S.th}>Formato</th>
-              <th style={S.th}>Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>MMLU</strong></td>
-              <td style={S.td}>Conhecimento multi-domínio (57 matérias)</td>
-              <td style={S.td}>4-choice MCQ</td>
-              <td style={S.td}>Medicina, direito, matemática, ciências</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>HellaSwag</strong></td>
-              <td style={S.td}>Raciocínio de senso comum</td>
-              <td style={S.td}>4-choice MCQ</td>
-              <td style={S.td}>Completar descrições de actividades</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>HumanEval</strong></td>
-              <td style={S.td}>Geração de código Python</td>
-              <td style={S.td}>Pass@k funcional</td>
-              <td style={S.td}>164 problemas de programação</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>GSM8K</strong></td>
-              <td style={S.td}>Raciocínio matemático</td>
-              <td style={S.td}>Resposta exacta</td>
-              <td style={S.td}>8 500 problemas de matemática escolar</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>TruthfulQA</strong></td>
-              <td style={S.td}>Veracidade factual</td>
-              <td style={S.td}>MCQ + geração</td>
-              <td style={S.td}>Questões onde humanos têm crenças erradas</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Perplexidade</h3>
-        <p style={S.p}>
-          A <strong>perplexidade</strong> é a métrica probabilística fundamental para LLMs — mede quão bem o modelo prediz uma sequência de texto. Valores mais baixos indicam melhor modelação:
-        </p>
-
-        <div style={S.math}>
-          <BlockMath math={"PP(W) = P(w_1, w_2, \\ldots, w_n)^{-1/n} = \\exp\\!\\left(-\\frac{1}{n} \\sum_{i=1}^{n} \\log P(w_i \\mid w_1, \\ldots, w_{i-1})\\right)"} />
-        </div>
-
-        <p style={S.p}>
-          Intuitivamente, a perplexidade é o número médio de opções que o modelo considera plausíveis em cada posição. Um modelo com perplexidade 10 está, em média, "indeciso entre 10 tokens" em cada passo.
-        </p>
-
-        <h3 style={S.h3}>Limitações dos benchmarks</h3>
-
-        <div style={S.highlight}>
-          <strong>Data contamination:</strong> se o dataset de avaliação esteve presente no corpus de pré-treino, as métricas inflacionam artificialmente. Detectar contaminação é difícil quando o corpus de treino tem trilhões de tokens e não é totalmente auditável.
-        </div>
-
-        <div style={S.highlight}>
-          <strong>Teaching to the test:</strong> modelos fine-tunados especificamente para benchmarks (via SFT nos dados de treino dos benchmarks) atingem scores altos sem generalização real. O <em>Goodhart's Law</em> aplica-se: quando uma métrica se torna um objectivo, deixa de ser uma boa métrica.
-        </div>
-
-        <div style={S.highlight}>
-          <strong>Format sensitivity:</strong> a performance em MCQ pode variar 10–20 pontos percentuais apenas com diferentes formatos de prompt, ordem das opções, ou uso de few-shot vs zero-shot. Um benchmark reporta um número; o que conta é a avaliação com múltiplas configurações.
-        </div>
-
-        <p style={S.p}>
-          A tendência actual é complementar benchmarks estáticos com <strong>avaliação humana directa</strong> (ex.: Chatbot Arena / LMSYS), que compara modelos em pares com utilizadores reais — mais ruidosa mas mais representativa de utilidade real.
-        </p>
-
-        <div style={S.note}>
-          O benchmarking de LLMs é uma área activa: novos benchmarks (GPQA, MATH-500, LiveCodeBench, SWE-bench) tentam resolver as limitações de MMLU e HellaSwag, que muitos modelos de topo já "saturaram" — atingindo performance próxima do tecto.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ── SÍNTESE ──────────────────────────────────────────────────── */}
-      <h2 style={S.h2}>Síntese do Módulo 02</h2>
-      <div style={{ ...S.highlight, padding: '1.75rem' }}>
-        <p style={{ ...S.p, marginTop: 0, marginBottom: '0.6rem' }}>
-          Os LLMs modernos são construídos em camadas progressivas de especialização. O <strong>transfer learning</strong> é o princípio unificador: pré-treino massivo (CLM para decoder-only como GPT; MLM para encoders como BERT) produz representações genéricas que depois são especializadas de forma eficiente.
-        </p>
-        <p style={{ ...S.p, marginBottom: '0.6rem' }}>
-          O alinhamento com preferências humanas requer ir além do pré-treino: <strong>SFT</strong> ensina o modelo a seguir instruções; <strong>RLHF</strong> (com PPO ou DPO) optimiza explicitamente para preferências humanas com um reward model treinado em comparações. BERT introduziu bidireccionalidade com MLM + NSP; RoBERTa removeu NSP mostrando que era desnecessário; GPT escalou CLM até emergência de capacidades few-shot.
-        </p>
-        <p style={{ ...S.p, marginBottom: '0.6rem' }}>
-          Para adaptar modelos grandes sem recursos de datacenter, o <strong>PEFT</strong> — especialmente <strong>LoRA</strong> e <strong>QLoRA</strong> — reduz os parâmetros treináveis para menos de 1% com performance próxima do full fine-tuning, democratizando o acesso à especialização de LLMs.
-        </p>
-        <p style={{ ...S.p, marginBottom: 0 }}>
-          A <strong>avaliação</strong> de LLMs exige cautela: benchmarks como MMLU e HumanEval são úteis mas susceptíveis a contaminação, saturação e sensitivity ao formato. A combinação de benchmarks diversificados, perplexidade em corpora heldout, e avaliação humana directa é a abordagem mais robusta.
-        </p>
       </div>
     </div>
   );

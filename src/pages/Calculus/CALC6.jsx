@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem', fontFamily: 'monospace', fontSize: '1rem', color: 'var(--text-primary)' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem', fontFamily: 'monospace', fontSize: '1rem', color: 'var(--text-primary)' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   svgWrap: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1rem', margin: '1.5rem 0', display: 'flex', justifyContent: 'center' },
@@ -62,7 +62,7 @@ function RiemannSVG() {
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
       {rects.map((r, i) => (
         <rect key={i} x={r.rx} y={r.ry} width={r.rw} height={r.rh}
-          fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1" />
+          fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1" />
       ))}
       <path d={curveD} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad.l} y1={yScale(0)} x2={pad.l + w} y2={yScale(0)} stroke="var(--text-secondary)" strokeWidth="1.2" />
@@ -82,11 +82,11 @@ function FTCSvg() {
   const cy = H / 2;
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-      <rect x={30} y={60} width={180} height={80} rx={10} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x={30} y={60} width={180} height={80} rx={10} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x={120} y={97} textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Diferenciação</text>
       <text x={120} y={116} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">d/dx F(x) = f(x)</text>
 
-      <rect x={330} y={60} width={180} height={80} rx={10} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x={330} y={60} width={180} height={80} rx={10} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x={420} y={97} textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Integração</text>
       <text x={420} y={116} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">∫f(x)dx = F(b)−F(a)</text>
 
@@ -139,7 +139,7 @@ function PdfCdfSvg() {
 
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-      <path d={shadeD} fill="rgba(249,115,22,0.10)" />
+      <path d={shadeD} fill="rgba(74,158,237,0.10)" />
       <path d={pdfD} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad.l} y1={yScalePDF(0)} x2={pad.l + w} y2={yScalePDF(0)} stroke="var(--text-secondary)" strokeWidth="1.2" />
       <line x1={pad.l} y1={pad.t} x2={pad.l} y2={pad.t + h} stroke="var(--text-secondary)" strokeWidth="1.2" />
@@ -179,7 +179,7 @@ function MonteCarloSvg() {
 
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-      <rect x={pad.l} y={pad.t} width={w} height={h} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
+      <rect x={pad.l} y={pad.t} width={w} height={h} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
       <path d={curveD} fill="none" stroke={color} strokeWidth="2.5" />
       {samples.map((s, i) => {
         const cy = yScale(s.y);
@@ -229,65 +229,12 @@ function GaussianContourSvg() {
       ))}
       <line x1={cx - 145} y1={cy} x2={cx + 145} y2={cy} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3" />
       <line x1={cx} y1={cy - 125} x2={cx} y2={cy + 125} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3" />
-      <path d={marginalXD} fill="none" stroke="rgba(249,115,22,0.10)" strokeWidth="2" />
-      <path d={marginalYD} fill="none" stroke="rgba(249,115,22,0.10)" strokeWidth="2" />
+      <path d={marginalXD} fill="none" stroke="rgba(74,158,237,0.10)" strokeWidth="2" />
+      <path d={marginalYD} fill="none" stroke="rgba(74,158,237,0.10)" strokeWidth="2" />
       <text x={cx} y={14} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">marginal f_Y(y)</text>
       <text x={cx + 70} y={42} textAnchor="start" fontSize="11" fill="var(--text-secondary)">marginal f_X(x)</text>
       <text x={cx} y={cy + 5} textAnchor="middle" fontSize="12" fill={color} fontWeight="700">f(x,y)</text>
       <text x={W / 2} y={H - 5} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Gaussiana 2D: contornos da densidade conjunta e densidades marginais</text>
-    </svg>
-  );
-}
-
-/* ─── SVG 6: Polar vs rectangular integration ─── */
-function PolarRectSvg() {
-  const W = 540, H = 220;
-  const halfW = W / 2 - 10;
-
-  const rectPts = [];
-  for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 4; j++) {
-      rectPts.push({ x: 25 + i * 38, y: 28 + j * 38, w: 38, h: 38 });
-    }
-  }
-
-  const arcPts = [];
-  const polarCx = halfW + 140, polarCy = 110;
-  const nRings = 4, nSectors = 8;
-  for (let r = 1; r <= nRings; r++) {
-    for (let s = 0; s < nSectors; s++) {
-      const a1 = (s / nSectors) * Math.PI;
-      const a2 = ((s + 1) / nSectors) * Math.PI;
-      const r1 = (r - 1) * 22, r2 = r * 22;
-      const x1 = polarCx + r1 * Math.cos(a1);
-      const y1 = polarCy - r1 * Math.sin(a1);
-      const x2 = polarCx + r2 * Math.cos(a1);
-      const y2 = polarCy - r2 * Math.sin(a1);
-      const x3 = polarCx + r2 * Math.cos(a2);
-      const y3 = polarCy - r2 * Math.sin(a2);
-      const x4 = polarCx + r1 * Math.cos(a2);
-      const y4 = polarCy - r1 * Math.sin(a2);
-      arcPts.push({ x1, y1, x2, y2, x3, y3, x4, y4, r2, a1, a2, large: a2 - a1 > Math.PI ? 1 : 0 });
-    }
-  }
-
-  return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-      <text x={halfW / 2} y={14} textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Coordenadas Retangulares</text>
-      {rectPts.slice(0, 20).map((r, i) => (
-        <rect key={i} x={r.x} y={r.y} width={r.w} height={r.h}
-          fill={`rgba(249,115,22,0.10) * 0.04})`} stroke={color} strokeWidth="0.8" />
-      ))}
-      <line x1={halfW + 5} y1={0} x2={halfW + 5} y2={H} stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <text x={halfW + 140} y={14} textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Coordenadas Polares</text>
-      {arcPts.map((a, i) => {
-        const d = `M ${a.x1} ${a.y1} L ${a.x2} ${a.y2} A ${a.r2} ${a.r2} 0 ${a.large} 0 ${a.x3} ${a.y3} L ${a.x4} ${a.y4} A ${(a.r2 - 22)} ${(a.r2 - 22)} 0 ${a.large} 1 ${a.x1} ${a.y1} Z`;
-        return (
-          <path key={i} d={d}
-            fill={`rgba(249,115,22,0.10) * 0.05})`} stroke={color} strokeWidth="0.8" />
-        );
-      })}
-      <text x={W / 2} y={H - 2} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Fubini permite trocar ordem de integração; Jacobiano adapta elemento de área</text>
     </svg>
   );
 }
@@ -321,7 +268,7 @@ function ImproperSvg() {
 
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-      <path d={shadeD} fill="rgba(249,115,22,0.10)" />
+      <path d={shadeD} fill="rgba(74,158,237,0.10)" />
       <path d={curveD} fill="none" stroke={color} strokeWidth="2.5" />
       <line x1={pad.l} y1={pad.t + h} x2={pad.l + w} y2={pad.t + h} stroke="var(--text-secondary)" strokeWidth="1.2" />
       <line x1={pad.l} y1={pad.t} x2={pad.l} y2={pad.t + h} stroke="var(--text-secondary)" strokeWidth="1.2" />
@@ -341,35 +288,29 @@ export default function CALC6() {
 
       <div style={S.tag}>Module 06</div>
       <h1 style={S.h1}>Integrais &amp; Probabilidade</h1>
-      <p style={S.lead}>
-        A integração é a operação inversa da diferenciação e é a linguagem natural da probabilidade
-        contínua. Distribuições de probabilidade, valores esperados, variâncias, divergências entre
-        distribuições e métodos de Monte Carlo são todos definidos através de integrais. Este módulo
-        constrói a teoria desde as somas de Riemann até às aplicações em Machine Learning.
-      </p>
 
       {/* ── 1. Integral de Riemann ── */}
       <div style={S.section}>
         <h2 style={S.h2}>1. Integral de Riemann</h2>
         <p style={S.p}>
-          O integral definido de f de a a b captura a área com sinal entre o gráfico e o eixo x.
-          Formalmente, divide-se [a, b] em n subintervalos de largura Δx = (b − a)/n, escolhe-se
-          um ponto representativo xᵢ* em cada subintervalo, e toma-se o limite:
+          O integral definido de <InlineMath math="f" /> de <InlineMath math="a" /> a <InlineMath math="b" /> captura a área com sinal entre o gráfico e o eixo <InlineMath math="x" />.
+          Formalmente, divide-se <InlineMath math="[a, b]" /> em <InlineMath math="n" /> subintervalos de largura <InlineMath math="\Delta x = (b-a)/n" />, escolhe-se
+          um ponto representativo <InlineMath math="x_i^*" /> em cada subintervalo, e toma-se o limite:
         </p>
         <BlockMath math='\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_i f(x_i^*) \cdot \Delta x' />
         <div style={S.svgWrap}>
           <RiemannSVG />
         </div>
         <p style={S.p}>
-          Dependendo de onde se escolhe xᵢ*, obtêm-se variantes: soma da esquerda (xᵢ* = xᵢ),
-          soma da direita (xᵢ* = xᵢ₊₁), soma do ponto médio (xᵢ* = (xᵢ + xᵢ₊₁)/2) e soma
-          trapezoidal. Todas convergem para o mesmo valor quando f é integrável (e.g., contínua
-          por partes). O SVG acima mostra n = 6 retângulos de ponto médio — à medida que n → ∞,
+          Dependendo de onde se escolhe <InlineMath math="x_i^*" />, obtêm-se variantes: soma da esquerda (<InlineMath math="x_i^* = x_i" />),
+          soma da direita (<InlineMath math="x_i^* = x_{i+1}" />), soma do ponto médio (<InlineMath math="x_i^* = (x_i + x_{i+1})/2" />) e soma
+          trapezoidal. Todas convergem para o mesmo valor quando <InlineMath math="f" /> é integrável (e.g., contínua
+          por partes). O esquema acima mostra <InlineMath math="n = 6" /> retângulos de ponto médio — à medida que <InlineMath math="n \to \infty" />,
           os rectângulos preenchem exactamente a área.
         </p>
-        <p style={S.p}><strong>Área com sinal:</strong> Se f(x) &lt; 0 num subintervalo, os rectângulos têm
+        <p style={S.p}><strong>Área com sinal:</strong> Se <InlineMath math="f(x) < 0" /> num subintervalo, os rectângulos têm
           altura negativa e a contribuição é negativa. O integral mede área acima do eixo menos área
-          abaixo. Para a área geométrica total usa-se ∫|f(x)|dx.</p>
+          abaixo. Para a área geométrica total usa-se <InlineMath math="\int |f(x)|\,dx" />.</p>
         <p style={S.p}><strong>Propriedades fundamentais:</strong></p>
         <table style={S.table}>
           <thead>
@@ -382,33 +323,33 @@ export default function CALC6() {
           <tbody>
             <tr>
               <td style={S.td}>Linearidade</td>
-              <td style={S.td}>∫[a,b] (αf + βg) dx = α∫f dx + β∫g dx</td>
+              <td style={S.td}><InlineMath math="\int_a^b (\alpha f + \beta g)\,dx = \alpha\int_a^b f\,dx + \beta\int_a^b g\,dx" /></td>
               <td style={S.td}>O integral é linear</td>
             </tr>
             <tr>
               <td style={S.td}>Aditividade</td>
-              <td style={S.td}>∫[a,b] f = ∫[a,c] f + ∫[c,b] f</td>
+              <td style={S.td}><InlineMath math="\int_a^b f = \int_a^c f + \int_c^b f" /></td>
               <td style={S.td}>Intervalos adjacentes somam</td>
             </tr>
             <tr>
               <td style={S.td}>Inversão de limites</td>
-              <td style={S.td}>∫[a,b] f = −∫[b,a] f</td>
+              <td style={S.td}><InlineMath math="\int_a^b f = -\int_b^a f" /></td>
               <td style={S.td}>Trocar limites inverte sinal</td>
             </tr>
             <tr>
               <td style={S.td}>Integral nulo</td>
-              <td style={S.td}>∫[a,a] f = 0</td>
+              <td style={S.td}><InlineMath math="\int_a^a f = 0" /></td>
               <td style={S.td}>Intervalo degenerado tem área zero</td>
             </tr>
             <tr>
               <td style={S.td}>Monotonia</td>
-              <td style={S.td}>f ≤ g ⟹ ∫f ≤ ∫g</td>
+              <td style={S.td}><InlineMath math="f \leq g \implies \int f \leq \int g" /></td>
               <td style={S.td}>Preserva ordem pontual</td>
             </tr>
           </tbody>
         </table>
         <div style={S.note}>
-          Em ML, a soma de Riemann é o análogo contínuo da soma sobre mini-batches. A passagem n → ∞
+          Em ML, a soma de Riemann é o análogo contínuo da soma sobre mini-batches. A passagem <InlineMath math="n \to \infty" />
           justifica tratar distribuições contínuas como limites de histogramas discretos.
         </div>
               </div>
@@ -428,32 +369,32 @@ export default function CALC6() {
         <p style={S.p}><strong>Parte 1 — Integral como antiderivada:</strong></p>
         <BlockMath math={"\\text{Se } F(x) = \\int_a^x f(t)\\,dt,\\text{ então } F'(x) = f(x)"} />
         <p style={S.p}>
-          Isto diz que a função que acumula área debaixo de f, derivada em ordem a x, devolve f(x).
-          A integral é uma antiderivada de f. Intuição: aumentar x por dx acrescenta o rectângulo
-          f(x)·dx, portanto dF/dx = f(x).
+          Isto diz que a função que acumula área debaixo de <InlineMath math="f" />, derivada em ordem a <InlineMath math="x" />, devolve <InlineMath math="f(x)" />.
+          A integral é uma antiderivada de <InlineMath math="f" />. Intuição: aumentar <InlineMath math="x" /> por <InlineMath math="dx" /> acrescenta o rectângulo
+          <InlineMath math="f(x)\,dx" />, portanto <InlineMath math="dF/dx = f(x)" />.
         </p>
         <p style={S.p}><strong>Parte 2 — Avaliação exacta:</strong></p>
         <BlockMath math='\int_a^b f(x)\,dx = F(b) - F(a) \quad \text{(onde } F \text{ é qualquer antiderivada de } f\text{)}' />
         <p style={S.p}>
           Isto transforma o problema difícil de computar limites de somas de Riemann no problema
           (geralmente mais fácil) de encontrar uma antiderivada. A constante de integração cancela:
-          F(b) − F(a) é independente da constante C em F + C.
+          <InlineMath math="F(b) - F(a)" /> é independente da constante <InlineMath math="C" /> em <InlineMath math="F + C" />.
         </p>
         <p style={S.p}><strong>Exemplos:</strong></p>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>f(x)</th>
-              <th style={S.th}>F(x)</th>
-              <th style={S.th}>∫[0,1] f(x)dx</th>
+              <th style={S.th}><InlineMath math="f(x)" /></th>
+              <th style={S.th}><InlineMath math="F(x)" /></th>
+              <th style={S.th}><InlineMath math="\int_0^1 f(x)\,dx" /></th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>xⁿ</td><td style={S.td}>xⁿ⁺¹ / (n+1)</td><td style={S.td}>1/(n+1)</td></tr>
-            <tr><td style={S.td}>eˣ</td><td style={S.td}>eˣ</td><td style={S.td}>e − 1</td></tr>
-            <tr><td style={S.td}>cos x</td><td style={S.td}>sin x</td><td style={S.td}>sin 1 ≈ 0.841</td></tr>
-            <tr><td style={S.td}>1/x</td><td style={S.td}>ln|x|</td><td style={S.td}>∫[1,e] = 1</td></tr>
-            <tr><td style={S.td}>1/(1+x²)</td><td style={S.td}>arctan x</td><td style={S.td}>π/4</td></tr>
+            <tr><td style={S.td}><InlineMath math="x^n" /></td><td style={S.td}><InlineMath math="x^{n+1}/(n+1)" /></td><td style={S.td}><InlineMath math="1/(n+1)" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="e^x" /></td><td style={S.td}><InlineMath math="e^x" /></td><td style={S.td}><InlineMath math="e-1" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\cos x" /></td><td style={S.td}><InlineMath math="\sin x" /></td><td style={S.td}><InlineMath math="\sin 1 \approx 0.841" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="1/x" /></td><td style={S.td}><InlineMath math="\ln|x|" /></td><td style={S.td}><InlineMath math="\int_1^e = 1" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="1/(1+x^2)" /></td><td style={S.td}><InlineMath math="\arctan x" /></td><td style={S.td}><InlineMath math="\pi/4" /></td></tr>
           </tbody>
         </table>
         <div style={S.note}>
@@ -476,7 +417,7 @@ export default function CALC6() {
         <p style={S.p}><strong>Substituição (u-substituição)</strong> — regra da cadeia ao contrário:</p>
         <BlockMath math={"\\int f(g(x))\\cdot g'(x)\\,dx = \\int f(u)\\,du \\quad (u = g(x))"} />
         <p style={S.p}>
-          Exemplo: ∫2x·e^(x²) dx. Seja u = x², du = 2x dx. Fica ∫eᵘ du = eᵘ + C = e^(x²) + C.
+          Exemplo: <InlineMath math="\int 2x\cdot e^{x^2}\,dx" />. Seja <InlineMath math="u = x^2" />, <InlineMath math="du = 2x\,dx" />. Fica <InlineMath math="\int e^u\,du = e^u + C = e^{x^2} + C" />.
           Útil quando se reconhece uma função e a sua derivada no integrando.
         </p>
 
@@ -484,10 +425,10 @@ export default function CALC6() {
         <BlockMath math='\int u\,dv = uv - \int v\,du' />
         <p style={S.p}>
           Regra mnemónica LIATE para escolher u: Logarítmico {'>'} Inverso trigonométrico {'>'} Algébrico {'>'} Trigonométrico {'>'} Exponencial.
-          Exemplo: ∫x·eˣ dx. Seja u = x, dv = eˣ dx. Então du = dx, v = eˣ. Resultado: xeˣ − eˣ + C.
+          Exemplo: <InlineMath math="\int x\cdot e^x\,dx" />. Seja <InlineMath math="u = x,\ dv = e^x\,dx" />. Então <InlineMath math="du = dx,\ v = e^x" />. Resultado: <InlineMath math="xe^x - e^x + C" />.
         </p>
 
-        <p style={S.p}><strong>Fracções parciais</strong> — para funções racionais P(x)/Q(x):</p>
+        <p style={S.p}><strong>Fracções parciais</strong> — para funções racionais <InlineMath math="P(x)/Q(x)" />:</p>
         <BlockMath math='\frac{1}{(x-a)(x-b)} = \frac{A}{x-a} + \frac{B}{x-b} \quad \to \text{ integrais de logaritmos}' />
 
         <p style={S.p}><strong>Substituições trigonométricas</strong>:</p>
@@ -500,9 +441,9 @@ export default function CALC6() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>√(a²−x²)</td><td style={S.td}>x = a sin θ</td><td style={S.td}>1−sin²θ = cos²θ</td></tr>
-            <tr><td style={S.td}>√(a²+x²)</td><td style={S.td}>x = a tan θ</td><td style={S.td}>1+tan²θ = sec²θ</td></tr>
-            <tr><td style={S.td}>√(x²−a²)</td><td style={S.td}>x = a sec θ</td><td style={S.td}>sec²θ−1 = tan²θ</td></tr>
+            <tr><td style={S.td}><InlineMath math="\sqrt{a^2-x^2}" /></td><td style={S.td}><InlineMath math="x = a\sin\theta" /></td><td style={S.td}><InlineMath math="1-\sin^2\theta = \cos^2\theta" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\sqrt{a^2+x^2}" /></td><td style={S.td}><InlineMath math="x = a\tan\theta" /></td><td style={S.td}><InlineMath math="1+\tan^2\theta = \sec^2\theta" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\sqrt{x^2-a^2}" /></td><td style={S.td}><InlineMath math="x = a\sec\theta" /></td><td style={S.td}><InlineMath math="\sec^2\theta-1 = \tan^2\theta" /></td></tr>
           </tbody>
         </table>
 
@@ -510,21 +451,21 @@ export default function CALC6() {
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>f(x)</th>
-              <th style={S.th}>∫f(x)dx</th>
+              <th style={S.th}><InlineMath math="f(x)" /></th>
+              <th style={S.th}><InlineMath math="\int f(x)\,dx" /></th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>xⁿ (n ≠ −1)</td><td style={S.td}>xⁿ⁺¹/(n+1) + C</td></tr>
-            <tr><td style={S.td}>1/x</td><td style={S.td}>ln|x| + C</td></tr>
-            <tr><td style={S.td}>eˣ</td><td style={S.td}>eˣ + C</td></tr>
-            <tr><td style={S.td}>aˣ</td><td style={S.td}>aˣ/ln a + C</td></tr>
-            <tr><td style={S.td}>sin x</td><td style={S.td}>−cos x + C</td></tr>
-            <tr><td style={S.td}>cos x</td><td style={S.td}>sin x + C</td></tr>
-            <tr><td style={S.td}>sec²x</td><td style={S.td}>tan x + C</td></tr>
-            <tr><td style={S.td}>1/√(1−x²)</td><td style={S.td}>arcsin x + C</td></tr>
-            <tr><td style={S.td}>1/(1+x²)</td><td style={S.td}>arctan x + C</td></tr>
-            <tr><td style={S.td}>ln x</td><td style={S.td}>x ln x − x + C</td></tr>
+            <tr><td style={S.td}><InlineMath math="x^n\ (n \neq -1)" /></td><td style={S.td}><InlineMath math="\frac{x^{n+1}}{n+1} + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="1/x" /></td><td style={S.td}><InlineMath math="\ln|x| + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="e^x" /></td><td style={S.td}><InlineMath math="e^x + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="a^x" /></td><td style={S.td}><InlineMath math="\frac{a^x}{\ln a} + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\sin x" /></td><td style={S.td}><InlineMath math="-\cos x + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\cos x" /></td><td style={S.td}><InlineMath math="\sin x + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\sec^2 x" /></td><td style={S.td}><InlineMath math="\tan x + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="1/\sqrt{1-x^2}" /></td><td style={S.td}><InlineMath math="\arcsin x + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="1/(1+x^2)" /></td><td style={S.td}><InlineMath math="\arctan x + C" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\ln x" /></td><td style={S.td}><InlineMath math="x\ln x - x + C" /></td></tr>
           </tbody>
         </table>
               </div>
@@ -543,25 +484,25 @@ export default function CALC6() {
         <div style={S.svgWrap}>
           <ImproperSvg />
         </div>
-        <p style={S.p}><strong>Teste-p:</strong> O integral ∫[1,∞) x⁻ᵖ dx converge se e só se p &gt; 1.</p>
+        <p style={S.p}><strong>Teste-p:</strong> O integral <InlineMath math="\int_1^{\infty} x^{-p}\,dx" /> converge se e só se <InlineMath math="p > 1" />.</p>
         <table style={S.table}>
           <thead>
             <tr>
               <th style={S.th}>p</th>
-              <th style={S.th}>∫[1,∞) x⁻ᵖ dx</th>
+              <th style={S.th}><InlineMath math="\int_1^{\infty} x^{-p}\,dx" /></th>
               <th style={S.th}>Resultado</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>p &gt; 1</td><td style={S.td}>1/(p−1)</td><td style={S.td}>Converge</td></tr>
-            <tr><td style={S.td}>p = 1</td><td style={S.td}>ln b → ∞</td><td style={S.td}>Diverge</td></tr>
-            <tr><td style={S.td}>p &lt; 1</td><td style={S.td}>b¹⁻ᵖ/(1−p) → ∞</td><td style={S.td}>Diverge</td></tr>
+            <tr><td style={S.td}><InlineMath math="p > 1" /></td><td style={S.td}><InlineMath math="1/(p-1)" /></td><td style={S.td}>Converge</td></tr>
+            <tr><td style={S.td}><InlineMath math="p = 1" /></td><td style={S.td}><InlineMath math="\ln b \to \infty" /></td><td style={S.td}>Diverge</td></tr>
+            <tr><td style={S.td}><InlineMath math="p < 1" /></td><td style={S.td}><InlineMath math="b^{1-p}/(1-p) \to \infty" /></td><td style={S.td}>Diverge</td></tr>
           </tbody>
         </table>
         <p style={S.p}><strong>Função Gamma</strong> — generaliza o factorial:</p>
         <BlockMath math='\Gamma(n) = \int_0^{\infty} t^{n-1} e^{-t}\,dt = (n-1)! \quad \text{para } n \text{ inteiro positivo}' />
         <p style={S.p}>
-          Propriedades: Γ(1) = 1, Γ(1/2) = √π, Γ(n+1) = n·Γ(n). A função Gamma é a base das
+          Propriedades: <InlineMath math="\Gamma(1) = 1,\ \Gamma(1/2) = \sqrt{\pi},\ \Gamma(n+1) = n\cdot\Gamma(n)" />. A função Gamma é a base das
           distribuições Gamma e Beta, fundamentais em Bayesian statistics.
         </p>
         <p style={S.p}><strong>Integral Gaussiano</strong> — o mais importante em probabilidade:</p>
@@ -569,7 +510,7 @@ export default function CALC6() {
         <p style={S.p}>
           Prova elegante: elevar ao quadrado, passar a polar, integrar em r e θ separadamente.
           Este resultado garante que a distribuição Normal é uma PDF válida — o seu integral é 1.
-          Mais geralmente: ∫e^(−ax²)dx = √(π/a).
+          Mais geralmente: <InlineMath math="\int e^{-ax^2}\,dx = \sqrt{\pi/a}" />.
         </p>
                 <div style={S.note}>
           A convergência de integrais impróprios é essencial para garantir que PDFs integram 1.
@@ -583,7 +524,7 @@ export default function CALC6() {
       <div style={S.section}>
         <h2 style={S.h2}>5. PDFs e CDFs</h2>
         <p style={S.p}>
-          Uma função densidade de probabilidade (PDF) f(x) descreve a distribuição de uma variável
+          Uma função densidade de probabilidade (PDF) <InlineMath math="f(x)" /> descreve a distribuição de uma variável
           aleatória contínua X. Probabilidades são integrais da PDF:
         </p>
         <BlockMath math='P(a \leq X \leq b) = \int_a^b f(x)\,dx' />
@@ -592,51 +533,51 @@ export default function CALC6() {
         </div>
         <p style={S.p}><strong>Requisitos para uma PDF válida:</strong></p>
         <ul style={S.ul}>
-          <li style={S.li}>f(x) ≥ 0 para todo x (não-negatividade)</li>
-          <li style={S.li}>∫[−∞,∞] f(x) dx = 1 (normalização)</li>
+          <li style={S.li}><InlineMath math="f(x) \geq 0" /> para todo <InlineMath math="x" /> (não-negatividade)</li>
+          <li style={S.li}><InlineMath math="\int_{-\infty}^{\infty} f(x)\,dx = 1" /> (normalização)</li>
         </ul>
         <p style={S.p}>
-          A função de distribuição acumulada (CDF) F(x) é a integral da PDF até x:
+          A função de distribuição acumulada (CDF) <InlineMath math="F(x)" /> é a integral da PDF até x:
         </p>
         <BlockMath math='F(x) = P(X \leq x) = \int_{-\infty}^x f(t)\,dt' />
         <p style={S.p}>
-          Pelo TFC, f(x) = F'(x). A CDF é não decrescente, F(−∞) = 0, F(∞) = 1. Probabilidades
-          em intervalos calculam-se com P(a ≤ X ≤ b) = F(b) − F(a).
+          Pelo TFC, <InlineMath math="f(x) = F'(x)" />. A CDF é não decrescente, <InlineMath math="F(-\infty) = 0,\ F(\infty) = 1" />. Probabilidades
+          em intervalos calculam-se com <InlineMath math="P(a \leq X \leq b) = F(b) - F(a)" />.
         </p>
         <p style={S.p}><strong>PDFs comuns e as suas formas:</strong></p>
         <table style={S.table}>
           <thead>
             <tr>
               <th style={S.th}>Distribuição</th>
-              <th style={S.th}>PDF f(x)</th>
+              <th style={S.th}>PDF <InlineMath math="f(x)" /></th>
               <th style={S.th}>Suporte</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td style={S.td}>Normal N(μ,σ²)</td>
-              <td style={S.td}>(1/(σ√(2π))) exp(−(x−μ)²/(2σ²))</td>
-              <td style={S.td}>(−∞, ∞)</td>
+              <td style={S.td}><InlineMath math="\frac{1}{\sigma\sqrt{2\pi}}\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)" /></td>
+              <td style={S.td}><InlineMath math="(-\infty, \infty)" /></td>
             </tr>
             <tr>
               <td style={S.td}>Exponencial(λ)</td>
-              <td style={S.td}>λ e^(−λx)</td>
-              <td style={S.td}>[0, ∞)</td>
+              <td style={S.td}><InlineMath math="\lambda e^{-\lambda x}" /></td>
+              <td style={S.td}><InlineMath math="[0, \infty)" /></td>
             </tr>
             <tr>
               <td style={S.td}>Uniforme[a,b]</td>
-              <td style={S.td}>1/(b−a)</td>
-              <td style={S.td}>[a, b]</td>
+              <td style={S.td}><InlineMath math="1/(b-a)" /></td>
+              <td style={S.td}><InlineMath math="[a, b]" /></td>
             </tr>
             <tr>
               <td style={S.td}>Gamma(α,β)</td>
-              <td style={S.td}>x^(α−1) e^(−x/β) / (β^α Γ(α))</td>
-              <td style={S.td}>[0, ∞)</td>
+              <td style={S.td}><InlineMath math="\frac{x^{\alpha-1}e^{-x/\beta}}{\beta^\alpha \Gamma(\alpha)}" /></td>
+              <td style={S.td}><InlineMath math="[0, \infty)" /></td>
             </tr>
             <tr>
               <td style={S.td}>Beta(α,β)</td>
-              <td style={S.td}>x^(α−1)(1−x)^(β−1) / B(α,β)</td>
-              <td style={S.td}>[0, 1]</td>
+              <td style={S.td}><InlineMath math="\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}" /></td>
+              <td style={S.td}><InlineMath math="[0, 1]" /></td>
             </tr>
           </tbody>
         </table>
@@ -658,12 +599,12 @@ export default function CALC6() {
         <BlockMath math='E[g(X)] = \int_{-\infty}^{\infty} g(x)\cdot f(x)\,dx \quad \text{(Lei do Estatístico Inconsciente)}' />
         <p style={S.p}><strong>Variância:</strong></p>
         <BlockMath math='\mathrm{Var}[X] = E[(X-\mu)^2] = E[X^2] - (E[X])^2' />
-        <p style={S.p}><strong>Momentos de ordem n:</strong> E[Xⁿ] = ∫xⁿ f(x) dx. O primeiro momento é a média,
+        <p style={S.p}><strong>Momentos de ordem n:</strong> <InlineMath math="E[X^n] = \int x^n f(x)\,dx" />. O primeiro momento é a média,
           o segundo momento centrado é a variância, o terceiro (estandardizado) é a assimetria, o quarto é a curtose.</p>
         <p style={S.p}><strong>Função geradora de momentos (MGF):</strong></p>
         <BlockMath math='M(t) = E[e^{tX}] = \int_{-\infty}^{\infty} e^{tx} f(x)\,dx' />
         <p style={S.p}>
-          A MGF "gera" momentos por diferenciação: E[Xⁿ] = M^(n)(0). É única para cada distribuição
+          A MGF "gera" momentos por diferenciação: <InlineMath math="E[X^n] = M^{(n)}(0)" />. É única para cada distribuição
           e útil para provar propriedades como a soma de normais independentes ser normal.
         </p>
         <p style={S.p}><strong>Momentos da Normal N(μ,σ²):</strong></p>
@@ -676,17 +617,17 @@ export default function CALC6() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>E[X]</td><td style={S.td}>μ</td><td style={S.td}>Média/centro</td></tr>
-            <tr><td style={S.td}>E[X²]</td><td style={S.td}>μ² + σ²</td><td style={S.td}>Segundo momento</td></tr>
-            <tr><td style={S.td}>Var[X]</td><td style={S.td}>σ²</td><td style={S.td}>Dispersão</td></tr>
+            <tr><td style={S.td}><InlineMath math="E[X]" /></td><td style={S.td}><InlineMath math="\mu" /></td><td style={S.td}>Média/centro</td></tr>
+            <tr><td style={S.td}><InlineMath math="E[X^2]" /></td><td style={S.td}><InlineMath math="\mu^2 + \sigma^2" /></td><td style={S.td}>Segundo momento</td></tr>
+            <tr><td style={S.td}><InlineMath math="\mathrm{Var}[X]" /></td><td style={S.td}><InlineMath math="\sigma^2" /></td><td style={S.td}>Dispersão</td></tr>
             <tr><td style={S.td}>Assimetria</td><td style={S.td}>0</td><td style={S.td}>Distribuição simétrica</td></tr>
             <tr><td style={S.td}>Curtose (excesso)</td><td style={S.td}>0</td><td style={S.td}>Referência "normal"</td></tr>
           </tbody>
         </table>
-        <p style={S.p}><strong>Momentos da Exponencial(λ):</strong> E[X] = 1/λ, Var[X] = 1/λ².</p>
+        <p style={S.p}><strong>Momentos da Exponencial(λ):</strong> <InlineMath math="E[X] = 1/\lambda,\ \mathrm{Var}[X] = 1/\lambda^2" />.</p>
                 <div style={S.note}>
           Em ML, o valor esperado é a previsão de Bayes óptima sob perda quadrática. A variância
-          mede a incerteza do modelo. Minimizar E[(y − f(x))²] leva a f(x) = E[y|x].
+          mede a incerteza do modelo. Minimizar <InlineMath math="E[(y-f(x))^2]" /> leva a <InlineMath math="f(x) = E[y|x]" />.
         </div>
       </div>
 
@@ -696,27 +637,24 @@ export default function CALC6() {
       <div style={S.section}>
         <h2 style={S.h2}>7. Integrais Duplos e Triplos</h2>
         <p style={S.p}>
-          Para funções de duas variáveis, o integral duplo acumula o volume sob a superfície f(x,y)
-          sobre uma região D no plano xy:
+          Para funções de duas variáveis, o integral duplo acumula o volume sob a superfície <InlineMath math="f(x,y)" />{' '}
+          sobre uma região <InlineMath math="D" /> no plano <InlineMath math="xy" />:
         </p>
         <BlockMath math='\iint_D f(x,y)\,dA = \int\!\!\int f(x,y)\,dx\,dy' />
-        <p style={S.p}><strong>Teorema de Fubini:</strong> se f é contínua num rectângulo [a,b]×[c,d], pode
+        <p style={S.p}><strong>Teorema de Fubini:</strong> se <InlineMath math="f" /> é contínua num rectângulo <InlineMath math="[a,b]\times[c,d]" />, pode
           integrar-se em qualquer ordem:</p>
         <BlockMath math='\int_a^b\!\int_c^d f(x,y)\,dy\,dx = \int_c^d\!\int_a^b f(x,y)\,dx\,dy' />
-        <div style={S.svgWrap}>
-          <PolarRectSvg />
-        </div>
         <p style={S.p}><strong>Mudança de variáveis e Jacobiano:</strong></p>
         <BlockMath math='\iint f(x,y)\,dx\,dy = \iint f(x(u,v),\,y(u,v))\,|J|\,du\,dv' />
         <p style={S.p}>
-          O Jacobiano |J| = |∂(x,y)/∂(u,v)| é o determinante da matriz de derivadas parciais.
-          Em coordenadas polares (x = r cos θ, y = r sin θ): |J| = r. Logo dA = r dr dθ.
-          Em coordenadas esféricas: dV = r² sin φ dr dθ dφ.
+          O Jacobiano <InlineMath math="|J| = |\partial(x,y)/\partial(u,v)|" /> é o determinante da matriz de derivadas parciais.
+          Em coordenadas polares (<InlineMath math="x = r\cos\theta,\ y = r\sin\theta" />): <InlineMath math="|J| = r" />. Logo <InlineMath math="dA = r\,dr\,d\theta" />.
+          Em coordenadas esféricas: <InlineMath math="dV = r^2 \sin\varphi\,dr\,d\theta\,d\varphi" />.
         </p>
         <p style={S.p}><strong>Aplicação em probabilidade conjunta:</strong></p>
         <BlockMath math='P(a \leq X \leq b,\; c \leq Y \leq d) = \int_a^b\!\int_c^d f(x,y)\,dy\,dx' />
         <p style={S.p}>
-          A PDF conjunta f(x,y) deve satisfazer: f(x,y) ≥ 0 e ∬f(x,y)dxdy = 1. Integrais
+          A PDF conjunta <InlineMath math="f(x,y)" /> deve satisfazer: <InlineMath math="f(x,y) \geq 0" /> e <InlineMath math="\iint f(x,y)\,dx\,dy = 1" />. Integrais
           duplos aparecem sempre que se lida com duas ou mais variáveis aleatórias conjuntas.
         </p>
               </div>
@@ -727,7 +665,7 @@ export default function CALC6() {
       <div style={S.section}>
         <h2 style={S.h2}>8. Distribuições Conjuntas e Marginais</h2>
         <p style={S.p}>
-          Dada a PDF conjunta f(x,y) de duas variáveis aleatórias (X,Y), todas as propriedades
+          Dada a PDF conjunta <InlineMath math="f(x,y)" /> de duas variáveis aleatórias (X,Y), todas as propriedades
           probabilísticas derivam de integrais desta função.
         </p>
         <div style={S.svgWrap}>
@@ -739,7 +677,7 @@ export default function CALC6() {
         <BlockMath math='f(y|x) = \frac{f(x,y)}{f_X(x)}' />
         <p style={S.p}>
           A densidade condicional f(y|x) é uma PDF válida em y para cada valor fixo de x.
-          A lei de probabilidade total na forma contínua: f_Y(y) = ∫f(y|x)f_X(x)dx.
+          A lei de probabilidade total na forma contínua: <InlineMath math="f_Y(y) = \int f(y|x) f_X(x)\,dx" />.
         </p>
         <p style={S.p}><strong>Independência:</strong> X e Y são independentes se e só se:</p>
         <BlockMath math='f(x,y) = f_X(x)\cdot f_Y(y)' />
@@ -760,11 +698,11 @@ export default function CALC6() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>f_X(x)</td><td style={S.td}>∫f(x,y)dy</td></tr>
-            <tr><td style={S.td}>f(y|x)</td><td style={S.td}>f(x,y)/f_X(x)</td></tr>
-            <tr><td style={S.td}>E[X]</td><td style={S.td}>∬x·f(x,y)dxdy</td></tr>
-            <tr><td style={S.td}>Cov(X,Y)</td><td style={S.td}>∬(x−μ_X)(y−μ_Y)f(x,y)dxdy</td></tr>
-            <tr><td style={S.td}>P(X&lt;Y)</td><td style={S.td}>∬[x&lt;y] f(x,y)dxdy</td></tr>
+            <tr><td style={S.td}><InlineMath math="f_X(x)" /></td><td style={S.td}><InlineMath math="\int f(x,y)\,dy" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="f(y|x)" /></td><td style={S.td}><InlineMath math="f(x,y)/f_X(x)" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="E[X]" /></td><td style={S.td}><InlineMath math="\iint x\cdot f(x,y)\,dx\,dy" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\mathrm{Cov}(X,Y)" /></td><td style={S.td}><InlineMath math="\iint (x-\mu_X)(y-\mu_Y) f(x,y)\,dx\,dy" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="P(X<Y)" /></td><td style={S.td}><InlineMath math="\iint [x<y]\, f(x,y)\,dx\,dy" /></td></tr>
           </tbody>
         </table>
               </div>
@@ -776,22 +714,22 @@ export default function CALC6() {
         <h2 style={S.h2}>9. Integração de Monte Carlo</h2>
         <p style={S.p}>
           A integração de Monte Carlo estima integrais através de amostragem aleatória. A ideia base:
-          se X ~ Uniforme[a,b], então E[f(X)] = (1/(b−a)) ∫[a,b] f(x) dx, logo:
+          se <InlineMath math="X \sim \text{Uniforme}[a,b]" />, então <InlineMath math="E[f(X)] = \frac{1}{b-a}\int_a^b f(x)\,dx" />, logo:
         </p>
         <BlockMath math='\int_a^b f(x)\,dx \approx (b-a)\cdot\frac{1}{n}\sum_i f(x_i) \qquad x_i \sim \text{Uniforme}[a,b]' />
         <div style={S.svgWrap}>
           <MonteCarloSvg />
         </div>
         <p style={S.p}>
-          Pelo Teorema Central do Limite, o estimador tem erro padrão σ/√n onde σ é o desvio padrão
-          de f(X). A taxa de convergência O(1/√n) é <strong>independente da dimensão d</strong> do
-          problema — uma vantagem crucial. A quadratura clássica (Simpson, Gauss) tem taxa O(n^(−k/d))
+          Pelo Teorema Central do Limite, o estimador tem erro padrão <InlineMath math="\sigma/\sqrt{n}" /> onde <InlineMath math="\sigma" /> é o desvio padrão
+          de <InlineMath math="f(X)" />. A taxa de convergência <InlineMath math="O(1/\sqrt{n})" /> é <strong>independente da dimensão d</strong> do
+          problema — uma vantagem crucial. A quadratura clássica (Simpson, Gauss) tem taxa <InlineMath math="O(n^{-k/d})" />
           que deteriora exponencialmente com d ("maldição da dimensionalidade").
         </p>
         <p style={S.p}><strong>Importance Sampling</strong> — reduzir variância usando uma distribuição proposta q:</p>
         <BlockMath math='\int f(x)\,dx = \int \frac{f(x)}{q(x)}\cdot q(x)\,dx \approx \frac{1}{n}\sum_i \frac{f(x_i)}{q(x_i)} \qquad x_i \sim q' />
         <p style={S.p}>
-          Escolhendo q ∝ |f| reduz-se a variância ao mínimo. Em MCMC (Monte Carlo por cadeia de
+          Escolhendo <InlineMath math="q \propto |f|" /> reduz-se a variância ao mínimo. Em MCMC (Monte Carlo por cadeia de
           Markov), não se amostra directamente mas constrói-se uma cadeia de Markov cuja distribuição
           estacionária é a distribuição alvo — essencial para inferência Bayesiana em alta dimensão.
         </p>
@@ -822,8 +760,8 @@ export default function CALC6() {
         <p style={S.p}><strong>Entropia de Shannon (diferencial):</strong></p>
         <BlockMath math='H(X) = -\int f(x)\log f(x)\,dx' />
         <p style={S.p}>
-          Mede a incerteza média associada a X. A Normal maximiza a entropia entre distribuições
-          de variância σ² fixa: H(N(μ,σ²)) = (1/2) ln(2πeσ²). A entropia é invariante a
+          Mede a incerteza média associada a <InlineMath math="X" />. A Normal maximiza a entropia entre distribuições
+          de variância <InlineMath math="\sigma^2" /> fixa: <InlineMath math="H(N(\mu,\sigma^2)) = \tfrac{1}{2}\ln(2\pi e \sigma^2)" />. A entropia é invariante a
           translações e escala por log.
         </p>
         <p style={S.p}><strong>Cross-entropy:</strong></p>
@@ -836,15 +774,15 @@ export default function CALC6() {
         <p style={S.p}><strong>Divergência de Kullback-Leibler:</strong></p>
         <BlockMath math='D_{\mathrm{KL}}(p \| q) = \int p(x)\log\frac{p(x)}{q(x)}\,dx \geq 0' />
         <p style={S.p}>
-          D_KL mede quanta informação se perde ao usar q em vez de p. Note: D_KL(p‖q) ≠ D_KL(q‖p)
+          D_KL mede quanta informação se perde ao usar q em vez de p. Note: <InlineMath math="D_{\mathrm{KL}}(p\|q) \neq D_{\mathrm{KL}}(q\|p)" />
           — não é uma métrica simétrica. A não-negatividade segue da desigualdade de Jensen:
-          −log é convexa, logo −E[log(q/p)] ≥ −log E[q/p] = 0.
+          <InlineMath math="-\log" /> é convexa, logo <InlineMath math="-E[\log(q/p)] \geq -\log E[q/p] = 0" />.
         </p>
         <BlockMath math='D_{\mathrm{KL}}(p \| q) = H(p, q) - H(p)' />
         <p style={S.p}><strong>Informação mútua:</strong></p>
         <BlockMath math='I(X;Y) = \iint f(x,y)\log\frac{f(x,y)}{f_X(x)f_Y(y)}\,dx\,dy = D_{\mathrm{KL}}(f(x,y)\|f_X(x)f_Y(y))' />
         <p style={S.p}>
-          I(X;Y) ≥ 0, com igualdade se e só se X e Y são independentes. A informação mútua
+          <InlineMath math="I(X;Y) \geq 0" />, com igualdade se e só se X e Y são independentes. A informação mútua
           generaliza a correlação: mede qualquer dependência estatística (não só linear).
         </p>
         <table style={S.table}>
@@ -856,10 +794,10 @@ export default function CALC6() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>Entropia H(p)</td><td style={S.td}>−∫p log p dx</td><td style={S.td}>Regularização, VAEs</td></tr>
-            <tr><td style={S.td}>Cross-entropy H(p,q)</td><td style={S.td}>−∫p log q dx</td><td style={S.td}>Função de perda em classificação</td></tr>
-            <tr><td style={S.td}>KL divergence</td><td style={S.td}>∫p log(p/q) dx</td><td style={S.td}>ELBO em VAEs, distilação</td></tr>
-            <tr><td style={S.td}>Informação mútua</td><td style={S.td}>∫∫f(x,y)log(f/(fXfY))dxdy</td><td style={S.td}>Selecção de features, ICA</td></tr>
+            <tr><td style={S.td}>Entropia H(p)</td><td style={S.td}><InlineMath math="-\int p\log p\,dx" /></td><td style={S.td}>Regularização, VAEs</td></tr>
+            <tr><td style={S.td}>Cross-entropy H(p,q)</td><td style={S.td}><InlineMath math="-\int p\log q\,dx" /></td><td style={S.td}>Função de perda em classificação</td></tr>
+            <tr><td style={S.td}>KL divergence</td><td style={S.td}><InlineMath math="\int p\log(p/q)\,dx" /></td><td style={S.td}>ELBO em VAEs, distilação</td></tr>
+            <tr><td style={S.td}>Informação mútua</td><td style={S.td}><InlineMath math="\iint f(x,y)\log\frac{f}{f_X f_Y}\,dx\,dy" /></td><td style={S.td}>Selecção de features, ICA</td></tr>
           </tbody>
         </table>
               </div>
@@ -885,22 +823,22 @@ export default function CALC6() {
         <p style={S.p}><strong>Produto interno em espaços de funções L²:</strong></p>
         <BlockMath math='\langle f, g \rangle = \int f(x)\,g(x)\,dx' />
         <p style={S.p}>
-          Este produto interno define a norma L²: ‖f‖² = ∫f(x)² dx. Funções ortonormais satisfazem
-          {'<'}φᵢ, φⱼ{'>'} = δᵢⱼ. As séries de Fourier são expansões nesta base ortonormal.
+          Este produto interno define a norma L²: <InlineMath math="\|f\|^2 = \int f(x)^2\,dx" />. Funções ortonormais satisfazem
+          <InlineMath math="\langle \varphi_i, \varphi_j \rangle = \delta_{ij}" />. As séries de Fourier são expansões nesta base ortonormal.
         </p>
         <p style={S.p}><strong>Matriz de Gram:</strong></p>
         <BlockMath math='G_{ij} = \langle \varphi_i, \varphi_j \rangle = \int \varphi_i(x)\,\varphi_j(x)\,dx' />
         <p style={S.p}>
           A matriz de Gram captura as correlações entre funções de base. Em métodos de kernel,
-          o kernel k(x,x') = {'<'}φ(x), φ(x'){'>'} é o produto interno no espaço de features —
+          o kernel <InlineMath math="k(x,x') = \langle \varphi(x), \varphi(x') \rangle" /> é o produto interno no espaço de features —
           que pode ser de dimensão infinita! O kernel trick evita computar φ explicitamente.
         </p>
         <p style={S.p}><strong>Transformada de Fourier — produto interno contínuo:</strong></p>
         <BlockMath math='\mathcal{F}(\omega) = \int_{-\infty}^{\infty} f(x)\,e^{-2\pi i\omega x}\,dx = \langle f,\, e^{2\pi i\omega\cdot}\rangle_{L^2}' />
         <p style={S.p}>
           A transformada de Fourier é uma mudança de base no espaço L²(R) de funções quadrado-
-          integráveis. Cada componente F(ω) é o produto interno de f com a função base e^(2πiωx).
-          A transformada inversa reconstrói f a partir dos coeficientes F(ω).
+          integráveis. Cada componente <InlineMath math="\mathcal{F}(\omega)" /> é o produto interno de f com a função base <InlineMath math="e^{2\pi i \omega x}" />.
+          A transformada inversa reconstrói f a partir dos coeficientes <InlineMath math="\mathcal{F}(\omega)" />.
         </p>
         <table style={S.table}>
           <thead>
@@ -910,11 +848,11 @@ export default function CALC6() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>Σᵢ aᵢ bᵢ (produto interno)</td><td style={S.td}>∫f(x)g(x)dx</td></tr>
-            <tr><td style={S.td}>Σⱼ Aᵢⱼ xⱼ (matriz-vector)</td><td style={S.td}>∫K(x,y)f(y)dy (operador integral)</td></tr>
-            <tr><td style={S.td}>Σⱼ Aᵢⱼ Bⱼₖ (produto de matrizes)</td><td style={S.td}>(f*g)(t) (convolução)</td></tr>
-            <tr><td style={S.td}>Gᵢⱼ = φᵢᵀφⱼ (Gram discreto)</td><td style={S.td}>∫φᵢ(x)φⱼ(x)dx</td></tr>
-            <tr><td style={S.td}>DFT: Σ xₙ e^(−2πikn/N)</td><td style={S.td}>∫f(x)e^(−2πiωx)dx (Fourier)</td></tr>
+            <tr><td style={S.td}><InlineMath math="\sum_i a_i b_i" /> (produto interno)</td><td style={S.td}><InlineMath math="\int f(x)g(x)\,dx" /></td></tr>
+            <tr><td style={S.td}><InlineMath math="\sum_j A_{ij} x_j" /> (matriz-vector)</td><td style={S.td}><InlineMath math="\int K(x,y)f(y)\,dy" /> (operador integral)</td></tr>
+            <tr><td style={S.td}><InlineMath math="\sum_j A_{ij} B_{jk}" /> (produto de matrizes)</td><td style={S.td}><InlineMath math="(f*g)(t)" /> (convolução)</td></tr>
+            <tr><td style={S.td}><InlineMath math="G_{ij} = \varphi_i^\top \varphi_j" /> (Gram discreto)</td><td style={S.td}><InlineMath math="\int \varphi_i(x)\varphi_j(x)\,dx" /></td></tr>
+            <tr><td style={S.td}>DFT: <InlineMath math="\sum_n x_n e^{-2\pi i kn/N}" /></td><td style={S.td}><InlineMath math="\int f(x)e^{-2\pi i \omega x}\,dx" /> (Fourier)</td></tr>
           </tbody>
         </table>
                 <div style={S.note}>
@@ -924,114 +862,6 @@ export default function CALC6() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ── 12. Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Este módulo cobriu a integração desde os fundamentos (somas de Riemann) até às suas
-          manifestações centrais em Machine Learning. Aqui está o quadro unificador:
-        </p>
-        <p style={S.p}><strong>Árvore de decisão para escolha de técnica de integração:</strong></p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Situação</th>
-              <th style={S.th}>Técnica recomendada</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}>Antiderivada elementar existe</td><td style={S.td}>TFC (calcular F(b)−F(a))</td></tr>
-            <tr><td style={S.td}>Composição de funções</td><td style={S.td}>U-substituição</td></tr>
-            <tr><td style={S.td}>Produto função × exponencial/trig</td><td style={S.td}>Integração por partes (LIATE)</td></tr>
-            <tr><td style={S.td}>Função racional P(x)/Q(x)</td><td style={S.td}>Fracções parciais</td></tr>
-            <tr><td style={S.td}>Expressão com raiz quadrada</td><td style={S.td}>Substituição trigonométrica</td></tr>
-            <tr><td style={S.td}>Dimensão d ≤ 3, precisão alta</td><td style={S.td}>Quadratura numérica (quad, dblquad)</td></tr>
-            <tr><td style={S.td}>Dimensão d &gt; 3</td><td style={S.td}>Monte Carlo / MCMC</td></tr>
-            <tr><td style={S.td}>Integral impróprio com estrutura</td><td style={S.td}>Função Gamma / tabelas</td></tr>
-          </tbody>
-        </table>
-
-        <p style={S.p}><strong>Integrais-chave em Machine Learning:</strong></p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Integral</th>
-              <th style={S.th}>Resultado</th>
-              <th style={S.th}>Aplicação ML</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>∫[−∞,∞] e^(−x²) dx</td>
-              <td style={S.td}>√π</td>
-              <td style={S.td}>Normalização da Normal</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∫[0,∞) xⁿe^(−x) dx</td>
-              <td style={S.td}>n! = Γ(n+1)</td>
-              <td style={S.td}>Distribuições Gamma/Beta</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∫p(x)log p(x)dx</td>
-              <td style={S.td}>−H(p)</td>
-              <td style={S.td}>Entropia, regularização</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∫p(x)log(p/q)dx</td>
-              <td style={S.td}>D_KL(p‖q)</td>
-              <td style={S.td}>VAE, distilação, RLHF</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∫xf(x)dx</td>
-              <td style={S.td}>E[X]</td>
-              <td style={S.td}>Previsão óptima, média</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∫(x−μ)²f(x)dx</td>
-              <td style={S.td}>Var[X]</td>
-              <td style={S.td}>Incerteza, regularização L2</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∫f(τ)g(t−τ)dτ</td>
-              <td style={S.td}>(f*g)(t)</td>
-              <td style={S.td}>CNNs, filtros, KDE</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∬f(x,y)log(f/(fXfY))dxdy</td>
-              <td style={S.td}>I(X;Y)</td>
-              <td style={S.td}>Info mútua, ICA, selecção</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p style={S.p}><strong>Monte Carlo vs Quadratura:</strong></p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Aspecto</th>
-              <th style={S.th}>Quadratura (Simpson/Gauss)</th>
-              <th style={S.th}>Monte Carlo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}>Taxa de convergência</td><td style={S.td}>O(n^(−k/d)) — degradá com d</td><td style={S.td}>O(1/√n) — independente de d</td></tr>
-            <tr><td style={S.td}>Dimensão óptima</td><td style={S.td}>d ≤ 3</td><td style={S.td}>d grande (4+)</td></tr>
-            <tr><td style={S.td}>Requer PDF explícita</td><td style={S.td}>Sim</td><td style={S.td}>Não (basta amostrar)</td></tr>
-            <tr><td style={S.td}>Paralelizável</td><td style={S.td}>Parcialmente</td><td style={S.td}>Sim (amostras independentes)</td></tr>
-            <tr><td style={S.td}>Exemplo em Python</td><td style={S.td}>scipy.integrate.quad</td><td style={S.td}>numpy.random + média</td></tr>
-          </tbody>
-        </table>
-
-        <div style={S.note}>
-          A integração é o fio condutor que liga Riemann ao backpropagation. O gradiente de uma
-          perda esperada — E[L(θ)] = ∫L(θ,x)p(x)dx — é um integral. Actualizações de parâmetros
-          em SGD são estimativas de Monte Carlo deste integral. Inferência variacional minimiza
-          D_KL via optimização de integrais. A teoria é uma e a integração está no centro.
-        </div>
-
-              </div>
     </div>
   );
 }

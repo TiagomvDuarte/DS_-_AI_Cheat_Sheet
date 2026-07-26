@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   ul: { paddingLeft: '1.4rem', color: 'var(--text-primary)', lineHeight: 1.9, fontSize: '1rem' },
@@ -160,9 +160,9 @@ const TargetNetDiagram = () => (
       {/* Oscillating loss curve */}
       <polyline
         points="40,120 55,60 70,130 85,50 100,125 115,55 130,110 145,45 160,115 175,52 190,120 205,58 220,100 235,50 250,110 265,65 280,115"
-        fill="none" stroke="#f97316" strokeWidth="2"
+        fill="none" stroke="#4a9eed" strokeWidth="2"
       />
-      <text x="160" y="175" textAnchor="middle" fill="#f97316" fontSize="9">Oscilação / Divergência</text>
+      <text x="160" y="175" textAnchor="middle" fill="#4a9eed" fontSize="9">Oscilação / Divergência</text>
 
       {/* Right: With target network */}
       <text x="490" y="18" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="700">Com Target Network</text>
@@ -175,7 +175,7 @@ const TargetNetDiagram = () => (
       {/* Stable decreasing curve */}
       <polyline
         points="370,125 390,118 415,110 445,100 475,88 510,75 545,64 575,56 605,50"
-        fill="none" stroke="#f97316" strokeWidth="2"
+        fill="none" stroke="#4a9eed" strokeWidth="2"
       />
       {/* Target update markers */}
       <line x1="430" y1="35" x2="430" y2="145" stroke={color} strokeWidth="1" strokeDasharray="3,3" />
@@ -184,7 +184,7 @@ const TargetNetDiagram = () => (
       <text x="430" y="44" textAnchor="middle" fill={color} fontSize="7">θ⁻←θ</text>
       <text x="510" y="44" textAnchor="middle" fill={color} fontSize="7">θ⁻←θ</text>
       <text x="570" y="44" textAnchor="middle" fill={color} fontSize="7">θ⁻←θ</text>
-      <text x="490" y="175" textAnchor="middle" fill="#f97316" fontSize="9">Convergência Estavel</text>
+      <text x="490" y="175" textAnchor="middle" fill="#4a9eed" fontSize="9">Convergência Estavel</text>
     </svg>
     <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
       As linhas verticais representam os momentos em que a target network e sincronizada com a rede online (a cada C steps).
@@ -211,16 +211,16 @@ const DuelingDiagram = () => (
       {/* Split arrow down */}
       <line x1="100" y1="100" x2="145" y2="125" stroke={color} strokeWidth="1.5" markerEnd="url(#arr-duel)" />
       {/* Value stream */}
-      <rect x="145" y="35" width="120" height="45" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="205" y="55" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Value Stream</text>
+      <rect x="145" y="35" width="120" height="45" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="205" y="55" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Value Stream</text>
       <text x="205" y="69" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">V(s; θ, β) ∈ ℝ</text>
       {/* Advantage stream */}
-      <rect x="145" y="105" width="120" height="45" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="205" y="125" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Advantage Stream</text>
+      <rect x="145" y="105" width="120" height="45" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="205" y="125" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Advantage Stream</text>
       <text x="205" y="139" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">A(s,a; θ, α) ∈ ℝ|A|</text>
       {/* Arrows to aggregation */}
-      <line x1="265" y1="57" x2="340" y2="85" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-duel)" />
-      <line x1="265" y1="127" x2="340" y2="100" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-duel)" />
+      <line x1="265" y1="57" x2="340" y2="85" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-duel)" />
+      <line x1="265" y1="127" x2="340" y2="100" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-duel)" />
       {/* Aggregation */}
       <rect x="340" y="65" width="120" height="50" rx="8" fill={`${color}14`} stroke={color} strokeWidth="1.5" />
       <text x="400" y="85" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Agregacao</text>
@@ -246,12 +246,6 @@ export default function RL6() {
 
       <div style={S.tag}>Modulo 6</div>
       <h1 style={S.h1}>Value Function Approximation e Deep RL</h1>
-      <p style={S.lead}>
-        De tabular a aproximacao: quando o espaco de estados e demasiado grande para uma tabela,
-        usamos redes neuronais como aproximadores universais. "Deep RL" e a combinacao poderosa de
-        Reinforcement Learning com Deep Learning — o paradigma que conquistou o Atari e o Go.
-        Neste modulo aprofundamos os fundamentos teoricos e as inovacoes praticas que tornaram o Deep RL estavel.
-      </p>
 
       {/* ───────────────────────── SECTION 1 ───────────────────────── */}
       <div style={S.section}>
@@ -580,31 +574,31 @@ para cada episodio:
                 <td style={S.td}>Pong</td>
                 <td style={S.td}>18.9</td>
                 <td style={S.td}>9.3</td>
-                <td style={{ ...S.td, color: '#f97316', fontWeight: 700 }}>203%</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontWeight: 700 }}>203%</td>
               </tr>
               <tr>
                 <td style={S.td}>Breakout</td>
                 <td style={S.td}>401.2</td>
                 <td style={S.td}>31.8</td>
-                <td style={{ ...S.td, color: '#f97316', fontWeight: 700 }}>1262%</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontWeight: 700 }}>1262%</td>
               </tr>
               <tr>
                 <td style={S.td}>Space Invaders</td>
                 <td style={S.td}>1976</td>
                 <td style={S.td}>1652</td>
-                <td style={{ ...S.td, color: '#f97316', fontWeight: 700 }}>120%</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontWeight: 700 }}>120%</td>
               </tr>
               <tr>
                 <td style={S.td}>Q*bert</td>
                 <td style={S.td}>10596</td>
                 <td style={S.td}>13455</td>
-                <td style={{ ...S.td, color: '#f97316', fontWeight: 700 }}>79%</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontWeight: 700 }}>79%</td>
               </tr>
               <tr>
                 <td style={S.td}>Montezuma's Revenge</td>
                 <td style={S.td}>0</td>
                 <td style={S.td}>4753</td>
-                <td style={{ ...S.td, color: '#f97316', fontWeight: 700 }}>0%</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontWeight: 700 }}>0%</td>
               </tr>
             </tbody>
           </table>
@@ -783,39 +777,6 @@ para cada episodio:
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ───────────────────────── SECTION 10 ───────────────────────── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Sintese do Modulo</h2>
-        
-          <ul style={S.ul}>
-            <li style={S.li}>Metodos tabulares falham para grandes/continuos espacos de estados — aproximacao de funcoes <InlineMath math="Q(s,a;\theta)" /> e essencial</li>
-            <li style={S.li}>Aproximacao linear e simples e convergente mas requer feature engineering manual; redes neuronais aprendem representacoes automaticamente</li>
-            <li style={S.li}>A "deadly triad" (aproximacao + bootstrapping + off-policy) causa instabilidade — o principal desafio do Deep RL</li>
-            <li style={S.li}><strong>Experience Replay</strong> quebra correlacoes temporais e aumenta eficiencia amostral ao reutilizar transicoes passadas</li>
-            <li style={S.li}><strong>Target Network</strong> estabiliza o treino ao fixar os targets TD durante C steps, evitando o "moving target problem"</li>
-            <li style={S.li}>DQN (DeepMind, 2015) foi o primeiro algoritmo a atingir performance humana em jogos Atari a partir de pixels brutos — com a mesma arquitetura e hiperparametros para todos os jogos</li>
-            <li style={S.li}>Extensoes (Double DQN, Dueling Networks, PER) resolvem limitacoes especificas e sao complementares — Rainbow combina-as todas</li>
-            <li style={S.li}>DQN usa acoes discretas; para espacos de acao continuos (robotica, controlo) precisamos de metodos baseados em politicas — tema do proximo modulo</li>
-          </ul>
-        
-      </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>11. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>De Tabular a Aproximacao de Funcoes</strong> — tabular RL armazena Q(s,a) numa tabela — impraticável quando o espaço de estados é contínuo ou de alta dimensão; aproximação de funções (redes neuronais) generaliza para estados não vistos, permitindo RL em pixels e espaços de estado de alta dimensão como Atari.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Gradient Descent para Q</strong> — minimiza a perda TD: L = 𝔼[(r + γ max_a Q(s',a;θ⁻) − Q(s,a;θ))²] via SGD; o problema é que o target depende de θ, tornando o treino instável — motiva as duas inovações do DQN: experience replay e target network.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>DQN — Deep Q-Network (DeepMind, 2015)</strong> — DQN treina uma CNN que mapeia pixels de Atari para valores Q de cada acção; alcançou performance humana em 49 jogos Atari de 57, aprendendo apenas de pixels e sinal de recompensa — marco que inaugurou o Deep RL moderno e demonstrou a viabilidade de agentes de propósito geral.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Experience Replay</strong> — experience replay armazena transições (s, a, r, s') num buffer de replay e amostra mini-batches aleatórios para treino; quebra a correlação temporal das amostras sequenciais e aumenta a eficiência de dados ao reutilizar experiências múltiplas vezes — essencial para estabilidade do treino.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Target Network</strong> — a target network é uma cópia dos pesos da rede principal actualizada periodicamente (a cada 10K steps); fornece targets de treino estáveis ao desacoplar o alvo do parâmetro que está a ser optimizado — sem ela, o treino diverge por "chasing a moving target".</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>DQN Training Loop Completo</strong> — loop: observar estado s → ε-greedy action → obter r e s' → armazenar em replay buffer → amostrar mini-batch → calcular target y = r + γ max_a Q(s',a;θ⁻) → gradiente de (y − Q(s,a;θ))² → actualizar θ → periodicamente actualizar θ⁻ ← θ.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>DQN — Resultados e Impacto</strong> — DQN superou performance humana em Pong, Breakout e Space Invaders mas falhou em jogos com recompensas esparsas (Montezuma's Revenge); extensões: Double DQN (reduz overestimation), Dueling DQN (separa V e A), Prioritized Replay (amostra transições importantes) — rainbow DQN combina todas.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

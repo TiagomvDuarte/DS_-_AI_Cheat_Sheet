@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,7 +15,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(21,94,117,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
@@ -28,11 +28,6 @@ export default function RDB5() {
 
       <span style={S.tag}>MÓDULO 5</span>
       <h1 style={S.h1}>Aggregate Functions, Views &amp; Triggers</h1>
-      <p style={S.lead}>
-        Neste módulo exploramos as ferramentas que permitem sumarizar, abstrair e automatizar comportamentos
-        dentro de uma base de dados relacional — desde funções de agregação avançadas até triggers que reagem
-        a eventos de modificação de dados.
-      </p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Aggregate Functions &amp; GROUP BY Avançado</h2>
@@ -277,20 +272,6 @@ $$;`}</div>
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      <div style={S.section}>
-        <h2 style={S.h2}>6. Síntese do Módulo</h2>
-        <div style={{ ...S.highlight, borderRadius: 10 }}>
-          <ul style={{ margin: '0 0 0 1.2rem', lineHeight: 2, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-            <li>ROLLUP e CUBE geram subtotais hierárquicos; GROUPING SETS dá controlo granular sobre agrupamentos.</li>
-            <li>Views simplificam queries complexas e protegem a estrutura interna; views materializadas melhoram performance à custa de dados potencialmente desactualizados.</li>
-            <li>Stored procedures encapsulam lógica de negócio no servidor, suportando parâmetros IN/OUT e tratamento de excepções com ROLLBACK.</li>
-            <li>Triggers automatizam reacções a eventos DML — usar com parcimónia para evitar efeitos secundários, debugging difícil e recursão infinita.</li>
-            <li>Cursores são a alternativa procedural quando operações de conjunto não chegam, mas têm custo de performance significativo.</li>
-          </ul>
-        </div>
-      </div>
     </div>
   );
 }

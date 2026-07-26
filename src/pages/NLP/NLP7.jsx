@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const MLMNSPDiagram = () => {
@@ -38,12 +38,12 @@ const MLMNSPDiagram = () => {
     isnext: {
       a: ['[CLS]', 'O', 'gato', 'dorme', 'no', 'telhado', '.', '[SEP]'],
       b: ['Ele', 'acorda', 'ao', 'pôr-do-sol', '.', '[SEP]'],
-      label: 'IsNext', prob: 0.93, color: '#f97316',
+      label: 'IsNext', prob: 0.93, color: '#4a9eed',
     },
     notnext: {
       a: ['[CLS]', 'O', 'gato', 'dorme', 'no', 'telhado', '.', '[SEP]'],
       b: ['Bananas', 'são', 'ricas', 'em', 'potássio', '.', '[SEP]'],
-      label: 'NotNext', prob: 0.97, color: '#f97316',
+      label: 'NotNext', prob: 0.97, color: '#4a9eed',
     },
   };
   const nsp = nspExamples[nspPair];
@@ -75,14 +75,14 @@ const MLMNSPDiagram = () => {
             ~15% dos tokens são substituídos por <code style={S.code}>[MASK]</code>. O BERT vê <strong>todo o resto da frase</strong> (esquerda <em>e</em> direita) para prever o token original.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', justifyContent: 'center', marginBottom: '0.6rem' }}>
-            {mlmTokens.map((tok, i) => tokenBox(tok, i === maskIdx ? '#f97316' : (i < maskIdx ? 'var(--accent-color)' : '#f97316'), i))}
+            {mlmTokens.map((tok, i) => tokenBox(tok, i === maskIdx ? '#4a9eed' : (i < maskIdx ? 'var(--accent-color)' : '#4a9eed'), i))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', marginBottom: '1rem', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
             <span>← contexto esquerdo ("O gato")</span>
             <span>contexto direito ("no telhado") →</span>
           </div>
           {!revealed ? (
-            <button onClick={() => setRevealed(true)} style={{ padding: '0.5rem 1.2rem', borderRadius: 20, cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', background: '#f97316', color: 'white', border: 'none' }}>
+            <button onClick={() => setRevealed(true)} style={{ padding: '0.5rem 1.2rem', borderRadius: 20, cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', background: '#4a9eed', color: 'white', border: 'none' }}>
               Revelar previsão de [MASK]
             </button>
           ) : (
@@ -90,9 +90,9 @@ const MLMNSPDiagram = () => {
               <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>Distribuição softmax sobre o vocabulário (top-4):</div>
               {candidates.map(([word, p]) => (
                 <div key={word} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-                  <span style={{ width: 60, fontFamily: 'monospace', fontSize: '0.8rem', color: word === 'dorme' ? '#f97316' : 'var(--text-primary)', fontWeight: word === 'dorme' ? 700 : 500, textAlign: 'right' }}>{word}</span>
+                  <span style={{ width: 60, fontFamily: 'monospace', fontSize: '0.8rem', color: word === 'dorme' ? '#4a9eed' : 'var(--text-primary)', fontWeight: word === 'dorme' ? 700 : 500, textAlign: 'right' }}>{word}</span>
                   <div style={{ flex: 1, background: 'var(--bg-secondary)', borderRadius: 4, overflow: 'hidden', height: 16, maxWidth: 240 }}>
-                    <div style={{ width: `${p * 100}%`, height: '100%', background: word === 'dorme' ? '#f97316' : 'var(--accent-color)', opacity: word === 'dorme' ? 1 : 0.5 }} />
+                    <div style={{ width: `${p * 100}%`, height: '100%', background: word === 'dorme' ? '#4a9eed' : 'var(--accent-color)', opacity: word === 'dorme' ? 1 : 0.5 }} />
                   </div>
                   <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', width: 40 }}>{(p * 100).toFixed(0)}%</span>
                 </div>
@@ -125,8 +125,8 @@ const MLMNSPDiagram = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>{nsp.a.map((tok, i) => tokenBox(tok, 'var(--accent-color)', `a${i}`))}</div>
           </div>
           <div style={{ margin: '0.5rem 0', textAlign: 'left' }}>
-            <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#fb923c', marginBottom: '0.3rem' }}>Frase B</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>{nsp.b.map((tok, i) => tokenBox(tok, '#fb923c', `b${i}`))}</div>
+            <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#38bdf8', marginBottom: '0.3rem' }}>Frase B</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>{nsp.b.map((tok, i) => tokenBox(tok, '#38bdf8', `b${i}`))}</div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginTop: '1rem' }}>
@@ -157,8 +157,8 @@ const BertEmbeddingsDiagram = () => {
         <div style={{ display: 'inline-flex', flexDirection: 'column', gap: '0.3rem', minWidth: 600 }}>
           {[
             ['Token', tokens.map(t => t), 'var(--accent-color)'],
-            ['Segment', segments.map(s => `E_${s === 0 ? 'A' : 'B'}`), '#f97316'],
-            ['Position', tokens.map((_, i) => `E_${i}`), '#f97316'],
+            ['Segment', segments.map(s => `E_${s === 0 ? 'A' : 'B'}`), '#4a9eed'],
+            ['Position', tokens.map((_, i) => `E_${i}`), '#4a9eed'],
           ].map(([label, vals, color]) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
               <div style={{ width: 70, fontSize: '0.78rem', fontWeight: 700, color, flexShrink: 0 }}>{label}</div>
@@ -173,7 +173,7 @@ const BertEmbeddingsDiagram = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
             <div style={{ width: 70, fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-primary)', flexShrink: 0 }}>Input</div>
             {tokens.map((_, i) => (
-              <div key={i} style={{ width: 50, textAlign: 'center', fontSize: '0.7rem', fontFamily: 'monospace', background: 'rgba(249,115,22,0.18)', border: '1px solid var(--accent-color)', borderRadius: 4, padding: '0.25rem 0', color: 'var(--text-primary)', flexShrink: 0 }}>hᵢ</div>
+              <div key={i} style={{ width: 50, textAlign: 'center', fontSize: '0.7rem', fontFamily: 'monospace', background: 'rgba(74,158,237,0.18)', border: '1px solid var(--accent-color)', borderRadius: 4, padding: '0.25rem 0', color: 'var(--text-primary)', flexShrink: 0 }}>hᵢ</div>
             ))}
           </div>
         </div>
@@ -203,8 +203,8 @@ const CausalMaskDiagram = () => {
                 return (
                   <div key={colTok} style={{
                     width: 52, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: canAttend ? 'rgba(249,115,22,0.18)' : 'var(--bg-primary)',
-                    border: `1px solid ${canAttend ? 'rgba(249,115,22,0.35)' : 'var(--card-border)'}`,
+                    background: canAttend ? 'rgba(74,158,237,0.18)' : 'var(--bg-primary)',
+                    border: `1px solid ${canAttend ? 'rgba(74,158,237,0.35)' : 'var(--card-border)'}`,
                     borderRadius: 4, margin: '0 1px', fontSize: '0.85rem',
                   }}>
                     {canAttend ? '' : ''}
@@ -233,19 +233,19 @@ const GPTOutputDiagram = () => {
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Da Última Camada à Palavra Gerada</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
-        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(249,115,22,0.10)', border: '1.5px solid var(--accent-color)', fontWeight: 700, color: 'var(--accent-color)', fontSize: '0.9rem' }}>
+        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(74,158,237,0.10)', border: '1.5px solid var(--accent-color)', fontWeight: 700, color: 'var(--accent-color)', fontSize: '0.9rem' }}>
           <InlineMath math="h_N" />
         </div>
         <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>→ Linear (W) →</div>
-        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(245,158,11,0.12)', border: '1.5px solid #f59e0b', fontWeight: 700, color: '#f97316', fontSize: '0.9rem' }}>
+        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(2,132,199,0.12)', border: '1.5px solid #0284c7', fontWeight: 700, color: '#4a9eed', fontSize: '0.9rem' }}>
           logits ∈ ℝ<sup>|V|</sup>
         </div>
         <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>→ softmax →</div>
-        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(249,115,22,0.10)', border: '1.5px solid #fbbf24', fontWeight: 700, color: '#f97316', fontSize: '0.9rem' }}>
+        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(74,158,237,0.10)', border: '1.5px solid #7dd3fc', fontWeight: 700, color: '#4a9eed', fontSize: '0.9rem' }}>
           P(w | contexto)
         </div>
         <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>→ argmax/sample →</div>
-        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(251,146,60,0.12)', border: '1.5px solid #fb923c', fontWeight: 700, color: '#fb923c', fontSize: '0.9rem' }}>
+        <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(56,189,248,0.12)', border: '1.5px solid #38bdf8', fontWeight: 700, color: '#38bdf8', fontSize: '0.9rem' }}>
           ŵ
         </div>
       </div>
@@ -254,9 +254,9 @@ const GPTOutputDiagram = () => {
         <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.6rem' }}>Exemplo (top-4 candidatos para o próximo token):</div>
         {probs.map(([word, p], i) => (
           <div key={word} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-            <span style={{ width: 50, fontFamily: 'monospace', fontSize: '0.8rem', color: i === 0 ? '#fb923c' : 'var(--text-primary)', fontWeight: i === 0 ? 700 : 500, textAlign: 'right' }}>{word}</span>
+            <span style={{ width: 50, fontFamily: 'monospace', fontSize: '0.8rem', color: i === 0 ? '#38bdf8' : 'var(--text-primary)', fontWeight: i === 0 ? 700 : 500, textAlign: 'right' }}>{word}</span>
             <div style={{ flex: 1, background: 'var(--bg-secondary)', borderRadius: 4, overflow: 'hidden', height: 16 }}>
-              <div style={{ width: `${p * 100}%`, height: '100%', background: i === 0 ? '#fb923c' : 'var(--accent-color)', opacity: i === 0 ? 1 : 0.5 }} />
+              <div style={{ width: `${p * 100}%`, height: '100%', background: i === 0 ? '#38bdf8' : 'var(--accent-color)', opacity: i === 0 ? 1 : 0.5 }} />
             </div>
             <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', width: 40 }}>{(p * 100).toFixed(0)}%</span>
           </div>
@@ -303,22 +303,22 @@ const PoolingDiagram = () => {
             <div key={layer} style={{
               width: 28, height: 28, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: '0.7rem', fontWeight: 700,
-              background: active ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)',
-              border: `1.5px solid ${active ? '#f97316' : 'var(--card-border)'}`,
-              color: active ? '#f97316' : 'var(--text-secondary)',
+              background: active ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)',
+              border: `1.5px solid ${active ? '#4a9eed' : 'var(--card-border)'}`,
+              color: active ? '#4a9eed' : 'var(--text-secondary)',
             }}>{layer}</div>
           );
         })}
         <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', marginLeft: '0.4rem', alignSelf: 'center' }}>→ output</div>
       </div>
       <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-        camadas destacadas a verde → <strong style={{ color: '#f97316' }}>{s.op}</strong> → embedding final ({s.layers.length === 1 ? '768 dims' : (strategy === 'concat4' ? `${s.layers.length}×768 = ${s.layers.length * 768} dims` : '768 dims')})
+        camadas destacadas a verde → <strong style={{ color: '#4a9eed' }}>{s.op}</strong> → embedding final ({s.layers.length === 1 ? '768 dims' : (strategy === 'concat4' ? `${s.layers.length}×768 = ${s.layers.length * 768} dims` : '768 dims')})
       </div>
 
       <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem 1.25rem', border: '1.5px solid var(--card-border)', textAlign: 'left', maxWidth: 480, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
           <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{s.label}</span>
-          <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#f97316', fontSize: '1.1rem' }}>F1 = {s.f1}</span>
+          <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#4a9eed', fontSize: '1.1rem' }}>F1 = {s.f1}</span>
         </div>
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>{s.desc}</p>
       </div>
@@ -347,9 +347,9 @@ const KVCacheDiagram = () => {
           <div key={i} style={{ textAlign: 'center', opacity: i <= step ? 1 : 0.25 }}>
             <div style={{
               padding: '0.4rem 0.7rem', borderRadius: 6, fontSize: '0.8rem', fontWeight: 600,
-              background: i < step ? 'rgba(249,115,22,0.10)' : (i === step ? 'var(--accent-color)' : 'var(--bg-primary)'),
-              color: i < step ? '#f97316' : (i === step ? 'white' : 'var(--text-secondary)'),
-              border: `1px solid ${i < step ? '#f97316' : (i === step ? 'var(--accent-color)' : 'var(--card-border)')}`,
+              background: i < step ? 'rgba(74,158,237,0.10)' : (i === step ? 'var(--accent-color)' : 'var(--bg-primary)'),
+              color: i < step ? '#4a9eed' : (i === step ? 'white' : 'var(--text-secondary)'),
+              border: `1px solid ${i < step ? '#4a9eed' : (i === step ? 'var(--accent-color)' : 'var(--card-border)')}`,
             }}>{tok}</div>
             <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
               {i < step ? 'K,V em cache' : (i === step ? 'calcula K,V (novo)' : '—')}
@@ -371,7 +371,6 @@ export default function NLP7() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 7</div>
         <h1 style={S.h1}>BERT vs GPT: Encoder-only e Decoder-only</h1>
-        <p style={S.lead}>O Transformer base (encoder + decoder, self-attention, multi-head, residuals e layer norm) foi visto na lecture anterior. Aqui vemos as duas grandes famílias derivadas: modelos <strong>encoder-only</strong> (BERT) para compreensão, e <strong>decoder-only</strong> (GPT) para geração de texto.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -415,7 +414,7 @@ export default function NLP7() {
                 {[['First Layer', 91.0], ['Last Hidden Layer', 94.9], ['Sum All 12 Layers', 95.5], ['Second-to-Last Hidden', 95.6], ['Sum Last Four Hidden', 95.9], ['Concat Last Four Hidden ', 96.1]].map(([s, v]) => (
                   <tr key={s}>
                     <td style={S.td}>{s}</td>
-                    <td style={{ ...S.td, textAlign: 'right', fontFamily: 'monospace', fontWeight: s.includes('') ? 700 : 400, color: s.includes('') ? '#f97316' : 'var(--text-primary)' }}>{v}</td>
+                    <td style={{ ...S.td, textAlign: 'right', fontFamily: 'monospace', fontWeight: s.includes('') ? 700 : 400, color: s.includes('') ? '#4a9eed' : 'var(--text-primary)' }}>{v}</td>
                   </tr>
                 ))}
               </tbody>
@@ -448,7 +447,7 @@ export default function NLP7() {
                 <span style={{ fontWeight: 700, color: 'var(--accent-color)', fontSize: '0.8rem' }}>{step}</span>
                 <span style={{ color: 'var(--text-secondary)', fontFamily: 'monospace', fontSize: '0.8rem' }}>{inp}</span>
                 <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>{dist}</span>
-                {sel && <span style={{ color: '#f97316', fontWeight: 700, fontFamily: 'monospace', fontSize: '0.82rem' }}>→ "{sel}"</span>}
+                {sel && <span style={{ color: '#4a9eed', fontWeight: 700, fontFamily: 'monospace', fontSize: '0.82rem' }}>→ "{sel}"</span>}
               </div>
             ))}
           </div>
@@ -462,49 +461,8 @@ export default function NLP7() {
 
           <KVCacheDiagram />
 
-          <div style={S.highlight}>
-            <p style={{ fontWeight: 700, marginBottom: '0.5rem', color: 'var(--accent-color)' }}>BERT vs. GPT — Resumo Final</p>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ ...S.table, marginBottom: 0 }}>
-                <thead><tr>
-                  <th style={S.th}></th>
-                  <th style={S.th}>BERT (Encoder-only)</th>
-                  <th style={S.th}>GPT (Decoder-only)</th>
-                </tr></thead>
-                <tbody>
-                  {[
-                    ['Atenção', 'Bidirecional (vê tudo)', 'Causal/mascarada (só vê passado)'],
-                    ['Tarefa primária', 'Compreensão de texto', 'Geração de texto'],
-                    ['Pré-treino', 'MLM + NSP', 'Language Modeling'],
-                    ['Token especial', '[CLS] para classificação', 'Auto-regressivo'],
-                    ['Uso típico', 'NER, classificação, retrieval', 'Chatbots, geração, summarização'],
-                  ].map(([f, b, g]) => (
-                    <tr key={f}><td style={S.td}><strong>{f}</strong></td><td style={S.td}>{b}</td><td style={S.td}>{g}</td></tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+        </div>
 
-          <div style={S.highlight}>
-            <strong>Em resumo:</strong>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li><strong>Encoder-only (BERT)</strong>: bidirecional, ideal para compreensão (classificação, NER, similaridade, retrieval)</li>
-              <li><strong>Decoder-only (GPT)</strong>: unidirecional esq.→dir., ideal para geração de texto</li>
-              <li><strong>Encoder-Decoder (T5)</strong>: ideal para tradução e sumarização</li>
-            </ul>
-          </div>
-        </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>3. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Encoder-only — BERT</strong> — processa a sequência inteira bidirecionalmente com atenção mascarada; treinado com MLM (masked language modeling) e NSP, é ideal para tarefas de classificação, NER e extração de informação.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Decoder-only: Geração Auto-Regressiva (GPT)</strong> — gera texto token a token, condicionando cada token em todos os anteriores via atenção causal; a escala (GPT-3: 175B parâmetros) revelou capacidades emergentes não antecipadas como few-shot learning.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

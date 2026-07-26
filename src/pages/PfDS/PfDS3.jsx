@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,8 +15,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   svgWrap: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1.25rem', margin: '1.25rem 0', overflowX: 'auto', textAlign: 'center' },
@@ -27,9 +27,9 @@ function SvgBlackBox() {
   return (
     <svg width="520" height="160" viewBox="0 0 520 160" style={{ maxWidth: '100%' }}>
       {/* Inputs */}
-      <rect x="10" y="40" width="90" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="10" y="40" width="90" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="55" y="59" textAnchor="middle" fontSize="12" fill={color} fontFamily="monospace">a = 3</text>
-      <rect x="10" y="80" width="90" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="10" y="80" width="90" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="55" y="99" textAnchor="middle" fontSize="12" fill={color} fontFamily="monospace">b = 4</text>
       {/* Arrows in */}
       <line x1="100" y1="54" x2="155" y2="70" stroke="#888" strokeWidth="1.5" markerEnd="url(#arr)" />
@@ -42,7 +42,7 @@ function SvgBlackBox() {
       {/* Arrow out */}
       <line x1="365" y1="80" x2="420" y2="80" stroke="#888" strokeWidth="1.5" markerEnd="url(#arr)" />
       {/* Output */}
-      <rect x="420" y="66" width="90" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="420" y="66" width="90" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="465" y="85" textAnchor="middle" fontSize="12" fill={color} fontFamily="monospace">12</text>
       {/* Labels */}
       <text x="55" y="30" textAnchor="middle" fontSize="11" fill="#888">inputs</text>
@@ -62,26 +62,26 @@ function SvgParamBinding() {
     <svg width="520" height="200" viewBox="0 0 520 200" style={{ maxWidth: '100%' }}>
       <text x="10" y="22" fontSize="12" fill="#888" fontFamily="monospace">chamada: greet("Ana", greeting="Olá")</text>
       {/* Call site boxes */}
-      <rect x="10" y="35" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="10" y="35" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="50" y="54" textAnchor="middle" fontSize="12" fill={color} fontFamily="monospace">"Ana"</text>
-      <rect x="110" y="35" width="130" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="175" y="54" textAnchor="middle" fontSize="12" fill="#f97316" fontFamily="monospace">greeting="Olá"</text>
+      <rect x="110" y="35" width="130" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="175" y="54" textAnchor="middle" fontSize="12" fill="#4a9eed" fontFamily="monospace">greeting="Olá"</text>
       {/* Binding arrows */}
       <line x1="50" y1="63" x2="50" y2="110" stroke={color} strokeWidth="1.5" strokeDasharray="4 2" markerEnd="url(#arr2)" />
-      <line x1="175" y1="63" x2="270" y2="110" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4 2" markerEnd="url(#arr2b)" />
+      <line x1="175" y1="63" x2="270" y2="110" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4 2" markerEnd="url(#arr2b)" />
       {/* Function frame */}
       <rect x="10" y="115" width="500" height="70" rx="8" fill="var(--bg-secondary)" stroke="#444" strokeWidth="1.5" />
       <text x="260" y="133" textAnchor="middle" fontSize="11" fill="#666">local namespace da função</text>
-      <rect x="30" y="140" width="70" height="26" rx="4" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="30" y="140" width="70" height="26" rx="4" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="65" y="157" textAnchor="middle" fontSize="11" fill={color} fontFamily="monospace">name="Ana"</text>
-      <rect x="120" y="140" width="130" height="26" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="185" y="157" textAnchor="middle" fontSize="11" fill="#f97316" fontFamily="monospace">greeting="Olá"</text>
+      <rect x="120" y="140" width="130" height="26" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="185" y="157" textAnchor="middle" fontSize="11" fill="#4a9eed" fontFamily="monospace">greeting="Olá"</text>
       <defs>
         <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
         <marker id="arr2b" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
     </svg>
@@ -93,19 +93,19 @@ function SvgLEGB() {
   return (
     <svg width="480" height="260" viewBox="0 0 480 260" style={{ maxWidth: '100%' }}>
       {/* Built-in */}
-      <rect x="5" y="5" width="470" height="250" rx="14" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="24" y="26" fontSize="12" fill="#f97316" fontWeight="700">B — Built-in</text>
+      <rect x="5" y="5" width="470" height="250" rx="14" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="24" y="26" fontSize="12" fill="#4a9eed" fontWeight="700">B — Built-in</text>
       <text x="24" y="42" fontSize="10" fill="#888">print, len, range, type, ...</text>
       {/* Global */}
-      <rect x="30" y="52" width="420" height="190" rx="12" fill="rgba(251,191,36,0.07)" stroke="#fbbf24" strokeWidth="2" />
-      <text x="48" y="72" fontSize="12" fill="#fbbf24" fontWeight="700">G — Global</text>
+      <rect x="30" y="52" width="420" height="190" rx="12" fill="rgba(125,211,252,0.07)" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="48" y="72" fontSize="12" fill="#7dd3fc" fontWeight="700">G — Global</text>
       <text x="48" y="88" fontSize="10" fill="#888">variáveis no topo do ficheiro .py</text>
       {/* Enclosing */}
-      <rect x="58" y="98" width="364" height="130" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="76" y="118" fontSize="12" fill="#f97316" fontWeight="700">E — Enclosing</text>
+      <rect x="58" y="98" width="364" height="130" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="76" y="118" fontSize="12" fill="#4a9eed" fontWeight="700">E — Enclosing</text>
       <text x="76" y="134" fontSize="10" fill="#888">função exterior (closures)</text>
       {/* Local */}
-      <rect x="88" y="144" width="304" height="72" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <rect x="88" y="144" width="304" height="72" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="106" y="164" fontSize="12" fill={color} fontWeight="700">L — Local</text>
       <text x="106" y="180" fontSize="10" fill="#888">variáveis dentro da função atual</text>
       <text x="106" y="196" fontSize="10" fill="#888">pesquisa começa aqui</text>
@@ -126,12 +126,12 @@ function SvgClosure() {
   return (
     <svg width="520" height="210" viewBox="0 0 520 210" style={{ maxWidth: '100%' }}>
       {/* Outer frame */}
-      <rect x="10" y="10" width="230" height="100" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="20" y="30" fontSize="11" fill="#f97316" fontWeight="700" fontFamily="monospace">outer() frame</text>
-      <text x="20" y="52" fontSize="11" fill="#f97316" fontFamily="monospace">count = 0</text>
+      <rect x="10" y="10" width="230" height="100" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="20" y="30" fontSize="11" fill="#4a9eed" fontWeight="700" fontFamily="monospace">outer() frame</text>
+      <text x="20" y="52" fontSize="11" fill="#4a9eed" fontFamily="monospace">count = 0</text>
       <text x="20" y="70" fontSize="10" fill="#888">enclosing scope</text>
       {/* Inner frame */}
-      <rect x="30" y="80" width="180" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="30" y="80" width="180" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="40" y="100" fontSize="11" fill={color} fontWeight="700" fontFamily="monospace">inner() frame</text>
       <text x="40" y="118" fontSize="10" fill="#888">lembra count do outer</text>
       {/* Function object box */}
@@ -141,11 +141,11 @@ function SvgClosure() {
       <text x="400" y="108" textAnchor="middle" fontSize="10" fill="#888" fontFamily="monospace">__closure__  ─────┐</text>
       <text x="400" y="124" textAnchor="middle" fontSize="10" fill={color} fontFamily="monospace">cell: count=0      │</text>
       {/* Arrow from closure to outer */}
-      <line x1="210" y1="55" x2="295" y2="90" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5 2" markerEnd="url(#arrCL)" />
+      <line x1="210" y1="55" x2="295" y2="90" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5 2" markerEnd="url(#arrCL)" />
       <text x="240" y="68" fontSize="9" fill="#888">referência</text>
       <defs>
         <marker id="arrCL" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       <text x="10" y="175" fontSize="11" fill="#888">Quando inner() é retornada, carrega consigo o cell count do outer.</text>
@@ -157,9 +157,9 @@ function SvgClosure() {
 /* ── SVG 5: Module Search Path ── */
 function SvgModulePath() {
   const steps = [
-    { label: '1. Diretório atual', sub: 'onde o script corre', fill: 'rgba(249,115,22,0.10)', stroke: color },
-    { label: '2. stdlib', sub: 'os, sys, re, math...', fill: 'rgba(249,115,22,0.10)', stroke: '#f97316' },
-    { label: '3. site-packages', sub: 'numpy, pandas, ...', fill: 'rgba(251,191,36,0.12)', stroke: '#fbbf24' },
+    { label: '1. Diretório atual', sub: 'onde o script corre', fill: 'rgba(74,158,237,0.10)', stroke: color },
+    { label: '2. stdlib', sub: 'os, sys, re, math...', fill: 'rgba(74,158,237,0.10)', stroke: '#4a9eed' },
+    { label: '3. site-packages', sub: 'numpy, pandas, ...', fill: 'rgba(125,211,252,0.12)', stroke: '#7dd3fc' },
   ];
   return (
     <svg width="520" height="130" viewBox="0 0 520 130" style={{ maxWidth: '100%' }}>
@@ -201,8 +201,8 @@ function SvgRegexMatch() {
       {chars.map(function(ch, i) {
         var inM1 = i >= match1[0] && i <= match1[1];
         var inM2 = i >= match2[0] && i <= match2[1];
-        var bg = inM1 ? 'rgba(249,115,22,0.10)' : inM2 ? 'rgba(249,115,22,0.10)' : 'transparent';
-        var stroke2 = inM1 ? color : inM2 ? '#f97316' : 'none';
+        var bg = inM1 ? 'rgba(74,158,237,0.10)' : inM2 ? 'rgba(74,158,237,0.10)' : 'transparent';
+        var stroke2 = inM1 ? color : inM2 ? '#4a9eed' : 'none';
         return (
           <g key={i}>
             {(inM1 || inM2) && (
@@ -214,7 +214,7 @@ function SvgRegexMatch() {
       })}
       <rect x={startX + match1[0] * charW} y="55" width={(match1[1] - match1[0] + 1) * charW} height="16" rx="3" fill={color} />
       <text x={startX + (match1[0] + match1[1] + 1) / 2 * charW} y="67" textAnchor="middle" fontSize="9" fill="#fff">match 1</text>
-      <rect x={startX + match2[0] * charW} y="55" width={(match2[1] - match2[0] + 1) * charW} height="16" rx="3" fill="#f97316" />
+      <rect x={startX + match2[0] * charW} y="55" width={(match2[1] - match2[0] + 1) * charW} height="16" rx="3" fill="#4a9eed" />
       <text x={startX + (match2[0] + match2[1] + 1) / 2 * charW} y="67" textAnchor="middle" fontSize="9" fill="#fff">match 2</text>
       <text x="10" y="92" fontSize="10" fill="#888">re.findall retorna: ['ana@mdsaa.pt', 'rui@ds.pt']</text>
     </svg>
@@ -238,7 +238,7 @@ function SvgCallStack() {
         return (
           <g key={i}>
             <rect x="10" y={y} width="420" height="36" rx="6"
-              fill={isBase ? 'rgba(249,115,22,0.10)' : 'var(--bg-secondary)'}
+              fill={isBase ? 'rgba(74,158,237,0.10)' : 'var(--bg-secondary)'}
               stroke={isBase ? color : '#444'} strokeWidth="1.5" />
             <text x="22" y={y + 16} fontSize="12" fill={isBase ? color : 'var(--text-primary)'} fontWeight="700" fontFamily="monospace">{f.label}</text>
             <text x="22" y={y + 30} fontSize="10" fill="#888" fontFamily="monospace">{f.val}</text>
@@ -267,7 +267,7 @@ function SvgSynthesis() {
         var x = 30 + i * 120;
         return (
           <g key={i}>
-            <rect x={x} y="60" width="105" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            <rect x={x} y="60" width="105" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
             <text x={x + 52} y="82" textAnchor="middle" fontSize="10" fill={color} fontWeight="700">{String(i + 1)}</text>
             <text x={x + 52} y="97" textAnchor="middle" fontSize="9" fill="var(--text-primary)">{s.split(' ').slice(0, 2).join(' ')}</text>
             <text x={x + 52} y="109" textAnchor="middle" fontSize="9" fill="var(--text-primary)">{s.split(' ').slice(2).join(' ')}</text>
@@ -283,7 +283,7 @@ function SvgSynthesis() {
         </marker>
       </defs>
       <text x="10" y="145" fontSize="11" fill="#888">Cada passo melhora organização, legibilidade e reutilização do código.</text>
-      <rect x="10" y="158" width="500" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+      <rect x="10" y="158" width="500" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
       <text x="260" y="178" textAnchor="middle" fontSize="11" fill="var(--text-primary)" fontWeight="600">Bom código = pequenas funções + nomes claros + docstrings + módulos coesos</text>
       <text x="260" y="196" textAnchor="middle" fontSize="10" fill="#888">DRY (Don't Repeat Yourself) + Single Responsibility Principle</text>
     </svg>
@@ -297,11 +297,6 @@ export default function PfDS3() {
 
       <span style={S.tag}>MÓDULO 03</span>
       <h1 style={S.h1}>Functions, Modules &amp; Namespace</h1>
-      <p style={S.lead}>
-        Funções permitem encapsular e reutilizar lógica. Módulos organizam código em unidades
-        reutilizáveis. O Namespace e a regra LEGB definem como o interpretador resolve nomes.
-        Closures, recursão e type hints completam o quadro de ferramentas essenciais.
-      </p>
 
       {/* ── 1. Definição e Anatomia ── */}
       <section style={S.section}>
@@ -850,139 +845,7 @@ def contagens(texto: str) -> Dict[str, int]:
         </div>
       </section>
 
-      <hr style={S.divider} />
 
-      {/* ── 10. Boas Práticas ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Boas Práticas</h2>
-        <p style={S.p}>
-          Escrever boas funções e módulos segue princípios simples mas com grande impacto na
-          manutenção do código.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Princípio</th>
-              <th style={S.th}>Descrição</th>
-              <th style={S.th}>Exemplo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}>DRY</td><td style={S.td}>Don't Repeat Yourself — extrair código repetido para função</td><td style={S.td}>Em vez de copiar o bloco, criar <code>normalizar()</code></td></tr>
-            <tr><td style={S.td}>SRP</td><td style={S.td}>Single Responsibility — cada função faz uma coisa</td><td style={S.td}><code>carregar_dados()</code> e <code>limpar_dados()</code> separadas</td></tr>
-            <tr><td style={S.td}>snake_case</td><td style={S.td}>Nomes de funções e variáveis em minúsculas com underscores</td><td style={S.td}><code>calcular_media</code>, <code>num_items</code></td></tr>
-            <tr><td style={S.td}>UPPER_CASE</td><td style={S.td}>Constantes em maiúsculas</td><td style={S.td}><code>MAX_ITER = 1000</code>, <code>PI = 3.14159</code></td></tr>
-            <tr><td style={S.td}>Funções curtas</td><td style={S.td}>Idealmente menos de 20 linhas — mais fácil de testar</td><td style={S.td}>Se cresce muito, dividir em subfunções</td></tr>
-            <tr><td style={S.td}>Sem side-effects</td><td style={S.td}>Funções puras são mais previsíveis e testáveis</td><td style={S.td}>Retornar novo valor em vez de modificar o argumento</td></tr>
-          </tbody>
-        </table>
-        <p style={S.p}>
-          Existem dois formatos populares de docstring — o estilo <strong>Google</strong> e o estilo{' '}
-          <strong>NumPy</strong>:
-        </p>
-        <div style={S.code}>{`# Estilo Google
-def calcular_imc(peso: float, altura: float) -> float:
-    """Calcula o Índice de Massa Corporal.
-
-    Args:
-        peso: Peso em quilogramas.
-        altura: Altura em metros.
-
-    Returns:
-        Valor do IMC (peso / altura^2).
-
-    Raises:
-        ValueError: Se altura for zero ou negativa.
-    """
-    if altura <= 0:
-        raise ValueError("Altura deve ser positiva")
-    return peso / altura ** 2
-
-
-# Estilo NumPy
-def calcular_imc_np(peso, altura):
-    """
-    Calcular o Índice de Massa Corporal.
-
-    Parameters
-    ----------
-    peso : float
-        Peso em quilogramas.
-    altura : float
-        Altura em metros.
-
-    Returns
-    -------
-    float
-        Valor do IMC.
-    """
-    return peso / altura ** 2`}</div>
-        <div style={S.note}>
-          Ferramentas como <code>pylint</code>, <code>flake8</code> e <code>black</code> ajudam a
-          manter o código consistente com as convenções do PEP 8 (guia de estilo oficial do Python).
-        </div>
-        <div style={S.code}>{`# Anti-padrões comuns a evitar
-
-# ✗ Nome sem significado
-def f(x):
-    return x * 1.1
-
-# ✓ Nome descritivo
-def aplicar_iva(preco: float, taxa: float = 0.23) -> float:
-    return preco * (1 + taxa)
-
-# ✗ Função que faz demasiadas coisas
-def processar(dados):
-    # lê, limpa, transforma, guarda, envia email...
-    pass
-
-# ✓ Funções separadas com responsabilidade única
-def ler_dados(caminho: str) -> list:   ...
-def limpar_dados(dados: list) -> list: ...
-def guardar(dados: list, dest: str):   ...`}</div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 11. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Síntese do Módulo</h2>
-        <div style={S.svgWrap}>
-          <SvgSynthesis />
-        </div>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Conceito</th>
-              <th style={S.th}>Palavra-chave / Mecanismo</th>
-              <th style={S.th}>Para recordar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}>Definição de função</td><td style={S.td}><code>def</code>, <code>return</code></td><td style={S.td}>Sem return devolve None; first-class object</td></tr>
-            <tr><td style={S.td}>Parâmetros</td><td style={S.td}><code>*args</code>, <code>**kwargs</code>, defaults</td><td style={S.td}>Ordem: posicionais, *args, defaults, **kwargs</td></tr>
-            <tr><td style={S.td}>Scope</td><td style={S.td}>LEGB, <code>global</code>, <code>nonlocal</code></td><td style={S.td}>L → E → G → B; modificar requer declaração</td></tr>
-            <tr><td style={S.td}>Closures</td><td style={S.td}><code>__closure__</code>, cells</td><td style={S.td}>Recordam enclosing scope; base de decoradores</td></tr>
-            <tr><td style={S.td}>Módulos</td><td style={S.td}><code>import</code>, <code>from ... import</code>, <code>as</code></td><td style={S.td}>sys.path: dir atual → stdlib → site-packages</td></tr>
-            <tr><td style={S.td}>__name__</td><td style={S.td}><code>__name__ == '__main__'</code></td><td style={S.td}>Separa execução direta de importação</td></tr>
-            <tr><td style={S.td}>Standard Library</td><td style={S.td}>os, sys, re, collections, itertools, pathlib</td><td style={S.td}>Batteries included — usar antes de instalar libs</td></tr>
-            <tr><td style={S.td}>Regex</td><td style={S.td}><code>re.findall</code>, <code>re.sub</code>, <code>re.compile</code></td><td style={S.td}>Usar raw strings r"..."; compilar padrões reutilizados</td></tr>
-            <tr><td style={S.td}>Recursão</td><td style={S.td}>caso base + caso recursivo</td><td style={S.td}>Python sem TCO; limite 1000 frames</td></tr>
-            <tr><td style={S.td}>Type hints</td><td style={S.td}><code>: int</code>, <code>-&gt; str</code>, <code>Optional</code></td><td style={S.td}>Não aplicados em runtime; validados pelo mypy</td></tr>
-            <tr><td style={S.td}>Boas práticas</td><td style={S.td}>DRY, SRP, snake_case, docstrings</td><td style={S.td}>Funções curtas, puras e bem documentadas</td></tr>
-          </tbody>
-        </table>
-        <div style={S.highlight}>
-          <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-            <strong>Fluxo de trabalho recomendado:</strong> escreve a função com um nome descritivo
-            e docstring primeiro. Escolhe os tipos de parâmetros (posicionais para obrigatórios,
-            keyword com default para opcionais). Coloca a função no módulo mais coeso. Importa
-            onde precisas com <code>from modulo import funcao</code>. Adiciona type hints para
-            melhorar o suporte do IDE e usa <code>mypy</code> para verificação estática em projetos
-            maiores.
-          </p>
-        </div>
-      </section>
-    </div>
+</div>
   );
 }

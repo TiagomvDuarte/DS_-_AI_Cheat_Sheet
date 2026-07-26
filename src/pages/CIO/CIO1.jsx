@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -26,34 +26,34 @@ const ClassicVsCIDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1.2rem', color: 'var(--text-primary)' }}>Método Clássico vs. Inteligência Computacional</p>
     <svg viewBox="0 0 790 220" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr-c" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
-        <marker id="arr-r" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
+        <marker id="arr-c" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
+        <marker id="arr-r" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
       </defs>
       {/* Classic method */}
       <text x="180" y="22" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">MÉTODO CLÁSSICO</text>
-      {[{x:10,l:'Problema',c:'#f97316'},{x:130,l:'Análise\nHumana',c:'#f97316'},{x:250,l:'Algoritmo',c:'#f97316'}].map(({x,l,c},i)=>(
+      {[{x:10,l:'Problema',c:'#4a9eed'},{x:130,l:'Análise\nHumana',c:'#4a9eed'},{x:250,l:'Algoritmo',c:'#4a9eed'}].map(({x,l,c},i)=>(
         <g key={i}>
           <rect x={x} y={32} width={90} height={50} rx={8} fill={`${c}15`} stroke={c} strokeWidth="1.5"/>
           {l.split('\n').map((line,j)=><text key={j} x={x+45} y={51+j*16} textAnchor="middle" fill={c} fontSize="10" fontWeight="700">{line}</text>)}
-          {i<2&&<line x1={x+90} y1={57} x2={x+128} y2={57} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-c)"/>}
+          {i<2&&<line x1={x+90} y1={57} x2={x+128} y2={57} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-c)"/>}
         </g>
       ))}
-      <text x="180" y="108" textAnchor="middle" fill="#f97316" fontSize="9" fontStyle="italic">passo criativo — falha para problemas complexos</text>
+      <text x="180" y="108" textAnchor="middle" fill="#4a9eed" fontSize="9" fontStyle="italic">passo criativo — falha para problemas complexos</text>
 
       {/* CI method */}
       <text x="590" y="22" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">INTELIGÊNCIA COMPUTACIONAL</text>
-      {[{x:400,l:'Problema',c:'#f97316'},{x:530,l:'Solução\nCandidatas',c:'#f97316'},{x:660,l:'Avaliação\n(fitness)',c:'#f97316'}].map(({x,l,c},i)=>(
+      {[{x:400,l:'Problema',c:'#4a9eed'},{x:530,l:'Solução\nCandidatas',c:'#4a9eed'},{x:660,l:'Avaliação\n(fitness)',c:'#4a9eed'}].map(({x,l,c},i)=>(
         <g key={i}>
           <rect x={x} y={32} width={110} height={50} rx={8} fill={`${c}15`} stroke={c} strokeWidth="1.5"/>
           {l.split('\n').map((line,j)=><text key={j} x={x+55} y={51+j*16} textAnchor="middle" fill={c} fontSize="10" fontWeight="700">{line}</text>)}
-          {i<2&&<line x1={x+110} y1={57} x2={x+128} y2={57} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-r)"/>}
+          {i<2&&<line x1={x+110} y1={57} x2={x+128} y2={57} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-r)"/>}
         </g>
       ))}
-      <text x="590" y="108" textAnchor="middle" fill="#f97316" fontSize="9" fontStyle="italic">ciclo automático — computador gera e avalia</text>
+      <text x="590" y="108" textAnchor="middle" fill="#4a9eed" fontSize="9" fontStyle="italic">ciclo automático — computador gera e avalia</text>
 
       {/* Loop arrow for CI */}
-      <path d="M 770,82 Q 770,160 590,172 Q 410,184 410,82" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arr-r)"/>
-      <text x="590" y="200" textAnchor="middle" fill="#f97316" fontSize="9">iteração: gerar → avaliar → seleccionar → repetir</text>
+      <path d="M 770,82 Q 770,160 590,172 Q 410,184 410,82" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arr-r)"/>
+      <text x="590" y="200" textAnchor="middle" fill="#4a9eed" fontSize="9">iteração: gerar → avaliar → seleccionar → repetir</text>
 
       <line x1="370" y1="15" x2="370" y2="210" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4,2"/>
     </svg>
@@ -64,28 +64,28 @@ const CIFamilyExplorer = () => {
   const [fam, setFam] = useState(0);
   const families = [
     {
-      name: 'Algoritmos Evolutivos', color: '#f97316',
+      name: 'Algoritmos Evolutivos', color: '#4a9eed',
       inspiracao: 'Teoria da evolução de Darwin: selecção natural, hereditariedade e variação. Populações de soluções "evoluem" ao longo de gerações, com as melhores soluções a ter maior probabilidade de se reproduzir.',
       como: 'Mantêm uma população de soluções candidatas. Em cada geração: avaliam o fitness de cada solução, seleccionam os "pais" com base no fitness, combinam (crossover) e mutam para criar nova geração. O processo repete até convergir.',
       exemplos: ['Algoritmos Genéticos (AGs) — os mais estudados', 'Programação Evolutiva', 'Estratégias de Evolução (ES) — optimização contínua', 'Programação Genética — evolução de programas'],
       quando: 'Problemas combinatórios complexos (TSP, scheduling, design), quando o espaço de pesquisa é muito grande para pesquisa exaustiva e quando soluções aproximadas são aceitáveis.',
     },
     {
-      name: 'Inteligência de Enxames', color: '#f97316',
+      name: 'Inteligência de Enxames', color: '#4a9eed',
       inspiracao: 'Comportamento colectivo de grupos de animais simples: abelhas a procurar comida, pássaros em bando, formigas a encontrar caminhos. Comportamento inteligente emerge da interacção de agentes simples sem coordenação central.',
       como: 'Cada partícula/agente é uma solução candidata que se move pelo espaço de pesquisa. Cada agente recorda a sua melhor posição individual e conhece a melhor posição global do grupo. O movimento é influenciado por ambas as memórias.',
       exemplos: ['Particle Swarm Optimization (PSO) — partículas no espaço contínuo', 'Ant Colony Optimization (ACO) — feromonas para routing', 'Bee Algorithm — abelhas a explorar fontes de néctar', 'Fish School Search'],
       quando: 'Optimização contínua (funções reais), routing e scheduling, quando coordenação descentralizada é vantajosa, problemas de aprendizagem automática.',
     },
     {
-      name: 'Pesquisa Local', color: '#f97316',
+      name: 'Pesquisa Local', color: '#4a9eed',
       inspiracao: 'Analogia com um alpinista a subir uma montanha: partindo de um ponto, avalia os vizinhos imediatos e move-se para o melhor. Simulated Annealing acrescenta a ideia de arrefecimento de metais — movimento ocasionalmente "mau" para escapar de mínimos locais.',
       como: 'Começam com uma solução e exploram a sua vizinhança iterativamente. Hill Climbing move-se sempre para melhor. Simulated Annealing aceita pioras com probabilidade decrescente. Tabu Search mantém uma lista de movimentos proibidos para evitar ciclos.',
       exemplos: ['Hill Climbing (steepest ascent, first improvement)', 'Simulated Annealing (SA) — temperatura a diminuir', 'Tabu Search — memória de movimentos recentes', 'Iterated Local Search (ILS)'],
       quando: 'Quando se tem uma boa solução inicial e se quer refiná-la, problemas onde a vizinhança é bem definida, quando o tempo de avaliação do fitness é rápido.',
     },
     {
-      name: 'Algoritmos de Estimação de Distribuição', color: '#f97316',
+      name: 'Algoritmos de Estimação de Distribuição', color: '#4a9eed',
       inspiracao: 'Em vez de combinar indivíduos directamente (crossover), aprende a distribuição de probabilidade dos melhores indivíduos e amostra novos a partir dessa distribuição. Elimina os problemas do crossover standard.',
       como: 'Em cada geração: selecciona os melhores indivíduos, constrói um modelo probabilístico (ex: distribuição gaussiana multivariada, rede Bayesiana) que descreve as características partilhadas pelos melhores, e amostra novos indivíduos desse modelo.',
       exemplos: ['UMDA (Univariate Marginal Distribution Algorithm)', 'PBIL (Population-Based Incremental Learning)', 'BOA (Bayesian Optimization Algorithm)', 'CMA-ES (Covariance Matrix Adaptation ES)'],
@@ -120,9 +120,8 @@ export default function CIO1() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/cio" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
-        <div style={S.tag}>Module 1</div>
+        <div style={S.tag}>Módulo 1</div>
         <h1 style={S.h1}>Fundamentos da Inteligência Computacional</h1>
-        <p style={S.lead}>Antes de escolher um algoritmo, é preciso entender o que é um problema, o que é um algoritmo, e porque o método clássico falha para problemas complexos. A Inteligência Computacional surge exactamente nesses casos — invertendo o fluxo: o computador gera soluções, o humano define como avaliá-las.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. As Três Peças do Puzzle</h2>
@@ -136,7 +135,7 @@ export default function CIO1() {
                   ['Algoritmo', 'Um conjunto de acções precisas, não ambíguas, que resolve o problema — a "receita"', 'Finito, determinístico (ou probabilístico), correcto para todas as instâncias', 'Algoritmo de Dijkstra para caminhos mais curtos em grafos'],
                   ['Programa', 'A tradução de um algoritmo para uma linguagem de programação — a implementação', 'Depende da linguagem, compilador, arquitectura; pode ter bugs mesmo com algoritmo correcto', 'Código Python que implementa Dijkstra numa representação de grafo específica'],
                 ].map(([c, d, ca, e]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{c}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{ca}</td><td style={{ ...S.td, fontSize: '0.83rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>{e}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{c}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{ca}</td><td style={{ ...S.td, fontSize: '0.83rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>{e}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -156,8 +155,8 @@ export default function CIO1() {
           <p style={S.p}>Outros casos onde o método clássico falha: problemas onde a função objectivo não é diferenciável (impossível usar cálculo), problemas com múltiplos objectivos conflituantes, problemas cuja estrutura é desconhecida a priori, e problemas de design onde o espaço de soluções é discreto e combinatorial. Em todos estes casos, não é possível "imaginar" um algoritmo directo.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Método Clássico — falha quando:</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Método Clássico — falha quando:</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>Espaço de soluções é exponencialmente grande</li>
                 <li>A função objectivo não é diferenciável ou analítica</li>
@@ -166,8 +165,8 @@ export default function CIO1() {
                 <li>Nenhum especialista consegue formalizar a estratégia</li>
               </ul>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Inteligência Computacional — adequada quando:</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Inteligência Computacional — adequada quando:</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>Soluções exactas são computacionalmente inviáveis</li>
                 <li>Soluções aproximadas de boa qualidade são aceitáveis</li>
@@ -210,25 +209,15 @@ export default function CIO1() {
                   ['Exploração vs Exploração', 'Trade-off fundamental: explorar regiões novas do espaço vs. explorar regiões promissoras já encontradas', 'Demasiada exploração → convergência prematura; demasiada exploração → não converge. Os parâmetros do algoritmo controlam este trade-off'],
                   ['Inspiração natural', 'Todos têm analogias com fenómenos naturais: evolução, física do arrefecimento, comportamento de enxames', 'A analogia guia a intuição sobre o comportamento do algoritmo, mas os fundamentos matemáticos são o que garante a convergência'],
                 ].map(([c, d, i]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{c}</td><td style={S.td}>{d}</td><td style={{ ...S.td, fontSize: '0.84rem', color: 'var(--text-secondary)' }}>{i}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{c}</td><td style={S.td}>{d}</td><td style={{ ...S.td, fontSize: '0.84rem', color: 'var(--text-secondary)' }}>{i}</td></tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>Problema = o quê; Algoritmo = como; Programa = implementação. São conceitos distintos com relação hierárquica</li>
-              <li>O método clássico falha quando o espaço de soluções é demasiado grande para raciocínio directo (TSP, scheduling, design)</li>
-              <li>IC inverte o paradigma: o humano define apenas o fitness (avaliar); o computador gera e explora sistematicamente</li>
-              <li>Regra de Ouro: o fitness avalia soluções — nunca tenta construí-las. Violar esta regra é o erro mais comum</li>
-              <li>Todas as metaheurísticas são estocásticas e produzem aproximações — não garantias de optimalidade global</li>
-            </ul>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

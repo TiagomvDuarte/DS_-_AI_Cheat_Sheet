@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,15 +17,15 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
 
 /* ── SVG: Matriz de Confusão 2×2 ── */
 function ConfusionMatrix2x2() {
-  const cOk = '#f97316', cErr = '#64748b';
+  const cOk = '#4a9eed', cErr = '#64748b';
   const cells = [
     { x: 60,  y: 40,  w: 90, h: 70, col: cOk,  label: 'TN', value: 92 },
     { x: 150, y: 40,  w: 90, h: 70, col: cErr, label: 'FP', value: 13 },
@@ -75,11 +75,11 @@ function ConfusionMatrix4x4() {
           <text x={offX - 6} y={offY + r * cellH + cellH / 2 + 4} textAnchor="end" fontSize="10" fill="var(--text-secondary)">{classes[r]}</text>
           {row.map((val, c) => {
             const intensity = val / maxVal;
-            const fill = r === c ? `rgba(249,115,22,0.10)` : `rgba(249,115,22,0.10)`;
+            const fill = r === c ? `rgba(74,158,237,0.10)` : `rgba(74,158,237,0.10)`;
             return (
               <g key={c}>
                 <rect x={offX + c * cellW} y={offY + r * cellH} width={cellW - 2} height={cellH - 2} fill={fill} rx={3} />
-                <text x={offX + c * cellW + cellW / 2 - 1} y={offY + r * cellH + cellH / 2 + 5} textAnchor="middle" fontSize="12" fontWeight={r === c ? '700' : '400'} fill={r === c ? color : '#f97316'}>{val}</text>
+                <text x={offX + c * cellW + cellW / 2 - 1} y={offY + r * cellH + cellH / 2 + 5} textAnchor="middle" fontSize="12" fontWeight={r === c ? '700' : '400'} fill={r === c ? color : '#4a9eed'}>{val}</text>
               </g>
             );
           })}
@@ -117,14 +117,14 @@ function ROCCurve() {
       {/* diagonal random */}
       <polyline points={pts(rand)} fill="none" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="6 4" />
       {/* model B */}
-      <polyline points={pts(modelB)} fill="none" stroke="#f59e0b" strokeWidth={2} />
+      <polyline points={pts(modelB)} fill="none" stroke="#0284c7" strokeWidth={2} />
       {/* model A */}
       <polyline points={pts(modelA)} fill="none" stroke={color} strokeWidth={2.5} />
       {/* labels */}
       <circle cx={toX(0.1)} cy={toY(0.84)} r={4} fill={color} />
       <text x={toX(0.1) + 25} y={toY(0.84) - 6} fontSize="10" fill={color} fontWeight="600">Modelo A — AUC=0.92</text>
-      <circle cx={toX(0.38)} cy={toY(0.78)} r={4} fill="#f59e0b" />
-      <text x={toX(0.38) + 25} y={toY(0.78) + 6} fontSize="10" fill="#f59e0b" fontWeight="600">Modelo B — AUC=0.78</text>
+      <circle cx={toX(0.38)} cy={toY(0.78)} r={4} fill="#0284c7" />
+      <text x={toX(0.38) + 25} y={toY(0.78) + 6} fontSize="10" fill="#0284c7" fontWeight="600">Modelo B — AUC=0.78</text>
       <text x={toX(0.65)} cy={toY(0.6)} y={toY(0.52)} fontSize="10" fill="#94a3b8">Aleatório — AUC=0.50</text>
       {/* axis labels */}
       <text x={pad + aw / 2} y={h - 6} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">FPR (Taxa Falso Positivo)</text>
@@ -154,8 +154,8 @@ function LearningCurves() {
   return (
     <svg viewBox={`0 0 ${w} ${h}`} style={{ width: '100%', maxWidth: w }}>
       {/* overfitting shade */}
-      <rect x={zoneX} y={padT} width={zoneW} height={ah} fill="rgba(249,115,22,0.10)" />
-      <text x={zoneX + zoneW / 2} y={padT + 14} textAnchor="middle" fontSize="10" fill="#f97316">Zona de Overfitting</text>
+      <rect x={zoneX} y={padT} width={zoneW} height={ah} fill="rgba(74,158,237,0.10)" />
+      <text x={zoneX + zoneW / 2} y={padT + 14} textAnchor="middle" fontSize="10" fill="#4a9eed">Zona de Overfitting</text>
       {/* grid */}
       {[0.2,0.4,0.6,0.8,1.0].map(v => (
         <g key={v}>
@@ -271,7 +271,7 @@ function SHAPBeeswarm() {
           <g key={f}>
             <text x={padL - 6} y={cy + 4} textAnchor="end" fontSize="10" fill="var(--text-primary)">{f}</text>
             {pts.map((p, k) => (
-              <circle key={k} cx={p.x} cy={p.y} r={3.5} fill={p.high ? '#f97316' : '#64748b'} fillOpacity={0.75} />
+              <circle key={k} cx={p.x} cy={p.y} r={3.5} fill={p.high ? '#4a9eed' : '#64748b'} fillOpacity={0.75} />
             ))}
           </g>
         );
@@ -306,8 +306,8 @@ function ValidationCurve() {
         <text key={d} x={toX(i)} y={padT + ah + 18} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{d}</text>
       ))}
       {/* optimal marker */}
-      <line x1={toX(3)} y1={padT} x2={toX(3)} y2={padT + ah} stroke="#f97316" strokeWidth={1.5} strokeDasharray="5 3" />
-      <text x={toX(3) + 4} y={padT + 22} fontSize="9" fill="#f97316">Óptimo</text>
+      <line x1={toX(3)} y1={padT} x2={toX(3)} y2={padT + ah} stroke="#4a9eed" strokeWidth={1.5} strokeDasharray="5 3" />
+      <text x={toX(3) + 4} y={padT + 22} fontSize="9" fill="#4a9eed">Óptimo</text>
       <polyline points={trainPts} fill="none" stroke={color} strokeWidth={2} />
       <polyline points={valPts} fill="none" stroke="#94a3b8" strokeWidth={2} strokeDasharray="5,3" />
       {/* legend */}
@@ -346,7 +346,7 @@ function GridSearchHeatmap() {
           <text x={offX - 6} y={offY + r * cellH + cellH / 2 + 4} textAnchor="end" fontSize="10" fill="var(--text-secondary)">{lrs[r]}</text>
           {row.map((val, c) => {
             const t = (val - minS) / (maxS - minS);
-            const fill = `rgba(249,115,22,${(0.12 + t * 0.85).toFixed(2)})`;
+            const fill = `rgba(74,158,237,${(0.12 + t * 0.85).toFixed(2)})`;
             const textCol = t > 0.6 ? '#fff' : 'var(--text-primary)';
             return (
               <g key={c}>
@@ -366,7 +366,7 @@ function GridSearchHeatmap() {
 function ClusterScatter() {
   const w = 400, h = 340, padL = 36, padR = 20, padT = 20, padB = 30;
   const aw = w - padL - padR, ah = h - padT - padB;
-  const clusterColors = ['#f97316', '#fbbf24', '#fb923c', '#e2e8f0'];
+  const clusterColors = ['#4a9eed', '#7dd3fc', '#38bdf8', '#e2e8f0'];
   // 4 clusters with centres and spread
   const clusters = [
     { cx: 0.22, cy: 0.72, sx: 0.10, sy: 0.09, n: 13 },
@@ -570,13 +570,6 @@ export default function DV7() {
         <Link to="/dv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 07</div>
         <h1 style={S.h1}>Visualização de ML</h1>
-        <p style={S.lead}>
-          Visualizar um modelo de Machine Learning vai muito além de reportar a accuracy final.
-          As visualizações de diagnóstico revelam onde o modelo erra, que features são mais relevantes,
-          como as representações internas se organizam no espaço, e se o modelo está genuinamente a aprender
-          ou apenas a memorizar os dados de treino. Este módulo percorre os principais tipos de gráficos
-          usados em todo o ciclo de vida de um projecto de ML — da avaliação à explicabilidade.
-        </p>
 
         {/* ── Secção 1: Matriz de Confusão ── */}
         <div style={S.section}>
@@ -921,55 +914,7 @@ export default function DV7() {
             diagonal com valores elevados revelam dependências entre palavras aprendidas pelo modelo.
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* ── Síntese ── */}
-        <div style={S.section}>
-          <h2 style={S.h2}>8. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <strong>Pontos essenciais a reter:</strong>
-            <ul style={{ margin: '0.6rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 2.0 }}>
-              <li><strong>Matriz de Confusão:</strong> heatmap com anotações. Diagonal = correcto; off-diagonal = erros. Normalizar por linha para obter recall por classe.</li>
-              <li><strong>ROC/AUC:</strong> TPR vs. FPR. AUC 0.5 = aleatório, 1.0 = perfeito. Usar Precision-Recall curve em dados desbalanceados.</li>
-              <li><strong>Curvas de Aprendizagem:</strong> diagnosticar overfitting (val loss sobe) ou underfitting (ambas altas). Orientam decisões de arquitectura e regularização.</li>
-              <li><strong>Feature Importance / SHAP:</strong> importâncias internas são globais e sem direcção; SHAP dá o impacto individual e a direcção por instância.</li>
-              <li><strong>Curva de Validação / Grid Search:</strong> identificar o valor óptimo de hiperparâmetros e visualizar interacções entre dois deles num heatmap 2D.</li>
-              <li><strong>Clustering:</strong> scatter 2D pós-redução de dimensão (PCA/t-SNE) colorido por cluster. Dendrograma para clustering hierárquico.</li>
-              <li><strong>Redes Neuronais:</strong> diagrama de arquitectura para comunicação; attention maps para interpretabilidade em Transformers.</li>
-            </ul>
-          </div>
-
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead>
-                <tr>
-                  <th style={S.th}>Problema de diagnóstico</th>
-                  <th style={S.th}>Visualização indicada</th>
-                  <th style={S.th}>Acção</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Overfitting', 'Curva de aprendizagem (loss vs. epoch)', 'Regularização, dropout, early stopping, mais dados'],
-                  ['Underfitting', 'Curva de aprendizagem (ambas as losses altas)', 'Modelo mais complexo, mais features, mais epochs'],
-                  ['Confusão entre classes', 'Matriz de confusão (heatmap)', 'Mais dados para as classes confundidas'],
-                  ['Threshold mal calibrado', 'Curva ROC ou Precision-Recall', 'Ajustar threshold de classificação'],
-                  ['Feature suspeita', 'SHAP beeswarm + waterfall', 'Verificar data leakage, reengenharia de features'],
-                  ['Clusters mal separados', 'Scatter 2D pós-PCA/UMAP', 'Melhores features, modelo mais expressivo'],
-                  ['Hiperparâmetro óptimo desconhecido', 'Curva de validação', 'Grid/Random Search ou Bayesian Optimization'],
-                ].map(([p, v, a]) => (
-                  <tr key={p}>
-                    <td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{p}</td>
-                    <td style={{ ...S.td, color }}>{v}</td>
-                    <td style={{ ...S.td, fontSize: '0.88rem' }}>{a}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+</div>
     </div>
   );
 }

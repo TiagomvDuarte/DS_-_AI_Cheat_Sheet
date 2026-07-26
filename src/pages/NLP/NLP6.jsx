@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(251,146,60,0.08)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(56,189,248,0.08)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const AttentionHeatmap = () => {
@@ -42,7 +42,7 @@ const AttentionHeatmap = () => {
           </div>
           {decoder.map((dw, di) => (
             <div key={dw} style={{ display: 'flex', alignItems: 'center', marginBottom: '0.4rem' }}>
-              <div style={{ width: 60, textAlign: 'right', paddingRight: '0.75rem', fontSize: '0.85rem', fontWeight: 600, color: '#f97316' }}>{dw}</div>
+              <div style={{ width: 60, textAlign: 'right', paddingRight: '0.75rem', fontSize: '0.85rem', fontWeight: 600, color: '#4a9eed' }}>{dw}</div>
               {encoder.map((ew, ei) => {
                 const w = weights[di][ei];
                 const isHov = hov && hov[0] === di && hov[1] === ei;
@@ -52,7 +52,7 @@ const AttentionHeatmap = () => {
                     onMouseLeave={() => setHov(null)}
                     style={{
                       width: 80, height: 56, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                      background: isHov ? 'var(--accent-color)' : `rgba(251,146,60,${w * 0.9})`,
+                      background: isHov ? 'var(--accent-color)' : `rgba(56,189,248,${w * 0.9})`,
                       borderRadius: 8, margin: '0 2px', cursor: 'default', transition: 'all 0.2s',
                     }}>
                     <span style={{ fontSize: '1rem', fontWeight: 700, color: isHov ? 'white' : (w > 0.5 ? 'white' : 'var(--text-primary)') }}>{w.toFixed(2)}</span>
@@ -70,7 +70,7 @@ const AttentionHeatmap = () => {
 
 const AttentionMatrixDiagram = () => {
   const ACC = 'var(--accent-color)';
-  const c = { score: '#f97316', softmax: '#f97316', context: '#f97316', output: '#fb923c' };
+  const c = { score: '#4a9eed', softmax: '#4a9eed', context: '#4a9eed', output: '#38bdf8' };
   const bracket = (xL, xR, yT, yB, color = 'var(--text-secondary)') => (
     <g key={`${xL}-${xR}-${yT}`}>
       <path d={`M ${xL + 6},${yT} L ${xL},${yT} L ${xL},${yB} L ${xL + 6},${yB}`} fill="none" stroke={color} strokeWidth="1.2" />
@@ -112,7 +112,7 @@ const AttentionMatrixDiagram = () => {
         ))}
 
         {/* === h_t^d (decoder state) === */}
-        <text x="430" y="14" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">hₜᵈ — estado do decoder, passo t</text>
+        <text x="430" y="14" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">hₜᵈ — estado do decoder, passo t</text>
         {bracket(380, 480, 24, 52)}
         {[0.5, 0.9, 0.9].map((v, ci) => (
           <text key={ci} x={400 + ci * 33} y="40" textAnchor="middle" fontFamily="monospace" fontSize="11" fill="var(--text-primary)">{v.toFixed(1)}</text>
@@ -177,7 +177,7 @@ const AttentionMatrixDiagram = () => {
 };
 
 const SelfAttentionMatrixDiagram = () => {
-  const c = { score: '#f97316', softmax: '#f97316', q: '#fb923c', k: '#f97316', v: '#f97316', out: '#fb923c' };
+  const c = { score: '#4a9eed', softmax: '#4a9eed', q: '#38bdf8', k: '#4a9eed', v: '#4a9eed', out: '#38bdf8' };
   const bracket = (xL, xR, yT, yB, color = 'var(--text-secondary)') => (
     <g key={`${xL}-${xR}-${yT}`}>
       <path d={`M ${xL + 6},${yT} L ${xL},${yT} L ${xL},${yB} L ${xL + 6},${yB}`} fill="none" stroke={color} strokeWidth="1.2" />
@@ -375,27 +375,27 @@ const FFNDiagram = () => {
         )))}
         {/* connections hidden -> output */}
         {hidY.map(hy => outY.map(oy => (
-          <line key={`ho-${hy}-${oy}`} x1={hidX + 11} y1={hy} x2={outX - 14} y2={oy} stroke="#f97316" strokeWidth="0.6" opacity="0.25" />
+          <line key={`ho-${hy}-${oy}`} x1={hidX + 11} y1={hy} x2={outX - 14} y2={oy} stroke="#4a9eed" strokeWidth="0.6" opacity="0.25" />
         )))}
 
         {/* input neurons */}
         {neuron(inX, inY[0], 14, 'var(--bg-primary)', 'var(--text-primary)', '0.61')}
         {neuron(inX, inY[1], 14, 'var(--bg-primary)', 'var(--text-primary)', '0.99')}
         {/* hidden neurons (Linear1 + GELU) */}
-        {hidY.map(hy => neuron(hidX, hy, 11, 'rgba(251,146,60,0.15)', 'var(--accent-color)'))}
+        {hidY.map(hy => neuron(hidX, hy, 11, 'rgba(56,189,248,0.15)', 'var(--accent-color)'))}
         {/* output neurons */}
-        {neuron(outX, outY[0], 14, 'rgba(249,115,22,0.10)', '#f97316', 'y₁')}
-        {neuron(outX, outY[1], 14, 'rgba(249,115,22,0.10)', '#f97316', 'y₂')}
+        {neuron(outX, outY[0], 14, 'rgba(74,158,237,0.10)', '#4a9eed', 'y₁')}
+        {neuron(outX, outY[1], 14, 'rgba(74,158,237,0.10)', '#4a9eed', 'y₂')}
 
         {/* labels above */}
         <text x={inX} y="288" textAnchor="middle" fill="var(--text-primary)" fontSize="10" fontWeight="700">x</text>
         <text x={hidX} y="210" textAnchor="middle" fill="var(--accent-color)" fontSize="10" fontWeight="700">Linear 1 + GELU</text>
-        <text x={outX} y="288" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">y</text>
+        <text x={outX} y="288" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">y</text>
 
         {/* labels below */}
         <text x={inX} y="490" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">d_model = 2</text>
         <text x={hidX} y="490" textAnchor="middle" fill="var(--accent-color)" fontSize="9">d_ff = d_model × 4 = 8</text>
-        <text x={outX} y="490" textAnchor="middle" fill="#f97316" fontSize="9">d_model = 2 (Linear 2)</text>
+        <text x={outX} y="490" textAnchor="middle" fill="#4a9eed" fontSize="9">d_model = 2 (Linear 2)</text>
         <text x="280" y="507" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">y_great — mesma dimensão de x, pronto para o próximo Add &amp; Norm</text>
       </svg>
       <div style={S.math}>
@@ -437,9 +437,9 @@ const AddNormExampleDiagram = () => {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem' }}>
         {vec('x (embedding de "great")', x, 'var(--accent-color)')}
         <span style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>+</span>
-        {vec('Sublayer(x) = Z₁ (Passo 4 acima)', sub, '#fb923c')}
+        {vec('Sublayer(x) = Z₁ (Passo 4 acima)', sub, '#38bdf8')}
         <span style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>=</span>
-        {vec('soma residual', sum, '#f97316')}
+        {vec('soma residual', sum, '#4a9eed')}
       </div>
       <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '-0.5rem', marginBottom: '0.75rem', textAlign: 'center' }}>
         (Para somar, x e Z têm de ter a mesma dimensão — aqui simplificada para d_model = d_k = 2. Em modelos reais, d_model é igual em toda a rede.)
@@ -448,7 +448,7 @@ const AddNormExampleDiagram = () => {
         <InlineMath math={`\\mu = ${mean.toFixed(2)}, \\quad \\sigma = ${std.toFixed(2)}`} /> &nbsp;— média e desvio-padrão dos {sum.length} valores da soma residual
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.75rem' }}>
-        {vec('LayerNorm(soma) = (v − μ) / σ', norm, '#f97316')}
+        {vec('LayerNorm(soma) = (v − μ) / σ', norm, '#4a9eed')}
       </div>
       <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.5rem', marginBottom: 0 }}>
         Este vector é a entrada para a próxima sub-camada (Feed Forward). Note que, depois da normalização, os valores passam a ter média ≈0 e desvio-padrão ≈1 — independentemente da escala dos valores de entrada. Na prática, a LayerNorm aplica ainda dois parâmetros treináveis γ e β: <InlineMath math="\gamma \hat{x} + \beta" /> (aqui omitidos, γ=1, β=0).
@@ -496,11 +496,11 @@ const StackedBlocksDiagram = () => {
               <text x="160" y={y + 16} textAnchor="middle" fill={blockColor} fontSize="11" fontWeight="700">Bloco {i + 1} {i === n - 1 ? '(... até N)' : ''}</text>
 
               {/* MHA sublayer */}
-              {sub(40, y + 24, 240, 30, 'rgba(251,146,60,0.12)', '#fb923c', 'Multi-Head Attention (heads em ∥)')}
+              {sub(40, y + 24, 240, 30, 'rgba(56,189,248,0.12)', '#38bdf8', 'Multi-Head Attention (heads em ∥)')}
               <text x="160" y={y + 68} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">+ Add &amp; Norm (residual)</text>
 
               {/* FFN sublayer */}
-              {sub(40, y + 78, 240, 30, 'rgba(249,115,22,0.10)', '#f97316', 'Feed-Forward (GELU)')}
+              {sub(40, y + 78, 240, 30, 'rgba(74,158,237,0.10)', '#4a9eed', 'Feed-Forward (GELU)')}
               <text x="160" y={y + 122} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">+ Add &amp; Norm (residual)</text>
 
               {/* output label */}
@@ -540,7 +540,7 @@ const MultiHeadDiagram = () => (
       <text x="290" y="182" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="600">X (N tokens × d) — entrada partilhada por todos os heads</text>
 
       {/* Heads */}
-      {[['Head 1', 60, '#f97316', 'correferência'], ['Head 2', 230, '#f97316', 'dependência sintáctica'], ['Head 3', 400, '#f97316', 'relação semântica'], ['...', 530, 'var(--text-secondary)', '']].map(([label, cx, color, role], i) => (
+      {[['Head 1', 60, '#4a9eed', 'correferência'], ['Head 2', 230, '#4a9eed', 'dependência sintáctica'], ['Head 3', 400, '#4a9eed', 'relação semântica'], ['...', 530, 'var(--text-secondary)', '']].map(([label, cx, color, role], i) => (
         <g key={label}>
           <line x1={cx} y1="164" x2={cx} y2="132" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arr9)" />
           {i < 3 && (
@@ -605,8 +605,8 @@ const MaskedSelfAttentionDiagram = () => {
               const allowed = j <= i;
               return (
                 <g key={`c-${i}-${j}`}>
-                  <rect x={offsetX + j * cell} y={offsetY + i * cell} width={cell} height={cell} fill={allowed ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'} stroke="var(--text-secondary)" strokeWidth="0.5" />
-                  <text x={offsetX + j * cell + cell / 2} y={offsetY + i * cell + cell / 2 + 4} textAnchor="middle" fontFamily="monospace" fontSize="10" fill={allowed ? '#f97316' : '#f97316'}>{allowed ? 'α' : '−∞'}</text>
+                  <rect x={offsetX + j * cell} y={offsetY + i * cell} width={cell} height={cell} fill={allowed ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'} stroke="var(--text-secondary)" strokeWidth="0.5" />
+                  <text x={offsetX + j * cell + cell / 2} y={offsetY + i * cell + cell / 2 + 4} textAnchor="middle" fontFamily="monospace" fontSize="10" fill={allowed ? '#4a9eed' : '#4a9eed'}>{allowed ? 'α' : '−∞'}</text>
                 </g>
               );
             })}
@@ -614,7 +614,7 @@ const MaskedSelfAttentionDiagram = () => {
         ))}
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem', marginBottom: 0 }}>
-        Linha = posição-query (token que está a "olhar"), coluna = posição-key (token "visto"). Antes do softmax, soma-se <InlineMath math="-\infty" /> aos scores das posições futuras (<span style={{ color: '#f97316' }}>vermelho</span>, j {'>'} i) — depois do softmax, esses pesos ficam ≈0. Cada token só pode atender a si próprio e aos anteriores (<span style={{ color: '#f97316' }}>verde</span>).
+        Linha = posição-query (token que está a "olhar"), coluna = posição-key (token "visto"). Antes do softmax, soma-se <InlineMath math="-\infty" /> aos scores das posições futuras (<span style={{ color: '#4a9eed' }}>vermelho</span>, j {'>'} i) — depois do softmax, esses pesos ficam ≈0. Cada token só pode atender a si próprio e aos anteriores (<span style={{ color: '#4a9eed' }}>verde</span>).
       </p>
 
       <p style={{ fontWeight: 700, margin: '1.5rem 0 1rem', color: 'var(--text-primary)' }}>Exemplo Numérico — gerando "&lt;s&gt; O gato"</p>
@@ -624,25 +624,25 @@ const MaskedSelfAttentionDiagram = () => {
           {matBox(QK, 'var(--accent-color)')}
         </div>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#fb923c', marginBottom: '0.3rem' }}>V</div>
-          {matBox(V, '#fb923c')}
+          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#38bdf8', marginBottom: '0.3rem' }}>V</div>
+          {matBox(V, '#38bdf8')}
         </div>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem' }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>S/√dₖ = Q·Kᵀ/√2</div>
-          {matBox(scaled, '#f97316')}
+          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>S/√dₖ = Q·Kᵀ/√2</div>
+          {matBox(scaled, '#4a9eed')}
         </div>
         <span style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>+</span>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>máscara causal</div>
-          {matBox(masked, '#f97316')}
+          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>máscara causal</div>
+          {matBox(masked, '#4a9eed')}
         </div>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem' }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>α = softmax(linha a linha)</div>
-          {matBox(alpha, '#f97316')}
+          <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>α = softmax(linha a linha)</div>
+          {matBox(alpha, '#4a9eed')}
         </div>
         <span style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>·V =</span>
         <div style={{ textAlign: 'center' }}>
@@ -700,9 +700,9 @@ const PositionalEncodingDiagram = () => {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem' }}>
         {vec('embedding da palavra', exampleEmb, 'var(--accent-color)')}
         <span style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>+</span>
-        {vec('PE(pos=2)', examplePE, '#fb923c')}
+        {vec('PE(pos=2)', examplePE, '#38bdf8')}
         <span style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>=</span>
-        {vec('entrada do encoder/decoder', exampleSum, '#f97316')}
+        {vec('entrada do encoder/decoder', exampleSum, '#4a9eed')}
       </div>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
         O mapa de calor abaixo mostra os valores de <InlineMath math="PE(pos, i)" /> (sem somar a nenhum embedding) para várias posições e dimensões — serve para visualizar <strong>como o vector PE varia</strong> consoante a posição e a dimensão, não o resultado da soma:
@@ -715,7 +715,7 @@ const PositionalEncodingDiagram = () => {
               {Array.from({ length: dModel }).map((_, i) => {
                 const v = cellVal(pos, i);
                 const intensity = (v + 1) / 2;
-                return <div key={i} style={{ width: 24, height: 24, background: `rgba(251,146,60,${intensity})`, flexShrink: 0, borderRadius: 2 }} title={v.toFixed(2)} />;
+                return <div key={i} style={{ width: 24, height: 24, background: `rgba(56,189,248,${intensity})`, flexShrink: 0, borderRadius: 2 }} title={v.toFixed(2)} />;
               })}
             </div>
           ))}
@@ -762,7 +762,7 @@ const TransformerDiagram = () => {
             <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
           </marker>
           <marker id="arr5o" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+            <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
           </marker>
         </defs>
 
@@ -785,22 +785,22 @@ const TransformerDiagram = () => {
         {arrow(140, 284, 140, 274)}
 
         {/* ===== DECODER (x: 360-560) ===== */}
-        <text x="460" y="20" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">DECODER</text>
+        <text x="460" y="20" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">DECODER</text>
 
-        <rect x="395" y="34" width="130" height="28" rx="7" fill="#f97316" opacity="0.8" />
+        <rect x="395" y="34" width="130" height="28" rx="7" fill="#4a9eed" opacity="0.8" />
         <text x="460" y="53" textAnchor="middle" fill="white" fontSize="10" fontWeight="700">Linear + Softmax</text>
         {arrow(460, 62, 460, 76)}
 
-        <rect x="360" y="68" width="200" height="206" rx="12" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="6,3" />
+        <rect x="360" y="68" width="200" height="206" rx="12" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="6,3" />
         {addNorm(375, 76, 170)}
-        {block(375, 102, 170, 32, 'Feed Forward', '#f97316')}
+        {block(375, 102, 170, 32, 'Feed Forward', '#4a9eed')}
         {addNorm(375, 142, 170)}
-        {block(375, 168, 170, 32, 'Enc-Dec Attention', '#f97316')}
+        {block(375, 168, 170, 32, 'Enc-Dec Attention', '#4a9eed')}
         {addNorm(375, 208, 170)}
-        {block(375, 234, 170, 32, 'Masked Self-Attn', '#f97316')}
-        {residual(270, 217, 560, 574, '#f97316')}
-        {residual(204, 151, 560, 574, '#f97316')}
-        {residual(138, 85, 560, 574, '#f97316')}
+        {block(375, 234, 170, 32, 'Masked Self-Attn', '#4a9eed')}
+        {residual(270, 217, 560, 574, '#4a9eed')}
+        {residual(204, 151, 560, 574, '#4a9eed')}
+        {residual(138, 85, 560, 574, '#4a9eed')}
         <text x="598" y="120" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">×N</text>
 
         <rect x="390" y="284" width="140" height="26" rx="6" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1" />
@@ -808,8 +808,8 @@ const TransformerDiagram = () => {
         {arrow(460, 284, 460, 274)}
 
         {/* Arrow from encoder output to decoder Enc-Dec Attention (K, V) */}
-        <path d="M 230 240 C 300 124, 300 184, 358 184" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr5o)" />
-        <text x="300" y="118" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="600">K, V do encoder</text>
+        <path d="M 230 240 C 300 124, 300 184, 358 184" fill="none" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr5o)" />
+        <text x="300" y="118" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="600">K, V do encoder</text>
       </svg>
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>O encoder usa atenção bidirecional e processa toda a frase de uma vez. O decoder usa atenção mascarada (cada posição só vê as anteriores) e, em cada uma das suas N camadas, faz "Enc-Dec Attention" sobre a saída final do encoder (que fornece K e V).</p>
     </div>
@@ -823,7 +823,6 @@ export default function NLP6() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 6</div>
         <h1 style={S.h1}>Atenção e Transformers</h1>
-        <p style={S.lead}>A atenção resolve o bottleneck do Seq2Seq. O Transformer elimina a recorrência por completo, usando self-attention, multi-head attention e blocos com residuals e layer normalization — a base de modelos como BERT e GPT.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -847,31 +846,31 @@ export default function NLP6() {
               ))}
 
               {/* Bottleneck arrow to c */}
-              <line x1="274" y1="46" x2="300" y2="46" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr7)" />
+              <line x1="274" y1="46" x2="300" y2="46" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr7)" />
 
               {/* c vector */}
-              <rect x="305" y="28" width="50" height="36" rx="8" fill="#f97316" opacity="0.7" />
+              <rect x="305" y="28" width="50" height="36" rx="8" fill="#4a9eed" opacity="0.7" />
               <text x="330" y="44" textAnchor="middle" fill="white" fontSize="9" fontWeight="700">c</text>
               <text x="330" y="56" textAnchor="middle" fill="rgba(255,255,255,0.8)" fontSize="7">BOTTLENECK</text>
 
               {/* Arrow from c to decoder */}
-              <line x1="357" y1="46" x2="375" y2="46" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr7)" />
+              <line x1="357" y1="46" x2="375" y2="46" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr7)" />
 
               {/* Decoder cells */}
               {['Le', 'chat', '...'].map((w, i) => (
                 <g key={w}>
-                  <rect x={382 + i * 52} y="30" width="44" height="32" rx="6" fill="#f97316" opacity="0.6" />
+                  <rect x={382 + i * 52} y="30" width="44" height="32" rx="6" fill="#4a9eed" opacity="0.6" />
                   <text x={404 + i * 52} y="50" textAnchor="middle" fill="white" fontSize="9" fontWeight="600">D</text>
                   <text x={404 + i * 52} y="76" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">{w}</text>
-                  {i < 2 && <line x1={426 + i * 52} y1="46" x2={430 + i * 52} y2="46" stroke="#f97316" strokeWidth="1.2" markerEnd="url(#arr7)" />}
+                  {i < 2 && <line x1={426 + i * 52} y1="46" x2={430 + i * 52} y2="46" stroke="#4a9eed" strokeWidth="1.2" markerEnd="url(#arr7)" />}
                 </g>
               ))}
             </svg>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>Toda a informação de "The cat sat on mat" comprimida num único vector c. Para 50 palavras, a informação da primeira tem de sobreviver 49 passos.</p>
           </div>
 
-          <div style={{ ...S.highlight, borderColor: '#f97316', background: 'rgba(249,115,22,0.10)' }}>
-            <strong style={{ color: '#f97316' }}>Problema central:</strong> a tradução de frases longas degradava-se sistematicamente. A atenção surgiu exactamente para dar ao decoder <strong>acesso directo a todos os hidden states do encoder</strong>.
+          <div style={{ ...S.highlight, borderColor: '#4a9eed', background: 'rgba(74,158,237,0.10)' }}>
+            <strong style={{ color: '#4a9eed' }}>Problema central:</strong> a tradução de frases longas degradava-se sistematicamente. A atenção surgiu exactamente para dar ao decoder <strong>acesso directo a todos os hidden states do encoder</strong>.
           </div>
         </div>
 
@@ -917,12 +916,12 @@ export default function NLP6() {
           <p style={S.p}>A atenção sobre RNNs resolve o bottleneck — mas as RNNs continuam a ser sequenciais. O Transformer (Vaswani et al., 2017) elimina a recorrência por completo usando <strong>self-attention</strong>.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>RNN — Sequencial</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>RNN — Sequencial</div>
               <p style={{ fontSize: '0.87rem', margin: 0, color: 'var(--text-secondary)' }}>h_t depende de h_&#123;t-1&#125;: o passo t não pode começar enquanto t-1 não terminar. GPU: 2/20 cores activos. Desperdício.</p>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Transformer — Paralelo</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Transformer — Paralelo</div>
               <p style={{ fontSize: '0.87rem', margin: 0, color: 'var(--text-secondary)' }}>Self-attention calcula todos os tokens em simultâneo. GPU: 20/20 cores activos. Eficiência máxima.</p>
             </div>
           </div>
@@ -1001,17 +1000,7 @@ export default function NLP6() {
 
           <StackedBlocksDiagram />
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>4. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>O Bottleneck do Seq2Seq</strong> — o encoder comprime toda a sequência de entrada num único vector de dimensão fixa, perdendo detalhes em sequências longas; o mecanismo de atenção resolve isto ao dar ao decoder acesso directo a todos os estados do encoder.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Mecanismo de Atenção (Bahdanau et al., 2014)</strong> — permite ao decoder "focar" em partes diferentes da sequência de entrada a cada passo de geração, calculando pesos de atenção sobre todos os estados do encoder; foi o passo crítico que levou aos Transformers.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Arquitectura Transformer</strong> — substitui a recorrência por atenção multi-cabeça (self-attention) paralela, permitindo capturar dependências de longo alcance com custo O(n²) — fundamento de BERT, GPT, T5 e todos os LLMs modernos.</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
     </div>
   );

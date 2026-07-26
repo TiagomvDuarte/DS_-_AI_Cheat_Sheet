@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -36,11 +36,11 @@ function SvgPopulacaoAmostra() {
         </marker>
       </defs>
       {/* Population ellipse */}
-      <ellipse cx="180" cy="100" rx="150" ry="85" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <ellipse cx="180" cy="100" rx="150" ry="85" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="150" y="45" textAnchor="middle" fill={color} fontSize="13" fontWeight="700">População</text>
       <text x="150" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="11">(parâmetro θ)</text>
       {/* Sample ellipse */}
-      <ellipse cx="195" cy="115" rx="65" ry="45" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" strokeDasharray="5,3" />
+      <ellipse cx="195" cy="115" rx="65" ry="45" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" strokeDasharray="5,3" />
       <text x="195" y="109" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Amostra</text>
       <text x="195" y="124" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">(estimador θ̂)</text>
       {/* Amostragem: População → Amostra (right side, going down) */}
@@ -100,7 +100,7 @@ function SvgBullseye() {
           {/* Bullseye rings */}
           <circle cx={p.cx} cy={p.cy} r="30" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
           <circle cx={p.cx} cy={p.cy} r="20" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-          <circle cx={p.cx} cy={p.cy} r="10" fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.5" />
+          <circle cx={p.cx} cy={p.cy} r="10" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
           <circle cx={p.cx} cy={p.cy} r="3" fill={color} />
           {/* Dots */}
           {p.dots.map((d, j) => (
@@ -136,7 +136,7 @@ function SvgICSimulados() {
       <text x={scale(trueParam)} y="8" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">θ verdadeiro</text>
       {intervals.map((iv, i) => {
         const missing = iv[0] > trueParam || iv[1] < trueParam;
-        const c = missing ? '#f97316' : 'var(--text-secondary)';
+        const c = missing ? '#4a9eed' : 'var(--text-secondary)';
         const y = 20 + i * 14;
         return (
           <g key={i}>
@@ -169,7 +169,7 @@ function SvgICWidth() {
         return (
           <g key={n}>
             <text x="38" y={y + barH / 2 + 4} textAnchor="end" fill="var(--text-secondary)" fontSize="11">n={n}</text>
-            <rect x="45" y={y} width={bw} height={barH} rx="4" fill={`rgba(249,115,22,0.10)})`} stroke={color} strokeWidth="1" />
+            <rect x="45" y={y} width={bw} height={barH} rx="4" fill={`rgba(74,158,237,0.10)})`} stroke={color} strokeWidth="1" />
             <text x={50 + bw} y={y + barH / 2 + 4} fill="var(--text-primary)" fontSize="10" fontWeight="600">{widths[i].toFixed(3)}</text>
           </g>
         );
@@ -183,7 +183,7 @@ function SvgBootstrap() {
   return (
     <svg viewBox="0 0 420 220" style={{ width: '100%', maxWidth: 460, display: 'block', margin: '0 auto' }}>
       {/* Original sample */}
-      <rect x="10" y="80" width="90" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <rect x="10" y="80" width="90" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="55" y="102" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Amostra</text>
       <text x="55" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">original n</text>
       {/* Arrow to bootstrap samples */}
@@ -194,17 +194,17 @@ function SvgBootstrap() {
         const y = 15 + j * 38;
         return (
           <g key={j}>
-            <rect x="135" y={y} width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" strokeDasharray="3,2" />
+            <rect x="135" y={y} width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" strokeDasharray="3,2" />
             <text x="175" y={y + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Boot* {j + 1}</text>
             {/* Arrow to estimate */}
             <line x1="215" y1={y + 13} x2="245" y2={y + 13} stroke="var(--text-secondary)" strokeWidth="1" />
-            <rect x="248" y={y} width="60" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+            <rect x="248" y={y} width="60" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
             <text x="278" y={y + 14} textAnchor="middle" fill={color} fontSize="9" fontWeight="700">θ̂* {j + 1}</text>
           </g>
         );
       })}
       {/* Percentile CI box */}
-      <rect x="318" y="65" width="88" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <rect x="318" y="65" width="88" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="362" y="88" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">IC</text>
       <text x="362" y="103" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">Percentil</text>
       <text x="362" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">[P2.5, P97.5]</text>
@@ -230,11 +230,6 @@ export default function ST4() {
       {/* Header */}
       <div style={S.tag}>MÓDULO 04</div>
       <h1 style={S.h1}>Estimação Pontual &amp; Intervalos de Confiança</h1>
-      <p style={S.lead}>
-        A inferência estatística consiste em extrair conclusões sobre uma população a partir de uma amostra.
-        Neste módulo estudamos como construir estimadores pontuais com boas propriedades (MM, MLE) e como
-        quantificar a incerteza através de intervalos de confiança — frequentistas e bootstrap.
-      </p>
 
       {/* ── 1. Populações e Amostras ── */}
       <section style={S.section}>
@@ -608,7 +603,7 @@ export default function ST4() {
                 padding: '0.45rem 1.1rem',
                 borderRadius: 20,
                 border: `2px solid ${activeTab === tab.key ? color : 'var(--card-border)'}`,
-                background: activeTab === tab.key ? `rgba(249,115,22,0.10)` : 'transparent',
+                background: activeTab === tab.key ? `rgba(74,158,237,0.10)` : 'transparent',
                 color: activeTab === tab.key ? color : 'var(--text-secondary)',
                 fontWeight: activeTab === tab.key ? 700 : 400,
                 cursor: 'pointer',
@@ -830,62 +825,6 @@ export default function ST4() {
           O bootstrap paramétrico assume uma família distribucional mas reamosra a partir do modelo ajustado.
         </div>
       </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 10. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-
-        
-          <strong>Estimação pontual</strong> fornece um valor único <InlineMath math="\hat{\theta}" /> para <InlineMath math="\theta" />.
-          Os principais métodos são o <em>Método dos Momentos</em> (simples, mas menos eficiente)
-          e a <em>Máxima Verosimilhança</em> (assintoticamente eficiente e invariante).
-        
-
-        
-          <strong>Propriedades chave:</strong> viés (<InlineMath math="E[\hat{\theta}]-\theta" />), variância, <InlineMath math="\mathrm{MSE} = \mathrm{Var} + \mathrm{Bias}^2" />.
-          O limite de Cramér-Rao estabelece o piso de variância atingível.
-          O UMVUE é o estimador não-viesado de menor variância possível.
-        
-
-        
-          <strong>Intervalos de confiança</strong> quantificam a incerteza. O nível <InlineMath math="(1-\alpha)" />
-          é uma propriedade do procedimento, não do intervalo específico observado.
-          Para <InlineMath math="\sigma" /> conhecida usa-se Z; para <InlineMath math="\sigma" /> desconhecida usa-se t com <InlineMath math="n-1" /> graus de liberdade.
-        
-
-        <div style={S.highlight}>
-          <strong>Bootstrap</strong> estende os ICs a qualquer estatística, sem suposições
-          distribucionais. O método BCa é preferível ao percentil simples na maioria dos casos.
-        </div>
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Situação</th>
-              <th style={S.th}>Estimador</th>
-              <th style={S.th}>IC (95%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Média, σ conhecida', <InlineMath math="\bar{x}" />, <InlineMath math="\bar{x} \pm 1.96\,\sigma/\sqrt{n}" />],
-              ['Média, σ desconhecida', <InlineMath math="\bar{x}" />, <InlineMath math="\bar{x} \pm t_{0.025,n-1}\,s/\sqrt{n}" />],
-              ['Proporção (n grande)', <InlineMath math="\hat{p} = x/n" />, <InlineMath math="\hat{p} \pm 1.96\sqrt{\hat{p}(1-\hat{p})/n}" />],
-              ['Proporção (Wilson)', <InlineMath math="\hat{p}" />, 'Fórmula Wilson'],
-              ['Qualquer estatística', <InlineMath math="\hat{\theta}" />, 'Bootstrap BCa'],
-            ].map(([sit, est, ic]) => (
-              <tr key={sit}>
-                <td style={S.td}>{sit}</td>
-                <td style={S.td}>{est}</td>
-                <td style={S.td}>{ic}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-      </section>
-    </div>
+</div>
   );
 }

@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
 };
@@ -28,11 +28,11 @@ const S = {
 // === Diagram: dataset 1D points on a line ===
 const PontosDiagram = () => {
   const pts = [
-    { id: 'A', x: 2, c: '#f97316' },
-    { id: 'B', x: 3, c: '#f97316' },
-    { id: 'C', x: 9, c: '#f97316' },
-    { id: 'D', x: 10, c: '#f97316' },
-    { id: 'E', x: 19, c: '#f97316' },
+    { id: 'A', x: 2, c: '#4a9eed' },
+    { id: 'B', x: 3, c: '#4a9eed' },
+    { id: 'C', x: 9, c: '#4a9eed' },
+    { id: 'D', x: 10, c: '#4a9eed' },
+    { id: 'E', x: 19, c: '#4a9eed' },
   ];
   const w = 480, h = 90, pad = 30;
   const xToPx = (x) => pad + (x / 20) * (w - 2 * pad);
@@ -138,7 +138,7 @@ const FormasClustersDiagram = () => {
   const methods = [
     {
       name: 'Single',
-      c: '#f97316',
+      c: '#4a9eed',
       desc: 'efeito "chaining"',
       // a chain of points connected in a snake shape
       points: [[10, 60], [25, 50], [40, 58], [55, 45], [70, 55], [85, 40], [100, 50], [115, 35], [40, 20], [55, 22]],
@@ -146,14 +146,14 @@ const FormasClustersDiagram = () => {
     },
     {
       name: 'Complete',
-      c: '#f97316',
+      c: '#4a9eed',
       desc: 'clusters compactos, igual diâmetro',
       points: [[15, 20], [28, 15], [22, 32], [35, 25], [90, 20], [103, 15], [97, 32], [110, 25]],
       groups: [[0, 1, 2, 3], [4, 5, 6, 7]],
     },
     {
       name: 'Ward',
-      c: '#f97316',
+      c: '#4a9eed',
       desc: 'clusters esféricos, variância mínima',
       points: [[15, 18], [30, 15], [22, 30], [35, 28], [20, 40], [85, 18], [100, 15], [92, 30], [105, 28], [97, 40]],
       groups: [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]],
@@ -251,14 +251,14 @@ const CorteDendrogramaDiagram = () => {
         })()}
 
         {/* cut lines */}
-        <line x1={10} y1={leafY - 18} x2={w - 10} y2={leafY - 18} stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-        <text x={w - 8} y={leafY - 21} textAnchor="end" fill="#f97316" fontSize="9" fontWeight="700">corte alto → k=4</text>
+        <line x1={10} y1={leafY - 18} x2={w - 10} y2={leafY - 18} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+        <text x={w - 8} y={leafY - 21} textAnchor="end" fill="#4a9eed" fontSize="9" fontWeight="700">corte alto → k=4</text>
 
-        <line x1={10} y1={leafY - 55} x2={w - 10} y2={leafY - 55} stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5,3" />
-        <text x={w - 8} y={leafY - 58} textAnchor="end" fill="#f59e0b" fontSize="9" fontWeight="700">corte médio → k=2</text>
+        <line x1={10} y1={leafY - 55} x2={w - 10} y2={leafY - 55} stroke="#0284c7" strokeWidth="1.5" strokeDasharray="5,3" />
+        <text x={w - 8} y={leafY - 58} textAnchor="end" fill="#0284c7" fontSize="9" fontWeight="700">corte médio → k=2</text>
 
-        <line x1={10} y1={leafY - 150} x2={w - 10} y2={leafY - 150} stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-        <text x={w - 8} y={leafY - 153} textAnchor="end" fill="#f97316" fontSize="9" fontWeight="700">corte baixo → k=1</text>
+        <line x1={10} y1={leafY - 150} x2={w - 10} y2={leafY - 150} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+        <text x={w - 8} y={leafY - 153} textAnchor="end" fill="#4a9eed" fontSize="9" fontWeight="700">corte baixo → k=1</text>
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
         Uma linha horizontal "corta" o dendrograma; o número de ramos verticais intersectados pela linha é o
@@ -272,26 +272,223 @@ const CorteDendrogramaDiagram = () => {
   );
 };
 
+// === Diagram: Classification vs Clustering ===
+const ClassVsClusterDiagram = () => (
+  <div style={S.diagram}>
+    <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Classification vs. Clustering — visualmente</p>
+    <svg viewBox="0 0 560 200" style={{ maxWidth: '100%', height: 'auto' }}>
+      {/* Left: classification - colored by known label, clean boundary */}
+      <text x="140" y="18" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">CLASSIFICATION (labels conhecidas)</text>
+      <rect x="20" y="30" width="240" height="150" rx="8" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1" />
+      <line x1="140" y1="35" x2="140" y2="175" stroke={color} strokeWidth="1.5" strokeDasharray="5,3" />
+      {[
+        [50, 60, '#4a9eed'], [80, 110, '#4a9eed'], [60, 150, '#4a9eed'], [100, 80, '#4a9eed'], [45, 130, '#4a9eed'],
+        [190, 70, '#4a9eed'], [220, 120, '#4a9eed'], [200, 160, '#4a9eed'], [165, 90, '#4a9eed'], [235, 50, '#4a9eed'],
+      ].map(([cx, cy, c], i) => <circle key={i} cx={cx} cy={cy} r="5" fill={c} />)}
+      <text x="80" y="195" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Classe A (label)</text>
+      <text x="205" y="195" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">Classe B (label)</text>
+
+      {/* Right: clustering - no labels, groups emerge from proximity */}
+      <text x="420" y="18" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">CLUSTERING (sem labels)</text>
+      <rect x="300" y="30" width="240" height="150" rx="8" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1" />
+      {[
+        [340, 70], [365, 95], [330, 110], [355, 60], [380, 85],
+        [470, 60], [500, 90], [480, 130], [520, 70], [450, 100],
+        [400, 150], [430, 165], [370, 160], [410, 130],
+      ].map(([cx, cy], i) => <circle key={i} cx={cx} cy={cy} r="5" fill="var(--text-secondary)" />)}
+      <ellipse cx="356" cy="84" rx="42" ry="38" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" />
+      <ellipse cx="485" cy="90" rx="48" ry="42" fill="none" stroke="rgba(74,158,237,0.9)" strokeWidth="1.5" strokeDasharray="4,3" />
+      <ellipse cx="403" cy="151" rx="46" ry="28" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" />
+      <text x="420" y="195" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">grupos descobertos por proximidade — sem rótulos prévios</text>
+    </svg>
+    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
+      Em classificação, cada ponto já tem uma cor (label) <em>antes</em> de o algoritmo correr — o objetivo é
+      aprender a fronteira que separa as cores. Em clustering, todos os pontos começam cinzentos — o algoritmo
+      tem de descobrir, apenas a partir da posição relativa dos pontos, que agrupamentos fazem sentido. Não há
+      "resposta certa" pré-definida — apenas estrutura geométrica nos dados.
+    </p>
+  </div>
+);
+
+// === Diagram: Euclidean vs Manhattan ===
+const DistanceDiagram = () => {
+  const A = { x: 60, y: 160, label: 'A (2,1)' };
+  const B = { x: 260, y: 40, label: 'B (8,6)' };
+  return (
+    <div style={S.diagram}>
+      <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Distância Euclidiana vs. Manhattan entre dois pontos</p>
+      <svg viewBox="0 0 360 200" style={{ maxWidth: '100%', height: 'auto' }}>
+        {/* grid */}
+        {Array.from({ length: 7 }, (_, i) => (
+          <line key={'v' + i} x1={40 + i * 40} y1="10" x2={40 + i * 40} y2="180" stroke="var(--text-secondary)" strokeWidth="0.5" opacity="0.4" />
+        ))}
+        {Array.from({ length: 5 }, (_, i) => (
+          <line key={'h' + i} x1="40" y1={10 + i * 40} x2="320" y2={10 + i * 40} stroke="var(--text-secondary)" strokeWidth="0.5" opacity="0.4" />
+        ))}
+        {/* Manhattan path (orange, stepped) */}
+        <path d={`M${A.x} ${A.y} L${B.x} ${A.y} L${B.x} ${B.y}`} fill="none" stroke="#0284c7" strokeWidth="3" strokeDasharray="6,4" />
+        {/* Euclidean path (purple, straight) */}
+        <line x1={A.x} y1={A.y} x2={B.x} y2={B.y} stroke={color} strokeWidth="3" />
+        {/* points */}
+        <circle cx={A.x} cy={A.y} r="6" fill="#4a9eed" />
+        <circle cx={B.x} cy={B.y} r="6" fill="rgba(74,158,237,0.9)" />
+        <text x={A.x - 10} y={A.y + 20} fill="#4a9eed" fontSize="11" fontWeight="700" textAnchor="middle">{A.label}</text>
+        <text x={B.x + 20} y={B.y - 10} fill="rgba(74,158,237,0.9)" fontSize="11" fontWeight="700" textAnchor="middle">{B.label}</text>
+
+        <text x={(A.x + B.x) / 2 + 25} y={(A.y + B.y) / 2 - 5} fill={color} fontSize="10" fontWeight="700">Euclidiana</text>
+        <text x={(A.x + B.x) / 2 - 10} y={A.y + 18} fill="#0284c7" fontSize="10" fontWeight="700">Manhattan</text>
+      </svg>
+      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
+        A distância <strong>euclidiana</strong> (linha contínua) é o caminho mais curto "em linha reta" entre os
+        dois pontos — a hipotenusa do triângulo. A distância <strong>Manhattan</strong> (linha tracejada) soma
+        os deslocamentos ao longo de cada eixo separadamente — como percorrer um quarteirão de uma cidade
+        organizada em grelha, sem atravessar edifícios na diagonal.
+      </p>
+    </div>
+  );
+};
+
+// === Diagram: clustering family taxonomy ===
+const ClusteringTaxonomyDiagram = () => {
+  const families = [
+    { label: 'Partitional', sub: 'k-Means,\nk-Medoids', c: '#4a9eed', x: 20 },
+    { label: 'Hierarchical', sub: 'Agglomerative,\nDivisive', c: '#4a9eed', x: 160 },
+    { label: 'Density-based', sub: 'DBSCAN,\nHDBSCAN', c: '#4a9eed', x: 300 },
+    { label: 'Model-based', sub: 'GMM\n(Gaussian Mixtures)', c: '#4a9eed', x: 440 },
+  ];
+  return (
+    <div style={S.diagram}>
+      <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Taxonomia das Famílias de Algoritmos de Clustering</p>
+      <svg viewBox="0 0 600 180" style={{ maxWidth: '100%', height: 'auto' }}>
+        <defs>
+          <marker id="arr-dm8-tax" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
+          </marker>
+        </defs>
+        <rect x="170" y="10" width="260" height="36" rx="8" fill={`${color}15`} stroke={color} strokeWidth="1.5" />
+        <text x="300" y="33" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Cluster Analysis</text>
+        {families.map(({ label, sub, c, x }, i) => (
+          <g key={i}>
+            <path d={`M300 46 L${x + 70} 75`} stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arr-dm8-tax)" opacity="0.6" />
+            <rect x={x} y="80" width="140" height="65" rx="8" fill={`${c}15`} stroke={c} strokeWidth="1.5" />
+            <text x={x + 70} y="102" textAnchor="middle" fill={c} fontSize="11" fontWeight="700">{label}</text>
+            {sub.split('\n').map((line, li) => (
+              <text key={li} x={x + 70} y={120 + li * 13} textAnchor="middle" fill="var(--text-secondary)" fontSize="9.5">{line}</text>
+            ))}
+          </g>
+        ))}
+        <text x="300" y="170" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">
+          cada família será o foco de um módulo dedicado (04 a 06)
+        </text>
+      </svg>
+      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
+        Tal como na aprendizagem supervisionada, não existe um "melhor" algoritmo de clustering — cada família
+        assume uma forma diferente para os clusters e é adequada a cenários distintos. Este mapa serve de
+        bússola para os próximos módulos.
+      </p>
+    </div>
+  );
+};
+
 export default function DM8() {
   return (
     <div style={S.page}>
       <Link to="/dm" style={S.back}><ArrowLeft size={16} /> Voltar a Data Mining</Link>
       <div style={S.tag}>MÓDULO 04</div>
       <h1 style={S.h1}>Hierarchical Clustering</h1>
-      <p style={S.lead}>
-        O agrupamento hierárquico constrói uma <strong>hierarquia completa de partições</strong> dos dados, sem
-        necessidade de especificar antecipadamente o número de clusters <InlineMath math="k" />. O resultado —
-        um <strong>dendrograma</strong> — codifica simultaneamente todas as soluções possíveis, de
-        <InlineMath math="k=n" /> (cada observação isolada) a <InlineMath math="k=1" /> (todas as observações
-        num único cluster), permitindo "cortar" a árvore à altura que melhor se adequa ao problema. Neste módulo
-        vamos aprofundar a construção da matriz de distâncias, formalizar matematicamente cada regra de linkage,
-        seguir um exemplo numérico completo passo a passo, e discutir como avaliar e escolher o corte do
-        dendrograma.
-      </p>
 
-      {/* === SECTION 1: Pipeline geral === */}
+      {/* === SECTION 1: Clustering vs Classification === */}
       <div style={S.section}>
-        <h2 style={S.h2}>1. Processo: Da Matriz de Dados ao Dendrograma</h2>
+        <h2 style={S.h2}>1. Clustering vs. Classification</h2>
+        <p style={S.p}>
+          A diferença fundamental entre clustering e classificação não está no algoritmo em si, mas na
+          <strong> natureza do problema</strong>: em classificação, sabemos de antemão quais são as categorias
+          (as labels existem nos dados de treino) e o objetivo é aprender uma função que mapeia novos exemplos
+          para essas categorias. Em clustering, <strong>não existem categorias pré-definidas</strong> — o
+          objetivo é descobrir se existe estrutura de grupo nos dados, e que forma essa estrutura tem.
+        </p>
+        <ClassVsClusterDiagram />
+        <table style={S.table}>
+          <thead><tr><th style={S.th}></th><th style={S.th}>Classification</th><th style={S.th}>Clustering</th></tr></thead>
+          <tbody>
+            {[
+              ['Tipo', 'Supervisionado', 'Não supervisionado'],
+              ['Dados de treino', 'Instâncias com labels conhecidas', 'Sem labels — grupos emergem dos dados'],
+              ['Objetivo', 'Aprender a prever a classe de novos exemplos', 'Descobrir estrutura natural nos dados'],
+              ['Nº de grupos', 'Conhecido a priori (definido pelas labels)', 'Frequentemente desconhecido — tem de ser estimado ou escolhido'],
+              ['Resultado', 'Modelo treinado + previsões para novos exemplos', 'Atribuição de cada ponto a um cluster (e, em alguns algoritmos, um modelo dos clusters)'],
+              ['Avaliação', 'Accuracy, F1, AUC (vs. labels verdadeiras)', 'Silhouette, Davies-Bouldin, interpretação de negócio'],
+              ['Exemplo', 'Classificar emails como spam/não-spam', 'Agrupar clientes por comportamento de compra'],
+            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: 'var(--text-secondary)' }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color }}>{c}</td></tr>)}
+          </tbody>
+        </table>
+        <p style={S.p}>
+          Esta diferença tem uma consequência prática importante: em classificação podemos sempre medir o
+          desempenho do modelo comparando previsões com a "verdade" (as labels de teste). Em clustering, essa
+          "verdade" geralmente não existe — não há uma forma objetiva de dizer que um agrupamento de clientes
+          em "3 segmentos" está mais "correto" do que em "5 segmentos". A avaliação passa a depender de
+          <strong> propriedades geométricas internas</strong> (coesão, separação) e de
+          <strong> interpretabilidade de negócio</strong> (os clusters fazem sentido para quem vai agir sobre
+          eles?).
+        </p>
+        <div style={S.highlight}>
+          <strong>Casos de uso típicos de clustering:</strong> segmentação de clientes para marketing,
+          deteção de anomalias (pontos que não pertencem a nenhum cluster denso), compressão/sumarização de
+          dados (substituir milhares de pontos por alguns centróides representativos), pré-processamento para
+          outras tarefas (criar uma feature categórica "cluster" para usar num modelo supervisionado
+          posterior), e exploração de dados quando ainda não sabemos que grupos existem.
+        </div>
+      </div>
+
+      <hr style={S.divider} />
+
+      {/* === SECTION 2: Taxonomia de Algoritmos === */}
+      <div style={S.section}>
+        <h2 style={S.h2}>2. Taxonomia de Algoritmos de Clustering</h2>
+        <p style={S.p}>
+          Antes de mergulhar no agrupamento hierárquico, vale a pena mapear as grandes famílias de algoritmos
+          de clustering. Cada família faz uma assunção diferente sobre <strong>a forma</strong> que os
+          clusters têm, e isso determina em que tipos de dados cada uma se destaca — ou falha.
+        </p>
+        <ClusteringTaxonomyDiagram />
+        <table style={S.table}>
+          <thead><tr><th style={S.th}>Família</th><th style={S.th}>Ideia central</th><th style={S.th}>Pontos fortes</th><th style={S.th}>Limitações</th></tr></thead>
+          <tbody>
+            {[
+              ['Partitional (k-Means)', 'Divide os dados em k grupos, cada um representado por um centróide; minimiza a distância dos pontos aos centróides', 'Rápido, escalável, simples de interpretar', 'Requer escolher k à priori; assume clusters esféricos e de tamanho semelhante; sensível a outliers'],
+              ['Hierarchical (Agglomerative/Divisive)', 'Constrói uma hierarquia de clusters (dendrograma) — agglomerative funde os pares mais próximos sucessivamente; divisive parte do todo e divide', 'Não exige escolher k antecipadamente; o dendrograma revela estrutura a múltiplas escalas', 'Custo computacional alto (O(n²) ou pior); decisões de fusão são irreversíveis (greedy)'],
+              ['Density-based (DBSCAN/HDBSCAN)', 'Clusters são regiões de alta densidade de pontos separadas por regiões de baixa densidade; pontos isolados são "ruído"', 'Encontra clusters de forma arbitrária; identifica outliers naturalmente; não exige k', 'Sensível a parâmetros de densidade; dificuldade com clusters de densidades muito diferentes'],
+              ['Model-based (GMM)', 'Assume que os dados são gerados por uma mistura de distribuições probabilísticas (ex.: gaussianas); estima os parâmetros dessas distribuições', 'Atribuição "soft" (probabilidade de pertença); clusters podem ter formas elípticas/orientadas', 'Assume uma forma distribucional; sensível à inicialização; mais caro computacionalmente'],
+            ].map(([f, i, s, l]) => (
+              <tr key={f}>
+                <td style={{ ...S.td, fontWeight: 700, color }}>{f}</td>
+                <td style={S.td}>{i}</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{s}</td>
+                <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{l}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p style={S.p}>
+          Esta tabela não é exaustiva — existem dezenas de variantes e híbridos — mas cobre as quatro famílias
+          "canónicas" que estruturam a maioria dos cursos e ferramentas de clustering (incluindo scikit-learn).
+          O essencial a reter é que <strong>a escolha do algoritmo é uma escolha sobre a forma
+          assumida para os clusters</strong> — exatamente da mesma forma que, em aprendizagem supervisionada,
+          a escolha do algoritmo é uma escolha de viés indutivo.
+        </p>
+        <div style={S.note}>
+          Este módulo cobre <strong>Hierarchical Clustering</strong> em profundidade (incluindo como ler um
+          dendrograma e escolher o número de clusters a partir dele); o Módulo 05 cobre k-Means e métricas de
+          avaliação interna (Silhouette, Davies-Bouldin); o Módulo 06 cobre Density-based e Model-based
+          clustering (DBSCAN, HDBSCAN, GMM).
+        </div>
+      </div>
+
+      <hr style={S.divider} />
+
+      {/* === SECTION 3: Pipeline geral === */}
+      <div style={S.section}>
+        <h2 style={S.h2}>3. Processo: Da Matriz de Dados ao Dendrograma</h2>
         <p style={S.p}>
           O agrupamento hierárquico aglomerativo ("bottom-up") parte da situação mais granular possível — cada
           observação é o seu próprio cluster — e vai sucessivamente fundindo os dois clusters mais semelhantes,
@@ -333,7 +530,7 @@ export default function DM8() {
 
       {/* === SECTION 2: Distâncias === */}
       <div style={S.section}>
-        <h2 style={S.h2}>2. A Matriz de Distâncias</h2>
+        <h2 style={S.h2}>4. A Matriz de Distâncias</h2>
         <p style={S.p}>
           Tudo começa por escolher uma <strong>métrica de distância</strong> entre pares de observações. A
           escolha desta métrica é uma decisão de modelação tão importante quanto a escolha do linkage — métricas
@@ -343,11 +540,54 @@ export default function DM8() {
           <thead><tr><th style={S.th}>Distância</th><th style={S.th}>Fórmula</th><th style={S.th}>Uso típico</th></tr></thead>
           <tbody>
             {[
-              ['Euclidiana', '√Σ(xᵢ-yᵢ)²', 'Dados contínuos, mesma escala'],
-              ['Manhattan', 'Σ|xᵢ-yᵢ|', 'Dados esparsos; mais robusto a outliers'],
-              ['Coseno', '1 - (x·y)/(|x||y|)', 'Texto, dados de alta dimensão'],
-              ['Gower', 'Mistura de distâncias', 'Dados mistos (numéricos + categóricos)'],
-            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>{b}</td><td style={S.td}>{c}</td></tr>)}
+              ['Euclidiana', '\\sqrt{\\sum (x_i - y_i)^2}', 'Dados contínuos, mesma escala'],
+              ['Manhattan', '\\sum |x_i - y_i|', 'Dados esparsos; mais robusto a outliers'],
+              ['Coseno', '1 - \\dfrac{x \\cdot y}{|x||y|}', 'Texto, dados de alta dimensão'],
+            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={S.td}><InlineMath math={b} /></td><td style={S.td}>{c}</td></tr>)}
+            <tr><td style={{ ...S.td, fontWeight: 700, color }}>Gower</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>Mistura de distâncias</td><td style={S.td}>Dados mistos (numéricos + categóricos)</td></tr>
+          </tbody>
+        </table>
+        <DistanceDiagram />
+        <div style={S.note}>
+          <strong>Porque importa a magnitude vs. direção (Cosseno)?</strong> Imagine dois clientes: o cliente A
+          comprou (2 unidades de roupa, 1 de eletrónica) e o cliente B comprou (20 unidades de roupa, 10 de
+          eletrónica). Em termos absolutos (Euclidiana), estão muito distantes — B compra 10x mais. Mas em
+          termos de <em>perfil de compra</em> (proporção entre categorias), são idênticos — ambos compram
+          duas vezes mais roupa do que eletrónica. A similaridade de cosseno capta esta segunda noção,
+          ignorando a escala.
+        </div>
+
+        <h3 style={S.h3}>Distância de Jaccard (dados binários/categóricos)</h3>
+        <p style={S.p}>
+          As métricas anteriores assumem dados numéricos contínuos. Para dados <strong>binários</strong>
+          (presença/ausência de um atributo — ex.: "comprou categoria X? sim/não") ou conjuntos, a
+          <strong> distância (ou índice) de Jaccard</strong> compara a proporção de atributos partilhados
+          entre dois conjuntos.
+        </p>
+        <div style={S.math}>
+          <BlockMath math="J(A, B) = \frac{|A \cap B|}{|A \cup B|} \qquad d_{jaccard}(A,B) = 1 - J(A,B)" />
+        </div>
+        <p style={S.p}>
+          <strong>Exemplo:</strong> dois clientes descritos pelas categorias de produtos que já compraram —
+          Cliente A: {'{Roupa, Eletrónica, Livros}'}, Cliente B: {'{Roupa, Eletrónica, Desporto, Casa}'}. A
+          intersecção é {'{Roupa, Eletrónica}'} (2 elementos), a união é
+          {' {Roupa, Eletrónica, Livros, Desporto, Casa}'} (5 elementos). Logo
+          <InlineMath math="J(A,B) = 2/5 = 0.4" /> e <InlineMath math="d_{jaccard}(A,B) = 0.6" /> — moderamente
+          diferentes.
+        </p>
+
+        <h3 style={S.h3}>Tabela-resumo: qual métrica usar?</h3>
+        <table style={S.table}>
+          <thead><tr><th style={S.th}>Métrica</th><th style={S.th}>Tipo de dados</th><th style={S.th}>Sensível a escala?</th><th style={S.th}>Quando usar</th></tr></thead>
+          <tbody>
+            {[
+              ['Euclidiana', 'Numérico contínuo', 'Sim — exige normalização', 'Default para k-Means; quando a magnitude importa'],
+              ['Manhattan', 'Numérico contínuo', 'Sim — exige normalização', 'Dados com muitos outliers; alta dimensionalidade'],
+              ['Cosseno', 'Numérico (vetores)', 'Não — invariante a escala', 'Texto, perfis de comportamento, dados esparsos'],
+              ['Jaccard', 'Binário / categórico / conjuntos', 'N/A', 'Presença/ausência de atributos, cestas de compra'],
+            ].map(([m, t, s, u]) => (
+              <tr key={m}><td style={{ ...S.td, fontWeight: 700, color }}>{m}</td><td style={S.td}>{t}</td><td style={S.td}>{s}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{u}</td></tr>
+            ))}
           </tbody>
         </table>
         <p style={S.p}>
@@ -370,7 +610,7 @@ export default function DM8() {
 
       {/* === SECTION 3: Linkage formal === */}
       <div style={S.section}>
-        <h2 style={S.h2}>3. Métodos de Linkage — Formalização</h2>
+        <h2 style={S.h2}>5. Métodos de Linkage</h2>
         <p style={S.p}>
           Quando dois clusters (que podem ser singletons ou já o resultado de fusões anteriores) precisam de ser
           comparados, a "distância entre clusters" não é única — depende de <strong>qual estatística</strong> dos
@@ -445,47 +685,6 @@ export default function DM8() {
           produziria — mas obtida hierarquicamente.
         </p>
 
-        <h3 style={S.h3}>A Fórmula de Atualização de Lance-Williams</h3>
-        <p style={S.p}>
-          Em vez de recalcular a matriz de distâncias do zero a cada fusão, existe uma <strong>fórmula
-          recursiva única</strong> — devida a Lance e Williams (1967) — que expressa a nova distância de um
-          cluster <InlineMath math="Q" /> ao cluster recém-formado <InlineMath math="A \cup B" /> em função das
-          distâncias antigas <InlineMath math="d(Q,A)" />, <InlineMath math="d(Q,B)" /> e{' '}
-          <InlineMath math="d(A,B)" />:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="d(Q, A \cup B) = \alpha_A\, d(Q,A) + \alpha_B\, d(Q,B) + \beta\, d(A,B) + \gamma\, |d(Q,A) - d(Q,B)|" />
-        </div>
-        <p style={S.p}>
-          Cada método de linkage corresponde a uma escolha diferente das constantes{' '}
-          <InlineMath math="\alpha_A, \alpha_B, \beta, \gamma" />:
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}>Método</th><th style={S.th}><InlineMath math="\alpha_A" /></th><th style={S.th}><InlineMath math="\alpha_B" /></th><th style={S.th}><InlineMath math="\beta" /></th><th style={S.th}><InlineMath math="\gamma" /></th></tr></thead>
-          <tbody>
-            {[
-              ['Single', '1/2', '1/2', '0', '-1/2'],
-              ['Complete', '1/2', '1/2', '0', '1/2'],
-              ['Average', '|A|/(|A|+|B|)', '|B|/(|A|+|B|)', '0', '0'],
-              ['Ward', '(|Q|+|A|)/(|Q|+|A|+|B|)', '(|Q|+|B|)/(|Q|+|A|+|B|)', '-|Q|/(|Q|+|A|+|B|)', '0'],
-            ].map(([m, a, b, be, g]) => (
-              <tr key={m}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{m}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.78rem' }}>{a}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.78rem' }}>{b}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.78rem' }}>{be}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.78rem' }}>{g}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.note}>
-          A vantagem prática da fórmula de Lance-Williams é computacional: permite atualizar a matriz de
-          distâncias <InlineMath math="O(n)" /> por fusão (em vez de recalcular tudo a partir dos dados
-          originais), e é a forma como praticamente todas as bibliotecas (ex.: <code>scipy.cluster.hierarchy</code>)
-          implementam internamente os diferentes linkages.
-        </div>
-
         <FormasClustersDiagram />
 
         <table style={S.table}>
@@ -503,201 +702,10 @@ export default function DM8() {
         <div style={S.highlight}><strong>Ward linkage</strong> é o método mais usado na prática — minimiza a variância total intra-cluster a cada fusão, produzindo clusters mais equilibrados e compactos.</div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 4: Exemplo numérico completo === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>4. Exemplo Numérico Completo — Single Linkage Passo a Passo</h2>
-        <p style={S.p}>
-          Vamos agora seguir o algoritmo aglomerativo até ao fim sobre um pequeno dataset, usando{' '}
-          <strong>single linkage</strong> e distância euclidiana (= valor absoluto, em 1D). O objectivo é tornar
-          tangível o que acontece "por dentro" a cada iteração: como é a matriz de distâncias inicial, qual o par
-          mais próximo, como se actualiza a matriz após cada fusão, e como tudo isto se traduz no dendrograma.
-        </p>
-        <PontosDiagram />
-
-        <h3 style={S.h3}>Passo 0 — Matriz de Distâncias Inicial</h3>
-        <p style={S.p}>
-          Com 5 pontos, temos <InlineMath math="\binom{5}{2}=10" /> distâncias a calcular. Como{' '}
-          <InlineMath math="d(x,y)=|x-y|" />:
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}></th><th style={S.th}>A (2)</th><th style={S.th}>B (3)</th><th style={S.th}>C (9)</th><th style={S.th}>D (10)</th><th style={S.th}>E (19)</th></tr></thead>
-          <tbody>
-            {[
-              ['A', '0', '1', '7', '8', '17'],
-              ['B', '1', '0', '6', '7', '16'],
-              ['C', '7', '6', '0', '1', '10'],
-              ['D', '8', '7', '1', '0', '9'],
-              ['E', '17', '16', '10', '9', '0'],
-            ].map(([row, ...vals]) => (
-              <tr key={row}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{row}</td>
-                {vals.map((v, i) => (
-                  <td key={i} style={{ ...S.td, fontFamily: 'monospace', fontWeight: (v === '1') ? 700 : 400, background: (v === '1') ? `${color}12` : 'transparent' }}>{v}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={S.p}>
-          As menores distâncias da matriz são <InlineMath math="d(A,B)=1" /> e <InlineMath math="d(C,D)=1" />{' '}
-          (destacadas). Há um empate — em casos como este, a ordem é arbitrária (ou definida por uma regra de
-          desempate, ex.: ordem dos índices); vamos fundir primeiro <InlineMath math="\{A,B\}" />.
-        </p>
-
-        <h3 style={S.h3}>Passo 1 — Fundir A e B (altura = 1)</h3>
-        <p style={S.p}>
-          Criamos o cluster <InlineMath math="\{A,B\}" />. Com single linkage, a distância de{' '}
-          <InlineMath math="\{A,B\}" /> a qualquer outro ponto <InlineMath math="X" /> é{' '}
-          <InlineMath math="\min(d(A,X), d(B,X))" />:
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}></th><th style={S.th}>{'{A,B}'}</th><th style={S.th}>C (9)</th><th style={S.th}>D (10)</th><th style={S.th}>E (19)</th></tr></thead>
-          <tbody>
-            {[
-              ['{A,B}', '0', '6', '7', '16'],
-              ['C', '6', '0', '1', '10'],
-              ['D', '7', '1', '0', '9'],
-              ['E', '16', '10', '9', '0'],
-            ].map(([row, ...vals]) => (
-              <tr key={row}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{row}</td>
-                {vals.map((v, i) => (
-                  <td key={i} style={{ ...S.td, fontFamily: 'monospace', fontWeight: (v === '1') ? 700 : 400, background: (v === '1') ? `${color}12` : 'transparent' }}>{v}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={S.p}>
-          Por exemplo, <InlineMath math="d(\{A,B\}, C) = \min(d(A,C), d(B,C)) = \min(7,6) = 6" />. A menor
-          distância agora é <InlineMath math="d(C,D)=1" />.
-        </p>
-
-        <h3 style={S.h3}>Passo 2 — Fundir C e D (altura = 1)</h3>
-        <p style={S.p}>
-          Criamos o cluster <InlineMath math="\{C,D\}" />. Recalculamos novamente, usando o mínimo:
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}></th><th style={S.th}>{'{A,B}'}</th><th style={S.th}>{'{C,D}'}</th><th style={S.th}>E (19)</th></tr></thead>
-          <tbody>
-            {[
-              ['{A,B}', '0', '6', '16'],
-              ['{C,D}', '6', '0', '9'],
-              ['E', '16', '9', '0'],
-            ].map(([row, ...vals]) => (
-              <tr key={row}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{row}</td>
-                {vals.map((v, i) => (
-                  <td key={i} style={{ ...S.td, fontFamily: 'monospace', fontWeight: (v === '6') ? 700 : 400, background: (v === '6') ? `${color}12` : 'transparent' }}>{v}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={S.p}>
-          Aqui, <InlineMath math="d(\{A,B\},\{C,D\}) = \min(d(A,C),d(A,D),d(B,C),d(B,D)) = \min(7,8,6,7) = 6" />.
-          A menor distância na matriz é agora <InlineMath math="6" />, entre <InlineMath math="\{A,B\}" /> e{' '}
-          <InlineMath math="\{C,D\}" />.
-        </p>
-
-        <h3 style={S.h3}>Passo 3 — Fundir {'{A,B}'} e {'{C,D}'} (altura = 6)</h3>
-        <p style={S.p}>
-          Forma-se o cluster <InlineMath math="\{A,B,C,D\}" />. Resta apenas comparar com{' '}
-          <InlineMath math="E" />:
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}></th><th style={S.th}>{'{A,B,C,D}'}</th><th style={S.th}>E (19)</th></tr></thead>
-          <tbody>
-            {[
-              ['{A,B,C,D}', '0', '9'],
-              ['E', '9', '0'],
-            ].map(([row, ...vals]) => (
-              <tr key={row}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{row}</td>
-                {vals.map((v, i) => (
-                  <td key={i} style={{ ...S.td, fontFamily: 'monospace' }}>{v}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={S.p}>
-          <InlineMath math="d(\{A,B,C,D\}, E) = \min(d(A,E),d(B,E),d(C,E),d(D,E)) = \min(17,16,10,9) = 9" />.
-        </p>
-
-        <h3 style={S.h3}>Passo 4 — Fundir tudo (altura = 9)</h3>
-        <p style={S.p}>
-          Resta um único cluster <InlineMath math="\{A,B,C,D,E\}" />, formado à altura <InlineMath math="9" />.
-          O algoritmo termina. O histórico completo de fusões é:
-        </p>
-        
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Altura 1: <InlineMath math="A" /> + <InlineMath math="B" /> → <InlineMath math="\{A,B\}" /></li>
-            <li>Altura 1: <InlineMath math="C" /> + <InlineMath math="D" /> → <InlineMath math="\{C,D\}" /></li>
-            <li>Altura 6: <InlineMath math="\{A,B\}" /> + <InlineMath math="\{C,D\}" /> → <InlineMath math="\{A,B,C,D\}" /></li>
-            <li>Altura 9: <InlineMath math="\{A,B,C,D\}" /> + <InlineMath math="E" /> → <InlineMath math="\{A,B,C,D,E\}" /></li>
-          </ul>
-        
-        <DendrogramaCrescimentoDiagram />
-        <div style={S.note}>
-          Note o salto de altura <InlineMath math="1 \to 6" /> e depois <InlineMath math="6 \to 9" />. O maior
-          "gap" (entre as alturas 1 e 6, ou entre 6 e 9, dependendo de como medimos) sugere cortes naturais —
-          voltamos a este ponto na secção 6.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* === SECTION 5: Cophenetic === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>5. Distância Cofenética e Validação</h2>
-        <p style={S.p}>
-          Como saber se um dendrograma é uma "boa" representação dos dados originais? Uma forma de quantificar
-          isto é através da <strong>distância cofenética</strong>: para qualquer par de observações{' '}
-          <InlineMath math="(i,j)" />, a distância cofenética <InlineMath math="d_c(i,j)" /> é a{' '}
-          <strong>altura à qual i e j ficam, por fusão, no mesmo cluster</strong> pela primeira vez no
-          dendrograma.
-        </p>
-        <p style={S.p}>
-          No exemplo da secção anterior, a distância cofenética entre <InlineMath math="A" /> e{' '}
-          <InlineMath math="C" /> é <InlineMath math="6" /> — porque é à altura 6 que{' '}
-          <InlineMath math="\{A,B\}" /> e <InlineMath math="\{C,D\}" /> se fundem, juntando{' '}
-          <InlineMath math="A" /> e <InlineMath math="C" /> no mesmo cluster pela primeira vez. Note que isto é
-          diferente da distância original <InlineMath math="d(A,C)=7" /> — o dendrograma "comprime" ou
-          "distorce" as distâncias originais.
-        </p>
-        <p style={S.p}>
-          A <strong>correlação cofenética</strong> mede exactamente esta distorção: é o coeficiente de correlação
-          de Pearson entre todas as distâncias originais <InlineMath math="d(i,j)" /> e as correspondentes
-          distâncias cofenéticas <InlineMath math="d_c(i,j)" />, sobre todos os pares <InlineMath math="(i,j)" />:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="r_c = \frac{\sum_{i<j} (d(i,j) - \bar{d})(d_c(i,j) - \bar{d_c})}{\sqrt{\sum_{i<j}(d(i,j)-\bar{d})^2}\ \sqrt{\sum_{i<j}(d_c(i,j)-\bar{d_c})^2}}" />
-        </div>
-        <p style={S.p}>
-          Um valor de <InlineMath math="r_c" /> próximo de <InlineMath math="1" /> indica que o dendrograma
-          preserva bem a estrutura de distâncias originais — pares próximos no espaço original tendem a
-          fundir-se a alturas baixas, e pares afastados só se fundem a alturas elevadas. Valores baixos sugerem
-          que o dendrograma distorce significativamente as relações originais, e podem motivar a experimentação
-          com outro método de linkage.
-        </p>
-        <div style={S.note}>
-          Na prática, o <strong>single linkage</strong> tende a produzir correlações cofenéticas mais altas para
-          dados com estrutura "em cadeia" ou alongada, enquanto o <strong>average linkage</strong> e o{' '}
-          <strong>UPGMA</strong> são frequentemente reportados como os que, em média, maximizam{' '}
-          <InlineMath math="r_c" /> em datasets diversos — mas isto não é uma regra universal (lembre-se do No
-          Free Lunch Theorem). A correlação cofenética é uma ferramenta de diagnóstico, não um critério absoluto
-          de "correção".
-        </div>
-      </div>
-
-      <hr style={S.divider} />
 
       {/* === SECTION 6: Cortar o dendrograma === */}
       <div style={S.section}>
-        <h2 style={S.h2}>6. Cortar o Dendrograma — Escolher o Número de Clusters</h2>
+        <h2 style={S.h2}>7. Cortar o Dendrograma — Escolher o Número de Clusters</h2>
         <p style={S.p}>
           Uma das grandes vantagens do agrupamento hierárquico é que <strong>não precisamos de decidir{' '}
           <InlineMath math="k" /> antes de correr o algoritmo</strong> — o dendrograma representa todas as
@@ -724,106 +732,11 @@ export default function DM8() {
             ))}
           </tbody>
         </table>
-        <p style={S.p}>
-          No exemplo numérico da secção 4, as alturas de fusão foram <InlineMath math="1, 1, 6, 9" />. O maior
-          salto ocorre entre <InlineMath math="1" /> e <InlineMath math="6" /> (diferença de 5) — cortar
-          imediatamente abaixo da altura 6 dá <InlineMath math="k=2" /> clusters:{' '}
-          <InlineMath math="\{A,B,C,D\}" /> e <InlineMath math="\{E\}" />. Alternativamente, cortar entre 6 e 9
-          (salto de 3) dá <InlineMath math="k=2" /> também, mas com agrupamento{' '}
-          <InlineMath math="\{A,B\}, \{C,D\}, \{E\}" /> se cortarmos um pouco mais abaixo — ou seja, a escolha
-          "correta" depende do objetivo e raramente é totalmente inequívoca.
-        </p>
         <div style={S.note}>
           A heurística do "maior gap" não é infalível: em dados sem estrutura de cluster clara (ex.: amostrados
           uniformemente de uma única distribuição), o dendrograma pode não apresentar nenhum salto óbvio, e
           qualquer corte será, até certo ponto, arbitrário. Nestes casos, é importante combinar a inspeção do
           dendrograma com conhecimento do domínio e métricas de validação externas.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* === SECTION 7: Hierarchical vs k-Means === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>7. Hierarchical Clustering vs. k-Means</h2>
-        <p style={S.p}>
-          O agrupamento hierárquico e o k-Means são as duas abordagens de clustering mais ensinadas e usadas na
-          prática, mas partem de filosofias muito diferentes. Compreender as diferenças ajuda a escolher a
-          abordagem certa — e prepara o terreno para o próximo módulo.
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}>Aspecto</th><th style={S.th}>Hierarchical Clustering</th><th style={S.th}>k-Means</th></tr></thead>
-          <tbody>
-            {[
-              ['Especificar k antecipadamente', 'Não — escolhido a posteriori, cortando o dendrograma', 'Sim — k é um hiperparâmetro obrigatório antes de correr'],
-              ['Complexidade computacional', 'O(n²) ou O(n²log n) em tempo, O(n²) em memória (matriz de distâncias)', 'O(n·k·i) — linear em n (i = nº de iterações)'],
-              ['Escalabilidade', 'Impraticável para n grande (tipicamente n > 10.000–50.000)', 'Escala bem para datasets grandes'],
-              ['Determinismo', 'Determinístico — mesma matriz de distâncias produz sempre o mesmo dendrograma', 'Dependente da inicialização — resultados podem variar entre execuções'],
-              ['Interpretabilidade da estrutura', 'Alta — o dendrograma mostra a estrutura hierárquica completa a todos os níveis', 'Baixa — apenas uma partição plana em k grupos, sem relações entre eles'],
-              ['Reversibilidade das decisões', 'Fusões são irrevogáveis — uma fusão "errada" cedo propaga-se por toda a árvore', 'Pontos podem mudar de cluster em cada iteração — há "correção" ao longo do treino'],
-              ['Forma dos clusters', 'Depende do linkage (ver secção 3) — pode ser muito flexível (single) ou esférico (Ward)', 'Implicitamente assume clusters esféricos/convexos (distância ao centróide)'],
-            ].map(([a, h, k]) => (
-              <tr key={a}>
-                <td style={{ ...S.td, fontWeight: 700 }}>{a}</td>
-                <td style={S.td}>{h}</td>
-                <td style={S.td}>{k}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={S.p}>
-          Na prática, é comum usar o agrupamento hierárquico como ferramenta <strong>exploratória</strong> —
-          sobretudo em datasets pequenos ou médios — precisamente porque o dendrograma ajuda a decidir
-          visualmente quantos clusters fazem sentido, antes de aplicar um algoritmo mais escalável como o
-          k-Means com esse <InlineMath math="k" /> já informado.
-        </p>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* === SECTION 8: Desvantagens === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Limitações Práticas</h2>
-        <p style={S.p}>
-          Para encerrar a parte técnica, vale a pena consolidar as principais limitações que tornam o
-          agrupamento hierárquico inadequado em certos cenários:
-        </p>
-        <ul style={{ ...S.p, paddingLeft: '1.5rem' }}>
-          <li><strong>Complexidade O(n²):</strong> tanto em memória (armazenar a matriz de distâncias completa)
-          como em tempo — torna-se impraticável para datasets com muitas dezenas de milhares de observações sem
-          aproximações ou amostragem.</li>
-          <li><strong>Irrevogabilidade:</strong> uma vez feita uma fusão, ela nunca é desfeita — não há mecanismo
-          de "otimização global" como existe (parcialmente) no k-Means através de re-iterações.</li>
-          <li><strong>Sensibilidade à escala e à métrica:</strong> a escolha de distância (euclidiana, Manhattan,
-          etc.) e de linkage tem um impacto enorme no resultado, e não há uma "combinação certa" universal.</li>
-          <li><strong>Inversões no dendrograma:</strong> alguns métodos (ex.: centroid linkage) podem produzir
-          dendrogramas onde uma fusão posterior ocorre a uma altura <em>menor</em> que uma fusão anterior — uma
-          inconsistência visual que dificulta a interpretação.</li>
-        </ul>
-        <div style={S.note}><strong>Desvantagens do Hierarchical:</strong> O(n²) em memória e tempo — impraticável para n grande (n &gt; 10.000). Decisões de fusão são irrevogáveis — não há otimização global como no k-means.</div>
-      </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. Síntese do Módulo</h2>
-        <p style={S.p}>
-          O agrupamento hierárquico aglomerativo constrói, de forma determinística, uma árvore completa de
-          partições dos dados — desde <InlineMath math="n" /> clusters singleton até um único cluster contendo
-          tudo. Cada fusão é guiada por uma regra de <strong>linkage</strong>, que define como medir a "distância"
-          entre dois clusters, e essa regra determina a forma e o comportamento dos clusters resultantes.
-        </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Algoritmo aglomerativo: começa com n clusters singleton, funde os dois mais próximos a cada passo, repete até 1 cluster</li>
-            <li>Não requer k a priori — o dendrograma codifica todas as partições possíveis e k é escolhido a posteriori, cortando a árvore</li>
-            <li>Single linkage (mínimo) → chaining; Complete (máximo) → clusters compactos; Average (média) → compromisso; Ward (mínima variância) → clusters esféricos e equilibrados</li>
-            <li>A fórmula de Lance-Williams unifica todos os linkages numa única equação recursiva de atualização O(n) por fusão</li>
-            <li>A distância cofenética mede a altura à qual dois pontos se fundem; a correlação cofenética avalia quão bem o dendrograma preserva as distâncias originais</li>
-            <li>Cortar o dendrograma: heurística do "maior gap" entre alturas de fusão sucessivas, inspeção visual, ou critério imposto pelo domínio</li>
-            <li>Vantagens sobre k-Means: determinístico, não precisa de k, interpretação hierárquica multi-nível</li>
-            <li>Desvantagens: O(n²) em tempo/memória (impraticável para n grande), fusões irrevogáveis, sensível à métrica e ao linkage escolhidos</li>
-          </ul>
         </div>
       </div>
     </div>

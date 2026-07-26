@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -16,7 +18,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(14,116,144,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
@@ -49,12 +51,12 @@ function CircleToEllipseSVG() {
         <ellipse cx="0" cy="0" rx="100" ry="38" fill="none" stroke={color} strokeWidth="2" />
         <line x1="-115" y1="0" x2="115" y2="0" stroke="#94a3b8" strokeWidth="1" />
         <line x1="0" y1="-55" x2="0" y2="55" stroke="#94a3b8" strokeWidth="1" />
-        <line x1="0" y1="0" x2="100" y2="0" stroke="#f97316" strokeWidth="2" />
-        <line x1="0" y1="0" x2="0" y2="38" stroke="#f97316" strokeWidth="2" />
-        <circle cx="100" cy="0" r="3" fill="#f97316" />
-        <circle cx="0" cy="38" r="3" fill="#f97316" />
-        <text x="52" y="-6" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">σ₁</text>
-        <text x="12" y="20" textAnchor="start" fontSize="10" fill="#f97316" fontWeight="700">σ₂</text>
+        <line x1="0" y1="0" x2="100" y2="0" stroke="#4a9eed" strokeWidth="2" />
+        <line x1="0" y1="0" x2="0" y2="38" stroke="#4a9eed" strokeWidth="2" />
+        <circle cx="100" cy="0" r="3" fill="#4a9eed" />
+        <circle cx="0" cy="38" r="3" fill="#4a9eed" />
+        <text x="52" y="-6" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">σ₁</text>
+        <text x="12" y="20" textAnchor="start" fontSize="10" fill="#4a9eed" fontWeight="700">σ₂</text>
         <text x="0" y="78" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">espaço de saída</text>
         <text x="0" y="91" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">(elipse — valores singulares)</text>
         <text x="125" y="5" textAnchor="start" fontSize="10" fill="#64748b">u₁</text>
@@ -69,19 +71,19 @@ function DimensionDiagramSVG() {
     <svg width="100%" viewBox="0 0 780 180" style={{ display: 'block', margin: '1rem 0' }}>
       <rect width="780" height="180" fill="var(--bg-secondary)" rx="8" />
       {/* A */}
-      <rect x="20" y="45" width="60" height="80" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="2" rx="6" />
+      <rect x="20" y="45" width="60" height="80" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="2" rx="6" />
       <text x="50" y="92" textAnchor="middle" fontSize="16" fill={color} fontWeight="700">A</text>
       <text x="50" y="145" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">m × n</text>
       {/* = */}
       <text x="92" y="92" textAnchor="middle" fontSize="20" fill="var(--text-primary)">=</text>
       {/* U */}
-      <rect x="108" y="45" width="75" height="80" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" rx="6" />
+      <rect x="108" y="45" width="75" height="80" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" rx="6" />
       <text x="145" y="92" textAnchor="middle" fontSize="16" fill={color} fontWeight="700">U</text>
       <text x="145" y="145" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">m × m</text>
       {/* · */}
       <text x="192" y="92" textAnchor="middle" fontSize="18" fill="var(--text-secondary)">·</text>
       {/* Sigma */}
-      <rect x="202" y="45" width="62" height="80" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" rx="6" />
+      <rect x="202" y="45" width="62" height="80" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" rx="6" />
       <text x="233" y="88" textAnchor="middle" fontSize="16" fill={color} fontWeight="700">Σ</text>
       <text x="233" y="145" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">m × n</text>
       <text x="212" y="65" fontSize="9" fill={color}>σ₁</text>
@@ -91,7 +93,7 @@ function DimensionDiagramSVG() {
       {/* · */}
       <text x="272" y="92" textAnchor="middle" fontSize="18" fill="var(--text-secondary)">·</text>
       {/* Vt */}
-      <rect x="281" y="45" width="75" height="65" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" rx="6" />
+      <rect x="281" y="45" width="75" height="65" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" rx="6" />
       <text x="318" y="85" textAnchor="middle" fontSize="16" fill={color} fontWeight="700">Vᵀ</text>
       <text x="318" y="130" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">n × n</text>
       {/* annotations on the right */}
@@ -123,7 +125,7 @@ function SingularValueBarSVG() {
         const y = offY + chartH - h;
         return (
           <g key={i}>
-            <rect x={x} y={y} width={barW} height={h} fill={i < 3 ? color : i < 6 ? 'rgba(249,115,22,0.55)' : 'rgba(249,115,22,0.25)'} rx="2" />
+            <rect x={x} y={y} width={barW} height={h} fill={i < 3 ? color : i < 6 ? 'rgba(74,158,237,0.55)' : 'rgba(74,158,237,0.25)'} rx="2" />
             <text x={x + barW / 2} y={offY + chartH + 14} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{"σ" + (i + 1)}</text>
             <text x={x + barW / 2} y={y - 4} textAnchor="middle" fontSize="9" fill="var(--text-primary)">{v}</text>
           </g>
@@ -135,9 +137,9 @@ function SingularValueBarSVG() {
       <text x={offX - 8} y={offY} textAnchor="end" fontSize="9" fill="var(--text-secondary)">{maxV}</text>
       <rect x="30" y="165" width="12" height="10" fill={color} rx="1" />
       <text x="46" y="174" fontSize="10" fill="var(--text-secondary)">top-3 (dominantes)</text>
-      <rect x="155" y="165" width="12" height="10" fill="#f97316" rx="1" />
+      <rect x="155" y="165" width="12" height="10" fill="#4a9eed" rx="1" />
       <text x="171" y="174" fontSize="10" fill="var(--text-secondary)">médios</text>
-      <rect x="215" y="165" width="12" height="10" fill="rgba(249,115,22,0.25)" rx="1" />
+      <rect x="215" y="165" width="12" height="10" fill="rgba(74,158,237,0.25)" rx="1" />
       <text x="231" y="174" fontSize="10" fill="var(--text-secondary)">pequenos (ruído)</text>
     </svg>
   );
@@ -192,11 +194,11 @@ function PCAScatterSVG() {
           <circle key={i} cx={cx(p[0])} cy={cy(p[1])} r="4" fill={color} fillOpacity="0.7" />
         ))}
         {/* PC1 direction */}
-        <line x1="60" y1="158" x2="230" y2="65" stroke="#f97316" strokeWidth="2.5" strokeDasharray="5,3" />
-        <text x="235" y="63" fontSize="11" fill="#f97316" fontWeight="700">PC1</text>
+        <line x1="60" y1="158" x2="230" y2="65" stroke="#4a9eed" strokeWidth="2.5" strokeDasharray="5,3" />
+        <text x="250" y="92" fontSize="11" fill="#4a9eed" fontWeight="700">PC1</text>
         {/* PC2 direction (perpendicular) */}
-        <line x1="140" y1="170" x2="120" y2="100" stroke="#f97316" strokeWidth="2" strokeDasharray="4,3" />
-        <text x="108" y="98" fontSize="11" fill="#f97316" fontWeight="700">PC2</text>
+        <line x1="140" y1="170" x2="120" y2="100" stroke="#4a9eed" strokeWidth="2" strokeDasharray="4,3" />
+        <text x="108" y="98" fontSize="11" fill="#4a9eed" fontWeight="700">PC2</text>
         <text x="150" y="192" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Projeção nos PCs = XV = UΣ</text>
       </g>
       {/* Scree plot */}
@@ -207,7 +209,7 @@ function PCAScatterSVG() {
           const h = v * 1.4;
           return (
             <g key={i}>
-              <rect x={x} y={160 - h} width="24" height={h} fill={i === 0 ? color : i === 1 ? '#f97316' : '#cbd5e1'} rx="2" />
+              <rect x={x} y={160 - h} width="24" height={h} fill={i === 0 ? color : i === 1 ? '#4a9eed' : '#cbd5e1'} rx="2" />
               <text x={x + 12} y="173" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">PC{i + 1}</text>
               <text x={x + 12} y={156 - h} textAnchor="middle" fontSize="8" fill="var(--text-primary)">{v}%</text>
             </g>
@@ -221,10 +223,10 @@ function PCAScatterSVG() {
 
 function PseudoinverseCasesSVG() {
   const cases = [
-    { label: 'Quadrada\nInvertível', sub: 'm=n, rank=n', desc: 'A⁺ = A⁻¹', color2: '#f97316' },
+    { label: 'Quadrada\nInvertível', sub: 'm=n, rank=n', desc: 'A⁺ = A⁻¹', color2: '#4a9eed' },
     { label: 'Sobre-deter.\n(m>n)', sub: 'rank=n', desc: 'mínimos quadrados', color2: color },
-    { label: 'Sub-deter.\n(m<n)', sub: 'rank=m', desc: 'norma mínima', color2: '#f97316' },
-    { label: 'Rank\nDeficiente', sub: 'rank<min(m,n)', desc: 'solução mais estável', color2: '#f97316' },
+    { label: 'Sub-deter.\n(m<n)', sub: 'rank=m', desc: 'norma mínima', color2: '#4a9eed' },
+    { label: 'Rank\nDeficiente', sub: 'rank<min(m,n)', desc: 'solução mais estável', color2: '#4a9eed' },
   ];
   return (
     <svg width="100%" viewBox="0 0 600 160" style={{ display: 'block', margin: '1rem 0' }}>
@@ -236,7 +238,7 @@ function PseudoinverseCasesSVG() {
         return (
           <g key={i}>
             <rect x={x} y={28} width={130} height={115} fill="none" stroke={c.color2} strokeWidth="1.5" rx="6" />
-            <rect x={x} y={28} width={130} height={30} fill={c.color2} fillOpacity="0.15" rx="6" />
+            <rect x={x} y={32} width={130} height={32} fill={c.color2} fillOpacity="0.15" rx="6" />
             <text x={x + 65} y={44} textAnchor="middle" fontSize="11" fill={c.color2} fontWeight="700">{lines[0]}</text>
             <text x={x + 65} y={57} textAnchor="middle" fontSize="11" fill={c.color2} fontWeight="700">{lines[1]}</text>
             <text x={x + 65} y={80} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{c.sub}</text>
@@ -265,8 +267,8 @@ function CompressionCurveSVG() {
       <line x1="50" y1="35" x2="50" y2="165" stroke="var(--text-secondary)" strokeWidth="1" />
       <path d={pathD} fill="none" stroke={color} strokeWidth="2.5" />
       {/* 90% line */}
-      <line x1="50" y1={scaleY(90)} x2="515" y2={scaleY(90)} stroke="#f97316" strokeWidth="1" strokeDasharray="5,4" />
-      <text x="520" y={scaleY(90) + 4} fontSize="10" fill="#f97316">90%</text>
+      <line x1="50" y1={scaleY(90)} x2="515" y2={scaleY(90)} stroke="#4a9eed" strokeWidth="1" strokeDasharray="5,4" />
+      <text x="520" y={scaleY(90) + 4} fontSize="10" fill="#4a9eed">90%</text>
       {pts.map((p, i) => (
         <circle key={i} cx={scaleX(p[0])} cy={scaleY(p[1])} r="3" fill={color} />
       ))}
@@ -328,14 +330,14 @@ function RecommenderSVG() {
       {/* Latent factors */}
       <g transform="translate(295,40)">
         <text x="120" y="-8" textAnchor="middle" fontSize="12" fill="var(--text-secondary)" fontWeight="600">Fatores Latentes</text>
-        <rect x="0" y="0" width="55" height="115" fill="none" stroke="#f97316" strokeWidth="1.5" rx="4" />
-        <text x="27" y="55" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">U</text>
+        <rect x="0" y="0" width="55" height="115" fill="none" stroke="#4a9eed" strokeWidth="1.5" rx="4" />
+        <text x="27" y="55" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">U</text>
         <text x="27" y="70" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">usuários</text>
         <text x="27" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">× fatores</text>
-        <rect x="65" y="35" width="75" height="45" fill="none" stroke="#f97316" strokeWidth="1.5" rx="4" />
-        <text x="102" y="60" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">Σ</text>
-        <rect x="150" y="0" width="55" height="115" fill="none" stroke="#f97316" strokeWidth="1.5" rx="4" />
-        <text x="177" y="55" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">Vᵀ</text>
+        <rect x="65" y="35" width="75" height="45" fill="none" stroke="#4a9eed" strokeWidth="1.5" rx="4" />
+        <text x="102" y="60" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">Σ</text>
+        <rect x="150" y="0" width="55" height="115" fill="none" stroke="#4a9eed" strokeWidth="1.5" rx="4" />
+        <text x="177" y="55" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">Vᵀ</text>
         <text x="177" y="70" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">fatores</text>
         <text x="177" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">× itens</text>
         <text x="102" y="135" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">R ≈ U Σ Vᵀ  (completar ?)</text>
@@ -356,7 +358,7 @@ function LSAWordsSVG() {
     { w: 'model', x: 175, y: 100, topic: 2 },
     { w: 'train', x: 155, y: 155, topic: 2 },
   ];
-  const topicColors = ['#f97316', '#fdba74', '#fb923c'];
+  const topicColors = ['#93c5fd', '#4a9eed', '#1d4ed8'];
   return (
     <svg width="100%" viewBox="0 0 400 222" style={{ display: 'block', margin: '1rem 0' }}>
       <rect width="400" height="222" fill="var(--bg-secondary)" rx="8" />
@@ -387,9 +389,9 @@ function RandomizedSVDDiagramSVG() {
       {/* Steps */}
       {[
         { label: 'A (m×n)', sub: 'matriz original', x: 20, c: '#64748b' },
-        { label: 'Ω (n×k)', sub: 'matriz aleatória', x: 133, c: '#f97316' },
-        { label: 'Y = AΩ\n(m×k)', sub: 'sketch', x: 246, c: '#f97316' },
-        { label: 'Q (m×k)', sub: 'base ortonormal', x: 359, c: '#f97316' },
+        { label: 'Ω (n×k)', sub: 'matriz aleatória', x: 133, c: '#4a9eed' },
+        { label: 'Y = AΩ\n(m×k)', sub: 'sketch', x: 246, c: '#4a9eed' },
+        { label: 'Q (m×k)', sub: 'base ortonormal', x: 359, c: '#4a9eed' },
         { label: 'SVD(QᵀA)', sub: 'pequena!', x: 472, c: color },
       ].map((s, i, arr) => {
         const lines = s.label.split('\n');
@@ -446,12 +448,12 @@ function DecompComparisonSVG() {
 function SVDApplicationsMapSVG() {
   const apps = [
     { label: 'PCA',               x: 175, y: 52,  c: color    },
-    { label: 'Recommenders',      x: 390, y: 52,  c: '#f97316' },
-    { label: 'Compressão\nde Imagens', x: 68, y: 150, c: '#f97316' },
-    { label: 'Pseudo-inv.\n(Ax=b)',    x: 472, y: 150, c: '#f97316' },
-    { label: 'Cond. Number\n& Estabilidade', x: 148, y: 248, c: '#f97316' },
-    { label: 'LSA / NLP',         x: 270, y: 262, c: '#f97316' },
-    { label: 'Denoising\n& Filtros',   x: 392, y: 248, c: '#f97316' },
+    { label: 'Recommenders',      x: 390, y: 52,  c: '#4a9eed' },
+    { label: 'Compressão\nde Imagens', x: 68, y: 150, c: '#4a9eed' },
+    { label: 'Pseudo-inv.\n(Ax=b)',    x: 472, y: 150, c: '#4a9eed' },
+    { label: 'Cond. Number\n& Estabilidade', x: 148, y: 248, c: '#4a9eed' },
+    { label: 'LSA / NLP',         x: 270, y: 262, c: '#4a9eed' },
+    { label: 'Denoising\n& Filtros',   x: 392, y: 248, c: '#4a9eed' },
   ];
   const cx = 270, cy = 145, crx = 55, cry = 32;
   const arx = 52, ary = 22;
@@ -490,12 +492,6 @@ export default function LA6() {
       <Link to="/linalg" style={S.back}><ArrowLeft size={16} /> Voltar a Álgebra Linear</Link>
       <div style={S.tag}>MÓDULO 06</div>
       <h1 style={S.h1}>SVD — Singular Value Decomposition</h1>
-      <p style={S.lead}>
-        A Decomposição em Valores Singulares é uma das ferramentas mais poderosas e versáteis da álgebra linear numérica.
-        Funciona para qualquer matriz — não apenas quadradas ou simétricas — e está na base de PCA, sistemas de recomendação,
-        compressão de imagens, análise semântica latente e muito mais. Neste módulo exploramos teoria, intuição geométrica
-        e aplicações práticas em Data Science.
-      </p>
 
       {/* ─── Section 1: Intuição Geométrica ─── */}
       <section style={S.section}>
@@ -506,7 +502,8 @@ export default function LA6() {
         </p>
         <div style={S.highlight}>
           <strong>Teorema fundamental (SVD):</strong> Qualquer matriz real A pode ser escrita como
-          A = U Σ Vᵀ, onde U e V são matrizes ortogonais e Σ é diagonal com entradas não-negativas.
+          <BlockMath math="A = U\Sigma V^T" />
+          onde U e V são matrizes ortogonais e Σ é diagonal com entradas não-negativas.
         </div>
         <p style={S.p}>
           Geometricamente: a matriz V define uma rotação/reflexão no espaço de entrada; Σ realiza o scaling ao longo dos eixos;
@@ -519,10 +516,6 @@ export default function LA6() {
           As colunas de V (vetores singulares direitos) são as direções de entrada correspondentes. σ₁ ≥ σ₂ ≥ ... ≥ 0
           medem o quão "esticada" é cada direção.
         </p>
-        <div style={S.note}>
-          Analogia: se A representa uma câmera distorcendo um círculo de luz numa parede, U define a orientação da elipse
-          projetada, V define a orientação do feixe de entrada, e Σ define os tamanhos dos eixos da elipse.
-        </div>
       </section>
 
       <hr style={S.divider} />
@@ -534,7 +527,7 @@ export default function LA6() {
           Seja A uma matriz real m × n. O SVD de A é a fatorização:
         </p>
         <div style={S.highlight}>
-          A (m×n) = U (m×m) · Σ (m×n) · Vᵀ (n×n)
+          <BlockMath math="A_{(m\times n)} = U_{(m\times m)} \cdot \Sigma_{(m\times n)} \cdot V^T_{(n\times n)}" />
         </div>
         <DimensionDiagramSVG />
         <h3 style={S.h3}>Propriedades das matrizes fatoradas</h3>
@@ -565,18 +558,13 @@ export default function LA6() {
           das matrizes simétricas AᵀA e AAᵀ:
         </p>
         <div style={S.highlight}>
-          AᵀA = V Σᵀ Uᵀ U Σ Vᵀ = V Σ² Vᵀ — eigendecomp de AᵀA
-          <br />
-          AAᵀ = U Σ Vᵀ V Σᵀ Uᵀ = U Σ² Uᵀ — eigendecomp de AAᵀ
+          <BlockMath math="A^TA = V\Sigma^TU^TU\Sigma V^T = V\Sigma^2V^T" /> — eigendecomp de AᵀA
+          <BlockMath math="AA^T = U\Sigma V^TV\Sigma^TU^T = U\Sigma^2U^T" /> — eigendecomp de AAᵀ
         </div>
         <p style={S.p}>
           Portanto, as colunas de V são autovetores de AᵀA, as colunas de U são autovetores de AAᵀ,
           e σᵢ = √λᵢ onde λᵢ são os autovalores de AᵀA.
         </p>
-        <div style={S.note}>
-          SVD thin (reduzido): na prática usa-se o SVD "thin" onde U é m×r e Σ é r×r (r = rank), economizando memória.
-          numpy.linalg.svd(A, full_matrices=False) retorna o SVD thin.
-        </div>
       </section>
 
       <hr style={S.divider} />
@@ -618,24 +606,6 @@ export default function LA6() {
           finos ou ruído. Esta hierarquia é a base para todas as aplicações de compressão e redução dimensional.
           σᵢ² é proporcional à variância explicada pela i-ésima direção singular.
         </p>
-        <div style={S.note}>
-          Em matrizes de dados reais, os primeiros poucos valores singulares frequentemente capturam 80-95% da variância total,
-          enquanto os restantes contribuem com ruído. Isto é explorado na aproximação de baixo rank.
-        </div>
-        <div style={S.code}>{`import numpy as np
-
-A = np.random.randn(100, 50)
-U, s, Vt = np.linalg.svd(A, full_matrices=False)
-
-# Normas
-norm_spectral = s[0]           # norma 2
-norm_frobenius = np.linalg.norm(s)  # norma Frobenius
-rank_A = np.sum(s > 1e-10)    # rank numérico
-
-# Variância cumulativa
-var_explained = np.cumsum(s**2) / np.sum(s**2)
-k90 = np.searchsorted(var_explained, 0.90) + 1
-print(f"k para 90% variância: {k90}")`}</div>
       </section>
 
       <hr style={S.divider} />
@@ -648,8 +618,7 @@ print(f"k para 90% variância: {k90}")`}</div>
           A aproximação de rank-k é obtida mantendo apenas os k maiores valores singulares:
         </p>
         <div style={S.highlight}>
-          Aₖ = Σᵢ₌₁ᵏ σᵢ · uᵢ · vᵢᵀ
-          <br />
+          <BlockMath math="A_k = \sum_{i=1}^{k} \sigma_i \cdot u_i \cdot v_i^T" />
           (soma de k matrizes de rank 1, ponderadas por σᵢ)
         </div>
         <h3 style={S.h3}>Teorema de Eckart-Young-Mirsky</h3>
@@ -658,9 +627,8 @@ print(f"k para 90% variância: {k90}")`}</div>
           norma de Frobenius:
         </p>
         <div style={S.highlight}>
-          ||A − Aₖ||₂ = σₖ₊₁ &nbsp;&nbsp;&nbsp; ||A − Aₖ||F = √(σₖ₊₁² + ... + σᵣ²)
-          <br />
-          Aₖ = argmin(rank(B)≤k) ||A − B||
+          <BlockMath math="\|A-A_k\|_2 = \sigma_{k+1} \qquad \|A-A_k\|_F = \sqrt{\sigma_{k+1}^2+\cdots+\sigma_r^2}" />
+          <BlockMath math="A_k = \arg\min_{\text{rank}(B)\le k} \|A-B\|" />
         </div>
         <TruncatedSVDViz />
         <h3 style={S.h3}>Fração de Variância Explicada</h3>
@@ -668,31 +636,12 @@ print(f"k para 90% variância: {k90}")`}</div>
           Para escolher k em aplicações práticas, usa-se a fração da variância total capturada:
         </p>
         <div style={S.highlight}>
-          var_explained(k) = Σᵢ₌₁ᵏ σᵢ² / Σᵢ₌₁ʳ σᵢ²
+          <BlockMath math="\text{var\_explained}(k) = \frac{\sum_{i=1}^{k}\sigma_i^2}{\sum_{i=1}^{r}\sigma_i^2}" />
         </div>
         <p style={S.p}>
           Tipicamente escolhe-se k tal que var_explained(k) ≥ 0.90 ou 0.95. Isto preserva a maioria da informação
           descartando ruído e reduzindo custo computacional e memória.
         </p>
-        <div style={S.code}>{`# SVD truncado em NumPy
-U, s, Vt = np.linalg.svd(A, full_matrices=False)
-k = 20  # manter top-20 componentes
-
-# Aproximação de rank-k
-A_k = U[:, :k] @ np.diag(s[:k]) @ Vt[:k, :]
-
-# Ou mais eficiente com broadcasting
-A_k = (U[:, :k] * s[:k]) @ Vt[:k, :]
-
-# Erro de reconstrução
-erro = np.linalg.norm(A - A_k, 'fro')
-print(f"Erro Frobenius: {erro:.4f}")
-print(f"Variância capturada: {np.sum(s[:k]**2)/np.sum(s**2)*100:.1f}%")
-
-# Via sklearn para matrizes grandes/esparsas
-from sklearn.decomposition import TruncatedSVD
-svd = TruncatedSVD(n_components=k, random_state=42)
-A_reduced = svd.fit_transform(A)  # shape (m, k)`}</div>
       </section>
 
       <hr style={S.divider} />
@@ -706,7 +655,7 @@ A_reduced = svd.fit_transform(A)  # shape (m, k)`}</div>
         </p>
         <h3 style={S.h3}>Derivação</h3>
         <p style={S.p}>
-          Seja X a matriz de dados m×n centrada (média das colunas subtraída). Aplicando SVD: X = UΣVᵀ.
+          Seja X a matriz de dados m×n centrada (média das colunas subtraída). Aplicando SVD: <InlineMath math="X = U\Sigma V^T" />.
         </p>
         <table style={S.table}>
           <thead>
@@ -719,52 +668,20 @@ A_reduced = svd.fit_transform(A)  # shape (m, k)`}</div>
           <tbody>
             {[
               ['Componentes principais', 'colunas de V', 'n × n'],
-              ['Scores (projeções)', 'XV = UΣ', 'm × n'],
-              ['Autovalores da covariância', 'σᵢ² / (m−1)', 'escalar'],
-              ['Variância explicada pelo PCi', 'σᵢ² / Σσⱼ²', 'escalar'],
-              ['Reconstrução em k dims', 'UₖΣₖVₖᵀ', 'm × n'],
+              ['Scores (projeções)', 'XV = U\\Sigma', 'm × n'],
+              ['Autovalores da covariância', '\\sigma_i^2 / (m-1)', 'escalar'],
+              ['Variância explicada pelo PCi', '\\sigma_i^2 / \\sum_j \\sigma_j^2', 'escalar'],
+              ['Reconstrução em k dims', 'U_k \\Sigma_k V_k^T', 'm × n'],
             ].map((r, i) => (
               <tr key={i}>
-                {r.map((c, j) => <td key={j} style={S.td}>{c}</td>)}
+                <td style={S.td}>{r[0]}</td>
+                <td style={S.td}><InlineMath math={r[1]} /></td>
+                <td style={S.td}>{r[2]}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <PCAScatterSVG />
-        <div style={S.note}>
-          Vantagem do SVD vs eigendecomp: o SVD opera diretamente em X, evitando calcular XᵀX que é numericamente
-          menos estável (eleva ao quadrado o número de condição). Para dados com m muito grande, usa-se o SVD thin.
-        </div>
-        <div style={S.code}>{`import numpy as np
-from sklearn.preprocessing import StandardScaler
-
-# Dados: X (m amostras × n features)
-X = np.random.randn(1000, 50)
-
-# Centrar (e opcionalmente escalar)
-X_c = X - X.mean(axis=0)
-
-# SVD → PCA
-U, s, Vt = np.linalg.svd(X_c, full_matrices=False)
-
-k = 10
-# Componentes principais (loadings)
-components = Vt[:k]           # shape (k, n)
-
-# Scores (projeções nos PCs)
-scores = U[:, :k] * s[:k]    # shape (m, k)
-
-# Equivalente a:
-scores_alt = X_c @ Vt[:k].T
-
-# Autovalores da matriz de covariância
-eigenvalues = s**2 / (X.shape[0] - 1)
-
-# Via sklearn
-from sklearn.decomposition import PCA
-pca = PCA(n_components=k)
-scores_sk = pca.fit_transform(X_c)
-# pca.components_ == Vt[:k] (± sinal)`}</div>
       </section>
 
       <hr style={S.divider} />
@@ -777,11 +694,10 @@ scores_sk = pca.fit_transform(X_c)
           A⁺ generaliza a inversão usando SVD e fornece a solução mais "sensata" para sistemas Ax = b.
         </p>
         <div style={S.highlight}>
-          A⁺ = V Σ⁺ Uᵀ
-          <br />
+          <BlockMath math="A^+ = V\Sigma^+U^T" />
           Σ⁺: inverte cada diagonal não-nulo de Σ, mantém zeros no lugar de zeros.
           <br />
-          Solução: x = A⁺ b
+          Solução: <InlineMath math="x = A^+b" />
         </div>
         <PseudoinverseCasesSVG />
         <h3 style={S.h3}>O que a pseudo-inversa minimiza?</h3>
@@ -805,30 +721,6 @@ scores_sk = pca.fit_transform(X_c)
             ))}
           </tbody>
         </table>
-        <div style={S.code}>{`import numpy as np
-
-A = np.array([[1, 2], [3, 4], [5, 6]])  # 3×2, overdetermined
-b = np.array([1, 2, 3])
-
-# Pseudo-inversa via SVD
-U, s, Vt = np.linalg.svd(A, full_matrices=False)
-tol = 1e-10
-s_inv = np.where(s > tol, 1.0 / s, 0.0)
-A_pinv = Vt.T @ np.diag(s_inv) @ U.T
-
-x_ls = A_pinv @ b   # solução de mínimos quadrados
-
-# Mais simples:
-A_pinv2 = np.linalg.pinv(A)
-x_ls2 = A_pinv2 @ b
-
-# Verificar: resíduo mínimo
-print("Resíduo:", np.linalg.norm(A @ x_ls - b))
-print("||x||:", np.linalg.norm(x_ls))`}</div>
-        <div style={S.note}>
-          Regularização: em vez de inverter σᵢ pequenos, pode-se usar regularização de Tikhonov: σᵢ / (σᵢ² + λ).
-          Isso estabiliza a solução quando A é quase rank-deficiente (σ_min ≈ 0).
-        </div>
       </section>
 
       <hr style={S.divider} />
@@ -846,7 +738,7 @@ print("||x||:", np.linalg.norm(x_ls))`}</div>
           k·m (U) + k (Σ) + k·n (Vᵀ) = k·(m + n + 1) valores.
         </p>
         <div style={S.highlight}>
-          Taxa de compressão = k·(m + n + 1) / (m·n)
+          <InlineMath math="\text{Taxa de compressão} = \dfrac{k(m+n+1)}{mn}" />
           <br />
           Para imagem 512×512 com k=50: 50·1025 / 262144 ≈ 19.5% do original
         </div>
@@ -875,28 +767,6 @@ print("||x||:", np.linalg.norm(x_ls))`}</div>
             ))}
           </tbody>
         </table>
-        <div style={S.code}>{`import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
-
-# Carregar imagem em escala de cinza
-img = np.array(Image.open("foto.jpg").convert("L"), dtype=float)
-
-# SVD
-U, s, Vt = np.linalg.svd(img, full_matrices=False)
-
-def reconstruir(U, s, Vt, k):
-    return U[:, :k] @ np.diag(s[:k]) @ Vt[:k, :]
-
-fig, axes = plt.subplots(1, 4, figsize=(16, 4))
-for ax, k in zip(axes, [1, 5, 20, 50]):
-    img_k = np.clip(reconstruir(U, s, Vt, k), 0, 255)
-    ax.imshow(img_k, cmap='gray')
-    var = np.sum(s[:k]**2) / np.sum(s**2) * 100
-    ax.set_title(f"k={k}  ({var:.0f}% variância)")
-    ax.axis('off')
-plt.tight_layout()
-plt.show()`}</div>
       </section>
 
       <hr style={S.divider} />
@@ -915,7 +785,7 @@ plt.show()`}</div>
           Usuários e itens são representados por vetores nesses k fatores, e a predição é o produto interno.
         </p>
         <div style={S.highlight}>
-          R̂ᵤᵢ = uᵤᵀ · vᵢ  (produto interno dos fatores latentes do utilizador u e do item i)
+          <InlineMath math="\hat{R}_{ui} = u_u^T \cdot v_i" /> (produto interno dos fatores latentes do utilizador u e do item i)
         </div>
         <h3 style={S.h3}>SVD Clássico vs Matrix Factorization Moderna</h3>
         <table style={S.table}>
@@ -940,33 +810,6 @@ plt.show()`}</div>
             ))}
           </tbody>
         </table>
-        <div style={S.code}>{`# Matrix Factorization com Gradient Descent (FunkSVD)
-import numpy as np
-
-def funk_svd(R, k=10, lr=0.01, reg=0.1, epochs=100):
-    m, n = R.shape
-    mask = R > 0  # entradas observadas
-
-    # Inicialização
-    U = np.random.normal(0, 0.1, (m, k))
-    V = np.random.normal(0, 0.1, (n, k))
-
-    for epoch in range(epochs):
-        # Gradiente descendente apenas nas entradas observadas
-        R_pred = U @ V.T
-        E = (R - R_pred) * mask
-
-        U += lr * (E @ V - reg * U)
-        V += lr * (E.T @ U - reg * V)
-
-        loss = 0.5 * np.sum(E**2) + 0.5 * reg * (np.sum(U**2) + np.sum(V**2))
-        if epoch % 10 == 0:
-            print(f"Epoch {epoch}: loss={loss:.4f}")
-
-    return U, V
-
-# Predizer rating faltante
-# R_hat[u, i] = U[u] @ V[i]`}</div>
       </section>
 
       <hr style={S.divider} />
@@ -987,49 +830,9 @@ def funk_svd(R, k=10, lr=0.01, reg=0.1, epochs=100):
         </p>
         <LSAWordsSVG />
         <div style={S.highlight}>
-          Similaridade entre documentos: cos(dᵢ, dⱼ) = (Uₖᵢ · Uₖⱼ) / (||Uₖᵢ|| · ||Uₖⱼ||)
+          Similaridade entre documentos: <InlineMath math="\cos(d_i,d_j) = \dfrac{U_{ki}\cdot U_{kj}}{\|U_{ki}\|\cdot\|U_{kj}\|}" />
           <br />
           Recuperação de informação: consulta projetada no espaço latente → documentos mais similares
-        </div>
-        <div style={S.code}>{`from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.decomposition import TruncatedSVD
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import Normalizer
-import numpy as np
-
-corpus = [
-    "álgebra linear matrizes vetores",
-    "animais cão gato estimação",
-    "machine learning modelos treino",
-    "matrizes transformações lineares",
-    "cão gato animal doméstico",
-    "redes neurais aprendizado profundo",
-]
-
-# Pipeline LSA
-vectorizer = TfidfVectorizer(max_features=1000)
-X_tfidf = vectorizer.fit_transform(corpus)  # sparse (docs × terms)
-
-# SVD Truncado
-svd = TruncatedSVD(n_components=2, random_state=42)
-X_lsa = svd.fit_transform(X_tfidf)  # (docs × k)
-
-# Normalizar para cosine similarity
-X_norm = Normalizer().fit_transform(X_lsa)
-
-# Similaridade entre documentos 0 e 3
-sim = X_norm[0] @ X_norm[3]
-print(f"Similaridade (doc0, doc3): {sim:.3f}")
-
-# Retrieval: dado query, encontrar docs similares
-query = vectorizer.transform(["vetores e matrizes"])
-query_lsa = svd.transform(query)
-sims = query_lsa @ X_norm.T
-top_docs = np.argsort(sims[0])[::-1]
-print("Docs mais relevantes:", top_docs)`}</div>
-        <div style={S.note}>
-          LSA captura relações semânticas que TF-IDF não consegue: "carro" e "automóvel" ficam próximos no espaço latente
-          mesmo sem co-ocorrência directa. Limitação: não modela polissemia (uma palavra com vários significados).
         </div>
       </section>
 
@@ -1062,35 +865,6 @@ print("Docs mais relevantes:", top_docs)`}</div>
           Para matrizes muito grandes onde apenas o SVD truncado é necessário, o algoritmo randomizado é muito mais eficiente:
           complexidade O(mn·k) vs O(mn·min(m,n)) do SVD clássico.
         </p>
-        <div style={S.code}>{`import numpy as np
-from sklearn.utils.extmath import randomized_svd
-
-A = np.random.randn(10000, 5000)
-
-# SVD completo (lento para matrizes grandes)
-# U, s, Vt = np.linalg.svd(A)  # usa LAPACK dgesdd
-
-# SVD completo (full_matrices=False = thin SVD)
-U, s, Vt = np.linalg.svd(A, full_matrices=False)
-
-# SVD randomizado - muito mais rápido para k << min(m,n)
-k = 50
-U_r, s_r, Vt_r = randomized_svd(
-    A,
-    n_components=k,
-    n_iter=4,          # mais iterações = mais preciso
-    random_state=42
-)
-# U_r: (10000, 50), s_r: (50,), Vt_r: (50, 5000)
-
-# Scipy: sparsesvds para matrizes esparsas
-from scipy.sparse.linalg import svds
-from scipy.sparse import random as sparse_random
-A_sparse = sparse_random(1000, 800, density=0.05)
-U_s, s_s, Vt_s = svds(A_sparse, k=20)
-# Nota: svds retorna em ordem crescente; inverter para decrescente
-idx = np.argsort(s_s)[::-1]
-s_s = s_s[idx]`}</div>
         <table style={S.table}>
           <thead>
             <tr>
@@ -1143,39 +917,9 @@ s_s = s_s[idx]`}</div>
           (que amplificam o ruído), usa-se a regularização:
         </p>
         <div style={S.highlight}>
-          x_reg = V · diag(σᵢ / (σᵢ² + λ)) · Uᵀ · b
-          <br />
+          <BlockMath math="x_{reg} = V \cdot \text{diag}\!\left(\frac{\sigma_i}{\sigma_i^2+\lambda}\right) \cdot U^T \cdot b" />
           Para λ → 0: recupera mínimos quadrados; para λ → ∞: x → 0
         </div>
-        <div style={S.code}>{`import numpy as np
-
-def solve_svd_regularized(A, b, lam=0.0):
-    """
-    Resolve sistema Ax≈b via SVD com regularização Tikhonov.
-    lam=0: pseudo-inversa padrão
-    lam>0: regularização L2
-    """
-    U, s, Vt = np.linalg.svd(A, full_matrices=False)
-
-    # Filtros de Tikhonov
-    filters = s / (s**2 + lam)
-
-    # Solução regularizada
-    x = Vt.T @ (filters * (U.T @ b))
-    return x
-
-# Exemplo: sistema mal condicionado
-n = 50
-A = np.random.randn(n, n)
-# Tornar mal condicionado
-A[:, 0] += A[:, 1] * 0.999
-b = np.random.randn(n)
-
-print("Número de condição:", np.linalg.cond(A))
-x_std = solve_svd_regularized(A, b, lam=0)
-x_reg = solve_svd_regularized(A, b, lam=0.01)
-print("||x|| sem reg:", np.linalg.norm(x_std))
-print("||x|| com reg:", np.linalg.norm(x_reg))`}</div>
         <h3 style={S.h3}>Quando usar cada decomposição</h3>
         <table style={S.table}>
           <thead>
@@ -1201,120 +945,6 @@ print("||x|| com reg:", np.linalg.norm(x_reg))`}</div>
           </tbody>
         </table>
       </section>
-
-      <hr style={S.divider} />
-
-      {/* ─── Section 12: Síntese ─── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese</h2>
-        <p style={S.p}>
-          O SVD está na base de uma grande variedade de algoritmos de Machine Learning e Data Science.
-          Abaixo um mapa das aplicações e um cheat sheet das fórmulas essenciais.
-        </p>
-        <SVDApplicationsMapSVG />
-        <h3 style={S.h3}>Cheat Sheet — Fórmulas Fundamentais</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Fórmula</th>
-              <th style={S.th}>Significado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['A = UΣVᵀ', 'Decomposição SVD fundamental'],
-              ['Aₖ = Σᵢ₌₁ᵏ σᵢuᵢvᵢᵀ', 'Melhor aproximação de rank-k (Eckart-Young)'],
-              ['A⁺ = VΣ⁺Uᵀ', 'Pseudo-inversa de Moore-Penrose'],
-              ['||A||₂ = σ₁', 'Norma espectral = maior valor singular'],
-              ['||A||F = √(Σσᵢ²)', 'Norma de Frobenius'],
-              ['κ(A) = σ_max / σ_min', 'Número de condição'],
-              ['rank(A) = #{σᵢ > 0}', 'Rank = número de σ positivos'],
-              ['AᵀA = VΣ²Vᵀ', 'Eigendecomp de AᵀA via SVD'],
-              ['var(k) = Σᵢ≤ₖσᵢ² / Σσᵢ²', 'Fração de variância explicada por k componentes'],
-              ['x_LS = A⁺b = VΣ⁺Uᵀb', 'Solução de mínimos quadrados via SVD'],
-            ].map((r, i) => (
-              <tr key={i}>
-                {r.map((c, j) => <td key={j} style={{ ...S.td, fontFamily: j === 0 ? 'monospace' : 'inherit', fontSize: j === 0 ? '0.85rem' : 'inherit' }}>{c}</td>)}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <h3 style={S.h3}>Energia Capturada pelos Top-k Valores Singulares</h3>
-        <div style={S.code}>{`import numpy as np
-import matplotlib.pyplot as plt
-
-# Dados sintéticos de baixo rank + ruído
-np.random.seed(42)
-m, n, r = 200, 150, 10
-U_true = np.linalg.qr(np.random.randn(m, r))[0]
-V_true = np.linalg.qr(np.random.randn(n, r))[0]
-s_true = np.exp(-np.arange(r) * 0.3) * 10
-
-A_low_rank = U_true @ np.diag(s_true) @ V_true.T
-A_noisy = A_low_rank + 0.5 * np.random.randn(m, n)
-
-# SVD da matriz ruidosa
-U, s, Vt = np.linalg.svd(A_noisy, full_matrices=False)
-
-# Energia cumulativa
-energy = np.cumsum(s**2) / np.sum(s**2)
-k90 = np.searchsorted(energy, 0.90) + 1
-k99 = np.searchsorted(energy, 0.99) + 1
-
-print(f"k para 90% energia: {k90}")
-print(f"k para 99% energia: {k99}")
-
-# Reconstrução ótima (rank verdadeiro = 10)
-A_reconstructed = U[:, :r] @ np.diag(s[:r]) @ Vt[:r, :]
-erro_rel = np.linalg.norm(A_reconstructed - A_low_rank, 'fro') / np.linalg.norm(A_low_rank, 'fro')
-print(f"Erro relativo (k={r}): {erro_rel:.4f}")
-
-# Plot scree
-plt.figure(figsize=(10, 4))
-plt.subplot(1, 2, 1)
-plt.plot(s[:30], 'o-', color='#f97316')
-plt.axvline(r - 1, color='red', linestyle='--', label=f'rank verdadeiro={r}')
-plt.xlabel('Índice'); plt.ylabel('Valor singular')
-plt.title('Scree plot'); plt.legend()
-
-plt.subplot(1, 2, 2)
-plt.plot(energy[:50] * 100, color='#f97316')
-plt.axhline(90, color='red', linestyle='--', label='90%')
-plt.axhline(99, color='orange', linestyle='--', label='99%')
-plt.xlabel('k'); plt.ylabel('Energia cumulativa (%)')
-plt.title('Energia acumulada'); plt.legend()
-plt.tight_layout()
-plt.show()`}</div>
-
-        <h3 style={S.h3}>Aplicações ML — Resumo Final</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Área</th>
-              <th style={S.th}>Aplicação SVD</th>
-              <th style={S.th}>O que SVD faz</th>
-              <th style={S.th}>Ferramenta Python</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Redução Dimensional', 'PCA', 'encontra eixos de máxima variância', 'sklearn.decomposition.PCA'],
-              ['Visão Computacional', 'Compressão de imagens', 'aproximação de baixo rank', 'np.linalg.svd'],
-              ['Sistemas Recomendação', 'Collaborative Filtering', 'fatores latentes user-item', 'surprise, lightfm'],
-              ['NLP', 'LSA / LSI', 'tópicos semânticos latentes', 'sklearn.TruncatedSVD'],
-              ['Álgebra Numérica', 'Mínimos Quadrados', 'pseudo-inversa robusta', 'np.linalg.lstsq'],
-              ['Controlo / Física', 'Denoising de sinais', 'truncar σ pequenos', 'np.linalg.svd'],
-              ['Bioinformática', 'scRNA-seq / PCA de células', 'dimensões de expressão génica', 'scanpy, sklearn'],
-              ['Análise de Redes', 'Graph embeddings (SVD de adj)', 'representação latente de nós', 'scipy.sparse.linalg.svds'],
-            ].map((r, i) => (
-              <tr key={i}>
-                {r.map((c, j) => <td key={j} style={{ ...S.td, fontFamily: j === 3 ? 'monospace' : 'inherit', fontSize: j === 3 ? '0.82rem' : 'inherit' }}>{c}</td>)}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-      
     </div>
   );
 }

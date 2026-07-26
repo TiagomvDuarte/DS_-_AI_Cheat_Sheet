@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -19,11 +19,13 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
   math: { margin: '1rem 0', textAlign: 'center' },
+  ul: { paddingLeft: '1.4rem', color: 'var(--text-primary)', lineHeight: 1.9, fontSize: '1rem' },
+  li: { marginBottom: '0.4rem' },
 };
 
 /* ── SVG backup diagrams ── */
@@ -104,7 +106,7 @@ function CliffWalkingSVG() {
           const isCliff = r === rows - 1 && cliffCells.includes(c);
           const isStart = r === rows - 1 && c === 0;
           const isGoal = r === rows - 1 && c === cols - 1;
-          const fill = isCliff ? '#f97316' : isStart ? '#f97316' : isGoal ? color : 'var(--bg-primary)';
+          const fill = isCliff ? '#4a9eed' : isStart ? '#4a9eed' : isGoal ? color : 'var(--bg-primary)';
           return (
             <g key={`${r}-${c}`}>
               <rect x={c * cw + 1} y={r * ch + 1} width={cw - 2} height={ch - 2} rx={3}
@@ -119,19 +121,177 @@ function CliffWalkingSVG() {
       {/* SARSA path — safe route along top */}
       <polyline
         points={`${cw / 2},${(rows - 1) * ch + ch / 2} ${cw / 2},${ch / 2} ${(cols - 1) * cw + cw / 2},${ch / 2} ${(cols - 1) * cw + cw / 2},${(rows - 1) * ch + ch / 2}`}
-        fill="none" stroke="#f97316" strokeWidth={2.5} strokeDasharray="5 3" />
+        fill="none" stroke="#4a9eed" strokeWidth={2.5} strokeDasharray="5 3" />
       {/* Q-Learning path — along bottom edge */}
       <polyline
         points={`${cw / 2},${(rows - 1) * ch + ch / 2} ${cw / 2},${(rows - 2) * ch + ch / 2} ${(cols - 1) * cw + cw / 2},${(rows - 2) * ch + ch / 2} ${(cols - 1) * cw + cw / 2},${(rows - 1) * ch + ch / 2}`}
-        fill="none" stroke="#f59e0b" strokeWidth={2.5} strokeDasharray="5 3" />
+        fill="none" stroke="#0284c7" strokeWidth={2.5} strokeDasharray="5 3" />
       {/* Legend */}
-      <line x1={10} y1={rows * ch + 20} x2={40} y2={rows * ch + 20} stroke="#f97316" strokeWidth={2.5} strokeDasharray="5 3" />
+      <line x1={10} y1={rows * ch + 20} x2={40} y2={rows * ch + 20} stroke="#4a9eed" strokeWidth={2.5} strokeDasharray="5 3" />
       <text x={46} y={rows * ch + 24} fontSize={11} fill="var(--text-secondary)">SARSA (caminho seguro)</text>
-      <line x1={220} y1={rows * ch + 20} x2={250} y2={rows * ch + 20} stroke="#f59e0b" strokeWidth={2.5} strokeDasharray="5 3" />
+      <line x1={220} y1={rows * ch + 20} x2={250} y2={rows * ch + 20} stroke="#0284c7" strokeWidth={2.5} strokeDasharray="5 3" />
       <text x={256} y={rows * ch + 24} fontSize={11} fill="var(--text-secondary)">Q-Learning (caminho ótimo)</text>
     </svg>
   );
 }
+
+/* ── SVG: 5-Armed Bandit ── */
+const BanditDiagram = () => (
+  <svg viewBox="0 0 680 260" style={{ width: '100%', maxWidth: 680, display: 'block', margin: '0 auto' }}>
+    {/* background */}
+    <rect x="0" y="0" width="680" height="260" rx="10" fill="none" />
+
+    {/* Title */}
+    <text x="340" y="22" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>
+      Problema do Bandido de 5 Braços
+    </text>
+
+    {/* Arms */}
+    {[
+      { x: 68,  trueQ: 0.4, label: 'A₁', barH: 40,  barY: 140, col: '#7dd3fc' },
+      { x: 188, trueQ: 1.2, label: 'A₂', barH: 120, barY: 60,  col: '#4a9eed' },
+      { x: 308, trueQ: 0.7, label: 'A₃', barH: 70,  barY: 110, col: '#7dd3fc' },
+      { x: 428, trueQ: 0.2, label: 'A₄', barH: 20,  barY: 160, col: '#fde8d8' },
+      { x: 548, trueQ: 0.9, label: 'A₅', barH: 90,  barY: 90,  col: '#4a9eed' },
+    ].map(({ x, trueQ, label, barH, barY, col }) => (
+      <g key={label}>
+        {/* True Q bar */}
+        <rect x={x} y={barY} width={60} height={barH} rx="4" fill={col} opacity="0.85" />
+        {/* True Q label on bar */}
+        <text x={x + 30} y={barY - 6} textAnchor="middle" fontSize="11" fill={col} fontWeight="600">
+          q*={trueQ}
+        </text>
+        {/* Arm label */}
+        <text x={x + 30} y={200} textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">
+          {label}
+        </text>
+      </g>
+    ))}
+
+    {/* Baseline */}
+    <line x1="40" y1="180" x2="640" y2="180" stroke="var(--text-secondary)" strokeWidth="1.5" />
+
+    {/* Greedy arrow — stuck on A1 because first tried */}
+    <text x="68" y="235" textAnchor="middle" fontSize="11" fill="#0284c7" fontWeight="700">
+      Greedy fica aqui ↑
+    </text>
+    <text x="188" y="240" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">
+      Ótimo real ↑
+    </text>
+
+    {/* Legend */}
+    <rect x="460" y="210" width="12" height="12" rx="2" fill={color} />
+    <text x="476" y="221" fontSize="11" fill="var(--text-secondary)">Valor verdadeiro q*(a) — desconhecido do agente</text>
+  </svg>
+);
+
+/* ── SVG: Cumulative Reward vs ε ── */
+const EpsilonRewardPlot = () => {
+  const W = 680, H = 220;
+  const pad = { t: 30, b: 50, l: 55, r: 160 };
+  const plotW = W - pad.l - pad.r;
+  const plotH = H - pad.t - pad.b;
+
+  // Fake cumulative reward curves for ε = 0 (greedy), 0.1, 0.3, 1.0
+  const steps = 20;
+  const curves = [
+    { eps: '0 (greedy)',  col: '#4a9eed', vals: Array.from({length: steps}, (_, i) => 0.35 + 0.3 * (1 - Math.exp(-i * 0.15))) },
+    { eps: '0.1',         col: '#38bdf8', vals: Array.from({length: steps}, (_, i) => 0.15 + 0.7 * (1 - Math.exp(-i * 0.22))) },
+    { eps: '0.3',         col: '#bae6fd', vals: Array.from({length: steps}, (_, i) => 0.10 + 0.55 * (1 - Math.exp(-i * 0.3))) },
+    { eps: '1.0 (random)',col: '#e0f2fe', vals: Array.from({length: steps}, () => 0.2) },
+  ];
+
+  const toX = (i) => pad.l + (i / (steps - 1)) * plotW;
+  const toY = (v) => pad.t + plotH - v * plotH;
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: W, display: 'block', margin: '0 auto' }}>
+      {/* Axes */}
+      <line x1={pad.l} y1={pad.t} x2={pad.l} y2={pad.t + plotH} stroke="var(--text-secondary)" strokeWidth="1.5" />
+      <line x1={pad.l} y1={pad.t + plotH} x2={pad.l + plotW} y2={pad.t + plotH} stroke="var(--text-secondary)" strokeWidth="1.5" />
+
+      {/* Y labels */}
+      {[0, 0.25, 0.5, 0.75, 1].map(v => (
+        <g key={v}>
+          <line x1={pad.l - 4} y1={toY(v)} x2={pad.l} y2={toY(v)} stroke="var(--text-secondary)" strokeWidth="1" />
+          <text x={pad.l - 8} y={toY(v) + 4} textAnchor="end" fontSize="10" fill="var(--text-secondary)">{v.toFixed(2)}</text>
+        </g>
+      ))}
+
+      {/* X label */}
+      <text x={pad.l + plotW / 2} y={H - 6} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">
+        Passos de treino (×1000)
+      </text>
+      {/* Y label */}
+      <text x={12} y={pad.t + plotH / 2} textAnchor="middle" fontSize="11" fill="var(--text-secondary)"
+        transform={`rotate(-90, 12, ${pad.t + plotH / 2})`}>
+        Recompensa média
+      </text>
+
+      {/* Curves */}
+      {curves.map(({ vals, col }) => {
+        const pts = vals.map((v, i) => `${toX(i)},${toY(v)}`).join(' ');
+        return <polyline key={col} points={pts} fill="none" stroke={col} strokeWidth="2.2" strokeLinejoin="round" />;
+      })}
+
+      {/* Legend — outside plot area, right side */}
+      {curves.map(({ eps, col }, idx) => (
+        <g key={eps}>
+          <line x1={pad.l + plotW + 12} y1={pad.t + 20 + idx * 22} x2={pad.l + plotW + 34} y2={pad.t + 20 + idx * 22} stroke={col} strokeWidth="2.5" />
+          <text x={pad.l + plotW + 38} y={pad.t + 24 + idx * 22} fontSize="10.5" fill="var(--text-secondary)">
+            ε = {eps}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+};
+
+/* ── SVG: ε decay curve GLIE ── */
+const GLIEDecayCurve = () => {
+  const W = 500, H = 180;
+  const pad = { t: 25, b: 40, l: 50, r: 20 };
+  const plotW = W - pad.l - pad.r;
+  const plotH = H - pad.t - pad.b;
+  const steps = 30;
+  const toX = (i) => pad.l + (i / (steps - 1)) * plotW;
+  const toY = (v) => pad.t + plotH * (1 - v);
+
+  const harmonic = Array.from({ length: steps }, (_, i) => 1 / (i + 1));
+  const pts = harmonic.map((v, i) => `${toX(i)},${toY(v)}`).join(' ');
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: W, display: 'block', margin: '0 auto' }}>
+      <line x1={pad.l} y1={pad.t} x2={pad.l} y2={pad.t + plotH} stroke="var(--text-secondary)" strokeWidth="1.5" />
+      <line x1={pad.l} y1={pad.t + plotH} x2={pad.l + plotW} y2={pad.t + plotH} stroke="var(--text-secondary)" strokeWidth="1.5" />
+
+      {[0, 0.5, 1].map(v => (
+        <g key={v}>
+          <line x1={pad.l - 4} y1={toY(v)} x2={pad.l} y2={toY(v)} stroke="var(--text-secondary)" strokeWidth="1" />
+          <text x={pad.l - 8} y={toY(v) + 4} textAnchor="end" fontSize="10" fill="var(--text-secondary)">{v}</text>
+        </g>
+      ))}
+
+      <text x={pad.l + plotW / 2} y={H - 5} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">
+        Episódio k
+      </text>
+      <text x={12} y={pad.t + plotH / 2} textAnchor="middle" fontSize="11" fill="var(--text-secondary)"
+        transform={`rotate(-90, 12, ${pad.t + plotH / 2})`}>
+        ε_k
+      </text>
+
+      <polyline points={pts} fill="none" stroke={color} strokeWidth="2.2" strokeLinejoin="round" />
+
+      {/* Annotation */}
+      <text x={toX(5)} y={toY(harmonic[5]) - 8} textAnchor="middle" fontSize="10" fill={color}>
+        ε_k = 1/k
+      </text>
+      <text x={toX(25)} y={toY(harmonic[25]) + 14} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">
+        → 0 quando k → ∞
+      </text>
+    </svg>
+  );
+};
 
 export default function RL4() {
   return (
@@ -140,13 +300,6 @@ export default function RL4() {
 
       <div style={S.tag}>MÓDULO 4</div>
       <h1 style={S.h1}>Métodos Model-Free</h1>
-      <p style={S.lead}>
-        Os métodos Model-Free aprendem diretamente da experiência sem necessitar de um modelo explícito
-        do ambiente — sem acesso a <InlineMath math="P(s'|s,a)" /> nem a <InlineMath math="R(s,a)" />.
-        O agente interage com o ambiente e atualiza estimativas de valor a partir de retornos e recompensas
-        observados. Os dois grandes paradigmas são Monte Carlo e Temporal Difference Learning, a partir dos
-        quais derivam os algoritmos de controlo SARSA e Q-Learning.
-      </p>
 
       {/* ── 1. Model-Free vs Model-Based ── */}
       <div style={S.section}>
@@ -231,7 +384,7 @@ export default function RL4() {
               desc: 'Atualiza V(s) com o G_t de todas as visitas a s no mesmo episódio. Mais dados por episódio mas visitas correlacionadas.',
             },
           ].map(({ title, desc }) => (
-            <div key={title} style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: `1px solid rgba(249,115,22,0.10)` }}>
+            <div key={title} style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: `1px solid rgba(74,158,237,0.10)` }}>
               <p style={{ fontWeight: 700, color, margin: '0 0 0.4rem' }}>{title}</p>
               <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>{desc}</p>
             </div>
@@ -263,59 +416,9 @@ export default function RL4() {
 
       <hr style={S.divider} />
 
-      {/* ── 3. MC Worked Example ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>3. Monte Carlo — Exemplo Numérico</h2>
-        <p style={S.p}>
-          Considere um MDP com 4 estados <InlineMath math="\{A, B, C, D\}" />, onde D é terminal. Seguindo
-          a política <InlineMath math="\pi" /> obtemos o episódio:
-        </p>
-        <div style={S.diagram}>
-          <p style={{ fontWeight: 700, margin: '0 0 0.75rem' }}>
-            Episódio: <span style={{ fontFamily: 'monospace', color }}>A → B → C → D</span>
-            &nbsp; com recompensas <span style={{ fontFamily: 'monospace', color }}>+1, +2, +5</span> e <InlineMath math="\gamma=1" />
-          </p>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Passo t</th>
-                <th style={S.th}>Estado <InlineMath math="S_t" /></th>
-                <th style={S.th}>Recompensa <InlineMath math="R_{t+1}" /></th>
-                <th style={S.th}>Retorno <InlineMath math="G_t" /></th>
-                <th style={S.th}>Update <InlineMath math="(\alpha=0.1)" /></th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { t: 0, s: 'A', r: '+1', g: '1+2+5 = 8', upd: 'V(A) ← 0 + 0.1×(8−0) = 0.8' },
-                { t: 1, s: 'B', r: '+2', g: '2+5 = 7', upd: 'V(B) ← 0 + 0.1×(7−0) = 0.7' },
-                { t: 2, s: 'C', r: '+5', g: '5', upd: 'V(C) ← 0 + 0.1×(5−0) = 0.5' },
-              ].map(({ t, s, r, g, upd }) => (
-                <tr key={t}>
-                  <td style={S.td}>{t}</td>
-                  <td style={{ ...S.td, fontWeight: 700, color }}>{s}</td>
-                  <td style={S.td}>{r}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace' }}>{g}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{upd}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p style={{ ...S.p, marginBottom: 0, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-            Ao longo de muitos episódios, <InlineMath math="V(A)" /> converge para <InlineMath math="V^\pi(A) = \mathbb{E}[G_t | S_t = A]" />.
-          </p>
-        </div>
-        <div style={S.note}>
-          Com <InlineMath math="\gamma = 1" /> (sem desconto), o retorno é simplesmente a soma das recompensas futuras.
-          Em tarefas com episódios longos, um <InlineMath math="\gamma < 1" /> é essencial para garantir convergência.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
       {/* ── 4. TD(0) ── */}
       <div style={S.section}>
-        <h2 style={S.h2}>4. TD(0) — Temporal Difference Learning</h2>
+        <h2 style={S.h2}>3. TD(0) — Temporal Difference Learning</h2>
         <p style={S.p}>
           TD Learning combina as ideias do MC (model-free, amostras de experiência) com as da DP
           (bootstrapping). Em vez de esperar pelo fim do episódio, atualiza a estimativa de valor
@@ -372,7 +475,7 @@ export default function RL4() {
               ],
             },
           ].map(({ title, items }) => (
-            <div key={title} style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: `1px solid rgba(249,115,22,0.10)` }}>
+            <div key={title} style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: `1px solid rgba(74,158,237,0.10)` }}>
               <p style={{ fontWeight: 700, color, margin: '0 0 0.5rem', fontSize: '0.9rem' }}>{title}</p>
               <ul style={{ paddingLeft: '1.1rem', margin: 0 }}>
                 {items.map((it) => (
@@ -393,7 +496,7 @@ export default function RL4() {
 
       {/* ── 5. MC vs TD vs DP Triple Comparison ── */}
       <div style={S.section}>
-        <h2 style={S.h2}>5. MC vs TD vs DP — Comparação Tripla</h2>
+        <h2 style={S.h2}>4. MC vs TD vs DP — Comparação Tripla</h2>
 
         <h3 style={S.h3}>Diagramas de Backup</h3>
         <div style={S.diagram}>
@@ -463,7 +566,164 @@ export default function RL4() {
 
       {/* ── 6. SARSA ── */}
       <div style={S.section}>
-        <h2 style={S.h2}>6. SARSA — On-Policy TD Control</h2>
+        <h2 style={S.h2}>5. O Problema de Exploração em RL</h2>
+        <p style={S.p}>
+          Em Model-Free Control, o agente não conhece a função de recompensa nem a dinâmica de transição do ambiente.
+          Tem de descobrir a política ótima interagindo diretamente com o ambiente. Isto cria uma tensão fundamental:
+          o agente precisa de <strong>explorar</strong> ações desconhecidas para descobrir recompensas melhores,
+          mas também precisa de <strong>explotar</strong> o conhecimento já adquirido para maximizar recompensa imediata.
+        </p>
+
+        <h3 style={S.h3}>Porque é que políticas greedy puras falham</h3>
+        <p style={S.p}>
+          Uma política puramente greedy seleciona sempre a ação com maior valor estimado atual:
+          <InlineMath math={"\\pi(s) = \\arg\\max_a Q(s,a)"} />. O problema é que os valores Q são inicializados de forma
+          arbitrária ou pessimista, e o agente pode "bloquear" numa ação sub-ótima antes de ter explorado alternativas
+          melhores. Considere o exemplo clássico do problema do bandido de 5 braços:
+        </p>
+
+        <div style={S.diagram}>
+          <BanditDiagram />
+          <p style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem', marginBottom: 0 }}>
+            Se o agente experimenta A₁ primeiro e obtém recompensa razoável, a política greedy fica "presa" nessa ação,
+            nunca descobrindo que A₂ é o ótimo real.
+          </p>
+        </div>
+
+        <p style={S.p}>
+          Matematicamente, este fenómeno é chamado de <strong>sub-ótimo local permanente</strong>: o agente converge
+          para uma política que não é ótima porque nunca recolheu evidência suficiente sobre as outras ações.
+          A exploração é o mecanismo que garante que todos os pares (s, a) são amostrados suficientemente.
+        </p>
+
+        <div style={S.highlight}>
+          <strong>Dilema Exploração-Explotação:</strong> Sem exploração suficiente, o agente não descobre o ótimo global.
+          Com exploração excessiva, desperdiça recompensas a experimentar ações sabidamente sub-ótimas.
+          O equilíbrio dinâmico entre os dois é o núcleo do design de algoritmos de controlo model-free.
+        </div>
+      </div>
+
+      <hr style={S.divider} />
+
+      {/* ── ε-Greedy ── */}
+      <div style={S.section}>
+        <h2 style={S.h2}>6. ε-Greedy: A Solução Fundamental</h2>
+        <p style={S.p}>
+          A política ε-greedy é o mecanismo mais simples e amplamente utilizado para equilibrar exploração e explotação.
+          O princípio é direto: com probabilidade ε, o agente toma uma ação aleatória (exploração uniforme do espaço
+          de ações); com probabilidade <InlineMath math={"1-\\varepsilon"} />, toma a ação greedy (explotação do
+          conhecimento atual).
+        </p>
+
+        <div style={S.math}>
+          <BlockMath math={`\\pi(a \\mid s) = \\begin{cases} \\dfrac{\\varepsilon}{|\\mathcal{A}|} + (1 - \\varepsilon) & \\text{se } a = \\arg\\max_{a'} Q(s, a') \\\\ \\dfrac{\\varepsilon}{|\\mathcal{A}|} & \\text{caso contrário} \\end{cases}`} />
+        </div>
+
+        <p style={S.p}>
+          Note que todas as ações recebem pelo menos probabilidade <InlineMath math={"\\varepsilon / |\\mathcal{A}|"} />,
+          garantindo que nenhuma ação é completamente excluída. A ação greedy recebe probabilidade adicional
+          <InlineMath math={"1 - \\varepsilon"} />.
+        </p>
+
+        <h3 style={S.h3}>Melhoria da Política com ε-Greedy</h3>
+        <p style={S.p}>
+          Pode-se provar que a política ε-greedy em relação a <InlineMath math={"Q_\\pi"} /> é sempre pelo menos tão boa
+          quanto a política ε-greedy anterior (melhoria de política monotónica). Para qualquer estado <InlineMath math={"s"} />:
+        </p>
+
+        <div style={S.math}>
+          <BlockMath math={`Q_\\pi(s, \\pi'(s)) \\geq V_\\pi(s)`} />
+        </div>
+
+        <p style={S.p}>
+          O tradeoff chave é entre o valor de ε e a recompensa acumulada. Um ε elevado garante mais exploração
+          mas reduz a recompensa média por passo (porque o agente escolhe ações sub-ótimas com mais frequência).
+          Um ε baixo explota mais eficientemente mas converge para sub-ótimos locais se não houver exploração suficiente.
+        </p>
+
+        <div style={S.diagram}>
+          <p style={{ textAlign: 'center', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+            Recompensa acumulada ao longo do treino para diferentes valores de ε (problema do bandido de 10 braços)
+          </p>
+          <EpsilonRewardPlot />
+          <p style={{ textAlign: 'center', fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.75rem', marginBottom: 0 }}>
+            ε = 0.1 obtém o melhor desempenho a longo prazo — exploração suficiente sem desperdiçar recompensas.
+            ε = 0 (greedy) estabiliza rapidamente mas num sub-ótimo.
+          </p>
+        </div>
+
+        <div style={S.note}>
+          Na prática, ε é frequentemente decrescente ao longo do treino: começa alto (exploração intensa) e vai
+          reduzindo à medida que o agente ganha confiança nos seus valores Q. Esta abordagem combina o melhor
+          dos dois mundos, mas requer um schedule de decaimento cuidadosamente ajustado.
+        </div>
+      </div>
+
+      <hr style={S.divider} />
+
+      {/* ── GLIE ── */}
+      <div style={S.section}>
+        <h2 style={S.h2}>7. GLIE — Greedy in the Limit with Infinite Exploration</h2>
+        <p style={S.p}>
+          Para garantir convergência teórica para a política ótima π*, não basta ter qualquer schedule de ε decrescente.
+          A condição formal GLIE impõe dois requisitos simultâneos que devem ser satisfeitos:
+        </p>
+
+        <p style={S.p}>
+          <strong>Condição 1 — Exploração suficiente:</strong> Todos os pares estado-ação devem ser visitados infinitas
+          vezes ao longo do treino:
+        </p>
+        <div style={S.math}>
+          <BlockMath math={`\\lim_{k \\to \\infty} N_k(s, a) = \\infty \\quad \\forall s \\in \\mathcal{S},\\, a \\in \\mathcal{A}`} />
+        </div>
+        <p style={S.p}>
+          <strong>Condição 2 — Convergência para greedy:</strong> A política deve convergir para a política greedy
+          no limite:
+        </p>
+        <div style={S.math}>
+          <BlockMath math={`\\lim_{k \\to \\infty} \\pi_k(a \\mid s) = \\mathbf{1}\\left[a = \\arg\\max_{a'} Q_k(s, a')\\right]`} />
+        </div>
+
+        <h3 style={S.h3}>Schedule Harmónico: ε_k = 1/k</h3>
+        <p style={S.p}>
+          A escolha mais comum de schedule GLIE é <InlineMath math={"\\varepsilon_k = 1/k"} />, onde k é o número
+          do episódio. Este schedule satisfaz ambas as condições GLIE porque:
+        </p>
+
+        <ul style={S.ul}>
+          <li style={S.li}>
+            <InlineMath math={"\\sum_{k=1}^\\infty \\varepsilon_k = \\sum_{k=1}^\\infty \\frac{1}{k} = \\infty"} /> —
+            a soma diverge, garantindo exploração suficiente (Condição 1)
+          </li>
+          <li style={S.li}>
+            <InlineMath math={"\\varepsilon_k = 1/k \\to 0"} /> quando <InlineMath math={"k \\to \\infty"} /> —
+            a política converge para greedy (Condição 2)
+          </li>
+          <li style={S.li}>
+            A taxa de decaimento é lenta o suficiente para garantir exploração, mas suficientemente rápida
+            para convergência assintótica
+          </li>
+        </ul>
+
+        <div style={S.diagram}>
+          <p style={{ textAlign: 'center', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+            Curva de decaimento GLIE: ε_k = 1/k
+          </p>
+          <GLIEDecayCurve />
+        </div>
+
+        <div style={S.note}>
+          Na prática, <InlineMath math={"\\varepsilon_k = 1/k"} /> pode ser demasiado lento. Muitos práticos usam
+          <InlineMath math={"\\varepsilon_k = \\varepsilon_0 \\cdot \\rho^k"} /> com ρ ∈ (0,1), que não é formalmente
+          GLIE mas funciona bem empiricamente para problemas finitos.
+        </div>
+      </div>
+
+      <hr style={S.divider} />
+
+      {/* ── SARSA ── */}
+      <div style={S.section}>
+        <h2 style={S.h2}>8. SARSA — On-Policy TD Control</h2>
         <p style={S.p}>
           SARSA estende o TD(0) de predição para <em>controlo</em>: aprende a função de valor de ação
           <InlineMath math="Q^\pi(s,a)" /> em vez de <InlineMath math="V^\pi(s)" />. É on-policy — a
@@ -512,7 +772,7 @@ export default function RL4() {
 
       {/* ── 7. Q-Learning ── */}
       <div style={S.section}>
-        <h2 style={S.h2}>7. Q-Learning — Off-Policy TD Control</h2>
+        <h2 style={S.h2}>9. Q-Learning — Off-Policy TD Control</h2>
         <p style={S.p}>
           Q-Learning aprende a Q-function ótima <InlineMath math="Q^*" /> diretamente, independentemente
           da política de comportamento. É off-policy: a <em>target policy</em> (política greedy em relação
@@ -549,117 +809,9 @@ export default function RL4() {
 
       <hr style={S.divider} />
 
-      {/* ── 8. Q-Learning Numeric Example ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Exemplo Numérico — Q-Learning num MDP de 3 Estados</h2>
-        <p style={S.p}>
-          Considere um MDP com estados <InlineMath math="\{s_0, s_1, s_2\}" />, onde <InlineMath math="s_2" /> é
-          terminal, e 2 ações <InlineMath math="\{a_0, a_1\}" />. Parâmetros: <InlineMath math="\alpha=0.5,\; \gamma=0.9" />.
-          Recompensas: tomar <InlineMath math="a_1" /> em <InlineMath math="s_0" /> leva a <InlineMath math="s_1" />
-          com R=0; tomar <InlineMath math="a_1" /> em <InlineMath math="s_1" /> leva a <InlineMath math="s_2" />
-          com R=10.
-        </p>
-
-        <h3 style={S.h3}>Q-table inicial (todos zeros)</h3>
-        <div style={S.diagram}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Estado</th>
-                <th style={S.th}><InlineMath math="Q(s,a_0)" /></th>
-                <th style={S.th}><InlineMath math="Q(s,a_1)" /></th>
-              </tr>
-            </thead>
-            <tbody>
-              {['s_0', 's_1', 's_2'].map((s) => (
-                <tr key={s}><td style={{ ...S.td, fontFamily: 'monospace' }}>{s}</td><td style={S.td}>0</td><td style={S.td}>0</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h3 style={S.h3}>Episódio: <span style={{ fontFamily: 'monospace', color }}>s₀ →(a₁)→ s₁ →(a₁)→ s₂</span></h3>
-        <div style={S.diagram}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Step</th>
-                <th style={S.th}>Transição</th>
-                <th style={S.th}>R</th>
-                <th style={S.th}>Q target</th>
-                <th style={S.th}>Update</th>
-                <th style={S.th}>Novo Q</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                {
-                  step: 1,
-                  trans: 's₀,a₁ → s₁',
-                  r: 0,
-                  target: '0 + 0.9×max(0,0) = 0',
-                  update: 'Q(s₀,a₁) ← 0 + 0.5×(0−0)',
-                  newq: '0',
-                },
-                {
-                  step: 2,
-                  trans: 's₁,a₁ → s₂',
-                  r: 10,
-                  target: '10 + 0.9×0 = 10',
-                  update: 'Q(s₁,a₁) ← 0 + 0.5×(10−0)',
-                  newq: '5',
-                },
-              ].map(({ step, trans, r, target, update, newq }) => (
-                <tr key={step}>
-                  <td style={S.td}>{step}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{trans}</td>
-                  <td style={S.td}>{r}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{target}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{update}</td>
-                  <td style={{ ...S.td, fontWeight: 700, color }}>{newq}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <h3 style={{ ...S.h3, marginTop: '1.2rem' }}>Após 2º episódio (Q(s₁,a₁) = 5 agora)</h3>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Step</th>
-                <th style={S.th}>Transição</th>
-                <th style={S.th}>R</th>
-                <th style={S.th}>Q target</th>
-                <th style={S.th}>Novo Q</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { step: 1, trans: 's₀,a₁ → s₁', r: 0, target: '0 + 0.9×5 = 4.5', newq: 'Q(s₀,a₁) = 0 + 0.5×(4.5−0) = 2.25' },
-                { step: 2, trans: 's₁,a₁ → s₂', r: 10, target: '10', newq: 'Q(s₁,a₁) = 5 + 0.5×(10−5) = 7.5' },
-              ].map(({ step, trans, r, target, newq }) => (
-                <tr key={step}>
-                  <td style={S.td}>{step}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{trans}</td>
-                  <td style={S.td}>{r}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{target}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem', color }}>{newq}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p style={{ ...S.p, fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-          Com mais episódios, <InlineMath math="Q(s_0, a_1) \to 9" /> e <InlineMath math="Q(s_1, a_1) \to 10" />,
-          que são os valores ótimos: <InlineMath math="Q^*(s_0,a_1) = \gamma \cdot R = 0.9 \times 10 = 9" />.
-        </p>
-      </div>
-
-      <hr style={S.divider} />
-
       {/* ── 9. SARSA vs Q-Learning ── */}
       <div style={S.section}>
-        <h2 style={S.h2}>9. SARSA vs Q-Learning — Comparação e Cliff Walking</h2>
+        <h2 style={S.h2}>10. SARSA vs Q-Learning — Comparação e Cliff Walking</h2>
 
         <table style={S.table}>
           <thead>
@@ -697,15 +849,15 @@ export default function RL4() {
         <div style={S.diagram}>
           <CliffWalkingSVG />
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.2rem' }}>
-            <div style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: '1px solid rgba(249,115,22,0.10)' }}>
-              <p style={{ fontWeight: 700, color: '#f97316', margin: '0 0 0.4rem' }}>SARSA — Caminho Seguro</p>
+            <div style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: '1px solid rgba(74,158,237,0.10)' }}>
+              <p style={{ fontWeight: 700, color: '#4a9eed', margin: '0 0 0.4rem' }}>SARSA — Caminho Seguro</p>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
                 Aprende um caminho mais longo pelo topo da grelha. Como é on-policy, contabiliza o risco
                 de cair due à exploração ε-greedy — prefere evitar o precipício mesmo a custo de mais steps.
               </p>
             </div>
-            <div style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: '1px solid rgba(245,158,11,0.4)' }}>
-              <p style={{ fontWeight: 700, color: '#f97316', margin: '0 0 0.4rem' }}>Q-Learning — Caminho Ótimo</p>
+            <div style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '1rem', border: '1px solid rgba(2,132,199,0.4)' }}>
+              <p style={{ fontWeight: 700, color: '#4a9eed', margin: '0 0 0.4rem' }}>Q-Learning — Caminho Ótimo</p>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
                 Aprende o caminho mais curto (junto ao precipício), que é o ótimo teórico. Mas durante o
                 treino, a exploração ε-greedy leva a quedas frequentes — desempenho pior no treino
@@ -720,31 +872,6 @@ export default function RL4() {
           a política ótima global mas pode ter desempenho pior durante a aprendizagem.
         </div>
       </div>
-
-
-      <hr style={S.divider} />
-
-      {/* ── 10. Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <div style={S.highlight}>
-          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-            {[
-              { bold: 'Model-Free vs Model-Based', text: ': métodos model-free não conhecem P(s\'|s,a) nem R(s,a) — aprendem da experiência direta. Essenciais em problemas reais onde a dinâmica é desconhecida ou intratável.' },
-              { bold: 'Monte Carlo', text: ': usa retornos completos G_t de episódios — unbiased mas alta variância. Requer episódios completos; não funciona em tarefas contínuas.' },
-              { bold: 'TD(0)', text: ': bootstrapping online a cada step via TD error δ_t = R_{t+1} + γV(S_{t+1}) − V(S_t). Biased mas baixa variância, funciona em tarefas contínuas.' },
-              { bold: 'Comparação DP/MC/TD', text: ': DP usa modelo + full backup; MC usa samples + trajetória completa; TD usa samples + 1 passo. TD(λ) interpola MC↔TD.' },
-              { bold: 'SARSA (on-policy)', text: ': Q(S,A) ← Q(S,A) + α[R + γQ(S\',A\') − Q(S,A)]. Aprende Q^π — mais seguro durante treino, converge para Q* com GLIE.' },
-              { bold: 'Q-Learning (off-policy)', text: ': Q(S,A) ← Q(S,A) + α[R + γ max_a\' Q(S\',a\') − Q(S,A)]. Aprende Q* diretamente — base do DQN e do Deep RL moderno.' },
-              { bold: 'Cliff Walking', text: ': ilustra on/off-policy — SARSA toma o caminho seguro, Q-Learning aprende o ótimo mas cai durante o treino.' },
-            ].map(({ bold, text }) => (
-              <li key={bold} style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-                <strong>{bold}</strong>{text}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

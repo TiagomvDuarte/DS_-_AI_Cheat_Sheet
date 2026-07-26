@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH4() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[3].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[3].title}</h1>
-      <p style={S.sub}>{modules[3].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -39,7 +38,7 @@ export default function ETH4() {
         <div style={S.diagram}>
           <svg viewBox="0 0 520 300" width="100%" style={{ display: 'block' }}>
             {/* Center circle */}
-            <circle cx="260" cy="150" r="42" fill="rgba(249,115,22,0.25)" stroke={C} strokeWidth="2" />
+            <circle cx="260" cy="150" r="42" fill="rgba(74,158,237,0.25)" stroke={C} strokeWidth="2" />
             <text x="260" y="145" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight="800">7 PRINCÍPIOS</text>
             <text x="260" y="161" textAnchor="middle" fill={C} fontSize="9">GDPR</text>
 
@@ -60,7 +59,7 @@ export default function ETH4() {
               return (
                 <g key={i}>
                   <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={`${C}60`} strokeWidth="1.2" />
-                  <circle cx={p.cx} cy={p.cy} r="30" fill="rgba(249,115,22,0.20)" stroke={C} strokeWidth="1.5" />
+                  <circle cx={p.cx} cy={p.cy} r="30" fill="rgba(74,158,237,0.20)" stroke={C} strokeWidth="1.5" />
                   <text x={p.cx} y={p.label2 ? p.cy - 4 : p.cy + 4} textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontWeight="600">{p.label}</text>
                   {p.label2 && <text x={p.cx} y={p.cy + 10} textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontWeight="600">{p.label2}</text>}
                 </g>
@@ -107,14 +106,14 @@ export default function ETH4() {
             </defs>
 
             {/* Dataset D */}
-            <rect x="15" y="30" width="125" height="85" rx="8" fill="rgba(249,115,22,0.09)" stroke={C} strokeWidth="1.5" />
+            <rect x="15" y="30" width="125" height="85" rx="8" fill="rgba(74,158,237,0.09)" stroke={C} strokeWidth="1.5" />
             <text x="77" y="58" textAnchor="middle" fill={C} fontSize="13" fontWeight="700">Dataset D</text>
             <text x="77" y="78" textAnchor="middle" fill="#94a3b8" fontSize="10">registo r₁</text>
             <text x="77" y="93" textAnchor="middle" fill="#94a3b8" fontSize="10">registo r₂</text>
             <text x="77" y="108" textAnchor="middle" fill="#94a3b8" fontSize="10">...</text>
 
             {/* Dataset D' */}
-            <rect x="15" y="135" width="125" height="50" rx="8" fill="rgba(249,115,22,0.06)" stroke={`${C}60`} strokeWidth="1.2" strokeDasharray="5 3" />
+            <rect x="15" y="135" width="125" height="50" rx="8" fill="rgba(74,158,237,0.06)" stroke={`${C}60`} strokeWidth="1.2" strokeDasharray="5 3" />
             <text x="77" y="158" textAnchor="middle" fill={`${C}cc`} fontSize="11" fontWeight="600">Dataset D'</text>
             <text x="77" y="176" textAnchor="middle" fill="#64748b" fontSize="9">(difere em 1 entrada)</text>
 
@@ -123,7 +122,7 @@ export default function ETH4() {
             <line x1="140" y1="160" x2="218" y2="130" stroke={`${C}50`} strokeWidth="1.2" strokeDasharray="5 3" markerEnd="url(#arr4d)" />
 
             {/* Mechanism box */}
-            <rect x="218" y="82" width="135" height="70" rx="8" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="2" />
+            <rect x="218" y="82" width="135" height="70" rx="8" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="2" />
             <text x="285" y="108" textAnchor="middle" fill={C} fontSize="12" fontWeight="700">Mecanismo M</text>
             <text x="285" y="126" textAnchor="middle" fill="#94a3b8" fontSize="9">+ ruído calibrado</text>
             <text x="285" y="141" textAnchor="middle" fill="#94a3b8" fontSize="9">N(0, σ²)</text>
@@ -133,12 +132,12 @@ export default function ETH4() {
             <line x1="353" y1="135" x2="418" y2="168" stroke={`${C}50`} strokeWidth="1.2" strokeDasharray="5 3" markerEnd="url(#arr4d)" />
 
             {/* Output D */}
-            <rect x="418" y="42" width="185" height="55" rx="8" fill="rgba(249,115,22,0.09)" stroke={C} strokeWidth="1.5" />
+            <rect x="418" y="42" width="185" height="55" rx="8" fill="rgba(74,158,237,0.09)" stroke={C} strokeWidth="1.5" />
             <text x="510" y="67" textAnchor="middle" fill={C} fontSize="11" fontWeight="700">P[M(D) ∈ S]</text>
             <text x="510" y="86" textAnchor="middle" fill="#94a3b8" fontSize="9">distribuição de output</text>
 
             {/* Output D' */}
-            <rect x="418" y="140" width="185" height="55" rx="8" fill="rgba(249,115,22,0.06)" stroke={`${C}60`} strokeWidth="1.2" strokeDasharray="5 3" />
+            <rect x="418" y="140" width="185" height="55" rx="8" fill="rgba(74,158,237,0.06)" stroke={`${C}60`} strokeWidth="1.2" strokeDasharray="5 3" />
             <text x="510" y="165" textAnchor="middle" fill={`${C}cc`} fontSize="11" fontWeight="600">P[M(D') ∈ S]</text>
             <text x="510" y="184" textAnchor="middle" fill="#64748b" fontSize="9">≤ eᵋ × P[M(D) ∈ S] + δ</text>
           </svg>
@@ -219,18 +218,7 @@ export default function ETH4() {
           a exposição de dados pessoais sem sacrificar a capacidade de treino coletivo do modelo.
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>GDPR e Proteção de Dados</strong> — o Regulamento Geral de Proteção de Dados da UE impõe princípios como minimização de dados, limitação de finalidade e direito ao apagamento; para sistemas de IA, o artigo 22.º restringe decisões totalmente automatizadas com efeitos significativos sobre pessoas, exigindo salvaguardas como explicação e revisão humana.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Privacidade Diferencial</strong> — mecanismo matemático que garante que a participação de qualquer indivíduo num conjunto de dados não altera significativamente os resultados de uma análise; é implementado adicionando ruído calibrado às consultas ou aos gradientes de treino (DP-SGD), com o parâmetro ε a controlar o nível de privacidade garantida.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Surveillance Capitalism</strong> — conceito de Shoshana Zuboff que descreve o modelo de negócio em que comportamentos humanos são recolhidos como matéria-prima, processados por IA para prever e influenciar condutas futuras, e vendidos a anunciantes; levanta questões sobre autonomia, consentimento e assimetrias de poder entre plataformas e utilizadores.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Anonimização e Pseudonimização</strong> — a anonimização remove todos os identificadores de forma irreversível, mas é difícil de garantir plenamente dado o risco de re-identificação por combinação de dados; a pseudonimização substitui identificadores diretos por códigos, reduzindo o risco mas mantendo a possibilidade de ligação com a chave de correspondência.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

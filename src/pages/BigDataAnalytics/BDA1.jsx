@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -27,14 +27,14 @@ const LifecycleDiagram = () => (
     <svg viewBox="0 0 620 160" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-de" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {[
-        { x: 10,  label: 'Ingestão', sub: 'Fivetran, Airbyte, Kafka', c: '#f97316' },
-        { x: 165, label: 'Storage', sub: 'Data Lake / Lakehouse', c: '#f97316' },
-        { x: 320, label: 'Transformação', sub: 'Spark, dbt, SQL', c: '#f97316' },
-        { x: 475, label: 'Serving', sub: 'BI, ML, APIs', c: '#f97316' },
+        { x: 10,  label: 'Ingestão', sub: 'Fivetran, Airbyte, Kafka', c: '#4a9eed' },
+        { x: 165, label: 'Storage', sub: 'Data Lake / Lakehouse', c: '#4a9eed' },
+        { x: 320, label: 'Transformação', sub: 'Spark, dbt, SQL', c: '#4a9eed' },
+        { x: 475, label: 'Serving', sub: 'BI, ML, APIs', c: '#4a9eed' },
       ].map(({ x, label, sub, c }) => (
         <g key={label}>
           <rect x={x} y={50} width={135} height={56} rx={8} fill={`${c}15`} stroke={c} strokeWidth="1.5" />
@@ -43,7 +43,7 @@ const LifecycleDiagram = () => (
         </g>
       ))}
       {[[145,78,165,78],[300,78,320,78],[455,78,475,78]].map(([x1,y1,x2,y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-de)" />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-de)" />
       ))}
       <text x="310" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">
         Orquestrado de ponta a ponta por Apache Airflow — cada seta representa dependências geridas por DAGs
@@ -58,17 +58,17 @@ const ETLvsELTDiagram = () => (
     <svg viewBox="0 0 620 220" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-etl" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* ETL row */}
-      <text x="10" y="20" fill="#f97316" fontSize="11" fontWeight="700">ETL (tradicional)</text>
+      <text x="10" y="20" fill="#4a9eed" fontSize="11" fontWeight="700">ETL (tradicional)</text>
       {[
         { x: 10,  w: 100, label: 'Fontes', c: '#94a3b8' },
-        { x: 130, w: 100, label: 'Extract', c: '#f97316' },
-        { x: 250, w: 130, label: 'Transform\n(staging server)', c: '#f97316' },
-        { x: 400, w: 100, label: 'Load', c: '#f97316' },
-        { x: 520, w: 100, label: 'Data\nWarehouse', c: '#f97316' },
+        { x: 130, w: 100, label: 'Extract', c: '#4a9eed' },
+        { x: 250, w: 130, label: 'Transform\n(staging server)', c: '#4a9eed' },
+        { x: 400, w: 100, label: 'Load', c: '#4a9eed' },
+        { x: 520, w: 100, label: 'Data\nWarehouse', c: '#4a9eed' },
       ].map(({ x, w, label, c }, i) => (
         <g key={'etl'+i}>
           <rect x={x} y={30} width={w} height={45} rx={7} fill={`${c}15`} stroke={c} strokeWidth="1.5" />
@@ -78,16 +78,16 @@ const ETLvsELTDiagram = () => (
         </g>
       ))}
       {[[110,52,130,52],[230,52,250,52],[380,52,400,52],[500,52,520,52]].map(([x1,y1,x2,y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-etl)" />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-etl)" />
       ))}
 
       {/* ELT row */}
-      <text x="10" y="120" fill="#f97316" fontSize="11" fontWeight="700">ELT (moderno)</text>
+      <text x="10" y="120" fill="#4a9eed" fontSize="11" fontWeight="700">ELT (moderno)</text>
       {[
         { x: 10,  w: 100, label: 'Fontes', c: '#94a3b8' },
-        { x: 130, w: 130, label: 'Extract +\nLoad (raw)', c: '#f97316' },
-        { x: 280, w: 140, label: 'Lakehouse\n(raw zone)', c: '#f97316' },
-        { x: 440, w: 130, label: 'Transform\n(Spark / SQL)', c: '#f97316' },
+        { x: 130, w: 130, label: 'Extract +\nLoad (raw)', c: '#4a9eed' },
+        { x: 280, w: 140, label: 'Lakehouse\n(raw zone)', c: '#4a9eed' },
+        { x: 440, w: 130, label: 'Transform\n(Spark / SQL)', c: '#4a9eed' },
       ].map(({ x, w, label, c }, i) => (
         <g key={'elt'+i}>
           <rect x={x} y={130} width={w} height={50} rx={7} fill={`${c}15`} stroke={c} strokeWidth="1.5" />
@@ -97,7 +97,7 @@ const ETLvsELTDiagram = () => (
         </g>
       ))}
       {[[110,155,130,155],[260,155,280,155],[420,155,440,155]].map(([x1,y1,x2,y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-etl)" />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-etl)" />
       ))}
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>ETL transforma antes de carregar (staging dedicado). ELT carrega dados em bruto primeiro e usa o poder de computação do warehouse/lakehouse para transformar.</p>
@@ -110,13 +110,13 @@ const DAGSimpleDiagram = () => (
     <svg viewBox="0 0 500 140" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-dag1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {[
-        { x: 20,  y: 50, label: 'extract_data', sub: 'PythonOperator', c: '#f97316' },
-        { x: 200, y: 50, label: 'transform_data', sub: 'SparkSubmitOperator', c: '#f97316' },
-        { x: 380, y: 50, label: 'load_warehouse', sub: 'PythonOperator', c: '#f97316' },
+        { x: 20,  y: 50, label: 'extract_data', sub: 'PythonOperator', c: '#4a9eed' },
+        { x: 200, y: 50, label: 'transform_data', sub: 'SparkSubmitOperator', c: '#4a9eed' },
+        { x: 380, y: 50, label: 'load_warehouse', sub: 'PythonOperator', c: '#4a9eed' },
       ].map(({ x, y, label, sub, c }) => (
         <g key={label}>
           <rect x={x} y={y} width={110} height={48} rx={7} fill={`${c}15`} stroke={c} strokeWidth="1.5" />
@@ -125,7 +125,7 @@ const DAGSimpleDiagram = () => (
         </g>
       ))}
       {[[130,74,200,74],[310,74,380,74]].map(([x1,y1,x2,y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-dag1)" />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-dag1)" />
       ))}
       <text x="250" y="125" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">
         extract_data &gt;&gt; transform_data &gt;&gt; load_warehouse — sem ciclos, ordem garantida
@@ -140,17 +140,17 @@ const ArchitectureDiagram = () => (
     <svg viewBox="0 0 640 250" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-arch" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {[
         { x: 10,  y: 70,  w: 90,  label: 'Fontes', sub: 'APIs, DBs, SaaS', c: '#94a3b8' },
-        { x: 130, y: 70,  w: 100, label: 'Fivetran /\nAirbyte', sub: 'Ingestão (CDC)', c: '#f97316' },
-        { x: 260, y: 30,  w: 100, label: 'Data Lake\n(Raw Zone)', sub: 'S3 / ADLS / GCS', c: '#f97316' },
-        { x: 260, y: 120, w: 100, label: 'Lakehouse\n(Delta/Iceberg)', sub: 'Bronze→Silver→Gold', c: '#f97316' },
-        { x: 400, y: 120, w: 100, label: 'Spark / dbt', sub: 'Transformação', c: '#f97316' },
-        { x: 540, y: 50,  w: 90,  label: 'BI', sub: 'Power BI, Tableau', c: '#f97316' },
-        { x: 540, y: 150, w: 90,  label: 'ML', sub: 'Feature Store', c: '#f97316' },
+        { x: 130, y: 70,  w: 100, label: 'Fivetran /\nAirbyte', sub: 'Ingestão (CDC)', c: '#4a9eed' },
+        { x: 260, y: 30,  w: 100, label: 'Data Lake\n(Raw Zone)', sub: 'S3 / ADLS / GCS', c: '#4a9eed' },
+        { x: 260, y: 120, w: 100, label: 'Lakehouse\n(Delta/Iceberg)', sub: 'Bronze→Silver→Gold', c: '#4a9eed' },
+        { x: 400, y: 120, w: 100, label: 'Spark / dbt', sub: 'Transformação', c: '#4a9eed' },
+        { x: 540, y: 50,  w: 90,  label: 'BI', sub: 'Power BI, Tableau', c: '#4a9eed' },
+        { x: 540, y: 150, w: 90,  label: 'ML', sub: 'Feature Store', c: '#4a9eed' },
       ].map(({ x, y, w, label, sub, c }) => (
         <g key={label}>
           <rect x={x} y={y} width={w} height={50} rx={7} fill={`${c}15`} stroke={c} strokeWidth="1.5" />
@@ -166,10 +166,10 @@ const ArchitectureDiagram = () => (
         [360,145,400,145],
         [500,145,540,75],[500,145,540,175],
       ].map(([x1,y1,x2,y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-arch)" opacity="0.8" />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-arch)" opacity="0.8" />
       ))}
-      <rect x="130" y="215" width="500" height="24" rx="4" fill="f97316" stroke="#f97316" strokeWidth="1" />
-      <text x="380" y="231" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Apache Airflow — orquestra ingestão, transformação e publicação (DAGs agendados)</text>
+      <rect x="130" y="215" width="500" height="24" rx="4" fill="f97316" stroke="#4a9eed" strokeWidth="1" />
+      <text x="380" y="231" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Apache Airflow — orquestra ingestão, transformação e publicação (DAGs agendados)</text>
     </svg>
   </div>
 );
@@ -178,35 +178,35 @@ const IngestionToolExplorer = () => {
   const [tab, setTab] = useState(0);
   const tools = [
     {
-      name: 'Fivetran', color: '#f97316',
+      name: 'Fivetran', color: '#4a9eed',
       modelo: 'Plataforma SaaS totalmente gerida com mais de 500 conectores pré-construídos (Salesforce, Stripe, Postgres, Google Ads, etc.). Configuração no-code: autenticar a fonte, escolher o destino (warehouse), e o Fivetran trata da extracção, normalização de schema e sincronização incremental automaticamente.',
       pontos_fortes: ['Conectores extremamente fiáveis e mantidos pela equipa Fivetran', 'Schema drift tratado automaticamente — novas colunas na fonte aparecem no destino', 'CDC (Change Data Capture) nativo para bases de dados transacionais via log-based replication', 'Setup em minutos, zero manutenção de código', 'SLA de qualidade e suporte enterprise'],
       limitacoes: ['Preço baseado em MAR (Monthly Active Rows) pode escalar rapidamente e tornar-se caro', 'Menos controlo sobre lógica de extracção customizada', 'Conectores fechados — não é possível modificar o código internamente', 'Dependência de fornecedor (vendor lock-in)'],
       quando: 'Empresas que valorizam velocidade de implementação e fiabilidade sobre custo marginal, e que usam fontes de dados comuns (SaaS populares, bases de dados standard).',
     },
     {
-      name: 'Airbyte', color: '#f97316',
+      name: 'Airbyte', color: '#4a9eed',
       modelo: 'Plataforma open-source (com versão Cloud gerida) com mais de 350 conectores mantidos pela comunidade e pela Airbyte. Pode ser self-hosted (Docker/Kubernetes) ou usado via Airbyte Cloud. Conectores definidos com um protocolo aberto (Airbyte Protocol) — qualquer pessoa pode construir ou modificar conectores em Python/baixo-código.',
       pontos_fortes: ['Open-source — self-hosted é gratuito (paga-se apenas infraestrutura)', 'Connector Development Kit (CDK) para criar conectores customizados rapidamente', 'CDC suportado para Postgres, MySQL, MongoDB via Debezium', 'Sem vendor lock-in — protocolo aberto e portável', 'Comunidade activa adiciona novos conectores constantemente'],
       limitacoes: ['Self-hosted requer gestão de infraestrutura (Kubernetes recomendado em produção)', 'Conectores da comunidade variam em qualidade/maturidade comparado a Fivetran', 'Airbyte Cloud também cobra por volume, embora geralmente mais barato'],
       quando: 'Equipas com capacidade de engenharia para self-host, que querem evitar vendor lock-in, ou precisam de conectores customizados/nicho não disponíveis noutras plataformas.',
     },
     {
-      name: 'Stitch', color: '#f97316',
+      name: 'Stitch', color: '#4a9eed',
       modelo: 'Plataforma SaaS de ingestão (adquirida pela Talend), pioneira no modelo "ELT gerido". Oferece cerca de 140 conectores, focada em simplicidade e preço acessível para equipas pequenas/médias. Modelo de pricing também baseado em volume de linhas replicadas.',
       pontos_fortes: ['Pricing geralmente mais acessível que Fivetran para volumes pequenos', 'Interface simples, rápida configuração', 'Boa integração com warehouses standard (Snowflake, BigQuery, Redshift)'],
       limitacoes: ['Catálogo de conectores menor que Fivetran/Airbyte', 'Menos funcionalidades avançadas de transformação/orquestração', 'Crescimento e inovação mais lentos desde a aquisição'],
       quando: 'Startups e equipas pequenas com orçamento limitado e fontes de dados comuns/simples.',
     },
     {
-      name: 'Meltano', color: '#f97316',
+      name: 'Meltano', color: '#4a9eed',
       modelo: 'Ferramenta open-source "code-first" construída sobre o standard Singer (taps = extractors, targets = loaders). Configuração declarativa em YAML, versionada em Git, executável via CLI. Pensado para equipas de engenharia que querem ELT como código (DataOps).',
       pontos_fortes: ['100% open-source e self-hosted, sem custos de licença', 'Configuração como código — versionamento Git, CI/CD, testes', 'Ecossistema Singer com centenas de taps/targets reutilizáveis', 'Integra nativamente com dbt para a camada de transformação'],
       limitacoes: ['Requer mais expertise técnica que soluções totalmente geridas', 'Conectores Singer têm qualidade muito variável', 'Sem suporte enterprise oficial — depende da comunidade'],
       quando: 'Equipas de Data Engineering maduras que praticam DataOps/GitOps e preferem controlo total via código a uma UI gerida.',
     },
     {
-      name: 'Custom (Python/Spark)', color: '#f97316',
+      name: 'Custom (Python/Spark)', color: '#4a9eed',
       modelo: 'Scripts de extracção escritos à medida — chamadas a APIs com requests/SDKs, leitura de bases de dados com SQLAlchemy/JDBC, processamento com Pandas ou Spark, escrita directa no destino. Totalmente sob controlo da equipa de engenharia.',
       pontos_fortes: ['Controlo total sobre lógica, performance e custos de infraestrutura', 'Sem custos de licenciamento por volume de dados', 'Pode implementar lógica de negócio complexa não suportada por ferramentas genéricas', 'Integração nativa com o resto do stack (Airflow, Spark)'],
       limitacoes: ['Custo de desenvolvimento e manutenção contínua (schema drift, rate limits, paginação, retries — tudo manual)', 'Tempo de implementação muito maior para cada nova fonte', 'Risco de "reinventar a roda" para problemas já resolvidos por ferramentas managed'],
@@ -232,11 +232,11 @@ const IngestionToolExplorer = () => {
         <p style={{ fontSize: '0.88rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>{t.modelo}</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.6rem' }}>
           <div>
-            <span style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pontos fortes</span>
+            <span style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pontos fortes</span>
             {t.pontos_fortes.map(p => <div key={p} style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>✓ {p}</div>)}
           </div>
           <div>
-            <span style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Limitações</span>
+            <span style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Limitações</span>
             {t.limitacoes.map(l => <div key={l} style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>✗ {l}</div>)}
           </div>
         </div>
@@ -255,7 +255,6 @@ export default function BDA1() {
         <Link to="/bigdata-analytics" style={S.back}><ArrowLeft size={16} /> Voltar a Big Data Analytics</Link>
         <div style={S.tag}>MÓDULO 01</div>
         <h1 style={S.h1}>Data Engineering: ETL, ELT &amp; Orquestração de Pipelines</h1>
-        <p style={S.lead}>Antes de qualquer modelo de Machine Learning, dashboard de BI, ou query analítica, alguém teve de extrair dados de dezenas de sistemas, garantir que chegam limpos e a tempo, e organizá-los de forma que sejam utilizáveis. Esse é o trabalho de Data Engineering — a fundação invisível que alimenta todos os outros módulos deste curso. Este módulo introduz os conceitos, padrões e ferramentas que tornam essa fundação sólida, fiável e escalável.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O Papel do Data Engineer</h2>
@@ -276,7 +275,7 @@ export default function BDA1() {
                   ['Data Scientist', 'Construir modelos estatísticos/ML para prever ou explicar fenómenos a partir de dados já preparados', 'Python (pandas, scikit-learn), Spark MLlib (Módulo 2), notebooks'],
                   ['ML Engineer', 'Colocar modelos em produção, gerir o ciclo de vida e infraestrutura de ML', 'MLflow, Spark, Kubernetes, feature stores'],
                 ].map(([role, focus, tools]) => (
-                  <tr key={role}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{role}</td><td style={S.td}>{focus}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{tools}</td></tr>
+                  <tr key={role}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{role}</td><td style={S.td}>{focus}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{tools}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -309,7 +308,7 @@ export default function BDA1() {
                   ['Tooling típico', 'Informatica, Talend, SSIS, scripts custom', 'Fivetran/Airbyte (load) + dbt/Spark (transform)'],
                   ['Quando faz sentido', 'Compliance estrita exige que dados sensíveis nunca cheguem em bruto ao destino; sistemas legados on-prem com warehouses pequenos', 'Lakehouses/cloud warehouses modernos; equipas que querem agilidade e reprocessamento; volumes grandes e variados'],
                 ].map(([a, etl, elt]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={S.td}>{etl}</td><td style={{ ...S.td, color: '#f97316' }}>{elt}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={S.td}>{etl}</td><td style={{ ...S.td, color: '#4a9eed' }}>{elt}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -370,20 +369,6 @@ export default function BDA1() {
           <ArchitectureDiagram />
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>Data Engineering é a fundação do ciclo de vida dos dados: ingestão → storage → transformação → serving — sem ela, nenhum dos outros módulos deste curso tem dados para trabalhar</li>
-              <li>ETL transforma antes de carregar (paradigma legado, staging dedicado); ELT carrega dados em bruto e transforma depois usando o poder do warehouse/lakehouse — ELT é o padrão dominante hoje</li>
-              <li>Ferramentas como Fivetran e Airbyte automatizam ingestão com conectores pré-construídos, tratam schema drift, e usam CDC para sincronização incremental eficiente — pricing tipicamente baseado em MAR</li>
-              <li>Build vs buy: usar ferramentas geridas para fontes standard, reservar engenharia customizada para casos de alto volume ou lógica proprietária</li>
-              <li>Apache Airflow orquestra tudo via DAGs — grafos acíclicos de tasks com dependências explícitas, scheduling e tratamento de falhas (aprofundado no Módulo 4)</li>
-              <li>A arquitectura de referência — fontes → ingestão → lakehouse (bronze/silver/gold) → transformação (Spark/dbt) → orquestração (Airflow) → serving (BI/ML) — é o fio condutor que liga todos os módulos deste curso</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

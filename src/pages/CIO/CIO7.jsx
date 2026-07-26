@@ -6,19 +6,19 @@ import { BlockMath } from 'react-katex';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -27,7 +27,7 @@ const CXDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Cycle Crossover (CX) — preservando posições absolutas</p>
     <svg viewBox="0 -20 540 180" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr-cx" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316"/></marker>
+        <marker id="arr-cx" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed"/></marker>
       </defs>
       {/* Parents */}
       <text x="10" y="14" fill="var(--text-secondary)" fontSize="8.5" fontWeight="700">PAI 1:</text>
@@ -41,21 +41,21 @@ const CXDiagram = () => (
         return (
           <g key={i}>
             <rect x={65 + i * 65} y={2} width={52} height={20} rx="4"
-              fill={inCycle ? '#c2410c15' : 'var(--bg-primary)'}
-              stroke={inCycle ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-            <text x={91 + i * 65} y={15} textAnchor="middle" fill={inCycle ? '#f97316' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{p1[i]}</text>
+              fill={inCycle ? '#07598515' : 'var(--bg-primary)'}
+              stroke={inCycle ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+            <text x={91 + i * 65} y={15} textAnchor="middle" fill={inCycle ? '#4a9eed' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{p1[i]}</text>
             <rect x={65 + i * 65} y={35} width={52} height={20} rx="4"
-              fill={!inCycle ? '#f9731615' : 'var(--bg-primary)'}
-              stroke={!inCycle ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-            <text x={91 + i * 65} y={48} textAnchor="middle" fill={!inCycle ? '#f97316' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{p2[i]}</text>
+              fill={!inCycle ? '#4a9eed15' : 'var(--bg-primary)'}
+              stroke={!inCycle ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+            <text x={91 + i * 65} y={48} textAnchor="middle" fill={!inCycle ? '#4a9eed' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{p2[i]}</text>
           </g>
         );
       })}
       {/* Cycle arrow — above PAI 1 */}
-      <path d="M 91,2 Q 91,-8 156,-8 Q 221,-8 221,2" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="2,2"/>
-      <path d="M 221,2 Q 221,-8 286,-8 Q 286,-8 286,2" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="2,2" markerEnd="url(#arr-cx)"/>
+      <path d="M 91,2 Q 91,-8 156,-8 Q 221,-8 221,2" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="2,2"/>
+      <path d="M 221,2 Q 221,-8 286,-8 Q 286,-8 286,2" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="2,2" markerEnd="url(#arr-cx)"/>
       <rect x="120" y="-16" width="136" height="14" rx="3" fill="var(--bg-secondary)" opacity="0.95"/>
-      <text x="188" y="-5" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">ciclo: {'{'}pos 0, 2, 3{'}'} → valores {'{'}1,3,4{'}'}</text>
+      <text x="188" y="-5" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">ciclo: {'{'}pos 0, 2, 3{'}'} → valores {'{'}1,3,4{'}'}</text>
 
       {/* Children */}
       <text x="10" y="83" fill="var(--text-secondary)" fontSize="8.5" fontWeight="700">FILHO 1:</text>
@@ -69,13 +69,13 @@ const CXDiagram = () => (
         return (
           <g key={i}>
             <rect x={65 + i * 65} y={70} width={52} height={20} rx="4"
-              fill={inCycle ? '#c2410c10' : '#f9731610'}
-              stroke={inCycle ? '#f97316' : '#f97316'} strokeWidth="1.5"/>
-            <text x={91 + i * 65} y={83} textAnchor="middle" fill={inCycle ? '#f97316' : '#f97316'} fontSize="9" fontWeight="700">{c1}</text>
+              fill={inCycle ? '#07598510' : '#4a9eed10'}
+              stroke={inCycle ? '#4a9eed' : '#4a9eed'} strokeWidth="1.5"/>
+            <text x={91 + i * 65} y={83} textAnchor="middle" fill={inCycle ? '#4a9eed' : '#4a9eed'} fontSize="9" fontWeight="700">{c1}</text>
             <rect x={65 + i * 65} y={108} width={52} height={20} rx="4"
-              fill={inCycle ? '#f9731610' : '#c2410c10'}
-              stroke={inCycle ? '#f97316' : '#f97316'} strokeWidth="1.5"/>
-            <text x={91 + i * 65} y={121} textAnchor="middle" fill={inCycle ? '#f97316' : '#f97316'} fontSize="9" fontWeight="700">{c2}</text>
+              fill={inCycle ? '#4a9eed10' : '#07598510'}
+              stroke={inCycle ? '#4a9eed' : '#4a9eed'} strokeWidth="1.5"/>
+            <text x={91 + i * 65} y={121} textAnchor="middle" fill={inCycle ? '#4a9eed' : '#4a9eed'} fontSize="9" fontWeight="700">{c2}</text>
           </g>
         );
       })}
@@ -104,13 +104,13 @@ const PMXDiagram = () => {
         {p1.map((v, i) => (
           <g key={`p-${i}`}>
             <rect x={65 + i * 65} y={2} width={52} height={20} rx="4"
-              fill={inSeg(i) ? '#f9731615' : 'var(--bg-primary)'}
-              stroke={inSeg(i) ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-            <text x={91 + i * 65} y={15} textAnchor="middle" fill={inSeg(i) ? '#f97316' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{v}</text>
+              fill={inSeg(i) ? '#4a9eed15' : 'var(--bg-primary)'}
+              stroke={inSeg(i) ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+            <text x={91 + i * 65} y={15} textAnchor="middle" fill={inSeg(i) ? '#4a9eed' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{v}</text>
             <rect x={65 + i * 65} y={35} width={52} height={20} rx="4"
-              fill={inSeg(i) ? '#c2410c15' : 'var(--bg-primary)'}
-              stroke={inSeg(i) ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-            <text x={91 + i * 65} y={48} textAnchor="middle" fill={inSeg(i) ? '#f97316' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{p2[i]}</text>
+              fill={inSeg(i) ? '#07598515' : 'var(--bg-primary)'}
+              stroke={inSeg(i) ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+            <text x={91 + i * 65} y={48} textAnchor="middle" fill={inSeg(i) ? '#4a9eed' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{p2[i]}</text>
           </g>
         ))}
         {/* Cut markers */}
@@ -130,13 +130,13 @@ const PMXDiagram = () => {
           return (
             <g key={`c-${i}`}>
               <rect x={65 + i * 65} y={90} width={52} height={20} rx="4"
-                fill={inSeg(i) ? '#c2410c15' : 'var(--bg-primary)'}
-                stroke={inSeg(i) ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-              <text x={91 + i * 65} y={103} textAnchor="middle" fill={inSeg(i) ? '#f97316' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{c1}</text>
+                fill={inSeg(i) ? '#07598515' : 'var(--bg-primary)'}
+                stroke={inSeg(i) ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+              <text x={91 + i * 65} y={103} textAnchor="middle" fill={inSeg(i) ? '#4a9eed' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{c1}</text>
               <rect x={65 + i * 65} y={127} width={52} height={20} rx="4"
-                fill={inSeg(i) ? '#f9731615' : 'var(--bg-primary)'}
-                stroke={inSeg(i) ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-              <text x={91 + i * 65} y={140} textAnchor="middle" fill={inSeg(i) ? '#f97316' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{c2}</text>
+                fill={inSeg(i) ? '#4a9eed15' : 'var(--bg-primary)'}
+                stroke={inSeg(i) ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+              <text x={91 + i * 65} y={140} textAnchor="middle" fill={inSeg(i) ? '#4a9eed' : 'var(--text-primary)'} fontSize="9" fontWeight="700">{c2}</text>
             </g>
           );
         })}
@@ -161,26 +161,26 @@ const FitnessSharingDiagram = () => (
       <text x="14" y="105" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" transform="rotate(-90,14,105)">fitness</text>
 
       {/* Landscape curves: two peaks */}
-      <path d="M 30,175 C 80,175 90,45 150,45 C 210,45 220,175 270,175" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.5)" strokeWidth="1.5"/>
-      <path d="M 270,175 C 320,175 330,115 380,115 C 410,115 420,175 450,175" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.5)" strokeWidth="1.5"/>
+      <path d="M 30,175 C 80,175 90,45 150,45 C 210,45 220,175 270,175" fill="rgba(74,158,237,0.08)" stroke="rgba(74,158,237,0.5)" strokeWidth="1.5"/>
+      <path d="M 270,175 C 320,175 330,115 380,115 C 410,115 420,175 450,175" fill="rgba(74,158,237,0.08)" stroke="rgba(74,158,237,0.5)" strokeWidth="1.5"/>
 
       {/* Individuals A, B, C clustered on peak 1 */}
-      <circle cx="142" cy="53" r="5" fill="#f97316" stroke="white" strokeWidth="1.5"/>
-      <text x="142" y="40" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">A</text>
-      <circle cx="125" cy="63" r="5" fill="#f97316" stroke="white" strokeWidth="1.5"/>
-      <text x="115" y="78" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">B</text>
-      <circle cx="160" cy="60" r="5" fill="#f97316" stroke="white" strokeWidth="1.5"/>
-      <text x="174" y="75" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">C</text>
+      <circle cx="142" cy="53" r="5" fill="#4a9eed" stroke="white" strokeWidth="1.5"/>
+      <text x="142" y="40" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">A</text>
+      <circle cx="125" cy="63" r="5" fill="#4a9eed" stroke="white" strokeWidth="1.5"/>
+      <text x="115" y="78" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">B</text>
+      <circle cx="160" cy="60" r="5" fill="#4a9eed" stroke="white" strokeWidth="1.5"/>
+      <text x="174" y="75" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">C</text>
 
       {/* Individual D isolated on peak 2 */}
-      <circle cx="380" cy="123" r="5" fill="#f97316" stroke="white" strokeWidth="1.5"/>
-      <text x="380" y="110" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">D</text>
+      <circle cx="380" cy="123" r="5" fill="#4a9eed" stroke="white" strokeWidth="1.5"/>
+      <text x="380" y="110" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">D</text>
 
       {/* Niche radius sigma around peak 1 */}
-      <line x1="105" y1="195" x2="195" y2="195" stroke="#f97316" strokeWidth="1.5"/>
-      <line x1="105" y1="190" x2="105" y2="200" stroke="#f97316" strokeWidth="1.5"/>
-      <line x1="195" y1="190" x2="195" y2="200" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="150" y="212" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">raio de nicho σ</text>
+      <line x1="105" y1="195" x2="195" y2="195" stroke="#4a9eed" strokeWidth="1.5"/>
+      <line x1="105" y1="190" x2="105" y2="200" stroke="#4a9eed" strokeWidth="1.5"/>
+      <line x1="195" y1="190" x2="195" y2="200" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="150" y="212" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">raio de nicho σ</text>
 
       <text x="340" y="212" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">espaço de pesquisa (genótipo)</text>
 
@@ -213,12 +213,12 @@ const RestrictedMatingDiagram = () => {
     <div style={{ ...S.diagram, textAlign: 'center' }}>
       <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Restricted Mating — "incest prevention" (δ_min = 3)</p>
       <svg viewBox="0 0 470 160" style={{ maxWidth: '100%', height: 'auto' }}>
-        {renderRow('A', A, null, 5, '#f97316')}
-        {renderRow('B', B, A, 40, '#f97316')}
-        {renderRow('C', C, A, 75, '#f97316')}
+        {renderRow('A', A, null, 5, '#4a9eed')}
+        {renderRow('B', B, A, 40, '#4a9eed')}
+        {renderRow('C', C, A, 75, '#4a9eed')}
         <text x="430" y="22" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">d(A,A)=0</text>
-        <text x="430" y="57" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">d(A,B)=1 ✗</text>
-        <text x="430" y="92" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">d(A,C)=5 ✓</text>
+        <text x="430" y="57" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">d(A,B)=1 ✗</text>
+        <text x="430" y="92" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">d(A,C)=5 ✓</text>
         <text x="235" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">B é demasiado parecido com A (1 bit) → cruzamento recusado (consanguinidade)</text>
         <text x="235" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">C é suficientemente diferente de A (5 bits ≥ δ_min) → cruzamento (A, C) aceite</text>
       </svg>
@@ -238,12 +238,12 @@ const ParetoExplorer = () => {
         <text x="15" y="95" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" transform="rotate(-90,15,95)">Objectivo 2 (minimizar tempo)</text>
 
         {/* Pareto front */}
-        <polyline points="80,50 120,65 160,85 200,110 250,135 310,155" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="none"/>
-        <text x="315" y="148" fill="#f97316" fontSize="8" fontWeight="700">frente de Pareto</text>
+        <polyline points="80,50 120,65 160,85 200,110 250,135 310,155" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="none"/>
+        <text x="315" y="148" fill="#4a9eed" fontSize="8" fontWeight="700">frente de Pareto</text>
 
         {/* Points on front (non-dominated) */}
         {[[80,50],[120,65],[160,85],[200,110],[250,135],[310,155]].map(([x,y],i) => (
-          <circle key={i} cx={x} cy={y} r={5} fill="#f97316" stroke="white" strokeWidth="1.5"/>
+          <circle key={i} cx={x} cy={y} r={5} fill="#4a9eed" stroke="white" strokeWidth="1.5"/>
         ))}
 
         {/* Dominated points */}
@@ -253,9 +253,9 @@ const ParetoExplorer = () => {
         <text x="150" y="152" fill="var(--text-secondary)" fontSize="7.5">dominados (piores em ≥1 obj.)</text>
 
         {/* Dominance arrow example */}
-        <rect x="200" y="110" width="30" height="30" fill="none" stroke="#f97316" strokeWidth="1" strokeDasharray="2,2"/>
-        <text x="215" y="90" textAnchor="middle" fill="#f97316" fontSize="7">zona dominada</text>
-        <text x="215" y="100" textAnchor="middle" fill="#f97316" fontSize="7">por (200,110)</text>
+        <rect x="200" y="110" width="30" height="30" fill="none" stroke="#4a9eed" strokeWidth="1" strokeDasharray="2,2"/>
+        <text x="215" y="90" textAnchor="middle" fill="#4a9eed" fontSize="7">zona dominada</text>
+        <text x="215" y="100" textAnchor="middle" fill="#4a9eed" fontSize="7">por (200,110)</text>
       </svg>
     </div>
   );
@@ -265,7 +265,7 @@ export default function CIO7() {
   const [sel, setSel] = useState(0);
   const diversityMechs = [
     {
-      name: 'Fitness Sharing', color: '#f97316',
+      name: 'Fitness Sharing', color: '#4a9eed',
       how: 'Modifica a função de fitness para penalizar a presença de muitos indivíduos semelhantes numa região do espaço. A ideia é que os "recursos" de fitness são partilhados entre indivíduos similares: se existem k indivíduos muito parecidos com o melhor, cada um deles recebe apenas 1/k do fitness. Isto "desfavorece" regiões sobrepovoadas e incentiva a manutenção de nichos distintos.',
       formulaTex: [
         "f'(x) = \\dfrac{f(x)}{\\displaystyle\\sum_{j} sh\\big(d(x, x_j)\\big)}",
@@ -277,7 +277,7 @@ export default function CIO7() {
       Diagram: FitnessSharingDiagram,
     },
     {
-      name: 'Restricted Mating', color: '#f97316',
+      name: 'Restricted Mating', color: '#4a9eed',
       how: 'Restringe quais indivíduos podem cruzar: só pares suficientemente similares (ou suficientemente diferentes) têm permissão de se reproduzir. Variante "incest prevention": só se reproduzem pares com similaridade abaixo de um limiar. Variante "assortative mating": só se reproduzem pares similares (preserva especialização).',
       formulaTex: [
         "d(x,y) \\le \\delta_{max} \\;\\text{(similar)} \\quad \\text{ou} \\quad d(x,y) \\ge \\delta_{min} \\;\\text{(diferente)}",
@@ -294,9 +294,8 @@ export default function CIO7() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/cio" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
-        <div style={S.tag}>Module 7</div>
+        <div style={S.tag}>Módulo 8</div>
         <h1 style={S.h1}>Diversidade & Operadores para Permutações</h1>
-        <p style={S.lead}>Dois problemas práticos centrais dos AGs: convergência prematura (perda de diversidade) e representação de problemas de ordenação como o TSP. Os mecanismos de diversidade (fitness sharing, restricted mating) mantêm a população heterogénea. Os operadores CX e PMX garantem filhos válidos para representações por permutação.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Convergência Prematura — O Grande Problema</h2>
@@ -314,7 +313,7 @@ export default function CIO7() {
                   ['Fitness máximo estagna cedo', 'Convergência para ótimo local com perda de diversidade', 'Restricted mating, aumentar N, reduzir pc ou aumentar pm temporariamente'],
                   ['Diversidade genética (Hamming) → 0', 'Todos os genes tomaram o mesmo valor em todas as posições', 'Operador de reinicialização, mutação adaptativamente mais alta'],
                 ].map(([s, d, sol]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#f97316', fontSize: '0.85rem' }}>{s}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{sol}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed', fontSize: '0.85rem' }}>{s}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{sol}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -341,8 +340,8 @@ export default function CIO7() {
               <div style={{ background: 'var(--bg-secondary)', border: `1px solid ${m.color}30`, borderRadius: 6, padding: '0.6rem 0.8rem', marginBottom: '0.6rem', fontSize: '0.83rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}><strong style={{ color: m.color }}>Exemplo: </strong>{m.example}</div>
               <m.Diagram />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.83rem' }}>
-                <div><strong style={{ color: '#f97316' }}>Vantagem:</strong> <span style={{ color: 'var(--text-secondary)' }}>{m.pros}</span></div>
-                <div><strong style={{ color: '#f97316' }}>Limitação:</strong> <span style={{ color: 'var(--text-secondary)' }}>{m.cons}</span></div>
+                <div><strong style={{ color: '#4a9eed' }}>Vantagem:</strong> <span style={{ color: 'var(--text-secondary)' }}>{m.pros}</span></div>
+                <div><strong style={{ color: '#4a9eed' }}>Limitação:</strong> <span style={{ color: 'var(--text-secondary)' }}>{m.cons}</span></div>
               </div>
             </div>
           </div>
@@ -371,7 +370,7 @@ export default function CIO7() {
                   ['PMX (Partially Mapped)', 'Segmentos contíguos de sub-rota', 'Herda segmento central de pai 2, preenche resto com pai 1 via mapeamento para evitar repetições.', 'TSP e routing — a qualidade de segmentos de rota é o que importa'],
                   ['OX (Order Crossover)', 'Ordem relativa entre elementos', 'Herda segmento de pai 1, preenche resto com pai 2 na ordem em que aparecem (saltando os já presentes).', 'Quando a ordem relativa é mais importante que posições absolutas'],
                 ].map(([op, p, h, w]) => (
-                  <tr key={op}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{op}</td><td style={S.td}>{p}</td><td style={{ ...S.td, fontSize: '0.85rem' }}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{w}</td></tr>
+                  <tr key={op}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{op}</td><td style={S.td}>{p}</td><td style={{ ...S.td, fontSize: '0.85rem' }}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -388,7 +387,7 @@ export default function CIO7() {
                   ['Insertion', 'Escolher um elemento e inseri-lo noutra posição aleatória.', 'Pequena a média — desloca um elemento, preserva a ordem dos restantes.'],
                   ['Scramble', 'Escolher um segmento aleatório e baralhar aleatoriamente os seus elementos.', 'Grande — pode destruir estrutura de sub-rota. Útil para diversidade.'],
                 ].map(([op, h, p]) => (
-                  <tr key={op}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{op}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{p}</td></tr>
+                  <tr key={op}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{op}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)' }}>{p}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -409,18 +408,8 @@ export default function CIO7() {
           <p style={S.p}>O resultado é uma população que evolui para cobrir toda a frente de Pareto — não apenas um ponto dela — fornecendo ao decisor um leque completo de soluções de compromisso.</p>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>Convergência prematura: população homogénea antes de encontrar o ótimo global. Principal falha prática dos AGs.</li>
-              <li>Fitness sharing: penaliza regiões sobrepovoadas — recursos de fitness partilhados entre indivíduos similares.</li>
-              <li>Restricted mating: restringe crossover a pares similares ou dissimilares conforme o objectivo.</li>
-              <li>CX: preserva posições absolutas (ciclos entre pais). PMX: preserva segmentos contíguos (mapeamento entre cortes). OX: preserva ordem relativa. Todos garantem permutações válidas.</li>
-              <li>Dominância de Pareto: x domina y se melhor em todos os objectivos e estritamente melhor em pelo menos um. Frente de Pareto = conjunto de não-dominados.</li>
-            </ul>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

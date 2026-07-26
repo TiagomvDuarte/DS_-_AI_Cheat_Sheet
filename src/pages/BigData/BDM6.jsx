@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -26,38 +26,38 @@ const BlockchainDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Estrutura de Blocos Encadeados — Hashchain</p>
     <svg viewBox="0 0 480 160" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* Block 1 - Genesis */}
-      <rect x="10" y="30" width="120" height="100" rx="8" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="2" />
-      <text x="70" y="52" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="800">Bloco 1</text>
+      <rect x="10" y="30" width="120" height="100" rx="8" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="70" y="52" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="800">Bloco 1</text>
       <text x="70" y="68" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">prev_hash: 0000</text>
       <text x="70" y="82" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">nonce: 29483</text>
       <text x="70" y="96" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Tx: Alice +5 BTC</text>
-      <text x="70" y="110" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">hash: 0000a3f...</text>
+      <text x="70" y="110" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">hash: 0000a3f...</text>
       <text x="70" y="124" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">timestamp</text>
 
       {/* Arrow */}
-      <line x1="130" y1="80" x2="170" y2="80" stroke="#f97316" strokeWidth="2" markerEnd="url(#ba1)" />
-      <defs><marker id="ba1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f97316" /></marker></defs>
+      <line x1="130" y1="80" x2="170" y2="80" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#ba1)" />
+      <defs><marker id="ba1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker></defs>
 
       {/* Block 2 */}
-      <rect x="170" y="30" width="120" height="100" rx="8" fill="rgba(251,146,60,0.12)" stroke="#fb923c" strokeWidth="2" />
-      <text x="230" y="52" textAnchor="middle" fill="#fb923c" fontSize="11" fontWeight="800">Bloco 2</text>
+      <rect x="170" y="30" width="120" height="100" rx="8" fill="rgba(186,230,253,0.12)" stroke="#bae6fd" strokeWidth="2" />
+      <text x="230" y="52" textAnchor="middle" fill="#bae6fd" fontSize="11" fontWeight="800">Bloco 2</text>
       <text x="230" y="68" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">prev_hash: 0000a3f</text>
       <text x="230" y="82" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">nonce: 71920</text>
       <text x="230" y="96" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Tx: Bob +2 BTC</text>
-      <text x="230" y="110" textAnchor="middle" fill="#fb923c" fontSize="8" fontWeight="700">hash: 0000c1d...</text>
+      <text x="230" y="110" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">hash: 0000c1d...</text>
       <text x="230" y="124" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">timestamp</text>
 
       {/* Arrow */}
-      <line x1="290" y1="80" x2="330" y2="80" stroke="#fb923c" strokeWidth="2" markerEnd="url(#ba2)" />
-      <defs><marker id="ba2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#fb923c" /></marker></defs>
+      <line x1="290" y1="80" x2="330" y2="80" stroke="#bae6fd" strokeWidth="2" markerEnd="url(#ba2)" />
+      <defs><marker id="ba2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#bae6fd" /></marker></defs>
 
       {/* Block 3 */}
-      <rect x="330" y="30" width="140" height="100" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="2" />
-      <text x="400" y="52" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="800">Bloco 3 (actual)</text>
+      <rect x="330" y="30" width="140" height="100" rx="8" fill="rgba(125,211,252,0.12)" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="400" y="52" textAnchor="middle" fill="#7dd3fc" fontSize="11" fontWeight="800">Bloco 3 (actual)</text>
       <text x="400" y="68" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">prev_hash: 0000c1d</text>
       <text x="400" y="82" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">nonce: 45001</text>
       <text x="400" y="96" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Tx: Carol +3 BTC</text>
-      <text x="400" y="110" textAnchor="middle" fill="#f59e0b" fontSize="8" fontWeight="700">hash: 0000e8a...</text>
+      <text x="400" y="110" textAnchor="middle" fill="#7dd3fc" fontSize="8" fontWeight="700">hash: 0000e8a...</text>
       <text x="400" y="124" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">timestamp</text>
 
       {/* Labels */}
@@ -108,11 +108,11 @@ const ConsensusMechanisms = () => {
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Mecanismos de Consenso — Proof of Work vs. Proof of Stake</p>
       <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginBottom: '1.25rem' }}>
         {mechs.map((mc, i) => (
-          <button key={i} onClick={() => setMech(i)} style={{ padding: '0.4rem 1.2rem', borderRadius: 20, cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', background: mech === i ? '#f97316' : 'var(--bg-primary)', color: mech === i ? '#000' : 'var(--text-primary)', border: `1.5px solid ${mech === i ? '#f97316' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{mc.name}</button>
+          <button key={i} onClick={() => setMech(i)} style={{ padding: '0.4rem 1.2rem', borderRadius: 20, cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', background: mech === i ? '#4a9eed' : 'var(--bg-primary)', color: mech === i ? '#000' : 'var(--text-primary)', border: `1.5px solid ${mech === i ? '#4a9eed' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{mc.name}</button>
         ))}
       </div>
-      <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', textAlign: 'left', border: '1.5px solid rgba(249,115,22,0.25)' }}>
-        <div style={{ color: '#f97316', fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.9rem' }}>{m.subtitle}</div>
+      <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', textAlign: 'left', border: '1.5px solid rgba(74,158,237,0.25)' }}>
+        <div style={{ color: '#4a9eed', fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.9rem' }}>{m.subtitle}</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem' }}>
           {[
             ['Mecanismo de custo', m.cost],
@@ -120,13 +120,13 @@ const ConsensusMechanisms = () => {
             ['Finalidade', m.finality],
             ['Consumo energético', m.energy],
           ].map(([k, v]) => (
-            <div key={k} style={{ background: 'rgba(249,115,22,0.06)', borderRadius: 6, padding: '0.5rem 0.75rem' }}>
-              <div style={{ fontSize: '0.72rem', color: '#f97316', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.2rem' }}>{k}</div>
+            <div key={k} style={{ background: 'rgba(74,158,237,0.06)', borderRadius: 6, padding: '0.5rem 0.75rem' }}>
+              <div style={{ fontSize: '0.72rem', color: '#4a9eed', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.2rem' }}>{k}</div>
               <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{v}</div>
             </div>
           ))}
         </div>
-        <div style={{ fontSize: '0.72rem', color: '#f97316', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.4rem' }}>Como funciona</div>
+        <div style={{ fontSize: '0.72rem', color: '#4a9eed', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.4rem' }}>Como funciona</div>
         <ol style={{ margin: 0, paddingLeft: '1.2rem', color: 'var(--text-secondary)', fontSize: '0.83rem', lineHeight: 1.8 }}>
           {m.how.map((h, i) => <li key={i}>{h}</li>)}
         </ol>
@@ -141,20 +141,20 @@ const TrilemaDiagram = () => (
     <svg viewBox="0 0 400 260" style={{ maxWidth: '560px', height: 'auto', display: 'block', margin: '0 auto' }}>
       <polygon points="200,42 48,210 352,210" fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
       {/* Top circle */}
-      <circle cx="200" cy="42" r="40" fill="var(--bg-secondary)" stroke="#f97316" strokeWidth="2" />
-      <text x="200" y="37" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Escalabilidade</text>
+      <circle cx="200" cy="42" r="40" fill="var(--bg-secondary)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="200" y="37" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Escalabilidade</text>
       <text x="200" y="51" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">tx por segundo</text>
       {/* Bottom-left circle */}
-      <circle cx="48" cy="210" r="40" fill="var(--bg-secondary)" stroke="#f97316" strokeWidth="2" />
-      <text x="48" y="206" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Segurança</text>
+      <circle cx="48" cy="210" r="40" fill="var(--bg-secondary)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="48" y="206" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Segurança</text>
       <text x="48" y="219" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">resist. ataques</text>
       {/* Bottom-right circle */}
-      <circle cx="352" cy="210" r="40" fill="var(--bg-secondary)" stroke="#f97316" strokeWidth="2" />
-      <text x="352" y="206" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Descentraliz.</text>
+      <circle cx="352" cy="210" r="40" fill="var(--bg-secondary)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="352" y="206" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Descentraliz.</text>
       <text x="352" y="219" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">sem ponto controlo</text>
       {/* Center label */}
-      <ellipse cx="200" cy="148" rx="52" ry="22" fill="var(--bg-secondary)" stroke="#ea580c" strokeWidth="1.5" />
-      <text x="200" y="144" textAnchor="middle" fill="#ea580c" fontSize="9" fontWeight="800">Bitcoin / ETH</text>
+      <ellipse cx="200" cy="148" rx="52" ry="22" fill="var(--bg-secondary)" stroke="#1d4ed8" strokeWidth="1.5" />
+      <text x="200" y="144" textAnchor="middle" fill="#1d4ed8" fontSize="9" fontWeight="800">Bitcoin / ETH</text>
       <text x="200" y="157" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">escolhem 2 de 3</text>
       {/* Solana label */}
       <text x="315" y="112" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">Solana: Escalab.+Seg.</text>
@@ -171,7 +171,6 @@ export default function BDM6() {
         <Link to="/bigdata-mgmt" style={S.back}><ArrowLeft size={16} /> Voltar a Big Data Mgmt</Link>
         <div style={S.tag}>Module 6</div>
         <h1 style={S.h1}>Blockchain</h1>
-        <p style={S.lead}>Uma blockchain é um registo de informação imutável, ordenado e partilhado, mantido por múltiplos participantes sem qualquer autoridade central. Da estrutura de blocos e hashes criptográficos ao Proof of Work, Proof of Stake, Smart Contracts, ZK Rollups e o Trilema da Blockchain.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O Que É uma Blockchain e Como Funciona</h2>
@@ -197,7 +196,7 @@ export default function BDM6() {
                   ['Longest chain rule', 'Consenso descentralizado sobre qual a cadeia válida'],
                   ['Rede distribuída (P2P)', 'Sem ponto único de falha ou controlo'],
                 ].map(([c, g]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={{ ...S.td, color: '#f97316' }}>{g}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={{ ...S.td, color: '#4a9eed' }}>{g}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -235,7 +234,7 @@ export default function BDM6() {
                   ['Web 2.0', 'Participativo, centralizado', 'Concentrado em plataformas', 'Controlados pela plataforma', 'Facebook, AWS, YouTube'],
                   ['Web 3.0', 'Sem intermediários, descentralizado', 'Distribuído (em teoria)', 'Controlados pelo utilizador', 'Ethereum, IPFS, Bitcoin'],
                 ].map(([era, car, pod, dad, ex]) => (
-                  <tr key={era}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{era}</td><td style={S.td}>{car}</td><td style={S.td}>{pod}</td><td style={S.td}>{dad}</td><td style={S.td}>{ex}</td></tr>
+                  <tr key={era}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{era}</td><td style={S.td}>{car}</td><td style={S.td}>{pod}</td><td style={S.td}>{dad}</td><td style={S.td}>{ex}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -257,15 +256,15 @@ export default function BDM6() {
               { name: 'ZK Rollups', desc: 'Verificam a validade imediatamente com zk-SNARK. Sem período de contestação. Mais seguro e final. Mais complexo de implementar computacionalmente.' },
               { name: 'Optimistic Rollups', desc: 'Assumem que as transações são válidas e esperam por um período de contestação (7 dias). Mais simples de implementar. Mais lento para finalidade.' },
             ].map(({ name, desc }) => (
-              <div key={name} style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(249,115,22,0.2)', borderRadius: 8, padding: '1rem' }}>
-                <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>{name}</div>
+              <div key={name} style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(74,158,237,0.2)', borderRadius: 8, padding: '1rem' }}>
+                <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>{name}</div>
                 <p style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', margin: 0 }}>{desc}</p>
               </div>
             ))}
           </div>
 
           <h3 style={S.h3}>Roadmap da Ethereum (Vitalik Buterin)</h3>
-          <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(249,115,22,0.15)', borderRadius: 10, padding: '1.25rem', fontSize: '0.87rem', lineHeight: 2 }}>
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(74,158,237,0.15)', borderRadius: 10, padding: '1.25rem', fontSize: '0.87rem', lineHeight: 2 }}>
             {[
               { phase: 'The Merge', status: 'concluído', desc: 'Migração de PoW para PoS; retirada de mineradores; -99.95% de energia.' },
               { phase: 'The Surge', status: 'em progresso', desc: 'Objetivo de 100.000 transações por segundo via rollups; EIP-4844 e peerDAS.' },
@@ -275,28 +274,14 @@ export default function BDM6() {
               { phase: 'The Splurge', status: 'planeado', desc: 'Melhorias gerais ao EVM, account abstraction, deep crypto.' },
             ].map(({ phase, status, desc }) => (
               <div key={phase} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', marginBottom: '0.3rem' }}>
-                <span style={{ color: '#f97316', fontWeight: 700, minWidth: '110px', fontSize: '0.85rem' }}>{phase}</span>
-                <span style={{ background: status === 'concluído' ? 'rgba(249,115,22,0.15)' : 'rgba(249,115,22,0.06)', border: `1px solid ${status === 'concluído' ? '#f97316' : 'rgba(249,115,22,0.2)'}`, color: '#f97316', fontSize: '0.7rem', fontWeight: 700, padding: '0.05rem 0.5rem', borderRadius: 10, whiteSpace: 'nowrap', alignSelf: 'center' }}>{status}</span>
+                <span style={{ color: '#4a9eed', fontWeight: 700, minWidth: '110px', fontSize: '0.85rem' }}>{phase}</span>
+                <span style={{ background: status === 'concluído' ? 'rgba(74,158,237,0.15)' : 'rgba(74,158,237,0.06)', border: `1px solid ${status === 'concluído' ? '#4a9eed' : 'rgba(74,158,237,0.2)'}`, color: '#4a9eed', fontSize: '0.7rem', fontWeight: 700, padding: '0.05rem 0.5rem', borderRadius: 10, whiteSpace: 'nowrap', alignSelf: 'center' }}>{status}</span>
                 <span style={{ color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{desc}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <hr style={S.divider} />
-
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ paddingLeft: '1.2rem', margin: 0, lineHeight: 1.9 }}>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Hashchain + imutabilidade</strong> — cada bloco contém o hash do anterior; alterar um bloco invalida todos os seguintes; não é possível apagar ou corrigir registos, apenas adicionar; a segurança é económica (custo de ataque), não apenas criptográfica.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Proof of Work vs. Proof of Stake</strong> — PoW usa eletricidade como custo (175 TWh/ano para Bitcoin); PoS usa tokens bloqueados como garantia (slashing pune desonestidade); Ethereum migrou em 2022 com redução de 99.95% no consumo energético.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Smart contracts e DAOs</strong> — programas imutáveis na blockchain que executam automaticamente quando acionados; DAOs governam organizações via tokens de votação sem hierarquia central; o código substitui intermediários.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Trilema da blockchain</strong> — Escalabilidade, Segurança e Descentralização: nenhum sistema consegue optimizar as três simultaneamente; Bitcoin e Ethereum escolhem Segurança + Descentralização; ZK Rollups são a tentativa de escalar sem sacrificar os outros dois.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Quando usar blockchain</strong> — contextos de baixa confiança entre partes que precisam de coordenar sem intermediário (pagamentos internacionais, rastreabilidade de cadeias de abastecimento, identidade digital soberana); onde a confiança já existe, uma base de dados tradicional é quase sempre mais eficiente.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const codeBlock = { background: 'var(--bg-primary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '0.9rem 1.1rem', fontFamily: 'monospace', fontSize: '0.82rem', lineHeight: 1.7, color: 'var(--text-primary)', textAlign: 'left', overflowX: 'auto', whiteSpace: 'pre' };
@@ -78,7 +78,7 @@ const PipelineDemo = () => {
       </div>
       <div style={codeBlock}>{t.code}</div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.6rem 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>↓</div>
-      <div style={{ ...codeBlock, color: '#f97316', borderColor: '#f97316' }}>{t.output}</div>
+      <div style={{ ...codeBlock, color: '#4a9eed', borderColor: '#4a9eed' }}>{t.output}</div>
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.75rem', marginBottom: 0 }}>
         Sem indicar nenhum modelo, <code style={S.code}>pipeline()</code> escolhe um <strong>modelo pré-treinado por omissão</strong> (aqui: <code style={S.code}>{t.model}</code>), descarrega-o do Hub, e trata de tokenização, inferência e pós-processamento internamente.
       </p>
@@ -91,15 +91,15 @@ const AutoClassDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Por Baixo do pipeline(): AutoTokenizer + AutoModel</p>
     <div style={codeBlock}>{`from transformers import AutoTokenizer, AutoModelForSequenceClassification\n\nname = "distilbert-base-uncased-finetuned-sst-2-english"\ntokenizer = AutoTokenizer.from_pretrained(name)\nmodel = AutoModelForSequenceClassification.from_pretrained(name)\n\ninputs = tokenizer("I love this!", return_tensors="pt")\noutputs = model(**inputs)`}</div>
     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', margin: '1.25rem 0' }}>
-      <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(249,115,22,0.10)', border: '1.5px solid var(--accent-color)', fontWeight: 700, color: 'var(--accent-color)', fontSize: '0.85rem' }}>
+      <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(74,158,237,0.10)', border: '1.5px solid var(--accent-color)', fontWeight: 700, color: 'var(--accent-color)', fontSize: '0.85rem' }}>
         "I love this!"
       </div>
       <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>→ AutoTokenizer →</div>
-      <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(245,158,11,0.12)', border: '1.5px solid #f59e0b', fontWeight: 700, color: '#f97316', fontSize: '0.85rem', fontFamily: 'monospace' }}>
+      <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(2,132,199,0.12)', border: '1.5px solid #0284c7', fontWeight: 700, color: '#4a9eed', fontSize: '0.85rem', fontFamily: 'monospace' }}>
         input_ids, attention_mask
       </div>
       <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>→ AutoModel →</div>
-      <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(249,115,22,0.10)', border: '1.5px solid #fbbf24', fontWeight: 700, color: '#f97316', fontSize: '0.85rem' }}>
+      <div style={{ padding: '0.5rem 0.9rem', borderRadius: 8, background: 'rgba(74,158,237,0.10)', border: '1.5px solid #7dd3fc', fontWeight: 700, color: '#4a9eed', fontSize: '0.85rem' }}>
         logits
       </div>
     </div>
@@ -116,7 +116,7 @@ const TokenizerDemo = () => {
     't5 (SentencePiece)': ['Playing', 'with', 'token', 'izer', 's'],
   };
   const [model, setModel] = useState('distilbert (WordPiece)');
-  const colors = ['#fb923c', '#f97316', '#f97316', '#fb923c', '#f97316', '#f97316', '#f97316', '#f97316'];
+  const colors = ['#38bdf8', '#4a9eed', '#4a9eed', '#38bdf8', '#4a9eed', '#4a9eed', '#4a9eed', '#4a9eed'];
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Cada Modelo Tem o Seu Próprio Tokenizer</p>
@@ -155,11 +155,11 @@ const HubDiagram = () => (
       <div style={{ background: 'var(--bg-primary)', border: '1.5px solid var(--accent-color)', borderRadius: 10, padding: '1rem 1.25rem', textAlign: 'left', minWidth: 220 }}>
         <div style={{ fontWeight: 700, color: 'var(--accent-color)', marginBottom: '0.5rem', fontFamily: 'monospace', fontSize: '0.85rem' }}>bert-base-uncased/</div>
         {[
-          ['config.json', '#f97316', 'arquitectura, hyperparams'],
-          ['pytorch_model.bin', '#f97316', 'pesos treinados'],
-          ['tokenizer.json', '#f97316', 'vocabulário + regras'],
-          ['tokenizer_config.json', '#f97316', 'config do tokenizer'],
-          ['README.md', '#fb923c', 'model card'],
+          ['config.json', '#4a9eed', 'arquitectura, hyperparams'],
+          ['pytorch_model.bin', '#4a9eed', 'pesos treinados'],
+          ['tokenizer.json', '#4a9eed', 'vocabulário + regras'],
+          ['tokenizer_config.json', '#4a9eed', 'config do tokenizer'],
+          ['README.md', '#38bdf8', 'model card'],
         ].map(([f, c, d]) => (
           <div key={f} style={{ display: 'flex', justifyContent: 'space-between', gap: '0.75rem', fontSize: '0.78rem', padding: '0.2rem 0', fontFamily: 'monospace' }}>
             <span style={{ color: c }}>{f}</span>
@@ -188,12 +188,12 @@ const HubDiagram = () => (
 const FineTuningDiagram = () => {
   const [step, setStep] = useState(0);
   const steps = [
-    { title: '1. Carregar Dataset', code: `from datasets import load_dataset\n\ndataset = load_dataset("imdb")\n# DatasetDict: train (25k), test (25k)`, color: '#fb923c' },
-    { title: '2. Tokenizar', code: `def tokenize(batch):\n    return tokenizer(batch["text"], truncation=True)\n\ntokenized = dataset.map(tokenize, batched=True)`, color: '#f97316' },
-    { title: '3. Carregar Modelo Pré-treinado', code: `from transformers import AutoModelForSequenceClassification\n\nmodel = AutoModelForSequenceClassification.from_pretrained(\n    "distilbert-base-uncased", num_labels=2)\n# nova "head" de classificação inicializada do zero`, color: '#fb923c' },
-    { title: '4. Definir Trainer', code: `from transformers import TrainingArguments, Trainer\n\nargs = TrainingArguments(\n    output_dir="meu-modelo", learning_rate=2e-5,\n    per_device_train_batch_size=16, num_train_epochs=3,\n    eval_strategy="epoch")\n\ntrainer = Trainer(model=model, args=args,\n    train_dataset=tokenized["train"],\n    eval_dataset=tokenized["test"])`, color: '#f97316' },
-    { title: '5. Treinar e Avaliar', code: `trainer.train()\ntrainer.evaluate()`, color: '#f97316' },
-    { title: '6. Partilhar no Hub', code: `trainer.push_to_hub("meu-utilizador/meu-modelo")\n# disponível para qualquer pessoa via\n# pipeline(model="meu-utilizador/meu-modelo")`, color: '#f97316' },
+    { title: '1. Carregar Dataset', code: `from datasets import load_dataset\n\ndataset = load_dataset("imdb")\n# DatasetDict: train (25k), test (25k)`, color: '#38bdf8' },
+    { title: '2. Tokenizar', code: `def tokenize(batch):\n    return tokenizer(batch["text"], truncation=True)\n\ntokenized = dataset.map(tokenize, batched=True)`, color: '#4a9eed' },
+    { title: '3. Carregar Modelo Pré-treinado', code: `from transformers import AutoModelForSequenceClassification\n\nmodel = AutoModelForSequenceClassification.from_pretrained(\n    "distilbert-base-uncased", num_labels=2)\n# nova "head" de classificação inicializada do zero`, color: '#38bdf8' },
+    { title: '4. Definir Trainer', code: `from transformers import TrainingArguments, Trainer\n\nargs = TrainingArguments(\n    output_dir="meu-modelo", learning_rate=2e-5,\n    per_device_train_batch_size=16, num_train_epochs=3,\n    eval_strategy="epoch")\n\ntrainer = Trainer(model=model, args=args,\n    train_dataset=tokenized["train"],\n    eval_dataset=tokenized["test"])`, color: '#4a9eed' },
+    { title: '5. Treinar e Avaliar', code: `trainer.train()\ntrainer.evaluate()`, color: '#4a9eed' },
+    { title: '6. Partilhar no Hub', code: `trainer.push_to_hub("meu-utilizador/meu-modelo")\n# disponível para qualquer pessoa via\n# pipeline(model="meu-utilizador/meu-modelo")`, color: '#4a9eed' },
   ];
   return (
     <div style={S.diagram}>
@@ -232,7 +232,6 @@ export default function NLP9() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 9</div>
         <h1 style={S.h1}>Hugging Face: Do Modelo ao Deploy</h1>
-        <p style={S.lead}>A biblioteca <code style={S.code}>transformers</code> tornou-se o "PyTorch dos LLMs": uma interface comum para milhares de modelos pré-treinados (BERT, GPT, T5, LLaMA, ...), os respectivos tokenizers, e ferramentas para fine-tuning e partilha. Esta lecture liga toda a teoria das aulas anteriores ao código que se usa na prática.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -313,17 +312,7 @@ export default function NLP9() {
           </div>
 
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>4. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>A Biblioteca Transformers e a API pipeline()</strong> — a biblioteca Hugging Face Transformers fornece acesso unificado a milhares de modelos pré-treinados; pipeline() permite inferência em uma linha para NLP, visão e audio sem conhecer detalhes arquitecturais.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Tokenizers e o Model Hub</strong> — cada modelo tem o seu tokenizador específico que deve ser usado em par com os pesos; o Model Hub centraliza modelos, tokenizadores e datasets com versionamento e licenciamento explícitos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Fine-tuning com Trainer e Datasets</strong> — a classe Trainer abstrai o loop de treino com suporte a mixed precision, gradient accumulation e logging; a biblioteca Datasets fornece carregamento eficiente e pre-processamento lazy de datasets de NLP.</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   mathBox: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1.25rem', margin: '1.5rem 0', textAlign: 'center', overflowX: 'auto' },
@@ -44,23 +44,23 @@ function SVGPermutations() {
     <div style={S.svgWrap}>
       <svg viewBox={`0 0 760 ${totalH}`} width="100%" style={{ display: 'block' }}>
         {/* header */}
-        <rect x={0} y={0} width={760} height={headerH} fill="rgba(249,115,22,0.10)" rx={6} />
+        <rect x={0} y={0} width={760} height={headerH} fill="rgba(74,158,237,0.10)" rx={6} />
         {['Ordem de Chegada', 'Sem A (S)', 'Com A (S∪{A})', 'Contribuição Marginal de A'].map((label, i) => {
           const xs = [10, 195, 355, 510];
           return <text key={i} x={xs[i]} y={22} fontSize={12} fontWeight={700} fill={color}>{label}</text>;
         })}
-        <line x1={0} y1={headerH} x2={760} y2={headerH} stroke="rgba(249,115,22,0.10)" strokeWidth={1} />
+        <line x1={0} y1={headerH} x2={760} y2={headerH} stroke="rgba(74,158,237,0.10)" strokeWidth={1} />
 
         {rows.map((r, i) => {
           const y = headerH + i * rowH;
-          const bg = i % 2 === 0 ? 'rgba(249,115,22,0.10)' : 'transparent';
+          const bg = i % 2 === 0 ? 'rgba(74,158,237,0.10)' : 'transparent';
           return (
             <g key={i}>
               <rect x={0} y={y} width={760} height={rowH} fill={bg} />
               <text x={10} y={y + 19} fontSize={11} fill="var(--text-primary)" fontFamily="monospace">{r.order}</text>
               <text x={195} y={y + 19} fontSize={11} fill="var(--text-secondary)" fontFamily="monospace">{r.before}</text>
               <text x={355} y={y + 19} fontSize={11} fill="var(--text-secondary)" fontFamily="monospace">{r.after}</text>
-              <text x={510} y={y + 19} fontSize={11} fill="#f97316" fontFamily="monospace" fontWeight={600}>{r.marginal}</text>
+              <text x={510} y={y + 19} fontSize={11} fill="#4a9eed" fontFamily="monospace" fontWeight={600}>{r.marginal}</text>
               <line x1={0} y1={y + rowH} x2={760} y2={y + rowH} stroke="rgba(0,0,0,0.05)" strokeWidth={1} />
             </g>
           );
@@ -122,7 +122,7 @@ function SVGForcePlot() {
 
         {posRects.map((r, i) => (
           <g key={i}>
-            <rect x={r.x} y={barY} width={r.w} height={barH} fill="#f97316" opacity={0.82 - i * 0.06} rx={2} />
+            <rect x={r.x} y={barY} width={r.w} height={barH} fill="#4a9eed" opacity={0.82 - i * 0.06} rx={2} />
             {r.w > 60 && (
               <text x={r.x + r.w / 2} y={barY + barH / 2 + 4} fontSize={10} fill="#fff" textAnchor="middle" fontWeight={600}>{r.label}</text>
             )}
@@ -131,7 +131,7 @@ function SVGForcePlot() {
 
         {negRects.map((r, i) => (
           <g key={i}>
-            <rect x={r.x} y={barY} width={r.w} height={barH} fill="#c2410c" opacity={0.85} rx={2} />
+            <rect x={r.x} y={barY} width={r.w} height={barH} fill="#075985" opacity={0.85} rx={2} />
             {r.w > 60 && (
               <text x={r.x + r.w / 2} y={barY + barH / 2 + 4} fontSize={10} fill="#fff" textAnchor="middle" fontWeight={600}>{r.label}</text>
             )}
@@ -161,18 +161,18 @@ function SVGTreeSHAP() {
         <text x={10} y={20} fontSize={13} fontWeight={700} fill="var(--text-primary)">Árvore de Decisão — Anotações TreeSHAP</text>
 
         {/* root */}
-        <rect x={280} y={35} width={140} height={44} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+        <rect x={280} y={35} width={140} height={44} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
         <text x={350} y={53} fontSize={11} fontWeight={700} fill={color} textAnchor="middle">idade ≤ 35</text>
         <text x={350} y={69} fontSize={10} fill="var(--text-secondary)" textAnchor="middle">φ(idade) += Δ_root</text>
 
         {/* level 1 left */}
-        <rect x={100} y={130} width={140} height={44} rx={8} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1.5} />
-        <text x={170} y={148} fontSize={11} fontWeight={700} fill="#f97316" textAnchor="middle">rendimento ≤ 40k</text>
+        <rect x={100} y={130} width={140} height={44} rx={8} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1.5} />
+        <text x={170} y={148} fontSize={11} fontWeight={700} fill="#4a9eed" textAnchor="middle">rendimento ≤ 40k</text>
         <text x={170} y={164} fontSize={10} fill="var(--text-secondary)" textAnchor="middle">φ(rend.) += Δ_L</text>
 
         {/* level 1 right */}
-        <rect x={460} y={130} width={140} height={44} rx={8} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1.5} />
-        <text x={530} y={148} fontSize={11} fontWeight={700} fill="#f97316" textAnchor="middle">dívida ≤ 20k</text>
+        <rect x={460} y={130} width={140} height={44} rx={8} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1.5} />
+        <text x={530} y={148} fontSize={11} fontWeight={700} fill="#4a9eed" textAnchor="middle">dívida ≤ 20k</text>
         <text x={530} y={164} fontSize={10} fill="var(--text-secondary)" textAnchor="middle">φ(dívida) += Δ_R</text>
 
         {/* leaves level 2 */}
@@ -183,7 +183,7 @@ function SVGTreeSHAP() {
           { x: 560, label: '0.55', sub: 'φ= +0.07' },
         ].map((lf, i) => (
           <g key={i}>
-            <rect x={lf.x} y={225} width={100} height={40} rx={6} fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth={1} />
+            <rect x={lf.x} y={225} width={100} height={40} rx={6} fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth={1} />
             <text x={lf.x + 50} y={242} fontSize={13} fontWeight={800} fill={color} textAnchor="middle">{lf.label}</text>
             <text x={lf.x + 50} y={257} fontSize={10} fill="var(--text-secondary)" textAnchor="middle">{lf.sub}</text>
           </g>
@@ -249,9 +249,9 @@ function SVGBeeswarm() {
             <g key={fi}>
               <text x={leftPad - 8} y={cy + 4} fontSize={11} fill="var(--text-primary)" textAnchor="end">{feat}</text>
               {(dots[feat] || []).map(([s, fv], di) => {
-                // Orange palette: low fv = amber (#fbbf24), high fv = dark red-orange (#c2410c)
-                const lr = 251, lg = 191, lb = 36;   // #fbbf24
-                const hr = 194, hg = 65,  hb = 12;   // #c2410c
+                // Blue palette: low fv = light blue (#bae6fd), high fv = dark blue (#075985)
+                const lr = 186, lg = 230, lb = 253;  // #bae6fd
+                const hr = 7,   hg = 89,  hb = 133;  // #075985
                 const dr = Math.round(lr + (hr - lr) * fv);
                 const dg = Math.round(lg + (hg - lg) * fv);
                 const db = Math.round(lb + (hb - lb) * fv);
@@ -268,8 +268,8 @@ function SVGBeeswarm() {
         {/* legend */}
         <defs>
           <linearGradient id="legGrad" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0%" stopColor="#f97316" />
-            <stop offset="100%" stopColor="#dc2626" />
+            <stop offset="0%" stopColor="#bae6fd" />
+            <stop offset="100%" stopColor="#075985" />
           </linearGradient>
         </defs>
         <rect x={W - 130} y={topPad - 8} width={100} height={10} fill="url(#legGrad)" rx={3} />
@@ -277,7 +277,7 @@ function SVGBeeswarm() {
         <text x={W - 40} y={topPad + 16} fontSize={9} fill="var(--text-secondary)" textAnchor="end">alto</text>
         <text x={W - 80} y={topPad - 12} fontSize={10} fill="var(--text-secondary)" textAnchor="middle">Valor da feature</text>
       </svg>
-      <p style={S.figCaption}>Beeswarm: cada ponto é uma instância; cor = valor da feature (âmbar=baixo, vermelho-escuro=alto); posição x = SHAP value</p>
+      <p style={S.figCaption}>Beeswarm: cada ponto é uma instância; cor = valor da feature (azul-claro=baixo, azul-escuro=alto); posição x = SHAP value</p>
     </div>
   );
 }
@@ -330,9 +330,9 @@ function SVGWaterfall() {
               {/* label */}
               <text x={leftPad - 8} y={y + rowH / 2 + 4} fontSize={10} fill="var(--text-primary)" textAnchor="end">{b.label}</text>
               {/* bar */}
-              <rect x={bx} y={y + 4} width={Math.max(bw, 2)} height={rowH - 8} fill={pos ? '#f97316' : '#c2410c'} opacity={0.75} rx={3} />
+              <rect x={bx} y={y + 4} width={Math.max(bw, 2)} height={rowH - 8} fill={pos ? '#4a9eed' : '#075985'} opacity={0.75} rx={3} />
               {/* end value */}
-              <text x={x2 + (pos ? 5 : -5)} y={y + rowH / 2 + 4} fontSize={10} fill={pos ? '#f97316' : '#c2410c'} textAnchor={pos ? 'start' : 'end'}>{b.end.toFixed(2)}</text>
+              <text x={x2 + (pos ? 5 : -5)} y={y + rowH / 2 + 4} fontSize={10} fill={pos ? '#4a9eed' : '#075985'} textAnchor={pos ? 'start' : 'end'}>{b.end.toFixed(2)}</text>
             </g>
           );
         })}
@@ -371,10 +371,10 @@ function SVGDependencePlot() {
   const toX = v => lp + ((v - 15) / 80) * plotW;
   const toY = v => tp + plotH - ((v + 0.3) / 0.75) * plotH;
   const dotColor = iv => {
-    // Orange palette: iv=0 (jovem)=amber #fbbf24, iv=1 (idoso)=dark orange #c2410c
-    const dr = Math.round(251 + (194 - 251) * iv);
-    const dg = Math.round(191 + (65 - 191) * iv);
-    const db = Math.round(36 + (12 - 36) * iv);
+    // Blue palette: iv=0 (jovem)=light blue #bae6fd, iv=1 (idoso)=dark blue #075985
+    const dr = Math.round(186 + (7 - 186) * iv);
+    const dg = Math.round(230 + (89 - 230) * iv);
+    const db = Math.round(253 + (133 - 253) * iv);
     return `rgb(${dr},${dg},${db})`;
   };
 
@@ -416,8 +416,8 @@ function SVGDependencePlot() {
         {/* legend */}
         <defs>
           <linearGradient id="depGrad" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0%" stopColor="#f97316" />
-            <stop offset="100%" stopColor="#dc2626" />
+            <stop offset="0%" stopColor="#bae6fd" />
+            <stop offset="100%" stopColor="#075985" />
           </linearGradient>
         </defs>
         <rect x={W - 120} y={tp - 18} width={80} height={10} fill="url(#depGrad)" rx={3} />
@@ -460,12 +460,12 @@ function SVGTextSHAP() {
   ];
 
   const toColor = (s) => {
-    if (s > 0.3)  return 'rgba(249,115,22,0.85)';
-    if (s > 0.15) return 'rgba(249,115,22,0.60)';
-    if (s > 0.05) return 'rgba(249,115,22,0.35)';
-    if (s < -0.25) return 'rgba(194,65,12,0.80)';
-    if (s < -0.10) return 'rgba(194,65,12,0.55)';
-    if (s < -0.03) return 'rgba(194,65,12,0.30)';
+    if (s > 0.3)  return 'rgba(74,158,237,0.85)';
+    if (s > 0.15) return 'rgba(74,158,237,0.60)';
+    if (s > 0.05) return 'rgba(74,158,237,0.35)';
+    if (s < -0.25) return 'rgba(7,89,133,0.80)';
+    if (s < -0.10) return 'rgba(7,89,133,0.55)';
+    if (s < -0.03) return 'rgba(7,89,133,0.30)';
     return 'rgba(156,163,175,0.15)';
   };
 
@@ -495,9 +495,9 @@ function SVGTextSHAP() {
         <g transform="translate(0, 112)">{renderLine(tokens2, 0)}</g>
 
         {/* legend — below both lines */}
-        <rect x={200} y={162} width={14} height={14} rx={3} fill="rgba(249,115,22,0.65)" />
+        <rect x={200} y={162} width={14} height={14} rx={3} fill="rgba(74,158,237,0.65)" />
         <text x={218} y={173} fontSize={10} fill="var(--text-secondary)">SHAP positivo (↑ sentim.)</text>
-        <rect x={400} y={162} width={14} height={14} rx={3} fill="rgba(194,65,12,0.45)" />
+        <rect x={400} y={162} width={14} height={14} rx={3} fill="rgba(7,89,133,0.45)" />
         <text x={418} y={173} fontSize={10} fill="var(--text-secondary)">SHAP negativo (↓ sentim.)</text>
       </svg>
       <p style={S.figCaption}>Tokens coloridos pelo SHAP value: laranja intenso = positivo (↑ sentimento), laranja-escuro = negativo (↓ sentimento)</p>
@@ -515,12 +515,6 @@ export default function XAI4() {
 
       <div style={S.tag}>MÓDULO 04</div>
       <h1 style={S.h1}>SHAP — SHapley Additive exPlanations</h1>
-      <p style={S.lead}>
-        SHAP é actualmente o método de explicabilidade mais teoricamente fundamentado e amplamente adoptado.
-        Radica na teoria de jogos cooperativos e oferece garantias formais de equidade na atribuição do contributo
-        de cada feature para uma predição individual — combinando rigor matemático com um ecossistema de
-        visualizações extremamente expressivo.
-      </p>
 
       {/* ── Secção 1 ── */}
       <div style={S.section}>
@@ -784,8 +778,8 @@ export default function XAI4() {
         <h3 style={S.h3}>Summary Plot (Beeswarm) — Âmbito Global</h3>
         <p style={S.p}>
           O beeswarm é o gráfico mais informativo para análise global: cada ponto representa uma instância
-          do dataset, o eixo X mostra o SHAP value, e a cor indica o valor da feature (azul = baixo,
-          vermelho = alto). Permite ver simultaneamente importância, direcção e distribuição dos efeitos.
+          do dataset, o eixo X mostra o SHAP value, e a cor indica o valor da feature (azul-claro = baixo,
+          azul-escuro = alto). Permite ver simultaneamente importância, direcção e distribuição dos efeitos.
         </p>
         <SVGBeeswarm />
 
@@ -905,53 +899,6 @@ export default function XAI4() {
           implementação é prioritária e o modelo muda com frequência.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ── Secção 8 — Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <p style={S.p}>
-          SHAP representa o estado da arte em explicabilidade de modelos de machine learning, combinando
-          fundamentos matemáticos sólidos com ferramentas práticas acessíveis. A sua adopção crescente na
-          indústria e academia justifica-se pelas garantias únicas que oferece.
-        </p>
-        <div style={{ ...S.highlight, borderRadius: 10 }}>
-          <p style={{ margin: 0, fontWeight: 700, fontSize: '1rem', color, marginBottom: '0.75rem' }}>
-            Pontos-chave a reter
-          </p>
-          <ul style={{ margin: 0, paddingLeft: '1.4rem', lineHeight: 2.1, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-            <li>
-              <strong>Shapley values</strong> distribuem o contributo de cada feature de forma provadamente justa,
-              baseados na teoria de jogos cooperativos de Lloyd Shapley (1951).
-            </li>
-            <li>
-              <strong>SHAP</strong> (Lundberg &amp; Lee, 2017) satisfaz efficiency, symmetry, dummy e additivity —
-              a única família de métodos com estas quatro garantias simultaneamente.
-            </li>
-            <li>
-              <strong>TreeSHAP</strong> calcula Shapley values exactos em <InlineMath math={"\\mathcal{O}(TLD^2)"} /> para árvores,
-              tornando-o prático em produção mesmo com datasets grandes.
-            </li>
-            <li>
-              <strong>KernelSHAP</strong> e <strong>DeepSHAP</strong> estendem o SHAP a qualquer modelo,
-              ao custo de ser aproximado e mais lento.
-            </li>
-            <li>
-              O ecossistema de visualizações — beeswarm, waterfall, force plot, dependence plot — cobre
-              análises globais e locais de forma expressiva e complementar.
-            </li>
-            <li>
-              SHAP aplica-se a <strong>NLP</strong> (nível de token) e <strong>imagem</strong> (superpixéis),
-              tornando-o um método verdadeiramente universal.
-            </li>
-            <li>
-              Face ao LIME, o SHAP é superior em consistência, estabilidade e capacidade de análise global,
-              sendo a escolha recomendada na grande maioria dos contextos.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

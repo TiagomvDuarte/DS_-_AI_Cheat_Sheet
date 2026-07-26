@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -16,12 +16,12 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
-  svgWrap: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
-  formula: { fontFamily: 'monospace', background: 'rgba(249,115,22,0.10)', borderRadius: 6, padding: '0.75rem 1rem', marginBottom: '1rem', fontSize: '1rem', color: 'var(--text-primary)', display: 'block' },
+  svgWrap: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto', display: 'flex', justifyContent: 'center' },
+  formula: { fontFamily: 'monospace', background: 'rgba(74,158,237,0.10)', borderRadius: 6, padding: '0.75rem 1rem', marginBottom: '1rem', fontSize: '1rem', color: 'var(--text-primary)', display: 'block' },
   grid2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.2rem' },
   card: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '0.9rem 1.1rem' },
 };
@@ -35,8 +35,12 @@ function SvgSecantToTangent() {
   const mx = (x) => ((x + 2) / 5.5) * W;
   const my = (y) => H - (y / 7) * H;
 
+  // Only plot the portion of the parabola that stays within the declared y-range
+  // [0,7] — beyond x≈±2.646 (where x²=7) the curve would map to negative pixels
+  // and get clipped by the viewBox, even though the tangent/secant lines (which
+  // don't depend on this loop) extend further right within bounds.
   const pts = [];
-  for (let i = -2; i <= 3.5; i += 0.05) {
+  for (let i = -2; i <= 2.6; i += 0.05) {
     pts.push(`${mx(i).toFixed(1)},${my(i * i).toFixed(1)}`);
   }
   const curve = pts.join(' ');
@@ -57,18 +61,18 @@ function SvgSecantToTangent() {
       {/* parabola */}
       <polyline points={curve} fill="none" stroke={color} strokeWidth="2.5" />
       {/* secant */}
-      <line x1={mx(sx1)} y1={my(sy1)} x2={mx(sx2)} y2={my(sy2)} stroke="#f59e0b" strokeWidth="1.8" strokeDasharray="6 3" />
+      <line x1={mx(sx1)} y1={my(sy1)} x2={mx(sx2)} y2={my(sy2)} stroke="#7dd3fc" strokeWidth="1.8" strokeDasharray="6 3" />
       {/* tangent */}
-      <line x1={mx(tx1)} y1={my(ty1)} x2={mx(tx2)} y2={my(ty2)} stroke="#f97316" strokeWidth="2" />
+      <line x1={mx(tx1)} y1={my(ty1)} x2={mx(tx2)} y2={my(ty2)} stroke="#4a9eed" strokeWidth="2" />
       {/* point x=1 */}
       <circle cx={mx(1)} cy={my(1)} r="4" fill={color} />
       {/* point x=2 */}
-      <circle cx={mx(2)} cy={my(4)} r="4" fill="#f59e0b" />
+      <circle cx={mx(2)} cy={my(4)} r="4" fill="#7dd3fc" />
       {/* labels anchored end — sit just inside the line tips */}
-      <text x={mx(tx2) + 6} y={my(ty2)} fill="#f97316" fontSize="12" dominantBaseline="middle">tangente</text>
-      <text x={mx(sx2) + 6} y={my(sy2) - 10} fill="#f59e0b" fontSize="12" dominantBaseline="middle">secante</text>
+      <text x={mx(tx2) + 6} y={my(ty2)} fill="#4a9eed" fontSize="12" dominantBaseline="middle">tangente</text>
+      <text x={mx(sx2) + 6} y={my(sy2) - 10} fill="#7dd3fc" fontSize="12" dominantBaseline="middle">secante</text>
       <text x={mx(1) + 30} y={my(1) - 8} fill={color} fontSize="11">(x, f(x))</text>
-      <text x={mx(2) -30} y={my(4) - 12} fill="#f59e0b" fontSize="11" textAnchor="middle">(x+h, f(x+h))</text>
+      <text x={mx(2) -30} y={my(4) - 12} fill="#7dd3fc" fontSize="11" textAnchor="middle">(x+h, f(x+h))</text>
       <text x={mx(-1.8)} y={my(3.6)} fill={color} fontSize="13" fontWeight="bold">f(x)=x&#178;</text>
     </svg>
   );
@@ -79,20 +83,20 @@ function SvgChainDiagram() {
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
       {/* boxes */}
-      <rect x="20" y="45" width="80" height="40" rx="6" fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="1.5" />
-      <rect x="170" y="45" width="80" height="40" rx="6" fill="rgba(251,146,60,0.20)" stroke="#fb923c" strokeWidth="1.5" />
-      <rect x="320" y="45" width="80" height="40" rx="6" fill="rgba(245,158,11,0.20)" stroke="#f59e0b" strokeWidth="1.5" />
+      <rect x="20" y="45" width="80" height="40" rx="6" fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="1.5" />
+      <rect x="170" y="45" width="80" height="40" rx="6" fill="rgba(186,230,253,0.20)" stroke="#bae6fd" strokeWidth="1.5" />
+      <rect x="320" y="45" width="80" height="40" rx="6" fill="rgba(125,211,252,0.20)" stroke="#7dd3fc" strokeWidth="1.5" />
       {/* arrows */}
       <line x1="100" y1="65" x2="168" y2="65" stroke="var(--text-secondary)" strokeWidth="1.5" />
       <polygon points="165,60 175,65 165,70" fill="var(--text-secondary)" />
       <line x1="250" y1="65" x2="318" y2="65" stroke="var(--text-secondary)" strokeWidth="1.5" />
       <polygon points="315,60 325,65 315,70" fill="var(--text-secondary)" />
       {/* labels */}
-      <text x="60" y="68" textAnchor="middle" dominantBaseline="middle" fill="#f97316" fontSize="14" fontWeight="bold">x</text>
+      <text x="60" y="68" textAnchor="middle" dominantBaseline="middle" fill="#4a9eed" fontSize="14" fontWeight="bold">x</text>
       <text x="130" y="58" textAnchor="middle" fill="var(--text-secondary)" fontSize="11">g</text>
-      <text x="210" y="68" textAnchor="middle" dominantBaseline="middle" fill="#fb923c" fontSize="13">g(x)</text>
+      <text x="210" y="68" textAnchor="middle" dominantBaseline="middle" fill="#bae6fd" fontSize="13">g(x)</text>
       <text x="280" y="58" textAnchor="middle" fill="var(--text-secondary)" fontSize="11">f</text>
-      <text x="360" y="68" textAnchor="middle" dominantBaseline="middle" fill="#f59e0b" fontSize="13">f(g(x))</text>
+      <text x="360" y="68" textAnchor="middle" dominantBaseline="middle" fill="#7dd3fc" fontSize="13">f(g(x))</text>
       {/* derivative annotation */}
       <text x="130" y="115" textAnchor="middle" fill="var(--text-secondary)" fontSize="11">g'(x)</text>
       <text x="280" y="115" textAnchor="middle" fill="var(--text-secondary)" fontSize="11">f'(g(x))</text>
@@ -120,17 +124,17 @@ function SvgHigherDerivatives() {
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
       <line x1={0} y1={my(0, -1.5, 2)} x2={W} y2={my(0, -1.5, 2)} stroke="var(--text-secondary)" strokeWidth="1" />
       <polyline points={toPoints(f, -1.5, 2)} fill="none" stroke={color} strokeWidth="2.5" />
-      <polyline points={toPoints(fp, -1.5, 2)} fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="7 3" />
-      <polyline points={toPoints(fpp, -1.5, 2)} fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="3 3" />
+      <polyline points={toPoints(fp, -1.5, 2)} fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="7 3" />
+      <polyline points={toPoints(fpp, -1.5, 2)} fill="none" stroke="#7dd3fc" strokeWidth="2" strokeDasharray="3 3" />
       <text x="8" y="18" fill={color} fontSize="12" fontWeight="bold">f(x)</text>
-      <text x="8" y="36" fill="#f97316" fontSize="12">f'(x)</text>
-      <text x="8" y="54" fill="#f59e0b" fontSize="12">f''(x)</text>
+      <text x="8" y="36" fill="#4a9eed" fontSize="12">f'(x)</text>
+      <text x="8" y="54" fill="#7dd3fc" fontSize="12">f''(x)</text>
     </svg>
   );
 }
 
 function SvgMVT() {
-  const W = 400, H = 210;
+  const W = 400, H = 150;
   const a = 0.3, b = 3.8;
   const f = (x) => -0.2 * x * x + x + 0.8;
   const mx = (x) => ((x - 0) / 4.5) * W;
@@ -154,20 +158,19 @@ function SvgMVT() {
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
       <polyline points={curve} fill="none" stroke={color} strokeWidth="2.5" />
       {/* secant */}
-      <line x1={mx(a - 0.1)} y1={my(sLine(a - 0.1))} x2={mx(b + 0.1)} y2={my(sLine(b + 0.1))} stroke="#f59e0b" strokeWidth="1.8" />
+      <line x1={mx(a - 0.1)} y1={my(sLine(a - 0.1))} x2={mx(b + 0.1)} y2={my(sLine(b + 0.1))} stroke="#7dd3fc" strokeWidth="1.8" />
       {/* tangent at c */}
-      <line x1={mx(c - 1.2)} y1={my(tLine(c - 1.2))} x2={mx(c + 1.2)} y2={my(tLine(c + 1.2))} stroke="#f97316" strokeWidth="1.8" strokeDasharray="6 3" />
+      <line x1={mx(c - 1.2)} y1={my(tLine(c - 1.2))} x2={mx(c + 1.2)} y2={my(tLine(c + 1.2))} stroke="#4a9eed" strokeWidth="1.8" strokeDasharray="6 3" />
       {/* points */}
-      <circle cx={mx(a)} cy={my(fa)} r="5" fill="#f59e0b" />
-      <circle cx={mx(b)} cy={my(fb)} r="5" fill="#f59e0b" />
-      <circle cx={mx(c)} cy={my(fc)} r="5" fill="#f97316" />
+      <circle cx={mx(a)} cy={my(fa)} r="5" fill="#7dd3fc" />
+      <circle cx={mx(b)} cy={my(fb)} r="5" fill="#7dd3fc" />
+      <circle cx={mx(c)} cy={my(fc)} r="5" fill="#4a9eed" />
       {/* labels */}
-      <text x={mx(a) - 4} y={my(fa) - 10} textAnchor="middle" fill="#f59e0b" fontSize="12">a</text>
-      <text x={mx(b) + 4} y={my(fb) - 10} textAnchor="start" fill="#f59e0b" fontSize="12">b</text>
-      <text x={mx(c)} y={my(fc) - 12} textAnchor="middle" fill="#f97316" fontSize="12">c</text>
-      <text x={W - 10} y={my(sLine(b + 0.1)) - 6} textAnchor="end" fill="#f59e0b" fontSize="11">secante</text>
-      <text x={mx(c + 2)} y={my(tLine(c + 1.2)) + 14} textAnchor="end" fill="#f97316" fontSize="11">tangente em c</text>
-      <text x={W / 2} y={16} textAnchor="middle" fill="var(--text-secondary)" fontSize="11">f'(c) = [f(b)−f(a)] / (b−a)</text>
+      <text x={mx(a) - 4} y={my(fa) - 10} textAnchor="middle" fill="#7dd3fc" fontSize="12">a</text>
+      <text x={mx(b) + 4} y={my(fb) - 16} textAnchor="start" fill="#7dd3fc" fontSize="12">b</text>
+      <text x={mx(c)} y={my(fc) - 12} textAnchor="middle" fill="#4a9eed" fontSize="12">c</text>
+      <text x={mx((a + b) / 2)} y={my(sLine((a + b) / 2)) + 16} textAnchor="middle" fill="#7dd3fc" fontSize="11">secante</text>
+      <text x={mx(c - 1.2)} y={my(tLine(c - 1.2)) - 8} textAnchor="start" fill="#4a9eed" fontSize="11">tangente em c</text>
     </svg>
   );
 }
@@ -196,16 +199,16 @@ function SvgActivations() {
       {/* sigmoid derivative */}
       <polyline points={toPoints(sigDeriv, -0.1, 1.2)} fill="none" stroke={color} strokeWidth="2" />
       {/* tanh derivative */}
-      <polyline points={toPoints(tanhDeriv, -0.1, 1.2)} fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="7 3" />
+      <polyline points={toPoints(tanhDeriv, -0.1, 1.2)} fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="7 3" />
       {/* relu derivative */}
-      <polyline points={toPoints(reluDeriv, -0.1, 1.2)} fill="none" stroke="#f59e0b" strokeWidth="2.5" />
+      <polyline points={toPoints(reluDeriv, -0.1, 1.2)} fill="none" stroke="#7dd3fc" strokeWidth="2.5" />
       {/* legend */}
       <line x1="10" y1="18" x2="36" y2="18" stroke={color} strokeWidth="2" />
       <text x="40" y="22" fill={color} fontSize="12">σ'(x)</text>
-      <line x1="100" y1="18" x2="126" y2="18" stroke="#f97316" strokeWidth="2" strokeDasharray="7 3" />
-      <text x="130" y="22" fill="#f97316" fontSize="12">tanh'(x)</text>
-      <line x1="220" y1="18" x2="246" y2="18" stroke="#f59e0b" strokeWidth="2.5" />
-      <text x="250" y="22" fill="#f59e0b" fontSize="12">ReLU'(x)</text>
+      <line x1="100" y1="18" x2="126" y2="18" stroke="#4a9eed" strokeWidth="2" strokeDasharray="7 3" />
+      <text x="130" y="22" fill="#4a9eed" fontSize="12">tanh'(x)</text>
+      <line x1="220" y1="18" x2="246" y2="18" stroke="#7dd3fc" strokeWidth="2.5" />
+      <text x="250" y="22" fill="#7dd3fc" fontSize="12">ReLU'(x)</text>
       {/* y=0.25 reference for sigmoid max */}
       <line x1={0} y1={my(0.25, -0.1, 1.2)} x2={W} y2={my(0.25, -0.1, 1.2)} stroke={color} strokeWidth="1" strokeDasharray="3 5" opacity="0.4" />
       <text x={W - 4} y={my(0.25, -0.1, 1.2) - 4} textAnchor="end" fill={color} fontSize="10" opacity="0.7">max σ'=0.25</text>
@@ -243,8 +246,11 @@ function SvgNewtonRaphson() {
     };
   };
 
-  const t1 = tang(x0, 0.5, 0.1);
-  const t2 = tang(x1, 0.3, 0.5);
+  // Extend each tangent far enough past its own x-intercept (the next iterate)
+  // so the line visibly crosses the axis instead of floating above it.
+  const margin = 0.15;
+  const t1 = tang(x0, (x0 - x1) + margin, margin);
+  const t2 = tang(x1, (x1 - x2) + margin, 0.3);
 
   const zero = my(0);
 
@@ -259,34 +265,34 @@ function SvgNewtonRaphson() {
       <text x={mx(xMax) - 5} y={my(f(xMax)) - 8} fill={color} fontSize="13" fontWeight="bold" textAnchor="end">f(x)</text>
 
       {/* Root marker */}
-      <circle cx={mx(root)} cy={zero} r="5" fill="#fb923c" />
-      <text x={mx(root)} y={zero + 18} textAnchor="middle" fill="#fb923c" fontSize="11" fontWeight="bold">raiz</text>
+      <circle cx={mx(root)} cy={zero} r="5" fill="#bae6fd" />
+      <text x={mx(root)} y={zero + 32} textAnchor="middle" fill="#bae6fd" fontSize="11" fontWeight="bold">raiz</text>
 
       {/* Step 1: x0 → x1 */}
       {/* vertical dashed from x0 up to curve */}
-      <line x1={mx(x0)} y1={zero} x2={mx(x0)} y2={my(f(x0))} stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="4,3" />
+      <line x1={mx(x0)} y1={zero} x2={mx(x0)} y2={my(f(x0))} stroke="#7dd3fc" strokeWidth="1.2" strokeDasharray="4,3" />
       {/* tangent line at x0 */}
-      <line x1={t1.x1} y1={t1.y1} x2={t1.x2} y2={t1.y2} stroke="#f59e0b" strokeWidth="2" />
+      <line x1={t1.x1} y1={t1.y1} x2={t1.x2} y2={t1.y2} stroke="#7dd3fc" strokeWidth="2" />
       {/* point on curve at x0 */}
-      <circle cx={mx(x0)} cy={my(f(x0))} r="5" fill="#f59e0b" />
+      <circle cx={mx(x0)} cy={my(f(x0))} r="5" fill="#7dd3fc" />
       {/* x0 on axis */}
-      <line x1={mx(x0)} y1={zero - 4} x2={mx(x0)} y2={zero + 4} stroke="#f59e0b" strokeWidth="2" />
-      <text x={mx(x0)} y={zero + 18} textAnchor="middle" fill="#f59e0b" fontSize="12">x₀</text>
+      <line x1={mx(x0)} y1={zero - 4} x2={mx(x0)} y2={zero + 4} stroke="#7dd3fc" strokeWidth="2" />
+      <text x={mx(x0)} y={zero + 18} textAnchor="middle" fill="#7dd3fc" fontSize="12">x₀</text>
 
       {/* Step 2: x1 → x2 */}
-      <line x1={mx(x1)} y1={zero} x2={mx(x1)} y2={my(f(x1))} stroke="#fb923c" strokeWidth="1.2" strokeDasharray="4,3" />
-      <line x1={t2.x1} y1={t2.y1} x2={t2.x2} y2={t2.y2} stroke="#fb923c" strokeWidth="2" />
-      <circle cx={mx(x1)} cy={my(f(x1))} r="5" fill="#fb923c" />
-      <line x1={mx(x1)} y1={zero - 4} x2={mx(x1)} y2={zero + 4} stroke="#fb923c" strokeWidth="2" />
-      <text x={mx(x1)} y={zero + 18} textAnchor="middle" fill="#fb923c" fontSize="12">x₁</text>
+      <line x1={mx(x1)} y1={zero} x2={mx(x1)} y2={my(f(x1))} stroke="#bae6fd" strokeWidth="1.2" strokeDasharray="4,3" />
+      <line x1={t2.x1} y1={t2.y1} x2={t2.x2} y2={t2.y2} stroke="#bae6fd" strokeWidth="2" />
+      <circle cx={mx(x1)} cy={my(f(x1))} r="5" fill="#bae6fd" />
+      <line x1={mx(x1)} y1={zero - 4} x2={mx(x1)} y2={zero + 4} stroke="#bae6fd" strokeWidth="2" />
+      <text x={mx(x1)} y={zero + 18} textAnchor="middle" fill="#bae6fd" fontSize="12">x₁</text>
 
       {/* x2 on axis */}
-      <line x1={mx(x2)} y1={zero - 4} x2={mx(x2)} y2={zero + 4} stroke="#f97316" strokeWidth="2" />
-      <text x={mx(x2)} y={zero + 18} textAnchor="middle" fill="#f97316" fontSize="12">x₂</text>
+      <line x1={mx(x2)} y1={zero - 4} x2={mx(x2)} y2={zero + 4} stroke="#4a9eed" strokeWidth="2" />
+      <text x={mx(x2)} y={zero + 18} textAnchor="middle" fill="#4a9eed" fontSize="12">x₂</text>
 
       {/* Arrows on axis showing direction */}
-      <polygon points={`${mx(x0) - 6},${zero - 5} ${mx(x1) + 2},${zero} ${mx(x0) - 6},${zero + 5}`} fill="#f59e0b" opacity="0.6" />
-      <polygon points={`${mx(x1) - 6},${zero - 5} ${mx(x2) + 2},${zero} ${mx(x1) - 6},${zero + 5}`} fill="#fb923c" opacity="0.6" />
+      <polygon points={`${mx(x0) - 6},${zero - 5} ${mx(x1) + 2},${zero} ${mx(x0) - 6},${zero + 5}`} fill="#7dd3fc" opacity="0.6" />
+      <polygon points={`${mx(x1) - 6},${zero - 5} ${mx(x2) + 2},${zero} ${mx(x1) - 6},${zero + 5}`} fill="#bae6fd" opacity="0.6" />
 
       {/* Caption */}
       <text x={W / 2} y={H - 4} textAnchor="middle" fill="var(--text-secondary)" fontSize="11">
@@ -355,20 +361,20 @@ function SvgNumericalError() {
       <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="11" fill="var(--text-secondary)"
         transform={`rotate(-90, 12, ${padT + plotH / 2})`}>log₁₀(erro)</text>
       {/* Curves */}
-      <polyline points={fwdPts} fill="none" stroke="#f59e0b" strokeWidth="2.5" />
-      <polyline points={cenPts} fill="none" stroke="#fb923c" strokeWidth="2.5" strokeDasharray="8,4" />
+      <polyline points={fwdPts} fill="none" stroke="#7dd3fc" strokeWidth="2.5" />
+      <polyline points={cenPts} fill="none" stroke="#bae6fd" strokeWidth="2.5" strokeDasharray="8,4" />
       {/* Optimal point markers */}
       <line x1={px(lhOptFwd)} y1={padT} x2={px(lhOptFwd)} y2={padT + plotH}
-        stroke="#f59e0b" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.6" />
-      <text x={px(lhOptFwd) + 4} y={padT + 14} fontSize="9" fill="#f59e0b">h*≈10⁻⁸</text>
+        stroke="#7dd3fc" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.6" />
+      <text x={px(lhOptFwd) + 4} y={padT + 14} fontSize="9" fill="#7dd3fc">h*≈10⁻⁸</text>
       <line x1={px(lhOptCen)} y1={padT} x2={px(lhOptCen)} y2={padT + plotH}
-        stroke="#fb923c" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.6" />
-      <text x={px(lhOptCen) + 4} y={padT + 26} fontSize="9" fill="#fb923c">h*≈10⁻⁵</text>
+        stroke="#bae6fd" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.6" />
+      <text x={px(lhOptCen) + 4} y={padT + 26} fontSize="9" fill="#bae6fd">h*≈10⁻⁵</text>
       {/* Legend */}
-      <line x1={padL + 10} y1={padT + 82} x2={padL + 32} y2={padT + 82} stroke="#f59e0b" strokeWidth="2.5" />
-      <text x={padL + 36} y={padT + 85} fontSize="11" fill="#f59e0b">diferença avante  O(h)</text>
-      <line x1={padL + 10} y1={padT + 97} x2={padL + 32} y2={padT + 97} stroke="#fb923c" strokeWidth="2.5" strokeDasharray="8,4" />
-      <text x={padL + 36} y={padT + 102} fontSize="11" fill="#fb923c">diferença central  O(h²)</text>
+      <line x1={padL + 10} y1={padT + 82} x2={padL + 32} y2={padT + 82} stroke="#7dd3fc" strokeWidth="2.5" />
+      <text x={padL + 36} y={padT + 85} fontSize="11" fill="#7dd3fc">diferença avante  O(h)</text>
+      <line x1={padL + 10} y1={padT + 97} x2={padL + 32} y2={padT + 97} stroke="#bae6fd" strokeWidth="2.5" strokeDasharray="8,4" />
+      <text x={padL + 36} y={padT + 102} fontSize="11" fill="#bae6fd">diferença central  O(h²)</text>
     </svg>
   );
 }
@@ -382,53 +388,47 @@ export default function CALC2() {
 
       <div style={S.tag}>MÓDULO 02</div>
       <h1 style={S.h1}>Derivadas &amp; Diferenciação</h1>
-      <p style={S.lead}>
-        A derivada mede a taxa de variação instantânea de uma função. Em machine learning, derivadas são o mecanismo
-        central do gradient descent: calculamos como a perda muda em relação a cada parâmetro e usamos esse sinal para
-        actualizar o modelo. Este módulo cobre a teoria completa, das definições formais às técnicas avançadas usadas em
-        redes neuronais profundas.
-      </p>
 
       {/* ── 1 ── */}
       <div style={S.section}>
         <h2 style={S.h2}>1. Definição de Derivada</h2>
         <p style={S.p}>
-          A derivada de f em x é o limite da razão incremental quando o incremento h tende para zero:
+          A derivada de <InlineMath math="f" /> em <InlineMath math="x" /> é o limite da razão incremental quando o incremento h tende para zero:
         </p>
         <BlockMath math="f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}" />
         <p style={S.p}>
-          <strong>Interpretação geométrica:</strong> f'(x) é o declive da recta tangente ao gráfico de f no ponto
-          (x, f(x)). A recta secante tem declive <InlineMath math="\frac{f(x+h)-f(x)}{h}" />; quando <InlineMath math="h \to 0" /> a secante converge para a tangente.
-          O SVG abaixo ilustra essa convergência para <InlineMath math="f(x) = x^2" />.
+          <strong>Interpretação geométrica:</strong> <InlineMath math="f'(x)" /> é o declive da recta tangente ao gráfico de <InlineMath math="f" /> no ponto{' '}
+          <InlineMath math="(x, f(x))" />. A recta secante tem declive <InlineMath math="\frac{f(x+h)-f(x)}{h}" />; quando <InlineMath math="h \to 0" /> a secante converge para a tangente.
+          O esquema abaixo ilustra essa convergência para <InlineMath math="f(x) = x^2" />.
         </p>
         <div style={S.svgWrap}>
           <SvgSecantToTangent />
         </div>
         <p style={S.p}>
-          <strong>Interpretação física:</strong> Se s(t) é a posição ao longo do tempo, então s'(t) é a velocidade
+          <strong>Interpretação física:</strong> Se <InlineMath math="s(t)" /> é a posição ao longo do tempo, então <InlineMath math="s'(t)" /> é a velocidade
           instantânea. A derivada generaliza a ideia de velocidade média para qualquer função.
         </p>
         <p style={S.p}>
           <strong>Diferenciabilidade implica continuidade</strong> (mas não o inverso). Uma função pode ser contínua em
-          x sem ser diferenciável — por exemplo, f(x) = |x| é contínua em 0 mas a sua derivada é descontínua aí. ReLU
+          x sem ser diferenciável — por exemplo, <InlineMath math="f(x) = |x|" /> é contínua em 0 mas a sua derivada é descontínua aí. ReLU
           tem exatamente esta propriedade, o que motiva o uso de subgradientes em deep learning.
         </p>
         <div style={S.grid2}>
           <div style={S.card}>
             <strong style={{ color }}>Notação de Lagrange</strong>
-            <div style={{ marginTop: 6, fontFamily: 'monospace', fontSize: '0.95rem' }}>f'(x), f''(x), f&#8319;(x)</div>
+            <div style={{ marginTop: 6, fontSize: '0.95rem' }}><InlineMath math="f'(x),\ f''(x),\ f^{(n)}(x)" /></div>
           </div>
           <div style={S.card}>
             <strong style={{ color }}>Notação de Leibniz</strong>
-            <div style={{ marginTop: 6, fontFamily: 'monospace', fontSize: '0.95rem' }}>dy/dx, d&#178;y/dx&#178;</div>
+            <div style={{ marginTop: 6, fontSize: '0.95rem' }}><InlineMath math="\frac{dy}{dx},\ \frac{d^2y}{dx^2}" /></div>
           </div>
           <div style={S.card}>
             <strong style={{ color }}>Notação de Operador</strong>
-            <div style={{ marginTop: 6, fontFamily: 'monospace', fontSize: '0.95rem' }}>Df(x), D&#178;f(x)</div>
+            <div style={{ marginTop: 6, fontSize: '0.95rem' }}><InlineMath math="Df(x),\ D^2f(x)" /></div>
           </div>
           <div style={S.card}>
             <strong style={{ color }}>Notação Parcial (ML)</strong>
-            <div style={{ marginTop: 6, fontFamily: 'monospace', fontSize: '0.95rem' }}>&#8706;L/&#8706;w, &#8706;f/&#8706;x</div>
+            <div style={{ marginTop: 6, fontSize: '0.95rem' }}><InlineMath math="\frac{\partial L}{\partial w},\ \frac{\partial f}{\partial x}" /></div>
           </div>
         </div>
                 <div style={S.note}>
@@ -450,8 +450,8 @@ export default function CALC2() {
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Função f(x)</th>
-              <th style={S.th}>Derivada f'(x)</th>
+              <th style={S.th}>Função <InlineMath math="f(x)" /></th>
+              <th style={S.th}>Derivada <InlineMath math="f'(x)" /></th>
               <th style={S.th}>Regra / Nota</th>
             </tr>
           </thead>
@@ -529,7 +529,7 @@ export default function CALC2() {
           </tbody>
         </table>
                 <div style={S.note}>
-          <strong>Erro comum:</strong> (u &#183; v)' &#8800; u' &#183; v'. A derivada de um produto NÃO é o produto das
+          <strong>Erro comum:</strong> <InlineMath math="(u \cdot v)' \neq u' \cdot v'" />. A derivada de um produto NÃO é o produto das
           derivadas. Verificar sempre com a fórmula completa.
         </div>
       </div>
@@ -540,7 +540,7 @@ export default function CALC2() {
       <div style={S.section}>
         <h2 style={S.h2}>4. Regra da Cadeia</h2>
         <p style={S.p}>
-          A regra da cadeia permite derivar funções compostas f(g(x)). É a base matemática da backpropagation em
+          A regra da cadeia permite derivar funções compostas <InlineMath math="f(g(x))" />. É a base matemática da backpropagation em
           redes neuronais.
         </p>
         <BlockMath math="\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)" />
@@ -548,7 +548,7 @@ export default function CALC2() {
           <SvgChainDiagram />
         </div>
         <p style={S.p}>
-          A intuição é: multiplicamos as taxas de variação. Se g muda à taxa g'(x) e f muda à taxa f'(g(x)) em
+          A intuição é: multiplicamos as taxas de variação. Se g muda à taxa <InlineMath math="g'(x)" /> e f muda à taxa <InlineMath math="f'(g(x))" /> em
           relação a g, então a taxa composta é o produto.
         </p>
         <table style={S.table}>
@@ -603,15 +603,15 @@ export default function CALC2() {
       <div style={S.section}>
         <h2 style={S.h2}>5. Derivação Implícita</h2>
         <p style={S.p}>
-          Nem sempre y está definido explicitamente como função de x. Quando F(x, y) = 0 define y implicitamente,
+          Nem sempre y está definido explicitamente como função de x. Quando <InlineMath math="F(x, y) = 0" /> define y implicitamente,
           diferenciamos ambos os lados em relação a x, tratando y como função de x e aplicando a regra da cadeia.
         </p>
         <BlockMath math="\text{Se } F(x,y) = 0,\text{ então } \frac{dy}{dx} = -\frac{\partial F/\partial x}{\partial F/\partial y}" />
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Curva F(x,y) = 0</th>
-              <th style={S.th}>dy/dx</th>
+              <th style={S.th}>Curva <InlineMath math="F(x,y) = 0" /></th>
+              <th style={S.th}><InlineMath math="dy/dx" /></th>
               <th style={S.th}>Observação</th>
             </tr>
           </thead>
@@ -650,7 +650,7 @@ export default function CALC2() {
       <div style={S.section}>
         <h2 style={S.h2}>6. Derivadas de Ordem Superior</h2>
         <p style={S.p}>
-          A segunda derivada f''(x) mede a taxa de variação de f'(x) — isto é, a curvatura da função.
+          A segunda derivada <InlineMath math="f''(x)" /> mede a taxa de variação de <InlineMath math="f'(x)" /> — isto é, a curvatura da função.
           As derivadas de ordem superior capturam informação sobre a forma da função que as de primeira ordem não revelam.
         </p>
         <div style={S.svgWrap}>
@@ -665,23 +665,23 @@ export default function CALC2() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>f(t)</td><td style={S.td}>Posição</td><td style={S.td}>Curva</td></tr>
-            <tr><td style={S.td}>f'(t)</td><td style={S.td}>Velocidade</td><td style={S.td}>Declive da tangente</td></tr>
-            <tr><td style={S.td}>f''(t)</td><td style={S.td}>Aceleração</td><td style={S.td}>Curvatura (côncavo/convexo)</td></tr>
-            <tr><td style={S.td}>f'''(t)</td><td style={S.td}>Jerk (variação de aceleração)</td><td style={S.td}>Taxa de variação da curvatura</td></tr>
+            <tr><td style={S.td}><InlineMath math="f(t)" /></td><td style={S.td}>Posição</td><td style={S.td}>Curva</td></tr>
+            <tr><td style={S.td}><InlineMath math="f'(t)" /></td><td style={S.td}>Velocidade</td><td style={S.td}>Declive da tangente</td></tr>
+            <tr><td style={S.td}><InlineMath math="f''(t)" /></td><td style={S.td}>Aceleração</td><td style={S.td}>Curvatura (côncavo/convexo)</td></tr>
+            <tr><td style={S.td}><InlineMath math="f'''(t)" /></td><td style={S.td}>Jerk (variação de aceleração)</td><td style={S.td}>Taxa de variação da curvatura</td></tr>
           </tbody>
         </table>
         <p style={S.p}>
-          <strong>Concavidade:</strong> Se f''(x) &gt; 0, a função é convexa em x (curvatura para cima, forma de tigela).
-          Se f''(x) &lt; 0, é côncava (curvatura para baixo). <strong>Pontos de inflexão</strong> ocorrem onde f'' muda de sinal.
+          <strong>Concavidade:</strong> Se <InlineMath math="f''(x) > 0" />, a função é convexa em x (curvatura para cima, forma de tigela).
+          Se <InlineMath math="f''(x) < 0" />, é côncava (curvatura para baixo). <strong>Pontos de inflexão</strong> ocorrem onde f'' muda de sinal.
         </p>
         <div style={S.highlight}>
           <strong>Pré-visualização de séries de Taylor:</strong> Uma função suave pode ser aproximada por um polinómio
-          usando todas as derivadas em x&#8320;:
-          f(x) &#8776; f(x&#8320;) + f'(x&#8320;)(x&#8722;x&#8320;) + f''(x&#8320;)(x&#8722;x&#8320;)&#178;/2! + f'''(x&#8320;)(x&#8722;x&#8320;)&#179;/3! + &#8230;
+          usando todas as derivadas em <InlineMath math="x_0" />:
+          <BlockMath math="f(x) \approx f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)(x-x_0)^2}{2!} + \frac{f'''(x_0)(x-x_0)^3}{3!} + \cdots" />
         </div>
                 <div style={S.note}>
-          A Hessiana é a matriz das derivadas parciais de segunda ordem f&#8202;&#8305;&#8304;/&#8706;x&#7522;&#8706;x&#11388;.
+          A Hessiana é a matriz das derivadas parciais de segunda ordem <InlineMath math="\partial^2 f/\partial x_i \partial x_j" />.
           É usada em optimização de segunda ordem (Newton's Method) e mede a curvatura em espaços de alta dimensão.
         </div>
       </div>
@@ -696,19 +696,19 @@ export default function CALC2() {
           ponto interior onde a derivada iguala a variação média.
         </p>
         <div style={S.highlight}>
-          <strong>TVM:</strong> Se f é contínua em [a,b] e diferenciável em (a,b), existe c &#8712; (a,b) tal que:
-          f'(c) = [f(b) &#8722; f(a)] / (b &#8722; a)
+          <strong>TVM:</strong> Se f é contínua em [a,b] e diferenciável em (a,b), existe <InlineMath math="c \in (a,b)" /> tal que:
+          <BlockMath math="f'(c) = \frac{f(b) - f(a)}{b - a}" />
         </div>
         <div style={S.svgWrap}>
           <SvgMVT />
         </div>
         <p style={S.p}>
-          <strong>Geometricamente:</strong> existe um ponto c onde a tangente à curva é paralela à recta secante
-          que une (a, f(a)) a (b, f(b)).
+          <strong>Geometricamente:</strong> existe um ponto <InlineMath math="c" /> onde a tangente à curva é paralela à recta secante
+          que une <InlineMath math="(a, f(a))" /> a <InlineMath math="(b, f(b))" />.
         </p>
         <p style={S.p}>
-          <strong>Teorema de Rolle</strong> é o caso especial onde f(a) = f(b): se uma função tem o mesmo valor
-          nos extremos, existe pelo menos um ponto interior onde f'(c) = 0 (um máximo ou mínimo).
+          <strong>Teorema de Rolle</strong> é o caso especial onde <InlineMath math="f(a) = f(b)" />: se uma função tem o mesmo valor
+          nos extremos, existe pelo menos um ponto interior onde <InlineMath math="f'(c) = 0" /> (um máximo ou mínimo).
         </p>
         <table style={S.table}>
           <thead>
@@ -718,10 +718,10 @@ export default function CALC2() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>Limitar erros</td><td style={S.td}>|f(b)&#8722;f(a)| &#8804; max|f'| &#183; (b&#8722;a): bound na variação da função</td></tr>
-            <tr><td style={S.td}>Provar igualdades</td><td style={S.td}>Se f'(x)=0 para todo x, então f é constante</td></tr>
-            <tr><td style={S.td}>Análise de convergência</td><td style={S.td}>Bound no erro de métodos numéricos: |erro| &#8804; Mh&#178; (diferenças centrais)</td></tr>
-            <tr><td style={S.td}>Desigualdades</td><td style={S.td}>Provar ln(x) &#8804; x&#8722;1 para x&gt;0 usando f'(x)=1/x&#8722;1</td></tr>
+            <tr><td style={S.td}>Limitar erros</td><td style={S.td}><InlineMath math="|f(b)-f(a)| \le \max|f'| \cdot (b-a)" />: bound na variação da função</td></tr>
+            <tr><td style={S.td}>Provar igualdades</td><td style={S.td}>Se <InlineMath math="f'(x)=0" /> para todo x, então f é constante</td></tr>
+            <tr><td style={S.td}>Análise de convergência</td><td style={S.td}>Bound no erro de métodos numéricos: <InlineMath math="|\text{erro}| \le Mh^2" /> (diferenças centrais)</td></tr>
+            <tr><td style={S.td}>Desigualdades</td><td style={S.td}>Provar <InlineMath math="\ln(x) \le x-1" /> para x&gt;0 usando <InlineMath math="f'(x)=1/x-1" /></td></tr>
           </tbody>
         </table>
         <div style={S.note}>
@@ -746,8 +746,8 @@ export default function CALC2() {
           <thead>
             <tr>
               <th style={S.th}>Activação</th>
-              <th style={S.th}>f(x)</th>
-              <th style={S.th}>f'(x)</th>
+              <th style={S.th}><InlineMath math="f(x)" /></th>
+              <th style={S.th}><InlineMath math="f'(x)" /></th>
               <th style={S.th}>Gama f'</th>
               <th style={S.th}>Problema</th>
             </tr>
@@ -755,43 +755,43 @@ export default function CALC2() {
           <tbody>
             <tr>
               <td style={S.td}>Sigmoid &#963;</td>
-              <td style={S.td}>1/(1+e&#8315;&#120;)</td>
-              <td style={S.td}>&#963;(x)(1&#8722;&#963;(x))</td>
+              <td style={S.td}><InlineMath math="1/(1+e^{-x})" /></td>
+              <td style={S.td}><InlineMath math="\sigma(x)(1-\sigma(x))" /></td>
               <td style={S.td}>(0, 0.25]</td>
               <td style={S.td}>Saturação, vanishing gradient</td>
             </tr>
             <tr>
               <td style={S.td}>Tanh</td>
-              <td style={S.td}>(e&#120;&#8722;e&#8315;&#120;)/(e&#120;+e&#8315;&#120;)</td>
-              <td style={S.td}>1&#8722;tanh&#178;(x)</td>
+              <td style={S.td}><InlineMath math="\frac{e^x-e^{-x}}{e^x+e^{-x}}" /></td>
+              <td style={S.td}><InlineMath math="1-\tanh^2(x)" /></td>
               <td style={S.td}>(0, 1]</td>
               <td style={S.td}>Saturação nos extremos</td>
             </tr>
             <tr>
               <td style={S.td}>ReLU</td>
-              <td style={S.td}>max(0, x)</td>
-              <td style={S.td}>0 se x&lt;0; 1 se x&gt;0</td>
+              <td style={S.td}><InlineMath math="\max(0, x)" /></td>
+              <td style={S.td}><InlineMath math="0 \text{ se } x<0;\ 1 \text{ se } x>0" /></td>
               <td style={S.td}>0 ou 1</td>
               <td style={S.td}>Neurónios mortos (dead neurons)</td>
             </tr>
             <tr>
               <td style={S.td}>Leaky ReLU</td>
-              <td style={S.td}>max(&#945;x, x)</td>
-              <td style={S.td}>&#945; se x&lt;0; 1 se x&gt;0</td>
+              <td style={S.td}><InlineMath math="\max(\alpha x, x)" /></td>
+              <td style={S.td}><InlineMath math="\alpha \text{ se } x<0;\ 1 \text{ se } x>0" /></td>
               <td style={S.td}>&#945; ou 1</td>
               <td style={S.td}>&#945; é hiperparâmetro (tipic. 0.01)</td>
             </tr>
             <tr>
               <td style={S.td}>ELU</td>
-              <td style={S.td}>&#945;(e&#120;&#8722;1) se x&lt;0; x se x&#8805;0</td>
-              <td style={S.td}>&#945;e&#120; se x&lt;0; 1 se x&gt;0</td>
+              <td style={S.td}><InlineMath math="\alpha(e^x-1) \text{ se } x<0;\ x \text{ se } x \ge 0" /></td>
+              <td style={S.td}><InlineMath math="\alpha e^x \text{ se } x<0;\ 1 \text{ se } x>0" /></td>
               <td style={S.td}>(0, &#8734;)</td>
               <td style={S.td}>Mais suave que Leaky ReLU</td>
             </tr>
             <tr>
               <td style={S.td}>GELU</td>
-              <td style={S.td}>x &#183; &#934;(x)</td>
-              <td style={S.td}>&#934;(x) + x&#966;(x)</td>
+              <td style={S.td}><InlineMath math="x \cdot \Phi(x)" /></td>
+              <td style={S.td}><InlineMath math="\Phi(x) + x\phi(x)" /></td>
               <td style={S.td}>Suave</td>
               <td style={S.td}>Usado em Transformers (BERT, GPT)</td>
             </tr>
@@ -799,14 +799,14 @@ export default function CALC2() {
         </table>
         <p style={S.p}>
           <strong>Softmax:</strong> Para a saída de classificação, a derivada de softmax não é um vector mas uma
-          matriz Jacobiana. Para softmax s&#7522; = e&#7480;&#7522; / &#8721;&#11388; e&#7480;&#11388;:
+          matriz Jacobiana. Para softmax <InlineMath math="s_i = e^{z_i} / \sum_j e^{z_j}" />:
         </p>
         <div style={S.highlight}>
-          &#8706;s&#7522;/&#8706;z&#11388; = s&#7522;(&#948;&#7522;&#11388; &#8722; s&#11388;) onde &#948;&#7522;&#11388; é o delta de Kronecker
+          <InlineMath math="\partial s_i/\partial z_j = s_i(\delta_{ij} - s_j)" /> onde <InlineMath math="\delta_{ij}" /> é o delta de Kronecker
         </div>
                 <div style={S.note}>
           <strong>Vanishing gradient:</strong> A derivada máxima do sigmoid é 0.25. Em redes profundas com L camadas,
-          o gradiente que chega à primeira camada é proporcional a (0.25)&#7480; &#8594; 0 muito rapidamente.
+          o gradiente que chega à primeira camada é proporcional a <InlineMath math="(0.25)^L \to 0" /> muito rapidamente.
           ReLU resolve isto mantendo gradiente 1 para activações positivas.
         </div>
       </div>
@@ -821,7 +821,7 @@ export default function CALC2() {
           É especialmente útil quando a função é um produto de muitos termos, ou quando o expoente é variável.
         </p>
         <div style={S.highlight}>
-          Se y = f(x), então ln(y) = ln(f(x)). Diferenciando: y'/y = [ln f(x)]'. Logo y' = y &#183; [ln f(x)]'
+          Se <InlineMath math="y = f(x)" />, então <InlineMath math="\ln(y) = \ln(f(x))" />. Diferenciando: <InlineMath math="y'/y = [\ln f(x)]'" />. Logo <InlineMath math="y' = y \cdot [\ln f(x)]'" />
         </div>
         <table style={S.table}>
           <thead>
@@ -832,19 +832,19 @@ export default function CALC2() {
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>x&#120;</td>
-              <td style={S.td}>x&#120;(1 + ln x)</td>
+              <td style={S.td}><InlineMath math="x^x" /></td>
+              <td style={S.td}><InlineMath math="x^x(1 + \ln x)" /></td>
             </tr>
             <tr>
-              <td style={S.td}>x&#8319; (n variável)</td>
-              <td style={S.td}>x&#8319; &#183; (n/x + ln(x) &#183; n')</td>
+              <td style={S.td}><InlineMath math="x^n" /> (n variável)</td>
+              <td style={S.td}><InlineMath math="x^n \cdot \left(\frac{n}{x} + \ln(x) \cdot n'\right)" /></td>
             </tr>
             <tr>
-              <td style={S.td}>f(x)&#8319;&#8308;&#8317;&#120;&#8318;</td>
-              <td style={S.td}>f(x)&#8319; &#183; [g'(x) ln f(x) + g(x) f'(x)/f(x)]</td>
+              <td style={S.td}><InlineMath math="f(x)^{g(x)}" /></td>
+              <td style={S.td}><InlineMath math="f(x)^{g(x)} \cdot \left[g'(x) \ln f(x) + \frac{g(x) f'(x)}{f(x)}\right]" /></td>
             </tr>
             <tr>
-              <td style={S.td}>x&#185;&#8314;&#177; &#183; sin&#178;(x) / &#8730;(x&#178;+1)</td>
+              <td style={S.td}><InlineMath math="\dfrac{x^{1+x} \cdot \sin^2(x)}{\sqrt{x^2+1}}" /></td>
               <td style={S.td}>Produto e quociente complexos &#8594; log simplifica</td>
             </tr>
           </tbody>
@@ -862,8 +862,8 @@ export default function CALC2() {
       <div style={S.section}>
         <h2 style={S.h2}>10. Método de Newton-Raphson</h2>
         <p style={S.p}>
-          O método de Newton-Raphson é um algoritmo iterativo para encontrar raízes de f(x) = 0 (ou mínimos de
-          uma função ao aplicá-lo a f'(x) = 0). Usa a tangente local para estimar o próximo passo.
+          O método de Newton-Raphson é um algoritmo iterativo para encontrar raízes de <InlineMath math="f(x) = 0" /> (ou mínimos de
+          uma função ao aplicá-lo a <InlineMath math="f'(x) = 0" />). Usa a tangente local para estimar o próximo passo.
         </p>
         <BlockMath math="x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}" />
         <div style={S.svgWrap}>
@@ -884,15 +884,15 @@ export default function CALC2() {
             </tr>
           </thead>
           <tbody>
-            <tr><td style={S.td}>Bisecção</td><td style={S.td}>f(x)</td><td style={S.td}>Linear O(1/2&#8319;)</td><td style={S.td}>1 avaliação</td></tr>
-            <tr><td style={S.td}>Gradient descent</td><td style={S.td}>f'(x)</td><td style={S.td}>Linear (depende de lr)</td><td style={S.td}>1 gradiente</td></tr>
-            <tr><td style={S.td}>Newton-Raphson</td><td style={S.td}>f'(x), f''(x)</td><td style={S.td}>Quadrática</td><td style={S.td}>1 gradiente + Hessiana</td></tr>
-            <tr><td style={S.td}>BFGS (quasi-Newton)</td><td style={S.td}>f'(x) + approx f''</td><td style={S.td}>Super-linear</td><td style={S.td}>Gradiente + rank-2 update</td></tr>
+            <tr><td style={S.td}>Bisecção</td><td style={S.td}><InlineMath math="f(x)" /></td><td style={S.td}><InlineMath math="\text{Linear } O(1/2^n)" /></td><td style={S.td}>1 avaliação</td></tr>
+            <tr><td style={S.td}>Gradient descent</td><td style={S.td}><InlineMath math="f'(x)" /></td><td style={S.td}>Linear (depende de lr)</td><td style={S.td}>1 gradiente</td></tr>
+            <tr><td style={S.td}>Newton-Raphson</td><td style={S.td}><InlineMath math="f'(x), f''(x)" /></td><td style={S.td}>Quadrática</td><td style={S.td}>1 gradiente + Hessiana</td></tr>
+            <tr><td style={S.td}>BFGS (quasi-Newton)</td><td style={S.td}><InlineMath math="f'(x) + \text{approx } f''" /></td><td style={S.td}>Super-linear</td><td style={S.td}>Gradiente + rank-2 update</td></tr>
           </tbody>
         </table>
                 <div style={S.note}>
-          Em ML, o passo de Newton na direcção &#8722;H&#8315;&#185;&#8711;L (H = Hessiana) é o óptimo local de segunda ordem.
-          Para redes neuronais com milhões de parâmetros, calcular H&#8315;&#185; (n&#178; entradas) é proibitivo,
+          Em ML, o passo de Newton na direcção <InlineMath math="-H^{-1}\nabla L" /> (H = Hessiana) é o óptimo local de segunda ordem.
+          Para redes neuronais com milhões de parâmetros, calcular <InlineMath math="H^{-1}" /> (n&#178; entradas) é proibitivo,
           daí o uso de optimizadores de primeira ordem (Adam, SGD) na prática.
         </div>
       </div>
@@ -909,15 +909,15 @@ export default function CALC2() {
         <div style={S.grid2}>
           <div style={S.card}>
             <strong style={{ color }}>Diferença Avante (Forward)</strong>
-            <div style={{ marginTop: 8, fontFamily: 'monospace', fontSize: '0.92rem' }}>
-              f'(x) &#8776; [f(x+h) &#8722; f(x)] / h
+            <div style={{ marginTop: 8, fontSize: '0.92rem' }}>
+              <InlineMath math="f'(x) \approx \frac{f(x+h) - f(x)}{h}" />
             </div>
             <div style={{ marginTop: 6, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Erro O(h) — 1 avaliação extra</div>
           </div>
           <div style={S.card}>
             <strong style={{ color }}>Diferença Central</strong>
-            <div style={{ marginTop: 8, fontFamily: 'monospace', fontSize: '0.92rem' }}>
-              f'(x) &#8776; [f(x+h) &#8722; f(x&#8722;h)] / (2h)
+            <div style={{ marginTop: 8, fontSize: '0.92rem' }}>
+              <InlineMath math="f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}" />
             </div>
             <div style={{ marginTop: 6, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Erro O(h&#178;) — 2 avaliações extra</div>
           </div>
@@ -926,12 +926,12 @@ export default function CALC2() {
           <SvgNumericalError />
         </div>
         <p style={S.p}>
-          O SVG mostra o erro vs h em escala log-log. Para valores de h muito grandes, o erro de truncagem domina
+          O esquema mostra o erro vs h em escala log-log. Para valores de h muito grandes, o erro de truncagem domina
           (O(h) ou O(h&#178;)). Para valores muito pequenos, o erro de arredondamento em vírgula flutuante domina.
           O óptimo está algures no meio (tipicamente h &#8776; 1e-5 para diferença avante, h &#8776; 1e-4 para central).
         </p>
         <p style={S.p}>
-          <strong>Método do passo complexo:</strong> Avaliar f(x + ih) no complexo elimina o erro de cancelamento.
+          <strong>Método do passo complexo:</strong> Avaliar <InlineMath math="f(x + ih)" /> no complexo elimina o erro de cancelamento.
           Erro O(h&#178;) com precisão de máquina sem necessidade de subtracção de valores próximos.
         </p>
                 <div style={S.note}>
@@ -940,112 +940,6 @@ export default function CALC2() {
           que a implementação está correcta.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ── 12 ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>12. Síntese — Derivadas em ML</h2>
-        <p style={S.p}>
-          Um resumo integrado das regras de derivação e das suas aplicações em machine learning.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Regra</th>
-              <th style={S.th}>Fórmula</th>
-              <th style={S.th}>Quando usar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}>Potência</td><td style={S.td}>d/dx x&#8319; = nx&#8319;&#8315;&#185;</td><td style={S.td}>Polinómios, raízes, funções racionais</td></tr>
-            <tr><td style={S.td}>Exponencial</td><td style={S.td}>d/dx e&#120; = e&#120;</td><td style={S.td}>Softmax, sigmoid, normalização</td></tr>
-            <tr><td style={S.td}>Logaritmo</td><td style={S.td}>d/dx ln(x) = 1/x</td><td style={S.td}>Cross-entropy, log-likelihood</td></tr>
-            <tr><td style={S.td}>Produto</td><td style={S.td}>(uv)' = u'v + uv'</td><td style={S.td}>Produtos de activações &#215; pesos</td></tr>
-            <tr><td style={S.td}>Quociente</td><td style={S.td}>(u/v)' = (u'v&#8722;uv')/v&#178;</td><td style={S.td}>Softmax, attention scores</td></tr>
-            <tr><td style={S.td}>Cadeia</td><td style={S.td}>[f(g(x))]' = f'(g(x))&#183;g'(x)</td><td style={S.td}>TODA a backpropagation</td></tr>
-            <tr><td style={S.td}>Implícita</td><td style={S.td}>dy/dx = &#8722;F&#120;/F&#7516;</td><td style={S.td}>Batch norm, normalização com estatísticas</td></tr>
-            <tr><td style={S.td}>Logarítmica</td><td style={S.td}>y' = y&#183;(ln y)'</td><td style={S.td}>Funções da forma f&#8319;, produtos complexos</td></tr>
-          </tbody>
-        </table>
-
-        <p style={S.p}><strong>Árvore de decisão — qual regra aplicar:</strong></p>
-        <div style={S.highlight}>
-          <div style={{ fontFamily: 'monospace', fontSize: '0.9rem', lineHeight: 2 }}>
-            f(x) = constante?                  &#8594; f'=0<br />
-            f(x) = x&#8319; (n constante)?         &#8594; Regra da potência<br />
-            f(x) = u(x) + v(x)?               &#8594; Regra da soma<br />
-            f(x) = u(x) &#183; v(x)?              &#8594; Regra do produto<br />
-            f(x) = u(x) / v(x)?              &#8594; Regra do quociente<br />
-            f(x) = outer(inner(x))?           &#8594; Regra da cadeia<br />
-            F(x,y) = 0 (implícita)?           &#8594; Derivação implícita<br />
-            f(x) = u(x)&#8319;&#8304;&#8317;&#120;&#8318; (expoente variável)? &#8594; Derivação logarítmica
-          </div>
-        </div>
-
-        <p style={S.p}><strong>Mapa de conexões com ML:</strong></p>
-        <div style={S.grid2}>
-          <div style={S.card}>
-            <strong style={{ color }}>Regra da Cadeia</strong>
-            <div style={{ marginTop: 6, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              &#8594; Backpropagation<br />
-              &#8594; Gradiente de redes profundas<br />
-              &#8594; Fluxo de gradiente por camadas
-            </div>
-          </div>
-          <div style={S.card}>
-            <strong style={{ color }}>Derivadas de 1&#170; ordem</strong>
-            <div style={{ marginTop: 6, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              &#8594; Gradient descent (SGD, Adam)<br />
-              &#8594; Direcção de actualização de pesos<br />
-              &#8594; Score functions (política em RL)
-            </div>
-          </div>
-          <div style={S.card}>
-            <strong style={{ color }}>Derivadas de 2&#170; ordem</strong>
-            <div style={{ marginTop: 6, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              &#8594; Newton / BFGS / L-BFGS<br />
-              &#8594; Curvatura da superfície de perda<br />
-              &#8594; Learning rate scheduling óptimo
-            </div>
-          </div>
-          <div style={S.card}>
-            <strong style={{ color }}>Derivação Logarítmica</strong>
-            <div style={{ marginTop: 6, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              &#8594; Gradiente da cross-entropy<br />
-              &#8594; MLE (máx. verossimilhança)<br />
-              &#8594; Log-sum-exp trick (estabilidade)
-            </div>
-          </div>
-        </div>
-
-        <div style={{ ...S.highlight, marginTop: '1.5rem' }}>
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            <strong>Essência do módulo:</strong> A derivada f'(x) = lim<sub>h&#8594;0</sub>[f(x+h)&#8722;f(x)]/h mede a taxa de
-            variação instantânea e corresponde ao declive da tangente. As regras de derivação — potência, produto,
-            quociente, cadeia — permitem calcular derivadas de expressões complexas sistematicamente. As funções
-            de activação ReLU, sigmoid e tanh têm derivadas com propriedades distintas: ReLU preserva gradiente (valor 1)
-            enquanto sigmoid satura para gradientes pequenos (vanishing gradient). As derivadas de ordem superior capturam
-            curvatura e são essenciais para optimização de 2&#170; ordem. A regra da cadeia aplicada repetidamente em redes
-            profundas é o algoritmo de backpropagation — o motor do deep learning moderno.
-          </p>
-        </div>
-      </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>13. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Definição de Derivada</strong> — a derivada f'(x) é o limite da taxa de variação instantânea de f em x; geometricamente é o declive da tangente à curva, e em ML é o gradiente que orienta a descida do gradiente.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Regras Básicas de Derivação</strong> — as regras da potência, soma, constante e exponencial permitem derivar funções analiticamente sem recorrer à definição de limite; são a base para calcular gradientes manualmente.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Regra do Produto e do Quociente</strong> — a regra do produto (uv)' = u'v + uv' e do quociente (u/v)' = (u'v − uv')/v² permitem derivar produtos e divisões de funções; a regra do produto generaliza-se ao produto de múltiplas funções em backprop.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Regra da Cadeia</strong> — a regra da cadeia (f∘g)' = f'(g(x))·g'(x) é o fundamento matemático do backpropagation — o gradiente em redes neuronais é o produto encadeado de derivadas parciais camada a camada.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Derivação Implícita</strong> — permite derivar relações F(x,y) = 0 onde y não está explícita; é útil para derivar funções definidas implicitamente como a sigmoid e em geometria diferencial.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Derivadas de Ordem Superior</strong> — a segunda derivada mede a curvatura (convexa se f'' &gt; 0); em optimização indica se um ponto crítico é mínimo, máximo ou ponto de sela — crítico para compreender a convergência do gradiente.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Teorema do Valor Médio</strong> — garante que existe um ponto c onde f'(c) = (f(b)−f(a))/(b−a); é base para provas de convergência em optimização e para estimativas de erro numérico.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

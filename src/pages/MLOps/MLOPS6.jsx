@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -38,31 +38,31 @@ const DriftTaxonomyDiagram = () => (
       </defs>
 
       {/* Root */}
-      <rect x="225" y="10" width="230" height="44" rx="9" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <rect x="225" y="10" width="230" height="44" rx="9" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="340" y="30" textAnchor="middle" fill={color} fontSize="12" fontWeight="800">Mudança de Distribuição</text>
       <text x="340" y="46" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">P(X,Y) em produção ≠ P(X,Y) em treino</text>
 
       {/* Left branch: Data Drift */}
       <path d="M290 54 L160 100" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-tax6)" />
-      <rect x="60" y="100" width="200" height="44" rx="9" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="160" y="120" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Data Drift</text>
+      <rect x="60" y="100" width="200" height="44" rx="9" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="160" y="120" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Data Drift</text>
       <text x="160" y="136" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">P(X) muda — inputs mudam</text>
 
       {/* Right branch: Concept Drift */}
       <path d="M390 54 L510 100" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-tax6)" />
-      <rect x="410" y="100" width="200" height="44" rx="9" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.8" />
-      <text x="510" y="120" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Concept Drift</text>
+      <rect x="410" y="100" width="200" height="44" rx="9" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.8" />
+      <text x="510" y="120" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Concept Drift</text>
       <text x="510" y="136" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">P(Y|X) muda — relação muda</text>
 
       {/* Left sub-branches */}
       <path d="M110 144 L80 185" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-tax6)" />
-      <rect x="10" y="185" width="140" height="38" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="80" y="202" textAnchor="middle" fill="#f97316" fontSize="9.5" fontWeight="700">Covariate Shift</text>
+      <rect x="10" y="185" width="140" height="38" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="80" y="202" textAnchor="middle" fill="#4a9eed" fontSize="9.5" fontWeight="700">Covariate Shift</text>
       <text x="80" y="216" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">P(X) muda, P(Y|X) igual</text>
 
       <path d="M210 144 L240 185" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-tax6)" />
-      <rect x="160" y="185" width="150" height="38" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="235" y="202" textAnchor="middle" fill="#f97316" fontSize="9.5" fontWeight="700">Prior Probability Shift</text>
+      <rect x="160" y="185" width="150" height="38" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="235" y="202" textAnchor="middle" fill="#4a9eed" fontSize="9.5" fontWeight="700">Prior Probability Shift</text>
       <text x="235" y="216" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">P(Y) muda (frequência de classes)</text>
 
       {/* Recurring line drawn FIRST (behind all boxes) */}
@@ -70,23 +70,23 @@ const DriftTaxonomyDiagram = () => (
 
       {/* Right sub-branches — 4 types */}
       <path d="M450 144 L400 185" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-tax6)" />
-      <rect x="340" y="185" width="120" height="38" rx="7" fill="var(--bg-primary)" stroke="#f59e0b" strokeWidth="1.3" />
-      <text x="400" y="203" textAnchor="middle" fill="#f59e0b" fontSize="9.5" fontWeight="700">Sudden</text>
+      <rect x="340" y="185" width="120" height="38" rx="7" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.3" />
+      <text x="400" y="203" textAnchor="middle" fill="#0284c7" fontSize="9.5" fontWeight="700">Sudden</text>
       <text x="400" y="217" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">mudança abrupta</text>
 
       <path d="M510 144 L500 185" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-tax6)" />
-      <rect x="466" y="185" width="108" height="38" rx="7" fill="var(--bg-primary)" stroke="#f59e0b" strokeWidth="1.3" />
-      <text x="520" y="203" textAnchor="middle" fill="#f59e0b" fontSize="9.5" fontWeight="700">Gradual</text>
+      <rect x="466" y="185" width="108" height="38" rx="7" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.3" />
+      <text x="520" y="203" textAnchor="middle" fill="#0284c7" fontSize="9.5" fontWeight="700">Gradual</text>
       <text x="520" y="217" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">mudança lenta</text>
 
       <path d="M560 144 L595 185" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-tax6)" />
-      <rect x="578" y="185" width="92" height="38" rx="7" fill="var(--bg-primary)" stroke="#f59e0b" strokeWidth="1.3" />
-      <text x="624" y="203" textAnchor="middle" fill="#f59e0b" fontSize="9.5" fontWeight="700">Incremental</text>
+      <rect x="578" y="185" width="92" height="38" rx="7" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.3" />
+      <text x="624" y="203" textAnchor="middle" fill="#0284c7" fontSize="9.5" fontWeight="700">Incremental</text>
       <text x="624" y="217" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">stepwise</text>
 
       {/* Recurring box drawn LAST (on top) */}
-      <rect x="430" y="250" width="160" height="38" rx="7" fill="var(--bg-primary)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="510" y="268" textAnchor="middle" fill="#f97316" fontSize="9.5" fontWeight="700">Recurring</text>
+      <rect x="430" y="250" width="160" height="38" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="510" y="268" textAnchor="middle" fill="#4a9eed" fontSize="9.5" fontWeight="700">Recurring</text>
       <text x="510" y="282" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">conceito reaparece periodicamente</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem', textAlign: 'left' }}>
@@ -103,22 +103,22 @@ const DriftTypesDiagram = () => {
   const W = 130, H = 60, pad = 12;
   const panels = [
     {
-      label: 'Sudden', c: '#f97316', ex: 'Ex: regulação muda', points: [
+      label: 'Sudden', c: '#4a9eed', ex: 'Ex: regulação muda', points: [
         [0,45],[1,44],[2,45],[3,44],[4,45],[5,44],[5.1,20],[6,20],[7,21],[8,20],[9,21],[10,20]
       ]
     },
     {
-      label: 'Gradual', c: '#f97316', ex: 'Ex: tendência sazonal', points: [
+      label: 'Gradual', c: '#4a9eed', ex: 'Ex: tendência sazonal', points: [
         [0,45],[1,44],[2,42],[3,43],[4,40],[5,38],[6,35],[7,30],[8,26],[9,22],[10,20]
       ]
     },
     {
-      label: 'Incremental', c: '#f97316', ex: 'Ex: mudança de hábitos', points: [
+      label: 'Incremental', c: '#4a9eed', ex: 'Ex: mudança de hábitos', points: [
         [0,45],[1,45],[2,38],[2.1,38],[3,38],[4,30],[4.1,30],[5,30],[6,22],[6.1,22],[7,22],[8,20],[9,20],[10,20]
       ]
     },
     {
-      label: 'Recurring', c: '#f97316', ex: 'Ex: sazonalidade', points: [
+      label: 'Recurring', c: '#4a9eed', ex: 'Ex: sazonalidade', points: [
         [0,45],[1,44],[2,30],[3,20],[4,30],[5,44],[6,45],[7,30],[8,20],[9,30],[10,44]
       ]
     },
@@ -182,18 +182,18 @@ const CovariateShiftDiagram = () => (
       <text x="35" y="40" fill="var(--text-secondary)" fontSize="9" transform="rotate(-90 35 120)">Feature 2</text>
 
       {/* Training cloud — blue ellipse */}
-      <ellipse cx="120" cy="130" rx="55" ry="40" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="120" y="70" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Dados de Treino</text>
-      <text x="120" y="80" textAnchor="middle" fill="#f97316" fontSize="8">P_train(X)</text>
+      <ellipse cx="120" cy="130" rx="55" ry="40" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="120" y="70" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Dados de Treino</text>
+      <text x="120" y="80" textAnchor="middle" fill="#4a9eed" fontSize="8">P_train(X)</text>
 
       {/* Some dots */}
       {[[100,120],[110,130],[130,125],[115,140],[105,115],[125,135],[135,120],[108,145]].map(([cx,cy],i) => (
-        <circle key={i} cx={cx} cy={cy} r="4" fill="#f97316" opacity="0.6" />
+        <circle key={i} cx={cx} cy={cy} r="4" fill="#4a9eed" opacity="0.6" />
       ))}
 
       {/* Decision boundary */}
-      <line x1="60" y1="80" x2="210" y2="185" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-      <text x="175" y="155" fill="#f97316" fontSize="8" fontStyle="italic">fronteira de decisão</text>
+      <line x1="60" y1="80" x2="210" y2="185" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+      <text x="175" y="155" fill="#4a9eed" fontSize="8" fontStyle="italic">fronteira de decisão</text>
 
       {/* Panel B — Production distribution */}
       <rect x="310" y="10" width="250" height="200" rx="10" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5" />
@@ -205,24 +205,24 @@ const CovariateShiftDiagram = () => (
       <text x="325" y="40" fill="var(--text-secondary)" fontSize="9" transform="rotate(-90 325 120)">Feature 2</text>
 
       {/* Training ghost */}
-      <ellipse cx="410" cy="130" rx="55" ry="40" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" strokeDasharray="4,3" />
-      <text x="410" y="143" textAnchor="middle" fill="#f97316" fontSize="7.5" opacity="0.5">treino (ref.)</text>
+      <ellipse cx="410" cy="130" rx="55" ry="40" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" />
+      <text x="410" y="143" textAnchor="middle" fill="#4a9eed" fontSize="7.5" opacity="0.5">treino (ref.)</text>
 
       {/* Production cloud — shifted */}
-      <ellipse cx="480" cy="80" rx="45" ry="35" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="530" y="40" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Produção</text>
-      <text x="530" y="50" textAnchor="middle" fill="#f97316" fontSize="8">P_prod(X)</text>
+      <ellipse cx="480" cy="80" rx="45" ry="35" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="530" y="40" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Produção</text>
+      <text x="530" y="50" textAnchor="middle" fill="#4a9eed" fontSize="8">P_prod(X)</text>
 
       {[[465,72],[480,82],[490,70],[475,88],[492,78],[462,85],[485,65]].map(([cx,cy],i) => (
-        <circle key={i} cx={cx} cy={cy} r="4" fill="#f97316" opacity="0.6" />
+        <circle key={i} cx={cx} cy={cy} r="4" fill="#4a9eed" opacity="0.6" />
       ))}
 
       {/* Decision boundary — same */}
-      <line x1="350" y1="80" x2="500" y2="185" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
+      <line x1="350" y1="80" x2="500" y2="185" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
 
       {/* Gap arrow */}
-      <path d="M410 130 Q445 105 475 85" fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="4,2" markerEnd="url(#arr-cov6)" />
-      <text x="410" y="102" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">covariate shift</text>
+      <path d="M410 130 Q445 105 475 85" fill="none" stroke="#0284c7" strokeWidth="2" strokeDasharray="4,2" markerEnd="url(#arr-cov6)" />
+      <text x="410" y="102" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">covariate shift</text>
 
       {/* Annotations */}
       <text x="290" y="230" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">P(Y|X) mantém-se igual — fronteira de decisão correcta mas inputs em zona "estranha"</text>
@@ -249,38 +249,38 @@ const ConceptDriftDiagram = () => (
 
       {/* Time T1 */}
       <rect x="20" y="10" width="250" height="190" rx="10" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <text x="145" y="30" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Tempo T1 — Treino</text>
+      <text x="145" y="30" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Tempo T1 — Treino</text>
       <line x1="50" y1="180" x2="250" y2="180" stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1="50" y1="180" x2="50" y2="40" stroke="var(--text-secondary)" strokeWidth="1" />
 
       {/* Class A dots T1 */}
       {[[80,80],[90,95],[70,110],[100,75],[85,120],[75,60]].map(([cx,cy],i) => (
-        <circle key={'a1'+i} cx={cx} cy={cy} r="6" fill="#f97316" opacity="0.7" />
+        <circle key={'a1'+i} cx={cx} cy={cy} r="6" fill="#4a9eed" opacity="0.7" />
       ))}
       {/* Class B dots T1 */}
       {[[170,100],[185,80],[200,120],[160,130],[190,60],[175,145]].map(([cx,cy],i) => (
-        <circle key={'b1'+i} cx={cx} cy={cy} r="6" fill="#f97316" opacity="0.7" />
+        <circle key={'b1'+i} cx={cx} cy={cy} r="6" fill="#4a9eed" opacity="0.7" />
       ))}
 
       {/* Decision boundary T1 — vertical-ish */}
       <line x1="130" y1="45" x2="130" y2="175" stroke={color} strokeWidth="2.5" />
       <text x="130" y="193" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">fronteira T1</text>
 
-      <text x="90" y="170" fill="#f97316" fontSize="9" fontWeight="700">Classe A</text>
-      <text x="170" y="170" fill="#f97316" fontSize="9" fontWeight="700">Classe B</text>
+      <text x="90" y="170" fill="#4a9eed" fontSize="9" fontWeight="700">Classe A</text>
+      <text x="170" y="170" fill="#4a9eed" fontSize="9" fontWeight="700">Classe B</text>
 
       {/* Time T2 */}
       <rect x="310" y="10" width="250" height="190" rx="10" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <text x="435" y="30" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Tempo T2 — Produção</text>
+      <text x="435" y="30" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Tempo T2 — Produção</text>
       <line x1="340" y1="180" x2="540" y2="180" stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1="340" y1="180" x2="340" y2="40" stroke="var(--text-secondary)" strokeWidth="1" />
 
       {/* Same feature positions but labels SWAPPED — concept drift */}
       {[[380,80],[390,95],[370,110],[400,75],[385,120],[375,60]].map(([cx,cy],i) => (
-        <circle key={'a2'+i} cx={cx} cy={cy} r="6" fill="#f97316" opacity="0.7" />
+        <circle key={'a2'+i} cx={cx} cy={cy} r="6" fill="#4a9eed" opacity="0.7" />
       ))}
       {[[470,100],[485,80],[500,120],[460,130],[490,60],[475,145]].map(([cx,cy],i) => (
-        <circle key={'b2'+i} cx={cx} cy={cy} r="6" fill="#f97316" opacity="0.7" />
+        <circle key={'b2'+i} cx={cx} cy={cy} r="6" fill="#4a9eed" opacity="0.7" />
       ))}
 
       {/* Old boundary T1 (now wrong) */}
@@ -288,15 +288,15 @@ const ConceptDriftDiagram = () => (
       <text x="420" y="45" textAnchor="middle" fill={color} fontSize="8" opacity="0.5">antiga (errada)</text>
 
       {/* New correct boundary */}
-      <line x1="430" y1="45" x2="430" y2="175" stroke="#f59e0b" strokeWidth="2.5" />
-      <text x="430" y="193" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">fronteira T2</text>
+      <line x1="430" y1="45" x2="430" y2="175" stroke="#0284c7" strokeWidth="2.5" />
+      <text x="430" y="193" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">fronteira T2</text>
 
       {/* Arrow showing shift */}
-      <path d="M270 100 L308 100" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arr-cd6)" />
-      <text x="289" y="92" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">drift</text>
+      <path d="M270 100 L308 100" stroke="#0284c7" strokeWidth="2" markerEnd="url(#arr-cd6)" />
+      <text x="289" y="92" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">drift</text>
 
-      <text x="380" y="170" fill="#f97316" fontSize="9" fontWeight="700">Classe B</text>
-      <text x="475" y="170" fill="#f97316" fontSize="9" fontWeight="700">Classe A</text>
+      <text x="380" y="170" fill="#4a9eed" fontSize="9" fontWeight="700">Classe B</text>
+      <text x="475" y="170" fill="#4a9eed" fontSize="9" fontWeight="700">Classe A</text>
 
       <text x="290" y="215" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">P(X) mantém-se — P(Y|X) mudou completamente</text>
     </svg>
@@ -356,28 +356,28 @@ const DriftDetectionAlgorithmsDiagram = () => {
         <text x="12" y={H / 2} textAnchor="middle" fill="var(--text-secondary)" fontSize="8" transform={`rotate(-90 12 ${H/2})`}>Estatística</text>
 
         {/* Drift event line */}
-        <line x1={toX(12)} y1={padT} x2={toX(12)} y2={H - padB} stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-        <text x={toX(12)} y={padT + 10} textAnchor="middle" fill="#f97316" fontSize="8.5" fontWeight="700">drift real</text>
+        <line x1={toX(12)} y1={padT} x2={toX(12)} y2={H - padB} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+        <text x={toX(12)} y={padT + 10} textAnchor="middle" fill="#4a9eed" fontSize="8.5" fontWeight="700">drift real</text>
 
         {/* Threshold line */}
         <line x1={padL} y1={toY(0.2, 0, 0.4)} x2={W - padR} y2={toY(0.2, 0, 0.4)} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3" opacity="0.6" />
         <text x={W - padR - 2} y={toY(0.2, 0, 0.4) - 3} textAnchor="end" fill="var(--text-secondary)" fontSize="7.5">threshold</text>
 
         {/* ADWIN */}
-        <path d={adwinPath} fill="none" stroke="#f97316" strokeWidth="2" />
-        <text x={toX(20)} y={toY(adwinPts[18][1], 0, 0.4) - 8} fill="#f97316" fontSize="8.5" fontWeight="700">ADWIN</text>
+        <path d={adwinPath} fill="none" stroke="#4a9eed" strokeWidth="2" />
+        <text x={toX(20)} y={toY(adwinPts[18][1], 0, 0.4) - 8} fill="#4a9eed" fontSize="8.5" fontWeight="700">ADWIN</text>
 
         {/* DDM */}
-        <path d={ddmPath} fill="none" stroke="#f59e0b" strokeWidth="2" />
-        <text x={toX(18)} y={toY(ddmPts[18][1], 0, 0.4) - 8} fill="#f59e0b" fontSize="8.5" fontWeight="700">DDM</text>
+        <path d={ddmPath} fill="none" stroke="#0284c7" strokeWidth="2" />
+        <text x={toX(18)} y={toY(ddmPts[18][1], 0, 0.4) - 8} fill="#0284c7" fontSize="8.5" fontWeight="700">DDM</text>
 
         {/* KSWIN */}
         <path d={ksPath} fill="none" stroke={color} strokeWidth="2" />
         <text x={toX(14)} y={toY(ksPts[12][1], 0, 0.4) - 10} fill={color} fontSize="8.5" fontWeight="700">KSWIN</text>
 
         {/* Alert markers */}
-        <circle cx={toX(15)} cy={toY(ddmPts[15][1], 0, 0.4)} r="5" fill="#f59e0b" opacity="0.9" />
-        <text x={toX(15)} y={toY(ddmPts[15][1], 0, 0.4) - 8} textAnchor="middle" fill="#f59e0b" fontSize="7.5" fontWeight="700">alerta</text>
+        <circle cx={toX(15)} cy={toY(ddmPts[15][1], 0, 0.4)} r="5" fill="#0284c7" opacity="0.9" />
+        <text x={toX(15)} y={toY(ddmPts[15][1], 0, 0.4) - 8} textAnchor="middle" fill="#0284c7" fontSize="7.5" fontWeight="700">alerta</text>
 
         <circle cx={toX(13)} cy={toY(ksPts[13][1], 0, 0.4)} r="5" fill={color} opacity="0.9" />
         <text x={toX(13) + 20} y={toY(ksPts[13][1], 0, 0.4)} fill={color} fontSize="7.5" fontWeight="700">alerta</text>
@@ -404,63 +404,63 @@ const DriftResponseDiagram = () => (
       </defs>
 
       {/* Root */}
-      <rect x="205" y="10" width="210" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <rect x="205" y="10" width="210" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="310" y="35" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Drift Detectado</text>
 
       <path d="M310 50 L310 75" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
 
       {/* Type? */}
-      <polygon points="310,78 430,105 310,132 190,105" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="310" y="101" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Que tipo</text>
-      <text x="310" y="116" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">de drift?</text>
+      <polygon points="310,78 430,105 310,132 190,105" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="310" y="101" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Que tipo</text>
+      <text x="310" y="116" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">de drift?</text>
 
       {/* Data Drift only */}
       <path d="M190 105 L100 105" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
       <text x="145" y="97" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Data drift</text>
-      <rect x="10" y="85" width="90" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="55" y="102" textAnchor="middle" fill="#f97316" fontSize="8.5" fontWeight="700">Retreinar</text>
-      <text x="55" y="116" textAnchor="middle" fill="#f97316" fontSize="8.5">nos novos dados</text>
+      <rect x="10" y="85" width="90" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="55" y="102" textAnchor="middle" fill="#4a9eed" fontSize="8.5" fontWeight="700">Retreinar</text>
+      <text x="55" y="116" textAnchor="middle" fill="#4a9eed" fontSize="8.5">nos novos dados</text>
 
       {/* Concept drift */}
       <path d="M430 105 L520 105" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
       <text x="475" y="97" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Concept drift</text>
-      <rect x="520" y="85" width="90" height="40" rx="8" fill="rgba(245,158,11,0.10)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="565" y="102" textAnchor="middle" fill="#f59e0b" fontSize="8.5" fontWeight="700">Rever labels</text>
-      <text x="565" y="116" textAnchor="middle" fill="#f59e0b" fontSize="8.5">+ retreinar</text>
+      <rect x="520" y="85" width="90" height="40" rx="8" fill="rgba(2,132,199,0.10)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="565" y="102" textAnchor="middle" fill="#0284c7" fontSize="8.5" fontWeight="700">Rever labels</text>
+      <text x="565" y="116" textAnchor="middle" fill="#0284c7" fontSize="8.5">+ retreinar</text>
 
       {/* Both */}
       <path d="M310 132 L310 155" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
       <text x="325" y="147" fill="var(--text-secondary)" fontSize="9">Ambos</text>
 
       {/* Severity decision */}
-      <polygon points="310,158 430,185 310,212 190,185" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="310" y="181" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Severidade</text>
-      <text x="310" y="196" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">do drift?</text>
+      <polygon points="310,158 430,185 310,212 190,185" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="310" y="181" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Severidade</text>
+      <text x="310" y="196" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">do drift?</text>
 
       {/* Mild */}
       <path d="M190 185 L110 185" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
       <text x="150" y="177" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Leve</text>
-      <rect x="10" y="165" width="100" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="60" y="182" textAnchor="middle" fill="#f97316" fontSize="8.5" fontWeight="700">Reweighting</text>
-      <text x="60" y="196" textAnchor="middle" fill="#f97316" fontSize="8.5">de amostras</text>
+      <rect x="10" y="165" width="100" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="60" y="182" textAnchor="middle" fill="#4a9eed" fontSize="8.5" fontWeight="700">Reweighting</text>
+      <text x="60" y="196" textAnchor="middle" fill="#4a9eed" fontSize="8.5">de amostras</text>
 
       {/* Severe */}
       <path d="M430 185 L510 185" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
       <text x="470" y="177" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Grave</text>
-      <rect x="510" y="165" width="100" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="510" y="165" width="100" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="560" y="182" textAnchor="middle" fill={color} fontSize="8.5" fontWeight="700">Full pipeline</text>
       <text x="560" y="196" textAnchor="middle" fill={color} fontSize="8.5">re-evaluation</text>
 
       <path d="M310 212 L310 235" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
 
       {/* Ensemble option */}
-      <rect x="190" y="235" width="240" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="310" y="252" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Ensemble por contexto?</text>
+      <rect x="190" y="235" width="240" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="310" y="252" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Ensemble por contexto?</text>
       <text x="310" y="267" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">Modelo por época / segmento / conceito</text>
 
       <path d="M310 275 L310 298" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-resp6)" />
-      <rect x="170" y="298" width="280" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="310" y="315" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Validar novo modelo antes de deploy</text>
+      <rect x="170" y="298" width="280" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="310" y="315" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Validar novo modelo antes de deploy</text>
       <text x="310" y="330" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">shadow mode → canary → full rollout</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem', textAlign: 'left' }}>
@@ -492,9 +492,9 @@ const StatisticalTestsDiagram = () => {
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.3rem' }}>
-                <span style={{ background: 'rgba(249,115,22,0.10)', color, fontSize: '0.75rem', fontWeight: 600, padding: '0.1rem 0.45rem', borderRadius: 5 }}>{type}</span>
-                <span style={{ background: 'rgba(16,185,129,0.08)', color: '#f97316', fontSize: '0.75rem', fontWeight: 600, padding: '0.1rem 0.45rem', borderRadius: 5 }}>sensibilidade: {sensitivity}</span>
-                <span style={{ background: 'rgba(245,158,11,0.08)', color: '#f97316', fontSize: '0.75rem', fontWeight: 600, padding: '0.1rem 0.45rem', borderRadius: 5 }}>custo: {cost}</span>
+                <span style={{ background: 'rgba(74,158,237,0.10)', color, fontSize: '0.75rem', fontWeight: 600, padding: '0.1rem 0.45rem', borderRadius: 5 }}>{type}</span>
+                <span style={{ background: 'rgba(16,185,129,0.08)', color: '#4a9eed', fontSize: '0.75rem', fontWeight: 600, padding: '0.1rem 0.45rem', borderRadius: 5 }}>sensibilidade: {sensitivity}</span>
+                <span style={{ background: 'rgba(2,132,199,0.08)', color: '#4a9eed', fontSize: '0.75rem', fontWeight: 600, padding: '0.1rem 0.45rem', borderRadius: 5 }}>custo: {cost}</span>
               </div>
               <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>{note}</p>
             </div>
@@ -505,19 +505,102 @@ const StatisticalTestsDiagram = () => {
   );
 };
 
+// ===== DIAGRAM: Adaptive Random Forest =====
+const ARFDiagram = () => {
+  const rgb = '74,158,237';
+  const trees = [
+    { label: 'HT 1', warn: false },
+    { label: 'HT 2', warn: false },
+    { label: 'HT 3', warn: true },
+    { label: 'HT 4', warn: false },
+    { label: 'HT 5', warn: false },
+  ];
+  const W = 620, tW = 86, tH = 38, adH = 18, gap = 20;
+  const totalTW = trees.length * tW + (trees.length - 1) * gap;
+  const startX = (W - totalTW) / 2;
+  const tY = 14;
+  const voteY = tY + tH + adH + 70;
+  const ht3i = 2;
+  const ht3cx = startX + ht3i * (tW + gap) + tW / 2;
+  const bgBoxY = tY + tH + adH + 12;
+  const bgBoxH = 36;
+  return (
+    <div style={S.diagram}>
+      <svg viewBox={`0 0 ${W} ${voteY + 54}`} width="100%" style={{ display: 'block' }}>
+        <defs>
+          <marker id="arfA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <polygon points="0 0,7 3.5,0 7" fill="var(--text-secondary)" />
+          </marker>
+          <marker id="arfAO" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <polygon points="0 0,7 3.5,0 7" fill={color} />
+          </marker>
+        </defs>
+
+        <text x={W / 2} y={tY - 5} textAnchor="middle" fontSize="11" fill="var(--text-secondary)">
+          ← instâncias do stream recebidas por todas as árvores →
+        </text>
+
+        {trees.map((t, i) => {
+          const tx = startX + i * (tW + gap);
+          const cx = tx + tW / 2;
+          return (
+            <g key={i}>
+              <rect x={tx} y={tY} width={tW} height={tH} rx="7"
+                fill={t.warn ? 'rgba(74,158,237,0.18)' : `rgba(${rgb},0.08)`}
+                stroke={t.warn ? '#4a9eed' : color}
+                strokeWidth={t.warn ? 2.2 : 1.5} />
+              <text x={cx} y={tY + tH / 2 + 5} textAnchor="middle" fontSize="12" fill={color} fontWeight="700">
+                {t.label}
+              </text>
+              <rect x={tx + 8} y={tY + tH + 3} width={tW - 16} height={adH} rx="4"
+                fill={t.warn ? 'rgba(74,158,237,0.15)' : 'rgba(74,158,237,0.06)'}
+                stroke={t.warn ? '#4a9eed' : 'rgba(74,158,237,0.25)'}
+                strokeWidth="1" />
+              <text x={cx} y={tY + tH + adH - 3} textAnchor="middle" fontSize="8" fill={t.warn ? '#4a9eed' : 'var(--text-secondary)'}>
+                {t.warn ? 'ADWIN aviso' : 'ADWIN ✓'}
+              </text>
+              <line x1={cx} y1={tY + tH + adH + 3} x2={cx} y2={voteY}
+                stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arfA)" />
+            </g>
+          );
+        })}
+
+        <line x1={ht3cx + tW / 2 + 2} y1={tY + tH / 2} x2={ht3cx + tW / 2 + 5} y2={bgBoxY + bgBoxH / 2 - 17}
+          stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="4,3" />
+        <rect x={ht3cx + tW / 2 - 30} y={bgBoxY} width={tW} height={bgBoxH} rx="7"
+          fill="rgba(74,158,237,0.07)" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+        <text x={ht3cx + tW / 2 - 30 + tW / 2} y={bgBoxY + 14} textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">
+          HT 3 (bg)
+        </text>
+        <text x={ht3cx + tW / 2 - 30 + tW / 2} y={bgBoxY + 27} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">
+          a crescer…
+        </text>
+
+        <rect x={W / 2 - 250} y={voteY} width="500" height="38" rx="7"
+          fill={`rgba(${rgb},0.15)`} stroke={color} strokeWidth="1.8" />
+        <text x={W / 2} y={voteY + 24} textAnchor="middle" fontSize="13" fill={color} fontWeight="700">
+          Voto Maj.
+        </text>
+
+        <text x={W / 2} y={voteY + 52} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">
+          Quando drift confirmado: HT 3 (bg) substitui HT 3
+        </text>
+      </svg>
+      <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+        Arquitectura ARF: 5 Hoeffding Trees com ADWIN individual. HT 3 em estado de aviso (azul) com
+        árvore background (tracejado) a crescer. Após confirmação de drift, a background substitui a foreground.
+      </p>
+    </div>
+  );
+};
+
 export default function MLOPS6() {
   return (
     <div style={S.page}>
       <Link to="/mlops" style={S.back}><ArrowLeft size={16} /> Voltar a MLOps</Link>
 
-      <div style={S.tag}>MÓDULO 06</div>
+      <div style={S.tag}>MÓDULO 05</div>
       <h1 style={S.h1}>Data Drift & Concept Drift</h1>
-      <p style={S.lead}>
-        O mundo real não é estacionário. Os dados mudam, os comportamentos evoluem, os eventos externos
-        transformam as distribuições. Um modelo que não monitoriza o drift é um modelo a caminho do
-        fracasso silencioso. Este módulo formaliza o que é drift, como classificá-lo, como detectá-lo
-        estatisticamente e como responder de forma proporcional.
-      </p>
 
       {/* =================== SECTION 1 =================== */}
       <div style={S.section}>
@@ -766,7 +849,7 @@ export default function MLOPS6() {
                 <tr key={a}>
                   <td style={{ ...S.td, fontWeight: 600, color, fontFamily: 'monospace', fontSize: '0.85rem' }}>{a}</td>
                   <td style={S.td}>{t}</td>
-                  <td style={{ ...S.td, color: l === 'Sim' ? '#f97316' : '#f97316', fontWeight: 600 }}>{l}</td>
+                  <td style={{ ...S.td, color: l === 'Sim' ? '#4a9eed' : '#4a9eed', fontWeight: 600 }}>{l}</td>
                   <td style={S.td}>{m}</td>
                   <td style={{ ...S.td, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{i}</td>
                 </tr>
@@ -835,7 +918,7 @@ export default function MLOPS6() {
                 <tr key={f}>
                   <td style={{ ...S.td, fontWeight: 700, color }}>{f}</td>
                   <td style={S.td}>{d}</td>
-                  <td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{dur}</td>
+                  <td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{dur}</td>
                 </tr>
               ))}
             </tbody>
@@ -850,30 +933,68 @@ export default function MLOPS6() {
 
       <hr style={S.divider} />
 
-      {/* =================== SYNTHESIS =================== */}
       <div style={S.section}>
-        <h2 style={S.h2}>7. Síntese do Módulo</h2>
+        <h2 style={S.h2}>7. Adaptive Random Forest — Resposta Automática ao Drift</h2>
         <p style={S.p}>
-          Drift é inevitável. A questão não é se o modelo vai degradar, mas quando, de que forma, e
-          se a equipa vai saber a tempo de reagir. A taxonomia formal de drift, aliada aos algoritmos
-          de detecção correctos, transforma um problema de "o modelo deixou de funcionar" em algo
-          mensurável, detectável e gerível.
+          As secções anteriores tratam a deteção e a resposta ao drift como passos manuais — algo
+          dispara um alerta, uma pessoa decide retreinar. A <strong>Adaptive Random Forest (ARF)</strong>{' '}
+          (Gomes et al., 2017) automatiza esse ciclo dentro do próprio modelo: é o classificador de
+          streams recomendado hoje para produção quando o volume de dados é demasiado alto ou o
+          retreino em batch é demasiado lento para reagir a tempo.
         </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Drift = <InlineMath math="P_\text{treino}(X,Y) \neq P_\text{prod}(X,Y)" /> — a distribuição em produção diverge da distribuição de treino</li>
-            <li>Data drift (covariate shift): <InlineMath math="P(X)" /> muda — detectável sem ground truth via KS, PSI, chi-square</li>
-            <li>Concept drift: <InlineMath math="P(Y|X)" /> muda — requer ground truth para confirmar; é o mais perigoso</li>
-            <li>4 padrões temporais: Sudden (abrupto), Gradual (lento), Incremental (degraus), Recurring (sazonal/cíclico)</li>
-            <li>PSI &gt; 0.2 indica drift grave; entre 0.1–0.2 investigue; abaixo de 0.1 é estável</li>
-            <li>ADWIN opera online com janela adaptativa; DDM monitoriza taxa de erro (requer labels); KSWIN usa teste KS em stream</li>
-            <li>A resposta ao drift deve ser proporcional: reweighting para drift leve → retreinar para drift grave → rever pipeline para ambos</li>
-            <li>Ensembles por contexto resolvem recurring concepts (sazonalidade) sem catastrophic forgetting</li>
-            <li>Nenhum novo modelo vai para produção sem shadow mode → canary → rollout progressivo com rollback automático</li>
-          </ul>
-        
+        <p style={S.p}>
+          Combina três ingredientes: subconjuntos aleatórios de features por nó (como no Random
+          Forest batch), pesos Poisson de alta variância para diversidade entre árvores, e um{' '}
+          <strong>detector ADWIN por árvore</strong> — a mesma técnica de deteção de drift já vista
+          na secção 5, aplicada individualmente a cada árvore do ensemble.
+        </p>
+
+        <div style={S.highlight}>
+          <strong>Mecanismo warning/drift, árvore a árvore:</strong>
+          <p style={{ ...S.p, marginTop: '0.6rem', marginBottom: 0 }}>
+            Cada árvore tem o seu próprio ADWIN com dois limiares: um de aviso (δw) e um de drift
+            (δd), com δw &gt; δd. Quando a árvore degrada acima de δw, uma <strong>árvore
+            background</strong> começa a crescer em paralelo, treinada apenas nos dados mais
+            recentes. Se a degradação ultrapassa δd, o drift é confirmado e a árvore background
+            substitui a foreground — sem interromper o ensemble nem exigir um retreino global.
+          </p>
+        </div>
+
+        <ARFDiagram />
+
+        <div style={{ overflowX: 'auto' }}>
+          <table style={S.table}>
+            <thead>
+              <tr>
+                <th style={S.th}>Parâmetro</th>
+                <th style={S.th}>Valor padrão</th>
+                <th style={S.th}>Efeito</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['n_estimators', '100', 'Número de árvores; mais árvores = maior accuracy e memória'],
+                ['λ (lambda)', '6', 'Intensidade Poisson; valores maiores aumentam diversidade'],
+                ['drift_detector', 'ADWIN (δ=0.001)', 'Sensibilidade à confirmação de drift; δ menor → mais sensível'],
+                ['warning_detector', 'ADWIN (δ=0.01)', 'Dispara crescimento da árvore background; δ maior → menos avisos falsos'],
+                ['max_features', '⌊√d⌋', 'Features por nó; menor valor → maior diversidade entre árvores'],
+              ].map(([p, v, e]) => (
+                <tr key={p}>
+                  <td style={{ ...S.td, fontWeight: 700, color }}><code>{p}</code></td>
+                  <td style={S.td}>{v}</td>
+                  <td style={S.td}>{e}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div style={S.note}>
+          A ARF é hoje o classificador de referência para streams em produção (implementado em{' '}
+          <code>river</code>, usado em deteção de fraude, intrusão de rede e scoring em tempo real).
+          Supera os métodos anteriores na maioria dos benchmarks, com boa performance tanto em
+          streams estacionários como em cenários com drift abrupto, gradual ou recorrente.
+        </div>
       </div>
-    </div>
+</div>
   );
 }

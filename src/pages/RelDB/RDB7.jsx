@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,8 +15,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -28,11 +28,6 @@ export default function RDB7() {
 
       <span style={S.tag}>MÓDULO 7</span>
       <h1 style={S.h1}>ACID, Transacções &amp; Introdução ao NoSQL</h1>
-      <p style={S.lead}>
-        As transacções são o mecanismo que garante integridade dos dados em cenários concorrentes e perante
-        falhas. Neste módulo analisamos as propriedades ACID, os níveis de isolamento, os mecanismos de
-        concorrência e recovery, e terminamos com uma comparação entre RDBMS e sistemas NoSQL.
-      </p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Transacções ACID</h2>
@@ -327,20 +322,6 @@ SELECT pg_current_wal_lsn();
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      <div style={S.section}>
-        <h2 style={S.h2}>6. Síntese do Módulo</h2>
-        <div style={{ ...S.highlight, borderRadius: 10 }}>
-          <ul style={{ margin: '0 0 0 1.2rem', lineHeight: 2, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-            <li>ACID garante Atomicidade, Consistência, Isolamento e Durabilidade — a base da integridade transaccional.</li>
-            <li>Os quatro níveis de isolamento trocam consistência por performance; READ COMMITTED é o padrão na maioria dos RDBMS.</li>
-            <li>Locks controlam acesso concorrente; MVCC permite leituras não bloqueantes mantendo snapshots por transacção.</li>
-            <li>WAL garante durabilidade e recovery após falha — checkpoints limitam o tempo de recovery; redo/undo logs restauram o estado consistente.</li>
-            <li>NoSQL adopta BASE e escala horizontalmente ao custo de consistência forte; o teorema CAP enquadra as trocas inevitáveis em sistemas distribuídos.</li>
-          </ul>
-        </div>
-      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -29,10 +29,10 @@ const S = {
 const VarTypeExplorer = () => {
   const [active, setActive] = useState(0);
   const types = [
-    { name: 'Nominal', color: '#f97316', desc: 'Valores sem ordem lógica entre si. Apenas identificam categorias.', examples: ['Género (M/F)', 'País de origem', 'Cor dos olhos', 'Tipo de produto'], nota: 'Só podemos calcular moda e frequências. Média não faz sentido.' },
-    { name: 'Ordinal', color: '#f97316', desc: 'Valores com ordem definida, mas sem distância mensurável entre categorias.', examples: ['Nível de educação', 'Satisfação (1–5)', 'Ranking', 'Classificação (A/B/C)'], nota: 'Podemos usar mediana e percentis. A diferença entre posições não é constante.' },
-    { name: 'Discreta', color: '#f97316', desc: 'Valores numéricos contáveis — número finito ou infinito contável de valores possíveis.', examples: ['Número de filhos', 'Contagem de erros', 'Número de vendas', 'Número de páginas'], nota: 'Média e variância fazem sentido. Resulta tipicamente de contagens.' },
-    { name: 'Contínua', color: '#f97316', desc: 'Pode assumir qualquer valor num intervalo — infinitos valores possíveis entre dois pontos.', examples: ['Altura (cm)', 'Temperatura', 'Peso (kg)', 'Rendimento'], nota: 'Toda a aritmética estatística se aplica. Requer distribuições contínuas.' },
+    { name: 'Nominal', color: '#4a9eed', desc: 'Valores sem ordem lógica entre si. Apenas identificam categorias.', examples: ['Género (M/F)', 'País de origem', 'Cor dos olhos', 'Tipo de produto'], nota: 'Só podemos calcular moda e frequências. Média não faz sentido.' },
+    { name: 'Ordinal', color: '#4a9eed', desc: 'Valores com ordem definida, mas sem distância mensurável entre categorias.', examples: ['Nível de educação', 'Satisfação (1–5)', 'Ranking', 'Classificação (A/B/C)'], nota: 'Podemos usar mediana e percentis. A diferença entre posições não é constante.' },
+    { name: 'Discreta', color: '#4a9eed', desc: 'Valores numéricos contáveis — número finito ou infinito contável de valores possíveis.', examples: ['Número de filhos', 'Contagem de erros', 'Número de vendas', 'Número de páginas'], nota: 'Média e variância fazem sentido. Resulta tipicamente de contagens.' },
+    { name: 'Contínua', color: '#4a9eed', desc: 'Pode assumir qualquer valor num intervalo — infinitos valores possíveis entre dois pontos.', examples: ['Altura (cm)', 'Temperatura', 'Peso (kg)', 'Rendimento'], nota: 'Toda a aritmética estatística se aplica. Requer distribuições contínuas.' },
   ];
   const t = types[active];
   return (
@@ -48,7 +48,7 @@ const VarTypeExplorer = () => {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '0.75rem' }}>
           {t.examples.map(e => <span key={e} style={{ background: `${t.color}12`, border: `1px solid ${t.color}30`, color: t.color, fontSize: '0.78rem', fontWeight: 600, padding: '0.2rem 0.55rem', borderRadius: 8 }}>{e}</span>)}
         </div>
-        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>💡 {t.nota}</p>
+        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}> {t.nota}</p>
       </div>
     </div>
   );
@@ -56,7 +56,7 @@ const VarTypeExplorer = () => {
 
 /* ─── Taxonomy Tree SVG ─── */
 const TaxonomySVG = () => (
-  <svg viewBox="0 0 760 200" style={{ width: '100%', maxWidth: 760, display: 'block', margin: '0 auto' }}>
+  <svg viewBox="0 0 760 210" style={{ width: '100%', maxWidth: 760, display: 'block', margin: '0 auto' }}>
     {/* Root */}
     <rect x="300" y="10" width="160" height="36" rx="8" fill={color} />
     <text x="380" y="33" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">Variável</text>
@@ -68,11 +68,11 @@ const TaxonomySVG = () => (
     <line x1="575" y1="60" x2="575" y2="74" stroke="var(--text-secondary)" strokeWidth="1.5" />
 
     {/* Qualitativa */}
-    <rect x="105" y="74" width="160" height="36" rx="8" fill="#f97316" />
+    <rect x="105" y="74" width="160" height="36" rx="8" fill="#4a9eed" />
     <text x="185" y="97" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">Qualitativa</text>
 
     {/* Quantitativa */}
-    <rect x="495" y="74" width="160" height="36" rx="8" fill="#f97316" />
+    <rect x="495" y="74" width="160" height="36" rx="8" fill="#4a9eed" />
     <text x="575" y="97" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">Quantitativa</text>
 
     {/* Branches level 2 → 3 left */}
@@ -82,14 +82,14 @@ const TaxonomySVG = () => (
     <line x1="275" y1="124" x2="275" y2="138" stroke="var(--text-secondary)" strokeWidth="1.5" />
 
     {/* Nominal */}
-    <rect x="20" y="138" width="150" height="34" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+    <rect x="20" y="138" width="150" height="46" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
     <text x="95" y="158" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Nominal</text>
-    <text x="95" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">sem ordem</text>
+    <text x="95" y="174" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">sem ordem</text>
 
     {/* Ordinal */}
-    <rect x="200" y="138" width="150" height="34" rx="7" fill="rgba(14,116,144,0.12)" stroke="#f97316" strokeWidth="1.5" />
-    <text x="275" y="158" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Ordinal</text>
-    <text x="275" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">com ordem</text>
+    <rect x="200" y="138" width="150" height="46" rx="7" fill="rgba(14,116,144,0.12)" stroke="#4a9eed" strokeWidth="1.5" />
+    <text x="275" y="158" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Ordinal</text>
+    <text x="275" y="174" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">com ordem</text>
 
     {/* Branches level 2 → 3 right */}
     <line x1="575" y1="110" x2="575" y2="124" stroke="var(--text-secondary)" strokeWidth="1.5" />
@@ -98,112 +98,97 @@ const TaxonomySVG = () => (
     <line x1="665" y1="124" x2="665" y2="138" stroke="var(--text-secondary)" strokeWidth="1.5" />
 
     {/* Discreta */}
-    <rect x="410" y="138" width="150" height="34" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-    <text x="485" y="158" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Discreta</text>
-    <text x="485" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">contável</text>
+    <rect x="410" y="138" width="150" height="46" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+    <text x="485" y="158" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Discreta</text>
+    <text x="485" y="174" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">contável</text>
 
     {/* Contínua */}
-    <rect x="590" y="138" width="150" height="34" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-    <text x="665" y="158" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">Contínua</text>
-    <text x="665" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">mensurável</text>
+    <rect x="590" y="138" width="150" height="46" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+    <text x="665" y="158" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">Contínua</text>
+    <text x="665" y="174" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">mensurável</text>
   </svg>
 );
 
 /* ─── Distribution Shapes SVG (mean/median/mode positions) ─── */
 const DistributionShapesSVG = () => {
-  /* Helper: gaussian-ish path points */
-  const gauss = (cx, peak, w, pts = 40) => {
-    const arr = [];
-    for (let i = 0; i <= pts; i++) {
-      const x = cx - w / 2 + (w / pts) * i;
-      const z = (x - cx) / (w / 5);
-      const y = peak - 55 * Math.exp(-0.5 * z * z);
-      arr.push(`${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`);
-    }
-    return arr.join(' ');
-  };
-  /* Skew right: shift mean to right of peak */
-  const skewRight = (baseX, peak, w, pts = 60) => {
-    const arr = [];
-    for (let i = 0; i <= pts; i++) {
-      const t = i / pts; // 0..1
-      const x = baseX - w * 0.1 + w * 1.2 * t;
-      const z = (t - 0.2) / 0.18;
-      const y = peak - 55 * Math.exp(-0.5 * z * z);
-      arr.push(`${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`);
-    }
-    return arr.join(' ');
-  };
-  /* Skew left: mirror of skewRight */
-  const skewLeft = (baseX, peak, w, pts = 60) => {
+  /* Colors for mean / median / mode — same hue family (blue), stepped light→dark */
+  const modeColor = '#86b6ef';   // Mo (lightest)
+  const medianColor = '#3987e5'; // Md
+  const meanColor = '#1c5cab';   // μ (darkest)
+
+  /* Asymmetric gaussian bump: peakT in [0,1] sets where the mode sits along
+     the width; each side gets its own sigma sized so the curve returns to
+     baseline (~3σ) by the edge, so the path closes cleanly with no cliff. */
+  const bump = (baseX, baseline, w, peakT, height = 55, pts = 80) => {
+    const sigmaLeft = (w * peakT) / 3;
+    const sigmaRight = (w * (1 - peakT)) / 3;
     const arr = [];
     for (let i = 0; i <= pts; i++) {
       const t = i / pts;
-      const x = baseX - w * 0.1 + w * 1.2 * t;
-      const z = (t - 0.8) / 0.18;
-      const y = peak - 55 * Math.exp(-0.5 * z * z);
+      const x = baseX + w * t;
+      const sigma = t < peakT ? sigmaLeft : sigmaRight;
+      const z = sigma === 0 ? 0 : ((t - peakT) * w) / sigma;
+      const y = baseline - height * Math.exp(-0.5 * z * z);
       arr.push(`${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`);
     }
+    arr.push(`L${(baseX + w).toFixed(1)},${baseline}`, `L${baseX.toFixed(1)},${baseline}`, 'Z');
     return arr.join(' ');
   };
 
   const baseline = 100;
   /* Symmetric */
   const s1cx = 90, s1w = 120;
-  /* Right skew */
-  const s2bx = 240, s2w = 120;
-  /* Left skew */
-  const s3bx = 410, s3w = 120;
+  /* Right skew (positive): mode leftmost, mean rightmost */
+  const s2bx = 230, s2w = 140, s2peakT = 0.25;
+  /* Left skew (negative): mirror of right skew */
+  const s3bx = 400, s3w = 140, s3peakT = 0.75;
 
   return (
     <svg viewBox="0 0 600 130" style={{ width: '100%', maxWidth: 860, display: 'block', margin: '0 auto' }}>
       {/* ── Symmetric ── */}
-      <path d={gauss(s1cx, baseline, s1w)} fill={`${color}22`} stroke={color} strokeWidth="1.5" />
+      <path d={bump(s1cx - s1w / 2, baseline, s1w, 0.5)} fill={`${color}22`} stroke={color} strokeWidth="1.5" />
       {/* mean=median=mode at center */}
-      <line x1={s1cx} y1="45" x2={s1cx} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-      <text x={s1cx} y="38" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Média=Mediana=Moda</text>
+      <line x1={s1cx} y1="45" x2={s1cx} y2={baseline} stroke={color} strokeWidth="1.5" strokeDasharray="3,3" />
+      <text x={s1cx} y="38" textAnchor="middle" fill={color} fontSize="8" fontWeight="700">Média=Mediana=Moda</text>
       <text x={s1cx} y={baseline + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Simétrica</text>
 
       {/* ── Right skew ── */}
-      <path d={skewRight(s2bx, baseline, s2w)} fill={`${color}22`} stroke={color} strokeWidth="1.5" />
-      {/* mode at ~0.2 of width, median a bit right, mean further right */}
+      <path d={bump(s2bx, baseline, s2w, s2peakT)} fill={`${color}22`} stroke={color} strokeWidth="1.5" />
       {(() => {
-        const modeX = s2bx + s2w * 0.2 * 1.2 - s2w * 0.1;
-        const medX = modeX + 18;
-        const meanX = modeX + 36;
+        const modeX = s2bx + s2w * s2peakT;
+        const medX = modeX + s2w * 0.14;
+        const meanX = modeX + s2w * 0.28;
         return (
           <>
-            <line x1={modeX} y1="50" x2={modeX} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-            <line x1={medX} y1="50" x2={medX} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-            <line x1={meanX} y1="50" x2={meanX} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-            <text x={modeX} y="47" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">Mo</text>
-            <text x={medX} y="44" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">Md</text>
-            <text x={meanX} y="47" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">μ</text>
-            <text x={s2bx + s2w * 0.6} y={baseline + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Assimetria positiva</text>
+            <line x1={modeX} y1="20" x2={modeX} y2={baseline} stroke={modeColor} strokeWidth="1.5" strokeDasharray="3,3" />
+            <line x1={medX} y1="35" x2={medX} y2={baseline} stroke={medianColor} strokeWidth="1.5" strokeDasharray="3,3" />
+            <line x1={meanX} y1="50" x2={meanX} y2={baseline} stroke={meanColor} strokeWidth="1.5" strokeDasharray="3,3" />
+            <text x={modeX} y="14" textAnchor="middle" fill={modeColor} fontSize="7" fontWeight="700">Mo</text>
+            <text x={medX} y="29" textAnchor="middle" fill={medianColor} fontSize="7" fontWeight="700">Md</text>
+            <text x={meanX} y="44" textAnchor="middle" fill={meanColor} fontSize="7" fontWeight="700">μ</text>
+            <text x={s2bx + s2w * 0.55} y={baseline + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Assimetria positiva</text>
           </>
         );
       })()}
 
       {/* ── Left skew ── */}
-      <path d={skewLeft(s3bx, baseline, s3w)} fill={`${color}22`} stroke={color} strokeWidth="1.5" />
+      <path d={bump(s3bx, baseline, s3w, s3peakT)} fill={`${color}22`} stroke={color} strokeWidth="1.5" />
       {(() => {
-        const modeX = s3bx + s3w * 0.8 * 1.2 - s3w * 0.1;
-        const medX = modeX - 18;
-        const meanX = modeX - 36;
+        const modeX = s3bx + s3w * s3peakT;
+        const medX = modeX - s3w * 0.14;
+        const meanX = modeX - s3w * 0.28;
         return (
           <>
-            <line x1={meanX} y1="50" x2={meanX} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-            <line x1={medX} y1="50" x2={medX} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-            <line x1={modeX} y1="50" x2={modeX} y2={baseline} stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,3" />
-            <text x={meanX} y="47" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">μ</text>
-            <text x={medX} y="44" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">Md</text>
-            <text x={modeX} y="47" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">Mo</text>
-            <text x={s3bx + s3w * 0.6} y={baseline + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Assimetria negativa</text>
+            <line x1={meanX} y1="50" x2={meanX} y2={baseline} stroke={meanColor} strokeWidth="1.5" strokeDasharray="3,3" />
+            <line x1={medX} y1="35" x2={medX} y2={baseline} stroke={medianColor} strokeWidth="1.5" strokeDasharray="3,3" />
+            <line x1={modeX} y1="20" x2={modeX} y2={baseline} stroke={modeColor} strokeWidth="1.5" strokeDasharray="3,3" />
+            <text x={meanX} y="44" textAnchor="middle" fill={meanColor} fontSize="7" fontWeight="700">μ</text>
+            <text x={medX} y="29" textAnchor="middle" fill={medianColor} fontSize="7" fontWeight="700">Md</text>
+            <text x={modeX} y="14" textAnchor="middle" fill={modeColor} fontSize="7" fontWeight="700">Mo</text>
+            <text x={s3bx + s3w * 0.45} y={baseline + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Assimetria negativa</text>
           </>
         );
       })()}
-
-      {/* Legend */}
     </svg>
   );
 };
@@ -235,22 +220,22 @@ const IQRNumberLineSVG = () => {
       <line x1={q4x} y1={boxTop + 10} x2={q4x} y2={boxBot - 10} stroke={color} strokeWidth="2" />
 
       {/* IQR bracket below */}
-      <line x1={q1x} y1={boxBot + 8} x2={q3x} y2={boxBot + 8} stroke="#f97316" strokeWidth="1.5" />
-      <line x1={q1x} y1={boxBot + 5} x2={q1x} y2={boxBot + 11} stroke="#f97316" strokeWidth="1.5" />
-      <line x1={q3x} y1={boxBot + 5} x2={q3x} y2={boxBot + 11} stroke="#f97316" strokeWidth="1.5" />
-      <text x={(q1x + q3x) / 2} y={boxBot + 22} textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">IQR = Q3 − Q1</text>
+      <line x1={q1x} y1={boxBot + 8} x2={q3x} y2={boxBot + 8} stroke="#4a9eed" strokeWidth="1.5" />
+      <line x1={q1x} y1={boxBot + 5} x2={q1x} y2={boxBot + 11} stroke="#4a9eed" strokeWidth="1.5" />
+      <line x1={q3x} y1={boxBot + 5} x2={q3x} y2={boxBot + 11} stroke="#4a9eed" strokeWidth="1.5" />
+      <text x={(q1x + q3x) / 2} y={boxBot + 22} textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">IQR = Q3 − Q1</text>
 
       {/* Labels */}
       <text x={q0x} y={boxTop - 6} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Q0 (mín)</text>
       <text x={q1x} y={boxTop - 6} textAnchor="middle" fill="var(--text-primary)" fontSize="9" fontWeight="600">Q1</text>
       <text x={q2x} y={boxTop - 6} textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Q2 (med.)</text>
       <text x={q3x} y={boxTop - 6} textAnchor="middle" fill="var(--text-primary)" fontSize="9" fontWeight="600">Q3</text>
-      <text x={q4x} y={boxTop - 6} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Q4 (máx)</text>
+      <text x={q4x} y={boxTop - 6} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Q4 (max)</text>
 
       {/* Outlier dot example */}
-      <circle cx="455" cy={y} r="5" fill="none" stroke="#f97316" strokeWidth="1.5" />
-      <text x="455" y={boxTop - 6} textAnchor="middle" fill="#f97316" fontSize="8">outlier</text>
-      <line x1={q4x} y1={y} x2="449" y2={y} stroke="#f97316" strokeWidth="1" strokeDasharray="3,2" />
+      <circle cx="455" cy={y} r="5" fill="none" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="455" y={boxTop - 6} textAnchor="middle" fill="#4a9eed" fontSize="8">outlier</text>
+      <line x1={q4x} y1={y} x2="449" y2={y} stroke="#4a9eed" strokeWidth="1" strokeDasharray="3,2" />
     </svg>
   );
 };
@@ -289,10 +274,10 @@ const EmpiricalRuleSVG = () => {
 
   return (
     <svg viewBox="0 0 600 190" style={{ width: '100%', maxWidth: 600, display: 'block', margin: '0 auto' }}>
-      {/* Shaded bands */}
-      <path d={pathBetween(cx - 3 * sigma, cx + 3 * sigma)} fill="rgba(249,115,22,0.10)" />
-      <path d={pathBetween(cx - 2 * sigma, cx + 2 * sigma)} fill="rgba(249,115,22,0.10)" />
-      <path d={pathBetween(cx - sigma, cx + sigma)} fill="rgba(249,115,22,0.10)" />
+      {/* Shaded bands — same hue, stepped light→dark from outer to inner */}
+      <path d={pathBetween(cx - 3 * sigma, cx + 3 * sigma)} fill="rgba(134,182,239,0.16)" />
+      <path d={pathBetween(cx - 2 * sigma, cx + 2 * sigma)} fill="rgba(57,135,229,0.16)" />
+      <path d={pathBetween(cx - sigma, cx + sigma)} fill="rgba(28,92,171,0.22)" />
 
       {/* Bell curve outline */}
       <path d={fullPath()} fill="none" stroke={color} strokeWidth="2" />
@@ -310,21 +295,21 @@ const EmpiricalRuleSVG = () => {
         </g>
       ))}
 
-      {/* Percentage labels */}
-      <text x={cx} y={baseline - 108} textAnchor="middle" fill={color} fontSize="10" fontWeight="700">68%</text>
-      <line x1={cx - sigma} y1={baseline - 102} x2={cx + sigma} y2={baseline - 102} stroke={color} strokeWidth="1" />
-      <line x1={cx - sigma} y1={baseline - 105} x2={cx - sigma} y2={baseline - 99} stroke={color} strokeWidth="1" />
-      <line x1={cx + sigma} y1={baseline - 105} x2={cx + sigma} y2={baseline - 99} stroke={color} strokeWidth="1" />
+      {/* Percentage labels — darkest (1σ) to lightest (3σ) */}
+      <text x={cx} y={baseline - 108} textAnchor="middle" fill="#1c5cab" fontSize="10" fontWeight="700">68%</text>
+      <line x1={cx - sigma} y1={baseline - 102} x2={cx + sigma} y2={baseline - 102} stroke="#1c5cab" strokeWidth="1" />
+      <line x1={cx - sigma} y1={baseline - 105} x2={cx - sigma} y2={baseline - 99} stroke="#1c5cab" strokeWidth="1" />
+      <line x1={cx + sigma} y1={baseline - 105} x2={cx + sigma} y2={baseline - 99} stroke="#1c5cab" strokeWidth="1" />
 
-      <text x={cx} y={baseline - 88} textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">95%</text>
-      <line x1={cx - 2 * sigma} y1={baseline - 82} x2={cx + 2 * sigma} y2={baseline - 82} stroke="#f97316" strokeWidth="1" />
-      <line x1={cx - 2 * sigma} y1={baseline - 85} x2={cx - 2 * sigma} y2={baseline - 79} stroke="#f97316" strokeWidth="1" />
-      <line x1={cx + 2 * sigma} y1={baseline - 85} x2={cx + 2 * sigma} y2={baseline - 79} stroke="#f97316" strokeWidth="1" />
+      <text x={cx} y={baseline - 88} textAnchor="middle" fill="#3987e5" fontSize="10" fontWeight="700">95%</text>
+      <line x1={cx - 2 * sigma} y1={baseline - 82} x2={cx + 2 * sigma} y2={baseline - 82} stroke="#3987e5" strokeWidth="1" />
+      <line x1={cx - 2 * sigma} y1={baseline - 85} x2={cx - 2 * sigma} y2={baseline - 79} stroke="#3987e5" strokeWidth="1" />
+      <line x1={cx + 2 * sigma} y1={baseline - 85} x2={cx + 2 * sigma} y2={baseline - 79} stroke="#3987e5" strokeWidth="1" />
 
-      <text x={cx} y={baseline - 68} textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">99.7%</text>
-      <line x1={cx - 3 * sigma} y1={baseline - 62} x2={cx + 3 * sigma} y2={baseline - 62} stroke="#f97316" strokeWidth="1" />
-      <line x1={cx - 3 * sigma} y1={baseline - 65} x2={cx - 3 * sigma} y2={baseline - 59} stroke="#f97316" strokeWidth="1" />
-      <line x1={cx + 3 * sigma} y1={baseline - 65} x2={cx + 3 * sigma} y2={baseline - 59} stroke="#f97316" strokeWidth="1" />
+      <text x={cx} y={baseline - 68} textAnchor="middle" fill="#86b6ef" fontSize="10" fontWeight="700">99.7%</text>
+      <line x1={cx - 3 * sigma} y1={baseline - 62} x2={cx + 3 * sigma} y2={baseline - 62} stroke="#86b6ef" strokeWidth="1" />
+      <line x1={cx - 3 * sigma} y1={baseline - 65} x2={cx - 3 * sigma} y2={baseline - 59} stroke="#86b6ef" strokeWidth="1" />
+      <line x1={cx + 3 * sigma} y1={baseline - 65} x2={cx + 3 * sigma} y2={baseline - 59} stroke="#86b6ef" strokeWidth="1" />
     </svg>
   );
 };
@@ -414,7 +399,7 @@ const CorrelationSVG = () => {
     <line
       x1={ox + x1r * (qw / 120)} y1={oy + y1r * (qh / 90)}
       x2={ox + x2r * (qw / 120)} y2={oy + y2r * (qh / 90)}
-      stroke={clr || '#f97316'} strokeWidth="1.5" strokeDasharray="4,3" opacity="0.7"
+      stroke={clr || '#4a9eed'} strokeWidth="1.5" strokeDasharray="4,3" opacity="0.7"
     />
   );
 
@@ -425,69 +410,20 @@ const CorrelationSVG = () => {
       <TrendLine ox={pad} oy={pad + 14} x1r={5} y1r={78} x2r={110} y2r={3} />
 
       {/* r ≈ -1 (top-right) */}
-      <Quadrant ox={pad + qw + gutter} oy={pad + 14} data={dots.neg} label="r ≈ −1" sublabel="Correlação negativa" lineColor="#f97316" />
-      <TrendLine ox={pad + qw + gutter} oy={pad + 14} x1r={5} y1r={3} x2r={110} y2r={85} clr="#f97316" />
+      <Quadrant ox={pad + qw + gutter} oy={pad + 14} data={dots.neg} label="r ≈ −1" sublabel="Correlação negativa" lineColor="#4a9eed" />
+      <TrendLine ox={pad + qw + gutter} oy={pad + 14} x1r={5} y1r={3} x2r={110} y2r={85} clr="#4a9eed" />
 
       {/* r ≈ 0 (bottom-left) */}
       <Quadrant ox={pad} oy={pad + 14 + qh + gutter} data={dots.none} label="r ≈ 0" sublabel="Sem correlação linear" lineColor="var(--text-secondary)" />
 
       {/* Nonlinear (bottom-right) */}
-      <Quadrant ox={pad + qw + gutter} oy={pad + 14 + qh + gutter} data={dots.nonlin} label="Não-linear" sublabel="Spearman &gt; Pearson" lineColor="#f97316" />
+      <Quadrant ox={pad + qw + gutter} oy={pad + 14 + qh + gutter} data={dots.nonlin} label="Não-linear" sublabel="Spearman &gt; Pearson" lineColor="#4a9eed" />
 
       {/* Curved trend for nonlinear */}
       <path
         d={`M${pad + qw + gutter + 5 * (qw / 120)},${pad + 14 + qh + gutter + 80 * (qh / 90)} Q${pad + qw + gutter + 55 * (qw / 120)},${pad + 14 + qh + gutter + 5 * (qh / 90)} ${pad + qw + gutter + 110 * (qw / 120)},${pad + 14 + qh + gutter + 82 * (qh / 90)}`}
-        fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.7"
+        fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.7"
       />
-    </svg>
-  );
-};
-
-/* ─── Box Plot Diagram SVG ─── */
-const BoxPlotDiagramSVG = () => {
-  const bx = 80, by = 40, bw = 120, bh = 80;
-  const q1y = by + bh * 0.25;
-  const medy = by + bh * 0.5;
-  const q3y = by + bh * 0.75;
-  const whiskerTop = by + 5;
-  const whiskerBot = by + bh - 5;
-  const midX = bx + bw / 2;
-  const labelX = bx + bw + 12;
-
-  return (
-    <svg viewBox="0 0 340 160" style={{ width: '100%', maxWidth: 340, display: 'block', margin: '0 auto' }}>
-      {/* Upper whisker */}
-      <line x1={midX} y1={whiskerTop} x2={midX} y2={by} stroke={color} strokeWidth="2" />
-      <line x1={midX - 18} y1={whiskerTop} x2={midX + 18} y2={whiskerTop} stroke={color} strokeWidth="2" />
-      <text x={labelX} y={whiskerTop + 4} fill="var(--text-secondary)" fontSize="9">Máximo (Q4 ou Q3 + 1.5×IQR)</text>
-
-      {/* Box */}
-      <rect x={bx} y={q3y} width={bw} height={q1y - q3y} fill={`${color}20`} stroke={color} strokeWidth="2" rx="2" />
-
-      {/* Q3 label */}
-      <text x={labelX} y={q3y + 4} fill="var(--text-primary)" fontSize="9" fontWeight="600">Q3 (75º percentil)</text>
-
-      {/* Median */}
-      <line x1={bx} y1={medy} x2={bx + bw} y2={medy} stroke={color} strokeWidth="2.5" />
-      <text x={labelX} y={medy + 4} fill={color} fontSize="9" fontWeight="700">Mediana (Q2)</text>
-
-      {/* Q1 label */}
-      <text x={labelX} y={q1y + 4} fill="var(--text-primary)" fontSize="9" fontWeight="600">Q1 (25º percentil)</text>
-
-      {/* Lower whisker */}
-      <line x1={midX} y1={whiskerBot} x2={midX} y2={by + bh} stroke={color} strokeWidth="2" />
-      <line x1={midX - 18} y1={whiskerBot} x2={midX + 18} y2={whiskerBot} stroke={color} strokeWidth="2" />
-      <text x={labelX} y={whiskerBot + 4} fill="var(--text-secondary)" fontSize="9">Mínimo (Q1 − 1.5×IQR ou Q0)</text>
-
-      {/* Outlier dot */}
-      <circle cx={midX} cy={by + bh + 22} r="5" fill="none" stroke="#f97316" strokeWidth="1.5" />
-      <text x={labelX} y={by + bh + 26} fill="#f97316" fontSize="9">Outlier (além 1.5×IQR)</text>
-
-      {/* IQR bracket */}
-      <line x1={bx - 12} y1={q3y} x2={bx - 12} y2={q1y} stroke="#f97316" strokeWidth="1.5" />
-      <line x1={bx - 15} y1={q3y} x2={bx - 9} y2={q3y} stroke="#f97316" strokeWidth="1.5" />
-      <line x1={bx - 15} y1={q1y} x2={bx - 9} y2={q1y} stroke="#f97316" strokeWidth="1.5" />
-      <text x={bx - 14} y={(q3y + q1y) / 2 + 3} textAnchor="end" fill="#f97316" fontSize="8" fontWeight="700">IQR</text>
     </svg>
   );
 };
@@ -499,11 +435,6 @@ export default function ST1() {
       <Link to="/statistics" style={S.back}><ArrowLeft size={16} /> Voltar a Statistics</Link>
       <div style={S.tag}>MÓDULO 01</div>
       <h1 style={S.h1}>Estatística Descritiva &amp; Visualização</h1>
-      <p style={S.lead}>
-        A estatística descritiva permite resumir, organizar e comunicar padrões em dados sem recorrer a inferência.
-        Neste módulo cobrimos os tipos de variáveis, as medidas de tendência central e dispersão,
-        distribuições de frequências, correlação e visualização com ggplot2.
-      </p>
 
       {/* ══════════════════════════════════════
           1. TIPOS DE VARIÁVEIS
@@ -599,9 +530,9 @@ export default function ST1() {
           <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-secondary)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Localização de média, mediana e moda</p>
           <DistributionShapesSVG />
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '0.8rem', color: '#f97316', fontWeight: 600 }}>● Média (μ)</span>
-            <span style={{ fontSize: '0.8rem', color: '#f97316', fontWeight: 600 }}>● Mediana</span>
-            <span style={{ fontSize: '0.8rem', color: '#f97316', fontWeight: 600 }}>● Moda</span>
+            <span style={{ fontSize: '0.8rem', color: '#1c5cab', fontWeight: 600 }}>● Média (μ)</span>
+            <span style={{ fontSize: '0.8rem', color: '#3987e5', fontWeight: 600 }}>● Mediana</span>
+            <span style={{ fontSize: '0.8rem', color: '#86b6ef', fontWeight: 600 }}>● Moda</span>
           </div>
         </div>
 
@@ -662,7 +593,7 @@ export default function ST1() {
         <h3 style={S.h3}>Intervalo Interquartílico (IQR) e Amplitude</h3>
         
           <BlockMath math="\text{IQR} = Q_3 - Q_1" />
-          <BlockMath math="\text{Amplitude} = \text{Máx} - \text{Mín}" />
+          <BlockMath math="\text{Amplitude} = \text{Max} - \text{Min}" />
           <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
             O IQR contém os 50% centrais dos dados e é muito robusto a outliers.
             A amplitude usa apenas os dois extremos — é muito sensível a valores anómalos.
@@ -691,9 +622,9 @@ export default function ST1() {
           <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-secondary)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Regra empírica 68 – 95 – 99.7</p>
           <EmpiricalRuleSVG />
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '0.75rem', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '0.8rem', color, fontWeight: 600 }}>● μ ± 1σ → 68%</span>
-            <span style={{ fontSize: '0.8rem', color: '#f97316', fontWeight: 600 }}>● μ ± 2σ → 95%</span>
-            <span style={{ fontSize: '0.8rem', color: '#f97316', fontWeight: 600 }}>● μ ± 3σ → 99.7%</span>
+            <span style={{ fontSize: '0.8rem', color: '#1c5cab', fontWeight: 600 }}>● μ ± 1σ → 68%</span>
+            <span style={{ fontSize: '0.8rem', color: '#3987e5', fontWeight: 600 }}>● μ ± 2σ → 95%</span>
+            <span style={{ fontSize: '0.8rem', color: '#86b6ef', fontWeight: 600 }}>● μ ± 3σ → 99.7%</span>
           </div>
         </div>
 
@@ -841,74 +772,6 @@ da distribuição sem perder informação individual.`}</pre>
 
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ══════════════════════════════════════
-          6. VISUALIZAÇÃO COM ggplot2
-      ══════════════════════════════════════ */}
-      <div style={S.section}>
-        <h2 style={S.h2}>6. Visualização com ggplot2</h2>
-        <p style={S.p}>
-          O ggplot2 segue a <em>gramática dos gráficos</em>: cada visualização é construída por camadas — dados, mapeamentos estéticos (<code>aes()</code>), geometrias (<code>geom_*</code>) e escalas.
-          Esta abordagem declarativa torna os gráficos reprodutíveis e altamente personalizáveis.
-        </p>
-
-        <h3 style={S.h3}>Diagrama de Box Plot — anatomia</h3>
-        <div style={S.diagram}>
-          <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-secondary)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Componentes do box plot</p>
-          <BoxPlotDiagramSVG />
-        </div>
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Geometria</th>
-              <th style={S.th}>Tipo de variável</th>
-              <th style={S.th}>Uso principal</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['geom_bar()', 'Qualitativa', 'Frequências de categorias'],
-              ['geom_histogram()', 'Quantitativa contínua', 'Distribuição de frequências'],
-              ['geom_boxplot()', 'Quantitativa por grupo', 'Comparação de distribuições'],
-              ['geom_point()', 'Duas quantitativas', 'Relação / correlação'],
-              ['geom_line()', 'Quantitativa ao longo do tempo', 'Séries temporais'],
-              ['geom_density()', 'Quantitativa contínua', 'Curva de densidade suavizada'],
-            ].map(([a, b, c]) => (
-              <tr key={a}>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem', color }}>{a}</td>
-                <td style={S.td}>{b}</td>
-                <td style={S.td}>{c}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div style={S.note}>
-          <strong>Dica:</strong> escolha a geometria em função do tipo de variável e da pergunta que quer responder.
-          Barras para categorias, histogramas/densidades para contínuas, boxplots para comparar grupos, pontos para correlação.
-        </div>
-      </div>
-
-      {/* ══════════════════════════════════════
-          7. SÍNTESE DO MÓDULO
-      ══════════════════════════════════════ */}
-      
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>7. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Tipos de Variáveis</strong> — as variáveis classificam-se em nominais, ordinais, intervalares e racionais — a distinção determina quais medidas estatísticas e gráficos são adequados para as descrever.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Medidas de Tendência Central</strong> — média, mediana e moda resumem o "centro" de uma distribuição; a mediana é mais robusta a outliers que a média, o que é crítico em datasets com valores extremos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Medidas de Dispersão</strong> — variância, desvio-padrão, IQR e amplitude quantificam a dispersão dos dados em torno da tendência central; alta dispersão indica dados heterogéneos e pode indicar a necessidade de normalização.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Distribuição de Frequências</strong> — organiza os dados em classes ou categorias e mostra como os valores se distribuem; histogramas e tabelas de frequência são o primeiro passo de qualquer análise exploratória.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Correlação</strong> — o coeficiente de Pearson r ∈ [−1,1] mede a força e direcção da relação linear entre duas variáveis; correlação ≠ causalidade, e r próximo de 0 não implica independência se a relação for não-linear.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Visualização com ggplot2</strong> — ggplot2 implementa a "grammar of graphics" — cada gráfico é construído por camadas (dados, estética, geometrias, facetas); facilita a criação de visualizações correctas e comunicativas de forma declarativa.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

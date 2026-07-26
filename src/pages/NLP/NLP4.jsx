@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 // ---- BPE step-by-step demo ----
@@ -111,10 +111,10 @@ const BPEDemo = () => {
               const isNewMerge = s.merge && sym === s.merge.split(' ').join('');
               return (
                 <span key={i} style={{
-                  background: isNewMerge ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)',
-                  border: `1px solid ${isNewMerge ? '#f97316' : 'var(--card-border)'}`,
+                  background: isNewMerge ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)',
+                  border: `1px solid ${isNewMerge ? '#4a9eed' : 'var(--card-border)'}`,
                   borderRadius: 4, padding: '0.1rem 0.4rem',
-                  color: isNewMerge ? '#f97316' : 'var(--text-primary)', fontWeight: isNewMerge ? 700 : 400,
+                  color: isNewMerge ? '#4a9eed' : 'var(--text-primary)', fontWeight: isNewMerge ? 700 : 400,
                 }}>{sym}</span>
               );
             })}
@@ -124,7 +124,7 @@ const BPEDemo = () => {
 
       {s.merge ? (
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-          Par mais frequente: <code style={S.code}>{s.merge}</code> (ocorre {s.count}×) → fundido em <strong style={{ color: '#f97316' }}>{s.merge.split(' ').join('')}</strong>.
+          Par mais frequente: <code style={S.code}>{s.merge}</code> (ocorre {s.count}×) → fundido em <strong style={{ color: '#4a9eed' }}>{s.merge.split(' ').join('')}</strong>.
         </p>
       ) : (
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
@@ -152,8 +152,8 @@ const TokenizationCompare = () => {
               <tr key={ex.word}>
                 <td style={S.td}><strong>{ex.word}</strong></td>
                 <td style={{ ...S.td, fontFamily: 'monospace', color: 'var(--accent-color)' }}>{ex.bpe.join(' | ')}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{ex.wordpiece.join(' | ')}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{ex.sp.join(' | ')}</td>
+                <td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed' }}>{ex.wordpiece.join(' | ')}</td>
+                <td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed' }}>{ex.sp.join(' | ')}</td>
               </tr>
             ))}
           </tbody>
@@ -177,8 +177,8 @@ const TokenizerPipelineDiagram = () => (
       </defs>
       {[
         ['"unbelievable"', 75, 'var(--bg-secondary)', 'var(--text-primary)'],
-        ['un | believ | able', 250, 'rgba(249,115,22,0.12)', 'var(--accent-color)'],
-        ['1037, 8056, 1419', 425, 'rgba(249,115,22,0.10)', '#f97316'],
+        ['un | believ | able', 250, 'rgba(74,158,237,0.12)', 'var(--accent-color)'],
+        ['1037, 8056, 1419', 425, 'rgba(74,158,237,0.10)', '#4a9eed'],
         ['Embedding\nLookup', 590, 'var(--bg-secondary)', 'var(--text-primary)'],
       ].map(([label, cx, bg, col], i) => (
         <g key={i}>
@@ -214,7 +214,7 @@ const GloVeDiagram = () => {
                 <td style={S.td}><strong>{w}</strong></td>
                 <td style={{ ...S.td, textAlign: 'right', fontFamily: 'monospace' }}>{pi.toExponential(1)}</td>
                 <td style={{ ...S.td, textAlign: 'right', fontFamily: 'monospace' }}>{ps.toExponential(1)}</td>
-                <td style={{ ...S.td, textAlign: 'right', fontFamily: 'monospace', fontWeight: 700, color: r > 1 ? '#f97316' : (r < 1 ? '#f97316' : 'var(--text-secondary)') }}>{r.toFixed(2)}</td>
+                <td style={{ ...S.td, textAlign: 'right', fontFamily: 'monospace', fontWeight: 700, color: r > 1 ? '#4a9eed' : (r < 1 ? '#4a9eed' : 'var(--text-secondary)') }}>{r.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
@@ -241,9 +241,9 @@ const FastTextDiagram = () => {
       </p>
       <div style={{ display: 'flex', gap: '0.4rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '1rem' }}>
         {ngrams.map((g, i) => (
-          <span key={i} style={{ background: 'rgba(249,115,22,0.12)', border: '1px solid var(--accent-color)', borderRadius: 6, padding: '0.3rem 0.6rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--accent-color)', fontWeight: 600 }}>{g}</span>
+          <span key={i} style={{ background: 'rgba(74,158,237,0.12)', border: '1px solid var(--accent-color)', borderRadius: 6, padding: '0.3rem 0.6rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--accent-color)', fontWeight: 600 }}>{g}</span>
         ))}
-        <span style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid #fbbf24', borderRadius: 6, padding: '0.3rem 0.6rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#f97316', fontWeight: 700 }}>&lt;{word}&gt; (palavra completa)</span>
+        <span style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid #7dd3fc', borderRadius: 6, padding: '0.3rem 0.6rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#4a9eed', fontWeight: 700 }}>&lt;{word}&gt; (palavra completa)</span>
       </div>
       <div style={S.math}>
         <BlockMath math={`v_{\\text{where}} = \\sum_{g \\in \\mathcal{G}_{\\text{where}}} z_g`} />
@@ -262,7 +262,6 @@ export default function NLP4() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 4</div>
         <h1 style={S.h1}>Tokenização Subword & Embeddings Avançados</h1>
-        <p style={S.lead}>O Word2Vec atribui um vector a cada palavra do vocabulário — mas o que fazer com palavras nunca vistas, erros ortográficos, ou línguas com morfologia rica? A tokenização subword e os embeddings que combinam estatística global com estrutura local resolvem este problema.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -270,12 +269,12 @@ export default function NLP4() {
           <p style={S.p}>O Word2Vec trata cada palavra como um símbolo atómico — "play", "playing" e "plays" têm embeddings completamente independentes, e uma palavra ausente do vocabulário de treino (<strong>Out-Of-Vocabulary, OOV</strong>) não tem representação alguma.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Vocabulário de palavras inteiras</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Vocabulário de palavras inteiras</div>
               <p style={{ fontSize: '0.87rem', margin: 0, color: 'var(--text-secondary)' }}>Vocabulário de 50k–100k palavras ainda não cobre nomes próprios, neologismos, gírias, erros ortográficos, ou línguas aglutinativas (finlandês, turco) onde uma raiz gera milhares de formas.</p>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Vocabulário de subwords</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Vocabulário de subwords</div>
               <p style={{ fontSize: '0.87rem', margin: 0, color: 'var(--text-secondary)' }}>Com ~30k unidades subword (caracteres, sílabas, morfemas comuns), <em>qualquer</em> palavra pode ser representada — na pior das hipóteses, letra a letra.</p>
             </div>
           </div>
@@ -389,16 +388,16 @@ export default function NLP4() {
 
           <h3 style={S.h3}>Vantagens & Limitações</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Vantagens</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Vantagens</div>
               <ul style={{ margin: 0, paddingLeft: '1.1rem', fontSize: '0.87rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
                 <li>Embeddings para palavras OOV via n-gramas partilhados</li>
                 <li>Captura morfologia: "run", "running", "runner" partilham n-gramas</li>
                 <li>Particularmente forte em línguas morfologicamente ricas</li>
               </ul>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Limitações</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Limitações</div>
               <ul style={{ margin: 0, paddingLeft: '1.1rem', fontSize: '0.87rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
                 <li>Continua a produzir <strong>um único vector por palavra</strong> — não-contextual</li>
                 <li>"banco" (financeiro) e "banco" (assento) têm o mesmo embedding</li>
@@ -406,29 +405,8 @@ export default function NLP4() {
               </ul>
             </div>
           </div>
+        </div>
 
-          <div style={S.highlight}>
-            <strong>Em resumo — a evolução dos embeddings:</strong>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li><strong>Word2Vec / GloVe</strong>: 1 vector por palavra, sem contexto, sem suporte a OOV</li>
-              <li><strong>FastText</strong>: 1 vector por palavra construído a partir de subwords, suporta OOV, ainda sem contexto</li>
-              <li><strong>Tokenização subword (BPE/WordPiece/SentencePiece)</strong>: divide o texto em unidades que alimentam modelos como o Transformer, que produz embeddings <strong>contextualizados</strong> (Lecture 5–6)</li>
-            </ul>
-          </div>
-        </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>O Problema: Vocabulário Fechado</strong> — modelos baseados em palavras inteiras não conseguem lidar com palavras fora do vocabulário de treino (OOV); subword tokenization resolve este problema ao decompor palavras desconhecidas em unidades conhecidas.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Byte-Pair Encoding (BPE)</strong> — algoritmo que constrói iterativamente um vocabulário de subpalavras fundindo os pares de símbolos mais frequentes; é o tokenizador de GPT-2/3/4 e equilibra eficiência com cobertura de vocabulário.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>WordPiece & SentencePiece</strong> — WordPiece (BERT) escolhe fusões que maximizam a probabilidade do corpus; SentencePiece trata o texto como sequência bruta de bytes e é agnóstico à língua — ambos são essenciais para modelos multilingues.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>GloVe — Global Vectors for Word Representation</strong> — aprende embeddings a partir de estatísticas globais de co-ocorrência; captura relações semânticas como king − man + woman ≈ queen e complementa word2vec ao explorar toda a matriz de co-ocorrência.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>FastText — Embeddings com Subwords</strong> — extensão do word2vec que representa cada palavra como soma dos embeddings dos seus n-gramas de caracteres; lida naturalmente com palavras raras e morfologia — especialmente útil em línguas morfologicamente ricas.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

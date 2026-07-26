@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,11 +15,11 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
-  svgWrap: { background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(249,115,22,0.25)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
+  svgWrap: { background: 'rgba(74,158,237,0.06)', border: '1px solid rgba(74,158,237,0.25)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
 };
 
 /* ── SVG 1: Python list vs NumPy ndarray memory layout ── */
@@ -31,10 +31,10 @@ function MemoryLayoutSVG() {
       {/* List boxes */}
       {[0,1,2].map(i => (
         <g key={i}>
-          <rect x={10} y={30 + i * 40} width={70} height={28} rx={4} fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.2" />
+          <rect x={10} y={30 + i * 40} width={70} height={28} rx={4} fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.2" />
           <text x={45} y={49 + i * 40} fontSize="11" textAnchor="middle" fill="var(--text-primary)">ptr[{i}]</text>
           <line x1={80} y1={44 + i * 40} x2={160} y2={44 + i * 40} stroke={color} strokeWidth="1" strokeDasharray="4 3" />
-          <rect x={160} y={30 + i * 40} width={110} height={28} rx={4} fill="rgba(255,180,0,0.10)" stroke="#f59e0b" strokeWidth="1.2" />
+          <rect x={160} y={30 + i * 40} width={110} height={28} rx={4} fill="rgba(2,132,199,0.10)" stroke="#0284c7" strokeWidth="1.2" />
           <text x={215} y={49 + i * 40} fontSize="10" textAnchor="middle" fill="var(--text-primary)">obj obj obj</text>
         </g>
       ))}
@@ -45,11 +45,11 @@ function MemoryLayoutSVG() {
 
       {/* NumPy ndarray side */}
       <text x={340} y={20} fontSize="13" fontWeight="bold" fill={color}>NumPy ndarray</text>
-      <rect x={340} y={35} width={400} height={90} rx={6} fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x={340} y={35} width={400} height={90} rx={6} fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1.5" />
       {/* Contiguous cells */}
       {Array.from({length: 8}, (_, i) => (
         <g key={i}>
-          <rect x={350 + i * 46} y={50} width={38} height={28} rx={3} fill={i % 2 === 0 ? 'rgba(249,115,22,0.20)' : 'rgba(249,115,22,0.10)'} stroke={color} strokeWidth="1" />
+          <rect x={350 + i * 46} y={50} width={38} height={28} rx={3} fill={i % 2 === 0 ? 'rgba(74,158,237,0.20)' : 'rgba(74,158,237,0.10)'} stroke={color} strokeWidth="1" />
           <text x={369 + i * 46} y={69} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{i * 1.5}</text>
         </g>
       ))}
@@ -93,11 +93,11 @@ function IndexingGridSVG() {
           const isRow = r === 0;
           const isCol = c === 1;
           const isSub = r <= 1 && c >= 2;
-          let fill = 'rgba(249,115,22,0.04)';
-          if (isSingle) fill = 'rgba(249,115,22,0.10)';
-          else if (isRow) fill = 'rgba(249,115,22,0.20)';
-          else if (isCol) fill = 'rgba(249,115,22,0.18)';
-          else if (isSub) fill = 'rgba(249,115,22,0.10)';
+          let fill = 'rgba(74,158,237,0.04)';
+          if (isSingle) fill = 'rgba(74,158,237,0.10)';
+          else if (isRow) fill = 'rgba(74,158,237,0.20)';
+          else if (isCol) fill = 'rgba(74,158,237,0.18)';
+          else if (isSub) fill = 'rgba(74,158,237,0.10)';
           return (
             <g key={`${r}-${c}`}>
               <rect x={ox + c * cw} y={oy + r * ch} width={cw - 2} height={ch - 2} rx={3} fill={fill} stroke={color} strokeWidth="1" />
@@ -108,10 +108,10 @@ function IndexingGridSVG() {
       )}
       {/* Legend */}
       {[
-        ['rgba(249,115,22,0.20)', 'arr[0]  — row 0'],
-        ['rgba(249,115,22,0.18)', 'arr[:,1] — col 1'],
-        ['rgba(249,115,22,0.10)', 'arr[:2,2:] — submatrix'],
-        ['rgba(249,115,22,0.10)', 'arr[1,2] = 7 — single'],
+        ['rgba(74,158,237,0.20)', 'arr[0]  — row 0'],
+        ['rgba(74,158,237,0.18)', 'arr[:,1] — col 1'],
+        ['rgba(74,158,237,0.10)', 'arr[:2,2:] — submatrix'],
+        ['rgba(74,158,237,0.10)', 'arr[1,2] = 7 — single'],
       ].map(([bg, label], i) => (
         <g key={i}>
           <rect x={290} y={50 + i * 28} width={16} height={16} rx={3} fill={bg} stroke={color} strokeWidth="1" />
@@ -139,7 +139,7 @@ function ReshapeSVG() {
       <text x={x1 + arr6W / 2} y={16} fontSize="11" textAnchor="middle" fill={color} fontWeight="bold">shape(6,)</text>
       {Array.from({length:6}, (_,i) => (
         <g key={i}>
-          <rect x={x1 + i * (cw + gap)} y={24} width={cw} height={ch} rx={3} fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.2" />
+          <rect x={x1 + i * (cw + gap)} y={24} width={cw} height={ch} rx={3} fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.2" />
           <text x={x1 + i * (cw + gap) + cw / 2} y={41} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{i}</text>
         </g>
       ))}
@@ -151,7 +151,7 @@ function ReshapeSVG() {
       <text x={x2 + arr23W / 2} y={16} fontSize="11" textAnchor="middle" fill={color} fontWeight="bold">shape(2,3)</text>
       {[[0,1,2],[3,4,5]].map((row,r) => row.map((v,c) => (
         <g key={`${r}-${c}`}>
-          <rect x={x2 + c * (cw + gap)} y={24 + r * (ch + gap)} width={cw} height={ch} rx={3} fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.2" />
+          <rect x={x2 + c * (cw + gap)} y={24 + r * (ch + gap)} width={cw} height={ch} rx={3} fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.2" />
           <text x={x2 + c * (cw + gap) + cw / 2} y={41 + r * (ch + gap)} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       )))}
@@ -163,7 +163,7 @@ function ReshapeSVG() {
       <text x={x3 + arr32W / 2} y={16} fontSize="11" textAnchor="middle" fill={color} fontWeight="bold">shape(3,2)</text>
       {[[0,3],[1,4],[2,5]].map((row,r) => row.map((v,c) => (
         <g key={`${r}-${c}`}>
-          <rect x={x3 + c * (cw + gap)} y={24 + r * (ch + gap)} width={cw} height={ch} rx={3} fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.2" />
+          <rect x={x3 + c * (cw + gap)} y={24 + r * (ch + gap)} width={cw} height={ch} rx={3} fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.2" />
           <text x={x3 + c * (cw + gap) + cw / 2} y={41 + r * (ch + gap)} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       )))}
@@ -173,7 +173,7 @@ function ReshapeSVG() {
 
       {/* shape(1,2,3) */}
       <text x={x4 + 34} y={16} fontSize="11" textAnchor="middle" fill={color} fontWeight="bold">shape(1,2,3)</text>
-      <rect x={x4} y={24} width={68} height={60} rx={4} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="4 3" />
+      <rect x={x4} y={24} width={68} height={60} rx={4} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="4 3" />
       <text x={x4 + 34} y={58} fontSize="10" textAnchor="middle" fill="var(--text-secondary)">3D tensor</text>
     </svg>
   );
@@ -185,11 +185,11 @@ function VectorizationSVG() {
     <svg width="480" height="160" viewBox="0 0 480 160" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       <text x={10} y={18} fontSize="12" fontWeight="bold" fill={color}>Tempo relativo (N=1 000 000 elementos)</text>
       {/* Loop bar */}
-      <rect x={100} y={30} width={300} height={36} rx={5} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+      <rect x={100} y={30} width={300} height={36} rx={5} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
       <text x={98} y={52} fontSize="11" textAnchor="end" fill="var(--text-primary)">Python loop</text>
-      <text x={408} y={52} fontSize="11" fill="#f97316" fontWeight="bold">~2000 ms</text>
+      <text x={408} y={52} fontSize="11" fill="#4a9eed" fontWeight="bold">~2000 ms</text>
       {/* NumPy bar */}
-      <rect x={100} y={80} width={18} height={36} rx={5} fill="rgba(249,115,22,0.35)" stroke={color} strokeWidth="1.5" />
+      <rect x={100} y={80} width={18} height={36} rx={5} fill="rgba(74,158,237,0.35)" stroke={color} strokeWidth="1.5" />
       <text x={98} y={102} fontSize="11" textAnchor="end" fill="var(--text-primary)">NumPy ufunc</text>
       <text x={125} y={102} fontSize="11" fill={color} fontWeight="bold">~20 ms</text>
       <text x={10} y={148} fontSize="10" fill="var(--text-secondary)">NumPy corre em C compilado — elimina overhead Python por elemento, usa SIMD</text>
@@ -203,11 +203,11 @@ function BroadcastingSVG() {
     <svg width="700" height="180" viewBox="0 0 700 180" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       {/* Case 1: scalar + (4,) */}
       <text x={10} y={18} fontSize="11" fontWeight="bold" fill={color}>Caso 1: escalar + array(4,)</text>
-      <rect x={10} y={28} width={28} height={28} rx={3} fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1.3" />
+      <rect x={10} y={28} width={28} height={28} rx={3} fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1.3" />
       <text x={24} y={47} fontSize="11" textAnchor="middle" fill="var(--text-primary)">5</text>
       <text x={45} y={46} fontSize="16" fill={color}>+</text>
       {[0,1,2,3].map(i => (
-        <rect key={i} x={60 + i * 30} y={28} width={26} height={28} rx={3} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+        <rect key={i} x={60 + i * 30} y={28} width={26} height={28} rx={3} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       ))}
       {[1,2,3,4].map((v,i) => (
         <text key={i} x={73 + i * 30} y={47} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
@@ -215,7 +215,7 @@ function BroadcastingSVG() {
       <text x={185} y={46} fontSize="16" fill={color}>=</text>
       {[6,7,8,9].map((v,i) => (
         <g key={i}>
-          <rect x={200 + i * 30} y={28} width={26} height={28} rx={3} fill="rgba(249,115,22,0.25)" stroke={color} strokeWidth="1.2" />
+          <rect x={200 + i * 30} y={28} width={26} height={28} rx={3} fill="rgba(74,158,237,0.25)" stroke={color} strokeWidth="1.2" />
           <text x={213 + i * 30} y={47} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       ))}
@@ -225,14 +225,14 @@ function BroadcastingSVG() {
       <text x={10} y={100} fontSize="11" fontWeight="bold" fill={color}>Caso 2: (3,1) + (1,4) {'→'} (3,4)</text>
       {[1,2,3].map((v,r) => (
         <g key={r}>
-          <rect x={10} y={108 + r * 22} width={22} height={18} rx={2} fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="1.1" />
+          <rect x={10} y={108 + r * 22} width={22} height={18} rx={2} fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1.1" />
           <text x={21} y={121 + r * 22} fontSize="10" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       ))}
       <text x={38} y={124} fontSize="14" fill={color}>+</text>
       {[10,20,30,40].map((v,c) => (
         <g key={c}>
-          <rect x={52 + c * 24} y={108} width={20} height={18} rx={2} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.1" />
+          <rect x={52 + c * 24} y={108} width={20} height={18} rx={2} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.1" />
           <text x={62 + c * 24} y={121} fontSize="10" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       ))}
@@ -240,7 +240,7 @@ function BroadcastingSVG() {
       {[[11,21,31,41],[12,22,32,42],[13,23,33,43]].map((row,r) =>
         row.map((v,c) => (
           <g key={`${r}-${c}`}>
-            <rect x={168 + c * 26} y={108 + r * 22} width={22} height={18} rx={2} fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1" />
+            <rect x={168 + c * 26} y={108 + r * 22} width={22} height={18} rx={2} fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1" />
             <text x={179 + c * 26} y={121 + r * 22} fontSize="9" textAnchor="middle" fill="var(--text-primary)">{v}</text>
           </g>
         ))
@@ -250,7 +250,7 @@ function BroadcastingSVG() {
       <text x={280} y={145} fontSize="10" fill="var(--text-secondary)">para (3,4)</text>
 
       {/* Broadcasting rules */}
-      <rect x={420} y={98} width={265} height={75} rx={6} fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth="1" />
+      <rect x={420} y={98} width={265} height={75} rx={6} fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth="1" />
       <text x={430} y={115} fontSize="11" fontWeight="bold" fill={color}>Regras de Broadcasting</text>
       <text x={430} y={130} fontSize="10" fill="var(--text-primary)">1. Alinhar shapes à direita</text>
       <text x={430} y={145} fontSize="10" fill="var(--text-primary)">2. Eixos com size 1 expandem</text>
@@ -269,7 +269,7 @@ function AggregationAxisSVG() {
       {mat.map((row,r) => row.map((v,c) => (
         <g key={`${r}-${c}`}>
           <rect x={ox + c * cw} y={oy + r * ch} width={cw-2} height={ch-2} rx={3}
-            fill={r === 2 ? 'rgba(249,115,22,0.25)' : 'rgba(249,115,22,0.08)'} stroke={color} strokeWidth="1" />
+            fill={r === 2 ? 'rgba(74,158,237,0.25)' : 'rgba(74,158,237,0.08)'} stroke={color} strokeWidth="1" />
           <text x={ox + c * cw + cw/2 - 1} y={oy + r * ch + ch/2 + 5} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       )))}
@@ -281,25 +281,25 @@ function AggregationAxisSVG() {
       {/* Results */}
       {[12,15,18].map((v,c) => (
         <g key={c}>
-          <rect x={ox + c * cw} y={oy + 3 * ch + 5} width={cw-2} height={ch-2} rx={3} fill="rgba(249,115,22,0.30)" stroke={color} strokeWidth="1.3" />
+          <rect x={ox + c * cw} y={oy + 3 * ch + 5} width={cw-2} height={ch-2} rx={3} fill="rgba(74,158,237,0.30)" stroke={color} strokeWidth="1.3" />
           <text x={ox + c * cw + cw/2 - 1} y={oy + 3 * ch + 5 + ch/2 + 5} fontSize="11" textAnchor="middle" fontWeight="bold" fill={color}>{v}</text>
         </g>
       ))}
 
       {/* axis=1 side */}
-      <text x={240} y={18} fontSize="11" fontWeight="bold" fill="#f97316">arr.sum(axis=1) — soma por linha</text>
+      <text x={240} y={18} fontSize="11" fontWeight="bold" fill="#4a9eed">arr.sum(axis=1) — soma por linha</text>
       {mat.map((row,r) => row.map((v,c) => (
         <g key={`b${r}-${c}`}>
           <rect x={240 + c * cw} y={oy + r * ch} width={cw-2} height={ch-2} rx={3}
-            fill={c === 2 ? 'rgba(249,115,22,0.22)' : 'rgba(249,115,22,0.08)'} stroke="#f97316" strokeWidth="1" />
+            fill={c === 2 ? 'rgba(74,158,237,0.22)' : 'rgba(74,158,237,0.08)'} stroke="#4a9eed" strokeWidth="1" />
           <text x={240 + c * cw + cw/2 - 1} y={oy + r * ch + ch/2 + 5} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       )))}
       {/* Results */}
       {[6,15,24].map((v,r) => (
         <g key={r}>
-          <rect x={240 + 3 * cw + 5} y={oy + r * ch} width={cw-2} height={ch-2} rx={3} fill="rgba(249,115,22,0.28)" stroke="#f97316" strokeWidth="1.3" />
-          <text x={240 + 3 * cw + 5 + cw/2 - 1} y={oy + r * ch + ch/2 + 5} fontSize="11" textAnchor="middle" fontWeight="bold" fill="#f97316">{v}</text>
+          <rect x={240 + 3 * cw + 5} y={oy + r * ch} width={cw-2} height={ch-2} rx={3} fill="rgba(74,158,237,0.28)" stroke="#4a9eed" strokeWidth="1.3" />
+          <text x={240 + 3 * cw + 5 + cw/2 - 1} y={oy + r * ch + ch/2 + 5} fontSize="11" textAnchor="middle" fontWeight="bold" fill="#4a9eed">{v}</text>
         </g>
       ))}
 
@@ -318,7 +318,7 @@ function MatMulSVG() {
       {[[1,2,3],[4,5,6]].map((row,r) => row.map((v,c) => (
         <g key={`a${r}${c}`}>
           <rect x={10 + c * 36} y={44 + r * 32} width={32} height={28} rx={3}
-            fill={r === 0 ? 'rgba(249,115,22,0.22)' : 'rgba(249,115,22,0.08)'} stroke={color} strokeWidth="1.2" />
+            fill={r === 0 ? 'rgba(74,158,237,0.22)' : 'rgba(74,158,237,0.08)'} stroke={color} strokeWidth="1.2" />
           <text x={26 + c * 36} y={62 + r * 32} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       )))}
@@ -328,7 +328,7 @@ function MatMulSVG() {
       {[[7,8],[9,10],[11,12]].map((row,r) => row.map((v,c) => (
         <g key={`b${r}${c}`}>
           <rect x={145 + c * 36} y={44 + r * 32} width={32} height={28} rx={3}
-            fill={c === 0 ? 'rgba(249,115,22,0.22)' : 'rgba(249,115,22,0.08)'} stroke="#f97316" strokeWidth="1.2" />
+            fill={c === 0 ? 'rgba(74,158,237,0.22)' : 'rgba(74,158,237,0.08)'} stroke="#4a9eed" strokeWidth="1.2" />
           <text x={161 + c * 36} y={62 + r * 32} fontSize="11" textAnchor="middle" fill="var(--text-primary)">{v}</text>
         </g>
       )))}
@@ -338,12 +338,12 @@ function MatMulSVG() {
       {[[58,64],[139,154]].map((row,r) => row.map((v,c) => (
         <g key={`c${r}${c}`}>
           <rect x={250 + c * 44} y={44 + r * 32} width={40} height={28} rx={3}
-            fill="rgba(249,115,22,0.28)" stroke={color} strokeWidth="1.4" />
+            fill="rgba(74,158,237,0.28)" stroke={color} strokeWidth="1.4" />
           <text x={270 + c * 44} y={62 + r * 32} fontSize="11" textAnchor="middle" fontWeight="bold" fill={color}>{v}</text>
         </g>
       )))}
       {/* Explanation */}
-      <rect x={360} y={44} width={185} height={90} rx={6} fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth="1" />
+      <rect x={360} y={44} width={185} height={90} rx={6} fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth="1" />
       <text x={370} y={62} fontSize="10" fill="var(--text-primary)">C[0,0] = 1{'×'}7 + 2{'×'}9 + 3{'×'}11 = 58</text>
       <text x={370} y={78} fontSize="10" fill="var(--text-primary)">C[0,1] = 1{'×'}8 + 2{'×'}10 + 3{'×'}12 = 64</text>
       <text x={370} y={94} fontSize="10" fill="var(--text-primary)">C[1,0] = 4{'×'}7 + 5{'×'}9 + 6{'×'}11 = 139</text>
@@ -376,7 +376,7 @@ function NormalDistSVG() {
       {/* baseline */}
       <line x1={30} y1={base} x2={W-30} y2={base} stroke="var(--text-secondary)" strokeWidth="1" />
       {/* shaded area ~68% */}
-      {shadeD && <path d={shadeD} fill="rgba(249,115,22,0.20)" />}
+      {shadeD && <path d={shadeD} fill="rgba(74,158,237,0.20)" />}
       {/* curve */}
       <path d={pathD} fill="none" stroke={color} strokeWidth="2" />
       {/* labels */}
@@ -415,15 +415,15 @@ function OptimizeSVG() {
       {/* Gradient trajectory */}
       {steps.slice(0, -1).map((p, i) => (
         <line key={i} x1={p[0]} y1={p[1]} x2={steps[i+1][0]} y2={steps[i+1][1]}
-          stroke="#f59e0b" strokeWidth="1.8" strokeDasharray="5 3" />
+          stroke="#0284c7" strokeWidth="1.8" strokeDasharray="5 3" />
       ))}
       {steps.map((p, i) => (
         <circle key={i} cx={p[0]} cy={p[1]} r={i === 0 ? 7 : i === steps.length - 1 ? 6 : 4.5}
-          fill={i === 0 ? '#f97316' : i === steps.length - 1 ? '#f97316' : '#f97316'}
+          fill={i === 0 ? '#4a9eed' : i === steps.length - 1 ? '#4a9eed' : '#4a9eed'}
           stroke="white" strokeWidth="1.2" />
       ))}
-      <text x={steps[0][0] + 10} y={steps[0][1] - 5} fontSize="10" fill="#f97316">início</text>
-      <text x={steps[steps.length-1][0] + 8} y={steps[steps.length-1][1] + 4} fontSize="10" fill="#f97316">{'mínimo'}</text>
+      <text x={steps[0][0] + 10} y={steps[0][1] - 5} fontSize="10" fill="#4a9eed">início</text>
+      <text x={steps[steps.length-1][0] + 8} y={steps[steps.length-1][1] + 4} fontSize="10" fill="#4a9eed">{'mínimo'}</text>
       <text x={10} y={H - 5} fontSize="10" fill="var(--text-secondary)">Métodos: Nelder-Mead · BFGS · L-BFGS-B · SLSQP · trust-region</text>
     </svg>
   );
@@ -513,7 +513,7 @@ function SplineSVG() {
       {/* data points */}
       {svgPts.map(([x, y], i) => (
         <g key={i}>
-          <circle cx={x} cy={y} r={5} fill="#f97316" stroke="white" strokeWidth="1.5" />
+          <circle cx={x} cy={y} r={5} fill="#4a9eed" stroke="white" strokeWidth="1.5" />
           <text x={x} y={y - 9} fontSize="9" textAnchor="middle" fill="var(--text-secondary)">({dataX[i]},{dataY[i]})</text>
         </g>
       ))}
@@ -547,7 +547,7 @@ function CheatSheetSVG() {
         return (
           <g key={gi}>
             <rect x={gx} y={gy} width={colW - 10} height={colH - 8} rx={6}
-              fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth="1.2" />
+              fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth="1.2" />
             <text x={gx + 10} y={gy + 18} fontSize="11" fontWeight="bold" fill={color}>{group.label}</text>
             {group.items.map((item, ii) => (
               <text key={ii} x={gx + 14} y={gy + 34 + ii * 18} fontSize="10" fill="var(--text-primary)" fontFamily="monospace">{item}</text>
@@ -564,14 +564,8 @@ export default function PfDS7() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <div style={S.tag}>MÓDULO 07</div>
+      <div style={S.tag}>MÓDULO 08</div>
       <h1 style={S.h1}>NumPy &amp; SciPy</h1>
-      <p style={S.lead}>
-        NumPy fornece o ndarray — um array N-dimensional de tipo homogéneo armazenado em memória
-        contígua. SciPy constrói sobre NumPy com rotinas científicas: estatística, otimização,
-        processamento de sinal e interpolação. Este módulo cobre criação, indexação, reshape,
-        vetorização, broadcasting, álgebra linear e os principais submódulos de SciPy.
-      </p>
 
       {/* ── 1. ndarray ── */}
       <div style={S.section}>
@@ -1106,69 +1100,6 @@ pd.DataFrame({'eigenvalues': result_arr[0].real})`}</div>
           quando precisar de álgebra linear ou computação numérica pura.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ── 12. Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <div style={S.svgWrap}><CheatSheetSVG /></div>
-
-        <p style={{ ...S.p, marginTop: '1.5rem' }}><strong>Submódulos SciPy:</strong></p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Submódulo</th>
-              <th style={S.th}>Funcionalidade</th>
-              <th style={S.th}>Exemplos</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['scipy.stats', 'Distribuições, testes, correlação', 'norm, ttest_ind, pearsonr'],
-              ['scipy.optimize', 'Minimização, ajuste de curvas, raízes', 'minimize, curve_fit, brentq'],
-              ['scipy.linalg', 'Álgebra linear avançada', 'solve, lu, qr, cholesky'],
-              ['scipy.signal', 'Processamento de sinal, filtros, FFT', 'butter, filtfilt, spectrogram'],
-              ['scipy.interpolate', 'Interpolação e splines', 'interp1d, CubicSpline, griddata'],
-              ['scipy.sparse', 'Matrizes esparsas', 'csr_matrix, lil_matrix'],
-              ['scipy.spatial', 'Estruturas espaciais', 'KDTree, cKDTree, distance'],
-              ['scipy.integrate', 'Integração numérica, EDO', 'quad, dblquad, solve_ivp'],
-              ['scipy.fft', 'FFT rápida (mais moderna que numpy.fft)', 'fft, ifft, rfft, fftfreq'],
-            ].map(([mod, fn, ex]) => (
-              <tr key={mod}>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{mod}</td>
-                <td style={S.td}>{fn}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{ex}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div style={S.highlight}>
-          <p style={S.p}><strong>Conceitos-chave deste módulo:</strong></p>
-          <p style={S.p}>
-            <strong>ndarray:</strong> memória contígua + dtype homogéneo = 10-100x mais rápido
-            que listas Python para computação numérica.
-          </p>
-          <p style={S.p}>
-            <strong>Vectorização:</strong> elimine loops Python — delegue ao código C compilado
-            via ufuncs. O ganho típico é 20-200x.
-          </p>
-          <p style={S.p}>
-            <strong>Broadcasting:</strong> operações entre arrays de shapes compatíveis sem
-            cópias desnecessárias. Regra: alinhar à direita, size 1 expande.
-          </p>
-          <p style={S.p}>
-            <strong>Views vs cópias:</strong> slicing cria views (cuidado com mutações);
-            boolean e fancy indexing criam cópias.
-          </p>
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            <strong>SciPy:</strong> construído sobre NumPy — adiciona estatística (scipy.stats),
-            otimização (scipy.optimize), sinal (scipy.signal) e interpolação (scipy.interpolate)
-            sem sacrificar performance.
-          </p>
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

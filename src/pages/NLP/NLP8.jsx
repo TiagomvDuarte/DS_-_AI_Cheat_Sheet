@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const TemperatureDemo = () => {
@@ -56,7 +56,7 @@ const TemperatureDemo = () => {
           <div key={word} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.4rem' }}>
             <span style={{ width: 60, textAlign: 'right', fontSize: '0.85rem', fontWeight: i === maxIdx ? 700 : 400, color: i === maxIdx ? 'var(--accent-color)' : 'var(--text-primary)' }}>{word}</span>
             <div style={{ flex: 1, height: 18, background: 'var(--bg-primary)', borderRadius: 9, overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${probs[i] * 100}%`, background: i === maxIdx ? 'var(--accent-color)' : 'rgba(249,115,22,0.35)', borderRadius: 9, transition: 'width 0.3s' }} />
+              <div style={{ height: '100%', width: `${probs[i] * 100}%`, background: i === maxIdx ? 'var(--accent-color)' : 'rgba(74,158,237,0.35)', borderRadius: 9, transition: 'width 0.3s' }} />
             </div>
             <span style={{ width: 44, fontSize: '0.8rem', fontFamily: 'monospace', color: i === maxIdx ? 'var(--accent-color)' : 'var(--text-secondary)', fontWeight: i === maxIdx ? 700 : 400 }}>{(probs[i] * 100).toFixed(1)}%</span>
           </div>
@@ -78,10 +78,10 @@ const RAGDiagram = () => (
 
       {/* Steps */}
       {[
-        [65, 'Questão\ndo utilizador', 'rgba(249,115,22,0.08)', '#f97316'],
-        [235, '① Retrieval\n(busca semântica)', 'rgba(249,115,22,0.15)', '#f97316'],
-        [405, '② Augment\n(enriquecer prompt)', 'rgba(245,158,11,0.15)', '#f59e0b'],
-        [575, '③ Generate\n(LLM responde)', 'rgba(249,115,22,0.12)', '#fb923c'],
+        [65, 'Questão\ndo utilizador', 'rgba(74,158,237,0.08)', '#4a9eed'],
+        [235, '① Retrieval\n(busca semântica)', 'rgba(74,158,237,0.15)', '#4a9eed'],
+        [405, '② Augment\n(enriquecer prompt)', 'rgba(2,132,199,0.15)', '#0284c7'],
+        [575, '③ Generate\n(LLM responde)', 'rgba(74,158,237,0.12)', '#38bdf8'],
       ].map(([cx, label, bg, col]) => (
         <g key={label}>
           <rect x={cx - 65} y="40" width="130" height="60" rx="10" fill={bg} stroke={col} strokeWidth="1.5" />
@@ -102,13 +102,13 @@ const RAGDiagram = () => (
       <line x1="235" y1="101" x2="235" y2="123" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,2" />
 
       {/* Chunks in augment */}
-      <text x="405" y="118" textAnchor="middle" fill="#f59e0b" fontSize="8">[chunk₁][chunk₂] + questão</text>
+      <text x="405" y="118" textAnchor="middle" fill="#0284c7" fontSize="8">[chunk₁][chunk₂] + questão</text>
     </svg>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginTop: '1rem', textAlign: 'left' }}>
       {[
         ['① Retrieval', 'A questão é convertida em embedding e compara-se com os embeddings dos documentos na base vectorial. Recuperam-se os chunks mais similares.', 'var(--accent-color)'],
-        ['② Augment', 'Os chunks recuperados são inseridos no prompt antes da questão. O LLM recebe contexto adicional baseado em dados reais.', '#f97316'],
-        ['③ Generate', 'O LLM responde com base no prompt enriquecido. A resposta está ancorada em informação real — menos alucinações.', '#f97316'],
+        ['② Augment', 'Os chunks recuperados são inseridos no prompt antes da questão. O LLM recebe contexto adicional baseado em dados reais.', '#4a9eed'],
+        ['③ Generate', 'O LLM responde com base no prompt enriquecido. A resposta está ancorada em informação real — menos alucinações.', '#4a9eed'],
       ].map(([title, desc, color]) => (
         <div key={title} style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '0.75rem', border: `1px solid ${color}30` }}>
           <div style={{ fontWeight: 700, fontSize: '0.82rem', color, marginBottom: '0.3rem' }}>{title}</div>
@@ -135,24 +135,24 @@ const AgentDiagram = () => (
       <text x="250" y="142" textAnchor="middle" fill="rgba(255,255,255,0.8)" fontSize="9">"cérebro"</text>
 
       {/* Memória */}
-      <rect x="20" y="50" width="110" height="60" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" strokeWidth="1.5" />
-      <text x="75" y="76" textAnchor="middle" fill="#fb923c" fontSize="11" fontWeight="700">Memória</text>
-      <text x="75" y="92" textAnchor="middle" fill="#fb923c" fontSize="9">curto prazo</text>
-      <text x="75" y="104" textAnchor="middle" fill="#fb923c" fontSize="9">(context window)</text>
-      <line x1="130" y1="80" x2="194" y2="110" stroke="#fb923c" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrb)" />
+      <rect x="20" y="50" width="110" height="60" rx="10" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" strokeWidth="1.5" />
+      <text x="75" y="76" textAnchor="middle" fill="#38bdf8" fontSize="11" fontWeight="700">Memória</text>
+      <text x="75" y="92" textAnchor="middle" fill="#38bdf8" fontSize="9">curto prazo</text>
+      <text x="75" y="104" textAnchor="middle" fill="#38bdf8" fontSize="9">(context window)</text>
+      <line x1="130" y1="80" x2="194" y2="110" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrb)" />
 
       {/* Ferramentas */}
-      <rect x="370" y="50" width="110" height="60" rx="10" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="425" y="76" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Ferramentas</text>
-      <text x="425" y="92" textAnchor="middle" fill="#f59e0b" fontSize="9">APIs, código</text>
-      <text x="425" y="104" textAnchor="middle" fill="#f59e0b" fontSize="9">busca, RAG</text>
-      <line x1="370" y1="80" x2="308" y2="110" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrb)" />
+      <rect x="370" y="50" width="110" height="60" rx="10" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="425" y="76" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Ferramentas</text>
+      <text x="425" y="92" textAnchor="middle" fill="#0284c7" fontSize="9">APIs, código</text>
+      <text x="425" y="104" textAnchor="middle" fill="#0284c7" fontSize="9">busca, RAG</text>
+      <line x1="370" y1="80" x2="308" y2="110" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrb)" />
 
       {/* Planeamento */}
-      <rect x="170" y="8" width="160" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="250" y="30" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Planeamento</text>
-      <text x="250" y="46" textAnchor="middle" fill="#f97316" fontSize="9">ReAct, Chain-of-Thought</text>
-      <line x1="250" y1="58" x2="250" y2="89" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrb)" />
+      <rect x="170" y="8" width="160" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="250" y="30" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Planeamento</text>
+      <text x="250" y="46" textAnchor="middle" fill="#4a9eed" fontSize="9">ReAct, Chain-of-Thought</text>
+      <line x1="250" y1="58" x2="250" y2="89" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arrb)" />
 
       {/* Ambiente */}
       <rect x="155" y="200" width="190" height="46" rx="10" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5" />
@@ -172,7 +172,7 @@ const ReactCycle = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--accent-color)" />
         </marker>
       </defs>
-      {[['Thought', 90, '#fb923c', 'Raciocínio\ninterno'], ['Action', 260, '#f97316', 'Chamar\nferramenta'], ['Observation', 430, '#f97316', 'Resultado\nda ferramenta']].map(([label, cx, color, sub]) => (
+      {[['Thought', 90, '#38bdf8', 'Raciocínio\ninterno'], ['Action', 260, '#4a9eed', 'Chamar\nferramenta'], ['Observation', 430, '#4a9eed', 'Resultado\nda ferramenta']].map(([label, cx, color, sub]) => (
         <g key={label}>
           <ellipse cx={cx} cy="60" rx="72" ry="36" fill={color} opacity="0.12" stroke={color} strokeWidth="1.5" />
           <text x={cx} y="54" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">{label}</text>
@@ -214,7 +214,6 @@ export default function NLP8() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 8</div>
         <h1 style={S.h1}>Generative Models & Agentic AI</h1>
-        <p style={S.lead}>Do GPT-1 (117M) ao GPT-3 (175B), à era dos SLMs eficientes. Como funciona a geração de texto, como controlar o LLM, e como construir agentes que actuam no mundo.</p>
 
         {/* === SECTION 1 === */}
         <div style={S.section}>
@@ -231,11 +230,11 @@ export default function NLP8() {
               {/* Timeline */}
               <line x1="30" y1="100" x2="530" y2="100" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arrd)" />
               {[
-                [60, 100, 'GPT-1\n117M', '#fb923c'],
-                [180, 85, 'GPT-2\n1.5B', '#fb923c'],
-                [330, 40, 'GPT-3\n175B', '#f97316'],
-                [440, 65, 'GPT-4\n???', '#f97316'],
-                [500, 80, 'SLMs\nPhi,Gemma', '#f97316'],
+                [60, 100, 'GPT-1\n117M', '#38bdf8'],
+                [180, 85, 'GPT-2\n1.5B', '#38bdf8'],
+                [330, 40, 'GPT-3\n175B', '#4a9eed'],
+                [440, 65, 'GPT-4\n???', '#4a9eed'],
+                [500, 80, 'SLMs\nPhi,Gemma', '#4a9eed'],
               ].map(([cx, cy, label, color]) => (
                 <g key={label}>
                   <circle cx={cx} cy={cy} r={cy < 60 ? 10 : 7} fill={color} opacity="0.7" />
@@ -246,7 +245,7 @@ export default function NLP8() {
                 </g>
               ))}
               {/* Arrow showing growth stopped */}
-              <text x="380" y="52" textAnchor="middle" fill="#f97316" fontSize="8">↑ crescimento parou</text>
+              <text x="380" y="52" textAnchor="middle" fill="#4a9eed" fontSize="8">↑ crescimento parou</text>
               <text x="30" y="120" fill="var(--text-secondary)" fontSize="9">2018</text>
               <text x="500" y="120" fill="var(--text-secondary)" fontSize="9">2025</text>
             </svg>
@@ -317,9 +316,9 @@ export default function NLP8() {
           <h3 style={S.h3}>Zero-shot, One-shot e Few-shot</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              ['Zero-shot', '0 exemplos', 'Só instrução. O modelo generaliza a partir do pré-treino.', 'Tarefas simples, modelos grandes', '#fb923c'],
-              ['One-shot', '1 exemplo', 'Instrução + 1 exemplo rotulado. Reduz ambiguidade da tarefa.', 'Quando o formato é não-óbvio', '#f97316'],
-              ['Few-shot', '2+ exemplos', 'Melhor desempenho, especialmente em tarefas novas.', 'Tarefas específicas, modelos menores', '#f97316'],
+              ['Zero-shot', '0 exemplos', 'Só instrução. O modelo generaliza a partir do pré-treino.', 'Tarefas simples, modelos grandes', '#38bdf8'],
+              ['One-shot', '1 exemplo', 'Instrução + 1 exemplo rotulado. Reduz ambiguidade da tarefa.', 'Quando o formato é não-óbvio', '#4a9eed'],
+              ['Few-shot', '2+ exemplos', 'Melhor desempenho, especialmente em tarefas novas.', 'Tarefas específicas, modelos menores', '#4a9eed'],
             ].map(([title, shots, desc, when, color]) => (
               <div key={title} style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: `1px solid ${color}30` }}>
                 <div style={{ fontWeight: 700, color, marginBottom: '0.25rem' }}>{title}</div>
@@ -333,12 +332,12 @@ export default function NLP8() {
           <h3 style={S.h3}>Os 6 Componentes de um Prompt Avançado</h3>
           <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', border: '1px solid var(--card-border)', fontFamily: 'monospace', fontSize: '0.85rem', lineHeight: 2.2 }}>
             {[
-              ['Persona', '"You are an expert in large language models."', '#fb923c'],
+              ['Persona', '"You are an expert in large language models."', '#38bdf8'],
               ['Instrução', '"Summarize the key findings of the paper."', 'var(--accent-color)'],
-              ['Contexto', '"The summary should help researchers quickly understand..."', '#fb923c'],
-              ['Formato', '"Create a bullet-point summary followed by a paragraph."', '#f97316'],
-              ['Audiência', '"For busy researchers who need to grasp LLM trends."', '#f97316'],
-              ['Tom', '"The tone should be professional and clear."', '#f97316'],
+              ['Contexto', '"The summary should help researchers quickly understand..."', '#38bdf8'],
+              ['Formato', '"Create a bullet-point summary followed by a paragraph."', '#4a9eed'],
+              ['Audiência', '"For busy researchers who need to grasp LLM trends."', '#4a9eed'],
+              ['Tom', '"The tone should be professional and clear."', '#4a9eed'],
             ].map(([comp, val, color]) => (
               <div key={comp} style={{ display: 'grid', gridTemplateColumns: '90px 1fr', gap: '0.75rem', padding: '0.1rem 0' }}>
                 <span style={{ color, fontWeight: 700 }}>{comp}:</span>
@@ -352,7 +351,7 @@ export default function NLP8() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             {[
               ['System: "You are a patient teacher."', 'User: What is machine learning?\n\nAI: Machine learning is a way for computers to learn from data, like teaching a dog...', 'var(--accent-color)'],
-              ['System: "You are a strict reviewer."', 'User: What is machine learning?\n\nAI: ML is a subset of AI. Your question is too broad. Do you want types or math?', '#f97316'],
+              ['System: "You are a strict reviewer."', 'User: What is machine learning?\n\nAI: ML is a subset of AI. Your question is too broad. Do you want types or math?', '#4a9eed'],
             ].map(([sys, conv, color]) => (
               <div key={sys} style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: `1px solid ${color}30` }}>
                 <div style={{ fontFamily: 'monospace', fontSize: '0.8rem', color, fontWeight: 600, marginBottom: '0.5rem' }}>{sys}</div>
@@ -386,8 +385,8 @@ export default function NLP8() {
               <strong>Conversation Buffer Memory</strong>
               <p style={{ fontSize: '0.88rem', margin: '0.4rem 0 0', color: 'var(--text-secondary)' }}>O histórico completo é concatenado ao prompt em cada chamada. Simples mas cresce indefinidamente — eventualmente excede o context window.</p>
             </div>
-            <div style={{ ...S.highlight, borderColor: '#f97316', background: 'rgba(249,115,22,0.10)' }}>
-              <strong style={{ color: '#f97316' }}>Conversation Summary Memory</strong>
+            <div style={{ ...S.highlight, borderColor: '#4a9eed', background: 'rgba(74,158,237,0.10)' }}>
+              <strong style={{ color: '#4a9eed' }}>Conversation Summary Memory</strong>
               <p style={{ fontSize: '0.88rem', margin: '0.4rem 0 0', color: 'var(--text-secondary)' }}>Um LLM auxiliar resume o histórico. O prompt recebe apenas o resumo comprimido + nova mensagem. Escala para conversas longas.</p>
             </div>
           </div>
@@ -422,8 +421,8 @@ export default function NLP8() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
               ['Dense Search', 'Embeddings', 'Semântica, lenta', 'var(--accent-color)'],
-              ['Keyword Search', 'TF-IDF / BM25', 'Exacta, rápida, sem semântica', '#f97316'],
-              ['Hybrid Search ', 'Combinação', 'Melhor dos dois mundos', '#f97316'],
+              ['Keyword Search', 'TF-IDF / BM25', 'Exacta, rápida, sem semântica', '#4a9eed'],
+              ['Hybrid Search ', 'Combinação', 'Melhor dos dois mundos', '#4a9eed'],
             ].map(([title, method, desc, color]) => (
               <div key={title} style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: `1px solid ${color}30` }}>
                 <div style={{ fontWeight: 700, color, marginBottom: '0.3rem', fontSize: '0.9rem' }}>{title}</div>
@@ -453,8 +452,8 @@ export default function NLP8() {
           <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', fontFamily: 'monospace', fontSize: '0.85rem', lineHeight: 2 }}>
             {[
               ['1. LLM gera a chamada:', 'get_weather(city="Amsterdam")', 'var(--accent-color)'],
-              ['2. Runtime executa:', '{"temperature_c": 14, "condition": "Cloudy"}', '#f97316'],
-              ['3. LLM retoma a geração:', '"It\'s currently 14°C and cloudy."', '#f97316'],
+              ['2. Runtime executa:', '{"temperature_c": 14, "condition": "Cloudy"}', '#4a9eed'],
+              ['3. LLM retoma a geração:', '"It\'s currently 14°C and cloudy."', '#4a9eed'],
             ].map(([step, val, color]) => (
               <div key={step} style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: '0.75rem' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>{step}</span>
@@ -484,7 +483,7 @@ export default function NLP8() {
               <rect x="175" y="10" width="150" height="40" rx="8" fill="var(--accent-color)" opacity="0.7" />
               <text x="250" y="34" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Supervisor Agent</text>
               {/* Sub-agents */}
-              {[['Coding\nPython', 60, '#fb923c'], ['Search\nGoogle', 250, '#f97316'], ['Slack\nMessage', 440, '#f97316']].map(([label, cx, color]) => (
+              {[['Coding\nPython', 60, '#38bdf8'], ['Search\nGoogle', 250, '#4a9eed'], ['Slack\nMessage', 440, '#4a9eed']].map(([label, cx, color]) => (
                 <g key={label}>
                   <line x1="250" y1="50" x2={cx} y2="98" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arre)" />
                   <rect x={cx - 52} y="100" width="104" height="40" rx="8" fill={color} opacity="0.12" stroke={color} strokeWidth="1.2" />
@@ -497,20 +496,7 @@ export default function NLP8() {
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Frameworks populares: CrewAI e AutoGen (ambos usam o modelo Supervisor).</p>
           </div>
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>7. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Evolução dos Modelos Generativos</strong> — de GPT-1 (117M) a GPT-4 e Llama3, os LLMs cresceram em parâmetros, dados e RLHF; o scaling law de Chinchilla mostrou que dados e parâmetros devem co-escalar para máxima eficiência.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Configuração do Modelo: Temperature, top_p, top_k</strong> — temperature controla a aleatoriedade da distribuição de saída; top_p (nucleus sampling) e top_k limitam o vocabulário a considerar — juntos determinam o equilíbrio entre criatividade e coerência do texto gerado.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Prompt Engineering</strong> — a arte de construir prompts que guiam o LLM para a resposta desejada; técnicas como few-shot, chain-of-thought e role prompting melhoram dramaticamente a qualidade sem alterar os pesos do modelo.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Context Window e Memória</strong> — os LLMs só "lembram" o que está na janela de contexto (4K a 1M tokens); para conversas longas ou documentos extensos, são necessárias estratégias de compressão, RAG ou memória externa.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>RAG — Retrieval-Augmented Generation</strong> — combina recuperação de documentos relevantes (via vector search) com geração por LLM, reduzindo alucinações e permitindo conhecimento actualizado sem re-treinar o modelo — padrão dominante em produção.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Agentic AI</strong> — LLMs que chamam ferramentas (APIs, código, pesquisa) e executam planos multi-passo de forma autónoma; frameworks como LangChain e AutoGen implementam loops agente–acção–observação–reflexão.</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
     </div>
   );

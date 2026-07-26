@@ -4,12 +4,12 @@ import { ArrowLeft } from 'lucide-react';
 import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const C = '#f97316';
+const C = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: C, color: '#fff', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: C, border: `1.5px solid ${C}`, fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(180,83,9,0.05)`, borderLeft: `3px solid ${C}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `${C}0d`, borderLeft: `3px solid ${C}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem 1.25rem', fontFamily: 'monospace', fontSize: '0.85rem', lineHeight: 2, color: 'var(--text-primary)', marginBottom: '1.25rem' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
@@ -32,7 +32,7 @@ const ACODiagram = () => (
     <svg viewBox="0 0 580 210" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-aco" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill={C} /></marker>
-        <marker id="arr-green" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
+        <marker id="arr-green" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
       </defs>
 
       {/* Graph nodes */}
@@ -57,12 +57,12 @@ const ACODiagram = () => (
       <text x="410" y="92" textAnchor="middle" fill={C} fontSize="8" fontWeight="700">τ=2.8 (forte)</text>
 
       {/* Ant path */}
-      <circle cx={60} cy={100} r={6} fill="#f97316" stroke="white" strokeWidth="1.5"/>
-      <text x="60" y="130" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">formiga</text>
-      <path d="M 80,106 Q 130,145 178,148" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-aco)"/>
+      <circle cx={60} cy={100} r={6} fill="#4a9eed" stroke="white" strokeWidth="1.5"/>
+      <text x="60" y="130" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">formiga</text>
+      <path d="M 80,106 Q 130,145 178,148" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-aco)"/>
 
       {/* Legend */}
-      <rect x="10" y="177" width="560" height="28" rx="6" fill="rgba(180,83,9,0.05)" stroke={`${C}30`} strokeWidth="1"/>
+      <rect x="10" y="177" width="560" height="28" rx="6" fill={`${C}0d`} stroke={`${C}30`} strokeWidth="1"/>
       <line x1="20" y1="189" x2="50" y2="189" stroke={C} strokeWidth="4" strokeOpacity="0.7"/>
       <text x="55" y="193" fill="var(--text-secondary)" fontSize="8">caminho com feromon alto → mais escolhido</text>
       <line x1="260" y1="189" x2="290" y2="189" stroke={C} strokeWidth="1" strokeOpacity="0.4"/>
@@ -87,7 +87,7 @@ const ACOFormulaExplorer = () => {
       ],
     },
     {
-      name: 'Actualização de Feromonas', color: '#f97316',
+      name: 'Actualização de Feromonas', color: '#4a9eed',
       formula: String.raw`\tau(i,j) \leftarrow (1-\rho)\cdot\tau(i,j) + \sum_{k} \Delta\tau_k(i,j)`,
       desc: 'Após cada ciclo (todas as formigas completam o seu tour), os níveis de feromonas são actualizados. Primeiro evapora-se (multiplica por 1-ρ), depois depositam-se novas feromonas proporcional à qualidade das soluções que usaram cada aresta.',
       componentes: [
@@ -99,7 +99,7 @@ const ACOFormulaExplorer = () => {
       ],
     },
     {
-      name: 'Evaporação & Estagnação', color: '#f97316',
+      name: 'Evaporação & Estagnação', color: '#4a9eed',
       formula: String.raw`\tau_{\min} \;\leq\; \tau(i,j) \;\leq\; \tau_{\max} \quad \text{[MMAS: Max-Min AS]}`,
       desc: 'Um problema clássico do ACO é a estagnação: todas as formigas convergem para o mesmo caminho e feromonas noutros caminhos evaporam para zero. Max-Min Ant System (MMAS) limita os níveis de feromonas entre τ_min e τ_max para garantir diversidade.',
       componentes: [
@@ -111,7 +111,7 @@ const ACOFormulaExplorer = () => {
       ],
     },
     {
-      name: 'Variantes do ACO', color: '#f97316',
+      name: 'Variantes do ACO', color: '#4a9eed',
       formula: 'AS → ACS → MMAS → ANTS → ...',
       desc: 'O ACO é uma família de algoritmos, não um único algoritmo. O Ant System (AS) original de Dorigo (1992) foi seguido de versões melhoradas que resolvem problemas específicos de convergência, velocidade e qualidade.',
       componentes: [
@@ -152,9 +152,8 @@ export default function CIO10() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/cio" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
-        <div style={S.tag}>Module 10</div>
+        <div style={S.tag}>Módulo 10</div>
         <h1 style={S.h1}>Ant Colony Optimization (ACO)</h1>
-        <p style={S.lead}>As formigas reais encontram os caminhos mais curtos entre o formigueiro e a comida sem qualquer coordenação central — usando apenas feromonas. Marco Dorigo formalizou este comportamento emergente em 1992 num algoritmo de optimização surpreendentemente poderoso para problemas combinatórios, especialmente routing e scheduling.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. A Inspiração Biológica</h2>
@@ -162,7 +161,7 @@ export default function CIO10() {
           <p style={S.p}>A chave é a <strong>evaporação</strong>: feromonas em caminhos menos usados evaporam, prevenindo convergência prematura para caminhos sub-óptimos descobertos cedo. É o mecanismo de "esquecimento" que mantém a diversidade. Sem evaporação, o primeiro caminho descoberto dominaria para sempre.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: `rgba(180,83,9,0.06)`, border: `1px solid rgba(180,83,9,0.2)`, borderRadius: 8, padding: '1rem' }}>
+            <div style={{ background: `${C}10`, border: `1px solid ${C}33`, borderRadius: 8, padding: '1rem' }}>
               <div style={{ fontWeight: 700, color: C, marginBottom: '0.5rem' }}>Biologia → Algoritmo</div>
               <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 2 }}>
                 Formiga → Agente/solução candidata<br/>
@@ -173,7 +172,7 @@ export default function CIO10() {
                 Caminho → Sequência de decisões (aresta por aresta)
               </div>
             </div>
-            <div style={{ background: `rgba(180,83,9,0.06)`, border: `1px solid rgba(180,83,9,0.2)`, borderRadius: 8, padding: '1rem' }}>
+            <div style={{ background: `${C}10`, border: `1px solid ${C}33`, borderRadius: 8, padding: '1rem' }}>
               <div style={{ fontWeight: 700, color: C, marginBottom: '0.5rem' }}>Quando ACO brilha</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>TSP e variantes (VRP, CVRP)</li>
@@ -278,18 +277,8 @@ export default function CIO10() {
           </div>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>4. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>ACO modela a estigmergia das formigas: comunicação indirecta via feromonas no ambiente — não há coordenação central</li>
-              <li>Cada formiga constrói uma solução probabilisticamente, guiada por feromonas τ^α (memória colectiva) e heurística η^β (ganância local)</li>
-              <li>Evaporação (1-ρ) é essencial: sem ela, o sistema converge prematuramente para o primeiro bom caminho encontrado</li>
-              <li>MMAS limita τ ∈ [τ_min, τ_max] para evitar estagnação — é a variante mais eficaz para TSP</li>
-              <li>ACO brilha em problemas que se modelam naturalmente como caminho num grafo: TSP, VRP, job-shop, routing em redes</li>
-            </ul>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

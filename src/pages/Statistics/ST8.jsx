@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,10 +20,10 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
+  code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
 
 /* ── SVG: Homoskedasticidade vs Heteroskedasticidade ── */
@@ -55,15 +55,15 @@ function HeteroSVG() {
       <text x="10" y="72" fontSize="8" fill="var(--text-secondary)" textAnchor="middle">e</text>
 
       {/* Panel 2: Heteroskedastic */}
-      <text x="210" y="12" fontSize="9" fill="#f97316" fontWeight="700">HETEROSKEDÁSTICO</text>
+      <text x="210" y="12" fontSize="9" fill="#4a9eed" fontWeight="700">HETEROSKEDÁSTICO</text>
       <line x1="220" y1="120" x2="380" y2="120" stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1="220" y1="20" x2="220" y2="120" stroke="var(--text-secondary)" strokeWidth="1" />
       {/* trend line */}
-      <line x1="220" y1="100" x2="375" y2="60" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" />
+      <line x1="220" y1="100" x2="375" y2="60" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" />
       {/* funnel */}
-      <polygon points="220,90 375,20 375,100 220,110" fill="#f97316" fillOpacity="0.07" />
+      <polygon points="220,90 375,20 375,100 220,110" fill="#4a9eed" fillOpacity="0.07" />
       {heteroPts.map(([cx, cy], i) => (
-        <circle key={i} cx={cx + 200} cy={cy} r="2.2" fill="#f97316" fillOpacity="0.6" />
+        <circle key={i} cx={cx + 200} cy={cy} r="2.2" fill="#4a9eed" fillOpacity="0.6" />
       ))}
       <text x="295" y="134" fontSize="8" fill="var(--text-secondary)" textAnchor="middle">X</text>
       <text x="210" y="72" fontSize="8" fill="var(--text-secondary)" textAnchor="middle">e</text>
@@ -84,9 +84,9 @@ function CorrelationHeatmap() {
   const offset = 28;
   function cellColor(v) {
     const abs = Math.abs(v);
-    if (abs > 0.8) return '#f97316';
-    if (abs > 0.5) return '#f97316';
-    if (abs > 0.3) return '#f97316';
+    if (abs > 0.8) return '#4a9eed';
+    if (abs > 0.5) return '#4a9eed';
+    if (abs > 0.3) return '#4a9eed';
     return color;
   }
   function cellOpacity(v) {
@@ -132,38 +132,6 @@ function CorrelationHeatmap() {
   );
 }
 
-/* ── SVG: Outliers, Leverage e Influência ── */
-function OutlierSVG() {
-  const pts = [
-    [40,110],[55,100],[70,92],[85,82],[100,74],[115,65],[130,56],[145,48],
-    [60,105],[80,88],[95,78],[110,70],[125,60],[140,50],
-  ];
-  return (
-    <svg viewBox="0 0 320 150" style={{ width: '100%', maxWidth: 500, display: 'block', margin: '0 auto' }}>
-      <line x1="25" y1="130" x2="295" y2="130" stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1="25" y1="20" x2="25" y2="130" stroke="var(--text-secondary)" strokeWidth="1" />
-      {/* regression line */}
-      <line x1="30" y1="118" x2="280" y2="42" stroke={color} strokeWidth="1.8" />
-      {/* normal pts */}
-      {pts.map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r="3" fill={color} fillOpacity="0.5" />
-      ))}
-      {/* high-leverage, low residual */}
-      <circle cx={268} cy={46} r="5" fill="#f97316" stroke="#f97316" strokeWidth="1.5" fillOpacity="0.8" />
-      <text x={268} y={38} fontSize="8" fill="#f97316" textAnchor="middle">Alto Leverage</text>
-      <text x={268} y={29} fontSize="7" fill="#f97316" textAnchor="middle">Baixo Resíduo</text>
-      {/* outlier: low leverage, high residual */}
-      <circle cx={90} cy={30} r="5" fill="#f97316" stroke="#f97316" strokeWidth="1.5" fillOpacity="0.8" />
-      <text x={90} y={22} fontSize="8" fill="#f97316" textAnchor="middle">Outlier</text>
-      <text x={90} y={13} fontSize="7" fill="#f97316" textAnchor="middle">Alto Resíduo</text>
-      {/* residual line for outlier */}
-      <line x1="90" y1="30" x2="90" y2="80" stroke="#f97316" strokeWidth="1" strokeDasharray="3,2" />
-      <text x="160" y="145" fontSize="8" fill="var(--text-secondary)" textAnchor="middle">X</text>
-      <text x="14" y="78" fontSize="8" fill="var(--text-secondary)" textAnchor="middle">Y</text>
-    </svg>
-  );
-}
-
 /* ── SVG: Curva Logística ── */
 function LogisticSVG() {
   function logistic(x) { return 1 / (1 + Math.exp(-x)); }
@@ -202,8 +170,8 @@ function LogisticSVG() {
       <text x={padL - 4} y={padT + 4} fontSize="8" fill="var(--text-secondary)" textAnchor="end">1</text>
       <text x={padL - 4} y={padT + plotH + 4} fontSize="8" fill="var(--text-secondary)" textAnchor="end">0</text>
       {/* threshold line */}
-      <line x1={padL} y1={thy} x2={padL + plotW} y2={thy} stroke="#f97316" strokeWidth="1" strokeDasharray="4,3" />
-      <text x={padL + plotW + 2} y={thy + 3} fontSize="7" fill="#f97316">0.5</text>
+      <line x1={padL} y1={thy} x2={padL + plotW} y2={thy} stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" />
+      <text x={padL + plotW + 2} y={thy + 3} fontSize="7" fill="#4a9eed">0.5</text>
       {/* vertical at x=0 */}
       <line x1={thx} y1={padT} x2={thx} y2={padT + plotH} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="2,3" />
       {/* curve */}
@@ -227,13 +195,7 @@ export default function ST8() {
 
       {/* Header */}
       <div style={S.tag}>MÓDULO 08</div>
-      <h1 style={S.h1}>Diagnóstico &amp; Extensões da Regressão</h1>
-      <p style={S.lead}>
-        Um modelo de regressão que viola os pressupostos clássicos produz estimativas ou inferências
-        comprometidas. Este módulo cobre os principais problemas — heteroskedasticidade, multicolinearidade,
-        má especificação — as suas consequências e as extensões do framework OLS para resultados binários,
-        de contagem e além.
-      </p>
+      <h1 style={S.h1}>Problemas de Especificação &amp; Modelos Alternativos</h1>
 
       {/* ── 1. Heteroskedasticidade ── */}
       <section style={S.section}>
@@ -325,7 +287,7 @@ export default function ST8() {
         <p style={S.p}>
           A multicolinearidade surge quando dois ou mais regressores estão altamente correlacionados.
           A forma extrema — colinearidade perfeita — torna X'X singular e o OLS é impossível de calcular.
-          Em prática, a forma imperfecta é mais comum e cria problemas de inferência.
+          Na prática, a forma imperfeita é mais comum e cria problemas de inferência.
         </p>
         <div style={S.highlight}>
           <strong>Consequências:</strong>
@@ -454,108 +416,9 @@ export default function ST8() {
 
       <hr style={S.divider} />
 
-      {/* ── 6. Outliers, Leverage e Influência ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>6. Outliers, Leverage e Influência</h2>
-        <p style={S.p}>
-          Nem todos os pontos incomuns são problemáticos — distingue-se entre outliers
-          (desvio na direcção de Y), pontos de alto leverage (desvio na direcção de X) e
-          pontos influentes (alteram substancialmente as estimativas quando removidos).
-        </p>
-        <h3 style={S.h3}>Matriz Hat e Leverage</h3>
-        <p style={S.p}>
-          A matriz chapéu H = X(X'X)⁻¹X' projecta y em ŷ = Hy. Os elementos diagonais
-          h<sub>ii</sub> medem o leverage da observação i. Um limiar comum é
-          h<sub>ii</sub> &gt; 2(k+1)/n.
-        </p>
-        <h3 style={S.h3}>Resíduos Estandardizados e Estudentizados</h3>
-        <p style={S.p}>
-          O resíduo estandardizado divide e<sub>i</sub> pelo seu desvio-padrão estimado.
-          O resíduo estudentizado usa a variância estimada <em>sem</em> a observação i
-          (leave-one-out), seguindo uma distribuição t(n−k−2).
-        </p>
-        <h3 style={S.h3}>Distância de Cook</h3>
-        
-          <BlockMath math="D_i = \frac{(\hat{\beta} - \hat{\beta}_{(i)})'(X'X)(\hat{\beta} - \hat{\beta}_{(i)})}{(k+1)s^2}" />
-          <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-            <InlineMath math="D_i > 1" />: observação potencialmente influente. <InlineMath math="D_i > 4/n" />: limiar conservador.
-          </span>
-        
-        <div style={S.diagram}>
-          <OutlierSVG />
-        </div>
-        <div style={S.note}>
-          Um ponto com alto leverage mas resíduo pequeno pode não ser influente — está na linha
-          de regressão mas "puxa-a" consigo. Um outlier com baixo leverage tem pouco impacto
-          nos coeficientes mas pode inflacionar a variância residual.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 7. Regressão de Contagem ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>7. Regressão com Dados de Contagem</h2>
-        <p style={S.p}>
-          Quando a variável dependente é um inteiro não negativo (número de acidentes, visitas ao
-          médico, filhos), o OLS produz previsões negativas e é ineficiente. O framework GLM
-          (Modelos Lineares Generalizados) oferece alternativas adequadas.
-        </p>
-        <h3 style={S.h3}>Regressão de Poisson</h3>
-        
-          <BlockMath math="\log(E[Y \mid X]) = X\beta \iff E[Y \mid X] = e^{X\beta}" />
-          <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-            Pressuposto: <InlineMath math="E[Y|X] = \mathrm{Var}[Y|X] = \lambda" /> (equidispersão). Estimação por MLE.
-          </span>
-        
-        <p style={S.p}>
-          Os coeficientes interpretam-se como variações percentuais aproximadas: um aumento de
-          uma unidade em x<sub>j</sub> multiplica a contagem esperada por e<sup>β<sub>j</sub></sup>
-          (incidence rate ratio).
-        </p>
-        <h3 style={S.h3}>Sobredispersão e Binomial Negativa</h3>
-        <p style={S.p}>
-          Na prática, a variância da contagem frequentemente excede a média (sobredispersão).
-          Ignorar este facto produz erros-padrão demasiado pequenos. A <strong>Binomial Negativa</strong>
-          adiciona um parâmetro de dispersão θ: Var[Y|X] = μ + μ²/θ, acomodando sobredispersão.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Modelo</th>
-              <th style={S.th}>Link</th>
-              <th style={S.th}>Pressuposto de Variância</th>
-              <th style={S.th}>R</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Poisson</td>
-              <td style={S.td}>log</td>
-              <td style={S.td}>Var = μ</td>
-              <td style={S.td}><code>glm(y~x, family=poisson)</code></td>
-            </tr>
-            <tr>
-              <td style={S.td}>Quasi-Poisson</td>
-              <td style={S.td}>log</td>
-              <td style={S.td}>Var = φμ (φ estimado)</td>
-              <td style={S.td}><code>glm(y~x, family=quasipoisson)</code></td>
-            </tr>
-            <tr>
-              <td style={S.td}>Binomial Negativa</td>
-              <td style={S.td}>log</td>
-              <td style={S.td}>Var = μ + μ²/θ</td>
-              <td style={S.td}><code>glm.nb(y~x)</code> (MASS)</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <hr style={S.divider} />
-
       {/* ── 8. Regressão Logística ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>8. Regressão Logística</h2>
+        <h2 style={S.h2}>6. Regressão Logística</h2>
         <p style={S.p}>
           Quando Y ∈ {'{0, 1}'}, o Modelo de Probabilidade Linear (OLS com Y binário) produz
           probabilidades previstas fora do intervalo [0,1] e erros heteroskedásticos por construção.
@@ -588,22 +451,22 @@ export default function ST8() {
           <tbody>
             <tr>
               <td style={S.td}>Log-odds</td>
-              <td style={S.td}>Xβ (saída directa)</td>
+              <td style={S.td}><InlineMath math="X\beta" /> (saída directa)</td>
               <td style={S.td}><code>coef(modelo)</code></td>
             </tr>
             <tr>
               <td style={S.td}>Odds Ratio</td>
-              <td style={S.td}>e<sup>β</sup></td>
+              <td style={S.td}><InlineMath math="e^{\beta}" /></td>
               <td style={S.td}><code>exp(coef(modelo))</code></td>
             </tr>
             <tr>
               <td style={S.td}>Efeito Marginal</td>
-              <td style={S.td}>β · p(1−p) (varia com X)</td>
+              <td style={S.td}><InlineMath math="\beta \cdot p(1-p)" /> (varia com X)</td>
               <td style={S.td}><code>margins(modelo)</code></td>
             </tr>
             <tr>
               <td style={S.td}>Probabilidade Prevista</td>
-              <td style={S.td}>1/(1+e<sup>-Xβ̂</sup>)</td>
+              <td style={S.td}><InlineMath math="1/(1+e^{-X\hat{\beta}})" /></td>
               <td style={S.td}><code>predict(modelo, type="response")</code></td>
             </tr>
           </tbody>
@@ -618,7 +481,7 @@ export default function ST8() {
 
       {/* ── 9. Selecção de Variáveis ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>9. Selecção de Variáveis</h2>
+        <h2 style={S.h2}>7. Selecção de Variáveis</h2>
         <p style={S.p}>
           Adicionar regressores aumenta sempre o R², mas pode piorar o ajustamento fora da amostra
           (overfitting). Os critérios de selecção penalizam a complexidade do modelo.
@@ -635,22 +498,22 @@ export default function ST8() {
           <tbody>
             <tr>
               <td style={S.td}><strong>AIC</strong></td>
-              <td style={S.td}>−2ℓ + 2k</td>
+              <td style={S.td}><InlineMath math="-2\ell + 2k" /></td>
               <td style={S.td}>Leve; prefere modelos maiores; bom para previsão</td>
             </tr>
             <tr>
               <td style={S.td}><strong>BIC</strong></td>
-              <td style={S.td}>−2ℓ + k·log(n)</td>
+              <td style={S.td}><InlineMath math="-2\ell + k\cdot\log(n)" /></td>
               <td style={S.td}>Mais severa para n grande; consistente para selecção</td>
             </tr>
             <tr>
               <td style={S.td}><strong>R² Ajustado</strong></td>
-              <td style={S.td}>1 − (RSS/(n−k−1)) / (TSS/(n−1))</td>
+              <td style={S.td}><InlineMath math="1 - \frac{RSS/(n-k-1)}{TSS/(n-1)}" /></td>
               <td style={S.td}>Penaliza k; pode diminuir ao adicionar variáveis inúteis</td>
             </tr>
             <tr>
               <td style={S.td}><strong>Mallows Cp</strong></td>
-              <td style={S.td}>RSS/s² − n + 2k</td>
+              <td style={S.td}><InlineMath math="RSS/s^2 - n + 2k" /></td>
               <td style={S.td}>Próximo de k: bom modelo; muito maior: viés de variável omitida</td>
             </tr>
           </tbody>
@@ -669,77 +532,6 @@ export default function ST8() {
           </span>
         
       </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 10. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <p style={S.p}>
-          O diagnóstico é uma etapa obrigatória de qualquer análise de regressão. Um modelo
-          tecnicamente correcto pode produzir inferências completamente erradas se os pressupostos
-          subjacentes forem violados.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Problema</th>
-              <th style={S.th}>Consequência Principal</th>
-              <th style={S.th}>Detecção</th>
-              <th style={S.th}>Solução</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Heteroskedasticidade</td>
-              <td style={S.td}>SEs errados, inferência inválida</td>
-              <td style={S.td}>Breusch-Pagan, White, gráficos</td>
-              <td style={S.td}>HC SEs, WLS, GLS</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Multicolinearidade</td>
-              <td style={S.td}>SEs inflacionados, instabilidade</td>
-              <td style={S.td}>VIF, matriz de correlação</td>
-              <td style={S.td}>Remover variável, Ridge, PCA</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Má especificação</td>
-              <td style={S.td}>Viés, previsões pobres</td>
-              <td style={S.td}>RESET, gráficos resíduos</td>
-              <td style={S.td}>Transformações, novos termos</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Outliers influentes</td>
-              <td style={S.td}>Estimativas distorcidas</td>
-              <td style={S.td}>Cook's D, leverage, estudentizados</td>
-              <td style={S.td}>Investigar, regressão robusta</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Y binário</td>
-              <td style={S.td}>Prob. fora [0,1], heterosked.</td>
-              <td style={S.td}>Natureza da variável</td>
-              <td style={S.td}>Regressão Logística (GLM)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Y contagem</td>
-              <td style={S.td}>Previsões negativas, má fit</td>
-              <td style={S.td}>Natureza da variável, sobredispersão</td>
-              <td style={S.td}>Poisson, Binomial Negativa</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style={S.highlight}>
-          <strong>Fluxo de trabalho recomendado:</strong>
-          <ol style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', lineHeight: 2 }}>
-            <li>Analisar a natureza de Y — contínua, binária, contagem?</li>
-            <li>Estimar modelo base; inspecionar gráficos de diagnóstico</li>
-            <li>Testar heteroskedasticidade (Breusch-Pagan) e calcular VIFs</li>
-            <li>Identificar observações influentes (Cook's D, leverage)</li>
-            <li>Aplicar RESET para verificar forma funcional</li>
-            <li>Corrigir problemas detectados e comparar modelos via AIC/BIC</li>
-          </ol>
-        </div>
-      </section>
-    </div>
+</div>
   );
 }

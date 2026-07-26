@@ -7,14 +7,14 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  lectureTag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  lectureTag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
   h2: { fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)', borderLeft: '3px solid var(--accent-color)', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
@@ -22,7 +22,7 @@ const S = {
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   code: { fontFamily: 'monospace', background: 'var(--bg-secondary)', padding: '0.1rem 0.4rem', borderRadius: 4, fontSize: '0.88em', color: 'var(--accent-color)' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid var(--accent-color)', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
 };
 
 const VecBox = ({ label, vals, color, labelAlign }) => (
@@ -44,9 +44,9 @@ const FlowOp = ({ children, color }) => (
 
 const RNNStepFlowDiagram = () => {
   const steps = [
-    { word: 'great', hPrev: [0, 0], x: [0.5, 0.8], pre: [0.44, 0.50], h: [0.414, 0.462], color: '#f97316' },
-    { word: 'movie', hPrev: [0.414, 0.462], x: [0.1, 0.6], pre: [0.354, 0.490], h: [0.342, 0.453], color: '#f97316' },
-    { word: 'is', hPrev: [0.342, 0.453], x: [0.3, 0.4], pre: [0.365, 0.408], h: [0.351, 0.388], color: '#f97316' },
+    { word: 'great', hPrev: [0, 0], x: [0.5, 0.8], pre: [0.44, 0.50], h: [0.414, 0.462], color: '#4a9eed' },
+    { word: 'movie', hPrev: [0.414, 0.462], x: [0.1, 0.6], pre: [0.354, 0.490], h: [0.342, 0.453], color: '#4a9eed' },
+    { word: 'is', hPrev: [0.342, 0.453], x: [0.3, 0.4], pre: [0.365, 0.408], h: [0.351, 0.388], color: '#4a9eed' },
   ];
   return (
     <div style={S.diagram}>
@@ -54,23 +54,23 @@ const RNNStepFlowDiagram = () => {
       {steps.map((s, idx) => (
         <div key={s.word} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', marginBottom: idx < steps.length - 1 ? '0.5rem' : 0, paddingBottom: idx < steps.length - 1 ? '0.5rem' : 0, borderBottom: idx < steps.length - 1 ? '1px dashed var(--card-border)' : 'none' }}>
           <div style={{ fontWeight: 700, color: s.color, marginRight: '0.5rem', minWidth: 60 }}>"{s.word}"</div>
-          <VecBox label={`h${idx}`} vals={s.hPrev} color="#fb923c" />
+          <VecBox label={`h${idx}`} vals={s.hPrev} color="#38bdf8" />
           <FlowOp>+</FlowOp>
           <VecBox label={`x ("${s.word}")`} vals={s.x} color={s.color} />
           <FlowOp>→</FlowOp>
-          <VecBox label="Uhₜ₋₁ + Wxₜ" vals={s.pre} color="#fb923c" />
+          <VecBox label="Uhₜ₋₁ + Wxₜ" vals={s.pre} color="#38bdf8" />
           <FlowOp>tanh→</FlowOp>
-          <VecBox label={`h${idx + 1}`} vals={s.h} color="#fb923c" />
+          <VecBox label={`h${idx + 1}`} vals={s.h} color="#38bdf8" />
         </div>
       ))}
 
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed var(--card-border)' }}>
         <div style={{ fontWeight: 700, color: 'var(--accent-color)', marginRight: '0.5rem', minWidth: 100 }}>Classificação</div>
-        <VecBox label="h₃ (estado final)" vals={[0.351, 0.388]} color="#fb923c" />
+        <VecBox label="h₃ (estado final)" vals={[0.351, 0.388]} color="#38bdf8" />
         <FlowOp>→ V →</FlowOp>
-        <VecBox label="V·h₃ (logit)" vals={[0.055]} color="#fb923c" />
+        <VecBox label="V·h₃ (logit)" vals={[0.055]} color="#38bdf8" />
         <FlowOp>σ→</FlowOp>
-        <VecBox label="y₃ = P(positivo)" vals={[0.514]} color="#fbbf24" />
+        <VecBox label="y₃ = P(positivo)" vals={[0.514]} color="#7dd3fc" />
       </div>
 
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.75rem', marginBottom: 0 }}>
@@ -81,7 +81,7 @@ const RNNStepFlowDiagram = () => {
 };
 
 const LSTMStepFlowDiagram = () => {
-  const c = { forget: '#f97316', input: '#f97316', candidate: '#fb923c', output: '#f97316', cell: '#f97316', hidden: '#fb923c', x: '#f97316' };
+  const c = { forget: '#4a9eed', input: '#4a9eed', candidate: '#38bdf8', output: '#4a9eed', cell: '#4a9eed', hidden: '#38bdf8', x: '#4a9eed' };
   const steps = [
     {
       word: 'bad',
@@ -174,8 +174,8 @@ const LSTMStepFlowDiagram = () => {
 };
 
 const Seq2SeqStepFlowDiagram = () => {
-  const enc = '#fb923c';
-  const dec = '#f97316';
+  const enc = '#38bdf8';
+  const dec = '#4a9eed';
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Seq2Seq — Fluxo Encoder → Decoder (Visual)</p>
@@ -184,7 +184,7 @@ const Seq2SeqStepFlowDiagram = () => {
         <FlowOp>+</FlowOp>
         <VecBox label='x "good"' vals={[0.5, 0.8]} color={enc} />
         <FlowOp>→</FlowOp>
-        <VecBox label="Wʰʰh₀ + Wʰˣx" vals={[0.460, 0.422]} color="#fb923c" />
+        <VecBox label="Wʰʰh₀ + Wʰˣx" vals={[0.460, 0.422]} color="#38bdf8" />
         <FlowOp>tanh→</FlowOp>
         <VecBox label="h₁ᵉⁿᶜ" vals={[0.430, 0.399]} color={enc} />
       </div>
@@ -193,16 +193,16 @@ const Seq2SeqStepFlowDiagram = () => {
         <FlowOp>+</FlowOp>
         <VecBox label='x "day"' vals={[0.4, 0.7]} color={enc} />
         <FlowOp>→</FlowOp>
-        <VecBox label="Wʰʰh₁ + Wʰˣx" vals={[0.581, 0.803]} color="#fb923c" />
+        <VecBox label="Wʰʰh₁ + Wʰˣx" vals={[0.581, 0.803]} color="#38bdf8" />
         <FlowOp>tanh→</FlowOp>
-        <VecBox label="h₂ᵉⁿᶜ = c (context)" vals={[0.523, 0.664]} color="#f59e0b" />
+        <VecBox label="h₂ᵉⁿᶜ = c (context)" vals={[0.523, 0.664]} color="#0284c7" />
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-        <VecBox label="c (context)" vals={[0.523, 0.664]} color="#f59e0b" />
+        <VecBox label="c (context)" vals={[0.523, 0.664]} color="#0284c7" />
         <FlowOp>+</FlowOp>
         <VecBox label='x "<s>"' vals={['emb.']} color={dec} />
         <FlowOp>→</FlowOp>
-        <VecBox label="Uᵈᵉᶜc + Wᵈᵉᶜx" vals={[0.515, 0.486]} color="#fb923c" />
+        <VecBox label="Uᵈᵉᶜc + Wᵈᵉᶜx" vals={[0.515, 0.486]} color="#38bdf8" />
         <FlowOp>tanh→</FlowOp>
         <VecBox label="h₁ᵈᵉᶜ" vals={[0.474, 0.451]} color={dec} />
         <FlowOp>→Wˢ→softmax→</FlowOp>
@@ -245,8 +245,8 @@ const RNNUnrolled = () => (
             <text x={cx} y="158" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">{word}</text>
             <text x={cx + 8} y="145" textAnchor="middle" fill="var(--text-secondary)" fontSize="7" dy="-2">x{i+1}</text>
             {/* y arrow upward */}
-            <line x1={cx} y1="72" x2={cx} y2="35" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3)" />
-            <text x={cx} y="28" textAnchor="middle" fill="#f97316" fontSize="9">y{i+1}</text>
+            <line x1={cx} y1="72" x2={cx} y2="35" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3)" />
+            <text x={cx} y="28" textAnchor="middle" fill="#4a9eed" fontSize="9">y{i+1}</text>
           </g>
         );
       })}
@@ -266,28 +266,28 @@ const LSTMGates = () => {
   const gates = {
     forget: {
       label: 'Forget Gate',
-      color: '#f97316',
+      color: '#4a9eed',
       eq: `f_t = \\sigma(W_f \\cdot [h_{t-1}, x_t] + b_f)`,
       desc: 'O "·" aqui é uma multiplicação matriz-vector normal: W_f é multiplicada pelo vector concatenado [h_{t-1}, x_t] e passada por σ, dando um vector f_t com valores em (0,1) — uma "comporta" por dimensão do cell state. 0 = apagar essa dimensão de C_{t-1}, 1 = manter.',
       example: 'f₁ ≈ [0.565, 0.603] — mantém ~58-60% de cada dimensão do cell state anterior',
     },
     input: {
       label: 'Input Gate',
-      color: '#f97316',
+      color: '#4a9eed',
       eq: `i_t = \\sigma(W_i \\cdot [h_{t-1}, x_t] + b_i),\\quad \\tilde{C}_t = \\tanh(W_C \\cdot [h_{t-1}, x_t] + b_C)`,
       desc: 'Dois ramos em paralelo, cada um com a sua matriz de pesos: i_t (σ, "quanto entra", 0–1) e C̃_t (tanh, "o quê entra", −1 a 1 — candidato a nova informação). Nesta fase apenas se calculam estes dois vectores; ainda não são combinados.',
       example: 'i₁ ≈ [0.672, 0.650]   C̃₁ ≈ [0.399, 0.399]',
     },
     update: {
       label: 'Actualizar Cell State',
-      color: '#fb923c',
+      color: '#38bdf8',
       eq: `C_t = \\underbrace{f_t \\odot C_{t-1}}_{\\text{esquecer}} + \\underbrace{i_t \\odot \\tilde{C}_t}_{\\text{adicionar}}`,
       desc: 'Aqui o "⊙" é multiplicação elemento-a-elemento (Hadamard) — não matricial: cada dimensão é tratada independentemente. f_t ⊙ C_{t-1} apaga selectivamente a memória antiga; i_t ⊙ C̃_t escala o novo candidato pelo quanto deve entrar. A soma "+" combina os dois para dar o novo cell state C_t. O gradiente flui directamente por esta soma — resolve o vanishing gradient.',
       example: 'C₁ = (0.565·0 + 0.603·0) + (0.672·0.399, 0.650·0.399) ≈ [0.268, 0.259]',
     },
     output: {
       label: 'Output Gate',
-      color: '#f97316',
+      color: '#4a9eed',
       eq: `o_t = \\sigma(W_o \\cdot [h_{t-1}, x_t] + b_o),\\quad h_t = o_t \\odot \\tanh(C_t)`,
       desc: 'Tal como nas outras portas, "·" é multiplicação matriz-vector (com W_o própria) seguida de σ, dando o_t. Depois "⊙" é elemento-a-elemento: tanh(C_t) comprime o cell state para (−1,1) e o_t decide quanto de cada dimensão passa para fora — o resultado é h_t, o novo hidden state.',
       example: 'h₁ = [0.608, 0.608] ⊙ tanh([0.268, 0.259]) ≈ [0.159, 0.154]',
@@ -328,7 +328,7 @@ const LSTMGates = () => {
 };
 
 const LSTMCellDiagram = () => {
-  const c = { forget: '#f97316', input: '#f97316', candidate: '#fb923c', output: '#f97316' };
+  const c = { forget: '#4a9eed', input: '#4a9eed', candidate: '#38bdf8', output: '#4a9eed' };
   const gate = (cx, label, color, fill) => (
     <g>
       <rect x={cx - 28} y="132" width="56" height="36" rx="6" fill={fill} stroke={color} strokeWidth="1.2" />
@@ -350,9 +350,9 @@ const LSTMCellDiagram = () => {
         <text x="320" y="10" textAnchor="middle" fill="var(--text-secondary)" fontSize="10" fontWeight="700">CÉLULA LSTM — passo t</text>
 
         {/* Cell state line (top highway) */}
-        <line x1="10" y1="45" x2="615" y2="45" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrlstm)" />
-        <text x="6" y="35" fill="#f59e0b" fontSize="10" fontWeight="700">Cₜ₋₁</text>
-        <text x="595" y="35" fill="#f59e0b" fontSize="10" fontWeight="700">Cₜ</text>
+        <line x1="10" y1="45" x2="615" y2="45" stroke="#0284c7" strokeWidth="2" markerEnd="url(#arrlstm)" />
+        <text x="6" y="35" fill="#0284c7" fontSize="10" fontWeight="700">Cₜ₋₁</text>
+        <text x="595" y="35" fill="#0284c7" fontSize="10" fontWeight="700">Cₜ</text>
 
         {/* forget gate multiply on cell line */}
         <circle cx="150" cy="45" r="13" fill="var(--bg-primary)" stroke={c.forget} strokeWidth="1.5" />
@@ -429,65 +429,65 @@ const Seq2SeqDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
         <marker id="arr4a" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#ea580c" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#0369a1" />
         </marker>
         <marker id="arr4b" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#fb923c" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#38bdf8" />
         </marker>
       </defs>
 
       {/* ENCODER label */}
-      <text x="140" y="18" textAnchor="middle" fill="#ea580c" fontSize="11" fontWeight="700">ENCODER</text>
+      <text x="140" y="18" textAnchor="middle" fill="#0369a1" fontSize="11" fontWeight="700">ENCODER</text>
 
       {/* Encoder cells */}
       {['great','movie'].map((word, i) => {
         const cx = 60 + i * 110;
         return (
           <g key={word}>
-            <rect x={cx - 28} y="30" width="56" height="36" rx="8" fill="#ea580c" opacity="0.85" />
+            <rect x={cx - 28} y="30" width="56" height="36" rx="8" fill="#0369a1" opacity="0.85" />
             <text x={cx} y="52" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">E</text>
             <text x={cx} y="130" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">{word}</text>
             <line x1={cx} y1="127" x2={cx} y2="70" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr4)" />
-            {i < 1 && <line x1={cx + 28} y1="48" x2={cx + 82} y2="48" stroke="#ea580c" strokeWidth="1.5" markerEnd="url(#arr4a)" />}
+            {i < 1 && <line x1={cx + 28} y1="48" x2={cx + 82} y2="48" stroke="#0369a1" strokeWidth="1.5" markerEnd="url(#arr4a)" />}
           </g>
         );
       })}
 
       {/* Context vector */}
-      <rect x="228" y="28" width="60" height="40" rx="8" fill="#f59e0b" opacity="0.8" />
+      <rect x="228" y="28" width="60" height="40" rx="8" fill="#0284c7" opacity="0.8" />
       <text x="258" y="46" textAnchor="middle" fill="white" fontSize="9" fontWeight="700">c</text>
       <text x="258" y="58" textAnchor="middle" fill="white" fontSize="8">[0.52, 0.66]</text>
-      <text x="258" y="20" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="600">context</text>
+      <text x="258" y="20" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="600">context</text>
 
       {/* Arrow from last encoder to context */}
-      <line x1="198" y1="48" x2="226" y2="48" stroke="#ea580c" strokeWidth="1.5" markerEnd="url(#arr4a)" />
+      <line x1="198" y1="48" x2="226" y2="48" stroke="#0369a1" strokeWidth="1.5" markerEnd="url(#arr4a)" />
 
       {/* BOTTLENECK label */}
-      <text x="258" y="84" textAnchor="middle" fill="#f59e0b" fontSize="8">BOTTLENECK</text>
+      <text x="258" y="84" textAnchor="middle" fill="#0284c7" fontSize="8">BOTTLENECK</text>
 
       {/* Arrow from context to decoder */}
-      <line x1="290" y1="48" x2="330" y2="48" stroke="#f59e0b" strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#arr4b)" />
+      <line x1="290" y1="48" x2="330" y2="48" stroke="#0284c7" strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#arr4b)" />
 
       {/* DECODER label */}
-      <text x="480" y="18" textAnchor="middle" fill="#fb923c" fontSize="11" fontWeight="700">DECODER</text>
+      <text x="480" y="18" textAnchor="middle" fill="#38bdf8" fontSize="11" fontWeight="700">DECODER</text>
 
       {/* Decoder cells */}
       {['<s>','ótimo','filme','</s>'].map((word, i) => {
         const cx = 360 + i * 80;
         return (
           <g key={word}>
-            <rect x={cx - 25} y="30" width="50" height="36" rx="8" fill="#fb923c" opacity={0.6 + i * 0.1} />
+            <rect x={cx - 25} y="30" width="50" height="36" rx="8" fill="#38bdf8" opacity={0.6 + i * 0.1} />
             <text x={cx} y="52" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">D</text>
             <text x={cx} y="130" textAnchor="middle" fill="var(--text-secondary)" fontSize={word.length > 5 ? '7' : '9'}>{word}</text>
             <line x1={cx} y1="127" x2={cx} y2="70" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr4)" />
             {/* Softmax outputs for non-special tokens */}
             {i > 0 && i < 3 && (
               <>
-                <line x1={cx} y1="30" x2={cx} y2="10" stroke="#fb923c" strokeWidth="1.2" markerEnd="url(#arr4)" />
-                <text x={cx} y="5" textAnchor="middle" fill="#fb923c" fontSize="8">softmax</text>
+                <line x1={cx} y1="30" x2={cx} y2="10" stroke="#38bdf8" strokeWidth="1.2" markerEnd="url(#arr4)" />
+                <text x={cx} y="5" textAnchor="middle" fill="#38bdf8" fontSize="8">softmax</text>
               </>
             )}
-            {i < 3 && <line x1={cx + 25} y1="48" x2={cx + 55} y2="48" stroke="#fb923c" strokeWidth="1.5" markerEnd="url(#arr4)" />}
+            {i < 3 && <line x1={cx + 25} y1="48" x2={cx + 55} y2="48" stroke="#38bdf8" strokeWidth="1.5" markerEnd="url(#arr4)" />}
           </g>
         );
       })}
@@ -496,9 +496,9 @@ const Seq2SeqDiagram = () => (
       <text x="450" y="148" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">token gerado → próximo input</text>
 
       {/* Legend */}
-      <text x="20" y="175" fill="#ea580c" fontSize="9">■ Encoder</text>
-      <text x="110" y="175" fill="#f59e0b" fontSize="9">■ Context vector</text>
-      <text x="240" y="175" fill="#fb923c" fontSize="9">■ Decoder</text>
+      <text x="20" y="175" fill="#0369a1" fontSize="9">■ Encoder</text>
+      <text x="110" y="175" fill="#0284c7" fontSize="9">■ Context vector</text>
+      <text x="240" y="175" fill="#38bdf8" fontSize="9">■ Decoder</text>
     </svg>
   </div>
 );
@@ -510,19 +510,18 @@ export default function NLP5() {
         <Link to="/nlp" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.lectureTag}>MÓDULO 5</div>
         <h1 style={S.h1}>Modelos Sequenciais: RNN, LSTM e Seq2Seq</h1>
-        <p style={S.lead}>Word2Vec resolve a representação de palavras — mas como processar a sequência inteira? RNNs, LSTMs e Seq2Seq respondem a esta questão, com as suas forças e limitações.</p>
 
         {/* === RNN === */}
         <div style={S.section}>
           <h2 style={S.h2}>1. O Problema da Entrada Sequencial</h2>
           <p style={S.p}>Dado "Great movie" com embeddings de tamanho 3, o classificador espera um único vetor por documento. Existem duas opções:</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '0.9rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Opção 1: Agregar</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '0.9rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Opção 1: Agregar</div>
               <p style={{ fontSize: '0.88rem', margin: 0, color: 'var(--text-secondary)' }}>Média, soma ou concatenação. Simples mas <strong>perde a ordem das palavras</strong>.</p>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '0.9rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Opção 2: Processar sequencialmente</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '0.9rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Opção 2: Processar sequencialmente</div>
               <p style={{ fontSize: '0.88rem', margin: 0, color: 'var(--text-secondary)' }}>Preserva a sequência. É aqui que entram as <strong>RNNs</strong>.</p>
             </div>
           </div>
@@ -558,12 +557,12 @@ export default function NLP5() {
 
           <h3 style={S.h3}>Os 2 Problemas das RNNs</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Dependências Longas</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Dependências Longas</div>
               <p style={{ fontSize: '0.87rem', margin: 0, color: 'var(--text-secondary)' }}>Para prever "French" em "I grew up in France... I speak fluent __", a RNN precisa de recordar "France" de muitos passos atrás.</p>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Vanishing Gradients</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Vanishing Gradients</div>
               <p style={{ fontSize: '0.87rem', margin: 0, color: 'var(--text-secondary)' }}>Durante a retropropagação, os gradientes são multiplicados repetidamente pelas matrizes de pesos. Com sequências longas, tendem para zero.</p>
             </div>
           </div>
@@ -589,8 +588,8 @@ export default function NLP5() {
               <strong style={{ color: 'var(--accent-color)' }}>hₜ — Hidden State</strong>
               <p style={{ fontSize: '0.88rem', margin: '0.4rem 0 0', color: 'var(--text-secondary)' }}>Memória de curto prazo (igual ao das RNNs simples). Exposto ao exterior.</p>
             </div>
-            <div style={{ ...S.highlight, borderColor: '#f97316', background: 'rgba(245,158,11,0.08)' }}>
-              <strong style={{ color: '#f97316' }}>Cₜ — Cell State</strong>
+            <div style={{ ...S.highlight, borderColor: '#4a9eed', background: 'rgba(2,132,199,0.08)' }}>
+              <strong style={{ color: '#4a9eed' }}>Cₜ — Cell State</strong>
               <p style={{ fontSize: '0.88rem', margin: '0.4rem 0 0', color: 'var(--text-secondary)' }}>Memória de longo prazo — a "auto-estrada da informação". O gradiente flui sem degradar.</p>
             </div>
           </div>
@@ -609,11 +608,11 @@ export default function NLP5() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
             <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', fontSize: '0.85rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>Estado final exposto (hₜ)</div>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>Estado final exposto (hₜ)</div>
               <code style={{ color: 'var(--text-primary)' }}>h₂ ≈ [0.294, 0.338]</code>
             </div>
             <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', fontSize: '0.85rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>Memória de longo prazo (Cₜ)</div>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>Memória de longo prazo (Cₜ)</div>
               <code style={{ color: 'var(--text-primary)' }}>C₂ ≈ [0.487, 0.545]</code>
             </div>
           </div>
@@ -665,8 +664,8 @@ export default function NLP5() {
 
           <Seq2SeqStepFlowDiagram />
 
-          <div style={{ ...S.highlight, borderColor: '#f97316', background: 'rgba(249,115,22,0.10)' }}>
-            <strong style={{ color: '#f97316' }}>O Bottleneck:</strong>
+          <div style={{ ...S.highlight, borderColor: '#4a9eed', background: 'rgba(74,158,237,0.10)' }}>
+            <strong style={{ color: '#4a9eed' }}>O Bottleneck:</strong>
             <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem', color: 'var(--text-primary)' }}>Todo o significado de "good day" está comprimido em c = [0.523, 0.664]ᵀ. Se a frase tivesse 50 palavras, ainda seria apenas 2 números. A informação da palavra 1 tem de sobreviver 49 passos recorrentes. Este problema motiva o <strong>mecanismo de atenção</strong> da próxima lecture.</p>
           </div>
 
@@ -679,18 +678,7 @@ export default function NLP5() {
             ))}
           </div>
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>O Problema da Entrada Sequencial</strong> — MLPs tratam a entrada como um vector de dimensão fixa e independente; texto é sequencial e de comprimento variável, o que motiva arquitecturas recorrentes que processam token a token mantendo estado.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Redes Neuronais Recorrentes (RNN)</strong> — processam sequências actualizando um estado oculto hₜ = f(hₜ₋₁, xₜ) a cada passo; sofrem de vanishing/exploding gradients em sequências longas, o que motivou o desenvolvimento das LSTM.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Long Short-Term Memory (LSTM)</strong> — resolve o vanishing gradient com gates (input, forget, output) que controlam o fluxo de informação através de uma célula de memória; foi o estado da arte em NLP antes dos Transformers.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Modelos Sequence-to-Sequence (Seq2Seq)</strong> — arquitectura encoder–decoder onde o encoder comprime a sequência de entrada num vector de contexto e o decoder gera a sequência de saída; é a base de tradução automática, sumarização e chatbots clássicos.</li>
-            </ul>
-          </div>
-        </div>
+
       </div>
     </div>
   );

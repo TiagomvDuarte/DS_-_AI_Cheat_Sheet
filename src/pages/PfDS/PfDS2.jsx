@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,71 +15,39 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
-  svgWrap: { background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(234,179,8,0.25)', borderRadius: 10, padding: '1.25rem', margin: '1.25rem 0', overflowX: 'auto' },
+  svgWrap: { background: 'rgba(74,158,237,0.06)', border: '1px solid rgba(2,132,199,0.25)', borderRadius: 10, padding: '1.25rem', margin: '1.25rem 0', overflowX: 'auto' },
 };
-
-function TypeHierarchySVG() {
-  const box = (x, y, w, label, sub) => (
-    <g key={label}>
-      <rect x={x} y={y} width={w} height={34} rx={6} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
-      <text x={x + w / 2} y={y + 14} textAnchor="middle" fontSize={12} fontWeight={700} fill="#f97316">{label}</text>
-      {sub && <text x={x + w / 2} y={y + 27} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">{sub}</text>}
-    </g>
-  );
-  return (
-    <svg width="100%" viewBox="0 0 620 180" style={{ display: 'block' }}>
-      {box(230, 8, 160, 'object', 'tudo em Python')}
-      <line x1={310} y1={42} x2={310} y2={58} stroke="#f97316" strokeWidth={1.5} />
-      {box(160, 58, 130, 'int', 'arbitrariamente grande')}
-      {box(300, 58, 80, 'bool', 'subclasse int')}
-      {box(390, 58, 100, 'float', 'IEEE-754 64-bit')}
-      <line x1={310} y1={42} x2={225} y2={58} stroke="#f97316" strokeWidth={1} />
-      <line x1={310} y1={42} x2={340} y2={58} stroke="#f97316" strokeWidth={1} />
-      <line x1={310} y1={42} x2={440} y2={58} stroke="#f97316" strokeWidth={1} />
-      <line x1={310} y1={42} x2={100} y2={116} stroke="#f97316" strokeWidth={1} />
-      <line x1={310} y1={42} x2={520} y2={116} stroke="#f97316" strokeWidth={1} />
-      {box(40, 116, 100, 'str', 'imutável Unicode')}
-      {box(150, 116, 80, 'NoneType', 'None')}
-      {box(240, 116, 90, 'complex', '2+3j')}
-      {box(340, 116, 110, 'bytes', 'b"dados"')}
-      {box(460, 116, 100, 'list/dict...', 'coleções')}
-      <line x1={310} y1={42} x2={190} y2={116} stroke="#f97316" strokeWidth={1} />
-      <line x1={310} y1={42} x2={285} y2={116} stroke="#f97316" strokeWidth={1} />
-      <line x1={310} y1={42} x2={395} y2={116} stroke="#f97316" strokeWidth={1} />
-    </svg>
-  );
-}
 
 function ShortCircuitSVG() {
   return (
-    <svg width="100%" viewBox="0 0 640 200" style={{ display: 'block' }}>
-      <text x={10} y={20} fontSize={12} fontWeight={700} fill="#f97316">Avaliação AND</text>
-      <rect x={10} y={30} width={120} height={36} rx={6} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+    <svg width="100%" viewBox="0 0 640 200" style={{ display: 'block', maxWidth: 640, margin: '0 auto' }}>
+      <text x={10} y={20} fontSize={12} fontWeight={700} fill="#4a9eed">Avaliação AND</text>
+      <rect x={10} y={30} width={120} height={36} rx={6} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={70} y={52} textAnchor="middle" fontSize={12} fill="var(--text-primary)">A and B</text>
-      <line x1={130} y1={48} x2={170} y2={48} stroke="#f97316" strokeWidth={1.5} />
-      <rect x={170} y={30} width={100} height={36} rx={6} fill="rgba(249,115,22,0.12)" stroke="#888" strokeWidth={1} />
+      <line x1={130} y1={48} x2={170} y2={48} stroke="#4a9eed" strokeWidth={1.5} />
+      <rect x={170} y={30} width={100} height={36} rx={6} fill="rgba(74,158,237,0.12)" stroke="#888" strokeWidth={1} />
       <text x={220} y={52} textAnchor="middle" fontSize={11} fill="var(--text-primary)">A falso?</text>
-      <line x1={270} y1={48} x2={310} y2={48} stroke="#f97316" strokeWidth={1.5} />
+      <line x1={270} y1={48} x2={310} y2={48} stroke="#4a9eed" strokeWidth={1.5} />
       <text x={290} y={44} fontSize={10} fill="#888">não</text>
-      <rect x={310} y={30} width={100} height={36} rx={6} fill="rgba(249,115,22,0.12)" stroke="#888" strokeWidth={1} />
+      <rect x={310} y={30} width={100} height={36} rx={6} fill="rgba(74,158,237,0.12)" stroke="#888" strokeWidth={1} />
       <text x={360} y={52} textAnchor="middle" fontSize={11} fill="var(--text-primary)">avalia B</text>
-      <line x1={220} y1={66} x2={220} y2={110} stroke="#f97316" strokeWidth={1.5} />
-      <text x={228} y={90} fontSize={10} fill="#f97316">sim</text>
-      <rect x={170} y={110} width={100} height={36} rx={6} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1} />
-      <text x={220} y={132} textAnchor="middle" fontSize={11} fill="#f97316">retorna A (falso)</text>
-      <text x={10} y={175} fontSize={12} fontWeight={700} fill="#f97316">Avaliação OR</text>
+      <line x1={220} y1={66} x2={220} y2={110} stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={228} y={90} fontSize={10} fill="#4a9eed">sim</text>
+      <rect x={170} y={110} width={100} height={36} rx={6} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1} />
+      <text x={220} y={132} textAnchor="middle" fontSize={11} fill="#4a9eed">retorna A (falso)</text>
+      <text x={10} y={175} fontSize={12} fontWeight={700} fill="#4a9eed">Avaliação OR</text>
       <rect x={10} y={182} width={110} height={14} rx={3} fill="none" />
       <text x={10} y={194} fontSize={11} fill="var(--text-secondary)">A or B: se A for truthy, B nunca e avaliado — retorna A imediatamente</text>
 
-      <text x={420} y={20} fontSize={12} fontWeight={700} fill="#f97316">Valores falsy em Python</text>
+      <text x={420} y={20} fontSize={12} fontWeight={700} fill="#4a9eed">Valores falsy em Python</text>
       {['False', '0', '0.0', '""', '[]', '{}', 'None'].map((v, i) => (
         <g key={v}>
-          <rect x={420} y={28 + i * 22} width={55} height={18} rx={4} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1} />
-          <text x={447} y={41 + i * 22} textAnchor="middle" fontSize={11} fill="#f97316">{v}</text>
+          <rect x={420} y={28 + i * 22} width={55} height={18} rx={4} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1} />
+          <text x={447} y={41 + i * 22} textAnchor="middle" fontSize={11} fill="#4a9eed">{v}</text>
         </g>
       ))}
     </svg>
@@ -93,15 +61,15 @@ function StringIndexSVG() {
   const startX = 20;
   const topY = 50;
   return (
-    <svg width="100%" viewBox={`0 0 ${startX * 2 + n * cellW} 160`} style={{ display: 'block' }}>
+    <svg width="100%" viewBox={`0 0 ${startX * 2 + n * cellW} 160`} style={{ display: 'block', maxWidth: 400, margin: '0 auto' }}>
       <text x={startX} y={18} fontSize={11} fill="#888">Índices positivos</text>
-      <text x={startX} y={130} fontSize={11} fill="#f97316">Índices negativos</text>
+      <text x={startX} y={130} fontSize={11} fill="#4a9eed">Índices negativos</text>
       {chars.map((ch, i) => (
         <g key={i}>
-          <rect x={startX + i * cellW} y={topY} width={cellW - 2} height={44} rx={4} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
+          <rect x={startX + i * cellW} y={topY} width={cellW - 2} height={44} rx={4} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
           <text x={startX + i * cellW + (cellW - 2) / 2} y={topY + 26} textAnchor="middle" fontSize={18} fontWeight={700} fill="var(--text-primary)">{ch}</text>
           <text x={startX + i * cellW + (cellW - 2) / 2} y={topY - 6} textAnchor="middle" fontSize={11} fill="#888">{i}</text>
-          <text x={startX + i * cellW + (cellW - 2) / 2} y={topY + 60} textAnchor="middle" fontSize={11} fill="#f97316">{i - n}</text>
+          <text x={startX + i * cellW + (cellW - 2) / 2} y={topY + 60} textAnchor="middle" fontSize={11} fill="#4a9eed">{i - n}</text>
         </g>
       ))}
     </svg>
@@ -114,15 +82,15 @@ function ListMemorySVG() {
   const startX = 20;
   const Y = 50;
   return (
-    <svg width="100%" viewBox={`0 0 ${startX * 2 + items.length * cellW + 20} 120`} style={{ display: 'block' }}>
+    <svg width="100%" viewBox={`0 0 ${startX * 2 + items.length * cellW + 20} 120`} style={{ display: 'block', maxWidth: 400, margin: '0 auto' }}>
       <text x={startX} y={20} fontSize={11} fill="#888">Lista em memória — cada slot aponta para um objeto Python</text>
-      <text x={startX} y={40} fontSize={11} fontWeight={700} fill="#f97316">my_list = [42, "hi", 3.14, True, None]</text>
+      <text x={startX} y={40} fontSize={11} fontWeight={700} fill="#4a9eed">my_list = [42, "hi", 3.14, True, None]</text>
       {items.map((v, i) => (
         <g key={i}>
-          <rect x={startX + i * cellW} y={Y} width={cellW - 4} height={38} rx={4} fill="rgba(234,179,8,0.10)" stroke="#f97316" strokeWidth={1.5} />
+          <rect x={startX + i * cellW} y={Y} width={cellW - 4} height={38} rx={4} fill="rgba(2,132,199,0.10)" stroke="#4a9eed" strokeWidth={1.5} />
           <text x={startX + i * cellW + (cellW - 4) / 2} y={Y + 22} textAnchor="middle" fontSize={12} fill="var(--text-primary)">{v}</text>
           <text x={startX + i * cellW + (cellW - 4) / 2} y={Y + 52} textAnchor="middle" fontSize={10} fill="#888">[{i}]</text>
-          <text x={startX + i * cellW + (cellW - 4) / 2} y={Y + 64} textAnchor="middle" fontSize={10} fill="#f97316">[{i - items.length}]</text>
+          <text x={startX + i * cellW + (cellW - 4) / 2} y={Y + 64} textAnchor="middle" fontSize={10} fill="#4a9eed">[{i - items.length}]</text>
         </g>
       ))}
     </svg>
@@ -131,33 +99,33 @@ function ListMemorySVG() {
 
 function AliasingVsSVG() {
   return (
-    <svg width="100%" viewBox="0 0 620 160" style={{ display: 'block' }}>
-      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#f97316">Aliasing (shallow copy pitfall)</text>
-      <rect x={10} y={28} width={70} height={28} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+    <svg width="100%" viewBox="0 0 620 160" style={{ display: 'block', maxWidth: 500, margin: '0 auto' }}>
+      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#4a9eed">Aliasing (shallow copy pitfall)</text>
+      <rect x={10} y={28} width={70} height={28} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={45} y={47} textAnchor="middle" fontSize={12} fill="var(--text-primary)">a</text>
-      <rect x={10} y={68} width={70} height={28} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={10} y={68} width={70} height={28} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={45} y={87} textAnchor="middle" fontSize={12} fill="var(--text-primary)">b = a</text>
-      <rect x={160} y={42} width={130} height={40} rx={6} fill="rgba(234,179,8,0.08)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={160} y={42} width={130} height={40} rx={6} fill="rgba(2,132,199,0.08)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={225} y={66} textAnchor="middle" fontSize={12} fill="var(--text-primary)">[1, 2, 3]</text>
-      <line x1={80} y1={42} x2={160} y2={62} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arr)" />
-      <line x1={80} y1={82} x2={160} y2={62} stroke="#f97316" strokeWidth={1.5} strokeDasharray="5,3" />
-      <text x={100} y={100} fontSize={11} fill="#f97316">ambos apontam para o mesmo objeto!</text>
+      <line x1={80} y1={42} x2={160} y2={62} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arr)" />
+      <line x1={80} y1={82} x2={160} y2={62} stroke="#4a9eed" strokeWidth={1.5} strokeDasharray="5,3" />
+      <text x={100} y={100} fontSize={11} fill="#4a9eed">ambos apontam para o mesmo objeto!</text>
 
-      <text x={330} y={18} fontSize={12} fontWeight={700} fill="#f97316">Copia independente</text>
-      <rect x={330} y={28} width={70} height={28} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <text x={330} y={18} fontSize={12} fontWeight={700} fill="#4a9eed">Copia independente</text>
+      <rect x={330} y={28} width={70} height={28} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={365} y={47} textAnchor="middle" fontSize={12} fill="var(--text-primary)">a</text>
-      <rect x={330} y={68} width={70} height={28} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={330} y={68} width={70} height={28} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={365} y={87} textAnchor="middle" fontSize={12} fill="var(--text-primary)">b = a[:]</text>
-      <rect x={420} y={26} width={90} height={32} rx={5} fill="rgba(234,179,8,0.08)" stroke="#f97316" strokeWidth={1} />
+      <rect x={420} y={26} width={90} height={32} rx={5} fill="rgba(2,132,199,0.08)" stroke="#4a9eed" strokeWidth={1} />
       <text x={465} y={46} textAnchor="middle" fontSize={11} fill="var(--text-primary)">[1, 2, 3]</text>
-      <rect x={420} y={66} width={90} height={32} rx={5} fill="rgba(234,179,8,0.08)" stroke="#f97316" strokeWidth={1} />
+      <rect x={420} y={66} width={90} height={32} rx={5} fill="rgba(2,132,199,0.08)" stroke="#4a9eed" strokeWidth={1} />
       <text x={465} y={86} textAnchor="middle" fontSize={11} fill="var(--text-primary)">[1, 2, 3]</text>
-      <line x1={400} y1={42} x2={420} y2={42} stroke="#f97316" strokeWidth={1.5} />
-      <line x1={400} y1={82} x2={420} y2={82} stroke="#f97316" strokeWidth={1.5} />
-      <text x={330} y={120} fontSize={11} fill="#f97316">objetos independentes — mutacoes nao se propagam</text>
+      <line x1={400} y1={42} x2={420} y2={42} stroke="#4a9eed" strokeWidth={1.5} />
+      <line x1={400} y1={82} x2={420} y2={82} stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={330} y={120} fontSize={11} fill="#4a9eed">objetos independentes — mutacoes nao se propagam</text>
       <defs>
         <marker id="arr" markerWidth={8} markerHeight={8} refX={4} refY={4} orient="auto">
-          <path d="M0,0 L8,4 L0,8 Z" fill="#f97316" />
+          <path d="M0,0 L8,4 L0,8 Z" fill="#4a9eed" />
         </marker>
       </defs>
     </svg>
@@ -167,31 +135,32 @@ function AliasingVsSVG() {
 function HashTableSVG() {
   const keys = ['"nome"', '"idade"', '"curso"'];
   const hashes = ['h=2', 'h=5', 'h=1'];
+  const bucketIdx = [2, 5, 1];
   const vals = ['"Ana"', '22', '"MDSAA"'];
   const buckets = Array(7).fill(null);
   buckets[2] = { key: keys[0], val: vals[0] };
   buckets[5] = { key: keys[1], val: vals[1] };
   buckets[1] = { key: keys[2], val: vals[2] };
   return (
-    <svg width="100%" viewBox="0 0 620 210" style={{ display: 'block' }}>
-      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#f97316">Hash Table interna do dict</text>
+    <svg width="100%" viewBox="0 0 620 210" style={{ display: 'block', maxWidth: 500, margin: '0 auto' }}>
+      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#4a9eed">Hash Table interna do dict</text>
       {keys.map((k, i) => (
         <g key={k}>
-          <rect x={10} y={30 + i * 44} width={90} height={30} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+          <rect x={10} y={30 + i * 44} width={90} height={30} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
           <text x={55} y={49 + i * 44} textAnchor="middle" fontSize={11} fill="var(--text-primary)">{k}</text>
           <text x={115} y={55 + i * 44} fontSize={10} fill="#888">{hashes[i]}</text>
-          <line x1={100} y1={45 + i * 44} x2={220} y2={45 + i * 44} stroke="#888" strokeWidth={1} strokeDasharray="3,2" />
+          <line x1={100} y1={45 + i * 44} x2={220} y2={34 + bucketIdx[i] * 24} stroke="#888" strokeWidth={1} strokeDasharray="3,2" />
         </g>
       ))}
       <text x={220} y={18} fontSize={11} fill="#888">Buckets</text>
       {buckets.map((b, i) => (
         <g key={i}>
-          <rect x={220} y={24 + i * 24} width={50} height={20} rx={3} fill={b ? 'rgba(249,115,22,0.12)' : 'var(--bg-secondary)'} stroke={b ? '#f97316' : '#555'} strokeWidth={1} />
+          <rect x={220} y={24 + i * 24} width={50} height={20} rx={3} fill={b ? 'rgba(74,158,237,0.12)' : 'var(--bg-secondary)'} stroke={b ? '#4a9eed' : '#555'} strokeWidth={1} />
           <text x={245} y={38 + i * 24} textAnchor="middle" fontSize={10} fill={b ? 'var(--text-primary)' : '#555'}>{i}</text>
           {b && (
             <>
-              <line x1={270} y1={34 + i * 24} x2={305} y2={34 + i * 24} stroke="#f97316" strokeWidth={1} />
-              <rect x={305} y={24 + i * 24} width={180} height={20} rx={3} fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth={1} />
+              <line x1={270} y1={34 + i * 24} x2={305} y2={34 + i * 24} stroke="#4a9eed" strokeWidth={1} />
+              <rect x={305} y={24 + i * 24} width={180} height={20} rx={3} fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth={1} />
               <text x={395} y={38 + i * 24} textAnchor="middle" fontSize={10} fill="var(--text-primary)">{b.key} : {b.val}</text>
             </>
           )}
@@ -204,18 +173,18 @@ function HashTableSVG() {
 
 function VennSVG() {
   return (
-    <svg width="100%" viewBox="0 0 720 200" style={{ display: 'block' }}>
-      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#f97316">Operacoes de Conjunto</text>
-      <circle cx={160} cy={110} r={65} fill="rgba(234,179,8,0.10)" stroke="#f97316" strokeWidth={2} />
-      <circle cx={240} cy={110} r={65} fill="rgba(59,130,246,0.10)" stroke="#f97316" strokeWidth={2} />
-      <text x={120} y={85} fontSize={11} fill="#f97316" fontWeight={700}>A</text>
-      <text x={270} y={85} fontSize={11} fill="#f97316" fontWeight={700}>B</text>
+    <svg width="100%" viewBox="0 0 720 200" style={{ display: 'block', maxWidth: 560, margin: '0 auto' }}>
+      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#4a9eed">Operacoes de Conjunto</text>
+      <circle cx={160} cy={110} r={65} fill="rgba(2,132,199,0.10)" stroke="#4a9eed" strokeWidth={2} />
+      <circle cx={240} cy={110} r={65} fill="rgba(59,130,246,0.10)" stroke="#4a9eed" strokeWidth={2} />
+      <text x={120} y={85} fontSize={11} fill="#4a9eed" fontWeight={700}>A</text>
+      <text x={270} y={85} fontSize={11} fill="#4a9eed" fontWeight={700}>B</text>
       <text x={197} y={115} textAnchor="middle" fontSize={10} fill="var(--text-primary)">A &amp; B</text>
-      <text x={120} y={130} textAnchor="middle" fontSize={10} fill="#f97316">só A</text>
-      <text x={280} y={130} textAnchor="middle" fontSize={10} fill="#f97316">só B</text>
+      <text x={120} y={130} textAnchor="middle" fontSize={10} fill="#4a9eed">só A</text>
+      <text x={280} y={130} textAnchor="middle" fontSize={10} fill="#4a9eed">só B</text>
 
-      <text x={360} y={40} fontSize={11} fontWeight={700} fill="#f97316">Operador</text>
-      <text x={450} y={40} fontSize={11} fontWeight={700} fill="#f97316">Significado</text>
+      <text x={360} y={40} fontSize={11} fontWeight={700} fill="#4a9eed">Operador</text>
+      <text x={450} y={40} fontSize={11} fontWeight={700} fill="#4a9eed">Significado</text>
       {[
         ['A | B', 'Uniao (todos os elementos)'],
         ['A & B', 'Intersecao (elementos comuns)'],
@@ -224,7 +193,7 @@ function VennSVG() {
         ['A <= B', 'A e subconjunto de B'],
       ].map(([op, desc], i) => (
         <g key={op}>
-          <text x={360} y={58 + i * 22} fontSize={10} fontFamily="monospace" fill="#f97316">{op}</text>
+          <text x={360} y={58 + i * 22} fontSize={10} fontFamily="monospace" fill="#4a9eed">{op}</text>
           <text x={450} y={58 + i * 22} fontSize={10} fill="var(--text-secondary)">{desc}</text>
         </g>
       ))}
@@ -238,19 +207,19 @@ function SliceRulerSVG() {
   const startX = 10;
   const Y = 55;
   return (
-    <svg width="100%" viewBox={`0 0 ${startX * 2 + items.length * cellW + 20} 160`} style={{ display: 'block' }}>
+    <svg width="100%" viewBox={`0 0 ${startX * 2 + items.length * cellW + 20} 160`} style={{ display: 'block', maxWidth: 400, margin: '0 auto' }}>
       <text x={startX} y={18} fontSize={11} fill="#888">a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</text>
       <text x={startX} y={34} fontSize={10} fill="#888">Indices de corte (entre elementos)</text>
       {items.map((v, i) => (
         <g key={i}>
-          <rect x={startX + i * cellW} y={Y} width={cellW - 2} height={36} rx={4} fill="rgba(234,179,8,0.10)" stroke="#f97316" strokeWidth={1.5} />
+          <rect x={startX + i * cellW} y={Y} width={cellW - 2} height={36} rx={4} fill="rgba(2,132,199,0.10)" stroke="#4a9eed" strokeWidth={1.5} />
           <text x={startX + i * cellW + (cellW - 2) / 2} y={Y + 22} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--text-primary)">{v}</text>
-          <text x={startX + i * cellW} y={Y - 4} textAnchor="middle" fontSize={9} fill="#f97316">{i}</text>
+          <text x={startX + i * cellW} y={Y - 4} textAnchor="middle" fontSize={9} fill="#4a9eed">{i}</text>
         </g>
       ))}
-      <text x={startX + items.length * cellW} y={Y - 4} textAnchor="middle" fontSize={9} fill="#f97316">{items.length}</text>
-      <rect x={startX + 2 * cellW} y={Y} width={3 * cellW - 2} height={36} rx={0} fill="rgba(234,179,8,0.25)" stroke="none" />
-      <text x={startX + 2 * cellW + (3 * cellW - 2) / 2} y={Y + 52} textAnchor="middle" fontSize={10} fill="#f97316">a[2:5] = [2, 3, 4]</text>
+      <text x={startX + items.length * cellW} y={Y - 4} textAnchor="middle" fontSize={9} fill="#4a9eed">{items.length}</text>
+      <rect x={startX + 2 * cellW} y={Y} width={3 * cellW - 2} height={36} rx={0} fill="rgba(2,132,199,0.25)" stroke="none" />
+      <text x={startX + 2 * cellW + (3 * cellW - 2) / 2} y={Y + 52} textAnchor="middle" fontSize={10} fill="#4a9eed">a[2:5] = [2, 3, 4]</text>
       <text x={startX} y={120} fontSize={10} fill="#888">Passo negativo: a[::-1] inverte toda a lista</text>
       <text x={startX} y={136} fontSize={10} fill="#888">Indices negativos: a[-3:] equivale a a[7:] — ultimos 3 elementos</text>
     </svg>
@@ -265,21 +234,21 @@ function ComprehensionPipelineSVG() {
     { label: 'Nova colecao', sub: '[0,4,16,36,64]', x: 460 },
   ];
   return (
-    <svg width="100%" viewBox="0 0 620 100" style={{ display: 'block' }}>
+    <svg width="100%" viewBox="0 0 620 100" style={{ display: 'block', maxWidth: 500, margin: '0 auto' }}>
       <text x={10} y={16} fontSize={11} fill="#888">[x**2 for x in range(10) if x % 2 == 0]</text>
       {boxes.map((b, i) => (
         <g key={b.label}>
-          <rect x={b.x} y={24} width={130} height={44} rx={6} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
-          <text x={b.x + 65} y={41} textAnchor="middle" fontSize={11} fontWeight={700} fill="#f97316">{b.label}</text>
+          <rect x={b.x} y={24} width={130} height={44} rx={6} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
+          <text x={b.x + 65} y={41} textAnchor="middle" fontSize={11} fontWeight={700} fill="#4a9eed">{b.label}</text>
           <text x={b.x + 65} y={57} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">{b.sub}</text>
           {i < boxes.length - 1 && (
-            <line x1={b.x + 130} y1={46} x2={b.x + 150} y2={46} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arr2)" />
+            <line x1={b.x + 130} y1={46} x2={b.x + 150} y2={46} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arr2)" />
           )}
         </g>
       ))}
       <defs>
         <marker id="arr2" markerWidth={8} markerHeight={8} refX={4} refY={4} orient="auto">
-          <path d="M0,0 L8,4 L0,8 Z" fill="#f97316" />
+          <path d="M0,0 L8,4 L0,8 Z" fill="#4a9eed" />
         </marker>
       </defs>
     </svg>
@@ -290,60 +259,60 @@ function IfFlowchartSVG() {
   // center x for left column, right column starts at rx
   const cx = 180, rx = 360, bw = 110, bh = 30, th = 32;
   return (
-    <svg width="100%" viewBox="0 0 500 342" style={{ display: 'block', margin: '0 auto' }}>
-      <text x={cx} y={16} textAnchor="middle" fontSize={12} fontWeight={700} fill="#f97316">Fluxo if / elif / else</text>
+    <svg width="100%" viewBox="0 0 500 342" style={{ display: 'block', maxWidth: 400, margin: '0 auto' }}>
+      <text x={cx} y={16} textAnchor="middle" fontSize={12} fontWeight={700} fill="#4a9eed">Fluxo if / elif / else</text>
 
       {/* inicio */}
-      <rect x={cx - 55} y={24} width={bw} height={bh} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={cx - 55} y={24} width={bw} height={bh} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={cx} y={43} textAnchor="middle" fontSize={11} fill="var(--text-primary)">inicio</text>
-      <line x1={cx} y1={54} x2={cx} y2={72} stroke="#f97316" strokeWidth={1.5} />
+      <line x1={cx} y1={54} x2={cx} y2={72} stroke="#4a9eed" strokeWidth={1.5} />
 
       {/* cond if diamond */}
-      <polygon points={`${cx},72 ${cx-35},107 ${cx},142 ${cx+35},107`} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <polygon points={`${cx},72 ${cx-35},107 ${cx},142 ${cx+35},107`} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={cx} y={111} textAnchor="middle" fontSize={10} fill="var(--text-primary)">cond if?</text>
 
       {/* sim → bloco if */}
-      <line x1={cx + 35} y1={107} x2={rx - bw/2} y2={107} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arG)" />
-      <text x={cx + 55} y={101} fontSize={9} fill="#f97316">sim</text>
-      <rect x={rx - bw/2} y={92} width={bw} height={bh} rx={5} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1.2} />
-      <text x={rx} y={111} textAnchor="middle" fontSize={10} fill="#f97316">bloco if</text>
+      <line x1={cx + 35} y1={107} x2={rx - bw/2} y2={107} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arG)" />
+      <text x={cx + 55} y={101} fontSize={9} fill="#4a9eed">sim</text>
+      <rect x={rx - bw/2} y={92} width={bw} height={bh} rx={5} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1.2} />
+      <text x={rx} y={111} textAnchor="middle" fontSize={10} fill="#4a9eed">bloco if</text>
 
       {/* nao ↓ */}
-      <line x1={cx} y1={142} x2={cx} y2={160} stroke="#f97316" strokeWidth={1.5} />
-      <text x={cx + 6} y={154} fontSize={9} fill="#f97316">nao</text>
+      <line x1={cx} y1={142} x2={cx} y2={160} stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={cx + 6} y={154} fontSize={9} fill="#4a9eed">nao</text>
 
       {/* cond elif diamond */}
-      <polygon points={`${cx},160 ${cx-35},195 ${cx},230 ${cx+35},195`} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <polygon points={`${cx},160 ${cx-35},195 ${cx},230 ${cx+35},195`} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={cx} y={199} textAnchor="middle" fontSize={10} fill="var(--text-primary)">cond elif?</text>
 
       {/* sim → bloco elif */}
-      <line x1={cx + 35} y1={195} x2={rx - bw/2} y2={195} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arG)" />
-      <text x={cx + 55} y={189} fontSize={9} fill="#f97316">sim</text>
-      <rect x={rx - bw/2} y={180} width={bw} height={bh} rx={5} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1.2} />
-      <text x={rx} y={199} textAnchor="middle" fontSize={10} fill="#f97316">bloco elif</text>
+      <line x1={cx + 35} y1={195} x2={rx - bw/2} y2={195} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arG)" />
+      <text x={cx + 55} y={189} fontSize={9} fill="#4a9eed">sim</text>
+      <rect x={rx - bw/2} y={180} width={bw} height={bh} rx={5} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1.2} />
+      <text x={rx} y={199} textAnchor="middle" fontSize={10} fill="#4a9eed">bloco elif</text>
 
       {/* nao ↓ */}
-      <line x1={cx} y1={230} x2={cx} y2={248} stroke="#f97316" strokeWidth={1.5} />
-      <text x={cx + 6} y={242} fontSize={9} fill="#f97316">nao</text>
+      <line x1={cx} y1={230} x2={cx} y2={248} stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={cx + 6} y={242} fontSize={9} fill="#4a9eed">nao</text>
 
       {/* bloco else */}
-      <rect x={cx - 55} y={248} width={bw} height={bh} rx={5} fill="rgba(59,130,246,0.10)" stroke="#f97316" strokeWidth={1.2} />
-      <text x={cx} y={267} textAnchor="middle" fontSize={10} fill="#f97316">bloco else</text>
-      <line x1={cx} y1={278} x2={cx} y2={302} stroke="#f97316" strokeWidth={1.5} />
+      <rect x={cx - 55} y={248} width={bw} height={bh} rx={5} fill="rgba(59,130,246,0.10)" stroke="#4a9eed" strokeWidth={1.2} />
+      <text x={cx} y={267} textAnchor="middle" fontSize={10} fill="#4a9eed">bloco else</text>
+      <line x1={cx} y1={278} x2={cx} y2={302} stroke="#4a9eed" strokeWidth={1.5} />
 
       {/* continua */}
-      <rect x={cx - 60} y={302} width={120} height={bh} rx={5} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={cx - 60} y={302} width={120} height={bh} rx={5} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={cx} y={321} textAnchor="middle" fontSize={11} fill="var(--text-primary)">continua</text>
 
       {/* merge lines from right boxes → continua */}
-      <line x1={rx + bw/2} y1={107} x2={450} y2={107} stroke="#f97316" strokeWidth={1} />
-      <line x1={450} y1={107} x2={450} y2={317} stroke="#f97316" strokeWidth={1} />
-      <line x1={rx + bw/2} y1={195} x2={450} y2={195} stroke="#f97316" strokeWidth={1} />
-      <line x1={450} y1={317} x2={cx + 60} y2={317} stroke="#f97316" strokeWidth={1} markerEnd="url(#arG)" />
+      <line x1={rx + bw/2} y1={107} x2={450} y2={107} stroke="#4a9eed" strokeWidth={1} />
+      <line x1={450} y1={107} x2={450} y2={317} stroke="#4a9eed" strokeWidth={1} />
+      <line x1={rx + bw/2} y1={195} x2={450} y2={195} stroke="#4a9eed" strokeWidth={1} />
+      <line x1={450} y1={317} x2={cx + 60} y2={317} stroke="#4a9eed" strokeWidth={1} markerEnd="url(#arG)" />
 
       <defs>
         <marker id="arG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#f97316" />
+          <path d="M0,0 L0,6 L6,3 z" fill="#4a9eed" />
         </marker>
       </defs>
     </svg>
@@ -352,55 +321,55 @@ function IfFlowchartSVG() {
 
 function ForLoopSVG() {
   return (
-    <svg width="100%" viewBox="0 0 500 210" style={{ display: 'block', margin: '0 auto' }}>
-      <text x={250} y={16} textAnchor="middle" fontSize={12} fontWeight={700} fill="#f97316">Modelo de iteracao do for</text>
+    <svg width="100%" viewBox="0 0 500 210" style={{ display: 'block', maxWidth: 400, margin: '0 auto' }}>
+      <text x={250} y={16} textAnchor="middle" fontSize={12} fontWeight={700} fill="#4a9eed">Modelo de iteracao do for</text>
 
       {/* Row 1: iteravel → __iter__() → iterator */}
-      <rect x={10} y={28} width={130} height={34} rx={6} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={10} y={28} width={130} height={34} rx={6} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={75} y={49} textAnchor="middle" fontSize={11} fill="var(--text-primary)">iteravel (lista, range...)</text>
 
-      <line x1={140} y1={45} x2={168} y2={45} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arY)" />
+      <line x1={140} y1={45} x2={168} y2={45} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arY)" />
 
-      <rect x={170} y={28} width={100} height={34} rx={6} fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth={1.5} />
-      <text x={220} y={49} textAnchor="middle" fontSize={11} fontWeight={700} fill="#f97316">__iter__()</text>
+      <rect x={170} y={28} width={100} height={34} rx={6} fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={220} y={49} textAnchor="middle" fontSize={11} fontWeight={700} fill="#4a9eed">__iter__()</text>
 
-      <line x1={270} y1={45} x2={298} y2={45} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arY)" />
+      <line x1={270} y1={45} x2={298} y2={45} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arY)" />
 
-      <rect x={300} y={28} width={100} height={34} rx={6} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={300} y={28} width={100} height={34} rx={6} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={350} y={49} textAnchor="middle" fontSize={11} fill="var(--text-primary)">iterator</text>
 
       {/* iterator → __next__() */}
-      <line x1={350} y1={62} x2={350} y2={88} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arY)" />
+      <line x1={350} y1={62} x2={350} y2={88} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arY)" />
 
-      <rect x={300} y={90} width={100} height={34} rx={6} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={300} y={90} width={100} height={34} rx={6} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={350} y={111} textAnchor="middle" fontSize={11} fill="var(--text-primary)">__next__()</text>
 
       {/* __next__() → proximo valor */}
-      <line x1={350} y1={124} x2={350} y2={148} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arGr)" />
+      <line x1={350} y1={124} x2={350} y2={148} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arGr)" />
 
-      <rect x={290} y={150} width={120} height={34} rx={5} fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth={1.5} />
-      <text x={350} y={171} textAnchor="middle" fontSize={11} fill="#f97316">proximo valor</text>
+      <rect x={290} y={150} width={120} height={34} rx={5} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={350} y={171} textAnchor="middle" fontSize={11} fill="#4a9eed">proximo valor</text>
 
       {/* loop back: proximo valor → __next__() (left side) */}
-      <line x1={290} y1={167} x2={260} y2={167} stroke="#f97316" strokeWidth={1.5} />
-      <line x1={260} y1={167} x2={260} y2={107} stroke="#f97316" strokeWidth={1.5} />
-      <line x1={260} y1={107} x2={299} y2={107} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arY)" />
-      <text x={238} y={138} textAnchor="middle" fontSize={10} fill="#f97316">loop</text>
+      <line x1={290} y1={167} x2={260} y2={167} stroke="#4a9eed" strokeWidth={1.5} />
+      <line x1={260} y1={167} x2={260} y2={107} stroke="#4a9eed" strokeWidth={1.5} />
+      <line x1={260} y1={107} x2={299} y2={107} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arY)" />
+      <text x={238} y={138} textAnchor="middle" fontSize={10} fill="#4a9eed">loop</text>
 
       {/* StopIteration exit (left of __next__) */}
-      <line x1={300} y1={107} x2={180} y2={107} stroke="#f97316" strokeWidth={1.5} markerEnd="url(#arR)" />
-      <text x={230} y={100} textAnchor="middle" fontSize={9} fill="#f97316">StopIteration</text>
-      <text x={210} y={120} textAnchor="middle" fontSize={9} fill="#f97316">→ loop termina</text>
+      <line x1={300} y1={107} x2={180} y2={107} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arR)" />
+      <text x={230} y={100} textAnchor="middle" fontSize={9} fill="#4a9eed">StopIteration</text>
+      <text x={210} y={120} textAnchor="middle" fontSize={9} fill="#4a9eed">→ loop termina</text>
 
       <defs>
         <marker id="arY" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#f97316" />
+          <path d="M0,0 L0,6 L6,3 z" fill="#4a9eed" />
         </marker>
         <marker id="arGr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#f97316" />
+          <path d="M0,0 L0,6 L6,3 z" fill="#4a9eed" />
         </marker>
         <marker id="arR" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#f97316" />
+          <path d="M0,0 L0,6 L6,3 z" fill="#4a9eed" />
         </marker>
       </defs>
     </svg>
@@ -409,29 +378,29 @@ function ForLoopSVG() {
 
 function MutabilityIdSVG() {
   return (
-    <svg width="100%" viewBox="0 0 580 180" style={{ display: 'block' }}>
-      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#f97316">is vs == e id()</text>
-      <rect x={10} y={28} width={80} height={28} rx={5} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
+    <svg width="100%" viewBox="0 0 580 180" style={{ display: 'block', maxWidth: 460, margin: '0 auto' }}>
+      <text x={10} y={18} fontSize={12} fontWeight={700} fill="#4a9eed">is vs == e id()</text>
+      <rect x={10} y={28} width={80} height={28} rx={5} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={50} y={46} textAnchor="middle" fontSize={11} fill="var(--text-primary)">a = [1,2]</text>
-      <rect x={10} y={68} width={80} height={28} rx={5} fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={10} y={68} width={80} height={28} rx={5} fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={50} y={86} textAnchor="middle" fontSize={11} fill="var(--text-primary)">b = [1,2]</text>
-      <rect x={160} y={44} width={90} height={36} rx={5} fill="rgba(234,179,8,0.08)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={160} y={44} width={90} height={36} rx={5} fill="rgba(2,132,199,0.08)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={205} y={66} textAnchor="middle" fontSize={11} fill="var(--text-primary)">[1, 2] id=100</text>
-      <rect x={160} y={88} width={90} height={36} rx={5} fill="rgba(234,179,8,0.08)" stroke="#f97316" strokeWidth={1.5} />
+      <rect x={160} y={88} width={90} height={36} rx={5} fill="rgba(2,132,199,0.08)" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={205} y={110} textAnchor="middle" fontSize={11} fill="var(--text-primary)">[1, 2] id=200</text>
-      <line x1={90} y1={42} x2={160} y2={62} stroke="#f97316" strokeWidth={1.5} />
-      <line x1={90} y1={82} x2={160} y2={106} stroke="#f97316" strokeWidth={1.5} />
-      <text x={10} y={140} fontSize={11} fill="#f97316">a == b   -&gt; True  (mesmo valor)</text>
-      <text x={10} y={158} fontSize={11} fill="#f97316">a is b   -&gt; False (objetos diferentes em memoria)</text>
+      <line x1={90} y1={42} x2={160} y2={62} stroke="#4a9eed" strokeWidth={1.5} />
+      <line x1={90} y1={82} x2={160} y2={106} stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={10} y={140} fontSize={11} fill="#4a9eed">a == b   -&gt; True  (mesmo valor)</text>
+      <text x={10} y={158} fontSize={11} fill="#4a9eed">a is b   -&gt; False (objetos diferentes em memoria)</text>
       <text x={10} y={174} fontSize={10} fill="#888">id(a) = 100  |  id(b) = 200</text>
 
-      <text x={340} y={28} fontSize={11} fontWeight={700} fill="#f97316">Imutaveis: reuso de objetos</text>
+      <text x={340} y={28} fontSize={11} fontWeight={700} fill="#4a9eed">Imutaveis: reuso de objetos</text>
       <text x={340} y={48} fontSize={10} fill="var(--text-secondary)">a = 256</text>
       <text x={340} y={64} fontSize={10} fill="var(--text-secondary)">b = 256</text>
-      <text x={340} y={80} fontSize={10} fill="#f97316">a is b -&gt; True  (Python reutiliza -5 a 256)</text>
+      <text x={340} y={80} fontSize={10} fill="#4a9eed">a is b -&gt; True  (Python reutiliza -5 a 256)</text>
       <text x={340} y={100} fontSize={10} fill="var(--text-secondary)">a = 1000</text>
       <text x={340} y={116} fontSize={10} fill="var(--text-secondary)">b = 1000</text>
-      <text x={340} y={132} fontSize={10} fill="#f97316">a is b -&gt; False (inteiros grandes sao novos objetos)</text>
+      <text x={340} y={132} fontSize={10} fill="#4a9eed">a is b -&gt; False (inteiros grandes sao novos objetos)</text>
       <text x={340} y={154} fontSize={10} fill="#888">Nao confiar em "is" para comparar valores — usar == sempre</text>
     </svg>
   );
@@ -444,10 +413,6 @@ export default function PfDS2() {
 
       <span style={S.tag}>MÓDULO 02</span>
       <h1 style={S.h1}>Data Structures &amp; Control Flow</h1>
-      <p style={S.lead}>
-        Tipos primitivos, coleções built-in, operadores, strings, slicing, comprehensions,
-        controlo de fluxo e mutabilidade — os alicerces de qualquer programa Python.
-      </p>
 
       {/* ─── 1. Tipos Primitivos ─── */}
       <section style={S.section}>
@@ -455,11 +420,7 @@ export default function PfDS2() {
         <p style={S.p}>
           Em Python tudo é um objeto. Os tipos escalares fundamentais são <code>int</code>,
           <code> float</code>, <code>str</code>, <code>bool</code> e <code>None</code>.
-          O diagrama abaixo mostra a hierarquia de tipos built-in.
         </p>
-        <div style={S.svgWrap}>
-          <TypeHierarchySVG />
-        </div>
         <table style={S.table}>
           <thead>
             <tr>
@@ -671,9 +632,7 @@ invertido = a[::-1]
 # Nested lists (matriz 2D)
 matriz = [[1,2,3],[4,5,6],[7,8,9]]
 print(matriz[1][2])     # 6`}</div>
-        <div style={S.highlight}>
-          <strong>Shallow vs Deep Copy</strong>
-        </div>
+        <p style={{ ...S.p, fontWeight: 700 }}>Shallow vs Deep Copy</p>
         <div style={S.svgWrap}>
           <AliasingVsSVG />
         </div>
@@ -1074,95 +1033,8 @@ def adiciona_seguro(lista, elemento):
         </div>
       </section>
 
-      <hr style={S.divider} />
 
-      {/* ─── 11. Síntese ─── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Síntese — Comparação de Coleções</h2>
-        <p style={S.p}>
-          Tabela de referência rápida para escolher a estrutura de dados adequada a cada situação.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Coleção</th>
-              <th style={S.th}>Ordenada</th>
-              <th style={S.th}>Mutável</th>
-              <th style={S.th}>Indexada</th>
-              <th style={S.th}>Elementos únicos</th>
-              <th style={S.th}>Caso de uso típico</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>list</strong></td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Sequências mutáveis, stacks, queues</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>tuple</strong></td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Registos imutáveis, chaves de dict, retorno múltiplo</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>dict</strong></td>
-              <td style={S.td}>Sim (3.7+)</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Por chave</td>
-              <td style={S.td}>Chaves únicas</td>
-              <td style={S.td}>Mapeamentos, contagem, agrupamento</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>set</strong></td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Pertença O(1), eliminação de duplicados, operações de conjunto</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>frozenset</strong></td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Set hashable (chave de dict, elemento de set)</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            <strong>Regras de ouro:</strong> use <code>list</code> quando precisar de sequência mutável;
-            <code> tuple</code> para dados que não devem mudar ou como chave de dict;
-            <code> dict</code> para acesso rápido por chave;
-            <code> set</code> para pertença eficiente e unicidade;
-            <code> generator</code> para grandes volumes de dados processados uma vez.
-            Prefira <code>==</code> sobre <code>is</code> para comparar valores.
-            Desconfie de aliasing em objetos mutáveis passados a funções.
-          </p>
-        </div>
-      </section>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>12. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Tipos Primitivos</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Operadores</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Strings em Profundidade</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Listas</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Dicionários</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Tuplos e Sets</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Slicing</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

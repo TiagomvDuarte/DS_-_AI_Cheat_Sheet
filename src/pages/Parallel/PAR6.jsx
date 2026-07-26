@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem', margin: '1.25rem 0', overflowX: 'auto', textAlign: 'center' },
@@ -27,16 +27,16 @@ const S = {
 
 /* ── Diagrama 1: CPU die vs GPU die ─────────────────────────────────── */
 function DiagramCPUvsGPU() {
-  const coreColors = ['#f97316', '#f59e0b', '#fb923c', '#fbbf24'];
-  const smColors = ['#f97316','#ea580c','#fb923c','#f59e0b','#fbbf24','#c2410c','#f97316','#fb923c'];
+  const coreColors = ['#4a9eed', '#0284c7', '#38bdf8', '#7dd3fc'];
+  const smColors = ['#4a9eed','#0369a1','#38bdf8','#0284c7','#7dd3fc','#075985','#4a9eed','#38bdf8'];
 
   return (
     <div style={{ ...S.diagram, flexDirection: 'column', gap: '0.6rem' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 32px 1fr', gap: '0.5rem', alignItems: 'stretch' }}>
 
         {/* CPU panel */}
-        <div style={{ border: '2px solid #f97316', borderRadius: 10, padding: '0.8rem', background: 'rgba(249,115,22,0.06)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#f97316', textAlign: 'center' }}>CPU (ex: Intel i9)</div>
+        <div style={{ border: '2px solid #4a9eed', borderRadius: 10, padding: '0.8rem', background: 'rgba(74,158,237,0.06)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#4a9eed', textAlign: 'center' }}>CPU (ex: Intel i9)</div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
             {coreColors.map((c, i) => (
               <div key={i} style={{ border: `1.5px solid ${c}`, borderRadius: 7, padding: '0.5rem 0.4rem', background: `${c}14`, display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -46,7 +46,7 @@ function DiagramCPUvsGPU() {
               </div>
             ))}
           </div>
-          <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.3)', borderRadius: 5, padding: '4px 8px', textAlign: 'center', fontSize: '0.72rem', fontWeight: 600, color: '#f97316' }}>
+          <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.3)', borderRadius: 5, padding: '4px 8px', textAlign: 'center', fontSize: '0.72rem', fontWeight: 600, color: '#4a9eed' }}>
             L3 Cache Partilhada (32 MB)
           </div>
         </div>
@@ -55,15 +55,15 @@ function DiagramCPUvsGPU() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-secondary)', writingMode: 'vertical-lr' }}>vs</div>
 
         {/* GPU panel */}
-        <div style={{ border: '2px solid #f97316', borderRadius: 10, padding: '0.8rem', background: 'rgba(249,115,22,0.06)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#f97316', textAlign: 'center' }}>GPU (ex: A100)</div>
+        <div style={{ border: '2px solid #4a9eed', borderRadius: 10, padding: '0.8rem', background: 'rgba(74,158,237,0.06)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#4a9eed', textAlign: 'center' }}>GPU (ex: A100)</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 3 }}>
             {Array.from({ length: 40 }, (_, i) => (
               <div key={i} style={{ aspectRatio: '1', borderRadius: 3, background: `${smColors[i % smColors.length]}22`, border: `1px solid ${smColors[i % smColors.length]}66` }} />
             ))}
           </div>
           <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', textAlign: 'center' }}>× 108 SMs = 6912 CUDA cores</div>
-          <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.3)', borderRadius: 5, padding: '4px 8px', textAlign: 'center', fontSize: '0.72rem', fontWeight: 600, color: '#f97316' }}>
+          <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.3)', borderRadius: 5, padding: '4px 8px', textAlign: 'center', fontSize: '0.72rem', fontWeight: 600, color: '#4a9eed' }}>
             Memory Controllers + HBM2e (80 GB, 2 TB/s)
           </div>
         </div>
@@ -74,10 +74,10 @@ function DiagramCPUvsGPU() {
 
 /* ── Diagrama 2: Hierarquia de Threads ──────────────────────────────── */
 function DiagramThreadHierarchy() {
-  const cGrid  = '#f97316';
-  const cBlock = '#f59e0b';
-  const cWarp  = '#fb923c';
-  const blockColors = ['#f97316','#f59e0b','#fb923c','#fbbf24'];
+  const cGrid  = '#4a9eed';
+  const cBlock = '#0284c7';
+  const cWarp  = '#38bdf8';
+  const blockColors = ['#4a9eed','#0284c7','#38bdf8','#7dd3fc'];
 
   const Dot = ({ c, size = 14, label }) => (
     <div style={{ width: size, height: size, borderRadius: '50%', background: `${c}20`, border: `1.5px solid ${c}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -139,15 +139,15 @@ function DiagramThreadHierarchy() {
 /* ── Diagrama 3: Hierarquia de Memória ──────────────────────────────── */
 function DiagramMemoryHierarchy() {
   const layers = [
-    { label: 'Registos (por thread)',         lat: '~1 ciclo',         size: '256 KB/SM',     c: '#f97316', pct: 22 },
-    { label: 'Shared Memory / L1 (por bloco)',lat: '~5 ciclos',        size: '48–164 KB/SM',  c: '#fb923c', pct: 38 },
-    { label: 'L2 Cache (por GPU)',             lat: '~30 ciclos',       size: '40 MB (A100)',  c: '#f59e0b', pct: 55 },
-    { label: 'Memória Global (DRAM / HBM)',   lat: '~200–400 ciclos',  size: '80 GB',         c: '#fbbf24', pct: 74 },
+    { label: 'Registos (por thread)',         lat: '~1 ciclo',         size: '256 KB/SM',     c: '#4a9eed', pct: 22 },
+    { label: 'Shared Memory / L1 (por bloco)',lat: '~5 ciclos',        size: '48–164 KB/SM',  c: '#38bdf8', pct: 38 },
+    { label: 'L2 Cache (por GPU)',             lat: '~30 ciclos',       size: '40 MB (A100)',  c: '#0284c7', pct: 55 },
+    { label: 'Memória Global (DRAM / HBM)',   lat: '~200–400 ciclos',  size: '80 GB',         c: '#7dd3fc', pct: 74 },
     { label: 'Memória do Sistema (CPU RAM)',  lat: '>1000 ciclos (PCIe)',size: 'GBs–TBs',     c: '#94a3b8', pct: 100 },
   ];
   return (
     <div style={{ ...S.diagram, flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#f97316', marginBottom: 4 }}>Pirâmide de Memória CUDA</div>
+      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#4a9eed', marginBottom: 4 }}>Pirâmide de Memória CUDA</div>
       <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'center', width: '100%' }}>
         {/* Speed label */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, flexShrink: 0, fontSize: '0.68rem', color: 'var(--text-secondary)' }}>
@@ -175,7 +175,7 @@ function DiagramMemoryHierarchy() {
 
 /* ── Diagrama 4: Memory Coalescing ──────────────────────────────────── */
 function DiagramCoalescing() {
-  const tColors = ['#f97316','#f59e0b','#fb923c','#fbbf24','#ea580c','#c2410c','#fb923c','#f59e0b'];
+  const tColors = ['#4a9eed','#0284c7','#38bdf8','#7dd3fc','#0369a1','#075985','#38bdf8','#0284c7'];
   // scattered indices for uncoalesced
   const scattered = [0, 5, 2, 7, 1, 6, 3, 4];
 
@@ -193,17 +193,17 @@ function DiagramCoalescing() {
 
         {/* Coalesced */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#f97316', textAlign: 'center' }}>Coalesced (1 transacção)</div>
+          <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#4a9eed', textAlign: 'center' }}>Coalesced (1 transacção)</div>
           <div style={{ display: 'flex', gap: 3, justifyContent: 'center' }}>
             {tColors.map((c, i) => <ThreadChip key={i} i={i} c={c} />)}
           </div>
           <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', textAlign: 'center' }}>threads acessam endereços consecutivos</div>
-          <div style={{ textAlign: 'center', fontSize: '1.1rem', color: '#f97316' }}>↓</div>
+          <div style={{ textAlign: 'center', fontSize: '1.1rem', color: '#4a9eed' }}>↓</div>
           {/* memory blocks — all highlighted together */}
-          <div style={{ border: '2px solid #f97316', borderRadius: 6, padding: '4px 6px', display: 'flex', gap: 3, justifyContent: 'center', background: 'rgba(249,115,22,0.06)' }}>
+          <div style={{ border: '2px solid #4a9eed', borderRadius: 6, padding: '4px 6px', display: 'flex', gap: 3, justifyContent: 'center', background: 'rgba(74,158,237,0.06)' }}>
             {tColors.map((c, i) => <MemBlock key={i} active c={c} />)}
           </div>
-          <div style={{ textAlign: 'center', fontSize: '0.78rem', fontWeight: 700, color: '#f97316' }}>→ 1 transacção de memória</div>
+          <div style={{ textAlign: 'center', fontSize: '0.78rem', fontWeight: 700, color: '#4a9eed' }}>→ 1 transacção de memória</div>
         </div>
 
         {/* Divider */}
@@ -241,11 +241,11 @@ function DiagramCoalescing() {
 /* ── Diagrama 5: Tiling ─────────────────────────────────────────────── */
 function DiagramTiling() {
   const tileColors = [
-    '#f97316','#f59e0b','#fb923c','#fbbf24','#ea580c',
-    '#f59e0b','#fb923c','#f97316','#fbbf24','#ea580c',
-    '#fb923c','#fbbf24','#f97316','#f59e0b','#ea580c',
-    '#fbbf24','#f97316','#fb923c','#f59e0b','#ea580c',
-    '#f59e0b','#ea580c','#fbbf24','#f97316','#fb923c',
+    '#4a9eed','#0284c7','#38bdf8','#7dd3fc','#0369a1',
+    '#0284c7','#38bdf8','#4a9eed','#7dd3fc','#0369a1',
+    '#38bdf8','#7dd3fc','#4a9eed','#0284c7','#0369a1',
+    '#7dd3fc','#4a9eed','#38bdf8','#0284c7','#0369a1',
+    '#0284c7','#0369a1','#7dd3fc','#4a9eed','#38bdf8',
   ];
 
   const Tile = ({ idx, active }) => {
@@ -268,7 +268,7 @@ function DiagramTiling() {
     <div style={{ ...S.diagram, gap: '1rem', alignItems: 'center' }}>
       {/* Global matrix */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-        <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#f97316', marginBottom: 4 }}>Matriz Global A</div>
+        <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#4a9eed', marginBottom: 4 }}>Matriz Global A</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 4 }}>
           {Array.from({ length: 25 }, (_, i) => <Tile key={i} idx={i} active={i === 0} />)}
         </div>
@@ -277,17 +277,17 @@ function DiagramTiling() {
 
       {/* Arrow */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, flexShrink: 0 }}>
-        <div style={{ fontSize: '0.68rem', color: '#f97316', fontWeight: 600 }}>carrega</div>
-        <div style={{ fontSize: '1.4rem', color: '#f97316' }}>→</div>
+        <div style={{ fontSize: '0.68rem', color: '#4a9eed', fontWeight: 600 }}>carrega</div>
+        <div style={{ fontSize: '1.4rem', color: '#4a9eed' }}>→</div>
       </div>
 
       {/* Shared memory tile */}
-      <div style={{ border: '2px solid #f97316', borderRadius: 10, padding: '0.7rem 0.8rem', background: 'rgba(249,115,22,0.07)', display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center', minWidth: 180 }}>
-        <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#f97316' }}>Shared Memory</div>
+      <div style={{ border: '2px solid #4a9eed', borderRadius: 10, padding: '0.7rem 0.8rem', background: 'rgba(74,158,237,0.07)', display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center', minWidth: 180 }}>
+        <div style={{ fontWeight: 700, fontSize: '0.85rem', color: '#4a9eed' }}>Shared Memory</div>
         <div style={{ fontFamily: 'monospace', fontSize: '0.65rem', color: 'var(--text-secondary)' }}>__shared__ float tile_A[TILE][TILE]</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4 }}>
           {Array.from({ length: 9 }, (_, i) => (
-            <div key={i} style={{ width: 44, height: 24, borderRadius: 4, background: 'rgba(249,115,22,0.20)', border: '1.5px solid #f97316' }} />
+            <div key={i} style={{ width: 44, height: 24, borderRadius: 4, background: 'rgba(74,158,237,0.20)', border: '1.5px solid #4a9eed' }} />
           ))}
         </div>
         <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)' }}>~48 KB · acesso em ~5 ciclos</div>
@@ -298,8 +298,8 @@ function DiagramTiling() {
 
 /* ── Diagrama 6: Warp Divergence ─────────────────────────────────────── */
 function DiagramWarpDivergence() {
-  const cIf   = '#f97316';
-  const cElse = '#f59e0b';
+  const cIf   = '#4a9eed';
+  const cElse = '#0284c7';
   const cMask = '#475569';
 
   const Chip = ({ t, active, c }) => (
@@ -316,7 +316,7 @@ function DiagramWarpDivergence() {
 
   return (
     <div style={{ ...S.diagram, flexDirection: 'column', gap: 0 }}>
-      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#f97316', textAlign: 'center', marginBottom: '1.2rem' }}>Warp de 32 Threads — Divergência</div>
+      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#4a9eed', textAlign: 'center', marginBottom: '1.2rem' }}>Warp de 32 Threads — Divergência</div>
 
       {/* Thread chips — two explicit rows of 16 */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center', marginBottom: '1.8rem' }}>
@@ -348,12 +348,12 @@ function DiagramWarpDivergence() {
         <div style={{ flex: 1, height: 1, background: 'var(--card-border)' }} />
         <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)' }}>t=T</div>
         <div style={{ flex: 1, height: 1, background: 'var(--card-border)' }} />
-        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#ea580c' }}>t=2T → 2× mais lento!</div>
+        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#0369a1' }}>t=2T → 2× mais lento!</div>
       </div>
 
       {/* Solution note */}
-      <div style={{ background: 'rgba(249,115,22,0.08)', border: '1px solid rgba(249,115,22,0.3)', borderRadius: 6, padding: '10px 16px', fontSize: '0.75rem', color: '#f97316', textAlign: 'center', fontFamily: 'monospace' }}>
-        <span style={{ color: '#ea580c' }}>if (threadIdx.x &lt; 32)</span> → diverge &nbsp;|&nbsp; <span style={{ color: cIf }}>if (blockIdx.x % 2 == 0)</span> → não diverge (warp toma o mesmo ramo)
+      <div style={{ background: 'rgba(74,158,237,0.08)', border: '1px solid rgba(74,158,237,0.3)', borderRadius: 6, padding: '10px 16px', fontSize: '0.75rem', color: '#4a9eed', textAlign: 'center', fontFamily: 'monospace' }}>
+        <span style={{ color: '#0369a1' }}>if (threadIdx.x &lt; 32)</span> → diverge &nbsp;|&nbsp; <span style={{ color: cIf }}>if (blockIdx.x % 2 == 0)</span> → não diverge (warp toma o mesmo ramo)
       </div>
     </div>
   );
@@ -362,10 +362,10 @@ function DiagramWarpDivergence() {
 /* ── Diagrama 7: Occupancy e Latency Hiding ─────────────────────────── */
 function DiagramOccupancy() {
   const warps = [
-    { label: 'Warp A', c: '#f97316', status: 'stall — aguarda memória' },
-    { label: 'Warp B', c: '#f59e0b', status: 'pronto — a executar' },
-    { label: 'Warp C', c: '#fb923c', status: 'pronto — a executar' },
-    { label: 'Warp D', c: '#fbbf24', status: 'pronto — a executar' },
+    { label: 'Warp A', c: '#4a9eed', status: 'stall — aguarda memória' },
+    { label: 'Warp B', c: '#0284c7', status: 'pronto — a executar' },
+    { label: 'Warp C', c: '#38bdf8', status: 'pronto — a executar' },
+    { label: 'Warp D', c: '#7dd3fc', status: 'pronto — a executar' },
   ];
 
   const seg = (label, c, flex, faint) => (
@@ -375,18 +375,18 @@ function DiagramOccupancy() {
   // timeline rows per warp: [exec, stall/exec, exec]
   const timeline = [
     // Warp A: exec | stall | retoma
-    [seg('exec', '#f97316', 1), seg('stall (mem)', '#475569', 2, true), seg('retoma exec', '#f97316', 2)],
+    [seg('exec', '#4a9eed', 1), seg('stall (mem)', '#475569', 2, true), seg('retoma exec', '#4a9eed', 2)],
     // Warp B: idle | exec | idle
-    [seg('', '#475569', 1, true), seg('exec', '#f59e0b', 1), seg('', '#475569', 3, true)],
+    [seg('', '#475569', 1, true), seg('exec', '#0284c7', 1), seg('', '#475569', 3, true)],
     // Warp C: idle | idle | exec
-    [seg('', '#475569', 1, true), seg('', '#475569', 1, true), seg('exec', '#fb923c', 1), seg('', '#475569', 2, true)],
+    [seg('', '#475569', 1, true), seg('', '#475569', 1, true), seg('exec', '#38bdf8', 1), seg('', '#475569', 2, true)],
     // Warp D: idle | idle | idle | exec
-    [seg('', '#475569', 1, true), seg('', '#475569', 1, true), seg('', '#475569', 1, true), seg('exec', '#fbbf24', 1), seg('', '#475569', 1, true)],
+    [seg('', '#475569', 1, true), seg('', '#475569', 1, true), seg('', '#475569', 1, true), seg('exec', '#7dd3fc', 1), seg('', '#475569', 1, true)],
   ];
 
   return (
     <div style={{ ...S.diagram, flexDirection: 'column', gap: 0 }}>
-      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#f97316', textAlign: 'center', marginBottom: '1.6rem' }}>SM — Latency Hiding por Comutação de Warps</div>
+      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#4a9eed', textAlign: 'center', marginBottom: '1.6rem' }}>SM — Latency Hiding por Comutação de Warps</div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '130px 32px 1fr', gap: '0.8rem', alignItems: 'center', marginBottom: '1.6rem' }}>
         {/* Warp list */}
@@ -401,13 +401,13 @@ function DiagramOccupancy() {
 
         {/* Scheduler arrow */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-          <div style={{ fontSize: '0.6rem', color: '#f97316', fontWeight: 600, writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>GPU scheduler</div>
-          <div style={{ fontSize: '1.2rem', color: '#f97316' }}>→</div>
+          <div style={{ fontSize: '0.6rem', color: '#4a9eed', fontWeight: 600, writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>GPU scheduler</div>
+          <div style={{ fontSize: '1.2rem', color: '#4a9eed' }}>→</div>
         </div>
 
         {/* Timeline panel */}
         <div style={{ border: '1px solid var(--card-border)', borderRadius: 8, padding: '0.9rem 0.8rem', background: 'var(--bg-secondary)' }}>
-          <div style={{ fontWeight: 700, fontSize: '0.75rem', color: '#f97316', marginBottom: 12, textAlign: 'center' }}>Linha Temporal (SM)</div>
+          <div style={{ fontWeight: 700, fontSize: '0.75rem', color: '#4a9eed', marginBottom: 12, textAlign: 'center' }}>Linha Temporal (SM)</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {timeline.map((row, i) => (
               <div key={i} style={{ display: 'flex', gap: 4 }}>{row}</div>
@@ -421,7 +421,7 @@ function DiagramOccupancy() {
 
       {/* Occupancy note */}
       <div style={{ display: 'flex', gap: '0.8rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '0.4rem' }}>
-        <div style={{ background: 'rgba(249,115,22,0.08)', border: '1px solid rgba(249,115,22,0.3)', borderRadius: 6, padding: '9px 18px', fontSize: '0.75rem', color: '#f97316', fontWeight: 600 }}>
+        <div style={{ background: 'rgba(74,158,237,0.08)', border: '1px solid rgba(74,158,237,0.3)', borderRadius: 6, padding: '9px 18px', fontSize: '0.75rem', color: '#4a9eed', fontWeight: 600 }}>
           Occupancy = warps activos / warps máximos por SM
         </div>
         <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '9px 18px', fontSize: '0.72rem', color: 'var(--text-secondary)' }}>
@@ -451,10 +451,7 @@ export default function PAR6() {
       <div style={S.section}>
         <h2 style={S.h2}>1. CPU vs GPU — Filosofias Opostas</h2>
         <p style={S.p}>
-          Uma CPU foi concebida para <strong>baixa latência</strong>: poucos núcleos muito potentes, execução fora de ordem (out-of-order), previsão de desvios (branch prediction) e caches hierárquicas enormes. O objectivo é executar um único fio de execução o mais rapidamente possível.
-        </p>
-        <p style={S.p}>
-          Uma GPU foi concebida para <strong>alto débito</strong> (<em>throughput</em>): milhares de núcleos simples, sem previsão de desvios, sem execução fora de ordem, com caches pequenas. O objectivo é executar milhões de operações em paralelo, tolerando latências individuais elevadas através da comutação rápida entre grupos de threads.
+          Uma CPU foi concebida para <strong>baixa latência</strong>: poucos núcleos potentes, execução fora de ordem, branch prediction, caches enormes — o objectivo é executar um único fio de execução o mais rápido possível. Uma GPU foi concebida para <strong>alto débito</strong>: milhares de núcleos simples, sem previsão de desvios, com caches pequenas — executa milhões de operações em paralelo, tolerando latências individuais através de comutação rápida entre grupos de threads.
         </p>
         <div style={S.highlight}>
           <strong>NVIDIA A100 (Ampere, 2020):</strong> 108 Streaming Multiprocessors (SMs) × 64 CUDA cores = <strong>6912 CUDA cores</strong>; 80 GB HBM2e com <strong>2 TB/s</strong> de largura de banda de memória; pico de 312 TFLOPS (FP16 Tensor Cores).
@@ -483,10 +480,7 @@ export default function PAR6() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Modelo SIMT e Hierarquia de Threads</h2>
         <p style={S.p}>
-          CUDA usa o modelo <strong>SIMT</strong> — <em>Single Instruction, Multiple Threads</em>: um único fluxo de instruções é executado por múltiplos threads em simultâneo. Ao contrário do SIMD clássico, o programador escreve código escalar para um único thread; o hardware encarrega-se de vectorizar.
-        </p>
-        <p style={S.p}>
-          Os threads organizam-se numa hierarquia de três níveis: <strong>Grid</strong> (todos os threads do kernel), <strong>Block</strong> (grupos cooperantes com shared memory e sincronização) e <strong>Thread</strong> (unidade básica). O hardware agrupa 32 threads num <strong>warp</strong>, que é a unidade real de execução no SM.
+          CUDA usa o modelo <strong>SIMT</strong> — <em>Single Instruction, Multiple Threads</em>: um único fluxo de instruções é executado por múltiplos threads em simultâneo. Ao contrário do SIMD clássico, o programador escreve código escalar para um único thread; o hardware vectoriza. Os threads organizam-se em três níveis: <strong>Grid</strong> (todos os threads do kernel), <strong>Block</strong> (grupos cooperantes com shared memory) e <strong>Thread</strong>; o hardware agrupa 32 threads num <strong>warp</strong>, a unidade real de execução no SM.
         </p>
 
         <table style={S.table}>
@@ -587,7 +581,7 @@ export default function PAR6() {
           Quando um warp de 32 threads acede à memória global, o hardware tenta agrupar todos os acessos numa única <strong>transacção de 128 bytes</strong> (sector de cache). Este agrupamento chama-se <strong>coalescing</strong>.
         </p>
         <p style={S.p}>
-          Para que o coalescing ocorra, os 32 threads do warp devem aceder a endereços contíguos e alinhados. Se o thread <InlineMath math={"k"} /> acede ao elemento <InlineMath math={"\\text{base} + k"} />, todos os 32 acessos cabem num único sector. Se os endereços forem dispersos, o hardware emite até 32 transacções separadas, multiplicando o tráfego de memória.
+          Para que ocorra, os 32 threads do warp devem aceder a endereços contíguos e alinhados — se dispersos, o hardware emite até 32 transacções separadas, multiplicando o tráfego de memória.
         </p>
 
         <DiagramCoalescing />
@@ -609,10 +603,7 @@ export default function PAR6() {
       <div style={S.section}>
         <h2 style={S.h2}>5. Shared Memory e Tiling</h2>
         <p style={S.p}>
-          A shared memory é a ferramenta mais poderosa para reduzir o tráfego à memória global. A ideia é dividir o problema em <strong>tiles</strong> (mosaicos): cada bloco carrega o seu tile para a shared memory, realiza os cálculos localmente (com acesso ~40× mais rápido) e depois avança para o próximo tile.
-        </p>
-        <p style={S.p}>
-          A barreira <code>__syncthreads()</code> garante que todos os threads do bloco terminaram de carregar o tile antes de qualquer thread começar a calcular. Sem esta barreira, alguns threads poderiam ler dados que ainda não foram escritos por outros threads do mesmo bloco.
+          A shared memory é a ferramenta mais poderosa para reduzir o tráfego à memória global: dividir o problema em <strong>tiles</strong>, cada bloco carrega o seu tile para a shared memory (~40× mais rápido) e calcula localmente antes de avançar. A barreira <code>__syncthreads()</code> garante que todos os threads terminaram de carregar antes de qualquer um começar a calcular.
         </p>
 
         <DiagramTiling />
@@ -638,10 +629,7 @@ export default function PAR6() {
       <div style={S.section}>
         <h2 style={S.h2}>6. Warp Divergence</h2>
         <p style={S.p}>
-          O modelo SIMT pressupõe que todos os 32 threads de um warp executam a mesma instrução. Quando existe uma condição <code>if/else</code> cujo resultado difere entre threads do mesmo warp, ocorre <strong>divergência de warp</strong>: o hardware executa os dois ramos sequencialmente, mascarando os threads que não tomam o ramo activo em cada passo.
-        </p>
-        <p style={S.p}>
-          O resultado é uma redução de desempenho proporcional ao número de ramos distintos. Com dois ramos (if/else), metade da capacidade de cálculo é desperdiçada em cada passo.
+          O modelo SIMT pressupõe que todos os 32 threads de um warp executam a mesma instrução. Quando uma condição <code>if/else</code> difere entre threads do mesmo warp, ocorre <strong>divergência de warp</strong>: o hardware executa os dois ramos sequencialmente, mascarando os threads inactivos em cada passo — com dois ramos, metade da capacidade de cálculo é desperdiçada.
         </p>
 
         <DiagramWarpDivergence />
@@ -706,21 +694,6 @@ export default function PAR6() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ── SECÇÃO 8: SÍNTESE ── */}
-              <h2 style={{ ...S.h2, borderLeft: 'none', paddingLeft: 0, marginBottom: '0.75rem' }}>8. Síntese do Módulo</h2>
-<div style={{ ...S.highlight, borderRadius: 10 }}>
-        <ul style={{ paddingLeft: '1.25rem', color: 'var(--text-primary)', lineHeight: 2.1 }}>
-          <li><strong>CPU vs GPU:</strong> CPU optimizada para latência (poucos núcleos potentes, branch prediction, grandes caches); GPU optimizada para débito (6912 CUDA cores, 2 TB/s de largura de banda no A100).</li>
-          <li><strong>SIMT e hierarquia:</strong> Grid → Bloco → Thread; warp = 32 threads com execução SIMT; índice global <InlineMath math={"i = \\texttt{blockIdx.x} \\cdot \\texttt{blockDim.x} + \\texttt{threadIdx.x}"} />.</li>
-          <li><strong>Memória:</strong> registos (1 ciclo, por thread) → shared memory (5 ciclos, 48 KB/SM, por bloco) → L2 (30 ciclos) → global DRAM (200–400 ciclos, 80 GB). Usar sempre o tipo mais rápido possível.</li>
-          <li><strong>Coalescing:</strong> 32 threads de um warp devem aceder a endereços contíguos para fundir os acessos numa única transacção de 128 bytes; desvios custam até 32× mais transacções.</li>
-          <li><strong>Tiling:</strong> dividir matrizes em tiles, carregar para shared memory com <code>__syncthreads()</code>; reduz acessos à DRAM em <InlineMath math={"T\\times"} /> (T = tamanho do tile).</li>
-          <li><strong>Warp divergence:</strong> condições if/else dependentes de <code>threadIdx</code> serializam os ramos; reestruturar dados para que todos os threads do warp tomem o mesmo ramo.</li>
-          <li><strong>Occupancy:</strong> mais warps activos por SM → maior capacidade de esconder latências; limitada por registos, shared memory e threads por bloco; usar <code>cudaOccupancyMaxPotentialBlockSize</code> e Nsight Compute para optimizar.</li>
-        </ul>
-      </div>
     </div>
   );
 }

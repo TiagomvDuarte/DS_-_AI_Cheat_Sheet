@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -32,15 +32,15 @@ const SGDMomentumPath = () => (
     <svg viewBox="0 0 540 260" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <radialGradient id="bowl" cx="50%" cy="50%" r="75%">
-          <stop offset="0%" stopColor="rgba(249,115,22,0.10)" />
-          <stop offset="60%" stopColor="rgba(249,115,22,0.10)" />
-          <stop offset="100%" stopColor="rgba(249,115,22,0.10)" />
+          <stop offset="0%" stopColor="rgba(74,158,237,0.10)" />
+          <stop offset="60%" stopColor="rgba(74,158,237,0.10)" />
+          <stop offset="100%" stopColor="rgba(74,158,237,0.10)" />
         </radialGradient>
         <marker id="arrSGD" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
         <marker id="arrMom" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
 
@@ -54,12 +54,12 @@ const SGDMomentumPath = () => (
 
       <polyline
         points="60,40 120,210 90,75 145,180 125,95 165,160 150,110 175,150 165,120 185,142 178,128 195,138"
-        fill="none" stroke="#f97316" strokeWidth="2" markerEnd="url(#arrSGD)" />
-      <text x="60" y="30" fill="#f97316" fontSize="11" fontWeight="700">SGD simples</text>
+        fill="none" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arrSGD)" />
+      <text x="60" y="30" fill="#4a9eed" fontSize="11" fontWeight="700">SGD simples</text>
 
       <path d="M 380,40 C 360,90 410,130 350,150 C 320,162 330,148 300,148 C 285,148 280,144 273,142"
-        fill="none" stroke="#f97316" strokeWidth="2.5" markerEnd="url(#arrMom)" />
-      <text x="430" y="30" fill="#f97316" fontSize="11" fontWeight="700">SGD + Momentum</text>
+        fill="none" stroke="#4a9eed" strokeWidth="2.5" markerEnd="url(#arrMom)" />
+      <text x="430" y="30" fill="#4a9eed" fontSize="11" fontWeight="700">SGD + Momentum</text>
 
       <text x="270" y="250" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">
         contornos = curvas de nível da função de perda (vale alongado: curvatura alta numa direcção, baixa noutra)
@@ -122,20 +122,20 @@ const SGDMomentumStepsChart = () => {
           </text>
         ))}
 
-        <path d={toPath(thetaSGD)} fill="none" stroke="#f97316" strokeWidth="2" />
-        <path d={toPath(thetaMom)} fill="none" stroke="#f97316" strokeWidth="2.5" />
+        <path d={toPath(thetaSGD)} fill="none" stroke="#4a9eed" strokeWidth="2" />
+        <path d={toPath(thetaMom)} fill="none" stroke="#4a9eed" strokeWidth="2.5" />
 
         {thetaSGD.map((val, i) => (
-          <circle key={`sgd-${i}`} cx={toX(i)} cy={toY(val)} r="3" fill="#f97316" />
+          <circle key={`sgd-${i}`} cx={toX(i)} cy={toY(val)} r="3" fill="#4a9eed" />
         ))}
         {thetaMom.map((val, i) => (
-          <circle key={`mom-${i}`} cx={toX(i)} cy={toY(val)} r="3" fill="#f97316" />
+          <circle key={`mom-${i}`} cx={toX(i)} cy={toY(val)} r="3" fill="#4a9eed" />
         ))}
 
-        <text x={toX(4) + 8} y={toY(thetaSGD[4]) + 3} fill="#f97316" fontSize="10" fontWeight="700">
+        <text x={toX(4) + 8} y={toY(thetaSGD[4]) + 3} fill="#4a9eed" fontSize="10" fontWeight="700">
           SGD: θ≈{thetaSGD[4].toFixed(2)}
         </text>
-        <text x={toX(4) + 8} y={toY(thetaMom[4]) + 3} fill="#f97316" fontSize="10" fontWeight="700">
+        <text x={toX(4) + 8} y={toY(thetaMom[4]) + 3} fill="#4a9eed" fontSize="10" fontWeight="700">
           Momentum: θ≈{thetaMom[4].toFixed(2)}
         </text>
       </svg>
@@ -224,10 +224,10 @@ const LRSchedulesDiagram = () => {
   }).join(' ');
 
   const series = [
-    ['Cosine Annealing', cosine, '#f97316'],
-    ['Warmup + Cosine', warmupCosine, '#f97316'],
-    ['OneCycleLR', oneCycle, '#f97316'],
-    ['Step Decay', stepDecay, '#f97316'],
+    ['Cosine Annealing', cosine, '#4a9eed'],
+    ['Warmup + Cosine', warmupCosine, '#93c5fd'],
+    ['OneCycleLR', oneCycle, '#1e5fb8'],
+    ['Step Decay', stepDecay, '#0ea5e9'],
   ];
 
   return (
@@ -263,8 +263,8 @@ const LossLandscapeDiagram = () => (
     <svg viewBox="0 0 560 220" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <linearGradient id="surfFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(249,115,22,0.10)" />
-          <stop offset="100%" stopColor="rgba(249,115,22,0.10)" />
+          <stop offset="0%" stopColor="rgba(74,158,237,0.10)" />
+          <stop offset="100%" stopColor="rgba(74,158,237,0.10)" />
         </linearGradient>
       </defs>
       <path d="M 10,40
@@ -286,17 +286,17 @@ const LossLandscapeDiagram = () => (
                C 520,135 535,110 550,60"
         fill="none" stroke={color} strokeWidth="2.5" />
 
-      <circle cx="120" cy="165" r="4" fill="#f59e0b" />
-      <text x="120" y="195" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">mínimo local</text>
+      <circle cx="120" cy="165" r="4" fill="#0284c7" />
+      <text x="120" y="195" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">mínimo local</text>
 
-      <circle cx="180" cy="118" r="4" fill="#f97316" />
-      <text x="180" y="100" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">saddle point</text>
+      <circle cx="180" cy="118" r="4" fill="#4a9eed" />
+      <text x="180" y="100" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">saddle point</text>
 
-      <circle cx="220" cy="165" r="4" fill="#f97316" />
-      <text x="220" y="195" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">mínimo agudo</text>
+      <circle cx="220" cy="165" r="4" fill="#4a9eed" />
+      <text x="220" y="195" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">mínimo agudo</text>
 
-      <circle cx="380" cy="183" r="4" fill="#f97316" />
-      <text x="380" y="206" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">mínimo plano (global)</text>
+      <circle cx="380" cy="183" r="4" fill="#4a9eed" />
+      <text x="380" y="206" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">mínimo plano (global)</text>
 
       <text x="280" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Loss</text>
       <text x="540" y="218" textAnchor="end" fill="var(--text-secondary)" fontSize="9">espaço de parâmetros θ</text>
@@ -317,16 +317,8 @@ export default function DL3() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 03</div>
+      <div style={S.tag}>MÓDULO 03</div>
       <h1 style={S.h1}>Optimização &amp; Loss Landscapes</h1>
-      <p style={S.lead}>
-        Treinar uma rede neuronal é, no fundo, resolver um problema de optimização não-convexo num espaço
-        com milhões ou biliões de dimensões. Não há fórmula fechada — apenas algoritmos iterativos que dão
-        pequenos passos na direcção que reduz a perda. Neste módulo construímos intuição sobre como esses
-        passos são dados (SGD, Momentum, Adam, AdamW), como a "velocidade" desses passos deve mudar ao longo
-        do treino (learning rate schedules), e como é, geometricamente, a paisagem que estamos a navegar
-        (mínimos planos vs agudos, saddle points, generalização).
-      </p>
 
       {/* === SECTION 1 === */}
       <div style={S.section}>
@@ -691,61 +683,6 @@ export default function DL3() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 5 — DECISION GUIDE === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>5. Guia Prático de Decisão</h2>
-        <p style={S.p}>
-          Não existe uma combinação universalmente óptima de optimizador + schedule — depende da arquitectura,
-          do tamanho do dataset, e dos recursos computacionais disponíveis. A tabela seguinte resume escolhas
-          típicas para cenários comuns:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr><th style={S.th}>Cenário</th><th style={S.th}>Optimizador</th><th style={S.th}>Schedule</th><th style={S.th}>Notas</th></tr>
-            </thead>
-            <tbody>
-              {[
-                ['Treinar um Transformer / LLM de raiz', 'AdamW (β₁=0.9, β₂=0.95–0.999)', 'Warmup linear (1–10%) + Cosine Annealing', 'Gradient clipping a max_norm=1.0 quase sempre necessário'],
-                ['Fine-tuning de modelo pré-treinado', 'AdamW com lr baixa (1e-5 a 5e-5)', 'Warmup curto + decaimento linear ou cosseno', 'lr muito menor que no pré-treino para não "esquecer" o que já sabe'],
-                ['CNN clássica (visão, dataset médio)', 'SGD + Momentum (β=0.9) ou AdamW', 'Step Decay ou Cosine Annealing', 'SGD+Momentum costuma generalizar ligeiramente melhor com tuning cuidadoso'],
-                ['Treino rápido / poucos recursos', 'AdamW ou SGD+Momentum', 'OneCycleLR', '"Super-convergence": menos épocas para o mesmo desempenho'],
-                ['Prototipagem / experimentação rápida', 'Adam (defaults)', 'lr constante ou cosseno simples', 'Robusto a hiperparâmetros mal afinados — bom para iterar depressa'],
-                ['RNNs / sequências longas', 'RMSProp ou Adam', 'lr baixa e estável, clipping de gradiente', 'Gradientes não-estacionários beneficiam da adaptação por parâmetro'],
-              ].map(([s, o, sch, n]) => (
-                <tr key={s}><td style={S.td}><strong>{s}</strong></td><td style={S.td}>{o}</td><td style={S.td}>{sch}</td><td style={S.td}>{n}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>6. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Optimizar uma rede neuronal é navegar uma paisagem de perda extremamente complexa, usando apenas
-          informação local (o gradiente). Momentum adiciona inércia para suavizar trajectórias em vales
-          alongados; optimizadores adaptativos como Adam ajustam a escala do passo por parâmetro; schedules
-          de learning rate adaptam essa escala ao longo do tempo, conciliando exploração inicial com
-          convergência fina no final.
-        </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Momentum acumula uma média móvel do gradiente — acelera em vales e suaviza zig-zags</li>
-            <li>Adam combina momentum (1º momento) com escala adaptativa (2º momento), com bias correction crítico no início</li>
-            <li>AdamW desacopla o weight decay da actualização adaptativa — escolha por defeito para Transformers</li>
-            <li>Warmup é essencial em Transformers para estabilizar as estimativas iniciais de Adam</li>
-            <li>Saddle points dominam em alta dimensão; o ruído do SGD ajuda a escapar deles</li>
-            <li>Mínimos planos generalizam melhor que mínimos agudos — batch size pequeno e mais ruído tendem a favorecê-los</li>
-          </ul>
-        </div>
-      </div>
     </div>
   );
 }

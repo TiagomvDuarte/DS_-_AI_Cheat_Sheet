@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -27,17 +27,17 @@ const DAGDiagram = () => (
     <svg viewBox="0 0 620 200" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-af" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* Tasks */}
       {[
-        { x: 10,  y: 80,  w: 100, label: 'extract_postgres', sub: 'PythonOperator', c: '#f97316' },
-        { x: 160, y: 30,  w: 110, label: 'validate_schema',  sub: 'PythonOperator', c: '#f97316' },
-        { x: 160, y: 115, w: 110, label: 'extract_api',      sub: 'HttpOperator',   c: '#f97316' },
-        { x: 330, y: 72,  w: 110, label: 'transform_spark',  sub: 'SparkSubmitOp.', c: '#f97316' },
-        { x: 500, y: 50,  w: 110, label: 'load_delta_lake',  sub: 'PythonOperator', c: '#f97316' },
-        { x: 500, y: 120, w: 110, label: 'update_catalog',   sub: 'PythonOperator', c: '#f97316' },
+        { x: 10,  y: 80,  w: 100, label: 'extract_postgres', sub: 'PythonOperator', c: '#4a9eed' },
+        { x: 160, y: 30,  w: 110, label: 'validate_schema',  sub: 'PythonOperator', c: '#4a9eed' },
+        { x: 160, y: 115, w: 110, label: 'extract_api',      sub: 'HttpOperator',   c: '#4a9eed' },
+        { x: 330, y: 72,  w: 110, label: 'transform_spark',  sub: 'SparkSubmitOp.', c: '#4a9eed' },
+        { x: 500, y: 50,  w: 110, label: 'load_delta_lake',  sub: 'PythonOperator', c: '#4a9eed' },
+        { x: 500, y: 120, w: 110, label: 'update_catalog',   sub: 'PythonOperator', c: '#4a9eed' },
       ].map(({ x, y, w, label, sub, c }) => (
         <g key={label}>
           <rect x={x} y={y} width={w} height={46} rx={7} fill={`${c}15`} stroke={c} strokeWidth="1.5" />
@@ -54,7 +54,7 @@ const DAGDiagram = () => (
         [440,95,  500,73],
         [440,95,  500,143],
       ].map(([x1,y1,x2,y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-af)" opacity="0.8" />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-af)" opacity="0.8" />
       ))}
       <text x="310" y="190" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">
         Dependências explícitas — extract_postgres termina antes de validate_schema e extract_api começarem
@@ -67,7 +67,7 @@ const OperatorExplorer = () => {
   const [op, setOp] = useState(0);
   const operators = [
     {
-      name: 'PythonOperator', color: '#f97316', category: 'Execução',
+      name: 'PythonOperator', color: '#4a9eed', category: 'Execução',
       desc: 'Executa qualquer função Python arbitrária como uma task. É o operador mais flexível e versátil — qualquer lógica que se possa escrever em Python pode tornar-se uma task Airflow. O contexto de execução (execution_date, dag_run_id, etc.) pode ser injectado via parâmetro context=True.',
       quando: 'Lógica de negócio customizada, transformações simples, chamadas a APIs, validação de dados, qualquer coisa que não tenha um operador dedicado.',
       params: 'python_callable (função a executar), op_args (argumentos posicionais), op_kwargs (argumentos nomeados), templates_dict (Jinja templates)',
@@ -75,7 +75,7 @@ const OperatorExplorer = () => {
       cuidados: 'A função executa no worker do Airflow, não num cluster separado. Para operações pesadas de dados, usar SparkSubmitOperator ou KubernetesPodOperator.',
     },
     {
-      name: 'SparkSubmitOperator', color: '#f97316', category: 'Spark',
+      name: 'SparkSubmitOperator', color: '#4a9eed', category: 'Spark',
       desc: 'Submete um job Spark a um cluster existente (YARN, Kubernetes, Spark Standalone, ou Databricks via DatabricksSubmitRunOperator). O Airflow aguarda a conclusão do job e captura o status de saída. Se o job Spark falhar, a task Airflow falha e o retry logic é activado.',
       quando: 'Processar grandes volumes de dados com Spark — transformações complexas, joins distribuídos, ML training. Qualquer operação que precise de um cluster Spark dedicado.',
       params: 'application (path do .py ou .jar), conf (configurações Spark como dicionário), executor_cores, executor_memory, num_executors, name (nome do job)',
@@ -83,7 +83,7 @@ const OperatorExplorer = () => {
       cuidados: 'Requer SPARK_HOME configurado no worker Airflow ou uso de uma connection Airflow. Para Databricks, preferir DatabricksRunNowOperator.',
     },
     {
-      name: 'BashOperator', color: '#f97316', category: 'Execução',
+      name: 'BashOperator', color: '#4a9eed', category: 'Execução',
       desc: 'Executa um comando bash no worker do Airflow. Simples mas poderoso — permite integrar ferramentas de linha de comandos, scripts shell, dbt run, rsync, e qualquer utilitário do sistema operativo. O exit code determina sucesso (0) ou falha (não-0).',
       quando: 'Executar scripts shell existentes, comandos dbt (dbt run, dbt test), rsync de ficheiros, compressão/descompressão, executar migração de base de dados.',
       params: 'bash_command (string com o comando, suporta Jinja templates), env (variáveis de ambiente), cwd (directório de trabalho)',
@@ -91,7 +91,7 @@ const OperatorExplorer = () => {
       cuidados: 'Não usar para operações longas de dados — o processo corre no worker Airflow, consumindo recursos do scheduler. Para jobs longos, preferir operadores que delegam para sistemas externos.',
     },
     {
-      name: 'SqlSensor / ExternalTaskSensor', color: '#f97316', category: 'Sensors',
+      name: 'SqlSensor / ExternalTaskSensor', color: '#4a9eed', category: 'Sensors',
       desc: 'Sensors são um tipo especial de operador que aguarda uma condição externa antes de prosseguir. SqlSensor aguarda que uma query SQL retorne True (ex: tabela tem dados para a data de hoje). ExternalTaskSensor aguarda que uma task de outro DAG complete com sucesso — permite coordenar DAGs independentes.',
       quando: 'Aguardar que dados cheguem antes de processar (feed de terceiros, upload manual), sincronizar DAGs que têm dependências entre si, aguardar que uma janela de ingestão feche.',
       params: 'poke_interval (frequência de verificação em segundos, default 60), timeout (tempo máximo de espera), mode (poke vs reschedule)',
@@ -99,7 +99,7 @@ const OperatorExplorer = () => {
       cuidados: 'mode="poke" mantém o worker ocupado durante a espera. mode="reschedule" liberta o worker e reagenda — usar reschedule para waits longos (horas).',
     },
     {
-      name: 'KubernetesPodOperator', color: '#f97316', category: 'Cloud-native',
+      name: 'KubernetesPodOperator', color: '#4a9eed', category: 'Cloud-native',
       desc: 'Lança um Pod Kubernetes para cada execução de task. A lógica da task é empacotada numa imagem Docker. O Pod corre, termina, e os logs são capturados. Totalmente isolado — cada task tem o seu próprio ambiente, dependências, e recursos. O padrão em arquitecturas cloud-native modernas.',
       quando: 'Tasks com dependências Python conflituosas entre DAGs, tasks que precisam de muitos recursos (GPU para ML), isolamento total, ambientes reproducíveis via Docker.',
       params: 'image (imagem Docker), cmds, arguments, env_vars, resources (cpu/memory limits), namespace, is_delete_operator_pod (limpar Pod após execução)',
@@ -141,7 +141,7 @@ const OperatorExplorer = () => {
             <p style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', margin: '0.2rem 0 0' }}>{o.exemplo}</p>
           </div>
           <div>
-            <span style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Cuidados</span>
+            <span style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Cuidados</span>
             <p style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', margin: '0.2rem 0 0' }}>{o.cuidados}</p>
           </div>
         </div>
@@ -154,28 +154,28 @@ const SchedulerExplorer = () => {
   const [tab, setTab] = useState(0);
   const tools = [
     {
-      name: 'Apache Airflow', color: '#f97316',
+      name: 'Apache Airflow', color: '#4a9eed',
       modelo: 'DAGs definidos em Python puro. O scheduler lê os ficheiros de DAG periodicamente, determina quais tasks devem correr com base nas dependências e no schedule, e coloca-as na fila. Os workers executam as tasks via Celery, Kubernetes, ou LocalExecutor.',
       pontos_fortes: ['Ecossistema maduro com 800+ providers (AWS, GCP, Databricks, dbt, Slack...)', 'Backfill nativo — re-executar o pipeline para datas passadas trivialmente', 'UI detalhado com Gantt chart, logs por task, e history', 'Airflow 2.x com TaskFlow API — decoradores Python em vez de boilerplate', 'Padrão de facto em Data Engineering desde 2015'],
       limitacoes: ['Overhead operacional: scheduler, webserver, metadata DB, workers', 'Dynamic DAGs (gerados em runtime) são complexos', 'Latência de scheduling de ~segundos — não é real-time', 'Debugging de dependências entre muitos DAGs pode ser difícil'],
       quando: 'Pipelines batch complexos com muitas dependências. Equipas grandes com muitos DAGs. Quando backfill e histórico são importantes.',
     },
     {
-      name: 'Prefect', color: '#f97316',
+      name: 'Prefect', color: '#4a9eed',
       modelo: 'Flows e Tasks definidos com decoradores Python (@flow, @task). O servidor Prefect rastreia execuções mas o código corre onde tu quiseres (localmente, Kubernetes, cloud). Versão 2.x (Orion) adoptou um modelo serverless onde não é necessário um scheduler dedicado.',
       pontos_fortes: ['Setup muito mais simples que Airflow — menos infraestrutura', 'Native async e paralelismo', 'Dynamic mapping — criar tasks dinamicamente em runtime', 'Prefect Cloud como hosted solution (free tier generoso)', 'UI moderno e intuitivo'],
       limitacoes: ['Ecossistema de providers mais pequeno que Airflow', 'Prefect Cloud é necessário para funcionalidades avançadas', 'Menos adoptado em produção que Airflow — menos Stack Overflow/community'],
       quando: 'Equipas pequenas que querem produtividade rápida. Pipelines com paralelismo dinâmico. Quando se quer evitar a complexidade operacional do Airflow.',
     },
     {
-      name: 'Dagster', color: '#f97316',
+      name: 'Dagster', color: '#4a9eed',
       modelo: 'Centrado em Assets de dados em vez de tasks. Define o que os dados são (um Asset = tabela, ficheiro, modelo ML) e como produzi-los (op). O scheduler determina automaticamente a ordem de execução baseado nas dependências entre Assets. Paradigma declarativo vs. imperativo do Airflow.',
       pontos_fortes: ['Asset-centric: observabilidade nativa dos dados produzidos', 'Type system para inputs/outputs de cada op', 'Dagster Cloud com lineage visual dos Assets', 'Testing nativo — cada op é testável unitariamente', 'Software-defined assets resolvem o problema de observabilidade de dados'],
       limitacoes: ['Curva de aprendizagem diferente — pensar em Assets, não em tasks', 'Ecossistema mais pequeno', 'Migrar pipelines Airflow existentes requer reescrita'],
       quando: 'Quando observabilidade de dados é prioridade. Equipas que querem testar pipelines facilmente. Novos projectos sem dívida técnica de Airflow.',
     },
     {
-      name: 'dbt (data build tool)', color: '#f97316',
+      name: 'dbt (data build tool)', color: '#4a9eed',
       modelo: 'Ferramenta de transformação SQL com versionamento Git. Não é um orquestrador completo — foca exclusivamente em transformações SQL dentro de um warehouse/lakehouse. Define modelos SQL, testa qualidade, e gera documentação automática. Frequentemente orquestrado pelo Airflow/Prefect.',
       pontos_fortes: ['SQL como linguagem de transformação — sem PySpark necessário para analistas', 'Tests nativos: not_null, unique, accepted_values, relationships', 'Documentação automática com lineage visual', 'Incremental models — processar apenas dados novos eficientemente', 'Ecossistema enorme: 100+ packages no dbt Hub'],
       limitacoes: ['Apenas transformações SQL — não pode fazer ingestão ou ML training', 'Requer SQL warehouse (Databricks SQL, Snowflake, BigQuery, Redshift)', 'Não substitui Airflow — precisa de ser orquestrado'],
@@ -201,11 +201,11 @@ const SchedulerExplorer = () => {
         <p style={{ fontSize: '0.88rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>{t.modelo}</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.6rem' }}>
           <div>
-            <span style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pontos fortes</span>
+            <span style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pontos fortes</span>
             {t.pontos_fortes.map(p => <div key={p} style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>✓ {p}</div>)}
           </div>
           <div>
-            <span style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Limitações</span>
+            <span style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Limitações</span>
             {t.limitacoes.map(l => <div key={l} style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>✗ {l}</div>)}
           </div>
         </div>
@@ -224,7 +224,6 @@ export default function BDA4() {
         <Link to="/bigdata-analytics" style={S.back}><ArrowLeft size={16} /> Voltar a Big Data Analytics</Link>
         <div style={S.tag}>MÓDULO 04</div>
         <h1 style={S.h1}>Orquestração de Pipelines com Airflow</h1>
-        <p style={S.lead}>Em produção, nenhum pipeline corre manualmente. Apache Airflow, Prefect e Dagster automatizam a execução, tratam falhas com retries, e garantem que os dados chegam ao destino certo na hora certa. Este módulo cobre os conceitos fundamentais de orquestração e como construir pipelines robustos e observáveis.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O Problema da Orquestração</h2>
@@ -233,9 +232,9 @@ export default function BDA4() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              { n: 'Sem Orquestração', c: '#f97316', items: ['Cron jobs isolados sem dependências', 'Falhas silenciosas sem alertas', 'Sem histórico de execuções', 'Debugging manual via SSH', 'Impossível fazer backfill', 'Scripts duplicados por falta de reutilização'] },
-              { n: 'Com Orquestração', c: '#f97316', items: ['Dependências explícitas entre tasks', 'Retries automáticos com alertas email/Slack', 'Histórico completo de todas as execuções', 'Logs centralizados acessíveis via UI', 'Backfill com um clique para datas passadas', 'Operators reutilizáveis entre pipelines'] },
-              { n: 'Maturidade em produção', c: '#f97316', items: ['SLAs configuráveis por pipeline', 'Branching condicional por resultado de task', 'Pools para limitar concorrência em recursos', 'XCom para passar dados entre tasks', 'Variáveis e Connections centralizadas', 'RBAC para controlo de acessos por equipa'] },
+              { n: 'Sem Orquestração', c: '#4a9eed', items: ['Cron jobs isolados sem dependências', 'Falhas silenciosas sem alertas', 'Sem histórico de execuções', 'Debugging manual via SSH', 'Impossível fazer backfill', 'Scripts duplicados por falta de reutilização'] },
+              { n: 'Com Orquestração', c: '#4a9eed', items: ['Dependências explícitas entre tasks', 'Retries automáticos com alertas email/Slack', 'Histórico completo de todas as execuções', 'Logs centralizados acessíveis via UI', 'Backfill com um clique para datas passadas', 'Operators reutilizáveis entre pipelines'] },
+              { n: 'Maturidade em produção', c: '#4a9eed', items: ['SLAs configuráveis por pipeline', 'Branching condicional por resultado de task', 'Pools para limitar concorrência em recursos', 'XCom para passar dados entre tasks', 'Variáveis e Connections centralizadas', 'RBAC para controlo de acessos por equipa'] },
             ].map(({ n, c, items }) => (
               <div key={n} style={{ background: `${c}08`, border: `1px solid ${c}25`, borderRadius: 8, padding: '0.9rem' }}>
                 <div style={{ fontWeight: 700, color: c, marginBottom: '0.5rem', fontSize: '0.88rem' }}>{n}</div>
@@ -272,7 +271,7 @@ export default function BDA4() {
                   ['Worker', 'Processo que executa efectivamente o código de uma task', 'Recebe tasks da queue, executa o operador, reporta resultado (success/failed) à metadata DB, e envia logs para o log store configurado (S3, GCS, etc.)'],
                 ].map(([c, r, d]) => (
                   <tr key={c}>
-                    <td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{c}</td>
+                    <td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{c}</td>
                     <td style={S.td}>{r}</td>
                     <td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{d}</td>
                   </tr>
@@ -287,15 +286,15 @@ export default function BDA4() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
             <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Estados de uma Task Instance</div>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Estados de uma Task Instance</div>
               {[
                 { s: 'none', c: '#94a3b8', d: 'Task criada mas ainda não qualificada para execução' },
-                { s: 'scheduled', c: '#f97316', d: 'Dependências cumpridas, aguarda worker disponível' },
-                { s: 'queued', c: '#f97316', d: 'No executor, aguarda worker livre' },
-                { s: 'running', c: '#f97316', d: 'A ser executada num worker' },
-                { s: 'success', c: '#f97316', d: 'Terminou com exit code 0' },
-                { s: 'failed', c: '#f97316', d: 'Terminou com erro — trigger retries se configurados' },
-                { s: 'up_for_retry', c: '#f97316', d: 'Aguarda o próximo retry (com backoff)' },
+                { s: 'scheduled', c: '#4a9eed', d: 'Dependências cumpridas, aguarda worker disponível' },
+                { s: 'queued', c: '#4a9eed', d: 'No executor, aguarda worker livre' },
+                { s: 'running', c: '#4a9eed', d: 'A ser executada num worker' },
+                { s: 'success', c: '#4a9eed', d: 'Terminou com exit code 0' },
+                { s: 'failed', c: '#4a9eed', d: 'Terminou com erro — trigger retries se configurados' },
+                { s: 'up_for_retry', c: '#4a9eed', d: 'Aguarda o próximo retry (com backoff)' },
                 { s: 'skipped', c: '#94a3b8', d: 'Ignorada via BranchOperator ou condicional' },
               ].map(({ s, c, d }) => (
                 <div key={s} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.3rem' }}>
@@ -305,7 +304,7 @@ export default function BDA4() {
               ))}
             </div>
             <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Parâmetros Essenciais de um DAG</div>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Parâmetros Essenciais de um DAG</div>
               {[
                 ['schedule_interval', '"@daily", "@hourly", "0 6 * * *" (cron), ou timedelta(hours=4)'],
                 ['start_date', 'Data de início do pipeline. Airflow faz catchup de runs passadas automaticamente se catchup=True'],
@@ -315,7 +314,7 @@ export default function BDA4() {
                 ['tags', 'Labels para filtrar DAGs na UI — essencial com dezenas de DAGs'],
               ].map(([p, d]) => (
                 <div key={p} style={{ marginBottom: '0.4rem' }}>
-                  <div style={{ fontSize: '0.78rem', color: '#f97316', fontWeight: 700 }}>{p}</div>
+                  <div style={{ fontSize: '0.78rem', color: '#4a9eed', fontWeight: 700 }}>{p}</div>
                   <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>{d}</div>
                 </div>
               ))}
@@ -361,7 +360,7 @@ export default function BDA4() {
                   ['Pools', 'Limitar o número de tasks a correr em paralelo para um recurso partilhado', 'Pool criado na UI ou CLI com N slots. Tasks atribuídas a pool aguardam slot disponível.', 'Limitar a 3 jobs Spark simultâneos para não sobrecarregar o cluster'],
                 ].map(([p, d, impl, uc]) => (
                   <tr key={p}>
-                    <td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{p}</td>
+                    <td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{p}</td>
                     <td style={S.td}>{d}</td>
                     <td style={{ ...S.td, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{impl}</td>
                     <td style={{ ...S.td, fontSize: '0.82rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>{uc}</td>
@@ -388,14 +387,14 @@ export default function BDA4() {
 
           <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', fontSize: '0.87rem', lineHeight: 2.1, marginBottom: '1.5rem' }}>
             <div style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Stack típico de uma empresa de dados em 2025:</div>
-            <div>1. <span style={{ color: '#f97316', fontWeight: 600 }}>Airbyte / Fivetran</span> — ingestão de fontes externas (SaaS APIs, bases de dados) para o Data Lake (S3/GCS)</div>
-            <div>2. <span style={{ color: '#f97316', fontWeight: 600 }}>Apache Kafka</span> — streaming de eventos em tempo real (clickstream, transacções)</div>
-            <div>3. <span style={{ color: '#f97316', fontWeight: 600 }}>Apache Spark (via Databricks/EMR)</span> — transformações complexas, ML, processamento em larga escala</div>
-            <div>4. <span style={{ color: '#f97316', fontWeight: 600 }}>dbt</span> — transformações SQL modeladas, testadas e documentadas sobre o warehouse</div>
-            <div>5. <span style={{ color: '#f97316', fontWeight: 600 }}>Delta Lake / Iceberg</span> — camada de storage com ACID, time travel, e schema evolution</div>
-            <div>6. <span style={{ color: '#f97316', fontWeight: 600 }}>Apache Airflow</span> — orquestra todos os passos anteriores, garante dependências e retries</div>
-            <div>7. <span style={{ color: '#f97316', fontWeight: 600 }}>Great Expectations / dbt tests</span> — validação da qualidade dos dados em cada etapa</div>
-            <div>8. <span style={{ color: '#f97316', fontWeight: 600 }}>MLflow</span> — rastreabilidade de modelos ML dentro do pipeline</div>
+            <div>1. <span style={{ color: '#4a9eed', fontWeight: 600 }}>Airbyte / Fivetran</span> — ingestão de fontes externas (SaaS APIs, bases de dados) para o Data Lake (S3/GCS)</div>
+            <div>2. <span style={{ color: '#4a9eed', fontWeight: 600 }}>Apache Kafka</span> — streaming de eventos em tempo real (clickstream, transacções)</div>
+            <div>3. <span style={{ color: '#4a9eed', fontWeight: 600 }}>Apache Spark (via Databricks/EMR)</span> — transformações complexas, ML, processamento em larga escala</div>
+            <div>4. <span style={{ color: '#4a9eed', fontWeight: 600 }}>dbt</span> — transformações SQL modeladas, testadas e documentadas sobre o warehouse</div>
+            <div>5. <span style={{ color: '#4a9eed', fontWeight: 600 }}>Delta Lake / Iceberg</span> — camada de storage com ACID, time travel, e schema evolution</div>
+            <div>6. <span style={{ color: '#4a9eed', fontWeight: 600 }}>Apache Airflow</span> — orquestra todos os passos anteriores, garante dependências e retries</div>
+            <div>7. <span style={{ color: '#4a9eed', fontWeight: 600 }}>Great Expectations / dbt tests</span> — validação da qualidade dos dados em cada etapa</div>
+            <div>8. <span style={{ color: '#4a9eed', fontWeight: 600 }}>MLflow</span> — rastreabilidade de modelos ML dentro do pipeline</div>
           </div>
 
           <h3 style={S.h3}>Best Practices de Airflow em Produção</h3>
@@ -415,7 +414,7 @@ export default function BDA4() {
                   ['Testar DAGs localmente', 'airflow tasks test dag_id task_id execution_date permite testar uma task individualmente sem submeter ao scheduler. Essencial antes de deploy em produção.'],
                 ].map(([p, r]) => (
                   <tr key={p}>
-                    <td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{p}</td>
+                    <td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{p}</td>
                     <td style={S.td}>{r}</td>
                   </tr>
                 ))}
@@ -424,20 +423,6 @@ export default function BDA4() {
           </div>
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>DAG (Directed Acyclic Graph) = grafo de tasks com dependências explícitas e sem ciclos — garante ordem de execução e que o pipeline sempre termina</li>
-              <li>Scheduler, Webserver, Metadata DB, Executor e Workers são os 5 componentes — a Metadata DB é o coração do sistema</li>
-              <li>Operadores certos poupam código: SparkSubmitOperator para Spark, BashOperator para scripts, Sensors para aguardar condições, KubernetesPodOperator para isolamento total</li>
-              <li>Backfill é o super-poder do Airflow — re-executar pipelines para datas passadas com um comando, usando o mesmo código de produção</li>
-              <li>Pipelines idempotentes + execution_date em vez de datetime.now() = correctos em backfills e reruns</li>
-              <li>Stack moderno: Airflow orquestra tudo; dbt transforma SQL; Spark processa em escala; Kafka faz streaming; Delta Lake armazena com ACID</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

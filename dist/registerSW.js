@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/DS_-_AI_Cheat_Sheet/sw.js', { scope: '/DS_-_AI_Cheat_Sheet/' })})}

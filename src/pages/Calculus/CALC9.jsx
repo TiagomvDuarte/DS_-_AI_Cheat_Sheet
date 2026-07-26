@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,1050 +17,1116 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
 
-// SVG 1: 2D vector field
-function VectorFieldSVG() {
-  const W = 480, H = 260;
-  const cx = W / 2, cy = H / 2;
+const svgWrap = { margin: '1.5rem 0', borderRadius: 10, overflow: 'hidden', border: '1px solid var(--card-border)', background: 'var(--bg-secondary)' };
+const formula = { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '0.75rem 1.25rem', fontFamily: 'monospace', fontSize: '0.95rem', color: color, margin: '0.75rem 0', textAlign: 'center' };
+
+/* ─── SVG 1: Direction Field ─── */
+function DirectionFieldSVG() {
+  const W = 520, H = 280;
+  const xMin = -1, xMax = 3, yMin = -2, yMax = 3;
+  const toSx = x => ((x - xMin) / (xMax - xMin)) * (W - 60) + 30;
+  const toSy = y => H - 20 - ((y - yMin) / (yMax - yMin)) * (H - 40);
+
   const arrows = [];
-  for (let i = 0; i < 7; i++) {
-    for (let j = 0; j < 6; j++) {
-      const x = 40 + i * 65;
-      const y = 30 + j * 40;
-      const dx = (x - cx) * 0.12;
-      const dy = (y - cy) * 0.12;
-      const len = Math.sqrt(dx * dx + dy * dy) || 1;
-      const scale = Math.min(22, len);
-      const ux = (dx / len) * scale;
-      const uy = (dy / len) * scale;
-      const ex = x + ux;
-      const ey = y + uy;
-      const alpha = 0.3 + 0.7 * (scale / 22);
-      arrows.push({ x, y, ex, ey, alpha });
+  for (let xi = -0.5; xi <= 2.8; xi += 0.5) {
+    for (let yi = -1.5; yi <= 2.8; yi += 0.5) {
+      const dy = yi - xi;
+      const len = Math.sqrt(1 + dy * dy);
+      const dx2 = 14 / len;
+      const dy2 = (dy * 14) / len;
+      const sx = toSx(xi), sy = toSy(yi);
+      arrows.push({ x1: sx - dx2 / 2, y1: sy + dy2 / 2, x2: sx + dx2 / 2, y2: sy - dy2 / 2 });
     }
   }
+
+  // Solution curves for dy/dt = y - t with different C values — each gets its
+  // own color and a direct "C=" label so the five curves are distinguishable
+  // instead of all rendering as the same blue line.
+  const curveColors = ['#7dd3fc', '#38bdf8', '#4a9eed', '#818cf8', '#c4b5fd'];
+  const curves = [];
+  for (const C of [-2, -1, 0, 1, 2]) {
+    const pts = [];
+    // exact solution: y = C*e^t + t + 1
+    for (let i = 0; i <= 60; i++) {
+      const t = xMin + (i / 60) * (xMax - xMin);
+      const yv = C * Math.exp(t) + t + 1;
+      pts.push([toSx(t), toSy(yv)]);
+    }
+    const d = pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+    const yEnd = C * Math.exp(xMax) + xMax + 1;
+    curves.push({ d, C, labelPx: toSy(Math.max(yMin + 0.15, Math.min(yMax - 0.15, yEnd))) });
+  }
+  // Several curves clamp to the same top/bottom edge, so their labels would
+  // land on top of each other — enforce a minimum vertical gap between them.
+  curves.sort((a, b) => a.labelPx - b.labelPx);
+  for (let i = 1; i < curves.length; i++) {
+    if (curves[i].labelPx - curves[i - 1].labelPx < 16) {
+      curves[i].labelPx = curves[i - 1].labelPx + 16;
+    }
+  }
+
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {arrows.map((a, i) => {
-        const headLen = 5;
-        const angle = Math.atan2(a.ey - a.y, a.ex - a.x);
-        const h1x = a.ex - headLen * Math.cos(angle - 0.4);
-        const h1y = a.ey - headLen * Math.sin(angle - 0.4);
-        const h2x = a.ex - headLen * Math.cos(angle + 0.4);
-        const h2y = a.ey - headLen * Math.sin(angle + 0.4);
-        return (
-          <g key={i} opacity={a.alpha}>
-            <line x1={a.x} y1={a.y} x2={a.ex} y2={a.ey} stroke={color} strokeWidth={1.5} />
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${a.ex.toFixed(1)},${a.ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={1.5} />
-          </g>
-        );
-      })}
-      <circle cx={cx} cy={cy} r={5} fill={color} />
-      <text x={cx} y={cy - 12} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>origem</text>
-      <text x={W / 2} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">Campo radial F(x,y) = (x, y)</text>
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      {/* grid */}
+      {[-1,0,1,2,3].map(v => (
+        <line key={'gx'+v} x1={toSx(v)} y1={20} x2={toSx(v)} y2={H-20} stroke="var(--text-secondary)" strokeWidth={0.5} />
+      ))}
+      {[-2,-1,0,1,2,3].map(v => (
+        <line key={'gy'+v} x1={30} y1={toSy(v)} x2={W-30} y2={toSy(v)} stroke="var(--text-secondary)" strokeWidth={0.5} />
+      ))}
+      {/* axes */}
+      <line x1={30} y1={toSy(0)} x2={W-30} y2={toSy(0)} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={toSx(0)} y1={20} x2={toSx(0)} y2={H-20} stroke="var(--text-secondary)" strokeWidth={1} />
+      {/* direction arrows */}
+      {arrows.map((a, i) => (
+        <line key={i} x1={a.x1} y1={a.y1} x2={a.x2} y2={a.y2} stroke="#94a3b8" strokeWidth={1} />
+      ))}
+      {/* solution curves */}
+      {curves.map((c, i) => (
+        <path key={i} d={c.d} fill="none" stroke={curveColors[[-2, -1, 0, 1, 2].indexOf(c.C)]} strokeWidth={2} clipPath="url(#dfclip)" />
+      ))}
+      {curves.map((c, i) => (
+        <text key={'lbl' + i} x={W - 34} y={c.labelPx + 4} fill={curveColors[[-2, -1, 0, 1, 2].indexOf(c.C)]} fontSize={11} fontWeight={700} textAnchor="start">C={c.C}</text>
+      ))}
+      <defs>
+        <clipPath id="dfclip">
+          <rect x={30} y={20} width={W - 60} height={H - 40} />
+        </clipPath>
+      </defs>
+      <text x={W - 35} y={toSy(0) - 6} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">t</text>
+      <text x={toSx(0) + 8} y={28} fill="var(--text-secondary)" fontSize={11}>y</text>
+      <text x={W / 2} y={H - 2} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">Campo direcional: dy/dt = y - t</text>
     </svg>
   );
 }
 
-// SVG 2: Nabla operator — three operations illustrated
-function NablaSVG() {
-  const W = 480, H = 140;
+/* ─── SVG 2: Logistic Growth S-curve ─── */
+function LogisticSVG() {
+  const W = 520, H = 270;
+  const r = 1.2, K = 1.0;
+  const toSx = t => 30 + (t / 8) * (W - 60);
+  const toSy = y => H - 20 - (y / 1.2) * (H - 40);
+
+  // logistic: y(t) = K / (1 + ((K - y0)/y0) * exp(-r*t))
+  const makeCurve = (y0) => {
+    const pts = [];
+    for (let i = 0; i <= 80; i++) {
+      const t = (i / 80) * 8;
+      const yv = K / (1 + ((K - y0) / y0) * Math.exp(-r * t));
+      pts.push([toSx(t), toSy(yv)]);
+    }
+    return pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+  };
+
+  const expCurve = [];
+  for (let i = 0; i <= 80; i++) {
+    const t = (i / 80) * 8;
+    const yv = 0.05 * Math.exp(r * t);
+    if (yv <= 1.2) expCurve.push([toSx(t), toSy(yv)]);
+  }
+  const expD = expCurve.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* Gradient */}
-      <rect x={20} y={20} width={130} height={50} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
-      <text x={85} y={42} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Gradiente</text>
-      <text x={85} y={60} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">escalar → vector</text>
-      {/* Divergence */}
-      <rect x={175} y={20} width={130} height={50} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
-      <text x={240} y={42} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Divergência</text>
-      <text x={240} y={60} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">vector → escalar</text>
-      {/* Curl */}
-      <rect x={330} y={20} width={130} height={50} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
-      <text x={395} y={42} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Rotacional</text>
-      <text x={395} y={60} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">vector → vector</text>
-      {/* Laplacian */}
-      <rect x={175} y={82} width={130} height={44} rx={8} fill="rgba(249,115,22,0.07)" stroke={color} strokeWidth={1} strokeDasharray="4 2" />
-      <text x={240} y={101} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Laplaciano</text>
-      <text x={240} y={117} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">∇²f = ∇·(∇f)</text>
+    <svg width="100%" viewBox={`0 0 ${W} ${H }`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      {/* carrying capacity line */}
+      <line x1={30} y1={toSy(K)} x2={W - 30} y2={toSy(K)} stroke="#64748b" strokeWidth={1} strokeDasharray="5,3" />
+      <text x={W - 35} y={toSy(K) - 5} fill="#64748b" fontSize={10} textAnchor="end">K (cap.)</text>
+      {/* axes */}
+      <line x1={30} y1={H - 20} x2={W - 30} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={30} y1={20} x2={30} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      {/* exponential */}
+      <path d={expD} fill="none" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4,3" />
+      {/* logistic curves — distinct colors + direct labels so the four are distinguishable */}
+      {[0.02, 0.05, 0.15, 0.4].map((y0, i) => {
+        const logCurveColors = ['#7dd3fc', '#38bdf8', '#4a9eed', '#818cf8'];
+        return <path key={i} d={makeCurve(y0)} fill="none" stroke={logCurveColors[i]} strokeWidth={2} clipPath="url(#logclip)" />;
+      })}
+      {(() => {
+        const logCurveColors = ['#7dd3fc', '#38bdf8', '#4a9eed', '#818cf8'];
+        // The low-y0 curves start close together, so their left-edge labels
+        // must be spread apart manually to avoid overlapping.
+        const labels = [0.02, 0.05, 0.15, 0.4].map((y0, i) => ({ y0, color: logCurveColors[i], px: toSy(y0) }))
+          .sort((a, b) => a.px - b.px);
+        for (let i = 1; i < labels.length; i++) {
+          if (labels[i].px - labels[i - 1].px < 14) labels[i].px = labels[i - 1].px + 14;
+        }
+        return labels.map((l, i) => (
+          <text key={'lbl' + i} x={38} y={l.px - 4} fill={l.color} fontSize={10} fontWeight={700}>y₀={l.y0}</text>
+        ));
+      })()}
+      <defs>
+        <clipPath id="logclip">
+          <rect x={30} y={20} width={W - 60} height={H - 40} />
+        </clipPath>
+      </defs>
+      <text x={W / 2} y={H - 2} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">Crescimento logístico: dy/dt = ry(1 - y/K)</text>
+    </svg>
+  );
+}
+
+/* ─── SVG 3: Family of Solution Curves (linear 1st order) ─── */
+function LinearODESVG() {
+  const W = 520, H = 260;
+  const toSx = x => 30 + ((x + 1) / 4) * (W - 60);
+  const toSy = y => H - 20 - ((y + 2) / 6) * (H - 40);
+
+  // y' + y = x => integrating factor e^x => y = x - 1 + Ce^(-x)
+  const makeCurve = (C) => {
+    const pts = [];
+    for (let i = 0; i <= 60; i++) {
+      const x = -1 + (i / 60) * 4;
+      const yv = x - 1 + C * Math.exp(-x);
+      pts.push([toSx(x), toSy(yv)]);
+    }
+    return pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+  };
+
+  const Cs = [-3, -1.5, 0, 1.5, 3];
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      {/* axes */}
+      <line x1={30} y1={toSy(0)} x2={W - 30} y2={toSy(0)} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={toSx(0)} y1={20} x2={toSx(0)} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      <defs>
+        <clipPath id="linclip">
+          <rect x={30} y={20} width={W - 60} height={H - 40} />
+        </clipPath>
+      </defs>
+      {Cs.map((C, i) => {
+        const linCurveColors = ['#7dd3fc', '#38bdf8', '#4a9eed', '#818cf8', '#c4b5fd'];
+        return <path key={i} d={makeCurve(C)} fill="none" stroke={linCurveColors[i]} strokeWidth={2} clipPath="url(#linclip)" />;
+      })}
+      {(() => {
+        const linCurveColors = ['#7dd3fc', '#38bdf8', '#4a9eed', '#818cf8', '#c4b5fd'];
+        const xEnd = 3;
+        // The curves converge toward the same asymptote (y = x-1) as x grows,
+        // so their right-edge label positions must be spread apart manually.
+        const labels = Cs.map((C, i) => {
+          const yEnd = xEnd - 1 + C * Math.exp(-xEnd);
+          return { C, color: linCurveColors[i], px: toSy(Math.max(-1.9, Math.min(2.9, yEnd))) };
+        }).sort((a, b) => a.px - b.px);
+        for (let i = 1; i < labels.length; i++) {
+          if (labels[i].px - labels[i - 1].px < 14) labels[i].px = labels[i - 1].px + 14;
+        }
+        return labels.map((l, i) => (
+          <text key={'lbl' + i} x={toSx(xEnd) - 4} y={l.px - 6} fill={l.color} fontSize={10} fontWeight={700} textAnchor="end">C={l.C}</text>
+        ));
+      })()}
+      <text x={W / 2} y={H - 2} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">Família de soluções: y = x - 1 + Ce^(-x)</text>
+    </svg>
+  );
+}
+
+/* ─── SVG 4: Phase Portraits ─── */
+function PhasePortraitSVG() {
+  const W = 520, H = 280;
+  const CX = W / 2, CY = H / 2;
+  const R = 90;
+
+  // Stable spiral, saddle point, unstable node — three panels
+  const panels = [
+    { cx: 90, label: 'Espiral estável', color: '#4a9eed' },
+    { cx: 260, label: 'Ponto de sela', color: '#7dd3fc' },
+    { cx: 430, label: 'Nó instável', color: '#bae6fd' },
+  ];
+
+  // Stable spiral trajectories
+  const spiralPts = (cx, cy, sign) => {
+    const pts = [];
+    for (let i = 0; i <= 200; i++) {
+      const t = (i / 200) * 4 * Math.PI;
+      const r = 70 * Math.exp(-sign * 0.3 * t);
+      pts.push([cx + r * Math.cos(t), cy + r * Math.sin(t)]);
+    }
+    return pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+  };
+
+  // Saddle: hyperbolic paths
+  const saddlePts = (cx, cy, k) => {
+    const pts = [];
+    for (let i = 0; i <= 60; i++) {
+      const t = -2 + (i / 60) * 4;
+      pts.push([cx + k * t * 30, cy + (k === 0 ? 1 : 1 / (k * t + 0.001)) * 20]);
+    }
+    return pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+  };
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      <defs>
+        <clipPath id="p1clip"><circle cx={90} cy={130} r={82} /></clipPath>
+        <clipPath id="p2clip"><circle cx={260} cy={130} r={82} /></clipPath>
+        <clipPath id="p3clip"><circle cx={430} cy={130} r={82} /></clipPath>
+      </defs>
+
+      {/* Panel borders */}
+      {panels.map((p, i) => (
+        <circle key={i} cx={p.cx} cy={130} r={82} fill="none" stroke="var(--text-secondary)" strokeWidth={1} />
+      ))}
+
+      {/* Stable spiral */}
+      {[-1, 1].map((s, i) => (
+        <path key={i} d={spiralPts(90, 130, 1)} fill="none" stroke="#4a9eed" strokeWidth={1.5} opacity={0.7 + i * 0.1} clipPath="url(#p1clip)" transform={`rotate(${i * 90}, 90, 130)`} />
+      ))}
+      <circle cx={90} cy={130} r={4} fill="#4a9eed" />
+
+      {/* Saddle */}
+      {[[-1, -0.5, 0, 0.5, 1]].flat().map((k, i) => {
+        const pts = [];
+        for (let j = 0; j <= 60; j++) {
+          const t = -1.5 + (j / 60) * 3;
+          const x = 260 + t * 40;
+          const y = 130 + (k !== 0 ? k * 25 * Math.cosh(t * 0.8) : 0);
+          pts.push([x, y]);
+        }
+        const d = pts.map((p, ii) => (ii === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+        return <path key={'sh'+i} d={d} fill="none" stroke="#7dd3fc" strokeWidth={1.2} opacity={0.6} clipPath="url(#p2clip)" />;
+      })}
+      {[-1,-0.5,0,0.5,1].map((k, i) => {
+        const pts = [];
+        for (let j = 0; j <= 60; j++) {
+          const t = -1.5 + (j / 60) * 3;
+          const x = 260 + k * 25 * Math.cosh(t * 0.8);
+          const y = 130 + t * 40;
+          pts.push([x, y]);
+        }
+        const d = pts.map((p, ii) => (ii === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+        return <path key={'sv'+i} d={d} fill="none" stroke="#7dd3fc" strokeWidth={1.2} opacity={0.6} clipPath="url(#p2clip)" />;
+      })}
+      <circle cx={260} cy={130} r={4} fill="#7dd3fc" />
+
+      {/* Unstable node */}
+      {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((angle, i) => {
+        const rad = (angle * Math.PI) / 180;
+        const pts = [];
+        for (let j = 0; j <= 40; j++) {
+          const t = j / 40;
+          const r = t * 75;
+          pts.push([430 + r * Math.cos(rad), 130 + r * Math.sin(rad)]);
+        }
+        const d = pts.map((p, ii) => (ii === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+        return <path key={i} d={d} fill="none" stroke="#bae6fd" strokeWidth={1.2} opacity={0.65} clipPath="url(#p3clip)" />;
+      })}
+      <circle cx={430} cy={130} r={4} fill="#bae6fd" />
+
+      {/* Labels */}
+      {panels.map((p, i) => (
+        <text key={i} x={p.cx} y={H - 8} fill={p.color} fontSize={10} textAnchor="middle" fontWeight={600}>{p.label}</text>
+      ))}
+    </svg>
+  );
+}
+
+/* ─── SVG 5: Damped Oscillator ─── */
+function DampedOscillatorSVG() {
+  const W = 520, H = 260;
+  const toSx = t => 30 + (t / 12) * (W - 60);
+  const toSy = y => H / 2 - y * 90;
+
+  const overdamped = [];
+  const critical = [];
+  const underdamped = [];
+
+  for (let i = 0; i <= 120; i++) {
+    const t = (i / 120) * 12;
+    // overdamped: y = e^(-0.5t)(cosh(0.3t))
+    overdamped.push([toSx(t), toSy(Math.exp(-1.5 * t) * (1 + 0.5 * t))]);
+    // critically damped: y = (1+t)e^(-t)
+    critical.push([toSx(t), toSy((1 + t) * Math.exp(-t))]);
+    // underdamped: y = e^(-0.3t)cos(2t)
+    underdamped.push([toSx(t), toSy(Math.exp(-0.3 * t) * Math.cos(2 * t))]);
+  }
+
+  const toD = pts => pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      <line x1={30} y1={H / 2} x2={W - 30} y2={H / 2} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={30} y1={20} x2={30} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      <defs>
+        <clipPath id="dampclip"><rect x={30} y={20} width={W - 60} height={H - 40} /></clipPath>
+      </defs>
+      <path d={toD(overdamped)} fill="none" stroke="#4a9eed" strokeWidth={2} clipPath="url(#dampclip)" />
+      <path d={toD(critical)} fill="none" stroke="#7dd3fc" strokeWidth={2} clipPath="url(#dampclip)" />
+      <path d={toD(underdamped)} fill="none" stroke="#bae6fd" strokeWidth={2} clipPath="url(#dampclip)" />
+      {/* legend */}
+      <rect x={W - 160} y={30} width={130} height={70} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" />
+      <line x1={W - 150} y1={50} x2={W - 130} y2={50} stroke="#4a9eed" strokeWidth={2} />
+      <text x={W - 125} y={54} fill="var(--text-primary)" fontSize={10}>Superam.</text>
+      <line x1={W - 150} y1={68} x2={W - 130} y2={68} stroke="#7dd3fc" strokeWidth={2} />
+      <text x={W - 125} y={72} fill="var(--text-primary)" fontSize={10}>Crít. am.</text>
+      <line x1={W - 150} y1={86} x2={W - 130} y2={86} stroke="#bae6fd" strokeWidth={2} />
+      <text x={W - 125} y={90} fill="var(--text-primary)" fontSize={10}>Subeam.</text>
+      <text x={W / 2} y={H - 2} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">Oscilador amortecido: ay'' + by' + cy = 0</text>
+    </svg>
+  );
+}
+
+/* ─── SVG 6: Euler vs Exact ─── */
+function EulerVsExactSVG() {
+  const W = 520, H = 260;
+  const toSx = t => 30 + (t / 3) * (W - 60);
+  const toSy = y => H - 20 - ((y - 0.5) / 10) * (H - 40);
+
+  // dy/dt = y, y(0)=1 => exact: y=e^t
+  // Euler with h=0.5
+  const exact = [];
+  for (let i = 0; i <= 60; i++) {
+    const t = (i / 60) * 3;
+    exact.push([toSx(t), toSy(Math.exp(t))]);
+  }
+
+  const eulerH05 = [[0, 1]];
+  let y = 1;
+  for (let i = 0; i < 6; i++) {
+    y = y + 0.5 * y;
+    eulerH05.push([(i + 1) * 0.5, y]);
+  }
+
+  const eulerH025 = [[0, 1]];
+  let y2 = 1;
+  for (let i = 0; i < 12; i++) {
+    y2 = y2 + 0.25 * y2;
+    eulerH025.push([(i + 1) * 0.25, y2]);
+  }
+
+  const toD = pts => pts.map((p, i) => (i === 0 ? `M${toSx(p[0]).toFixed(1)},${toSy(p[1]).toFixed(1)}` : `L${toSx(p[0]).toFixed(1)},${toSy(p[1]).toFixed(1)}`)).join(' ');
+  const exactD = exact.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      <line x1={30} y1={H - 20} x2={W - 30} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={30} y1={20} x2={30} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      <defs>
+        <clipPath id="eulerclip"><rect x={30} y={20} width={W - 60} height={H - 40} /></clipPath>
+      </defs>
+      <path d={exactD} fill="none" stroke="#4a9eed" strokeWidth={2.5} clipPath="url(#eulerclip)" />
+      <path d={toD(eulerH05)} fill="none" stroke="#bae6fd" strokeWidth={2} strokeDasharray="5,3" clipPath="url(#eulerclip)" />
+      <path d={toD(eulerH025)} fill="none" stroke="#7dd3fc" strokeWidth={1.5} strokeDasharray="3,2" clipPath="url(#eulerclip)" />
+      {/* dots */}
+      {eulerH05.map((p, i) => (
+        <circle key={i} cx={toSx(p[0])} cy={toSy(p[1])} r={3} fill="#bae6fd" />
+      ))}
+      {/* legend */}
+      <rect x={35} y={25} width={145} height={65} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" />
+      <line x1={45} y1={43} x2={65} y2={43} stroke="#4a9eed" strokeWidth={2} />
+      <text x={70} y={47} fill="var(--text-primary)" fontSize={10}>Exata: y = e^t</text>
+      <line x1={45} y1={61} x2={65} y2={61} stroke="#bae6fd" strokeWidth={2} strokeDasharray="5,3" />
+      <text x={70} y={65} fill="var(--text-primary)" fontSize={10}>Euler h = 0.5</text>
+      <line x1={45} y1={79} x2={65} y2={79} stroke="#7dd3fc" strokeWidth={2} strokeDasharray="3,2" />
+      <text x={70} y={83} fill="var(--text-primary)" fontSize={10}>Euler h = 0.25</text>
+      <text x={W / 2} y={H - 2} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">Acumulação de erro no método de Euler</text>
+    </svg>
+  );
+}
+
+/* ─── SVG 7: Bifurcation Diagram ─── */
+function BifurcationSVG() {
+  const W = 520, H = 260;
+  const toSx = r => 30 + ((r + 0.5) / 3) * (W - 60);
+  const toSy = y => H / 2 - y * 80;
+
+  // Normal form: dy/dt = ry - y^3
+  // Equilibria: y*=0 (always), y* = ±sqrt(r) for r&gt;0
+  const stableUp = [], stableDown = [], unstable = [], zeroStable = [], zeroUnstable = [];
+
+  for (let i = 0; i <= 80; i++) {
+    const r = -0.5 + (i / 80) * 3;
+    if (r >= 0) {
+      stableUp.push([toSx(r), toSy(Math.sqrt(r))]);
+      stableDown.push([toSx(r), toSy(-Math.sqrt(r))]);
+      zeroUnstable.push([toSx(r), toSy(0)]);
+    } else {
+      zeroStable.push([toSx(r), toSy(0)]);
+    }
+  }
+
+  const toD = pts => pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      <line x1={30} y1={H / 2} x2={W - 30} y2={H / 2} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={toSx(0)} y1={20} x2={toSx(0)} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="4,2" />
+      <text x={toSx(0) + 5} y={28} fill="var(--text-secondary)" fontSize={10}>r = 0</text>
+      <path d={toD(stableUp)} fill="none" stroke={color} strokeWidth={2.5} />
+      <path d={toD(stableDown)} fill="none" stroke={color} strokeWidth={2.5} />
+      <path d={toD(zeroStable)} fill="none" stroke="#4a9eed" strokeWidth={2.5} />
+      <path d={toD(zeroUnstable)} fill="none" stroke="#64748b" strokeWidth={2} strokeDasharray="5,3" />
+      <text x={W - 35} y={H / 2 - 8} fill="var(--text-secondary)" fontSize={11} textAnchor="end">r</text>
+      <text x={toSx(0) + 8} y={30} fill="var(--text-secondary)" fontSize={11}>y*</text>
+      <text x={W / 2} y={H - 2} fill="var(--text-secondary)" fontSize={11} textAnchor="middle">Bifurcação de forquilha: dy/dt = ry - y³</text>
+    </svg>
+  );
+}
+
+/* ─── SVG 8: ResNet vs Euler ─── */
+function ResNetEulerSVG() {
+  const W = 520, H = 200;
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+
+      {/* Left: ResNet block */}
+      <text x={130} y={22} textAnchor="middle" fill="var(--text-secondary)" fontSize={11} fontWeight={600}>Bloco ResNet</text>
+      {/* boxes */}
+      {[50, 100, 150].map((y, i) => (
+        <rect key={i} x={70} y={y} width={120} height={30} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
+      ))}
+      <text x={130} y={70} textAnchor="middle" dominantBaseline="middle" fill="var(--text-primary)" fontSize={10}>h(t)</text>
+      <text x={130} y={120} textAnchor="middle" dominantBaseline="middle" fill="var(--text-primary)" fontSize={10}>F(h(t), θ)</text>
+      <text x={130} y={170} textAnchor="middle" dominantBaseline="middle" fill="var(--text-primary)" fontSize={10}>h(t+1) = h(t) + F</text>
       {/* arrows */}
-      <line x1={150} y1={45} x2={175} y2={45} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3 2" />
-      <line x1={305} y1={45} x2={330} y2={45} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3 2" />
-      <line x1={240} y1={70} x2={240} y2={82} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3 2" />
-    </svg>
-  );
-}
+      <line x1={130} y1={80} x2={130} y2={100} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#arr)" />
+      <line x1={130} y1={130} x2={130} y2={150} stroke={color} strokeWidth={1.5} markerEnd="url(#arrBlue)" />
+      {/* skip connection */}
+      <path d="M75,65 Q40,120 75,165" fill="none" stroke="#4a9eed" strokeWidth={1.5} strokeDasharray="4,2" markerEnd="url(#arrBlue)" />
 
-// SVG 3: Contour map with gradient vectors
-function GradientContourSVG() {
-  const W = 480, H = 280;
-  const cx = 240, cy = 140;
-  // Draw elliptical contours
-  const contours = [30, 60, 90, 120];
-  // Gradient vectors at several points on a contour
-  const gradVectors = [
-    { ox: 240, oy: 80, dx: 0, dy: -28 },
-    { ox: 310, oy: 110, dx: 22, dy: -18 },
-    { ox: 320, oy: 160, dx: 24, dy: 12 },
-    { ox: 240, oy: 200, dx: 0, dy: 28 },
-    { ox: 170, oy: 160, dx: -24, dy: 12 },
-    { ox: 160, oy: 110, dx: -22, dy: -18 },
-  ];
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {contours.map((r, i) => (
-        <ellipse key={i} cx={cx} cy={cy} rx={r * 1.3} ry={r} fill="none" stroke={color} strokeWidth={1} opacity={0.25 + i * 0.18} />
+      {/* Divider */}
+      <line x1={260} y1={30} x2={260} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+
+      {/* Right: Euler step */}
+      <text x={390} y={22} textAnchor="middle" fill="var(--text-secondary)" fontSize={11} fontWeight={600}>Passo de Euler</text>
+      {[50, 100, 150].map((y, i) => (
+        <rect key={i} x={330} y={y} width={120} height={30} rx={6} fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth={1.5} />
       ))}
-      {gradVectors.map((v, i) => {
-        const ex = v.ox + v.dx;
-        const ey = v.oy + v.dy;
-        const angle = Math.atan2(v.dy, v.dx);
-        const h1x = ex - 6 * Math.cos(angle - 0.4);
-        const h1y = ey - 6 * Math.sin(angle - 0.4);
-        const h2x = ex - 6 * Math.cos(angle + 0.4);
-        const h2y = ey - 6 * Math.sin(angle + 0.4);
-        return (
-          <g key={i}>
-            <line x1={v.ox} y1={v.oy} x2={ex} y2={ey} stroke="#f59e0b" strokeWidth={2} />
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke="#f59e0b" strokeWidth={2} />
-          </g>
-        );
-      })}
-      <circle cx={cx} cy={cy} r={5} fill={color} />
-      <text x={cx} y={cy + 16} textAnchor="middle" fontSize={11} fill={color}>mínimo</text>
-      {/* gradient descent path */}
-      <path d="M370,80 Q340,100 310,130 Q275,155 240,140" fill="none" stroke="#f97316" strokeWidth={2} strokeDasharray="5 3" />
-      <text x={375} y={76} fontSize={11} fill="#f97316" textAnchor="start">−∇f</text>
-      <text x={W / 2} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">curvas de nível (verde) e vectores gradiente (amarelo) — descida: vermelho</text>
+      <text x={390} y={70} textAnchor="middle" dominantBaseline="middle" fill="var(--text-primary)" fontSize={10}>y(t)</text>
+      <text x={390} y={120} textAnchor="middle" dominantBaseline="middle" fill="var(--text-primary)" fontSize={10}>h · f(y(t), t)</text>
+      <text x={390} y={170} textAnchor="middle" dominantBaseline="middle" fill="var(--text-primary)" fontSize={10}>y(t+h) = y(t) + h·f</text>
+      <line x1={390} y1={80} x2={390} y2={100} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#arr)" />
+      <line x1={390} y1={130} x2={390} y2={150} stroke="#4a9eed" strokeWidth={1.5} markerEnd="url(#arrBlue)" />
+
+      <defs>
+        <marker id="arr" markerWidth={6} markerHeight={6} refX={3} refY={3} orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
+        </marker>
+        <marker id="arrBlue" markerWidth={6} markerHeight={6} refX={3} refY={3} orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
+        </marker>
+      </defs>
     </svg>
   );
 }
 
-// SVG 4: Source vs Sink divergence
-function DivergenceSVG() {
-  const W = 480, H = 200;
-  // source on left, sink on right
-  const srcX = 120, snkX = 360, midY = 100;
-  const dirs = [0, 45, 90, 135, 180, 225, 270, 315];
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* source */}
-      {dirs.map((deg, i) => {
-        const rad = (deg * Math.PI) / 180;
-        const ex = srcX + 34 * Math.cos(rad);
-        const ey = midY + 34 * Math.sin(rad);
-        const angle = rad;
-        const h1x = ex - 6 * Math.cos(angle - 0.4);
-        const h1y = ey - 6 * Math.sin(angle - 0.4);
-        const h2x = ex - 6 * Math.cos(angle + 0.4);
-        const h2y = ey - 6 * Math.sin(angle + 0.4);
-        return (
-          <g key={i}>
-            <line x1={srcX} y1={midY} x2={ex} y2={ey} stroke={color} strokeWidth={1.5} />
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={1.5} />
-          </g>
-        );
-      })}
-      <circle cx={srcX} cy={midY} r={5} fill={color} />
-      <text x={srcX} y={midY + 52} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>fonte (∇·F &gt; 0)</text>
-      {/* sink */}
-      {dirs.map((deg, i) => {
-        const rad = (deg * Math.PI) / 180;
-        const sx2 = snkX + 34 * Math.cos(rad);
-        const sy2 = midY + 34 * Math.sin(rad);
-        const angle = Math.atan2(midY - sy2, snkX - sx2);
-        const ex2 = snkX - 8 * Math.cos(rad);
-        const ey2 = midY - 8 * Math.sin(rad);
-        const h1x = ex2 - 6 * Math.cos(angle - 0.4);
-        const h1y = ey2 - 6 * Math.sin(angle - 0.4);
-        const h2x = ex2 - 6 * Math.cos(angle + 0.4);
-        const h2y = ey2 - 6 * Math.sin(angle + 0.4);
-        return (
-          <g key={i}>
-            <line x1={sx2} y1={sy2} x2={ex2} y2={ey2} stroke="#f97316" strokeWidth={1.5} />
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex2.toFixed(1)},${ey2.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke="#f97316" strokeWidth={1.5} />
-          </g>
-        );
-      })}
-      <circle cx={snkX} cy={midY} r={5} fill="#f97316" />
-      <text x={snkX} y={midY + 52} textAnchor="middle" fontSize={12} fill="#f97316" fontWeight={700}>sorvedouro (∇·F &lt; 0)</text>
-      <line x1={240} y1={20} x2={240} y2={180} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="4 3" />
-    </svg>
-  );
-}
+/* ─── SVG 9: Continuous vs Discrete Depth ─── */
+function NeuralODESVG() {
+  const W = 520, H = 220;
 
-// SVG 5: Curl / rotation arrows
-function CurlSVG() {
-  const W = 480, H = 200;
-  const cx = 240, cy = 100;
-  // rotating arrows around a centre
-  const pts = 8;
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* circular arrow path hint */}
-      <circle cx={cx} cy={cy} r={55} fill="none" stroke={color} strokeWidth={1} opacity={0.2} />
-      {Array.from({ length: pts }).map((_, i) => {
-        const ang = (i / pts) * 2 * Math.PI;
-        const ox = cx + 55 * Math.cos(ang);
-        const oy = cy + 55 * Math.sin(ang);
-        // tangent direction (counter-clockwise)
-        const tx = -Math.sin(ang) * 22;
-        const ty = Math.cos(ang) * 22;
-        const ex = ox + tx;
-        const ey = oy + ty;
-        const headAng = Math.atan2(ty, tx);
-        const h1x = ex - 6 * Math.cos(headAng - 0.4);
-        const h1y = ey - 6 * Math.sin(headAng - 0.4);
-        const h2x = ex - 6 * Math.cos(headAng + 0.4);
-        const h2y = ey - 6 * Math.sin(headAng + 0.4);
-        return (
-          <g key={i}>
-            <line x1={ox} y1={oy} x2={ex} y2={ey} stroke={color} strokeWidth={2} />
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={2} />
-          </g>
-        );
-      })}
-      {/* central curl symbol */}
-      <path d="M230,90 Q240,78 250,90 Q260,102 250,110 Q240,118 230,110" fill="none" stroke={color} strokeWidth={2} />
-      <text x={cx} y={cy + 5} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>∇×F ≠ 0</text>
-      {/* irrotational box */}
-      <rect x={370} y={50} width={90} height={70} rx={6} fill="rgba(249,115,22,0.07)" stroke={color} strokeWidth={1} strokeDasharray="4 2" />
-      <text x={415} y={80} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>irrotacional</text>
-      <text x={415} y={98} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">∇×F = 0</text>
-      <text x={415} y={112} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">conservativo</text>
-      <text x={W / 2 - 60} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">campo rotacional — ∇×F aponta para fora do plano (eixo z)</text>
-    </svg>
-  );
-}
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
 
-// SVG 6: Laplacian — bowl, hill, harmonic
-function LaplacianSVG() {
-  const W = 480, H = 200;
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* bowl ∇²f > 0 */}
-      <path d="M30,80 Q80,160 130,80" fill="none" stroke={color} strokeWidth={2} />
-      <circle cx={80} cy={155} r={4} fill={color} />
-      <text x={80} y={175} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>∇²f &gt; 0</text>
-      <text x={80} y={190} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">mínimo local</text>
-      {/* hill ∇²f < 0 */}
-      <path d="M175,160 Q225,40 275,160" fill="none" stroke="#f97316" strokeWidth={2} />
-      <circle cx={225} cy={45} r={4} fill="#f97316" />
-      <text x={225} y={175} textAnchor="middle" fontSize={11} fill="#f97316" fontWeight={700}>∇²f &lt; 0</text>
-      <text x={225} y={190} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">máximo local</text>
-      {/* harmonic ∇²f = 0 */}
-      <path d="M320,130 Q360,80 400,100 Q420,110 450,90" fill="none" stroke="#f59e0b" strokeWidth={2} />
-      <text x={385} y={175} textAnchor="middle" fontSize={11} fill="#f59e0b" fontWeight={700}>∇²f = 0</text>
-      <text x={385} y={190} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">função harmónica</text>
-    </svg>
-  );
-}
-
-// SVG 7: Line integral — two paths between same endpoints
-function LineIntegralSVG() {
-  const W = 480, H = 220;
-  const ax = 80, ay = 160, bx = 400, by = 60;
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* path 1: curved */}
-      <path d={`M${ax},${ay} Q180,40 ${bx},${by}`} fill="none" stroke={color} strokeWidth={2.5} />
-      <text x={210} y={55} fontSize={11} fill={color} fontWeight={700}>caminho C1</text>
-      {/* path 2: straight-ish */}
-      <path d={`M${ax},${ay} Q260,180 ${bx},${by}`} fill="none" stroke="#f59e0b" strokeWidth={2.5} />
-      <text x={260} y={190} fontSize={11} fill="#f59e0b" fontWeight={700}>caminho C2</text>
-      {/* endpoints */}
-      <circle cx={ax} cy={ay} r={6} fill={color} />
-      <text x={ax - 10} y={ay + 18} fontSize={12} fill="var(--text-primary)" fontWeight={700}>A</text>
-      <circle cx={bx} cy={by} r={6} fill={color} />
-      <text x={bx + 8} y={by - 4} fontSize={12} fill="var(--text-primary)" fontWeight={700}>B</text>
-      {/* annotation */}
-      <rect x={120} y={95} width={240} height={38} rx={6} fill="rgba(249,115,22,0.10)" />
-      <text x={240} y={111} textAnchor="middle" fontSize={11} fill={color}>campo conservativo: ∫C1 F·dr = ∫C2 F·dr</text>
-      <text x={240} y={126} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">independência do caminho</text>
-    </svg>
-  );
-}
-
-// SVG 8: Flux through a closed surface
-function FluxSVG() {
-  const W = 480, H = 230;
-  const cx = 240, cy = 115;
-  const rx = 90, ry = 60;
-  const fluxPts = [
-    { ang: 0 }, { ang: 45 }, { ang: 90 }, { ang: 135 },
-    { ang: 180 }, { ang: 225 }, { ang: 270 }, { ang: 315 },
-  ];
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth={2} />
-      {fluxPts.map((fp, i) => {
-        const rad = (fp.ang * Math.PI) / 180;
-        const ox = cx + rx * Math.cos(rad);
-        const oy = cy + ry * Math.sin(rad);
-        const normX = Math.cos(rad);
-        const normY = Math.sin(rad) * (ry / rx);
-        const len2 = Math.sqrt(normX * normX + normY * normY);
-        const nx = (normX / len2) * 28;
-        const ny = (normY / len2) * 28;
-        const ex = ox + nx;
-        const ey = oy + ny;
-        const headAng = Math.atan2(ny, nx);
-        const h1x = ex - 6 * Math.cos(headAng - 0.4);
-        const h1y = ey - 6 * Math.sin(headAng - 0.4);
-        const h2x = ex - 6 * Math.cos(headAng + 0.4);
-        const h2y = ey - 6 * Math.sin(headAng + 0.4);
-        return (
-          <g key={i}>
-            <line x1={ox} y1={oy} x2={ex} y2={ey} stroke={color} strokeWidth={1.8} />
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={1.8} />
-          </g>
-        );
-      })}
-      <text x={cx} y={cy + 4} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>∯ F·dS</text>
-      <text x={cx} y={cy + 20} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">= ∭ ∇·F dV</text>
-      <text x={W / 2} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">Teorema de Gauss: fluxo superficial = integral de volume da divergência</text>
-    </svg>
-  );
-}
-
-// SVG 9: Grid deformation by Jacobian
-function JacobianSVG() {
-  const W = 480, H = 220;
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* regular grid left */}
-      {[0, 1, 2, 3, 4].map(i => (
-        <line key={'gh' + i} x1={30} y1={30 + i * 35} x2={180} y2={30 + i * 35} stroke="var(--text-secondary)" strokeWidth={0.8} opacity={0.4} />
+      {/* Discrete: stacked layers */}
+      <text x={110} y={22} textAnchor="middle" fill="var(--text-secondary)" fontSize={11} fontWeight={600}>Rede discreta</text>
+      {[40, 75, 110, 145, 180].map((y, i) => (
+        <rect key={i} x={30} y={y} width={160} height={22} rx={4} fill={i % 2 === 0 ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'} stroke={color} strokeWidth={1} />
       ))}
-      {[0, 1, 2, 3, 4].map(i => (
-        <line key={'gv' + i} x1={30 + i * 37} y1={30} x2={30 + i * 37} y2={170} stroke="var(--text-secondary)" strokeWidth={0.8} opacity={0.4} />
+      {[40, 75, 110, 145, 180].map((y, i) => (
+        <text key={i} x={110} y={y + 14} textAnchor="middle" fill="var(--text-primary)" fontSize={9}>Camada {i + 1}</text>
       ))}
-      <text x={105} y={195} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">espaço z (original)</text>
-      {/* arrow */}
-      <path d="M200,100 Q240,90 280,100" fill="none" stroke={color} strokeWidth={2} />
-      <polyline points="274,94 280,100 274,106" fill="none" stroke={color} strokeWidth={2} />
-      <text x={240} y={86} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>f (bijecção)</text>
-      <text x={240} y={115} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">|det J|</text>
-      {/* deformed grid right */}
-      {[0, 1, 2, 3, 4].map(i => {
-        const y1d = 30 + i * 35 + (i - 2) * 6;
-        const y2d = 30 + i * 35 - (i - 2) * 6;
-        return <line key={'dh' + i} x1={300} y1={y1d} x2={450} y2={y2d} stroke={color} strokeWidth={0.9} opacity={0.5} />;
-      })}
-      {[0, 1, 2, 3, 4].map(i => {
-        const x1d = 300 + i * 37 + (i - 2) * 4;
-        const x2d = 300 + i * 37 - (i - 2) * 4;
-        return <line key={'dv' + i} x1={x1d} y1={30} x2={x2d} y2={170} stroke={color} strokeWidth={0.9} opacity={0.5} />;
-      })}
-      <text x={375} y={195} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">espaço x (transformado)</text>
+
+      {/* Divider */}
+      <line x1={260} y1={30} x2={260} y2={H - 10} stroke="var(--text-secondary)" strokeWidth={1} />
+
+      {/* Continuous: smooth curve */}
+      <text x={390} y={22} textAnchor="middle" fill="var(--text-secondary)" fontSize={11} fontWeight={600}>Neural ODE (contínuo)</text>
+      {/* draw a smooth flowing path */}
+      <path d="M310,40 C340,60 360,50 380,80 C400,110 360,130 390,160 C420,185 450,170 470,190" fill="none" stroke="#4a9eed" strokeWidth={3} />
+      {/* dots along path */}
+      {[[310,40],[345,63],[380,80],[390,115],[390,160],[470,190]].map((p, i) => (
+        <circle key={i} cx={p[0]} cy={p[1]} r={4} fill="#4a9eed" opacity={0.8} />
+      ))}
+      <text x={390} y={210} textAnchor="middle" fill="var(--text-secondary)" fontSize={10}>dh/dt = f(h(t), t, θ)</text>
     </svg>
   );
 }
 
-// SVG 10: Normalizing flows — 2D distribution transform
-function NormalizingFlowSVG() {
-  const W = 480, H = 200;
+/* ─── SVG 10: Adjoint Trajectories ─── */
+function AdjointSVG() {
+  const W = 520, H = 240;
+  const toSx = t => 40 + (t / 4) * (W - 80);
+  const toSy = (y, base, scale) => base - y * scale;
+
+  const fwdPts = [], adjPts = [];
+  for (let i = 0; i <= 80; i++) {
+    const t = (i / 80) * 4;
+    fwdPts.push([toSx(t), toSy(Math.exp(0.5 * t), 80, 10)]);
+    adjPts.push([toSx(t), toSy(Math.exp(-0.5 * t) * 2, 180, 20)]);
+  }
+
+  const toD = pts => pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
+
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {/* simple gaussian blob left */}
-      {[0.35, 0.6, 0.85].map((r, i) => (
-        <ellipse key={i} cx={110} cy={100} rx={r * 55} ry={r * 40} fill="none" stroke={color} strokeWidth={1} opacity={0.3 + i * 0.25} />
-      ))}
-      <text x={110} y={165} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>p(z) — Gaussiana</text>
-      {/* arrow */}
-      <path d="M185,100 Q240,80 295,100" fill="none" stroke="#f59e0b" strokeWidth={2} />
-      <polyline points="289,94 295,100 289,106" fill="none" stroke="#f59e0b" strokeWidth={2} />
-      <text x={240} y={66} textAnchor="middle" fontSize={11} fill="#f59e0b" fontWeight={700}>f invertível</text>
-      <text x={240} y={80} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">+ log|det J|</text>
-      {/* complex blob right */}
-      <path d="M370,75 Q410,55 440,90 Q460,115 440,145 Q415,165 380,155 Q345,145 340,120 Q330,90 370,75 Z" fill="none" stroke={color} strokeWidth={1.5} opacity={0.5} />
-      <path d="M375,82 Q408,66 432,96 Q450,118 432,143 Q410,158 382,150 Q352,140 347,118 Q338,92 375,82 Z" fill="rgba(249,115,22,0.10)" />
-      <text x={392} y={175} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>p(x) — complexa</text>
-      {/* formula */}
-      <text x={240} y={192} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">log p(x) = log p(z) + log|det J|</text>
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+
+      {/* Forward pass */}
+      <text x={40} y={18} fill={color} fontSize={11} fontWeight={600}>Passagem direta: h(t)</text>
+      <line x1={40} y1={80} x2={W - 40} y2={80} stroke="var(--text-secondary)" strokeWidth={1} />
+      <path d={toD(fwdPts)} fill="none" stroke={color} strokeWidth={2.5} />
+      <circle cx={toSx(0)} cy={toSy(1, 80, 40)} r={4} fill={color} />
+      <circle cx={toSx(4)} cy={toSy(Math.exp(2), 80, 40)} r={4} fill={color} />
+      <text x={toSx(0) + 5} y={toSy(1, 80, 40) - 6} fill={color} fontSize={9}>t₀</text>
+      <text x={toSx(4) - 15} y={toSy(Math.exp(2), 80, 40) - 6} fill={color} fontSize={9}>T</text>
+
+      {/* Adjoint */}
+      <text x={40} y={138} fill="#4a9eed" fontSize={11} fontWeight={600}>Adjunto: a(t) = dL/dh(t)</text>
+      <line x1={40} y1={180} x2={W - 40} y2={180} stroke="var(--text-secondary)" strokeWidth={1} />
+      <path d={toD(adjPts)} fill="none" stroke="#4a9eed" strokeWidth={2.5} strokeDasharray="6,3" />
+      {/* backward arrow */}
+      <path d={`M${toSx(3.8)},${toSy(Math.exp(-1.9) * 2, 180, 40)} L${toSx(4)},${toSy(Math.exp(-2) * 2, 180, 40)}`} fill="none" stroke="#4a9eed" strokeWidth={2} markerEnd="url(#barr)" />
+
+      <defs>
+        <marker id="barr" markerWidth={6} markerHeight={6} refX={3} refY={3} orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
+        </marker>
+      </defs>
+
+      <text x={W / 2} y={H - 2} textAnchor="middle" fill="var(--text-secondary)" fontSize={10}>da/dt = -a^T · (∂f/∂h), integrado para trás</text>
     </svg>
   );
 }
 
-// SVG 11: Small graph with Laplacian
-function GraphLaplacianSVG() {
-  const W = 480, H = 230;
-  const nodes = [
-    { id: 0, x: 120, y: 60, label: '0' },
-    { id: 1, x: 240, y: 40, label: '1' },
-    { id: 2, x: 360, y: 80, label: '2' },
-    { id: 3, x: 100, y: 160, label: '3' },
-    { id: 4, x: 260, y: 150, label: '4' },
-    { id: 5, x: 380, y: 170, label: '5' },
-  ];
-  const edges = [[0,1],[1,2],[0,3],[1,4],[2,5],[3,4],[4,5]];
-  const msgArrows = [[1,0],[4,1],[4,3],[5,4]];
+/* ─── SVG 11: SDE Diffusion Paths ─── */
+function DiffusionSVG() {
+  const W = 520, H = 240;
+  const toSx = t => 30 + (t / 5) * (W - 60);
+  const toSy = y => H / 2 - y * 50;
+
+  // Simulate a few SDE paths (pseudo-random, deterministic seed)
+  const seed = [0.3, -0.5, 0.7, -0.2, 0.6, -0.4, 0.8, -0.1, 0.5, -0.6,
+                0.2, -0.3, 0.9, -0.7, 0.4, -0.8, 0.1, -0.9, 0.6, -0.4];
+  const makePath = (offset) => {
+    const pts = [[0, offset]];
+    let y = offset;
+    for (let i = 1; i <= 50; i++) {
+      const t = (i / 50) * 5;
+      const dW = seed[(i + Math.round(offset * 10)) % seed.length] * 0.4;
+      y = y * Math.exp(-0.3 * 0.1) + dW;
+      pts.push([t, y]);
+    }
+    return pts.map((p, i) => (i === 0 ? `M${toSx(p[0]).toFixed(1)},${toSy(p[1]).toFixed(1)}` : `L${toSx(p[0]).toFixed(1)},${toSy(p[1]).toFixed(1)}`)).join(' ');
+  };
+
+  // Envelope
+  const envUp = [], envDown = [];
+  for (let i = 0; i <= 50; i++) {
+    const t = (i / 50) * 5;
+    const sigma = Math.sqrt(1 - Math.exp(-0.6 * t)) * 1.2;
+    envUp.push([toSx(t), toSy(sigma)]);
+    envDown.push([toSx(t), toSy(-sigma)]);
+  }
+  const envD = [...envUp, ...envDown.reverse()];
+  const envPath = envD.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ') + 'Z';
+
+  const offsets = [-0.8, -0.3, 0.1, 0.5, 0.9];
+
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
-      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
-      {edges.map(([a, b], i) => {
-        const na = nodes[a], nb = nodes[b];
-        return <line key={i} x1={na.x} y1={na.y} x2={nb.x} y2={nb.y} stroke="var(--text-secondary)" strokeWidth={1.8} />;
-      })}
-      {msgArrows.map(([a, b], i) => {
-        const na = nodes[a], nb = nodes[b];
-        const angle = Math.atan2(nb.y - na.y, nb.x - na.x);
-        const midX = (na.x + nb.x) / 2;
-        const midY = (na.y + nb.y) / 2;
-        const ex = midX + 10 * Math.cos(angle);
-        const ey = midY + 10 * Math.sin(angle);
-        const h1x = ex - 7 * Math.cos(angle - 0.4);
-        const h1y = ey - 7 * Math.sin(angle - 0.4);
-        const h2x = ex - 7 * Math.cos(angle + 0.4);
-        const h2y = ey - 7 * Math.sin(angle + 0.4);
-        return (
-          <g key={i}>
-            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={2} />
-          </g>
-        );
-      })}
-      {nodes.map(n => (
-        <g key={n.id}>
-          <circle cx={n.x} cy={n.y} r={16} fill="var(--bg-secondary)" />
-          <circle cx={n.x} cy={n.y} r={16} fill="rgba(249,115,22,0.18)" stroke={color} strokeWidth={1.8} />
-          <text x={n.x} y={n.y + 5} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>{n.label}</text>
-        </g>
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+      <rect width={W} height={H} fill="var(--bg-secondary)" />
+      <path d={envPath} fill="rgba(74,158,237,0.10)" stroke="none" />
+      <line x1={30} y1={H / 2} x2={W - 30} y2={H / 2} stroke="var(--text-secondary)" strokeWidth={1} />
+      <line x1={30} y1={20} x2={30} y2={H - 20} stroke="var(--text-secondary)" strokeWidth={1} />
+      <defs>
+        <clipPath id="sdeclip"><rect x={30} y={20} width={W - 60} height={H - 40} /></clipPath>
+      </defs>
+      {offsets.map((o, i) => (
+        <path key={i} d={makePath(o)} fill="none" stroke={color} strokeWidth={1.3} opacity={0.55 + i * 0.08} clipPath="url(#sdeclip)" />
       ))}
-      <text x={W / 2} y={210} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">grafo — setas verdes: message passing (GNN)</text>
+      <text x={W / 2} y={H - 2} textAnchor="middle" fill="var(--text-secondary)" fontSize={11}>Caminhos de difusão: dy = f dt + g dW</text>
     </svg>
   );
 }
 
-export default function CALC9() {
+/* ─── Main Component ─── */
+export default function CALC10() {
   return (
     <div style={S.page}>
       <Link to="/calculus" style={S.back}><ArrowLeft size={16} /> Voltar a Cálculo</Link>
-      <div style={S.tag}>Module 09</div>
-      <h1 style={S.h1}>Cálculo Vetorial</h1>
-      <p style={S.lead}>
-        O cálculo vetorial generaliza a diferenciação e integração a campos escalares e vectoriais em
-        múltiplas dimensões. É a linguagem natural do aprendizado automático moderno: gradient descent,
-        normalizing flows, graph neural networks e equações diferenciais parciais assentam todos nestes
-        operadores.
-      </p>
 
-      {/* ── Section 1 ── */}
+      <div style={S.tag}>MÓDULO 09</div>
+      <h1 style={S.h1}>Equações Diferenciais Ordinárias (EDOs)</h1>
+
+      {/* ─── Section 1 ─── */}
       <section style={S.section}>
-        <h2 style={S.h2}>1. Campos Escalares e Vectoriais</h2>
+        <h2 style={S.h2}>1. O que são EDOs</h2>
         <p style={S.p}>
-          Um <strong>campo escalar</strong> f: ℝⁿ → ℝ associa um número real a cada ponto do espaço.
-          Exemplos em ML: função de perda L(θ), probabilidade log p(x), função de valor V(s).
+          Uma Equação Diferencial Ordinária relaciona uma função desconhecida com as suas derivadas. A forma
+          geral de primeira ordem é:
         </p>
+        <div style={formula}><BlockMath math="\frac{dy}{dt} = f(y, t)" /></div>
         <p style={S.p}>
-          Um <strong>campo vectorial</strong> F: ℝⁿ → ℝⁿ associa um vector a cada ponto.
-          Exemplos em ML: gradiente ∇L(θ), campo de velocidade de um fluxo, forças num simulador físico.
+          A <strong>ordem</strong> da EDO é a ordem da derivada mais alta presente. Uma EDO de ordem n pode
+          sempre ser reescrita como um sistema de n EDOs de primeira ordem.
         </p>
-        <VectorFieldSVG />
-        
-          <strong>Notação:</strong> campo escalar <InlineMath math="f(x,y)" />, campo vectorial <InlineMath math="F(x,y) = (P(x,y), Q(x,y))" />.
-          Em <InlineMath math="\mathbb{R}^3" />: <InlineMath math="F = (P, Q, R)" />.
-        
-        <div style={S.note}>
-          Em ML, os parâmetros θ ∈ ℝⁿ definem um campo escalar de perda. O optimizador navega este campo
-          usando o gradiente — um campo vectorial.
-        </div>
-        <h3 style={S.h3}>Exemplos comuns</h3>
+
+        <h3 style={S.h3}>Classificação</h3>
         <table style={S.table}>
           <thead>
             <tr>
               <th style={S.th}>Tipo</th>
-              <th style={S.th}>Domínio → Contradomínio</th>
-              <th style={S.th}>Exemplo ML</th>
+              <th style={S.th}>Exemplo</th>
+              <th style={S.th}>Características</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>Escalar</td>
-              <td style={S.td}>ℝⁿ → ℝ</td>
-              <td style={S.td}>função de perda, log-verossimilhança</td>
+              <td style={S.td}>Linear</td>
+              <td style={S.td}><InlineMath math="y' + P(t)y = Q(t)" /></td>
+              <td style={S.td}>Coeficientes não dependem de y; superposição válida</td>
             </tr>
             <tr>
-              <td style={S.td}>Vectorial</td>
-              <td style={S.td}>ℝⁿ → ℝⁿ</td>
-              <td style={S.td}>gradiente, campo de atenção, score function</td>
+              <td style={S.td}>Não-linear</td>
+              <td style={S.td}><InlineMath math="dy/dt = y(1 - y)" /></td>
+              <td style={S.td}>Sem superposição; pode ter caos, bifurcações</td>
             </tr>
             <tr>
-              <td style={S.td}>Tensorial</td>
-              <td style={S.td}>ℝⁿ → ℝⁿˣⁿ</td>
-              <td style={S.td}>Hessiana, Jacobiano</td>
+              <td style={S.td}>Autônoma</td>
+              <td style={S.td}><InlineMath math="dy/dt = f(y)" /></td>
+              <td style={S.td}>f não depende explicitamente de t</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Separável</td>
+              <td style={S.td}><InlineMath math="dy/dt = g(y)h(t)" /></td>
+              <td style={S.td}>Variáveis separáveis; integrável diretamente</td>
             </tr>
           </tbody>
         </table>
-      </section>
 
-      <hr style={S.divider} />
-
-      {/* ── Section 2 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>2. Operador Nabla ∇</h2>
         <p style={S.p}>
-          O operador nabla ∇ (ou "del") é o vector de derivadas parciais:
+          Uma EDO tem, em geral, infinitas soluções — uma <em>família</em> de curvas, uma para cada valor da
+          constante de integração <InlineMath math="C" />. Resolver a equação <InlineMath math="dy/dt = y - t" /> dá{' '}
+          <InlineMath math="y = Ce^t + t + 1" />: cada escolha de <InlineMath math="C" /> (determinada pela condição
+          inicial) traça uma curva diferente, todas tangentes ao mesmo campo direcional.
         </p>
-        <BlockMath math="\nabla = \left(\frac{\partial}{\partial x_1}, \frac{\partial}{\partial x_2}, \ldots, \frac{\partial}{\partial x_n}\right)" />
-        <p style={S.p}>
-          Aplicado de três formas diferentes, gera os três operadores fundamentais do cálculo vetorial:
-        </p>
-        <NablaSVG />
-        <h3 style={S.h3}>Gradiente: ∇f</h3>
-        <p style={S.p}>
-          Aplicar ∇ a um campo escalar f produz um campo vectorial: ∇f = (∂f/∂x₁, …, ∂f/∂xₙ).
-          O gradiente aponta na direcção de maior crescimento de f.
-        </p>
-        <h3 style={S.h3}>Divergência: ∇·F</h3>
-        <p style={S.p}>
-          O produto escalar de ∇ com um campo vectorial F = (F₁, …, Fₙ) é:
-          ∇·F = ∂F₁/∂x₁ + ∂F₂/∂x₂ + … + ∂Fₙ/∂xₙ. Resultado: escalar.
-        </p>
-        <h3 style={S.h3}>Rotacional: ∇×F (em ℝ³)</h3>
-        <p style={S.p}>
-          O produto vetorial de ∇ com F mede a "rotação" local do campo. Resultado: vector.
-        </p>
-        <h3 style={S.h3}>Laplaciano: ∇²f = ∇·(∇f)</h3>
-        <BlockMath math="\nabla^2 f = \frac{\partial^2 f}{\partial x_1^2} + \frac{\partial^2 f}{\partial x_2^2} + \cdots + \frac{\partial^2 f}{\partial x_n^2}" />
+        <div style={svgWrap}><DirectionFieldSVG /></div>
         <div style={S.note}>
-          O Laplaciano combina divergência e gradiente: mede a curvatura média de f.
-          Função harmónica: <InlineMath math="\nabla^2 f = 0" /> — sem máximos nem mínimos no interior.
+          O campo direcional mostra a tangente da solução em cada ponto (t, y). As curvas solução são
+          tangentes a cada seta — aqui para dy/dt = y - t, cuja solução exata é y = Ce^t + t + 1.
         </div>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── Section 3 ── */}
+      {/* ─── Section 2 ─── */}
       <section style={S.section}>
-        <h2 style={S.h2}>3. Gradiente como Campo</h2>
+        <h2 style={S.h2}>2. EDOs Separáveis</h2>
         <p style={S.p}>
-          Para uma função f: ℝⁿ → ℝ, o gradiente ∇f é um campo vectorial que em cada ponto indica
-          a direcção e magnitude do maior crescimento de f.
+          Uma EDO é <strong>separável</strong> se pudermos escrever <InlineMath math="dy/dt = g(y) \cdot h(t)" />. Separando:
         </p>
-        <GradientContourSVG />
+        <div style={formula}><BlockMath math="\frac{dy}{g(y)} = h(t)\,dt" /></div>
+        <p style={S.p}>Integramos ambos os lados para obter a solução implícita <InlineMath math="G(y) = H(t) + C" />.</p>
+
+        <h3 style={S.h3}>Crescimento Exponencial</h3>
+        <p style={S.p}>
+          Para <InlineMath math="dy/dt = ky" />, separamos: <InlineMath math="dy/y = k\,dt \to \ln|y| = kt + C \to y = Ae^{kt}" />.
+          Com <InlineMath math="k > 0" />: crescimento; <InlineMath math="k < 0" />: decaimento.
+        </p>
+
+        <h3 style={S.h3}>Crescimento Logístico</h3>
+        <p style={S.p}>
+          Quando recursos são limitados, o modelo logístico incorpora uma capacidade de carga K:
+        </p>
+        <div style={formula}><BlockMath math="\frac{dy}{dt} = r \cdot y \cdot \left(1 - \frac{y}{K}\right)" /></div>
+        <p style={S.p}>
+          A solução é <InlineMath math="y(t) = \dfrac{K}{1 + \frac{K - y_0}{y_0} e^{-rt}}" />, formando a característica curva S.
+          Para <InlineMath math="y < K/2" /> o crescimento acelera; para <InlineMath math="y > K/2" /> desacelera até a saturação.
+        </p>
+
+        <div style={svgWrap}><LogisticSVG /></div>
+        <div style={S.note}>
+          A curva tracejada mostra o crescimento exponencial puro (sem limitação). As curvas coloridas
+          mostram diferentes condições iniciais convergindo para K com a forma de S.
+        </div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 3 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>3. EDOs Lineares de 1ª Ordem</h2>
+        <p style={S.p}>
+          A forma padrão é <InlineMath math="y' + P(x)y = Q(x)" />. O método do <strong>fator integrante</strong> multiplica
+          ambos os lados por <InlineMath math="\mu(x) = e^{\int P(x)dx}" />, transformando o lado esquerdo numa derivada exata:
+        </p>
+        <div style={formula}><BlockMath math="\frac{d}{dx}[\mu(x) \cdot y] = \mu(x) \cdot Q(x)" /></div>
+        <p style={S.p}>Integrando: <InlineMath math="\mu(x) \cdot y = \int \mu(x) Q(x)\,dx + C" />, logo <InlineMath math="y = \frac{1}{\mu}\left[\int \mu Q\,dx + C\right]" />.</p>
+
+        <h3 style={S.h3}>EMA como EDO Linear</h3>
+        <p style={S.p}>
+          A Exponential Moving Average (EMA) usada no Adam é a versão discreta de uma EDO linear:
+        </p>
+        <div style={formula}><BlockMath math="\frac{dm}{dt} = -\beta m + (1-\beta)g \quad \to \quad \text{discreto: } m = \beta m + (1-\beta)g" /></div>
+        <p style={S.p}>
+          A solução contínua é <InlineMath math="m(t) = e^{-\beta t} m_0 + (1-\beta)\int e^{-\beta(t-s)} g(s)\,ds" /> — uma convolução com
+          kernel exponencial que "esquece" gradientes antigos.
+        </p>
+
+        <div style={svgWrap}><LinearODESVG /></div>
+
         
-          <strong>Propriedade fundamental:</strong> <InlineMath math="\nabla f" /> é sempre perpendicular às curvas de nível de f.
-          A descida de gradiente segue <InlineMath math="-\nabla f" />.
+          <strong>Estrutura geral da solução:</strong> a solução da EDO linear inhomogénea é sempre
+          <InlineMath math="y = y_{\text{hom}} + y_{\text{part}}" />, onde <InlineMath math="y_{\text{hom}} = Ce^{-\int P\,dx}" /> é a família homogénea (<InlineMath math="C \in \mathbb{R}" />).
         
-        <h3 style={S.h3}>Gradient Descent</h3>
-        <p style={S.p}>
-          A actualização de parâmetros θ ← θ − η·∇L(θ) move-se na direcção oposta ao gradiente,
-          descendo a superfície de perda. O passo η (learning rate) controla a magnitude do movimento.
-        </p>
-                <h3 style={S.h3}>Regra da Cadeia Vectorial</h3>
-        <p style={S.p}>
-          Para f = g ∘ h com h: ℝⁿ → ℝᵐ e g: ℝᵐ → ℝ:
-        </p>
-        <BlockMath math="\nabla f(x) = J_h(x)^\top \cdot \nabla g(h(x))" />
-        <p style={S.p}>
-          onde Jₕ é o Jacobiano de h. É a base do algoritmo de backpropagation em redes neurais.
-        </p>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── Section 4 ── */}
+      {/* ─── Section 4 ─── */}
       <section style={S.section}>
-        <h2 style={S.h2}>4. Divergência</h2>
+        <h2 style={S.h2}>4. Sistemas de EDOs</h2>
         <p style={S.p}>
-          A divergência ∇·F mede a taxa de "expansão" ou "contracção" de um campo vectorial num ponto.
-          Intuitivamente: quanta "substância" está a fluir para fora de uma região infinitesimal?
+          Um sistema de n EDOs lineares de primeira ordem tem a forma matricial <InlineMath math="dy/dt = Ay" />, onde
+          <InlineMath math="A \in \mathbb{R}^{n \times n}" />. A solução formal é:
         </p>
-        <BlockMath math="\nabla \cdot F = \frac{\partial F_1}{\partial x_1} + \frac{\partial F_2}{\partial x_2} + \frac{\partial F_3}{\partial x_3}" />
-        <DivergenceSVG />
+        <div style={formula}><BlockMath math="y(t) = e^{At} \cdot y_0" /></div>
+        <p style={S.p}>
+          onde <InlineMath math="e^{At}" /> é a exponencial de matriz. Na prática, diagonalizamos <InlineMath math="A = PDP^{-1}" /> →
+          <InlineMath math="e^{At} = P e^{Dt} P^{-1}" />, onde <InlineMath math="e^{Dt} = \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})" />.
+        </p>
+
+        <h3 style={S.h3}>Estabilidade via Valores Próprios</h3>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Sinal</th>
-              <th style={S.th}>Interpretação</th>
-              <th style={S.th}>Exemplo físico</th>
+              <th style={S.th}>Condição em λ</th>
+              <th style={S.th}>Comportamento</th>
+              <th style={S.th}>Retrato de fase</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>∇·F &gt; 0</td>
-              <td style={S.td}>fonte — fluxo a sair</td>
-              <td style={S.td}>nascente de água, carga eléctrica positiva</td>
+              <td style={S.td}><InlineMath math="\text{Re}(\lambda) < 0" /> (todos)</td>
+              <td style={S.td}>Estável; <InlineMath math="y \to 0" /></td>
+              <td style={S.td}>Espiral/nó estável</td>
             </tr>
             <tr>
-              <td style={S.td}>∇·F &lt; 0</td>
-              <td style={S.td}>sorvedouro — fluxo a entrar</td>
-              <td style={S.td}>dreno, carga negativa</td>
+              <td style={S.td}><InlineMath math="\text{Re}(\lambda) > 0" /> (algum)</td>
+              <td style={S.td}>Instável; <InlineMath math="y \to \infty" /></td>
+              <td style={S.td}>Nó/foco instável</td>
             </tr>
             <tr>
-              <td style={S.td}>∇·F = 0</td>
-              <td style={S.td}>campo solenoidal</td>
-              <td style={S.td}>campo magnético, fluido incompressível</td>
+              <td style={S.td}><InlineMath math="\lambda" /> mistos (sinais opostos)</td>
+              <td style={S.td}>Ponto de sela</td>
+              <td style={S.td}>Hipérboles</td>
+            </tr>
+            <tr>
+              <td style={S.td}><InlineMath math="\text{Re}(\lambda) = 0" /> (puro imaginário)</td>
+              <td style={S.td}>Centro (oscilação pura)</td>
+              <td style={S.td}>Elipses fechadas</td>
             </tr>
           </tbody>
         </table>
-        <h3 style={S.h3}>Ligação a Normalizing Flows</h3>
-        <p style={S.p}>
-          Em normalizing flows contínuos (Neural ODEs, FFJORD), a evolução da log-densidade ao longo
-          do tempo segue:
-        </p>
-        <BlockMath math="\frac{d \log p(x(t))}{dt} = -\nabla \cdot f(x(t), t)" />
-        <p style={S.p}>
-          O traço do Jacobiano (= divergência) determina como a densidade muda ao longo da trajectória.
-          Computar o traço exacto é custoso — FFJORD usa estimadores de Hutchinson para O(n) custo.
-        </p>
-              </section>
 
-      <hr style={S.divider} />
-
-      {/* ── Section 5 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>5. Rotacional</h2>
-        <p style={S.p}>
-          O rotacional ∇×F mede a rotação local de um campo vectorial em ℝ³.
-          Em cada ponto, indica o eixo e velocidade angular da rotação infinitesimal.
-        </p>
-        <BlockMath math="\nabla \times F = \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z},\; \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x},\; \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)" />
-        <CurlSVG />
-        <h3 style={S.h3}>Campos Conservativos e Irrotacionais</h3>
-        <p style={S.p}>
-          Um campo F é <strong>conservativo</strong> se existe um potencial escalar φ tal que F = ∇φ.
-          Equivalentemente (em domínios simplesmente conexos):
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Condição</th>
-              <th style={S.th}>Equivalência</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>F = ∇φ (existe potencial)</td>
-              <td style={S.td}>conservativo</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∇×F = 0</td>
-              <td style={S.td}>irrotacional</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∮_C F·dr = 0 (todo C fechado)</td>
-              <td style={S.td}>independência do caminho</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style={svgWrap}><PhasePortraitSVG /></div>
         <div style={S.note}>
-          Em ML: a função de perda L(θ) define um campo gradiente ∇L. Campos gradiente são sempre
-          conservativos — o "trabalho" de descer do ponto A ao ponto B é sempre o mesmo,
-          independente do caminho do optimizador.
+          Retratos de fase 2D: espiral estável (<InlineMath math="\text{Re}(\lambda) < 0, \text{Im}(\lambda) \neq 0" />), ponto de sela (<InlineMath math="\lambda_1 < 0 < \lambda_2" />),
+          nó instável (<InlineMath math="\lambda_1, \lambda_2 > 0" /> reais).
         </div>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── Section 6 ── */}
+      {/* ─── Section 5 ─── */}
       <section style={S.section}>
-        <h2 style={S.h2}>6. Laplaciano</h2>
+        <h2 style={S.h2}>5. EDOs de 2ª Ordem</h2>
         <p style={S.p}>
-          O Laplaciano ∇²f = ∇·(∇f) combina gradiente e divergência. Mede a curvatura média de f:
-          a diferença entre o valor de f num ponto e a sua média numa vizinhança.
+          A forma homogénea <InlineMath math="ay'' + by' + cy = 0" /> aparece em mecânica (massa-mola-amortecedor),
+          circuitos RLC e modelos de oscilação. A equação característica <InlineMath math="ar^2 + br + c = 0" />{' '}
+          determina o comportamento:
         </p>
-        <BlockMath math="\nabla^2 f = \frac{\partial^2 f}{\partial x_1^2} + \frac{\partial^2 f}{\partial x_2^2} + \cdots + \frac{\partial^2 f}{\partial x_n^2}" />
-        <LaplacianSVG />
+
+        <div style={formula}><BlockMath math="r = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" /></div>
+
+        <h3 style={S.h3}>Três Casos</h3>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Sinal de ∇²f</th>
-              <th style={S.th}>Geometria</th>
-              <th style={S.th}>ML / Física</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>∇²f &gt; 0</td>
-              <td style={S.td}>bowl / mínimo local</td>
-              <td style={S.td}>função de perda convexa localmente</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∇²f &lt; 0</td>
-              <td style={S.td}>colina / máximo local</td>
-              <td style={S.td}>ponto de sela instável</td>
-            </tr>
-            <tr>
-              <td style={S.td}>∇²f = 0</td>
-              <td style={S.td}>harmónica</td>
-              <td style={S.td}>solução da equação de Laplace</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 style={S.h3}>Laplaciano em Graph Neural Networks</h3>
-        <p style={S.p}>
-          O Laplaciano de grafo L = D − A (onde D é a matriz de graus e A a matriz de adjacência)
-          é o análogo discreto do operador ∇². Os seus auto-vectores formam a base de Fourier do
-          grafo, permitindo convolução espectral:
-        </p>
-        <BlockMath math="L = U \Lambda U^\top \quad \text{(decomposição espectral)}" />
-                <div style={S.note}>
-          A normalização L_sym = D^(-1/2) L D^(-1/2) é usada em GCN (Kipf &amp; Welling, 2017).
-          O filtro passa-baixo (smooth) corresponde aos auto-vectores de menor auto-valor.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 7 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>7. Integral de Linha</h2>
-        <p style={S.p}>
-          A integral de linha de um campo vectorial F ao longo de uma curva C mede o "trabalho total"
-          efectuado pelo campo ao longo da trajectória:
-        </p>
-        <BlockMath math="\int_C F \cdot dr = \int_a^b F(r(t)) \cdot r'(t)\, dt" />
-        <LineIntegralSVG />
-        <h3 style={S.h3}>Independência do Caminho</h3>
-        <p style={S.p}>
-          Se F é conservativo (F = ∇φ), então ∫_C F·dr = φ(B) − φ(A) para qualquer caminho C de
-          A a B. O resultado depende apenas dos extremos, não do caminho.
-        </p>
-        <h3 style={S.h3}>Teorema de Green (em ℝ²)</h3>
-        <p style={S.p}>
-          Para uma região D com fronteira C orientada positivamente:
-        </p>
-        <BlockMath math="\oint_C (P\,dx + Q\,dy) = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA" />
-        <p style={S.p}>
-          Equivalentemente: integral de linha na fronteira = integral duplo do rotacional no interior.
-          É um caso especial do Teorema de Stokes.
-        </p>
-        <div style={S.note}>
-          Interpretação: o "trabalho" ao longo de um contorno fechado mede a "rotação total"
-          do campo no interior — ligação directa ao rotacional.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 8 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>8. Teoremas de Gauss e Stokes</h2>
-        <p style={S.p}>
-          Os dois grandes teoremas do cálculo vectorial relacionam integrais em domínios com integrais
-          nas suas fronteiras — generalizações do Teorema Fundamental do Cálculo.
-        </p>
-        <h3 style={S.h3}>Teorema de Gauss (Divergência)</h3>
-        <BlockMath math="\oiint_S F \cdot dS = \iiint_V (\nabla \cdot F)\, dV" />
-        <p style={S.p}>
-          O fluxo total de F através de uma superfície fechada S é igual ao integral da divergência
-          de F no volume V por ela delimitado.
-        </p>
-        <FluxSVG />
-        <h3 style={S.h3}>Teorema de Stokes</h3>
-        <BlockMath math="\oint_C F \cdot dr = \iint_S (\nabla \times F) \cdot dS" />
-        <p style={S.p}>
-          A circulação de F ao longo da fronteira C de uma superfície S é igual ao fluxo do
-          rotacional de F através de S.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Teorema</th>
-              <th style={S.th}>Operador</th>
-              <th style={S.th}>Fronteira → Interior</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>TFC (1D)</td>
-              <td style={S.td}>d/dx</td>
-              <td style={S.td}>∫_a^b f' dx = f(b) − f(a)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Green (2D)</td>
-              <td style={S.td}>rotacional 2D</td>
-              <td style={S.td}>∮_C = ∬_D ∂Q/∂x − ∂P/∂y</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Stokes (3D surf)</td>
-              <td style={S.td}>∇×F</td>
-              <td style={S.td}>∮_C = ∬_S (∇×F)·dS</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Gauss (3D vol)</td>
-              <td style={S.td}>∇·F</td>
-              <td style={S.td}>∯_S = ∭_V (∇·F) dV</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style={S.note}>
-          Todos estes teoremas são casos especiais do Teorema de Stokes Generalizado:
-          ∫_M dω = ∫_(∂M) ω, expresso em linguagem de formas diferenciais.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 9 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>9. Mudança de Variáveis e Jacobiano</h2>
-        <p style={S.p}>
-          Quando se transforma um integral por uma mudança de variáveis x = f(u), o Jacobiano
-          da transformação mede como os volumes locais se expandem ou contraem:
-        </p>
-        <BlockMath math="\int_D g(x)\,dx = \int_{f^{-1}(D)} g(f(u))\,|\det J_f(u)|\,du" />
-        <JacobianSVG />
-        <h3 style={S.h3}>Transformações comuns</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Transformação</th>
-              <th style={S.th}>Jacobiano |det J|</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Polar: (r, θ) → (r cos θ, r sin θ)</td>
-              <td style={S.td}>r</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Cilíndrica: (r, θ, z)</td>
-              <td style={S.td}>r</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Esférica: (ρ, φ, θ)</td>
-              <td style={S.td}>ρ² sin φ</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Linear: x = Au</td>
-              <td style={S.td}>|det A|</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 style={S.h3}>Fórmula de Mudança de Densidade</h3>
-        <p style={S.p}>
-          Se X = f(Z) e Z ~ p_Z, então a densidade de X é:
-        </p>
-        <BlockMath math="p_X(x) = p_Z(f^{-1}(x)) \cdot |\det J_{f^{-1}}(x)|" />
-        <p style={S.p}>
-          Em forma logarítmica: log p_X(x) = log p_Z(z) − log |det J_f(z)|, com z = f⁻¹(x).
-          Esta é a equação central dos normalizing flows.
-        </p>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 10 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Normalizing Flows</h2>
-        <p style={S.p}>
-          Normalizing flows aprendem uma bijecção invertível f: ℤ → 𝒳 que transforma uma
-          distribuição simples p_Z (e.g., gaussiana) numa distribuição complexa p_X.
-        </p>
-        <NormalizingFlowSVG />
-        <BlockMath math="\log p_X(x) = \log p_Z(f^{-1}(x)) + \log |\det J_{f^{-1}}(x)|" />
-        <h3 style={S.h3}>O problema do determinante</h3>
-        <p style={S.p}>
-          Calcular det(J) para uma transformação geral custa O(n³). Normalizing flows contornam
-          isto com arquitecturas cujo Jacobiano é triangular:
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Modelo</th>
-              <th style={S.th}>Truque</th>
-              <th style={S.th}>Custo log-det</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>NICE</td>
-              <td style={S.td}>additive coupling layers</td>
-              <td style={S.td}>O(n) — det = 1</td>
-            </tr>
-            <tr>
-              <td style={S.td}>RealNVP</td>
-              <td style={S.td}>affine coupling layers</td>
-              <td style={S.td}>O(n) — diagonal J</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Glow</td>
-              <td style={S.td}>1×1 invertible conv</td>
-              <td style={S.td}>O(c³) por camada</td>
-            </tr>
-            <tr>
-              <td style={S.td}>FFJORD</td>
-              <td style={S.td}>Neural ODE + Hutchinson</td>
-              <td style={S.td}>O(n) estocástico</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 style={S.h3}>Coupling Layer (RealNVP)</h3>
-                <div style={S.note}>
-          A triangularidade do Jacobiano permite calcular o log-determinante em O(n) —
-          a chave para treinar normalizing flows com máxima verossimilhança exacta.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 11 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Cálculo em Grafos</h2>
-        <p style={S.p}>
-          O cálculo vectorial tem análogos discretos em grafos G = (V, E), substituindo derivadas
-          por diferenças ao longo de arestas.
-        </p>
-        <GraphLaplacianSVG />
-        <h3 style={S.h3}>Operadores de Grafo</h3>
-        <p style={S.p}>
-          Para um sinal f: V → ℝ (valor em cada nó) e um fluxo g: E → ℝ (valor em cada aresta):
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Operador contínuo</th>
-              <th style={S.th}>Análogo em grafo</th>
-              <th style={S.th}>Definição</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Gradiente ∇f</td>
-              <td style={S.td}>Gradiente de grafo</td>
-              <td style={S.td}>(∇_G f)(e_{'{ij}'}) = f(j) − f(i)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Divergência ∇·F</td>
-              <td style={S.td}>Divergência de grafo</td>
-              <td style={S.td}>(div g)(i) = Σ_j g(e_{'{ij}'})</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Laplaciano ∇²f</td>
-              <td style={S.td}>Laplaciano de grafo L</td>
-              <td style={S.td}>(Lf)(i) = Σ_j (f(i) − f(j))</td>
-            </tr>
-          </tbody>
-        </table>
-        <BlockMath math="L = D - A \qquad L_{\text{sym}} = D^{-1/2} L D^{-1/2} \qquad L_{\text{rw}} = D^{-1} L" />
-        <h3 style={S.h3}>Graph Fourier Transform</h3>
-        <p style={S.p}>
-          Como L é simétrica positiva semi-definida, L = U Λ Uᵀ. Os auto-vectores U formam a
-          base de Fourier do grafo: frequências baixas (auto-valor pequeno) = sinais suaves;
-          frequências altas = sinais oscilatórios.
-        </p>
-        <h3 style={S.h3}>GNN como Convolução no Grafo</h3>
-        <p style={S.p}>
-          Graph Convolutional Networks (GCN) implementam uma convolução espectral aproximada:
-        </p>
-                <div style={S.note}>
-          Message passing = aplicar o operador Laplaciano normalizado: cada nó agrega informação
-          dos vizinhos, suavizando o sinal sobre o grafo (filtro passa-baixo).
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 12 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <h3 style={S.h3}>Operadores Vectoriais</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Operador</th>
-              <th style={S.th}>Notação</th>
+              <th style={S.th}>Discriminante</th>
               <th style={S.th}>Tipo</th>
-              <th style={S.th}>Uso em ML</th>
+              <th style={S.th}>Solução geral</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>Gradiente</td>
-              <td style={S.td}>∇f</td>
-              <td style={S.td}>escalar → vector</td>
-              <td style={S.td}>gradient descent, backprop</td>
+              <td style={S.td}><InlineMath math="b^2 - 4ac > 0" /></td>
+              <td style={S.td}>Superamortecido</td>
+              <td style={S.td}><InlineMath math="C_1e^{r_1 t} + C_2e^{r_2 t}" /></td>
             </tr>
             <tr>
-              <td style={S.td}>Divergência</td>
-              <td style={S.td}>∇·F</td>
-              <td style={S.td}>vector → escalar</td>
-              <td style={S.td}>FFJORD, densidade contínua</td>
+              <td style={S.td}><InlineMath math="b^2 - 4ac = 0" /></td>
+              <td style={S.td}>Criticamente amortecido</td>
+              <td style={S.td}><InlineMath math="(C_1 + C_2 t)e^{rt}" /></td>
             </tr>
             <tr>
-              <td style={S.td}>Rotacional</td>
-              <td style={S.td}>∇×F</td>
-              <td style={S.td}>vector → vector</td>
-              <td style={S.td}>campos conservativos, hamiltonianos</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Laplaciano</td>
-              <td style={S.td}>∇²f</td>
-              <td style={S.td}>escalar → escalar</td>
-              <td style={S.td}>GNN, regularização, difusão</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Jacobiano</td>
-              <td style={S.td}>J_f</td>
-              <td style={S.td}>vector → matriz</td>
-              <td style={S.td}>normalizing flows, backprop</td>
+              <td style={S.td}><InlineMath math="b^2 - 4ac < 0" /></td>
+              <td style={S.td}>Subamortecido</td>
+              <td style={S.td}><InlineMath math="e^{\alpha t}(C_1\cos(\omega t) + C_2\sin(\omega t))" /></td>
             </tr>
           </tbody>
         </table>
-        <h3 style={S.h3}>Teoremas Fundamentais</h3>
+
+        <div style={svgWrap}><DampedOscillatorSVG /></div>
+        <div style={S.note}>
+          O amortecimento crítico converge mais rapidamente para zero sem oscilar — ideal em sistemas de
+          controlo que precisam de resposta rápida sem sobressinal (e.g. suspensões de automóveis).
+        </div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 6 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>6. Métodos Numéricos</h2>
+        <p style={S.p}>
+          A maioria das EDOs não tem solução analítica fechada. Os métodos numéricos aproximam a solução
+          passo a passo a partir da condição inicial <InlineMath math="y(t_0) = y_0" />.
+        </p>
+
+        <h3 style={S.h3}>Método de Euler</h3>
+        <div style={formula}><BlockMath math="y_{n+1} = y_n + h \cdot f(t_n, y_n)" /></div>
+        <p style={S.p}>
+          Erro local <InlineMath math="O(h^2)" />, erro global <InlineMath math="O(h)" />. Simples mas acumula erro rapidamente.
+          Requer h pequeno para estabilidade em EDOs rígidas.
+        </p>
+
+        <h3 style={S.h3}>Runge-Kutta de 4ª Ordem (RK4)</h3>
+                <p style={S.p}>
+          Erro global <InlineMath math="O(h^4)" /> — muito mais preciso que Euler com o mesmo passo. O RK4 é o "cavalo de
+          batalha" de solucionadores numéricos.
+        </p>
+
+        <div style={svgWrap}><EulerVsExactSVG /></div>
+
+        <h3 style={S.h3}>scipy.integrate.solve_ivp</h3>
+        
+        <div style={S.note}>
+          Métodos adaptativos (RK45, DOP853) ajustam h automaticamente para manter o erro abaixo de
+          uma tolerância. Para EDOs rígidas (stiff) prefira Radau ou BDF.
+        </div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 7 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>7. Estabilidade e Bifurcações</h2>
+        <p style={S.p}>
+          Um <strong>ponto de equilíbrio</strong> <InlineMath math="y^*" /> satisfaz <InlineMath math="f(y^*) = 0" />. Para analisar a sua estabilidade,
+          linearizamos: perturbação <InlineMath math="u = y - y^*" />, então <InlineMath math="du/dt \approx f'(y^*) \cdot u" />.
+        </p>
+
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Teorema</th>
-              <th style={S.th}>Enunciado</th>
-              <th style={S.th}>Dimensão</th>
+              <th style={S.th}><InlineMath math="f'(y^*)" /></th>
+              <th style={S.th}>Estabilidade</th>
+              <th style={S.th}>Intuição</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>TFC</td>
-              <td style={S.td}>∫_a^b f' dx = f(b) − f(a)</td>
-              <td style={S.td}>1D</td>
+              <td style={S.td}><InlineMath math="f'(y^*) < 0" /></td>
+              <td style={S.td}>Estável (atractor)</td>
+              <td style={S.td}>Perturbações decaem para zero</td>
             </tr>
             <tr>
-              <td style={S.td}>Green</td>
-              <td style={S.td}>∮_C F·dr = ∬_D (∇×F)·k dA</td>
-              <td style={S.td}>2D</td>
+              <td style={S.td}><InlineMath math="f'(y^*) > 0" /></td>
+              <td style={S.td}>Instável (repulsor)</td>
+              <td style={S.td}>Perturbações crescem</td>
             </tr>
             <tr>
-              <td style={S.td}>Stokes</td>
-              <td style={S.td}>∮_C F·dr = ∬_S (∇×F)·dS</td>
-              <td style={S.td}>3D superfície</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Gauss</td>
-              <td style={S.td}>∯_S F·dS = ∭_V (∇·F) dV</td>
-              <td style={S.td}>3D volume</td>
+              <td style={S.td}><InlineMath math="f'(y^*) = 0" /></td>
+              <td style={S.td}>Marginalmente estável</td>
+              <td style={S.td}>Análise de ordem superior necessária</td>
             </tr>
           </tbody>
         </table>
-        <h3 style={S.h3}>Aplicações Chave em ML</h3>
+
+        <h3 style={S.h3}>Gradiente Descendente como EDO</h3>
+        <p style={S.p}>
+          O gradiente descendente contínuo é exactamente uma EDO:
+        </p>
+        <div style={formula}><BlockMath math="\frac{d\theta}{dt} = -\nabla L(\theta)" /></div>
+        <p style={S.p}>
+          O gradiente descendente com learning rate η é o método de Euler aplicado a esta EDO com <InlineMath math="h = \eta" />.
+          A convergência depende de os valores próprios da Hessiana <InlineMath math="\nabla^2 L(\theta^*)" /> serem todos positivos —
+          i.e., o mínimo ser um ponto de equilíbrio estável.
+        </p>
+
+        <h3 style={S.h3}>Bifurcações</h3>
+        <p style={S.p}>
+          Uma bifurcação ocorre quando a estrutura qualitativa das soluções muda ao variar um parâmetro.
+          Na bifurcação de forquilha <InlineMath math="dy/dt = ry - y^3" />: para <InlineMath math="r \leq 0" /> existe apenas <InlineMath math="y^*=0" /> (estável);
+          para <InlineMath math="r > 0" /> surgem dois novos equilíbrios estáveis em <InlineMath math="\pm\sqrt{r}" /> e <InlineMath math="y^*=0" /> torna-se instável.
+        </p>
+
+        <div style={svgWrap}><BifurcationSVG /></div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 8 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>8. ResNets como Método de Euler</h2>
+        <p style={S.p}>
+          A conexão residual de uma ResNet tem uma forma notável:
+        </p>
+        <div style={formula}><BlockMath math="h(t+1) = h(t) + F(h(t), \theta)" /></div>
+        <p style={S.p}>
+          Isto é <em>exactamente</em> o método de Euler com passo <InlineMath math="h=1" />, aplicado à EDO <InlineMath math="dh/dt = F(h, \theta)" />.
+          Uma rede mais profunda equivale a um passo h mais fino — melhor discretização da EDO subjacente.
+        </p>
+
+        <div style={svgWrap}><ResNetEulerSVG /></div>
+
+        <h3 style={S.h3}>Implicações</h3>
         
-          <strong>Gradient Descent:</strong> <InlineMath math="\theta \leftarrow \theta - \eta\nabla L(\theta)" /> — navegar campo escalar via gradiente<br />
-          <strong>Normalizing Flows:</strong> <InlineMath math="\log p_X = \log p_Z + \log|\det J|" /> — Jacobiano controla mudança de densidade<br />
-          <strong>Score Matching:</strong> treinar <InlineMath math="\nabla_x \log p(x)" /> directamente — gradiente da log-densidade<br />
-          <strong>GNNs:</strong> convolução = Laplaciano de grafo — generalização discreta de <InlineMath math="\nabla^2" /><br />
-          <strong>Neural ODEs:</strong> <InlineMath math="dx/dt = f(x,t)" /> — evolução contínua; divergência para log-densidade<br />
-          <strong>Physics-Informed NNs:</strong> minimizar resíduos de EDPs usando <InlineMath math="\nabla, \nabla^2, \nabla\cdot" />
+          <strong>Estabilidade numérica da ResNet:</strong> a análise de Euler garante que, se <InlineMath math="F" /> for
+          Lipschitz com constante <InlineMath math="L" />, a propagação de gradiente é estável para passos pequenos o suficiente.
+          É por isso que as ResNets treinam mais facilmente que redes profundas sem skip connections.
+        
+
+        <p style={S.p}>
+          Levando esta ideia ao limite — infinitamente muitas camadas com passo → 0 — chegamos às
+          Neural ODEs, onde a transformação da representação é descrita por uma EDO contínua.
+        </p>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 9 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>9. Neural ODEs</h2>
+        <p style={S.p}>
+          Introduzidas por Chen et al. (2018), as Neural ODEs substituem a sequência discreta de camadas
+          por uma EDO contínua parametrizada por uma rede neuronal:
+        </p>
+        <div style={formula}><BlockMath math="\frac{dh}{dt} = f(h(t), t, \theta)" /></div>
+        <p style={S.p}>
+          O "forward pass" é uma chamada a um solucionador de EDOs (e.g. RK45) desde t₀ até T.
+          A saída final h(T) é passada ao classificador.
+        </p>
+
+        <div style={svgWrap}><NeuralODESVG /></div>
+
+        <h3 style={S.h3}>Vantagens</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Característica</th>
+              <th style={S.th}>Redes Discretas</th>
+              <th style={S.th}>Neural ODEs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Profundidade</td>
+              <td style={S.td}>Fixa (inteira)</td>
+              <td style={S.td}>Contínua; adaptável</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Memória (treino)</td>
+              <td style={S.td}><InlineMath math="O(\text{profundidade})" /></td>
+              <td style={S.td}><InlineMath math="O(1)" /> com método adjunto</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Parâmetros</td>
+              <td style={S.td}>Cresce com profundidade</td>
+              <td style={S.td}>Fixos (partilhados em t)</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Fluxo normalizante</td>
+              <td style={S.td}>Requer jacobiano</td>
+              <td style={S.td}>Trace via instantaneous change of variables</td>
+            </tr>
+          </tbody>
+        </table>
+
+              </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 10 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>10. Método Adjunto</h2>
+        <p style={S.p}>
+          Para treinar uma Neural ODE precisamos de gradientes <InlineMath math="dL/d\theta" />. A retropropagação directa
+          armazenaria todos os estados intermediários — <InlineMath math="O(T)" /> memória. O método adjunto reduz isso para <InlineMath math="O(1)" />.
+        </p>
+
+        <h3 style={S.h3}>Derivação</h3>
+        <p style={S.p}>Define-se o estado adjunto <InlineMath math="a(t) = dL/dh(t)" />. Verifica-se que a(t) satisfaz a EDO adjunta:</p>
+        <div style={formula}><BlockMath math="\frac{da}{dt} = -a^\top \cdot \frac{\partial f}{\partial h}" /></div>
+        <p style={S.p}>integrada para trás de T até t₀. O gradiente em relação aos parâmetros é então:</p>
+        <div style={formula}><BlockMath math="\frac{dL}{d\theta} = -\int_{t_0}^{T} a(t)^\top \cdot \frac{\partial f}{\partial \theta}\, dt" /></div>
+
+        <div style={svgWrap}><AdjointSVG /></div>
+
+        <h3 style={S.h3}>Implementação</h3>
         
         <div style={S.note}>
-          O cálculo vectorial unifica a geometria da optimização (gradiente), a teoria das
-          probabilidades (mudança de variáveis, Jacobiano) e o processamento de grafos
-          (Laplaciano discreto) numa linguagem matemática coerente.
+          O custo computacional do adjunto é 2x a passagem directa (duas integrações de EDO),
+          mas a economia de memória é enorme em sequências longas ou profundidade elevada.
         </div>
-              </section>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ─── Section 11 ─── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>11. SDEs e Modelos de Difusão</h2>
+        <p style={S.p}>
+          Uma Equação Diferencial Estocástica (SDE) adiciona ruído Browniano W(t):
+        </p>
+        <div style={formula}><BlockMath math="dy = f(y, t)\,dt + g(y, t)\,dW" /></div>
+        <p style={S.p}>
+          Onde dW é um incremento Browniano com <InlineMath math="dW \sim N(0, dt)" />. O termo f é o "drift" (determinístico)
+          e g é a "difusão" (estocástico).
+        </p>
+
+        <h3 style={S.h3}>Dinâmica de Langevin</h3>
+        <p style={S.p}>
+          Para amostrar de uma distribuição <InlineMath math="p(x) \propto e^{-E(x)}" />, a dinâmica de Langevin usa:
+        </p>
+        <div style={formula}><BlockMath math="dx = -\nabla E(x)\,dt + \sqrt{2}\,dW" /></div>
+        <p style={S.p}>
+          Em equilíbrio, a distribuição estacionária é exactamente p(x). É a base do
+          Langevin MCMC e de algoritmos de amostragem em modelos probabilísticos.
+        </p>
+
+        <h3 style={S.h3}>DDPM — Modelos de Difusão</h3>
+        <p style={S.p}>
+          O processo <strong>forward</strong> de difusão adiciona ruído gradualmente:
+          <InlineMath math="x(t+1) = \sqrt{1-\beta}\cdot x(t) + \sqrt{\beta}\cdot\varepsilon" />, <InlineMath math="\varepsilon \sim N(0,I)" />, até <InlineMath math="x(T) \sim N(0,I)" />.
+        </p>
+        <p style={S.p}>
+          O processo <strong>reverse</strong> aprende a desruídizar — uma rede neuronal aproxima
+          a função de score <InlineMath math="\nabla_x \log p(x,t)" />, que dirige a SDE reversa de ruído para dados reais.
+        </p>
+        <div style={formula}><BlockMath math="dx = \left[f(x,t) - g^2(t) \cdot \nabla_x \log p(x,t)\right] dt + g(t)\,dW" /></div>
+
+        <div style={svgWrap}><DiffusionSVG /></div>
+
+        <div style={S.note}>
+          A envolvente vermelha mostra a distribuição marginal alargando ao longo do tempo.
+          Cada linha colorida é um caminho amostral. O processo reverso (não mostrado) aprenderia
+          a guiar estes caminhos de volta à distribuição de dados.
+        </div>
+      </section>
 
     </div>
   );

@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -17,13 +17,13 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem', fontFamily: 'monospace', fontSize: '1rem', color: 'var(--text-primary)' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem', fontFamily: 'monospace', fontSize: '1rem', color: 'var(--text-primary)' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   svgWrap: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', display: 'flex', justifyContent: 'center', overflowX: 'auto' },
   ul: { paddingLeft: '1.5rem', color: 'var(--text-primary)', lineHeight: 1.9, fontSize: '1rem', marginBottom: '1rem' },
-  formula: { fontFamily: 'monospace', background: 'rgba(249,115,22,0.10)', borderRadius: 4, padding: '0.15rem 0.4rem', fontSize: '0.95rem', color },
+  formula: { fontFamily: 'monospace', background: 'rgba(74,158,237,0.10)', borderRadius: 4, padding: '0.15rem 0.4rem', fontSize: '0.95rem', color },
 };
 
 /* ── SVG helpers ── */
@@ -34,14 +34,14 @@ function ChainRule1DSVG() {
   const cy = 80;
   const bw = 120, bh = 44;
   const boxes = [
-    { x: 50,  label: 'x',      sub: 'input',        clr: '#f97316', fill: 'rgba(249,115,22,0.22)' },
-    { x: 310, label: 'u=g(x)', sub: 'intermediate', clr: '#fb923c', fill: 'rgba(251,146,60,0.18)' },
-    { x: 570, label: 'f(u)',   sub: 'output',       clr: '#f59e0b', fill: 'rgba(245,158,11,0.18)' },
+    { x: 50,  label: 'x',      sub: 'input',        clr: '#4a9eed', fill: 'rgba(74,158,237,0.22)' },
+    { x: 310, label: 'u=g(x)', sub: 'intermediate', clr: '#7dd3fc', fill: 'rgba(74,158,237,0.16)' },
+    { x: 570, label: 'f(u)',   sub: 'output',       clr: '#bae6fd', fill: 'rgba(74,158,237,0.10)' },
   ];
   // arrows: from right edge of box i to left edge of box i+1
   const edges = [
-    { x1: 172, x2: 308, label: "du/dx = g'(x)", clr: '#fb923c' },
-    { x1: 432, x2: 568, label: "df/du = f'(u)", clr: '#f59e0b' },
+    { x1: 172, x2: 308, label: "du/dx = g'(x)", clr: '#bae6fd' },
+    { x1: 432, x2: 568, label: "df/du = f'(u)", clr: '#7dd3fc' },
   ];
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
@@ -67,103 +67,116 @@ function ChainRule1DSVG() {
 }
 
 function MultiCompositionSVG() {
-  const W = 760, H = 210;
+  const boxStyle = { border: `1.5px solid ${color}`, background: 'rgba(74,158,237,0.10)', borderRadius: 8, padding: '0.55rem 1.1rem', color: 'var(--text-primary)', textAlign: 'center', minWidth: 70 };
+  const rowStyle = { display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' };
+  const arrowStyle = { color, fontSize: '1.3rem' };
+  const Box = ({ math }) => <div style={boxStyle}><InlineMath math={math} /></div>;
+  const Arrow = () => <div style={arrowStyle}>→</div>;
+
   return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-      <text x={20} y={30} fontSize={13} fontWeight="700" fill={color}>Exemplo 1: d/dx[e^(x²)]</text>
-      {/* boxes */}
-      <rect x={20}  y={50} width={80} height={36} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={60}  y={72} textAnchor="middle" fontSize={13} fill="var(--text-primary)">x</text>
+    <div style={{ width: '100%' }}>
+      <p style={{ fontWeight: 700, color, marginBottom: '0.75rem' }}>
+        Exemplo 1: <InlineMath math="\dfrac{d}{dx}\left[e^{x^2}\right]" />
+      </p>
+      <div style={rowStyle}>
+        <Box math="x" />
+        <Arrow />
+        <Box math="u = x^2" />
+        <Arrow />
+        <Box math="e^{u}" />
+      </div>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.75rem 0 0' }}>
+        Chain: <InlineMath math="\dfrac{d}{dx}\left[e^{x^2}\right] = e^{x^2} \cdot 2x" />
+      </p>
 
-      <rect x={160} y={50} width={100} height={36} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={210} y={72} textAnchor="middle" fontSize={13} fill="var(--text-primary)">u = x²</text>
+      <hr style={{ border: 'none', borderTop: '1px solid var(--card-border)', margin: '1.25rem 0' }} />
 
-      <rect x={330} y={50} width={100} height={36} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={380} y={72} textAnchor="middle" fontSize={13} fill="var(--text-primary)">e^u</text>
-
-      {/* arrows */}
-      <line x1={100} y1={68} x2={158} y2={68} stroke={color} strokeWidth={2} />
-      <polygon points="158,63 166,68 158,73" fill={color} />
-      <text x={130} y={58} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">u=x²</text>
-
-      <line x1={260} y1={68} x2={328} y2={68} stroke={color} strokeWidth={2} />
-      <polygon points="328,63 336,68 328,73" fill={color} />
-      <text x={295} y={58} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">e^u</text>
-
-      <text x={20} y={120} fontSize={12} fill="var(--text-secondary)">Chain: d/dx[e^(x²)] = e^(x²) · 2x</text>
-
-      <line x1={0} y1={135} x2={W} y2={135} stroke="var(--text-secondary)" strokeWidth={1} />
-
-      <text x={20} y={155} fontSize={13} fontWeight="700" fill={color}>Exemplo 2: d/dx[ln(sin(x))]</text>
-      <rect x={20}  y={168} width={80} height={30} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={60}  y={187} textAnchor="middle" fontSize={13} fill="var(--text-primary)">x</text>
-      <rect x={160} y={168} width={100} height={30} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={210} y={187} textAnchor="middle" fontSize={13} fill="var(--text-primary)">sin(x)</text>
-      <rect x={330} y={168} width={110} height={30} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={385} y={187} textAnchor="middle" fontSize={13} fill="var(--text-primary)">ln(sin(x))</text>
-      <line x1={100} y1={183} x2={158} y2={183} stroke={color} strokeWidth={2} />
-      <polygon points="158,178 166,183 158,188" fill={color} />
-      <line x1={260} y1={183} x2={328} y2={183} stroke={color} strokeWidth={2} />
-      <polygon points="328,178 336,183 328,188" fill={color} />
-      <text x={530} y={187} fontSize={12} fill="var(--text-secondary)">= (1/sin(x)) · cos(x) = cot(x)</text>
-    </svg>
+      <p style={{ fontWeight: 700, color, marginBottom: '0.75rem' }}>
+        Exemplo 2: <InlineMath math="\dfrac{d}{dx}[\ln(\sin(x))]" />
+      </p>
+      <div style={rowStyle}>
+        <Box math="x" />
+        <Arrow />
+        <Box math="\sin(x)" />
+        <Arrow />
+        <Box math="\ln(\sin(x))" />
+      </div>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.75rem 0 0' }}>
+        <InlineMath math="= \dfrac{1}{\sin(x)} \cdot \cos(x) = \cot(x)" />
+      </p>
+    </div>
   );
 }
 
 function MultivariableTreeSVG() {
-  const W = 700, H = 280;
+  const W = 700, H = 310;
+  // KaTeX can't render inside native SVG <text>, so labels are embedded via
+  // <foreignObject> (HTML) positioned at the same coordinates the SVG uses.
+  const Label = ({ x, y, w = 40, h = 22, math, fontSize = 14, fill = 'var(--text-primary)', bold = false }) => (
+    <foreignObject x={x - w / 2} y={y - h / 2} width={w} height={h}>
+      <div
+        xmlns="http://www.w3.org/1999/xhtml"
+        style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: fill, fontSize, fontWeight: bold ? 700 : 400 }}
+      >
+        <InlineMath math={math} />
+      </div>
+    </foreignObject>
+  );
+
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
       {/* z node */}
-      <circle cx={350} cy={40} r={28} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
-      <text x={350} y={46} textAnchor="middle" fontSize={16} fontWeight="700" fill={color}>z</text>
+      <circle cx={350} cy={40} r={28} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
+      <Label x={350} y={42} math="z" fontSize={16} fill={color} bold />
 
       {/* u node */}
-      <circle cx={180} cy={140} r={28} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={180} y={146} textAnchor="middle" fontSize={14} fill="var(--text-primary)">u</text>
+      <circle cx={180} cy={140} r={28} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
+      <Label x={180} y={142} math="u" />
 
       {/* v node */}
-      <circle cx={520} cy={140} r={28} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
-      <text x={520} y={146} textAnchor="middle" fontSize={14} fill="var(--text-primary)">v</text>
+      <circle cx={520} cy={140} r={28} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
+      <Label x={520} y={142} math="v" />
 
       {/* x node */}
-      <circle cx={100} cy={240} r={24} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={100} y={246} textAnchor="middle" fontSize={14} fill="var(--text-primary)">x</text>
+      <circle cx={100} cy={240} r={24} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
+      <Label x={100} y={242} math="x" />
 
       {/* y node (under u) */}
-      <circle cx={260} cy={240} r={24} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={260} y={246} textAnchor="middle" fontSize={14} fill="var(--text-primary)">y</text>
+      <circle cx={260} cy={240} r={24} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
+      <Label x={260} y={242} math="y" />
 
       {/* x node (under v) */}
-      <circle cx={440} cy={240} r={24} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={440} y={246} textAnchor="middle" fontSize={14} fill="var(--text-primary)">x</text>
+      <circle cx={440} cy={240} r={24} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
+      <Label x={440} y={242} math="x" />
 
       {/* y node (under v) */}
-      <circle cx={600} cy={240} r={24} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={600} y={246} textAnchor="middle" fontSize={14} fill="var(--text-primary)">y</text>
+      <circle cx={600} cy={240} r={24} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
+      <Label x={600} y={242} math="y" />
 
       {/* edges z→u, z→v */}
       <line x1={325} y1={60} x2={202} y2={120} stroke={color} strokeWidth={2} />
-      <text x={248} y={90} textAnchor="middle" fontSize={11} fill={color}>∂z/∂u</text>
+      <Label x={238} y={90} w={56} h={22} math="\partial z/\partial u" fontSize={12} fill={color} />
       <line x1={375} y1={60} x2={498} y2={120} stroke={color} strokeWidth={2} />
-      <text x={452} y={90} textAnchor="middle" fontSize={11} fill={color}>∂z/∂v</text>
+      <Label x={462} y={90} w={56} h={22} math="\partial z/\partial v" fontSize={12} fill={color} />
 
       {/* edges u→x, u→y */}
       <line x1={160} y1={162} x2={116} y2={218} stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={125} y={193} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">∂u/∂x</text>
+      <Label x={106} y={188} w={54} h={20} math="\partial u/\partial x" fontSize={11} fill="var(--text-secondary)" />
       <line x1={200} y1={162} x2={244} y2={218} stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={234} y={193} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">∂u/∂y</text>
+      <Label x={254} y={188} w={54} h={20} math="\partial u/\partial y" fontSize={11} fill="var(--text-secondary)" />
 
       {/* edges v→x, v→y */}
       <line x1={500} y1={162} x2={456} y2={218} stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={465} y={193} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">∂v/∂x</text>
+      <Label x={446} y={188} w={54} h={20} math="\partial v/\partial x" fontSize={11} fill="var(--text-secondary)" />
       <line x1={540} y1={162} x2={584} y2={218} stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={574} y={193} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">∂v/∂y</text>
+      <Label x={594} y={188} w={54} h={20} math="\partial v/\partial y" fontSize={11} fill="var(--text-secondary)" />
 
       {/* formula */}
-      <text x={350} y={275} textAnchor="middle" fontSize={13} fill="var(--text-primary)">
-        ∂z/∂x = (∂z/∂u)(∂u/∂x) + (∂z/∂v)(∂v/∂x)
-      </text>
+      <Label
+        x={350} y={300} w={420} h={30}
+        math="\frac{\partial z}{\partial x} = \frac{\partial z}{\partial u}\frac{\partial u}{\partial x} + \frac{\partial z}{\partial v}\frac{\partial v}{\partial x}"
+        fontSize={14}
+      />
     </svg>
   );
 }
@@ -178,27 +191,27 @@ function CompGraphSVG() {
       </text>
 
       {/* INPUT NODES */}
-      <circle cx={60}  cy={120} r={26} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
+      <circle cx={60}  cy={120} r={26} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
       <text x={60}  cy={120} y={116} textAnchor="middle" fontSize={14} fontWeight="700" fill={color}>x</text>
       <text x={60}  y={132} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">input</text>
 
-      <circle cx={60}  cy={220} r={26} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
+      <circle cx={60}  cy={220} r={26} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
       <text x={60}  y={216} textAnchor="middle" fontSize={14} fontWeight="700" fill={color}>y</text>
       <text x={60}  y={232} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">input</text>
 
       {/* INTERMEDIATE NODES */}
       {/* v1 = x+y */}
-      <rect x={210} y={148} width={80} height={38} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+      <rect x={210} y={148} width={80} height={38} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       <text x={250} y={166} textAnchor="middle" fontSize={12} fontWeight="600" fill="var(--text-primary)">v1=x+y</text>
       <text x={250} y={180} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">(+)</text>
 
       {/* v2 = sin(x) */}
-      <rect x={210} y={88} width={90} height={38} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+      <rect x={210} y={88} width={90} height={38} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       <text x={255} y={106} textAnchor="middle" fontSize={12} fontWeight="600" fill="var(--text-primary)">v2=sin(x)</text>
       <text x={255} y={120} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">(sin)</text>
 
       {/* v3 = v1*v2 */}
-      <rect x={400} y={120} width={100} height={38} rx={8} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
+      <rect x={400} y={120} width={100} height={38} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
       <text x={450} y={138} textAnchor="middle" fontSize={12} fontWeight="600" fill="var(--text-primary)">v3=v1·v2</text>
       <text x={450} y={152} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">(×)</text>
 
@@ -241,19 +254,27 @@ function NeuralNetSVG() {
 
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+      <defs>
+        <marker id="nnFwd" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#fff" />
+        </marker>
+        <marker id="nnBwd" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#fff" />
+        </marker>
+      </defs>
       <text x={cols[0]} y={30} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">x</text>
       <text x={cols[1]} y={30} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">a1=σ(W1x+b1)</text>
       <text x={cols[2]} y={30} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">a2=σ(W2a1+b2)</text>
       <text x={cols[3]} y={30} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">L</text>
 
       {inputY.map((y, i) => (
-        <circle key={i} cx={cols[0]} cy={y} r={20} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
+        <circle key={i} cx={cols[0]} cy={y} r={20} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
       ))}
       {h1Y.map((y, i) => (
-        <circle key={i} cx={cols[1]} cy={y} r={20} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+        <circle key={i} cx={cols[1]} cy={y} r={20} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       ))}
       {h2Y.map((y, i) => (
-        <circle key={i} cx={cols[2]} cy={y} r={20} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
+        <circle key={i} cx={cols[2]} cy={y} r={20} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
       ))}
       <circle cx={cols[3]} cy={outY[0]} r={22} fill={color} />
       <text x={cols[3]} y={outY[0] + 5} textAnchor="middle" fontSize={13} fontWeight="700" fill="#fff">L</text>
@@ -267,8 +288,8 @@ function NeuralNetSVG() {
           stroke={color} strokeWidth={1} opacity={0.4} />
       )))}
       {h2Y.map((y, i) => (
-        <line key={i} x1={cols[2] + 20} y1={y} x2={cols[3] - 22} y2={outY[0]}
-          stroke={color} strokeWidth={1.5} opacity={0.7} />
+        <line key={i} x1={cols[2] + 20} y1={y} x2={cols[3] - 24} y2={outY[0]}
+          stroke={color} strokeWidth={1.5} opacity={0.7} markerEnd="url(#nnFwd)" />
       ))}
 
       {/* W1 label */}
@@ -276,8 +297,8 @@ function NeuralNetSVG() {
       <text x={(cols[1] + cols[2]) / 2} y={300} textAnchor="middle" fontSize={12} fontWeight="700" fill={color}>W2, b2</text>
 
       {/* gradient arrows (backward) */}
-      <path d={`M ${cols[3] - 22} ${outY[0]} Q ${(cols[2]+cols[3])/2} ${outY[0] + 50} ${cols[2] + 20} ${h2Y[1]}`}
-        fill="none" stroke={color} strokeWidth={2} strokeDasharray="6,3" />
+      <path d={`M ${cols[3] - 22} ${outY[0]} Q ${(cols[2]+cols[3])/2} ${outY[0] + 50} ${cols[2] + 26} ${h2Y[1]}`}
+        fill="none" stroke={color} strokeWidth={2} strokeDasharray="6,3" markerEnd="url(#nnBwd)" />
       <text x={(cols[2]+cols[3])/2} y={outY[0] + 65} textAnchor="middle" fontSize={10} fill={color}>∂L/∂a2</text>
     </svg>
   );
@@ -288,7 +309,7 @@ function ForwardReverseSVG() {
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
       {/* Forward mode */}
-      <rect x={10} y={10} width={320} height={240} rx={10} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
+      <rect x={10} y={10} width={320} height={240} rx={10} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth={1.5} />
       <text x={170} y={36} textAnchor="middle" fontSize={13} fontWeight="700" fill="var(--text-secondary)">Forward Mode AD</text>
 
       <text x={30} y={65} fontSize={12} fill="var(--text-primary)">Dual number: (v, v')</text>
@@ -296,13 +317,13 @@ function ForwardReverseSVG() {
       <text x={30} y={105} fontSize={11} fill="var(--text-secondary)">One pass per input variable</text>
       <text x={30} y={125} fontSize={11} fill="var(--text-secondary)">Cost: O(n) passes for n inputs</text>
 
-      <rect x={30} y={145} width={270} height={60} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
+      <rect x={30} y={145} width={270} height={60} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
       <text x={165} y={166} textAnchor="middle" fontSize={11} fill={color}>x → u → f</text>
       <text x={165} y={184} textAnchor="middle" fontSize={11} fill={color}>(1, 0) → (g(1), g'(1)) → (f, f'·g')</text>
       <text x={30} y={226} fontSize={11} fill="var(--text-secondary)">Good when: few inputs, many outputs</text>
 
       {/* Reverse mode */}
-      <rect x={370} y={10} width={320} height={240} rx={10} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+      <rect x={370} y={10} width={320} height={240} rx={10} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       <text x={530} y={36} textAnchor="middle" fontSize={13} fontWeight="700" fill={color}>Reverse Mode AD (Backprop)</text>
 
       <text x={390} y={65} fontSize={12} fill="var(--text-primary)">Adjoint: grad propagated backward</text>
@@ -310,7 +331,7 @@ function ForwardReverseSVG() {
       <text x={390} y={105} fontSize={11} fill="var(--text-secondary)">One pass per output</text>
       <text x={390} y={125} fontSize={11} fill="var(--text-secondary)">Cost: O(m) passes for m outputs</text>
 
-      <rect x={390} y={145} width={270} height={60} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+      <rect x={390} y={145} width={270} height={60} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       <text x={525} y={166} textAnchor="middle" fontSize={11} fill={color}>L → W2 → W1 → ...</text>
       <text x={525} y={184} textAnchor="middle" fontSize={11} fill={color}>∂L/∂Wk in single backward pass</text>
       <text x={390} y={226} fontSize={12} fontWeight="700" fill={color}>{"ML: n params >> m=1 loss → use this!"}</text>
@@ -360,21 +381,29 @@ function ResNetBlockSVG() {
   const W = 660, H = 220;
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+      <defs>
+        <marker id="resMain" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill={color} />
+        </marker>
+        <marker id="resSkip" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
+        </marker>
+      </defs>
       <text x={W / 2} y={22} textAnchor="middle" fontSize={13} fontWeight="700" fill="var(--text-secondary)">
         ResNet Block — Gradient Highway
       </text>
 
       {/* input */}
-      <rect x={20} y={90} width={70} height={36} rx={7} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+      <rect x={20} y={90} width={70} height={36} rx={7} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       <text x={55} y={113} textAnchor="middle" fontSize={13} fill="var(--text-primary)">x^l</text>
 
       {/* F(x) block */}
-      <rect x={180} y={90} width={140} height={36} rx={7} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
+      <rect x={180} y={90} width={140} height={36} rx={7} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
       <text x={250} y={108} textAnchor="middle" fontSize={12} fill={color}>F(x^l)</text>
       <text x={250} y={122} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">Conv-BN-ReLU stack</text>
 
       {/* + node */}
-      <circle cx={430} cy={108} r={18} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={2} />
+      <circle cx={430} cy={108} r={18} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={2} />
       <text x={430} y={114} textAnchor="middle" fontSize={18} fontWeight="700" fill={color}>+</text>
 
       {/* output */}
@@ -382,13 +411,12 @@ function ResNetBlockSVG() {
       <text x={570} y={113} textAnchor="middle" fontSize={12} fontWeight="700" fill="#fff">x^(l+1)</text>
 
       {/* main path arrow */}
-      <line x1={90} y1={108} x2={180} y2={108} stroke={color} strokeWidth={2} />
-      <line x1={320} y1={108} x2={412} y2={108} stroke={color} strokeWidth={2} />
-      <line x1={448} y1={108} x2={520} y2={108} stroke={color} strokeWidth={2} />
-      <polygon points="520,103 528,108 520,113" fill={color} />
+      <line x1={90} y1={108} x2={176} y2={108} stroke={color} strokeWidth={2} markerEnd="url(#resMain)" />
+      <line x1={320} y1={108} x2={408} y2={108} stroke={color} strokeWidth={2} markerEnd="url(#resMain)" />
+      <line x1={448} y1={108} x2={516} y2={108} stroke={color} strokeWidth={2} markerEnd="url(#resMain)" />
 
       {/* skip connection */}
-      <path d="M 90 108 Q 260 50 412 108" fill="none" stroke="var(--text-secondary)" strokeWidth={2} strokeDasharray="6,3" />
+      <path d="M 90 108 Q 260 50 408 108" fill="none" stroke="var(--text-secondary)" strokeWidth={2} strokeDasharray="6,3" markerEnd="url(#resSkip)" />
       <text x={260} y={48} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">skip connection (identity)</text>
 
       {/* gradient formula */}
@@ -417,7 +445,7 @@ function CheckpointSVG() {
       <text x={10} y={50} fontSize={12} fontWeight="700" fill="var(--text-secondary)">Standard: store all activations O(n)</text>
       {Array.from({ length: 10 }, (_, i) => (
         <rect key={i} x={10 + i * 62} y={60} width={54} height={36} rx={5}
-          fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+          fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       ))}
       {Array.from({ length: 10 }, (_, i) => (
         <text key={i} x={37 + i * 62} y={82} textAnchor="middle" fontSize={10} fill={color}>a{i + 1}</text>
@@ -429,7 +457,7 @@ function CheckpointSVG() {
         const isCheckpoint = i % 3 === 0;
         return (
           <rect key={i} x={10 + i * 62} y={130} width={54} height={36} rx={5}
-            fill={isCheckpoint ? `rgba(249,115,22,0.10)` : 'rgba(100,100,100,0.1)'}
+            fill={isCheckpoint ? `rgba(74,158,237,0.10)` : 'rgba(100,100,100,0.1)'}
             stroke={isCheckpoint ? color : 'var(--card-border)'}
             strokeWidth={isCheckpoint ? 2 : 1}
             strokeDasharray={isCheckpoint ? 'none' : '4,2'} />
@@ -461,19 +489,13 @@ export default function CALC4() {
 
       <div style={S.tag}>Module 04</div>
       <h1 style={S.h1}>Chain Rule &amp; Backpropagation</h1>
-      <p style={S.lead}>
-        A backpropagation é o algoritmo que treina redes neurais modernas. É uma aplicação eficiente e sistemática
-        da regra da cadeia multivariável sobre grafos de computação dirigidos, calculando gradientes de forma exacta
-        em tempo linear no número de operações da rede. Compreender backprop é compreender como o gradiente flui
-        pela arquitectura e o que pode bloqueá-lo.
-      </p>
 
       {/* ── SECTION 1 ── */}
       <div style={S.section}>
         <h2 style={S.h2}>1. Chain Rule — 1D</h2>
         <p style={S.p}>
           A regra da cadeia é o resultado fundamental do cálculo diferencial para funções compostas. Se
-          f = f(u) e u = g(x), então:
+          <InlineMath math="f = f(u)" /> e <InlineMath math="u = g(x)" />, então:
         </p>
         <BlockMath math="\frac{df}{dx} = \frac{df}{du} \cdot \frac{du}{dx}" />
         <p style={S.p}>
@@ -489,12 +511,6 @@ export default function CALC4() {
         </div>
 
         <p style={S.p}><strong>Exemplo em ML — sigmoid com pré-activação:</strong></p>
-        
-        <div style={S.note}>
-          <strong>Erros comuns:</strong> (1) Esquecer o derivada interior — e.g., d/dx[sin(x²)] = cos(x²) (sem o 2x é erro).
-          (2) Confundir f(g(x)) com f(x)·g(x) — produto rule é diferente de chain rule.
-          (3) Aplicar chain rule onde não há composição.
-        </div>
 
         <table style={S.table}>
           <thead>
@@ -506,33 +522,33 @@ export default function CALC4() {
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>e^(x²)</td>
-              <td style={S.td}>2x · e^(x²)</td>
-              <td style={S.td}>inner: 2x</td>
+              <td style={S.td}><InlineMath math="e^{x^2}" /></td>
+              <td style={S.td}><InlineMath math="2x \cdot e^{x^2}" /></td>
+              <td style={S.td}>inner: <InlineMath math="2x" /></td>
             </tr>
             <tr>
-              <td style={S.td}>ln(sin(x))</td>
-              <td style={S.td}>(1/sin(x)) · cos(x) = cot(x)</td>
-              <td style={S.td}>inner: cos(x)</td>
+              <td style={S.td}><InlineMath math="\ln(\sin(x))" /></td>
+              <td style={S.td}><InlineMath math="\frac{1}{\sin(x)} \cdot \cos(x) = \cot(x)" /></td>
+              <td style={S.td}>inner: <InlineMath math="\cos(x)" /></td>
             </tr>
             <tr>
-              <td style={S.td}>sigmoid(wx+b)</td>
-              <td style={S.td}>σ(wx+b)(1−σ(wx+b)) · w</td>
-              <td style={S.td}>w.r.t. x; inner: w</td>
+              <td style={S.td}><InlineMath math="\sigma(wx+b)" /></td>
+              <td style={S.td}><InlineMath math="\sigma(wx+b)(1-\sigma(wx+b)) \cdot w" /></td>
+              <td style={S.td}>w.r.t. x; inner: <InlineMath math="w" /></td>
             </tr>
             <tr>
-              <td style={S.td}>(1 + e^(-x))^(-1)</td>
-              <td style={S.td}>σ(x)(1−σ(x))</td>
+              <td style={S.td}><InlineMath math="(1 + e^{-x})^{-1}" /></td>
+              <td style={S.td}><InlineMath math="\sigma(x)(1-\sigma(x))" /></td>
               <td style={S.td}>sigmoid própria</td>
             </tr>
             <tr>
-              <td style={S.td}>tanh(x)</td>
-              <td style={S.td}>1 − tanh²(x)</td>
-              <td style={S.td}>sech²(x)</td>
+              <td style={S.td}><InlineMath math="\tanh(x)" /></td>
+              <td style={S.td}><InlineMath math="1 - \tanh^2(x)" /></td>
+              <td style={S.td}><InlineMath math="\operatorname{sech}^2(x)" /></td>
             </tr>
             <tr>
-              <td style={S.td}>ReLU(x)</td>
-              <td style={S.td}>1 se x&gt;0, 0 se x≤0</td>
+              <td style={S.td}><InlineMath math="\text{ReLU}(x)" /></td>
+              <td style={S.td}><InlineMath math="1 \text{ se } x>0,\ 0 \text{ se } x\leq 0" /></td>
               <td style={S.td}>sem chain — linear por partes</td>
             </tr>
           </tbody>
@@ -545,7 +561,7 @@ export default function CALC4() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Chain Rule — Caso Multivariável</h2>
         <p style={S.p}>
-          Quando z = f(u, v), u = g(x, y), v = h(x, y), a derivada parcial de z em ordem a x soma as
+          Quando <InlineMath math="z = f(u, v),\ u = g(x, y),\ v = h(x, y)" />, a derivada parcial de <InlineMath math="z" /> em ordem a <InlineMath math="x" /> soma as
           contribuições de <em>todos os caminhos</em> da variável de entrada até à saída:
         </p>
         <BlockMath math="\frac{\partial z}{\partial x} = \frac{\partial z}{\partial u}\frac{\partial u}{\partial x} + \frac{\partial z}{\partial v}\frac{\partial v}{\partial x}" />
@@ -559,11 +575,11 @@ export default function CALC4() {
 
         <p style={S.p}><strong>Forma matricial — Jacobiano:</strong></p>
         <p style={S.p}>
-          Se f: ℝⁿ → ℝᵐ e g: ℝᵖ → ℝⁿ, então a composição h = f ∘ g tem Jacobiano:
+          Se <InlineMath math="f: \mathbb{R}^n \to \mathbb{R}^m" /> e <InlineMath math="g: \mathbb{R}^p \to \mathbb{R}^n" />, então a composição <InlineMath math="h = f \circ g" /> tem Jacobiano:
         </p>
         <BlockMath math="J_h(x) = J_f(g(x)) \cdot J_g(x)" />
         <p style={S.p}>
-          onde J_f é a matriz m×n das derivadas parciais de f e J_g é n×p. Esta é a generalização matricial
+          onde <InlineMath math="J_f" /> é a matriz <InlineMath math="m \times n" /> das derivadas parciais de <InlineMath math="f" /> e <InlineMath math="J_g" /> é <InlineMath math="n \times p" />. Esta é a generalização matricial
           exacta da regra da cadeia 1D — multiplicação de Jacobianos.
         </p>
 
@@ -631,11 +647,11 @@ export default function CALC4() {
 
         <p style={S.p}><strong>Backward pass — derivação passo a passo:</strong></p>
         
-        <p style={S.p}><strong>Porquê ∂L/∂W = δ · a^T e não ∂L/∂W = δ^T · a?</strong></p>
+        <p style={S.p}><strong>Porquê <InlineMath math="\partial L/\partial W = \delta \cdot a^\top" /> e não <InlineMath math="\partial L/\partial W = \delta^\top \cdot a" />?</strong></p>
         <p style={S.p}>
-          W tem shape (out, in). z = W·a + b, logo ∂z/∂W[i,j] = a[j] apenas para a linha i.
-          Portanto o gradiente de L em relação a W[i,j] é δ[i] · a[j], que em forma matricial é δ · a^T.
-          As dimensões devem coincidir com as de W — verificar sempre as shapes é o primeiro passo de debug.
+          <InlineMath math="W" /> tem shape <InlineMath math="(\text{out}, \text{in})" />. <InlineMath math="z = W\cdot a + b" />, logo <InlineMath math="\partial z/\partial W_{ij} = a_j" /> apenas para a linha <InlineMath math="i" />.
+          Portanto o gradiente de <InlineMath math="L" /> em relação a <InlineMath math="W_{ij}" /> é <InlineMath math="\delta_i \cdot a_j" />, que em forma matricial é <InlineMath math="\delta \cdot a^\top" />.
+          As dimensões devem coincidir com as de <InlineMath math="W" /> — verificar sempre as shapes é o primeiro passo de debug.
         </p>
 
         <table style={S.table}>
@@ -648,33 +664,33 @@ export default function CALC4() {
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>∂L/∂a2</td>
-              <td style={S.td}>a2 − y</td>
+              <td style={S.td}><InlineMath math="\partial L/\partial a_2" /></td>
+              <td style={S.td}><InlineMath math="a_2 - y" /></td>
               <td style={S.td}>(10,)</td>
             </tr>
             <tr>
-              <td style={S.td}>∂L/∂z2 (= δ2)</td>
-              <td style={S.td}>(a2−y) ⊙ a2(1−a2)</td>
+              <td style={S.td}><InlineMath math="\partial L/\partial z_2 (= \delta_2)" /></td>
+              <td style={S.td}><InlineMath math="(a_2-y) \odot a_2(1-a_2)" /></td>
               <td style={S.td}>(10,)</td>
             </tr>
             <tr>
-              <td style={S.td}>∂L/∂W2</td>
-              <td style={S.td}>δ2 · a1^T</td>
+              <td style={S.td}><InlineMath math="\partial L/\partial W_2" /></td>
+              <td style={S.td}><InlineMath math="\delta_2 \cdot a_1^\top" /></td>
               <td style={S.td}>(10, 64)</td>
             </tr>
             <tr>
-              <td style={S.td}>∂L/∂a1</td>
-              <td style={S.td}>W2^T · δ2</td>
+              <td style={S.td}><InlineMath math="\partial L/\partial a_1" /></td>
+              <td style={S.td}><InlineMath math="W_2^\top \cdot \delta_2" /></td>
               <td style={S.td}>(64,)</td>
             </tr>
             <tr>
-              <td style={S.td}>∂L/∂z1 (= δ1)</td>
-              <td style={S.td}>∂L/∂a1 ⊙ a1(1−a1)</td>
+              <td style={S.td}><InlineMath math="\partial L/\partial z_1 (= \delta_1)" /></td>
+              <td style={S.td}><InlineMath math="\partial L/\partial a_1 \odot a_1(1-a_1)" /></td>
               <td style={S.td}>(64,)</td>
             </tr>
             <tr>
-              <td style={S.td}>∂L/∂W1</td>
-              <td style={S.td}>δ1 · x^T</td>
+              <td style={S.td}><InlineMath math="\partial L/\partial W_1" /></td>
+              <td style={S.td}><InlineMath math="\delta_1 \cdot x^\top" /></td>
               <td style={S.td}>(64, 784)</td>
             </tr>
           </tbody>
@@ -694,7 +710,7 @@ export default function CALC4() {
           <BlockMath math="\frac{\partial L}{\partial W^l} = \delta^l (a^{l-1})^\top" />
           <BlockMath math="\frac{\partial L}{\partial b^l} = \delta^l" />
         <p style={S.p}>
-          onde ⊙ é o produto de Hadamard (elementwise), δˡ é o "erro" na camada l, e σ'(zˡ) é a derivada
+          onde <InlineMath math="\odot" /> é o produto de Hadamard (elementwise), <InlineMath math="\delta^l" /> é o "erro" na camada l, e <InlineMath math="\sigma'(z^l)" /> é a derivada
           da activação avaliada nos pré-activações do forward pass.
         </p>
 
@@ -772,7 +788,7 @@ export default function CALC4() {
 
         <p style={S.p}>
           Em ML, n é o número de parâmetros (pode ser 10⁹) e m = 1 (a loss é escalar). Reverse mode
-          computa ∇L em relação a todos os n parâmetros com um único backward pass — custo independente de n.
+          computa <InlineMath math="\nabla L" /> em relação a todos os n parâmetros com um único backward pass — custo independente de n.
           Forward mode precisaria de n passes. Daí backprop ser sempre reverse mode.
         </p>
 
@@ -855,8 +871,8 @@ export default function CALC4() {
         <BlockMath math="\frac{\partial L}{\partial W_1} = \frac{\partial L}{\partial a_L} \cdot J_L \cdot J_{L-1} \cdots J_1" />
         <p style={S.p}>
           <strong>Vanishing:</strong> Se os valores singulares dos Jacobianos são consistentemente menores
-          que 1, o produto decresce exponencialmente. Com sigmoid: σ'(x) ≤ 1/4 sempre, logo após 10 camadas
-          o gradiente é multiplicado por no máximo (1/4)^10 ≈ 10^(-6).
+          que 1, o produto decresce exponencialmente. Com sigmoid: <InlineMath math="\sigma'(x) \leq 1/4" /> sempre, logo após 10 camadas
+          o gradiente é multiplicado por no máximo <InlineMath math="(1/4)^{10} \approx 10^{-6}" />.
         </p>
         <div style={S.svgWrap}>
           <VanishingGradSVG />
@@ -890,11 +906,11 @@ export default function CALC4() {
 
         <p style={S.p}><strong>Soluções em detalhe:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Inicialização Xavier/Glorot:</strong> W ~ U(-√(6/(fan_in+fan_out)), +√(6/(fan_in+fan_out))) — mantém variância aproximada ao longo das camadas</li>
-          <li><strong>Inicialização He:</strong> W ~ N(0, 2/fan_in) — optimizada para ReLU</li>
-          <li><strong>Batch Normalization:</strong> normaliza activações para μ=0, σ=1 antes da activação — re-centra o regime linear de sigmoid/tanh</li>
+          <li><strong>Inicialização Xavier/Glorot:</strong> <InlineMath math="W \sim U\!\left(-\sqrt{\tfrac{6}{fan_{in}+fan_{out}}}, +\sqrt{\tfrac{6}{fan_{in}+fan_{out}}}\right)" /> — mantém variância aproximada ao longo das camadas</li>
+          <li><strong>Inicialização He:</strong> <InlineMath math="W \sim N(0, 2/fan_{in})" /> — optimizada para ReLU</li>
+          <li><strong>Batch Normalization:</strong> normaliza activações para <InlineMath math="\mu=0, \sigma=1" /> antes da activação — re-centra o regime linear de sigmoid/tanh</li>
           <li><strong>Skip connections (ResNet):</strong> o +1 no gradiente garante passagem directa — ver secção 9</li>
-          <li><strong>Gradient clipping:</strong> se ||∇||₂ &gt; threshold, escalar ∇ ← ∇ · (threshold / ||∇||₂)</li>
+          <li><strong>Gradient clipping:</strong> se <InlineMath math="\|\nabla\|_2 > threshold" />, escalar <InlineMath math="\nabla \leftarrow \nabla \cdot (threshold / \|\nabla\|_2)" /></li>
         </ul>
 
               </div>
@@ -916,12 +932,12 @@ export default function CALC4() {
 
         <p style={S.p}><strong>Transformers — Atenção e gradientes:</strong></p>
         <p style={S.p}>
-          A mecanismo de atenção calcula: Attn(Q,K,V) = softmax(QK^T / √d) · V.
+          A mecanismo de atenção calcula: <InlineMath math="\text{Attn}(Q,K,V) = \text{softmax}(QK^\top / \sqrt{d}) \cdot V" />.
           O Jacobiano do softmax tem a forma especial:
         </p>
         <BlockMath math="\frac{\partial \text{softmax}(z)_i}{\partial z_j} = p_i(\delta_{ij} - p_j)" />
         <p style={S.p}>
-          onde p = softmax(z). Na prática, frameworks computam isto eficientemente via o truque
+          onde <InlineMath math="p = \text{softmax}(z)" />. Na prática, frameworks computam isto eficientemente via o truque
           de FlashAttention que evita materializar a matriz de atenção completa.
         </p>
 
@@ -935,8 +951,8 @@ export default function CALC4() {
 
         <p style={S.p}><strong>Highway Networks:</strong></p>
         <p style={S.p}>
-          Precursores do ResNet com gates aprendidas: y = T(x)·H(x) + (1−T(x))·x, onde T é a transform gate.
-          Gradiente: ∂y/∂x = T·∂H/∂x + (1−T) + gradientes das gates. Mais expressivo que ResNet mas
+          Precursores do ResNet com gates aprendidas: <InlineMath math="y = T(x)\cdot H(x) + (1-T(x))\cdot x" />, onde T é a transform gate.
+          Gradiente: <InlineMath math="\partial y/\partial x = T\cdot \partial H/\partial x + (1-T) + \text{gradientes das gates}" />. Mais expressivo que ResNet mas
           com mais parâmetros e hiperparâmetros.
         </p>
       </div>
@@ -947,7 +963,7 @@ export default function CALC4() {
       <div style={S.section}>
         <h2 style={S.h2}>10. Diferenciação de Segunda Ordem</h2>
         <p style={S.p}>
-          O Hessiano H de L(θ) é a matriz n×n de derivadas segundas ∂²L/∂θᵢ∂θⱼ. Para n=10⁸ parâmetros,
+          O Hessiano H de <InlineMath math="L(\theta)" /> é a matriz n×n de derivadas segundas <InlineMath math="\partial^2 L/\partial \theta_i \partial \theta_j" />. Para <InlineMath math="n=10^8" /> parâmetros,
           formar H explicitamente é impossível (10¹⁶ entradas). Mas podemos calcular <strong>produtos Hessiano-vector</strong> Hv sem formar H.
         </p>
 
@@ -956,11 +972,11 @@ export default function CALC4() {
         <p style={S.p}>
           onde R_v{'{f}'} é o operador "diferencial directional em direcção v" aplicado a f. Na prática:
         </p>
-        
+
         <p style={S.p}><strong>Aplicações:</strong></p>
         <ul style={S.ul}>
-          <li><strong>Método de Newton:</strong> θ ← θ − H⁻¹∇L. Usa Hv para resolver H·Δθ = ∇L via conjugate gradient</li>
-          <li><strong>Natural gradient:</strong> θ ← θ − F⁻¹∇L onde F é a Fisher information matrix</li>
+          <li><strong>Método de Newton:</strong> <InlineMath math="\theta \leftarrow \theta - H^{-1}\nabla L" />. Usa Hv para resolver <InlineMath math="H\cdot \Delta\theta = \nabla L" /> via conjugate gradient</li>
+          <li><strong>Natural gradient:</strong> <InlineMath math="\theta \leftarrow \theta - F^{-1}\nabla L" /> onde F é a Fisher information matrix</li>
           <li><strong>Estimação de curvatura:</strong> para adaptar learning rates (Adam usa estimativa de 2ª ordem diagonal)</li>
         </ul>
 
@@ -1029,113 +1045,6 @@ export default function CALC4() {
           transformers com context window de 128K tokens) ou redes extremamente profundas. PyTorch
           Fully Sharded Data Parallel (FSDP) combina checkpointing com sharding de pesos para escalar
           a modelos com centenas de biliões de parâmetros.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ── SECTION 12 ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Backpropagation é a aplicação sistemática da regra da cadeia num grafo de computação dirigido.
-          Aqui está o algoritmo completo, as formas da chain rule, e as ferramentas de debug.
-        </p>
-
-        <p style={S.p}><strong>Pseudocódigo do algoritmo backprop:</strong></p>
-        
-        <p style={S.p}><strong>Formas da chain rule — sumário:</strong></p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Contexto</th>
-              <th style={S.th}>Fórmula</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>1D, composição simples</td>
-              <td style={S.td}>df/dx = (df/du)(du/dx)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>1D, n-fold composition</td>
-              <td style={S.td}>d(f∘g∘h)/dx = f'·g'·h'</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Multivariável, múltiplos caminhos</td>
-              <td style={S.td}>∂z/∂x = Σᵢ (∂z/∂uᵢ)(∂uᵢ/∂x)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Matricial (Jacobiano)</td>
-              <td style={S.td}>{"J(f∘g) = J_f · J_g"}</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Delta rule (backprop)</td>
-              <td style={S.td}>δˡ = (Wˡ⁺¹)ᵀδˡ⁺¹ ⊙ σ'(zˡ)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Peso update</td>
-              <td style={S.td}>∂L/∂Wˡ = δˡ(aˡ⁻¹)ᵀ</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p style={S.p}><strong>Gradient checking — verificar implementação:</strong></p>
-        
-        <p style={S.p}><strong>Bugs comuns e diagnóstico:</strong></p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Bug</th>
-              <th style={S.th}>Sintoma</th>
-              <th style={S.th}>Fix</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Shapes erradas em dW</td>
-              <td style={S.td}>RuntimeError: size mismatch</td>
-              <td style={S.td}>Verificar (n_out, n_in) = δ · a^T</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Não zerar gradientes</td>
-              <td style={S.td}>Gradientes acumulam entre steps</td>
-              <td style={S.td}>optimizer.zero_grad() antes de backward</td>
-            </tr>
-            <tr>
-              <td style={S.td}>In-place op em leaf</td>
-              <td style={S.td}>RuntimeError: in-place op</td>
-              <td style={S.td}>Usar x = x + 1 em vez de x += 1</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Esquecer σ' no delta</td>
-              <td style={S.td}>Gradient check falha por factor grande</td>
-              <td style={S.td}>δ = upstream ⊙ σ'(z), não apenas upstream</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Transposta errada</td>
-              <td style={S.td}>Shapes numéricas correntes mas valores errados</td>
-              <td style={S.td}>Gradient check com ε=1e-5</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p style={S.p}><strong>Performance tips:</strong></p>
-        <ul style={S.ul}>
-          <li>Vectorize sobre o batch — nunca loops Python sobre exemplos individuais</li>
-          <li>Use operações matriciais (matmul) em vez de loops sobre pesos</li>
-          <li>torch.no_grad() em inference — evita construir o grafo</li>
-          <li>Gradient checkpointing para redes profundas com memória limitada</li>
-          <li>Mixed precision (float16 forward, float32 backward) — torch.autocast</li>
-          <li>Compile o modelo: torch.compile() para kernels fundidos</li>
-          <li>Acumular gradientes sobre múltiplos mini-batches antes de update (gradient accumulation)</li>
-        </ul>
-
-        <div style={S.note}>
-          <strong>Resumo final:</strong> Backprop = reverse mode AD = chain rule sistemática num DAG.
-          O custo é O(operações forward) — linear e eficiente. O que limita o treino não é o algoritmo
-          de backprop em si, mas o fluxo de gradiente através da arquitectura, que as técnicas desta
-          secção (ResNet, LSTM, normalization, clipping, checkpointing) abordam directamente.
         </div>
       </div>
     </div>

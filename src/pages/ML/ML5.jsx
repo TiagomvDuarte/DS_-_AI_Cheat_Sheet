@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -32,9 +32,9 @@ const BiasVarianceDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Erro de Treino e de Validação vs. Complexidade do Modelo</p>
     <svg viewBox="0 0 500 250" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* Region labels (above the plot, no overlap with curves) */}
-      <text x="100" y="14" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">Underfitting (high bias)</text>
-      <text x="210" y="14" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Sweet Spot</text>
-      <text x="365" y="14" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Overfitting (high variance)</text>
+      <text x="100" y="14" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">Underfitting (high bias)</text>
+      <text x="210" y="14" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Sweet Spot</text>
+      <text x="365" y="14" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Overfitting (high variance)</text>
 
       <line x1="40" y1="210" x2="470" y2="210" stroke="var(--text-secondary)" strokeWidth="1.5" />
       <line x1="40" y1="210" x2="40" y2="30" stroke="var(--text-secondary)" strokeWidth="1.5" />
@@ -42,21 +42,21 @@ const BiasVarianceDiagram = () => (
       <text x="15" y="30" textAnchor="start" fill="var(--text-secondary)" fontSize="11">Erro</text>
 
       {/* Regions */}
-      <rect x="40" y="30" width="120" height="180" fill="rgba(245,158,11,0.08)" />
+      <rect x="40" y="30" width="120" height="180" fill="rgba(2,132,199,0.08)" />
       <rect x="160" y="30" width="100" height="180" fill="rgba(16,185,129,0.10)" />
-      <rect x="260" y="30" width="210" height="180" fill="rgba(249,115,22,0.10)" />
+      <rect x="260" y="30" width="210" height="180" fill="rgba(74,158,237,0.10)" />
 
       {/* Training error curve (decreasing) */}
       <path d="M 40 190 C 120 110, 200 60, 470 30" fill="none" stroke={color} strokeWidth="2.5" />
       <text x="395" y="55" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">Erro de Treino</text>
 
       {/* Validation error curve (U-shape) */}
-      <path d="M 40 205 C 120 120, 190 85, 220 85 C 260 85, 330 120, 470 205" fill="none" stroke="#f97316" strokeWidth="2.5" />
-      <text x="350" y="180" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Erro de Validação</text>
+      <path d="M 40 205 C 120 120, 190 85, 220 85 C 260 85, 330 120, 470 205" fill="none" stroke="#4a9eed" strokeWidth="2.5" />
+      <text x="350" y="180" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Erro de Validação</text>
 
       {/* Sweet spot marker */}
-      <line x1="220" y1="30" x2="220" y2="210" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" />
-      <circle cx="220" cy="85" r="4" fill="#f97316" />
+      <line x1="220" y1="30" x2="220" y2="210" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" />
+      <circle cx="220" cy="85" r="4" fill="#4a9eed" />
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       À medida que a complexidade do modelo aumenta, o <strong>erro de treino</strong> diminui sempre — um modelo
@@ -83,7 +83,7 @@ const LearningCurvesDiagram = () => {
         <text x={w - 10} y={h - pad + 14} textAnchor="end" fill="var(--text-secondary)" fontSize="9">nº exemplos de treino</text>
         <text x={pad - 4} y="14" textAnchor="end" fill="var(--text-secondary)" fontSize="9">erro</text>
         <path d={trainPath} fill="none" stroke={color} strokeWidth="2.5" />
-        <path d={valPath} fill="none" stroke="#f97316" strokeWidth="2.5" strokeDasharray="5,3" />
+        <path d={valPath} fill="none" stroke="#4a9eed" strokeWidth="2.5" strokeDasharray="5,3" />
       </svg>
       <p style={{ fontSize: '0.85rem', fontWeight: 700, color: noteColor, margin: '0.25rem 0 0' }}>{title}</p>
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>{note}</p>
@@ -99,14 +99,14 @@ const LearningCurvesDiagram = () => {
           trainPath={`M ${xToPx(5)} ${yToPx(35)} C ${xToPx(30)} ${yToPx(45)}, ${xToPx(60)} ${yToPx(48)}, ${xToPx(100)} ${yToPx(50)}`}
           valPath={`M ${xToPx(5)} ${yToPx(85)} C ${xToPx(30)} ${yToPx(65)}, ${xToPx(60)} ${yToPx(55)}, ${xToPx(100)} ${yToPx(53)}`}
           note="Ambas as curvas convergem para um erro alto — mais dados não ajudam; o modelo é demasiado simples."
-          noteColor="#f59e0b"
+          noteColor="#0284c7"
         />
         <Plot
           title="Alta Variância (Overfitting)"
           trainPath={`M ${xToPx(5)} ${yToPx(5)} C ${xToPx(30)} ${yToPx(8)}, ${xToPx(60)} ${yToPx(12)}, ${xToPx(100)} ${yToPx(15)}`}
           valPath={`M ${xToPx(5)} ${yToPx(95)} C ${xToPx(30)} ${yToPx(75)}, ${xToPx(60)} ${yToPx(55)}, ${xToPx(100)} ${yToPx(45)}`}
           note="Grande gap entre treino e validação — mais dados de treino tendem a reduzir esse gap."
-          noteColor="#ef4444"
+          noteColor="#4a9eed"
         />
       </div>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '1rem', textAlign: 'left' }}>
@@ -130,7 +130,7 @@ const KFoldDiagram = () => {
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>K-Fold Cross-Validation (K = 5)</p>
-      <svg viewBox="0 0 460 220" style={{ maxWidth: '100%', height: 'auto' }}>
+      <svg viewBox="0 0 460 235" style={{ maxWidth: '100%', height: 'auto' }}>
         {Array.from({ length: k }, (_, iter) => {
           const y = 20 + iter * 38;
           return (
@@ -146,21 +146,21 @@ const KFoldDiagram = () => {
                     width={foldWidth - 4}
                     height="28"
                     rx="4"
-                    fill={isVal ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'}
-                    stroke={isVal ? '#f97316' : color}
+                    fill={isVal ? 'rgba(125,211,252,0.15)' : 'rgba(74,158,237,0.10)'}
+                    stroke={isVal ? '#7dd3fc' : color}
                     strokeWidth="1.2"
                   />
                 );
               })}
               {Array.from({ length: k }, (_, fold) => (
-                <text key={fold} x={startX + fold * foldWidth + (foldWidth - 4) / 2} y={y + 18} textAnchor="middle" fontSize="9" fontWeight="700" fill={fold === iter ? '#f97316' : color}>
+                <text key={fold} x={startX + fold * foldWidth + (foldWidth - 4) / 2} y={y + 18} textAnchor="middle" fontSize="9" fontWeight="700" fill={fold === iter ? '#7dd3fc' : color}>
                   {fold === iter ? 'val' : 'treino'}
                 </text>
               ))}
             </g>
           );
         })}
-        <text x="230" y="210" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">
+        <text x="230" y="225" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">
           Cada fold serve exactamente uma vez como validação — métrica final = média das K iterações
         </text>
       </svg>
@@ -188,8 +188,8 @@ const StratifiedKFoldDiagram = () => (
             <text x="10" y={y + 14} fill="var(--text-secondary)" fontSize="9">fold {fold + 1}</text>
             {seqs[fold].map((cls, i) => (
               <rect key={i} x={60 + i * 32} y={y} width="28" height="20" rx="3"
-                fill={cls === 'A' ? 'rgba(249,115,22,0.10)' : 'rgba(245,158,11,0.3)'}
-                stroke={cls === 'A' ? color : '#f97316'} strokeWidth="1" />
+                fill={cls === 'A' ? 'rgba(74,158,237,0.10)' : 'rgba(2,132,199,0.3)'}
+                stroke={cls === 'A' ? color : '#4a9eed'} strokeWidth="1" />
             ))}
           </g>
         );
@@ -208,15 +208,15 @@ const StratifiedKFoldDiagram = () => (
             <text x="290" y={y + 14} fill="var(--text-secondary)" fontSize="9">fold {fold + 1}</text>
             {seqs[fold].map((cls, i) => (
               <rect key={i} x={330 + i * 32} y={y} width="28" height="20" rx="3"
-                fill={cls === 'A' ? 'rgba(249,115,22,0.10)' : 'rgba(245,158,11,0.3)'}
-                stroke={cls === 'A' ? color : '#f97316'} strokeWidth="1" />
+                fill={cls === 'A' ? 'rgba(74,158,237,0.10)' : 'rgba(2,132,199,0.3)'}
+                stroke={cls === 'A' ? color : '#4a9eed'} strokeWidth="1" />
             ))}
           </g>
         );
       })}
-      <rect x="60" y="170" width="28" height="20" rx="3" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="60" y="170" width="28" height="20" rx="3" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="95" y="184" fill="var(--text-secondary)" fontSize="10">Classe A (80%)</text>
-      <rect x="200" y="170" width="28" height="20" rx="3" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" strokeWidth="1" />
+      <rect x="200" y="170" width="28" height="20" rx="3" fill="rgba(2,132,199,0.3)" stroke="#0284c7" strokeWidth="1" />
       <text x="235" y="184" fill="var(--text-secondary)" fontSize="10">Classe B (20%)</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
@@ -237,25 +237,25 @@ const NestedCVDiagram = () => (
       <text x="155" y="16" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Outer Loop (model assessment)</text>
       <rect x="20" y="26" width="270" height="180" rx="8" fill="none" stroke={color} strokeWidth="1.5" strokeDasharray="6,3" />
 
-      <rect x="40" y="46" width="120" height="150" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x="40" y="46" width="120" height="150" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="100" y="62" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Outer Train</text>
 
-      <rect x="170" y="46" width="100" height="150" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="220" y="62" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Outer Test</text>
-      <text x="220" y="170" textAnchor="middle" fill="#f97316" fontSize="8">(score final,</text>
-      <text x="220" y="182" textAnchor="middle" fill="#f97316" fontSize="8">nunca usado p/ tuning)</text>
+      <rect x="170" y="46" width="100" height="150" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="220" y="62" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Outer Test</text>
+      <text x="220" y="170" textAnchor="middle" fill="#4a9eed" fontSize="8">(score final,</text>
+      <text x="220" y="182" textAnchor="middle" fill="#4a9eed" fontSize="8">nunca usado p/ tuning)</text>
 
       {/* Inner CV inside outer train */}
-      <rect x="50" y="78" width="100" height="100" rx="5" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="4,2" />
-      <text x="100" y="94" textAnchor="middle" fill="#f59e0b" fontSize="8" fontWeight="700">Inner Loop</text>
-      <text x="100" y="110" textAnchor="middle" fill="#f59e0b" fontSize="8">(grid search /</text>
-      <text x="100" y="124" textAnchor="middle" fill="#f59e0b" fontSize="8">hyperparam tuning</text>
-      <text x="100" y="138" textAnchor="middle" fill="#f59e0b" fontSize="8">via K-Fold CV)</text>
+      <rect x="50" y="78" width="100" height="100" rx="5" fill="none" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="4,2" />
+      <text x="100" y="94" textAnchor="middle" fill="#0284c7" fontSize="8" fontWeight="700">Inner Loop</text>
+      <text x="100" y="110" textAnchor="middle" fill="#0284c7" fontSize="8">(grid search /</text>
+      <text x="100" y="124" textAnchor="middle" fill="#0284c7" fontSize="8">hyperparam tuning</text>
+      <text x="100" y="138" textAnchor="middle" fill="#0284c7" fontSize="8">via K-Fold CV)</text>
 
       {/* Separate annotation box — outside the outer-loop dashed border */}
-      <rect x="320" y="46" width="140" height="150" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="390" y="68" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">repetir p/ cada</text>
-      <text x="390" y="82" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">partição outer</text>
+      <rect x="320" y="46" width="140" height="150" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="390" y="68" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">repetir p/ cada</text>
+      <text x="390" y="82" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">partição outer</text>
       <text x="390" y="112" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">média dos scores</text>
       <text x="390" y="126" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">outer = estimativa</text>
       <text x="390" y="140" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">honesta de</text>
@@ -278,7 +278,7 @@ const NestedCVDiagram = () => (
 const ConfusionMatrixDiagram = ({ tp, fp, fn, tn }) => (
   <div style={S.diagram}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Matriz de Confusão</p>
-    <svg viewBox="0 0 360 220" style={{ maxWidth: '100%', height: 'auto' }}>
+    <svg viewBox="0 0 360 220" style={{ maxWidth: 380, width: '100%', height: 'auto', margin: '0 auto', display: 'block' }}>
       <text x="210" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">Valor Previsto</text>
       <text x="158" y="44" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Positivo</text>
       <text x="262" y="44" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Negativo</text>
@@ -287,42 +287,44 @@ const ConfusionMatrixDiagram = ({ tp, fp, fn, tn }) => (
       <text x="80" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Positivo</text>
       <text x="80" y="170" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Negativo</text>
 
-      <rect x="110" y="55" width="96" height="68" rx="6" fill="rgba(16,185,129,0.18)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="158" y="90" textAnchor="middle" fill="#f97316" fontSize="20" fontWeight="800">{tp}</text>
-      <text x="158" y="108" textAnchor="middle" fill="#f97316" fontSize="9">TP</text>
+      <rect x="110" y="55" width="96" height="68" rx="6" fill="rgba(74,158,237,0.28)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="158" y="90" textAnchor="middle" fill="#4a9eed" fontSize="20" fontWeight="800">{tp}</text>
+      <text x="158" y="108" textAnchor="middle" fill="#4a9eed" fontSize="9">TP</text>
 
-      <rect x="214" y="55" width="96" height="68" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="262" y="90" textAnchor="middle" fill="#f97316" fontSize="20" fontWeight="800">{fp}</text>
-      <text x="262" y="108" textAnchor="middle" fill="#f97316" fontSize="9">FP</text>
+      <rect x="214" y="55" width="96" height="68" rx="6" fill="rgba(125,211,252,0.08)" stroke="#7dd3fc" strokeWidth="1.5" />
+      <text x="262" y="90" textAnchor="middle" fill="#7dd3fc" fontSize="20" fontWeight="800">{fp}</text>
+      <text x="262" y="108" textAnchor="middle" fill="#7dd3fc" fontSize="9">FP</text>
 
-      <rect x="110" y="129" width="96" height="68" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="158" y="164" textAnchor="middle" fill="#f97316" fontSize="20" fontWeight="800">{fn}</text>
-      <text x="158" y="182" textAnchor="middle" fill="#f97316" fontSize="9">FN</text>
+      <rect x="110" y="129" width="96" height="68" rx="6" fill="rgba(125,211,252,0.08)" stroke="#7dd3fc" strokeWidth="1.5" />
+      <text x="158" y="164" textAnchor="middle" fill="#7dd3fc" fontSize="20" fontWeight="800">{fn}</text>
+      <text x="158" y="182" textAnchor="middle" fill="#7dd3fc" fontSize="9">FN</text>
 
-      <rect x="214" y="129" width="96" height="68" rx="6" fill="rgba(16,185,129,0.18)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="262" y="164" textAnchor="middle" fill="#f97316" fontSize="20" fontWeight="800">{tn}</text>
-      <text x="262" y="182" textAnchor="middle" fill="#f97316" fontSize="9">TN</text>
+      <rect x="214" y="129" width="96" height="68" rx="6" fill="rgba(74,158,237,0.28)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="262" y="164" textAnchor="middle" fill="#4a9eed" fontSize="20" fontWeight="800">{tn}</text>
+      <text x="262" y="182" textAnchor="middle" fill="#4a9eed" fontSize="9">TN</text>
     </svg>
   </div>
 );
 
 // === Diagram: ROC Curve ===
 const ROCCurveDiagram = () => {
-  const w = 280, h = 260, pad = 36;
+  const w = 320, h = 280, pad = 40;
   const xToPx = (x) => pad + x * (w - 2 * pad);
   const yToPx = (y) => h - pad - y * (h - 2 * pad);
-  // Example ROC points from worked threshold table
-  const points = [
-    [0, 0], [0, 0.33], [0.2, 0.33], [0.2, 0.67], [0.4, 0.67], [0.4, 1], [1, 1],
-  ];
+  // Smooth, realistic-looking ROC curve (illustrative — não os pontos do exemplo de 5 casos)
+  const n = 60;
+  const points = Array.from({ length: n + 1 }, (_, i) => {
+    const x = i / n;
+    const y = 1 - Math.pow(1 - x, 3.2);
+    return [x, y];
+  });
   const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xToPx(p[0]).toFixed(1)} ${yToPx(p[1]).toFixed(1)}`).join(' ');
-  // Area under the curve polygon (down to x-axis)
   const areaD = pathD + ` L ${xToPx(1)} ${yToPx(0)} L ${xToPx(0)} ${yToPx(0)} Z`;
 
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Curva ROC e Área Sob a Curva (AUC)</p>
-      <svg viewBox={`0 0 ${w} ${h}`} style={{ maxWidth: '100%', height: 'auto', width: 280 }}>
+      <svg viewBox={`0 0 ${w} ${h}`} style={{ maxWidth: '100%', height: 'auto', width: 320 }}>
         {/* axes */}
         <line x1={pad} y1={h - pad} x2={w - 10} y2={h - pad} stroke="var(--text-secondary)" strokeWidth="1" />
         <line x1={pad} y1={h - pad} x2={pad} y2="10" stroke="var(--text-secondary)" strokeWidth="1" />
@@ -330,17 +332,22 @@ const ROCCurveDiagram = () => {
         <text x="10" y={h / 2} textAnchor="middle" fill="var(--text-secondary)" fontSize="10" transform={`rotate(-90 10 ${h / 2})`}>TPR (Recall)</text>
 
         {/* diagonal random classifier */}
-        <line x1={xToPx(0)} y1={yToPx(0)} x2={xToPx(1)} y2={yToPx(1)} stroke="var(--text-secondary)" strokeWidth="1.5" strokeDasharray="5,3" />
-        <text x={xToPx(0.6)} y={yToPx(0.55)} fill="var(--text-secondary)" fontSize="9">aleatório (AUC=0.5)</text>
+        <line x1={xToPx(0)} y1={yToPx(0)} x2={xToPx(1)} y2={yToPx(1)} stroke="#7dd3fc" strokeWidth="1.5" strokeDasharray="5,3" />
 
         {/* AUC shading */}
-        <path d={areaD} fill="rgba(249,115,22,0.10)" stroke="none" />
+        <path d={areaD} fill="rgba(74,158,237,0.10)" stroke="none" />
 
         {/* ROC curve */}
         <path d={pathD} fill="none" stroke={color} strokeWidth="2.5" />
-        {points.map(([x, y], i) => (
-          <circle key={i} cx={xToPx(x)} cy={yToPx(y)} r="3.5" fill={color} />
+        {points.filter((_, i) => i % 4 === 0).map(([x, y], i) => (
+          <circle key={i} cx={xToPx(x)} cy={yToPx(y)} r="3" fill={color} />
         ))}
+
+        {/* legend */}
+        <line x1={pad + 10} y1={22} x2={pad + 32} y2={22} stroke="#7dd3fc" strokeWidth="1.5" strokeDasharray="5,3" />
+        <text x={pad + 38} y={26} fill="var(--text-secondary)" fontSize="9">aleatório (AUC=0.5)</text>
+        <line x1={pad + 10} y1={38} x2={pad + 32} y2={38} stroke={color} strokeWidth="2.5" />
+        <text x={pad + 38} y={42} fill={color} fontSize="9" fontWeight="700">modelo (AUC≈0.84)</text>
 
         {/* axis labels 0 and 1 */}
         <text x={xToPx(0)} y={h - pad + 14} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">0</text>
@@ -353,79 +360,21 @@ const ROCCurveDiagram = () => {
         threshold de 1 (nenhum positivo previsto) até 0 (todos previstos como positivo), o par (FPR, TPR)
         traça esta curva. A área sombreada é a <strong>AUC</strong> (Area Under the Curve) — quanto maior,
         melhor o classificador consegue separar as classes em todos os thresholds possíveis. A diagonal
-        tracejada representa um classificador aleatório (AUC = 0.5).
+        tracejada representa um classificador aleatório (AUC = 0.5). Este exemplo é ilustrativo, com muitos
+        thresholds; a secção seguinte mostra um cálculo manual de AUC com apenas 5 exemplos.
       </p>
     </div>
   );
 };
 
 // === Diagram: Precision-Recall Curve comparison ===
-const PRCurveDiagram = () => {
-  const w = 240, h = 220, pad = 34;
-  const xToPx = (x) => pad + x * (w - 2 * pad);
-  const yToPx = (y) => h - pad - y * (h - 2 * pad);
-
-  const Plot = ({ title, pathD, baseline, note, noteColor }) => (
-    <div>
-      <svg viewBox={`0 0 ${w} ${h}`} width="240" height="220">
-        <line x1={pad} y1={h - pad} x2={w - 10} y2={h - pad} stroke="var(--text-secondary)" strokeWidth="1" />
-        <line x1={pad} y1={h - pad} x2={pad} y2="10" stroke="var(--text-secondary)" strokeWidth="1" />
-        <text x={w / 2} y={h - 4} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Recall</text>
-        <text x="10" y={h / 2} textAnchor="middle" fill="var(--text-secondary)" fontSize="9" transform={`rotate(-90 10 ${h / 2})`}>Precision</text>
-        <line x1={xToPx(0)} y1={yToPx(baseline)} x2={xToPx(1)} y2={yToPx(baseline)} stroke="var(--text-secondary)" strokeWidth="1.2" strokeDasharray="4,3" />
-        <text x={xToPx(0.5)} y={yToPx(baseline) - 5} textAnchor="middle" fill="var(--text-secondary)" fontSize="8">baseline (prevalência)</text>
-        <path d={pathD} fill="none" stroke={color} strokeWidth="2.5" />
-      </svg>
-      <p style={{ fontSize: '0.85rem', fontWeight: 700, color: noteColor, margin: '0.25rem 0 0' }}>{title}</p>
-      <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>{note}</p>
-    </div>
-  );
-
-  return (
-    <div style={S.diagram}>
-      <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Curva Precision-Recall: Dataset Balanceado vs. Desbalanceado</p>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-        <Plot
-          title="Classes balanceadas (50/50)"
-          pathD={`M ${xToPx(0)} ${yToPx(0.95)} C ${xToPx(0.4)} ${yToPx(0.93)}, ${xToPx(0.8)} ${yToPx(0.85)}, ${xToPx(1)} ${yToPx(0.7)}`}
-          baseline={0.5}
-          note="Curva próxima do topo — precision mantém-se alta mesmo com recall elevado."
-          noteColor={color}
-        />
-        <Plot
-          title="Classes desbalanceadas (5% positivos)"
-          pathD={`M ${xToPx(0)} ${yToPx(0.8)} C ${xToPx(0.3)} ${yToPx(0.55)}, ${xToPx(0.6)} ${yToPx(0.25)}, ${xToPx(1)} ${yToPx(0.06)}`}
-          baseline={0.05}
-          note="Curva cai rapidamente — fica muito mais visível o trade-off real entre precision e recall."
-          noteColor="#ef4444"
-        />
-      </div>
-      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '1rem', textAlign: 'left' }}>
-        Numa curva ROC, mesmo um classificador mediocre pode parecer "bom" quando há muitos mais negativos do
-        que positivos, porque o FPR (que entra no denominador com TN, muito numeroso) cresce lentamente. A
-        curva <strong>Precision-Recall</strong> ignora os TN e foca-se directamente na qualidade das previsões
-        positivas — por isso é a escolha preferida para <strong>datasets desbalanceados</strong>, onde a
-        classe minoritária é a que mais interessa.
-      </p>
-    </div>
-  );
-};
-
 export default function ML5() {
   return (
     <div style={S.page}>
       <Link to="/ml" style={S.back}><ArrowLeft size={16} /> Voltar a Machine Learning</Link>
 
-      <div style={S.tag}>Module 04</div>
+      <div style={S.tag}>Módulo 04</div>
       <h1 style={S.h1}>Seleção e Validação de Modelos</h1>
-      <p style={S.lead}>
-        Treinar um modelo é fácil; saber se ele é <strong>bom</strong> — e se vai continuar a ser bom em dados
-        que nunca viu — é o verdadeiro desafio. Este módulo cobre a base teórica da avaliação — o No Free
-        Lunch Theorem, o trade-off bias-variância, e os métodos de validação (hold-out, K-Fold, Stratified
-        K-Fold, LOOCV, Nested CV) — e todo o ferramental de métricas: matriz de confusão, Precision, Recall,
-        F1, Cohen's Kappa, MCC, Log Loss, ROC/AUC, Precision-Recall, e métricas de regressão (MAE, MSE, RMSE,
-        R²), com exemplos numéricos passo a passo e orientação prática sobre que métrica usar em cada cenário.
-      </p>
 
       {/* === SECTION 1: No Free Lunch & Overfitting/Underfitting === */}
       <div style={S.section}>
@@ -592,30 +541,6 @@ export default function ML5() {
         </p>
         <ConfusionMatrixDiagram tp={40} fp={10} fn={5} tn={45} />
 
-        <h3 style={S.h3}>Passo a Passo: Cálculo das Métricas</h3>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>1. Accuracy</strong> — fracção de previsões correctas:</p>
-          <BlockMath math="\text{Accuracy} = \frac{TP+TN}{TP+TN+FP+FN} = \frac{40+45}{40+45+10+5} = \frac{85}{100} = 0.85" />
-
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1.25rem' }}><strong>2. Precision</strong> — de tudo o que o modelo disse "spam", quanto era de facto spam:</p>
-          <BlockMath math="\text{Precision} = \frac{TP}{TP+FP} = \frac{40}{40+10} = \frac{40}{50} = 0.80" />
-
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1.25rem' }}><strong>3. Recall (Sensibilidade)</strong> — de todo o spam real, quanto o modelo detectou:</p>
-          <BlockMath math="\text{Recall} = \frac{TP}{TP+FN} = \frac{40}{40+5} = \frac{40}{45} \approx 0.889" />
-
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1.25rem' }}><strong>4. F1-Score</strong> — média harmónica entre Precision e Recall:</p>
-          <BlockMath math="F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision}+\text{Recall}} = 2 \cdot \frac{0.80 \times 0.889}{0.80+0.889} \approx 0.842" />
-
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1.25rem' }}><strong>5. Specificity</strong> — de todos os e-mails não-spam reais, quantos foram correctamente classificados:</p>
-          <BlockMath math="\text{Specificity} = \frac{TN}{TN+FP} = \frac{45}{45+10} = \frac{45}{55} \approx 0.818" />
-        
-        <p style={S.p}>
-          Note que a <strong>média harmónica</strong> usada no F1 penaliza mais fortemente valores baixos
-          do que a média aritmética simples faria — um modelo com Precision = 0.80 e Recall = 0.889 obtém
-          F1 ≈ 0.842, ligeiramente abaixo da média aritmética (0.845), porque o F1 "pune" o desequilíbrio
-          entre as duas métricas.
-        </p>
-
         <h3 style={S.h3}>Tabela-Resumo das Métricas Básicas</h3>
         <div style={{ overflowX: 'auto' }}>
           <table style={S.table}>
@@ -644,103 +569,9 @@ export default function ML5() {
 
       <hr style={S.divider} />
 
-      {/* === SECTION 4: Métricas Avançadas de Classificação === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>4. Métricas Avançadas para Classes Desbalanceadas</h2>
-        <p style={S.p}>
-          A Accuracy pode ser extremamente enganadora quando as classes estão desbalanceadas. Considere um
-          dataset com 99% de exemplos da classe "não-fraude" e 1% "fraude": um modelo trivial que prevê
-          sempre "não-fraude" obtém 99% de Accuracy — sem nunca detectar uma única fraude. Para estes
-          cenários, existem métricas mais robustas.
-        </p>
-
-        <h3 style={S.h3}>Cohen's Kappa</h3>
-        <p style={S.p}>
-          Mede o grau de concordância entre as previsões do modelo e os valores reais, <strong>corrigindo
-          para a concordância esperada apenas por acaso</strong> (<InlineMath math="p_e" />):
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\kappa = \frac{p_o - p_e}{1 - p_e}" />
-        </div>
-        <p style={S.p}>
-          onde <InlineMath math="p_o" /> é a accuracy observada e <InlineMath math="p_e" /> é a accuracy
-          esperada se as previsões fossem feitas aleatoriamente, respeitando as proporções marginais de cada
-          classe. <InlineMath math="\kappa = 1" /> indica concordância perfeita, <InlineMath math="\kappa = 0" /> indica
-          concordância igual ao acaso, e valores negativos indicam concordância pior que aleatória.
-        </p>
-
-        <h3 style={S.h3}>Matthews Correlation Coefficient (MCC)</h3>
-        <p style={S.p}>
-          O MCC é considerado uma das métricas mais robustas para classificação binária, mesmo com classes
-          muito desbalanceadas, porque usa <strong>todos os quatro</strong> valores da matriz de confusão de
-          forma simétrica:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\text{MCC} = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}" />
-        </div>
-        <p style={S.p}>
-          Varia entre <InlineMath math="-1" /> (previsão sempre errada) e <InlineMath math="+1" /> (previsão
-          perfeita), com <InlineMath math="0" /> equivalente a uma previsão aleatória. Aplicando ao nosso
-          exemplo (TP=40, FP=10, FN=5, TN=45):
-        </p>
-        
-          <BlockMath math="\text{MCC} = \frac{(40)(45) - (10)(5)}{\sqrt{(50)(45)(55)(50)}} = \frac{1800-50}{\sqrt{6\,187\,500}} = \frac{1750}{2487.5} \approx 0.704" />
-        
-
-        <h3 style={S.h3}>Log Loss (Cross-Entropy)</h3>
-        <p style={S.p}>
-          Ao contrário das métricas anteriores — que usam apenas a classe prevista (0 ou 1) — o
-          <strong> Log Loss</strong> avalia directamente as <strong>probabilidades</strong> previstas pelo
-          modelo, penalizando fortemente previsões confiantes mas erradas:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\text{Log Loss} = -\frac{1}{N}\sum_{i=1}^{N}\left[y_i \log(\hat{p}_i) + (1-y_i)\log(1-\hat{p}_i)\right]" />
-        </div>
-        <p style={S.p}>
-          Por exemplo, se o valor real é <InlineMath math="y=1" /> e o modelo prevê <InlineMath math="\hat{p}=0.99" />,
-          a contribuição para a loss é <InlineMath math="-\log(0.99) \approx 0.01" /> (quase zero — previsão
-          correcta e confiante). Mas se o modelo prevê <InlineMath math="\hat{p}=0.01" /> para o mesmo caso
-          (<InlineMath math="y=1" />), a contribuição é <InlineMath math="-\log(0.01) \approx 4.6" /> — uma
-          penalização muito severa por estar errado <em>e</em> confiante. Quanto menor o Log Loss, melhor;
-          o valor mínimo é 0.
-        </p>
-
-        <h3 style={S.h3}>Tabela Comparativa</h3>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr><th style={S.th}>Métrica</th><th style={S.th}>Range</th><th style={S.th}>Usa probabilidades?</th><th style={S.th}>Robusta a desbalanceamento?</th></tr>
-            </thead>
-            <tbody>
-              {[
-                ['Accuracy', '[0, 1]', 'Não', 'Não'],
-                ["Cohen's Kappa", '[−1, 1]', 'Não', 'Parcialmente'],
-                ['MCC', '[−1, 1]', 'Não', 'Sim'],
-                ['Log Loss', '[0, ∞)', 'Sim', 'Parcialmente (sensível a outliers de confiança)'],
-                ['F1-Score', '[0, 1]', 'Não', 'Sim (foca classe positiva)'],
-              ].map(([m, r, p, b]) => (
-                <tr key={m}>
-                  <td style={{ ...S.td, fontWeight: 700, color }}>{m}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace' }}>{r}</td>
-                  <td style={S.td}>{p}</td>
-                  <td style={S.td}>{b}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={S.note}>
-          Para datasets fortemente desbalanceados, prefira <strong>MCC</strong> ou <strong>F1-score</strong> (focado
-          na classe minoritária) em vez de Accuracy. Para avaliar a <strong>qualidade das probabilidades</strong>
-          (não apenas das classes finais), use <strong>Log Loss</strong>.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
       {/* === SECTION 5: ROC, AUC, Precision-Recall === */}
       <div style={S.section}>
-        <h2 style={S.h2}>5. ROC, AUC e Curva Precision-Recall</h2>
+        <h2 style={S.h2}>4. ROC, AUC e Curva Precision-Recall</h2>
         <p style={S.p}>
           Muitos classificadores não produzem directamente "0" ou "1", mas sim uma <strong>probabilidade</strong> ou
           score contínuo, que depois é convertido numa classe através de um <strong>threshold</strong> (por
@@ -748,57 +579,6 @@ export default function ML5() {
           mostra-nos como o classificador se comporta em <em>todos</em> os thresholds possíveis.
         </p>
 
-        <h3 style={S.h3}>Exemplo Numérico: Construir uma Curva ROC</h3>
-        <p style={S.p}>
-          Considere 5 exemplos com os seus scores previstos pelo modelo e a classe real, ordenados por score
-          decrescente. Vamos calcular TPR (Recall) e FPR para diferentes thresholds:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr><th style={S.th}>Threshold</th><th style={S.th}>Previsões "Positivo"</th><th style={S.th}>TP</th><th style={S.th}>FP</th><th style={S.th}>TPR = TP/(TP+FN)</th><th style={S.th}>FPR = FP/(FP+TN)</th></tr>
-            </thead>
-            <tbody>
-              {[
-                ['≥ 0.9', 'A (score 0.95)', '1', '0', '1/3 ≈ 0.33', '0/2 = 0'],
-                ['≥ 0.7', 'A, B (0.80)', '2', '0', '2/3 ≈ 0.67', '0/2 = 0'],
-                ['≥ 0.5', 'A, B, C (0.55)', '2', '1', '2/3 ≈ 0.67', '1/2 = 0.5'],
-                ['≥ 0.3', 'A, B, C, D (0.40)', '3', '1', '3/3 = 1.0', '1/2 = 0.5'],
-                ['≥ 0.0', 'todos (incl. E 0.10)', '3', '2', '3/3 = 1.0', '2/2 = 1.0'],
-              ].map(([t, pred, tp, fp, tpr, fpr]) => (
-                <tr key={t}>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 700 }}>{t}</td>
-                  <td style={{ ...S.td, fontSize: '0.82rem' }}>{pred}</td>
-                  <td style={S.td}>{tp}</td>
-                  <td style={S.td}>{fp}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', color }}>{tpr}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{fpr}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p style={S.p}>
-          (3 exemplos positivos reais — A, B, D — e 2 negativos reais — C, E.) Plotando estes pares
-          (FPR, TPR) e ligando-os do canto inferior-esquerdo (0,0) ao canto superior-direito (1,1), obtemos
-          a curva ROC. A AUC pode ser calculada pela <strong>regra do trapézio</strong>, somando a área de
-          cada segmento entre pontos consecutivos:
-        </p>
-        <div style={S.math}>
-          <BlockMath math="\text{AUC} \approx \sum_{i} \frac{(FPR_{i+1}-FPR_i)\cdot(TPR_{i+1}+TPR_i)}{2}" />
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Aplicando aos pontos (0,0) → (0,0.33) → (0.2,0.33) → (0.2,0.67) → (0.4,0.67) → (0.4,1) → (1,1):
-          </p>
-          <BlockMath math="\text{AUC} = \underbrace{0.2 \times 0.33}_{\text{passo 1}} + \underbrace{0.2 \times 0.67}_{\text{passo 2}} + \underbrace{0.6 \times 1.0}_{\text{passo 3}} = 0.066 + 0.134 + 0.6 = 0.8" />
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '0.75rem' }}>
-            AUC = 0.8 — o classificador tem uma boa, mas não perfeita, capacidade de ordenar correctamente os
-            exemplos positivos antes dos negativos (interpretação probabilística: se escolhermos
-            aleatoriamente um exemplo positivo e um negativo, há 80% de probabilidade de o positivo receber
-            um score mais alto).
-          </p>
-        
         <ROCCurveDiagram />
 
         <h3 style={S.h3}>Interpretação da AUC</h3>
@@ -819,21 +599,13 @@ export default function ML5() {
           </table>
         </div>
 
-        <h3 style={S.h3}>Curva Precision-Recall</h3>
-        <p style={S.p}>
-          A AUC-ROC pode dar uma impressão demasiado optimista quando há muito mais negativos do que
-          positivos, porque o FPR tem TN (muito grande) no denominador. A <strong>curva
-          Precision-Recall</strong> (PR) evita os TN por completo, sendo a alternativa preferida em
-          problemas com classes fortemente desbalanceadas.
-        </p>
-        <PRCurveDiagram />
       </div>
 
       <hr style={S.divider} />
 
       {/* === SECTION 6: Métricas de Regressão === */}
       <div style={S.section}>
-        <h2 style={S.h2}>6. Métricas para Problemas de Regressão</h2>
+        <h2 style={S.h2}>5. Métricas para Problemas de Regressão</h2>
         <p style={S.p}>
           Quando o output do modelo é um valor contínuo (não uma classe), usamos métricas que medem a
           distância entre as previsões <InlineMath math="\hat{y}_i" /> e os valores reais <InlineMath math="y_i" />.
@@ -856,39 +628,6 @@ export default function ML5() {
           O MSE eleva os erros ao quadrado, penalizando <strong>desproporcionalmente</strong> erros grandes
           (um erro de 10 pesa 100 vezes mais que um erro de 1). O RMSE devolve este valor à unidade original
           da variável (tirando a raiz quadrada), facilitando a interpretação.
-        </p>
-
-        <h3 style={S.h3}>Exemplo Numérico</h3>
-        <p style={S.p}>Considere 4 previsões de preços de casas (em milhares de euros):</p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Real (y)</th><th style={S.th}>Previsto (ŷ)</th><th style={S.th}>|y − ŷ|</th><th style={S.th}>(y − ŷ)²</th></tr></thead>
-            <tbody>
-              {[
-                ['200', '210', '10', '100'],
-                ['150', '140', '10', '100'],
-                ['300', '330', '30', '900'],
-                ['250', '245', '5', '25'],
-              ].map(([y, yh, abs, sq], i) => (
-                <tr key={i}>
-                  <td style={{ ...S.td, fontFamily: 'monospace' }}>{y}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace' }}>{yh}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', color }}>{abs}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{sq}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-          <BlockMath math="\text{MAE} = \frac{10+10+30+5}{4} = \frac{55}{4} = 13.75 \text{ (mil euros)}" />
-          <BlockMath math="\text{MSE} = \frac{100+100+900+25}{4} = \frac{1125}{4} = 281.25" />
-          <BlockMath math="\text{RMSE} = \sqrt{281.25} \approx 16.77 \text{ (mil euros)}" />
-        
-        <p style={S.p}>
-          Note que o <strong>RMSE (≈16.77) é maior que o MAE (13.75)</strong> — isto acontece sempre que há
-          variação nos erros, e a diferença aumenta quando existem alguns erros grandes (como o erro de 30
-          no terceiro exemplo, que domina o MSE devido ao quadrado).
         </p>
 
         <h3 style={S.h3}>Coeficiente de Determinação (R²)</h3>
@@ -916,7 +655,7 @@ export default function ML5() {
 
       {/* === SECTION 7: Decision Table === */}
       <div style={S.section}>
-        <h2 style={S.h2}>7. Que Métrica Usar? Tabela de Decisão</h2>
+        <h2 style={S.h2}>6. Que Métrica Usar? Tabela de Decisão</h2>
         <p style={S.p}>
           Com tantas métricas disponíveis, a pergunta mais importante não é "qual é a melhor métrica" — é
           <strong> "qual é a métrica certa para este problema"</strong>. A tabela seguinte resume as
@@ -950,32 +689,6 @@ export default function ML5() {
           </table>
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Avaliar um modelo correctamente é tão importante como o próprio algoritmo de aprendizagem — um
-          modelo "óptimo" segundo uma métrica errada, ou validado de forma optimista, é uma falsa sensação
-          de segurança que se desmorona em produção.
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>No Free Lunch: nenhum algoritmo é universalmente superior — a escolha depende do problema, validada empiricamente</li>
-            <li>O erro total decompõe-se em <InlineMath math="\text{Bias}^2 + \text{Variância} + \text{Ruído}" /> — modelos simples têm alto bias, modelos complexos têm alta variância</li>
-            <li>Learning curves diagnosticam se o problema é alto bias (ambas as curvas saturam alto) ou alta variância (grande gap treino-validação)</li>
-            <li>Hold-out é rápido mas tem alta variância; K-Fold (e Stratified K-Fold para classificação) é o padrão; LOOCV é exaustivo mas caro; Nested CV é necessário quando há tuning de hiperparâmetros</li>
-            <li>A matriz de confusão (TP, FP, FN, TN) é a base de Accuracy, Precision, Recall, F1 e Specificity</li>
-            <li>Para classes desbalanceadas: prefira MCC, F1, Balanced Accuracy ou Precision-Recall em vez de Accuracy ou AUC-ROC</li>
-            <li>Log Loss avalia a qualidade das probabilidades, não apenas a classe final</li>
-            <li>Regressão: MAE (robusto), RMSE (penaliza erros grandes), R² (% de variância explicada)</li>
-            <li>A escolha da métrica deve reflectir os custos reais de FP vs. FN no problema concreto</li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

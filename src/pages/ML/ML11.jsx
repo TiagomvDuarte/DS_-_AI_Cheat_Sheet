@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,7 +19,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(6,95,70,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
@@ -33,7 +33,7 @@ const HardMarginDiagram = () => (
     <svg viewBox="0 0 540 265" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrSVM1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
         </marker>
       </defs>
       {/* margin band (aligned with the two dashed margin lines below) */}
@@ -50,33 +50,33 @@ const HardMarginDiagram = () => (
       <text x="243" y="30" textAnchor="start" fill={color} fontSize="8">w·x+b=−1</text>
 
       {/* w vector perpendicular to boundary, pointing toward class -1 */}
-      <line x1="155" y1="170" x2="193" y2="180" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrSVM1)" />
-      <text x="197" y="178" fill="#f59e0b" fontSize="11" fontWeight="700">w</text>
+      <line x1="155" y1="170" x2="193" y2="180" stroke="#0284c7" strokeWidth="2" markerEnd="url(#arrSVM1)" />
+      <text x="197" y="178" fill="#0284c7" fontSize="11" fontWeight="700">w</text>
 
       {/* class +1 points (left side, blue circles) */}
       {[[40, 40], [35, 100], [70, 70], [55, 165], [45, 215]].map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={7} fill="#f97316" fillOpacity="0.85" />
+        <circle key={i} cx={x} cy={y} r={7} fill="#4a9eed" fillOpacity="0.85" />
       ))}
       {/* support vectors class +1 (sitting exactly on the left margin line) */}
-      <circle cx={146} cy={70} r={10} fill="none" stroke="#f97316" strokeWidth="2.5" />
-      <circle cx={146} cy={70} r={6} fill="#f97316" />
-      <text x="158" y="62" fill="#f97316" fontSize="8" fontWeight="700">SV</text>
-      <circle cx={114} cy={190} r={10} fill="none" stroke="#f97316" strokeWidth="2.5" />
-      <circle cx={114} cy={190} r={6} fill="#f97316" />
-      <text x="126" y="182" fill="#f97316" fontSize="8" fontWeight="700">SV</text>
+      <circle cx={146} cy={70} r={10} fill="none" stroke="#4a9eed" strokeWidth="2.5" />
+      <circle cx={146} cy={70} r={6} fill="#4a9eed" />
+      <text x="158" y="62" fill="#4a9eed" fontSize="8" fontWeight="700">SV</text>
+      <circle cx={114} cy={190} r={10} fill="none" stroke="#4a9eed" strokeWidth="2.5" />
+      <circle cx={114} cy={190} r={6} fill="#4a9eed" />
+      <text x="126" y="182" fill="#4a9eed" fontSize="8" fontWeight="700">SV</text>
 
       {/* class -1 points (right side, red squares) */}
       {[[470, 50], [480, 110], [460, 175], [490, 225], [440, 95]].map(([x, y], i) => (
-        <rect key={i} x={x - 7} y={y - 7} width={14} height={14} fill="#f97316" fillOpacity="0.85" />
+        <rect key={i} x={x - 7} y={y - 7} width={14} height={14} fill="#4a9eed" fillOpacity="0.85" />
       ))}
       {/* support vector class -1 (sitting exactly on the right margin line) */}
-      <rect x={210 - 7} y={130 - 7} width={14} height={14} fill="#f97316" />
-      <rect x={210 - 11} y={130 - 11} width={22} height={22} fill="none" stroke="#f97316" strokeWidth="2.5" />
-      <text x="234" y="126" fill="#f97316" fontSize="8" fontWeight="700">SV</text>
+      <rect x={210 - 7} y={130 - 7} width={14} height={14} fill="#4a9eed" />
+      <rect x={210 - 11} y={130 - 11} width={22} height={22} fill="none" stroke="#4a9eed" strokeWidth="2.5" />
+      <text x="234" y="126" fill="#4a9eed" fontSize="8" fontWeight="700">SV</text>
 
       {/* class labels */}
-      <text x="40" y="265" fill="#f97316" fontSize="11" fontWeight="700">Classe +1</text>
-      <text x="535" y="265" textAnchor="end" fill="#f97316" fontSize="11" fontWeight="700">Classe −1</text>
+      <text x="40" y="265" fill="#4a9eed" fontSize="11" fontWeight="700">Classe +1</text>
+      <text x="535" y="265" textAnchor="end" fill="#4a9eed" fontSize="11" fontWeight="700">Classe −1</text>
 
       {/* margin width annotation, measured at the bottom of the band */}
       <line x1="101" y1="252" x2="181" y2="252" stroke="var(--text-secondary)" strokeWidth="1" />
@@ -105,18 +105,18 @@ const SoftMarginDiagram = () => (
           <line x1="70" y1="10" x2="50" y2="170" stroke={color} strokeWidth="1" strokeDasharray="4,3" />
           <line x1="130" y1="10" x2="110" y2="170" stroke={color} strokeWidth="1" strokeDasharray="4,3" />
           {[[30, 40], [25, 90], [35, 140]].map(([x, y], i) => (
-            <circle key={i} cx={x} cy={y} r={6} fill="#f97316" fillOpacity="0.85" />
+            <circle key={i} cx={x} cy={y} r={6} fill="#4a9eed" fillOpacity="0.85" />
           ))}
           {[[170, 40], [175, 100], [165, 150]].map(([x, y], i) => (
-            <rect key={i} x={x - 6} y={y - 6} width={12} height={12} fill="#f97316" fillOpacity="0.85" />
+            <rect key={i} x={x - 6} y={y - 6} width={12} height={12} fill="#4a9eed" fillOpacity="0.85" />
           ))}
           {/* a borderline + point sitting inside the margin / wrong side */}
-          <circle cx={95} cy={70} r={6} fill="#f97316" fillOpacity="0.85" />
-          <circle cx={95} cy={70} r={10} fill="none" stroke="#f59e0b" strokeWidth="2" />
-          <text x="95" y="55" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">ξᵢ &gt; 0</text>
+          <circle cx={95} cy={70} r={6} fill="#4a9eed" fillOpacity="0.85" />
+          <circle cx={95} cy={70} r={10} fill="none" stroke="#0284c7" strokeWidth="2" />
+          <text x="95" y="55" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">ξᵢ &gt; 0</text>
           <text x="110" y="178" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">margem larga</text>
         </svg>
-        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f97316', margin: '0.25rem 0 0' }}>C pequeno</p>
+        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed', margin: '0.25rem 0 0' }}>C pequeno</p>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>tolera violações, margem grande (underfit se exagerado)</p>
       </div>
       <div>
@@ -126,18 +126,18 @@ const SoftMarginDiagram = () => (
           <line x1="92" y1="10" x2="84" y2="170" stroke={color} strokeWidth="1" strokeDasharray="4,3" />
           <line x1="108" y1="10" x2="100" y2="170" stroke={color} strokeWidth="1" strokeDasharray="4,3" />
           {[[30, 40], [25, 90], [35, 140], [50, 65]].map(([x, y], i) => (
-            <circle key={i} cx={x} cy={y} r={6} fill="#f97316" fillOpacity="0.85" />
+            <circle key={i} cx={x} cy={y} r={6} fill="#4a9eed" fillOpacity="0.85" />
           ))}
           {[[170, 40], [175, 100], [165, 150], [150, 75]].map(([x, y], i) => (
-            <rect key={i} x={x - 6} y={y - 6} width={12} height={12} fill="#f97316" fillOpacity="0.85" />
+            <rect key={i} x={x - 6} y={y - 6} width={12} height={12} fill="#4a9eed" fillOpacity="0.85" />
           ))}
           {/* the borderline point now misclassified, far on the wrong side */}
-          <circle cx={120} cy={70} r={6} fill="#f97316" fillOpacity="0.85" />
-          <circle cx={120} cy={70} r={10} fill="none" stroke="#f97316" strokeWidth="2" />
-          <text x="135" y="55" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">erro!</text>
+          <circle cx={120} cy={70} r={6} fill="#4a9eed" fillOpacity="0.85" />
+          <circle cx={120} cy={70} r={10} fill="none" stroke="#4a9eed" strokeWidth="2" />
+          <text x="135" y="55" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">erro!</text>
           <text x="100" y="178" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">margem estreita</text>
         </svg>
-        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f97316', margin: '0.25rem 0 0' }}>C grande</p>
+        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed', margin: '0.25rem 0 0' }}>C grande</p>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>penaliza fortemente violações, margem estreita (risco overfit)</p>
       </div>
     </div>
@@ -172,11 +172,11 @@ const KernelTransformDiagram = () => {
           <svg viewBox="0 0 200 180" width="200" height="180">
             <text x="100" y="18" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">Espaço Original (x₁, x₂)</text>
             {pts.map((pt, i) => pt.cls === 'in' ? (
-              <circle key={i} cx={pt.x} cy={pt.y} r={5} fill="#f97316" fillOpacity="0.85" />
+              <circle key={i} cx={pt.x} cy={pt.y} r={5} fill="#4a9eed" fillOpacity="0.85" />
             ) : (
-              <rect key={i} x={pt.x - 5} y={pt.y - 5} width={10} height={10} fill="#f97316" fillOpacity="0.85" />
+              <rect key={i} x={pt.x - 5} y={pt.y - 5} width={10} height={10} fill="#4a9eed" fillOpacity="0.85" />
             ))}
-            <text x="100" y="170" textAnchor="middle" fill="#f97316" fontSize="10">nenhuma recta separa!</text>
+            <text x="100" y="170" textAnchor="middle" fill="#4a9eed" fontSize="10">nenhuma recta separa!</text>
           </svg>
         </div>
         <div style={{ fontSize: '1.5rem', color }}>→ φ(x) →</div>
@@ -190,12 +190,12 @@ const KernelTransformDiagram = () => {
               const yPos = pt.cls === 'in' ? 140 + (i % 4) * 6 : 50 - (i % 5) * 4;
               const xPos = 40 + (i * 12) % 130;
               return pt.cls === 'in' ? (
-                <circle key={i} cx={xPos} cy={yPos} r={5} fill="#f97316" fillOpacity="0.85" />
+                <circle key={i} cx={xPos} cy={yPos} r={5} fill="#4a9eed" fillOpacity="0.85" />
               ) : (
-                <rect key={i} x={xPos - 5} y={yPos - 5} width={10} height={10} fill="#f97316" fillOpacity="0.85" />
+                <rect key={i} x={xPos - 5} y={yPos - 5} width={10} height={10} fill="#4a9eed" fillOpacity="0.85" />
               );
             })}
-            <text x="100" y="182" textAnchor="middle" fill="#f97316" fontSize="10">linearmente separável!</text>
+            <text x="100" y="182" textAnchor="middle" fill="#4a9eed" fontSize="10">linearmente separável!</text>
           </svg>
         </div>
       </div>
@@ -222,16 +222,16 @@ const MultiClassDiagram = () => (
         <svg viewBox="0 0 220 180" width="220" height="180">
           <text x="110" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">One-vs-Rest (3 classificadores)</text>
           {/* triangle of classes */}
-          <circle cx="60" cy="70" r="9" fill="#f97316" />
-          <text x="60" y="40" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">A</text>
-          <rect x="151" y="62" width="18" height="18" fill="#f97316" />
-          <text x="160" y="40" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">B</text>
-          <polygon points="110,160 100,140 120,140" fill="#f97316" />
-          <text x="110" y="178" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">C</text>
+          <circle cx="60" cy="70" r="9" fill="#4a9eed" />
+          <text x="60" y="40" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">A</text>
+          <rect x="151" y="62" width="18" height="18" fill="#4a9eed" />
+          <text x="160" y="40" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">B</text>
+          <polygon points="110,160 100,140 120,140" fill="#4a9eed" />
+          <text x="110" y="178" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">C</text>
           {/* 3 lines, each separating one class from "rest" */}
-          <line x1="20" y1="100" x2="200" y2="40" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" />
-          <line x1="200" y1="100" x2="20" y2="40" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" />
-          <line x1="40" y1="160" x2="180" y2="160" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" />
+          <line x1="20" y1="100" x2="200" y2="40" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" />
+          <line x1="200" y1="100" x2="20" y2="40" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" />
+          <line x1="40" y1="160" x2="180" y2="160" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" />
           <text x="110" y="96" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">3 classificadores:</text>
           <text x="110" y="108" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">A vs (B+C), B vs (A+C), C vs (A+B)</text>
         </svg>
@@ -239,12 +239,12 @@ const MultiClassDiagram = () => (
       <div>
         <svg viewBox="0 0 220 180" width="220" height="180">
           <text x="110" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">One-vs-One (3 classificadores)</text>
-          <circle cx="60" cy="60" r="9" fill="#f97316" />
-          <text x="60" y="40" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">A</text>
-          <rect x="151" y="51" width="18" height="18" fill="#f97316" />
-          <text x="160" y="40" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">B</text>
-          <polygon points="110,160 100,140 120,140" fill="#f97316" />
-          <text x="110" y="178" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">C</text>
+          <circle cx="60" cy="60" r="9" fill="#4a9eed" />
+          <text x="60" y="40" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">A</text>
+          <rect x="151" y="51" width="18" height="18" fill="#4a9eed" />
+          <text x="160" y="40" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">B</text>
+          <polygon points="110,160 100,140 120,140" fill="#4a9eed" />
+          <text x="110" y="178" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">C</text>
           {/* lines between each pair */}
           <line x1="80" y1="55" x2="140" y2="55" stroke="var(--text-secondary)" strokeWidth="1.2" strokeDasharray="3,2" />
           <text x="110" y="48" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">A vs B</text>
@@ -279,15 +279,15 @@ const SVRDiagram = () => (
       <path d="M 30 140 C 130 80, 250 70, 450 120" fill="none" stroke={color} strokeWidth="1" strokeDasharray="4,3" />
       {/* data points: some inside tube, some outside (support vectors) */}
       {[[60, 105], [110, 75], [160, 60], [210, 55], [260, 50], [310, 65], [360, 85], [410, 100]].map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={5} fill="#f97316" fillOpacity="0.85" />
+        <circle key={i} cx={x} cy={y} r={5} fill="#4a9eed" fillOpacity="0.85" />
       ))}
       {/* outliers outside the tube -> support vectors with slack */}
-      <circle cx={150} cy={30} r={6} fill="#f59e0b" />
-      <circle cx={150} cy={30} r={10} fill="none" stroke="#f59e0b" strokeWidth="2" />
-      <circle cx={330} cy={130} r={6} fill="#f59e0b" />
-      <circle cx={330} cy={130} r={10} fill="none" stroke="#f59e0b" strokeWidth="2" />
-      <text x="150" y="12" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">ξ &gt; 0</text>
-      <text x="330" y="150" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">ξ* &gt; 0</text>
+      <circle cx={150} cy={30} r={6} fill="#0284c7" />
+      <circle cx={150} cy={30} r={10} fill="none" stroke="#0284c7" strokeWidth="2" />
+      <circle cx={330} cy={130} r={6} fill="#0284c7" />
+      <circle cx={330} cy={130} r={10} fill="none" stroke="#0284c7" strokeWidth="2" />
+      <text x="150" y="12" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">ξ &gt; 0</text>
+      <text x="330" y="150" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">ξ* &gt; 0</text>
       <text x="450" y="55" textAnchor="end" fill={color} fontSize="10" fontWeight="700">f(x) + ε</text>
       <text x="450" y="129" textAnchor="end" fill={color} fontSize="10" fontWeight="700">f(x) − ε</text>
       <text x="450" y="93" textAnchor="end" fill={color} fontSize="10" fontWeight="700">f(x)</text>
@@ -306,18 +306,8 @@ export default function ML11() {
     <div style={S.page}>
       <Link to="/ml" style={S.back}><ArrowLeft size={16} /> Voltar a Machine Learning</Link>
 
-      <div style={S.tag}>Module 11</div>
+      <div style={S.tag}>Módulo 10</div>
       <h1 style={S.h1}>Support Vector Machines</h1>
-      <p style={S.lead}>
-        As <strong>Support Vector Machines (SVM)</strong> abordam a classificação de um ângulo geométrico muito
-        elegante: em vez de modelar probabilidades (como a regressão logística) ou dividir o espaço com regras
-        sequenciais (como as árvores de decisão), a SVM procura directamente a fronteira de decisão que deixa
-        o <strong>maior espaço vazio possível</strong> entre as classes. Neste módulo final do curso de ML & Aprendizagem
-        Supervisionada vamos derivar esta ideia passo a passo — da "rua mais larga" até à formulação dual do
-        Lagrangiano — explorar o soft margin e o parâmetro C, mergulhar no kernel trick com um exemplo numérico
-        completo, ver como a SVM se generaliza para múltiplas classes e para regressão (SVR), comparar a SVM com
-        os outros modelos do curso, e terminar com uma síntese de todo o percurso — desde o Módulo 01 até aqui.
-      </p>
 
       {/* === SECTION 1: A rua mais larga === */}
       <div style={S.section}>
@@ -538,55 +528,10 @@ export default function ML11() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 5: Exemplo numérico soft margin === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>5. Exemplo Numérico — Um Ponto Difícil</h2>
-        <p style={S.p}>
-          Considere um dataset 2D pequeno com a seguinte fronteira candidata: <InlineMath math="\mathbf{w} = (1, 1)" />,
-          <InlineMath math="b = -3" />, ou seja, o hiperplano <InlineMath math="x_1 + x_2 - 3 = 0" />, com margem
-          definida por <InlineMath math="\|\mathbf{w}\|=\sqrt{2}" />.
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Ponto</th><th style={S.th}>(x₁, x₂)</th><th style={S.th}>y</th><th style={S.th}><InlineMath math="y_i(\mathbf{w}\cdot\mathbf{x}_i+b)" /></th><th style={S.th}>ξᵢ</th></tr></thead>
-            <tbody>
-              {[
-                ['A', '(0.5, 0.5)', '−1', '(−1)(0.5+0.5−3) = 2', '0'],
-                ['B', '(4, 4)', '+1', '(+1)(4+4−3) = 5', '0'],
-                ['C', '(1.8, 1.8)', '−1', '(−1)(1.8+1.8−3) = −0.6', '1.6'],
-              ].map(([p, xy, y, m, xi], i) => (
-                <tr key={i}><td style={{ ...S.td, fontWeight: 700 }}>{p}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{xy}</td><td style={S.td}>{y}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{m}</td><td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316', fontWeight: 700 }}>{xi}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Leitura dos resultados:</strong></p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Os pontos A e B satisfazem <InlineMath math="y_i(\mathbf{w}\cdot\mathbf{x}_i+b) \geq 1" /> — estão
-            correctamente classificados e fora da margem, logo <InlineMath math="\xi_A = \xi_B = 0" />.
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            O ponto C tem valor <InlineMath math="-0.6 < 1" />, ou seja, está do lado <strong>errado</strong> do
-            hiperplano (valor negativo). A folga necessária é <InlineMath math="\xi_C = 1 - (-0.6) = 1.6" />.
-          </p>
-          <BlockMath math="\text{contribuição de C na penalização: } C \cdot \xi_C = C \times 1.6" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Se <InlineMath math="C = 0.1" />, esta penalização é apenas <InlineMath math="0.16" /> — o optimizador
-            pode preferir manter a margem larga e "aceitar" o erro em C. Se <InlineMath math="C = 100" />, a
-            penalização seria <InlineMath math="160" /> — o optimizador será fortemente empurrado a reposicionar a
-            fronteira (e encolher a margem) para tentar classificar C correctamente.
-          </p>
-        
-      </div>
-
-      <hr style={S.divider} />
 
       {/* === SECTION 6: Kernel Trick === */}
       <div style={S.section}>
-        <h2 style={S.h2}>6. O Kernel Trick</h2>
+        <h2 style={S.h2}>5. O Kernel Trick</h2>
         <p style={S.p}>
           Vimos na secção 3 que tanto o treino como a predição da SVM dependem apenas de produtos internos entre
           pares de pontos. O <strong>kernel trick</strong> consiste em substituir
@@ -599,32 +544,6 @@ export default function ML11() {
           <BlockMath math="\mathbf{x}_i \cdot \mathbf{x}_j \ \longrightarrow \ K(\mathbf{x}_i, \mathbf{x}_j) = \varphi(\mathbf{x}_i) \cdot \varphi(\mathbf{x}_j)" />
         </div>
         <KernelTransformDiagram />
-
-        <h3 style={S.h3}>Exemplo Numérico — Kernel Polinomial</h3>
-        <p style={S.p}>
-          Considere dois pontos 2D <InlineMath math="\mathbf{x} = (1, 2)" /> e <InlineMath math="\mathbf{y} = (3, 1)" />,
-          e o kernel polinomial de grau 2: <InlineMath math="K(\mathbf{x},\mathbf{y}) = (\mathbf{x}\cdot\mathbf{y} + 1)^2" />.
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo 1 — produto interno original:</strong></p>
-          <BlockMath math="\mathbf{x}\cdot\mathbf{y} = (1)(3) + (2)(1) = 5" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 2 — kernel:</strong></p>
-          <BlockMath math="K(\mathbf{x},\mathbf{y}) = (5 + 1)^2 = 36" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 3 — verificação via φ explícito:</strong></p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Para grau 2, <InlineMath math="\varphi(x_1,x_2) = (x_1^2, x_2^2, \sqrt{2}x_1 x_2, \sqrt{2}x_1, \sqrt{2}x_2, 1)" />.
-            Calculando: <InlineMath math="\varphi(\mathbf{x}) = (1, 4, 2\sqrt{2}, \sqrt{2}, 2\sqrt{2}, 1)" /> e
-            <InlineMath math="\varphi(\mathbf{y}) = (9, 1, 3\sqrt{2}, 3\sqrt{2}, \sqrt{2}, 1)" />.
-          </p>
-          <BlockMath math="\varphi(\mathbf{x})\cdot\varphi(\mathbf{y}) = 9 + 4 + 12 + 6 + 4 + 1 = 36" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Os dois cálculos coincidem (36 = 36) — mas o cálculo via <InlineMath math="K" /> custou uma soma, um
-            produto e uma potência, enquanto o cálculo via <InlineMath math="\varphi" /> explícito exigiu construir
-            vectores de 6 dimensões. Para kernels como o RBF, <InlineMath math="\varphi" /> teria <strong>dimensão
-            infinita</strong> — impossível de calcular explicitamente, mas <InlineMath math="K" /> continua a ser
-            uma única exponencial.
-          </p>
-        
 
         <h3 style={S.h3}>Tabela Comparativa de Kernels</h3>
         <div style={{ overflowX: 'auto' }}>
@@ -678,7 +597,7 @@ export default function ML11() {
 
       {/* === SECTION 7: Multi-class === */}
       <div style={S.section}>
-        <h2 style={S.h2}>7. SVM para Múltiplas Classes</h2>
+        <h2 style={S.h2}>6. SVM para Múltiplas Classes</h2>
         <p style={S.p}>
           A formulação que derivámos é inerentemente <strong>binária</strong> (classes +1 / −1). Para problemas
           com K &gt; 2 classes, existem duas estratégias clássicas de decomposição em sub-problemas binários:
@@ -708,7 +627,7 @@ export default function ML11() {
 
       {/* === SECTION 8: SVR === */}
       <div style={S.section}>
-        <h2 style={S.h2}>8. Support Vector Regression (SVR)</h2>
+        <h2 style={S.h2}>7. Support Vector Regression (SVR)</h2>
         <p style={S.p}>
           A mesma ideia geométrica pode ser adaptada para <strong>regressão</strong>. Em vez de maximizar uma
           margem entre classes, a SVR define um <strong>tubo de largura 2ε</strong> em torno da função de
@@ -728,72 +647,6 @@ export default function ML11() {
         </p>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 9: SVM vs outros modelos === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. SVM vs. Outros Classificadores</h2>
-        <p style={S.p}>
-          Depois de explorar Regressão Logística, KNN, Árvores de Decisão e agora SVM, vale a pena comparar
-          directamente as suas características — não existe um "melhor" modelo universal, apenas trade-offs
-          adequados a diferentes contextos.
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Critério</th>
-                <th style={S.th}>SVM</th>
-                <th style={S.th}>Regressão Logística</th>
-                <th style={S.th}>Árvores de Decisão</th>
-                <th style={S.th}>KNN</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Fronteira de decisão', 'Linear ou não-linear (via kernel)', 'Linear (no espaço de features)', 'Não-linear, em "blocos" (axis-aligned)', 'Não-linear, irregular'],
-                ['Interpretabilidade', 'Baixa (especialmente com kernels)', 'Alta — coeficientes têm significado', 'Alta — regras if/else explícitas', 'Baixa — não há "modelo" explícito'],
-                ['Escalabilidade (N grande)', 'Fraca — treino O(N²) a O(N³)', 'Boa — treino rápido e linear', 'Boa', 'Fraca em predição (procura entre todos os pontos)'],
-                ['Outputs probabilísticos', 'Não nativamente (precisa calibração)', 'Sim, nativo', 'Aproximado (frequências nas folhas)', 'Aproximado (proporção de vizinhos)'],
-                ['Sensibilidade a escala de features', 'Alta — requer normalização', 'Moderada — beneficia de normalização', 'Baixa — invariante a escala', 'Alta — requer normalização'],
-                ['Robustez a outliers', 'Moderada (soft margin ajuda)', 'Moderada', 'Baixa (sem pruning)', 'Baixa'],
-              ].map(([c, svm, lr, dt, knn], i) => (
-                <tr key={i}><td style={{ ...S.td, fontWeight: 700 }}>{c}</td><td style={S.td}>{svm}</td><td style={S.td}>{lr}</td><td style={S.td}>{dt}</td><td style={S.td}>{knn}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={S.note}>
-          Regra prática: SVM com kernel RBF é uma excelente escolha "default" para datasets <strong>pequenos a
-          médios</strong>, com fronteiras potencialmente complexas, onde a interpretabilidade não é prioritária.
-          Para datasets muito grandes, modelos lineares (regressão logística) ou baseados em árvores (ensembles)
-          tendem a escalar melhor.
-        </div>
-      </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <p style={S.p}>
-          A SVM formaliza uma intuição geométrica simples — "a fronteira mais segura é a que está mais afastada de
-          ambas as classes" — numa optimização convexa elegante, cuja formulação dual abre a porta a um dos truques
-          mais poderosos do machine learning clássico: resolver problemas não-lineares trabalhando apenas com
-          produtos internos (o kernel trick).
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>O hiperplano <InlineMath math="\mathbf{w}\cdot\mathbf{x}+b=0" /> separa as classes; a margem tem largura <InlineMath math="2/\|\mathbf{w}\|" /></li>
-            <li>Maximizar a margem ≡ resolver <InlineMath math="\min \frac{1}{2}\|\mathbf{w}\|^2" /> sujeito a <InlineMath math="y_i(\mathbf{w}\cdot\mathbf{x}_i+b)\geq 1" /></li>
-            <li>A formulação dual depende apenas de produtos internos — <InlineMath math="\mathbf{w}=\sum_i \alpha_i y_i \mathbf{x}_i" />, e só os support vectors têm <InlineMath math="\alpha_i&gt;0" /></li>
-            <li>Soft margin (parâmetro C) introduz slack <InlineMath math="\xi_i" /> para tolerar violações — C controla o trade-off margem/erro</li>
-            <li>Kernel trick: substituir <InlineMath math="\mathbf{x}_i\cdot\mathbf{x}_j" /> por <InlineMath math="K(\mathbf{x}_i,\mathbf{x}_j)" /> permite fronteiras não-lineares (polinomial, RBF, sigmoid) sem custo de calcular φ(x)</li>
-            <li>Multi-classe: One-vs-Rest (K classificadores) ou One-vs-One (K(K−1)/2 classificadores)</li>
-            <li>SVR adapta a ideia a regressão via um tubo ε-insensível</li>
-            <li>SVM é forte em datasets pequenos/médios com fronteiras complexas, mas escala mal para N muito grande</li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

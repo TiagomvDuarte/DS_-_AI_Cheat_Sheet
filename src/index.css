@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Light Mode - Antigravity Theme */
+  /* Light Mode - Tiago Duarte Portfolio Theme */
   --bg-primary: #ffffff; 
   --bg-secondary: #f3f4f6; 
   --text-primary: #1f2937; 
   --text-secondary: #4b5563; 
-  --accent-color: #f97316;
-  --accent-hover: #ea580c;
+  --accent-color: #1B3A5C;
+  --accent-hover: #24507A;
   --card-border: #e5e7eb;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --card-shadow-hover: 0 10px 15px -3px rgba(249, 115, 22, 0.1), 0 4px 6px -2px rgba(249, 115, 22, 0.05);
+  --card-shadow-hover: 0 10px 15px -3px rgba(27, 58, 92, 0.1), 0 4px 6px -2px rgba(27, 58, 92, 0.05);
 }
 
 [data-theme="dark"] {
-  /* Dark Mode - Antigravity Theme */
-  --bg-primary: #131314;
-  --bg-secondary: #1e1e20;
-  --text-primary: #e3e3e3;
-  --text-secondary: #c4c7c5;
-  --accent-color: #f97316;
-  --accent-hover: #fb923c;
-  --card-border: #333639;
+  /* Dark Mode - Tiago Duarte Portfolio Theme */
+  --bg-primary: #0f1419;
+  --bg-secondary: #151b23;
+  --text-primary: #e8eaed;
+  --text-secondary: #9ca3af;
+  --accent-color: #4a9eed;
+  --accent-hover: #3a8edc;
+  --card-border: #2a3441;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --card-shadow-hover: 0 10px 15px -3px rgba(249, 115, 22, 0.15), 0 4px 6px -2px rgba(249, 115, 22, 0.1);
+  --card-shadow-hover: 0 10px 15px -3px rgba(74, 158, 237, 0.15), 0 4px 6px -2px rgba(74, 158, 237, 0.1);
 }
 
 * {
@@ -153,7 +153,7 @@ body {
 }
 
 [data-theme="dark"] .card-icon-wrapper {
-  background-color: rgba(100, 255, 218, 0.1);
+  background-color: rgba(74, 158, 237, 0.1);
 }
 
 .card-title {
@@ -335,19 +335,19 @@ body {
 }
 
 .code-block {
-  background: #0d1117;
+  background: #0f1419;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .code-header {
-  background: #161b22;
+  background: #151b23;
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #8b949e;
+  color: #9ca3af;
   font-size: 0.85rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -393,7 +393,7 @@ body {
 }
 
 [data-theme="dark"] .tab-btn.active {
-  background: rgba(138, 180, 248, 0.15);
+  background: rgba(74, 158, 237, 0.15);
 }
 
 /* Interactive Schema Map */

@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -92,8 +92,8 @@ function PermBarChart() {
         const isLow = f.value <= 0.02;
         return (
           <g key={f.name}>
-            <text x={left - 8} y={y + barH / 2 + 4} textAnchor="end" fontSize={11} fill={isLow ? '#f97316' : 'var(--text-primary)'}>{f.name}</text>
-            <rect x={left} y={y} width={Math.max(bw, 3)} height={barH} fill={isLow ? '#f97316' : color} rx={4} opacity={0.85} />
+            <text x={left - 8} y={y + barH / 2 + 4} textAnchor="end" fontSize={11} fill={isLow ? '#4a9eed' : 'var(--text-primary)'}>{f.name}</text>
+            <rect x={left} y={y} width={Math.max(bw, 3)} height={barH} fill={isLow ? '#4a9eed' : color} rx={4} opacity={0.85} />
             <text x={left + Math.max(bw, 3) + 5} y={y + barH / 2 + 4} fontSize={11} fill="var(--text-secondary)">{f.value.toFixed(2)}</text>
           </g>
         );
@@ -267,11 +267,11 @@ function Heatmap2D() {
   ];
 
   const toColor = (v) => {
-    // v 0..1 → light orange to dark red-orange
+    // v 0..1 → light blue to dark blue
     const alpha = 0.10 + v * 0.85;
-    const r = Math.round(251 - v * 57);   // 251 → 194
-    const g = Math.round(146 - v * 120);  // 146 → 26
-    const b = Math.round(60 - v * 50);    // 60 → 10
+    const r = Math.round(186 - v * 183);  // 186 → 3
+    const g = Math.round(230 - v * 125);  // 230 → 105
+    const b = Math.round(253 - v * 92);   // 253 → 161
     return `rgba(${r},${g},${b},${alpha})`;
   };
 
@@ -287,7 +287,7 @@ function Heatmap2D() {
           return (
             <g key={`${ri}-${ci}`}>
               <rect x={x} y={y} width={cellW - 1} height={cellH - 1} fill={toColor(val)} rx={2} />
-              <text x={x + cellW / 2} y={y + cellH / 2 + 4} textAnchor="middle" fontSize={9.5} fill="rgba(249,115,22,0.06)" fontWeight={600}>{val.toFixed(2)}</text>
+              <text x={x + cellW / 2} y={y + cellH / 2 + 4} textAnchor="middle" fontSize={9.5} fill="rgba(74,158,237,0.06)" fontWeight={600}>{val.toFixed(2)}</text>
             </g>
           );
         })
@@ -305,8 +305,8 @@ function Heatmap2D() {
       {/* color scale */}
       <defs>
         <linearGradient id="heatScale" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="rgba(249,115,22,0.10)" />
-          <stop offset="100%" stopColor="rgba(194,65,12,0.95)" />
+          <stop offset="0%" stopColor="rgba(74,158,237,0.10)" />
+          <stop offset="100%" stopColor="rgba(7,89,133,0.95)" />
         </linearGradient>
       </defs>
       <rect x={left} y={H} width={chartW} height={8} fill="url(#heatScale)" rx={3} />
@@ -324,12 +324,6 @@ export default function XAI2() {
 
       <div style={S.tag}>MÓDULO 02</div>
       <h1 style={S.h1}>Feature Importance Global</h1>
-      <p style={S.lead}>
-        Compreender quais as features que mais influenciam um modelo a nível global é o primeiro passo para
-        auditar o seu comportamento, detectar data leakage e comunicar resultados a stakeholders.
-        Este módulo cobre as principais métricas de importância global — MDI, Permutation Importance,
-        PDPs, ICE plots e interacções 2D — e compara as suas vantagens, limitações e contextos de aplicação.
-      </p>
 
       {/* ── SECÇÃO 1 ─────────────────────────────────────────────────────── */}
       <div style={S.section}>
@@ -385,7 +379,7 @@ export default function XAI2() {
           <MDIBarChart />
         </div>
 
-        <div style={{ ...S.note, background: 'rgba(249,115,22,0.10)', borderLeft: '3px solid #ef4444' }}>
+        <div style={{ ...S.note, background: 'rgba(74,158,237,0.10)', borderLeft: '3px solid #4a9eed' }}>
           <strong>Atenção — viés de cardinalidade:</strong> O Código_Postal tem alta cardinalidade (milhares
           de valores únicos). O MDI classifica-o como a 3.ª feature mais importante, mas, como veremos na
           secção seguinte, a Permutation Importance corrige este viés e mostra que é praticamente irrelevante.
@@ -445,7 +439,7 @@ export default function XAI2() {
         </div>
 
         <p style={S.p}>
-          Compare com o gráfico da secção anterior: o <span style={{ color: '#f97316', fontWeight: 700 }}>Código_Postal</span>{' '}
+          Compare com o gráfico da secção anterior: o <span style={{ color: '#4a9eed', fontWeight: 700 }}>Código_Postal</span>{' '}
           caiu de 3.º para último lugar com importância quase nula. Esta discrepância confirma o viés de
           cardinalidade do MDI — o modelo não usa o código postal de forma informativamente, mas o MDI
           detectava os splits numerosos nessa coluna.
@@ -685,54 +679,6 @@ export default function XAI2() {
           (3) PDPs/ICE para comunicação a stakeholders não técnicos; (4) SHAP para auditoria profunda.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ── SECÇÃO 8 — SÍNTESE ───────────────────────────────────────────── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Este módulo apresentou as principais técnicas de importância global de features, das mais
-          simples às mais sofisticadas. A tabela abaixo resume quando usar cada uma:
-        </p>
-
-        <div style={{ ...S.highlight, borderRadius: 10, padding: '1.25rem 1.5rem' }}>
-          <p style={{ margin: 0, fontWeight: 700, fontSize: '1rem', color, marginBottom: '0.85rem' }}>Guia Rápido de Selecção</p>
-          <ul style={{ margin: 0, paddingLeft: '1.4rem', lineHeight: 2.2, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-            <li>
-              <strong>Pretende triagem rápida durante desenvolvimento?</strong>{' '}
-              Use MDI (<code>model.feature_importances_</code>), mas confirme com Permutation Importance.
-            </li>
-            <li>
-              <strong>Precisa de uma métrica rigorosa e model-agnostic?</strong>{' '}
-              Use Permutation Importance com <InlineMath math={"K \\geq 10"} /> repetições no conjunto de validação.
-            </li>
-            <li>
-              <strong>Quer comunicar o efeito de uma feature a um stakeholder não técnico?</strong>{' '}
-              Use PDPs — gráficos de linha intuitivos com uma feature de cada vez.
-            </li>
-            <li>
-              <strong>Suspeita de efeitos heterogéneos ou interacções?</strong>{' '}
-              Sobreponha ICE plots ao PDP; use PDPs 2D para confirmar interacções.
-            </li>
-            <li>
-              <strong>Tem features correlacionadas e quer evitar extrapolação?</strong>{' '}
-              Use ALE plots (Accumulated Local Effects) — abordados em detalhe no módulo 5.
-            </li>
-            <li>
-              <strong>Necessita de auditoria completa para conformidade regulatória?</strong>{' '}
-              Combine Permutation Importance com SHAP global (módulo 3).
-            </li>
-          </ul>
-        </div>
-
-        <p style={{ ...S.p, marginTop: '1.5rem' }}>
-          A importância global de features é o alicerce de qualquer pipeline de machine learning
-          responsável. Sem ela, o modelo é uma caixa-negra. Com ela, é possível detectar data leakage,
-          eliminar variáveis desnecessárias, cumprir requisitos regulatórios e ganhar a confiança
-          dos stakeholders — antes mesmo de implementar técnicas de XAI mais avançadas.
-        </p>
-      </div>
-    </div>
+</div>
   );
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -33,30 +33,30 @@ function DataSourcesSVG() {
       <text x="400" y="115" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">Data Sources</text>
 
       {/* APIs */}
-      <rect x="17" y="20" width="136" height="36" rx="7" {...boxStyle('rgba(249,115,22,0.12)')} />
+      <rect x="17" y="20" width="136" height="36" rx="7" {...boxStyle('rgba(74,158,237,0.12)')} />
       <text x="85" y="43" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">APIs (REST, GraphQL)</text>
       <line x1="150" y1="38" x2="330" y2="100" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
 
       {/* Web Scraping */}
-      <rect x="20" y="80" width="130" height="36" rx="7" {...boxStyle('rgba(249,115,22,0.12)')} />
+      <rect x="20" y="80" width="130" height="36" rx="7" {...boxStyle('rgba(74,158,237,0.12)')} />
       <text x="85" y="97" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">Web Scraping</text>
       <text x="85" y="111" textAnchor="middle" fill={color} fontSize="10">(BS4, Selenium)</text>
       <line x1="150" y1="98" x2="330" y2="108" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
 
       {/* Databases */}
-      <rect x="20" y="150" width="130" height="36" rx="7" {...boxStyle('rgba(249,115,22,0.12)')} />
+      <rect x="20" y="150" width="130" height="36" rx="7" {...boxStyle('rgba(74,158,237,0.12)')} />
       <text x="85" y="166" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">Databases</text>
       <text x="85" y="180" textAnchor="middle" fill={color} fontSize="10">(SQL, NoSQL)</text>
       <line x1="150" y1="168" x2="330" y2="118" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
 
       {/* Files */}
-      <rect x="650" y="20" width="130" height="36" rx="7" {...boxStyle('rgba(249,115,22,0.12)')} />
+      <rect x="650" y="20" width="130" height="36" rx="7" {...boxStyle('rgba(74,158,237,0.12)')} />
       <text x="715" y="36" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">Files</text>
       <text x="715" y="51" textAnchor="middle" fill={color} fontSize="10">(CSV, JSON, Parquet)</text>
       <line x1="650" y1="38" x2="470" y2="100" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
 
       {/* Streaming */}
-      <rect x="650" y="150" width="130" height="36" rx="7" {...boxStyle('rgba(249,115,22,0.12)')} />
+      <rect x="650" y="150" width="130" height="36" rx="7" {...boxStyle('rgba(74,158,237,0.12)')} />
       <text x="715" y="166" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">Streaming</text>
       <text x="715" y="181" textAnchor="middle" fill={color} fontSize="10">(Kafka, Pub/Sub)</text>
       <line x1="650" y1="168" x2="470" y2="118" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
@@ -69,22 +69,22 @@ function HttpCycleSVG() {
   return (
     <svg viewBox="0 0 800 160" style={{ width: '100%', height: 'auto' }}>
       {/* Client */}
-      <rect x="20" y="55" width="110" height="50" rx="8" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+      <rect x="20" y="55" width="110" height="50" rx="8" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
       <text x="75" y="78" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Client</text>
       <text x="75" y="95" textAnchor="middle" fill={color} fontSize="10">(Python / Browser)</text>
 
       {/* DNS */}
-      <rect x="210" y="55" width="100" height="50" rx="8" fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x="210" y="55" width="100" height="50" rx="8" fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1.5" />
       <text x="260" y="78" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">DNS</text>
       <text x="260" y="95" textAnchor="middle" fill={color} fontSize="10">Resolver</text>
 
       {/* Server */}
-      <rect x="400" y="55" width="110" height="50" rx="8" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+      <rect x="400" y="55" width="110" height="50" rx="8" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
       <text x="455" y="78" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Server</text>
       <text x="455" y="95" textAnchor="middle" fill={color} fontSize="10">API / Web</text>
 
       {/* Database */}
-      <rect x="600" y="55" width="110" height="50" rx="8" fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x="600" y="55" width="110" height="50" rx="8" fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1.5" />
       <text x="655" y="78" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Database</text>
       <text x="655" y="95" textAnchor="middle" fill={color} fontSize="10">/ Storage</text>
 
@@ -127,7 +127,7 @@ function AuthMethodsSVG() {
     <svg viewBox="0 0 760 120" style={{ width: '100%', height: 'auto' }}>
       {methods.map((m, i) => (
         <g key={i}>
-          <rect x={m.x} y="20" width="150" height="70" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+          <rect x={m.x} y="20" width="150" height="70" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
           <text x={m.x + 75} y="52" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">{m.label}</text>
           <text x={m.x + 75} y="72" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">{m.sub}</text>
         </g>
@@ -155,13 +155,13 @@ function RateLimitSVG() {
       ))}
 
       {/* 429 hit */}
-      <rect x="366" y="45" width="38" height="35" rx="4" fill="#f97316" fillOpacity="0.8" />
+      <rect x="366" y="45" width="38" height="35" rx="4" fill="#4a9eed" fillOpacity="0.8" />
       <text x="385" y="65" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">429!</text>
-      <line x1="385" y1="80" x2="385" y2="90" stroke="#f97316" strokeWidth="1.5" />
-      <text x="385" y="105" textAnchor="middle" fill="#f97316" fontSize="9">Rate Limit</text>
+      <line x1="385" y1="80" x2="385" y2="90" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="385" y="105" textAnchor="middle" fill="#4a9eed" fontSize="9">Rate Limit</text>
 
       {/* Backoff gap */}
-      <rect x="420" y="55" width="120" height="25" rx="4" fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
+      <rect x="420" y="55" width="120" height="25" rx="4" fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth="1" strokeDasharray="4 3" />
       <text x="480" y="72" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Backoff (wait 2^n s)</text>
 
       {/* Retry requests */}
@@ -187,7 +187,7 @@ function PaginationSVG() {
       <text x="120" y="20" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Page-based</text>
       {[0,1,2].map(i => (
         <g key={i}>
-          <rect x={40 + i*60} y="35" width="50" height="30" rx="5" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.2" />
+          <rect x={40 + i*60} y="35" width="50" height="30" rx="5" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.2" />
           <text x={65 + i*60} y="55" textAnchor="middle" fill={color} fontSize="11">{`page=${i+1}`}</text>
         </g>
       ))}
@@ -197,7 +197,7 @@ function PaginationSVG() {
       <text x="400" y="20" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Offset-based</text>
       {[0,1,2].map(i => (
         <g key={i}>
-          <rect x={320 + i*65} y="35" width="58" height="30" rx="5" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.2" />
+          <rect x={320 + i*65} y="35" width="58" height="30" rx="5" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.2" />
           <text x={349 + i*65} y="55" textAnchor="middle" fill={color} fontSize="10">{`offset=${i*20}`}</text>
         </g>
       ))}
@@ -207,7 +207,7 @@ function PaginationSVG() {
       <text x="680" y="20" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Cursor-based</text>
       {['start', 'abc123', 'xyz789'].map((cur, i) => (
         <g key={i}>
-          <rect x={610} y={35 + i*38} width="140" height="28" rx="5" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.2" />
+          <rect x={610} y={35 + i*38} width="140" height="28" rx="5" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.2" />
           <text x={680} y={54 + i*38} textAnchor="middle" fill={color} fontSize="10">{`cursor=${cur}`}</text>
         </g>
       ))}
@@ -228,42 +228,42 @@ function DomTreeSVG() {
       <text x="350" y="30" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">html</text>
 
       {/* head */}
-      <rect x="170" y="70" width="80" height="30" rx="6" fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1.5" />
+      <rect x="170" y="70" width="80" height="30" rx="6" fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1.5" />
       <text x="210" y="90" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">head</text>
       <line x1="350" y1="40" x2="210" y2="70" stroke={color} strokeWidth="1.5" />
 
       {/* body */}
-      <rect x="450" y="70" width="80" height="30" rx="6" fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1.5" />
+      <rect x="450" y="70" width="80" height="30" rx="6" fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1.5" />
       <text x="490" y="90" textAnchor="middle" fill={color} fontSize="12" fontWeight="600">body</text>
       <line x1="350" y1="40" x2="490" y2="70" stroke={color} strokeWidth="1.5" />
 
       {/* title */}
-      <rect x="100" y="135" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="100" y="135" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="140" y="153" textAnchor="middle" fill={color} fontSize="11">title</text>
       <line x1="210" y1="100" x2="140" y2="135" stroke={color} strokeWidth="1" />
 
       {/* meta */}
-      <rect x="200" y="135" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="200" y="135" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="240" y="153" textAnchor="middle" fill={color} fontSize="11">meta</text>
       <line x1="210" y1="100" x2="240" y2="135" stroke={color} strokeWidth="1" />
 
       {/* div */}
-      <rect x="400" y="135" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="400" y="135" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="440" y="153" textAnchor="middle" fill={color} fontSize="11">div</text>
       <line x1="490" y1="100" x2="440" y2="135" stroke={color} strokeWidth="1" />
 
       {/* nav */}
-      <rect x="510" y="135" width="80" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="510" y="135" width="80" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="550" y="153" textAnchor="middle" fill={color} fontSize="11">nav</text>
       <line x1="490" y1="100" x2="550" y2="135" stroke={color} strokeWidth="1" />
 
       {/* p */}
-      <rect x="350" y="190" width="60" height="25" rx="4" fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1" />
+      <rect x="350" y="190" width="60" height="25" rx="4" fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1" />
       <text x="380" y="207" textAnchor="middle" fill={color} fontSize="10">p</text>
       <line x1="440" y1="163" x2="380" y2="190" stroke={color} strokeWidth="1" />
 
       {/* a */}
-      <rect x="430" y="190" width="60" height="25" rx="4" fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1" />
+      <rect x="430" y="190" width="60" height="25" rx="4" fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1" />
       <text x="460" y="207" textAnchor="middle" fill={color} fontSize="10">a</text>
       <line x1="440" y1="163" x2="460" y2="190" stroke={color} strokeWidth="1" />
     </svg>
@@ -284,7 +284,7 @@ function ScrapyArchSVG() {
     <svg viewBox="0 0 700 200" style={{ width: '100%', height: 'auto' }}>
       {boxes.map((b, i) => (
         <g key={i}>
-          <rect x={b.x} y={b.y} width={b.w} height={50} rx="8" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+          <rect x={b.x} y={b.y} width={b.w} height={50} rx="8" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
           <text x={b.x + b.w/2} y={b.y + 22} textAnchor="middle" fill={color} fontSize="11" fontWeight="700">{b.label}</text>
           <text x={b.x + b.w/2} y={b.y + 38} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">{b.sub}</text>
         </g>
@@ -306,7 +306,7 @@ function SeleniumSVG() {
     <svg viewBox="0 0 800 100" style={{ width: '100%', height: 'auto' }}>
       {steps.map((s, i) => (
         <g key={i}>
-          <rect x={20 + i*155} y="25" width="130" height="45" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+          <rect x={20 + i*155} y="25" width="130" height="45" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
           <text x={85 + i*155} y="52" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">{s}</text>
           {i < steps.length - 1 && (
             <>
@@ -333,7 +333,7 @@ function DataPipelineSVG() {
     <svg viewBox="0 0 800 110" style={{ width: '100%', height: 'auto' }}>
       {stages.map((st, i) => (
         <g key={i}>
-          <rect x={10 + i*158} y="20" width="138" height="60" rx="9" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+          <rect x={10 + i*158} y="20" width="138" height="60" rx="9" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
           <text x={79 + i*158} y="48" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">{st.label}</text>
           <text x={79 + i*158} y="66" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">{st.sub}</text>
           {i < stages.length - 1 && (
@@ -357,7 +357,7 @@ function DecisionFlowSVG() {
       <text x="400" y="34" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">Where is my data?</text>
 
       {/* Q1: API available? */}
-      <polygon points="400,68 480,100 400,132 320,100" fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.5" />
+      <polygon points="400,68 480,100 400,132 320,100" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
       <text x="400" y="97" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">API</text>
       <text x="400" y="113" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">available?</text>
       <line x1="400" y1="48" x2="400" y2="68" stroke={color} strokeWidth="1.5" />
@@ -365,39 +365,39 @@ function DecisionFlowSVG() {
       {/* Yes → requests/httpx */}
       <line x1="480" y1="100" x2="560" y2="100" stroke={color} strokeWidth="1.5" />
       <text x="518" y="94" textAnchor="middle" fill={color} fontSize="10">Yes</text>
-      <rect x="560" y="80" width="130" height="38" rx="7" fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1.5" />
+      <rect x="560" y="80" width="130" height="38" rx="7" fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1.5" />
       <text x="625" y="104" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">requests / httpx</text>
 
       {/* No → Q2 Scraping allowed? */}
       <line x1="400" y1="132" x2="400" y2="165" stroke={color} strokeWidth="1.5" />
       <text x="410" y="155" fill={color} fontSize="10">No</text>
-      <polygon points="400,165 480,197 400,229 320,197" fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.5" />
+      <polygon points="400,165 480,197 400,229 320,197" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
       <text x="400" y="194" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">Scraping</text>
       <text x="400" y="210" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">allowed?</text>
 
       {/* No → stop */}
-      <line x1="320" y1="197" x2="200" y2="197" stroke="#f97316" strokeWidth="1.5" />
-      <text x="260" y="190" textAnchor="middle" fill="#f97316" fontSize="10">No</text>
-      <rect x="100" y="177" width="100" height="38" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="150" y="201" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="600">Stop / Alt</text>
+      <line x1="320" y1="197" x2="200" y2="197" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="260" y="190" textAnchor="middle" fill="#4a9eed" fontSize="10">No</text>
+      <rect x="100" y="177" width="100" height="38" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="150" y="201" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="600">Stop / Alt</text>
 
       {/* Yes → Q3 Static/Dynamic? */}
       <line x1="400" y1="229" x2="400" y2="262" stroke={color} strokeWidth="1.5" />
       <text x="410" y="252" fill={color} fontSize="10">Yes</text>
-      <polygon points="400,262 480,285 400,308 320,285" fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.5" />
+      <polygon points="400,262 480,285 400,308 320,285" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
       <text x="400" y="282" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">JS-rendered</text>
       <text x="400" y="298" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">page?</text>
 
       {/* Static → BS4 */}
       <line x1="320" y1="285" x2="220" y2="285" stroke={color} strokeWidth="1.5" />
       <text x="270" y="279" textAnchor="middle" fill={color} fontSize="10">No</text>
-      <rect x="110" y="267" width="110" height="36" rx="7" fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1.5" />
+      <rect x="110" y="267" width="110" height="36" rx="7" fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1.5" />
       <text x="165" y="290" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">BeautifulSoup</text>
 
       {/* Dynamic → Selenium */}
       <line x1="480" y1="285" x2="580" y2="285" stroke={color} strokeWidth="1.5" />
       <text x="529" y="279" textAnchor="middle" fill={color} fontSize="10">Yes</text>
-      <rect x="580" y="267" width="130" height="36" rx="7" fill="rgba(249,115,22,0.20)" stroke={color} strokeWidth="1.5" />
+      <rect x="580" y="267" width="130" height="36" rx="7" fill="rgba(74,158,237,0.20)" stroke={color} strokeWidth="1.5" />
       <text x="645" y="290" textAnchor="middle" fill={color} fontSize="11" fontWeight="600">Selenium / Playwright</text>
     </svg>
   );
@@ -408,12 +408,8 @@ export default function PfDS12() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <span style={S.tag}>MÓDULO 12</span>
+      <span style={S.tag}>MÓDULO 10</span>
       <h1 style={S.h1}>APIs, Web Scraping {'&'} Aquisição de Dados em Python</h1>
-      <p style={S.lead}>
-        Dominar a aquisição de dados é uma competência fundamental em Data Science. Neste módulo exploramos o ecossistema completo: desde chamadas REST com{' '}
-        <code>requests</code>, autenticação e paginação, até web scraping com BeautifulSoup, Scrapy e Selenium, passando por boas práticas de armazenamento e pipelines de dados.
-      </p>
 
       {/* ─── SECTION 1 ─── */}
       <section style={S.section}>
@@ -1066,58 +1062,8 @@ while True:
       <hr style={S.divider} />
 
       {/* ─── SECTION 12 ─── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese</h2>
-        <p style={S.p}>
-          Com tantas opções disponíveis, é importante ter um processo de decisão claro. O fluxograma abaixo guia a escolha da ferramenta certa para cada cenário.
-        </p>
-        <div style={S.diagram}>
-          <DecisionFlowSVG />
-        </div>
-        <h3 style={S.h3}>Tabela resumo de bibliotecas</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Biblioteca</th>
-              <th style={S.th}>Caso de uso</th>
-              <th style={S.th}>Velocidade</th>
-              <th style={S.th}>Complexidade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['requests', 'APIs REST, HTTP simples', 'Média', 'Baixa'],
-              ['httpx', 'Como requests + async/HTTP2', 'Alta', 'Baixa-Média'],
-              ['BeautifulSoup4', 'Parsing HTML estático', 'Média', 'Baixa'],
-              ['lxml', 'Parsing HTML/XML rápido', 'Alta', 'Média'],
-              ['Scrapy', 'Scraping em escala, crawling', 'Muito alta', 'Alta'],
-              ['Selenium', 'Páginas JS, automação browser', 'Baixa', 'Média'],
-              ['Playwright', 'Páginas JS, moderno, async', 'Média', 'Média'],
-              ['tenacity', 'Retry logic declarativo', '-', 'Baixa'],
-              ['requests-cache', 'Cache de respostas HTTP', '-', 'Baixa'],
-            ].map(([lib, use, speed, comp], i) => (
-              <tr key={i}>
-                <td style={S.td}><code>{lib}</code></td>
-                <td style={S.td}>{use}</td>
-                <td style={S.td}>{speed}</td>
-                <td style={S.td}>{comp}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <h3 style={S.h3}>Checklist antes de fazer scraping</h3>
-        <div style={S.highlight}>
-          <ul style={{ margin: 0, paddingLeft: '1.2rem', lineHeight: 2 }}>
-            <li>Verificar <code>robots.txt</code> e respeitar <code>Disallow</code></li>
-            <li>Ler os Termos de Serviço do site</li>
-            <li>Definir <code>User-Agent</code> identificável</li>
-            <li>Adicionar delays entre pedidos (<code>DOWNLOAD_DELAY</code>)</li>
-            <li>Não guardar dados pessoais sem base legal (RGPD)</li>
-            <li>Preferir API oficial se existir</li>
-            <li>Contactar o dono do site se usar os dados comercialmente</li>
-          </ul>
-        </div>
-      </section>
+      
+
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './Logic';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -14,7 +14,7 @@ const S = {
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
-  diagram: { background: '#0f172a', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
+  diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '0.75rem 1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '1rem', overflowX: 'auto', whiteSpace: 'pre' },
 };
@@ -28,19 +28,19 @@ function SvgBayes() {
         Teorema de Bayes — Teste Médico (Doença Rara P=0.001)
       </text>
       {/* Prior box */}
-      <rect x="20" y="42" width="130" height="75" rx="6" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+      <rect x="20" y="42" width="130" height="75" rx="6" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="2" />
       <text x="85" y="62" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">PRIOR</text>
       <text x="85" y="82" textAnchor="middle" fill="#94a3b8" fontSize="11">P(D) = 0.001</text>
       <text x="85" y="100" textAnchor="middle" fill="#64748b" fontSize="9">P(¬D) = 0.999</text>
       {/* Likelihood box */}
-      <rect x="245" y="42" width="140" height="75" rx="6" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="2" />
-      <text x="315" y="62" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">VEROSIMILHANÇA</text>
+      <rect x="245" y="42" width="140" height="75" rx="6" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="315" y="62" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">VEROSIMILHANÇA</text>
       <text x="315" y="80" textAnchor="middle" fill="#94a3b8" fontSize="10">P(+|D)  = 0.99</text>
       <text x="315" y="96" textAnchor="middle" fill="#94a3b8" fontSize="10">P(+|¬D) = 0.01</text>
       {/* Posterior box */}
-      <rect x="460" y="42" width="140" height="75" rx="6" fill="rgba(249,115,22,0.06)" stroke="#f59e0b" strokeWidth="2" />
-      <text x="530" y="62" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">POSTERIOR</text>
-      <text x="530" y="82" textAnchor="middle" fill="#f59e0b" fontSize="13" fontWeight="700">P(D|+)≈9%</text>
+      <rect x="460" y="42" width="140" height="75" rx="6" fill="rgba(74,158,237,0.06)" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="530" y="62" textAnchor="middle" fill="#7dd3fc" fontSize="10" fontWeight="700">POSTERIOR</text>
+      <text x="530" y="82" textAnchor="middle" fill="#7dd3fc" fontSize="13" fontWeight="700">P(D|+)≈9%</text>
       <text x="530" y="100" textAnchor="middle" fill="#64748b" fontSize="9">Base rate neglect!</text>
       {/* Arrows */}
       <defs>
@@ -51,7 +51,7 @@ function SvgBayes() {
       <line x1="152" y1="79" x2="242" y2="79" stroke={C} strokeWidth="1.5" markerEnd="url(#arr6)" />
       <line x1="387" y1="79" x2="457" y2="79" stroke={C} strokeWidth="1.5" markerEnd="url(#arr6)" />
       {/* Formula */}
-      <rect x="20" y="135" width="580" height="50" rx="6" fill="rgba(249,115,22,0.06)" />
+      <rect x="20" y="135" width="580" height="50" rx="6" fill="rgba(74,158,237,0.06)" />
       <text x="310" y="153" textAnchor="middle" fill={C} fontSize="11" fontWeight="700">
         P(D|+) = P(+|D)·P(D) / P(+)
       </text>
@@ -110,12 +110,12 @@ function SvgAsia() {
         const isHl = hlPath.has(n.id);
         return (
           <g key={n.id}>
-            <ellipse cx={n.x} cy={n.y} rx="50" ry="18" fill="rgba(249,115,22,0.06)" stroke={isHl ? C : 'var(--card-border)'} strokeWidth={isHl ? 2 : 1} />
+            <ellipse cx={n.x} cy={n.y} rx="50" ry="18" fill="rgba(74,158,237,0.06)" stroke={isHl ? C : 'var(--card-border)'} strokeWidth={isHl ? 2 : 1} />
             <text x={n.x} y={n.y - 2} textAnchor="middle" dominantBaseline="middle" fill={isHl ? C : '#94a3b8'} fontSize="9" fontWeight={isHl ? '700' : '400'}>{n.note}</text>
           </g>
         );
       })}
-      <rect x="10" y="358" width="570" height="24" rx="4" fill="rgba(249,115,22,0.06)" />
+      <rect x="10" y="358" width="570" height="24" rx="4" fill="rgba(74,158,237,0.06)" />
       <text x="295" y="373" textAnchor="middle" dominantBaseline="middle" fill={C} fontSize="10">
         Caminho destacado: query P(Dyspnoea | Smoking=T) via d-separação e Variable Elimination
       </text>
@@ -167,8 +167,8 @@ function SvgBIC() {
         <circle key={p.k} cx={toX(p.k)} cy={toY(p.bic)} r="4" fill={C} />
       ))}
       {/* Optimal marker */}
-      <line x1={toX(optPt.k)} y1={oy} x2={toX(optPt.k)} y2={oy + h} stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,3" />
-      <text x={toX(optPt.k) + 38} y={oy + 6} textAnchor="middle" fill="#f59e0b" fontSize="9">k* = {optPt.k} (óptimo)</text>
+      <line x1={toX(optPt.k)} y1={oy} x2={toX(optPt.k)} y2={oy + h} stroke="#7dd3fc" strokeWidth="1.5" strokeDasharray="4,3" />
+      <text x={toX(optPt.k) + 38} y={oy + 6} textAnchor="middle" fill="#7dd3fc" fontSize="9">k* = {optPt.k} (óptimo)</text>
       <text x="300" y="205" textAnchor="middle" fill="#475569" fontSize="10">
         BIC = log L(θ) − (k/2)·log n   —   penaliza complexidade para evitar overfitting
       </text>
@@ -181,12 +181,12 @@ function SvgMLN() {
   // atom rect: center-x = x+50, center-y = y
   const AW = 100;
   const atoms = [
-    { id: 'sA', label: 'Smokes(Alice)', x: 30,  y: 130, color: '#f97316' },
-    { id: 'cA', label: 'Cancer(Alice)', x: 30,  y: 210, color: '#fbbf24' },
-    { id: 'sB', label: 'Smokes(Bob)',   x: 390, y: 130, color: '#f97316' },
-    { id: 'cB', label: 'Cancer(Bob)',   x: 390, y: 210, color: '#fbbf24' },
-    { id: 'sC', label: 'Smokes(Carol)', x: 210, y: 300, color: '#f97316' },
-    { id: 'cC', label: 'Cancer(Carol)', x: 210, y: 375, color: '#fbbf24' },
+    { id: 'sA', label: 'Smokes(Alice)', x: 30,  y: 130, color: '#4a9eed' },
+    { id: 'cA', label: 'Cancer(Alice)', x: 30,  y: 210, color: '#bae6fd' },
+    { id: 'sB', label: 'Smokes(Bob)',   x: 390, y: 130, color: '#4a9eed' },
+    { id: 'cB', label: 'Cancer(Bob)',   x: 390, y: 210, color: '#bae6fd' },
+    { id: 'sC', label: 'Smokes(Carol)', x: 210, y: 300, color: '#4a9eed' },
+    { id: 'cC', label: 'Cancer(Carol)', x: 210, y: 375, color: '#bae6fd' },
   ];
   const people = [
     { id: 'Alice', cx: 80,  cy: 58,  atomIds: ['sA'] },
@@ -199,12 +199,12 @@ function SvgMLN() {
     { label: 'w=1.5\nS→C',   fx: 390+50, fy: 170, connects: ['sB','cB'] },
     { label: 'w=1.5\nS→C',   fx: 210+50, fy: 338, connects: ['sC','cC'] },
     { label: 'w=1.1\nF∧S→S', fx: 260,    fy: 130, connects: ['sA','sB'] },
-    { label: 'w=1.1\nF∧S→S', fx: 148,    fy: 230, connects: ['sA','sC'] },
-    { label: 'w=1.1\nF∧S→S', fx: 372,    fy: 230, connects: ['sB','sC'] },
+    { label: 'w=1.1\nF∧S→S', fx: 160,    fy: 258, connects: ['sA','sC'] },
+    { label: 'w=1.1\nF∧S→S', fx: 360,    fy: 258, connects: ['sB','sC'] },
   ];
   const byId = Object.fromEntries(atoms.map(a => [a.id, { cx: a.x + AW/2, cy: a.y, ...a }]));
   return (
-    <svg viewBox="0 0 520 430" style={{ width: '100%', maxWidth: 520, display: 'block', margin: '0 auto' }}>
+    <svg viewBox="0 0 520 430" style={{ width: '100%', display: 'block' }}>
       <rect width="520" height="430" fill="var(--bg-secondary)" rx="8" />
       <text x="260" y="22" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="700">
         MLN — Ground Network (Alice, Bob, Carol)
@@ -222,14 +222,14 @@ function SvgMLN() {
       {/* Atom nodes */}
       {atoms.map(a => (
         <g key={a.id}>
-          <rect x={a.x} y={a.y - 12} width={AW} height="24" rx="5" fill="rgba(249,115,22,0.06)" stroke={a.color} strokeWidth="1.5" />
+          <rect x={a.x} y={a.y - 12} width={AW} height="24" rx="5" fill="var(--bg-secondary)" stroke={a.color} strokeWidth="1.5" />
           <text x={a.x + AW/2} y={a.y} textAnchor="middle" dominantBaseline="middle" fill={a.color} fontSize="8.5">{a.label}</text>
         </g>
       ))}
       {/* Factor squares */}
       {factors.map((f, fi) => (
         <g key={fi}>
-          <rect x={f.fx - 22} y={f.fy - 15} width="44" height="30" rx="4" fill={`${C}25`} stroke={C} strokeWidth="1.5" />
+          <rect x={f.fx - 22} y={f.fy - 15} width="44" height="30" rx="4" fill="var(--bg-secondary)" stroke={C} strokeWidth="1.5" />
           <text x={f.fx} y={f.fy - 4} textAnchor="middle" dominantBaseline="middle" fill={C} fontSize="7">{f.label.split('\n')[0]}</text>
           <text x={f.fx} y={f.fy + 8} textAnchor="middle" dominantBaseline="middle" fill="#94a3b8" fontSize="7">{f.label.split('\n')[1]}</text>
         </g>
@@ -237,7 +237,7 @@ function SvgMLN() {
       {/* Person circles (on top) */}
       {people.map(p => (
         <g key={p.id}>
-          <circle cx={p.cx} cy={p.cy} r="24" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+          <circle cx={p.cx} cy={p.cy} r="24" fill="var(--bg-secondary)" stroke={C} strokeWidth="2" />
           <text x={p.cx} y={p.cy} textAnchor="middle" dominantBaseline="middle" fill={C} fontSize="9.5" fontWeight="700">{p.id}</text>
         </g>
       ))}
@@ -252,10 +252,9 @@ export default function LOG6() {
   const mod = modules[5];
   return (
     <div style={S.page}>
-      <Link to="/logic" style={S.back}>← Lógica &amp; Raciocínio</Link>
-      <div style={S.badge}>{mod.num} — LÓGICA &amp; RACIOCÍNIO</div>
+      <Link to="/logic" style={S.back}>← Logic</Link>
+      <div style={S.badge}>MÓDULO {mod.num}</div>
       <h1 style={S.h1}>{mod.title}</h1>
-      <p style={S.sub}>{mod.subtitle}</p>
 
       {/* ── Secção 1 ── */}
       <div style={S.section}>
@@ -418,18 +417,6 @@ Distribuição:
           e social network analysis onde dados são naturalmente contínuos.
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Raciocínio Probabilístico e Teorema de Bayes</strong> — a probabilidade é a extensão única da lógica ao raciocínio com incerteza; o Teorema de Bayes actualiza a crença prior com evidência observada, sendo essencial para diagnóstico médico, filtragem de spam e inferência científica — fenómenos como o base rate neglect mostram porque a intuição humana falha aqui.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Redes Bayesianas — Estrutura e Inferência</strong> — um DAG com CPTs representa a distribuição conjunta de forma compacta explorando independências condicionais; d-separação determina independências pela estrutura do grafo, e algoritmos como Variable Elimination e Belief Propagation realizam inferência exacta ou aproximada.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Aprendizagem em Redes Bayesianas</strong> — os parâmetros das CPTs são estimados por MLE ou com suavização de Laplace; a estrutura é aprendida por algoritmos score-based (BIC) ou constraint-based (PC), com EM para dados incompletos; o número de DAGs sobre n nós cresce super-exponencialmente, tornando a busca heurística indispensável.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Markov Logic Networks e Probabilistic Soft Logic</strong> — MLNs combinam lógica de primeira ordem com campos de Markov, atribuindo pesos a fórmulas FOL para obter distribuições de probabilidade sobre mundos; PSL usa lógica de Łukasiewicz com valores contínuos, tornando a inferência MAP um problema de optimização convexa eficientemente resolúvel.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

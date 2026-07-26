@@ -7,19 +7,19 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
 };
@@ -40,36 +40,36 @@ const SchemaDiagram = () => (
           {bits.map((b, i) => (
             <g key={i}>
               <rect x={10 + i * 40} y={y} width={34} height={32} rx="5"
-                fill={i === 0 || i === 3 || i === 4 ? '#dc262615' : 'var(--bg-primary)'}
-                stroke={i === 0 || i === 3 || i === 4 ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
+                fill={i === 0 || i === 3 || i === 4 ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'}
+                stroke={i === 0 || i === 3 || i === 4 ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
               <text x={27 + i * 40} y={y + 21} textAnchor="middle" fontSize="13" fontWeight="700"
-                fill={i === 0 || i === 3 || i === 4 ? '#f97316' : 'var(--text-secondary)'}>{b}</text>
+                fill={i === 0 || i === 3 || i === 4 ? '#4a9eed' : 'var(--text-secondary)'}>{b}</text>
             </g>
           ))}
-          <text x="222" y={y + 21} fill="#f97316" fontSize="11">✓ instancia H</text>
+          <text x="222" y={y + 21} fill="#4a9eed" fontSize="11">✓ instancia H</text>
         </g>
       ))}
 
       {/* Non-matching examples */}
       <text x="10" y="232" fill="var(--text-secondary)" fontSize="10" fontWeight="700">NÃO instanciam:</text>
-      <text x="10" y="254" fill="#f97316" fontSize="10">0 * * 0 1   ✗  (pos. 1 ≠ 1)</text>
-      <text x="10" y="276" fill="#f97316" fontSize="10">1 * * 1 1   ✗  (pos. 4 ≠ 0)</text>
+      <text x="10" y="254" fill="var(--text-secondary)" fontSize="10">0 * * 0 1   ✗  (pos. 1 ≠ 1)</text>
+      <text x="10" y="276" fill="var(--text-secondary)" fontSize="10">1 * * 1 1   ✗  (pos. 4 ≠ 0)</text>
 
       {/* Schema itself */}
       <text x="585" y="18" textAnchor="middle" fill="var(--text-secondary)" fontSize="10" fontWeight="700">O ESQUEMA H = 1 * * 0 1</text>
       {['1','*','*','0','1'].map((b, i) => (
         <g key={i}>
           <rect x={460 + i * 44} y={32} width={36} height={36} rx="5"
-            fill={b === '*' ? 'var(--bg-primary)' : '#dc262615'}
-            stroke={b === '*' ? 'var(--card-border)' : '#f97316'} strokeWidth={b === '*' ? 1 : 2}/>
+            fill={b === '*' ? 'var(--bg-primary)' : 'rgba(74,158,237,0.10)'}
+            stroke={b === '*' ? 'var(--card-border)' : '#4a9eed'} strokeWidth={b === '*' ? 1 : 2}/>
           <text x={478 + i * 44} y={56} textAnchor="middle" fontSize="14" fontWeight="700"
-            fill={b === '*' ? 'var(--text-secondary)' : '#f97316'}>{b}</text>
+            fill={b === '*' ? 'var(--text-secondary)' : '#4a9eed'}>{b}</text>
         </g>
       ))}
 
       {/* Properties */}
-      <rect x="450" y="90" width="280" height="160" rx="8" fill="var(--bg-primary)" stroke="rgba(249,115,22,0.10)" strokeWidth="1.5"/>
-      <text x="590" y="115" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">PROPRIEDADES DE H</text>
+      <rect x="450" y="90" width="280" height="160" rx="8" fill="var(--bg-primary)" stroke="rgba(74,158,237,0.10)" strokeWidth="1.5"/>
+      <text x="590" y="115" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">PROPRIEDADES DE H</text>
       <text x="465" y="142" fill="var(--text-primary)" fontSize="9.5">• Ordem o(H) = 3</text>
       <text x="478" y="160" fill="var(--text-secondary)" fontSize="8.5">(posições definidas: 1, 4, 5)</text>
       <text x="465" y="184" fill="var(--text-primary)" fontSize="9.5">• Comprimento δ(H) = 4</text>
@@ -91,9 +91,8 @@ export default function CIO6() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/cio" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
-        <div style={S.tag}>Module 6</div>
+        <div style={S.tag}>Módulo 7</div>
         <h1 style={S.h1}>AGs — Schema Theory & Parâmetros</h1>
-        <p style={S.lead}>A Schema Theory responde à questão mais profunda sobre os AGs: porquê é que funcionam? A resposta envolve a noção de esquemas — templates que descrevem famílias de soluções — e o Teorema dos Esquemas, que prova que bons esquemas crescem exponencialmente ao longo das gerações.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O que é um Esquema (Schema)</h2>
@@ -113,7 +112,7 @@ export default function CIO6() {
                   ['Número de instâncias m(H,t)', 'Quantos indivíduos na população na geração t instanciam H', 'A "frequência" do padrão na população actual', 'Cresce se o fitness médio do esquema supera a média da população'],
                   ['Fitness médio f(H,t)', 'Média do fitness de todos os instanciantes de H na geração t', 'Quão boa é a família H em média', 'Acima da média da pop. → esquema cresce; abaixo → esquema diminui'],
                 ].map(([p, d, i, im]) => (
-                  <tr key={p}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{p}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>{d}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{im}</td></tr>
+                  <tr key={p}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{p}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>{d}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{im}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -149,11 +148,11 @@ export default function CIO6() {
             <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Exemplos de Building Blocks por problema</p>
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
               {bbExamples.map((ex, i) => (
-                <button key={i} onClick={() => setTab(i)} style={{ padding: '0.4rem 0.9rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem', background: tab === i ? '#f97316' : 'var(--bg-primary)', color: tab === i ? 'white' : 'var(--text-primary)', border: `1.5px solid ${tab === i ? '#f97316' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{ex.problem}</button>
+                <button key={i} onClick={() => setTab(i)} style={{ padding: '0.4rem 0.9rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem', background: tab === i ? '#4a9eed' : 'var(--bg-primary)', color: tab === i ? 'white' : 'var(--text-primary)', border: `1.5px solid ${tab === i ? '#4a9eed' : 'var(--card-border)'}`, transition: 'all 0.2s' }}>{ex.problem}</button>
               ))}
             </div>
-            <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: '1.5px solid rgba(249,115,22,0.10)' }}>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Building block: {bbExamples[tab].bb}</div>
+            <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: '1.5px solid rgba(74,158,237,0.10)' }}>
+              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Building block: {bbExamples[tab].bb}</div>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>{bbExamples[tab].why}</p>
             </div>
           </div>
@@ -180,26 +179,15 @@ export default function CIO6() {
                   ['Gerações G', '100–1000. Parar com critério de convergência.', 'Termina sem convergir → G insuficiente. Não melhorou nas últimas G/4 gerações → pode-se parar mais cedo.'],
                   ['Elitismo k_e', 'k_e = 1–2 para maioria dos problemas.', 'Fitness decresce em alguma geração → sem elitismo. Diversidade muito baixa → k_e muito alto.'],
                 ].map(([p, r, d]) => (
-                  <tr key={p}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{p}</td><td style={S.td}>{r}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{d}</td></tr>
+                  <tr key={p}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{p}</td><td style={S.td}>{r}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{d}</td></tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>Esquema H: template com {'{'}0, 1, *{'}'} sobre cromossomas binários. Ordem o(H) = posições definidas. Comprimento δ(H) = extensão do padrão.</li>
-              <li>Teorema dos Esquemas: esquemas acima da média, de baixa ordem e comprimento pequeno crescem exponencialmente. Os outros decrescem.</li>
-              <li>Paralelismo implícito: N indivíduos processam implicitamente O(N³) esquemas em paralelo — sem custo adicional de computação.</li>
-              <li>Building Blocks Hypothesis: o AG detecta e combina subsoluções parciais (building blocks) de alta qualidade para construir soluções melhores.</li>
-              <li>Deception: problemas onde building blocks locais apontam para o ótimo errado. A BBH falha — mas é raro em problemas práticos.</li>
-              <li>Parâmetros típicos: N ≈ 10–20n, pc ≈ 0.8, pm ≈ 1/n, elitismo k=1, torneio k=2–3.</li>
-            </ul>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

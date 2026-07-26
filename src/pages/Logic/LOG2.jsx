@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './Logic';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -14,17 +14,16 @@ const S = {
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
-  diagram: { background: '#0f172a', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
+  diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
 };
 
 export default function LOG2() {
   return (
     <div style={S.page}>
-      <Link to="/logic" style={S.back}>← Lógica & Raciocínio</Link>
-      <div style={S.badge}>{modules[1].num} — LÓGICA & RACIOCÍNIO</div>
+      <Link to="/logic" style={S.back}>← Logic</Link>
+      <div style={S.badge}>MÓDULO {modules[1].num}</div>
       <h1 style={S.h1}>{modules[1].title}</h1>
-      <p style={S.sub}>{modules[1].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -37,40 +36,40 @@ export default function LOG2() {
         </p>
 
         <div style={S.diagram}>
-          <svg viewBox="0 0 680 290" width="100%" style={{ display: 'block' }}>
-            <rect width="680" height="290" fill="var(--bg-secondary)" rx="10" />
+          <svg viewBox="0 0 680 320" width="100%" style={{ display: 'block' }}>
+            <rect width="680" height="320" fill="var(--bg-secondary)" rx="10" />
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="monospace">Refutação por Resolução: {'{'}p→q, q→r, p{'}'} ⊢ r</text>
-            {/* Base de cláusulas */}
+            {/* Base de cláusulas — ordenadas pela ordem em que são usadas, para evitar linhas cruzadas */}
             {[
-              { label: 'C1: ¬p ∨ q', x: 40, y: 50, color: C },
-              { label: 'C2: ¬q ∨ r', x: 230, y: 50, color: C },
-              { label: 'C3: p', x: 420, y: 50, color: C },
-              { label: 'C4: ¬r  (negação de α)', x: 560, y: 50, color: '#f87171' },
+              { label: 'C1: ¬p ∨ q', x: 110, y: 50, color: C },
+              { label: 'C3: p', x: 238, y: 50, color: C },
+              { label: 'C2: ¬q ∨ r', x: 327, y: 50, color: C },
+              { label: 'C4: ¬r (¬α)', x: 475, y: 50, color: '#64748b' },
             ].map(({ label, x, y, color }) => (
               <g key={label}>
-                <rect x={x} y={y} width={label.length * 7.8 + 10} height="26" fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth="1.5" rx="5" />
+                <rect x={x} y={y} width={label.length * 7.8 + 10} height="26" fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth="1.5" rx="5" />
                 <text x={x + (label.length * 7.8 + 10) / 2} y={y + 17} textAnchor="middle" fill={color} fontSize="12" fontFamily="monospace">{label}</text>
               </g>
             ))}
             {/* Resolve C1+C3 → C5: q */}
-            <rect x="120" y="120" width="60" height="26" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" rx="5" />
-            <text x="150" y="137" textAnchor="middle" fill="#fbbf24" fontSize="12" fontFamily="monospace">C5: q</text>
-            <line x1="80" y1="76" x2="150" y2="120" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
-            <line x1="440" y1="76" x2="150" y2="120" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
-            <text x="100" y="105" fill="#64748b" fontSize="9">res(C1,C3) elim p</text>
+            <line x1="174" y1="76" x2="228" y2="130" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
+            <line x1="282" y1="76" x2="228" y2="130" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
+            <text x="90" y="112" fill="#64748b" fontSize="9">res(C1,C3) elim p</text>
+            <rect x="198" y="130" width="60" height="26" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" rx="5" />
+            <text x="228" y="147" textAnchor="middle" fill="#bae6fd" fontSize="12" fontFamily="monospace">C5: q</text>
             {/* Resolve C5+C2 → C6: r */}
-            <rect x="220" y="185" width="60" height="26" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" rx="5" />
-            <text x="250" y="202" textAnchor="middle" fill="#fbbf24" fontSize="12" fontFamily="monospace">C6: r</text>
-            <line x1="150" y1="146" x2="250" y2="185" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
-            <line x1="260" y1="76" x2="250" y2="185" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
-            <text x="165" y="172" fill="#64748b" fontSize="9">res(C5,C2) elim q</text>
+            <line x1="228" y1="156" x2="310" y2="205" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
+            <line x1="391" y1="76" x2="310" y2="205" stroke="#475569" strokeWidth="1.5" strokeDasharray="4,3" />
+            <text x="395" y="150" fill="#64748b" fontSize="9">res(C5,C2) elim q</text>
+            <rect x="280" y="205" width="60" height="26" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" rx="5" />
+            <text x="310" y="222" textAnchor="middle" fill="#bae6fd" fontSize="12" fontFamily="monospace">C6: r</text>
             {/* Resolve C6+C4 → □ */}
-            <ellipse cx="400" cy="248" rx="30" ry="18" fill="#7f1d1d" stroke="#f87171" strokeWidth="2" />
-            <text x="400" y="253" textAnchor="middle" fill="#f87171" fontSize="14" fontFamily="monospace" fontWeight="700">□</text>
-            <line x1="250" y1="211" x2="400" y2="230" stroke="#f87171" strokeWidth="1.5" strokeDasharray="4,3" />
-            <line x1="600" y1="76" x2="400" y2="230" stroke="#f87171" strokeWidth="1.5" strokeDasharray="4,3" />
-            <text x="310" y="233" fill="#64748b" fontSize="9">res(C6,C4) elim r → □</text>
-            <text x="340" y="278" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="sans-serif">Contradição derivada → KB ⊨ r  (q.e.d.)</text>
+            <line x1="310" y1="231" x2="400" y2="272" stroke="#64748b" strokeWidth="1.5" strokeDasharray="4,3" />
+            <line x1="518" y1="76" x2="400" y2="272" stroke="#64748b" strokeWidth="1.5" strokeDasharray="4,3" />
+            <text x="470" y="255" fill="#64748b" fontSize="9">res(C6,C4) elim r → □</text>
+            <ellipse cx="400" cy="285" rx="30" ry="18" fill="rgba(148,163,184,0.08)" stroke="#64748b" strokeWidth="2" />
+            <text x="400" y="290" textAnchor="middle" fill="#94a3b8" fontSize="14" fontFamily="monospace" fontWeight="700">□</text>
+            <text x="340" y="312" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="sans-serif">Contradição derivada → KB ⊨ r  (q.e.d.)</text>
           </svg>
         </div>
 
@@ -116,9 +115,9 @@ export default function LOG2() {
               { rule: 'ELIMINATE Y→b', eq: '(vazio — sucesso)', subst: 'σ = {X/a, Y/b}', y: 205 },
             ].map(({ rule, eq, subst, y }) => (
               <g key={y}>
-                <rect x="12" y={y - 14} width="656" height="28" fill={y === 205 ? '#c2410c22' : '#111827'} rx="4" />
+                <rect x="12" y={y - 14} width="656" height="28" fill={y === 205 ? 'rgba(74,158,237,0.15)' : '#111827'} rx="4" />
                 <text x="20" y={y + 4} fill="#64748b" fontSize="10" fontFamily="monospace">{rule}</text>
-                <text x="200" y={y + 4} fill={y === 205 ? '#fbbf24' : '#e2e8f0'} fontSize="12" fontFamily="monospace">{eq}</text>
+                <text x="200" y={y + 4} fill={y === 205 ? '#bae6fd' : '#e2e8f0'} fontSize="12" fontFamily="monospace">{eq}</text>
                 <text x="500" y={y + 4} fill={C} fontSize="11" fontFamily="monospace">{subst}</text>
               </g>
             ))}
@@ -173,7 +172,7 @@ export default function LOG2() {
               ['∃x. P(x)', 'par dependente'],
             ].map(([a, b], i) => (
               <g key={i}>
-                <text x="30" y={82 + i * 18} fill="#f97316" fontSize="11" fontFamily="monospace">{a}</text>
+                <text x="30" y={82 + i * 18} fill="#4a9eed" fontSize="11" fontFamily="monospace">{a}</text>
                 <text x="155" y={82 + i * 18} fill="#94a3b8" fontSize="11" fontFamily="monospace">{b}</text>
               </g>
             ))}
@@ -239,34 +238,31 @@ export default function LOG2() {
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="monospace">Estrutura de Kripke — EF(error) satisfeito</text>
             {/* states */}
             {[
-              { id: 's0', label: 's₀', props: 'init', x: 120, y: 100, color: '#fbbf24' },
+              { id: 's0', label: 's₀', props: 'init', x: 120, y: 100, color: '#bae6fd' },
               { id: 's1', label: 's₁', props: 'running', x: 300, y: 60, color: C },
               { id: 's2', label: 's₂', props: 'running', x: 300, y: 160, color: C },
-              { id: 's3', label: 's₃', props: 'error', x: 500, y: 60, color: '#f87171' },
-              { id: 's4', label: 's₄', props: 'done', x: 500, y: 160, color: '#fbbf24' },
+              { id: 's3', label: 's₃', props: 'error', x: 500, y: 60, color: '#64748b' },
+              { id: 's4', label: 's₄', props: 'done', x: 500, y: 160, color: '#bae6fd' },
             ].map(({ label, props, x, y, color }) => (
               <g key={label}>
-                <circle cx={x} cy={y} r="30" fill="rgba(249,115,22,0.06)" stroke={color} strokeWidth="2" />
+                <circle cx={x} cy={y} r="30" fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth="2" />
                 <text x={x} y={y - 6} textAnchor="middle" fill={color} fontSize="13" fontFamily="monospace" fontWeight="700">{label}</text>
                 <text x={x} y={y + 10} textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">{props}</text>
               </g>
             ))}
-            {/* transitions */}
-            <line x1="150" y1="90" x2="270" y2="68" stroke="#475569" strokeWidth="1.5" />
-            <polygon points="265,63 275,70 263,74" fill="#475569" />
+            {/* transitions — s0→s1 e s1→s3 destacadas (caminho EF(error)) */}
+            <line x1="150" y1="90" x2="270" y2="68" stroke="#bae6fd" strokeWidth="2.5" strokeDasharray="6,3" />
+            <polygon points="265,63 275,70 263,74" fill="#bae6fd" />
             <line x1="150" y1="110" x2="270" y2="155" stroke="#475569" strokeWidth="1.5" />
             <polygon points="265,150 275,158 263,161" fill="#475569" />
-            <line x1="330" y1="60" x2="470" y2="60" stroke="#475569" strokeWidth="1.5" />
-            <polygon points="465,55 475,60 465,65" fill="#475569" />
+            <line x1="330" y1="60" x2="470" y2="60" stroke="#bae6fd" strokeWidth="2.5" strokeDasharray="6,3" />
+            <polygon points="465,55 475,60 465,65" fill="#bae6fd" />
             <line x1="300" y1="90" x2="300" y2="130" stroke="#475569" strokeWidth="1.5" />
             <polygon points="295,125 300,135 305,125" fill="#475569" />
             <line x1="330" y1="160" x2="470" y2="160" stroke="#475569" strokeWidth="1.5" />
             <polygon points="465,155 475,160 465,165" fill="#475569" />
-            {/* EF(error) path highlight */}
-            <path d="M 150 95 Q 210 50 270 62" fill="none" stroke="#f87171" strokeWidth="2.5" strokeDasharray="6,3" />
-            <path d="M 330 60 L 470 60" fill="none" stroke="#f87171" strokeWidth="2.5" strokeDasharray="6,3" />
-            <text x="340" y="200" textAnchor="middle" fill="#f87171" fontSize="11" fontFamily="sans-serif">caminho: s₀ → s₁ → s₃(error) — EF(error) satisfeito</text>
-            <text x="340" y="220" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="sans-serif">AG(¬error) FALSO — contraexemplo encontrado automaticamente</text>
+            <text x="340" y="200" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="sans-serif">caminho: s₀ → s₁ → s₃(error) — EF(error) satisfeito</text>
+            <text x="340" y="220" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="sans-serif">AG(¬error) FALSO — contraexemplo encontrado automaticamente</text>
             <text x="340" y="248" textAnchor="middle" fill="#94a3b8" fontSize="10" fontFamily="sans-serif">model checker devolve o contraexemplo como testemunho de violação da propriedade</text>
           </svg>
         </div>
@@ -291,18 +287,6 @@ export default function LOG2() {
           </p>
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Método de Resolução</strong> — procedimento de inferência refutação-completo (Robinson, 1965) que prova KB ⊨ α negando α e derivando a cláusula vazia por aplicação repetida da regra de resolução; é a base do Prolog e dos SAT solvers modernos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Unificação</strong> — mecanismo que encontra o Unificador Mais Geral (MGU) entre dois termos, permitindo a correspondência entre cabeças de cláusulas e metas durante a resolução; o algoritmo de Martelli-Montanari opera em tempo quasi-linear e é central na execução de Prolog.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Theorem Proving Interactivo</strong> — assistentes de prova como Lean 4, Coq e Isabelle/HOL permitem construir e verificar mecanicamente provas matemáticas formais de alta complexidade; baseiam-se no isomorfismo de Curry-Howard e são usados na verificação de compiladores, sistemas operativos e algoritmos críticos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Model Checking</strong> — técnica de verificação automática que verifica exaustivamente se um sistema de estados finitos satisfaz uma propriedade expressa em lógica temporal (CTL ou LTL); algoritmos de ponto-fixo e BDDs simbólicos permitem verificar sistemas com mais de 10²⁰ estados.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

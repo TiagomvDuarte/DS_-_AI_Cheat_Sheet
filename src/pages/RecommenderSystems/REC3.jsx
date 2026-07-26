@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import { modules } from './RecommenderSystems';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -10,7 +12,7 @@ const S = {
   h1: { fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.4rem' },
   sub: { color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' },
   section: { marginBottom: '2.5rem' },
-  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, marginBottom: '1rem' },
+  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, borderLeft: `3px solid ${C}`, paddingLeft: '0.85rem', marginBottom: '1rem' },
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
@@ -24,7 +26,6 @@ export default function REC3() {
       <Link to="/recommender" style={S.back}>← Recommender Systems</Link>
       <div style={S.badge}>MÓDULO {modules[2].num}</div>
       <h1 style={S.h1}>{modules[2].title}</h1>
-      <p style={S.sub}>{modules[2].subtitle}</p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Porquê Sistemas Híbridos</h2>
@@ -47,8 +48,8 @@ export default function REC3() {
             <rect width="680" height="210" fill="var(--bg-secondary)" />
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="600">Sistemas Híbridos — Combinação CF + CB</text>
             {/* CF circle */}
-            <circle cx="270" cy="115" r="75" fill="#f9731622" stroke="#f97316" strokeWidth="2" />
-            <text x="250" y="100" textAnchor="middle" fill="#f97316" fontSize="13" fontWeight="700">CF</text>
+            <circle cx="270" cy="115" r="75" fill="#4a9eed22" stroke="#4a9eed" strokeWidth="2" />
+            <text x="250" y="100" textAnchor="middle" fill="#4a9eed" fontSize="13" fontWeight="700">CF</text>
             <text x="250" y="118" textAnchor="middle" fill="#64748b" fontSize="10">histórico</text>
             <text x="250" y="133" textAnchor="middle" fill="#64748b" fontSize="10">coletivo</text>
             {/* CB circle */}
@@ -75,7 +76,7 @@ export default function REC3() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Estratégias de Combinação</h2>
         <p style={S.p}>
-          <strong>Weighted Hybrid:</strong> score_final = α × score_CF + (1−α) × score_CB. O peso α pode ser aprendido por regressão linear ou variar por utilizador — mais α para utilizadores com histórico rico, mais (1−α) para utilizadores novos.
+          <strong>Weighted Hybrid:</strong> <InlineMath math="\text{score}_{\text{final}} = \alpha \times \text{score}_{CF} + (1-\alpha) \times \text{score}_{CB}" />. O peso α pode ser aprendido por regressão linear ou variar por utilizador — mais α para utilizadores com histórico rico, mais (1−α) para utilizadores novos.
         </p>
         <div style={S.highlight}>
           <p style={{ ...S.p, marginBottom: 0 }}>
@@ -171,7 +172,7 @@ export default function REC3() {
             <rect width="680" height="185" fill="var(--bg-secondary)" />
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="600">YouTube Two-Stage — Arquitectura de Recomendação</text>
             {/* Stage 0: all videos */}
-            <rect x="20" y="50" width="110" height="100" rx="8" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="20" y="50" width="110" height="100" rx="8" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="75" y="70" textAnchor="middle" fill="#64748b" fontSize="10">Catálogo</text>
             <text x="75" y="92" textAnchor="middle" fill="#e2e8f0" fontSize="18" fontWeight="800">10M</text>
             <text x="75" y="110" textAnchor="middle" fill="#64748b" fontSize="10">vídeos</text>
@@ -180,7 +181,7 @@ export default function REC3() {
             <line x1="130" y1="100" x2="185" y2="100" stroke={C} strokeWidth="2" />
             <polygon points="185,95 197,100 185,105" fill={C} />
             {/* Stage 1: candidate generation */}
-            <rect x="197" y="40" width="145" height="120" rx="8" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+            <rect x="197" y="40" width="145" height="120" rx="8" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="2" />
             <text x="269" y="62" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Candidate Generation</text>
             <text x="269" y="80" textAnchor="middle" fill="#94a3b8" fontSize="10">CF por embedding</text>
             <text x="269" y="102" textAnchor="middle" fill="#e2e8f0" fontSize="20" fontWeight="800">~100</text>
@@ -190,7 +191,7 @@ export default function REC3() {
             <line x1="342" y1="100" x2="397" y2="100" stroke={C} strokeWidth="2" />
             <polygon points="397,95 409,100 397,105" fill={C} />
             {/* Stage 2: ranking */}
-            <rect x="409" y="40" width="145" height="120" rx="8" fill="rgba(249,115,22,0.06)" stroke={`${C}80`} strokeWidth="2" />
+            <rect x="409" y="40" width="145" height="120" rx="8" fill="rgba(74,158,237,0.06)" stroke={`${C}80`} strokeWidth="2" />
             <text x="481" y="62" textAnchor="middle" fill={`${C}cc`} fontSize="10" fontWeight="700">Ranking</text>
             <text x="481" y="80" textAnchor="middle" fill="#94a3b8" fontSize="10">DNN + features</text>
             <text x="481" y="102" textAnchor="middle" fill="#e2e8f0" fontSize="20" fontWeight="800">~10</text>
@@ -203,18 +204,7 @@ export default function REC3() {
           </svg>
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Porquê Sistemas Híbridos</strong> — collaborative filtering (CF) falha com novos utilizadores/itens (cold start); content-based falha em diversidade; híbridos combinam CF e CB para mitigar ambos os problemas e melhorar métricas globais.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Estratégias de Combinação</strong> — combinação linear ponderada de scores, switching (escolher o método com mais dados disponíveis) e feature augmentation (usar predições de CF como features do CB) são as arquitecturas híbridas mais comuns.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Contextual Bandits</strong> — modelam a recomendação como problema de exploração-exploração: dada contexto (utilizador, hora, dispositivo), escolhem o item com maior expected reward, aprendendo online com os cliques — LinUCB e Thompson Sampling são os algoritmos padrão.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Casos Reais e Arquitecturas</strong> — Netflix, YouTube e Spotify usam sistemas híbridos com múltiplas etapas: candidate generation, scoring e re-ranking — cada etapa progressivamente mais cara e precisa, com diferentes modelos para cada fase.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

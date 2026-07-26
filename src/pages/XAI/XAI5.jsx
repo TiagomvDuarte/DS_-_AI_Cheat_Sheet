@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page:      { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back:      { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table:     { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th:        { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td:        { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note:      { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note:      { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider:   { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code:      { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   svgWrap:   { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1.25rem', margin: '1.5rem 0', display: 'flex', justifyContent: 'center' },
@@ -29,9 +29,9 @@ const S = {
 };
 
 function toColor(v) {
-  const r = Math.round(251 - v * 57);
-  const g = Math.round(146 - v * 120);
-  const b = Math.round(60  - v * 50);
+  const r = Math.round(186 - v * 183);
+  const g = Math.round(230 - v * 125);
+  const b = Math.round(253 - v * 92);
   const a = 0.12 + v * 0.83;
   return `rgba(${r},${g},${b},${a})`;
 }
@@ -61,13 +61,13 @@ function SVGSaliencyGrid() {
         ))
       )}
       {/* Legend */}
-      <rect x={padX} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(251,146,60,0.20)" />
+      <rect x={padX} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(56,189,248,0.20)" />
       <text x={padX + 24} y={rows * h + padY + 18} fontSize="9" fill="var(--text-secondary)">Baixo</text>
-      <rect x={padX + 70} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(249,115,22,0.55)" />
+      <rect x={padX + 70} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(74,158,237,0.55)" />
       <text x={padX + 94} y={rows * h + padY + 18} fontSize="9" fill="var(--text-secondary)">Médio</text>
-      <rect x={padX + 150} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(234,88,12,0.80)" />
+      <rect x={padX + 150} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(3,105,161,0.80)" />
       <text x={padX + 174} y={rows * h + padY + 18} fontSize="9" fill="var(--text-secondary)">Alto</text>
-      <rect x={padX + 220} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(194,65,12,0.95)" />
+      <rect x={padX + 220} y={rows * h + padY + 8} width={20} height={10} rx={2} fill="rgba(7,89,133,0.95)" />
       <text x={padX + 244} y={rows * h + padY + 18} fontSize="9" fill="var(--text-secondary)">Muito Alto</text>
     </svg>
   );
@@ -93,7 +93,7 @@ function SVGIntegratedGradients() {
         return (
           <g key={i}>
             <rect x={x - 14} y={y0 - h} width={28} height={h} rx={3}
-              fill={`rgba(249,115,22,0.10)`}
+              fill={`rgba(74,158,237,0.10)`}
               stroke={color} strokeWidth={0.8} />
             <text x={x} y={y0 + 14} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">α={alpha.toFixed(1)}</text>
           </g>
@@ -103,7 +103,7 @@ function SVGIntegratedGradients() {
       <rect x={x0 - 20} y={130} width={40} height={22} rx={4} fill="var(--card-border)" />
       <text x={x0} y={145} textAnchor="middle" fontSize="9" fontWeight="600" fill="var(--text-secondary)">x′ (0)</text>
       {/* Input label */}
-      <rect x={x1 - 20} y={130} width={40} height={22} rx={4} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
+      <rect x={x1 - 20} y={130} width={40} height={22} rx={4} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
       <text x={x1} y={145} textAnchor="middle" fontSize="9" fontWeight="600" fill={color}>x (1)</text>
       {/* Integral arrow */}
       <path d={`M ${x0} 170 Q ${(x0+x1)/2} 185 ${x1} 170`} fill="none" stroke={color} strokeWidth={1.5} markerEnd="url(#arr)" />
@@ -120,11 +120,11 @@ function SVGIntegratedGradients() {
 /* ── SVG 3: Grad-CAM Pipeline ── */
 function SVGGradCAM() {
   const boxes = [
-    { x: 10,  y: 60, w: 70,  h: 80,  label: 'Entrada',      sub: '224×224', fill: 'var(--bg-secondary)', stroke: '#f97316' },
-    { x: 110, y: 55, w: 70,  h: 90,  label: 'Conv Blocos',  sub: '1–N',     fill: 'rgba(249,115,22,0.08)', stroke: '#f97316' },
-    { x: 210, y: 50, w: 80,  h: 100, label: 'Último Conv',  sub: 'K mapas', fill: 'rgba(249,115,22,0.08)', stroke: '#f97316' },
-    { x: 322, y: 60, w: 70,  h: 80,  label: 'Pesos αₖ',    sub: 'GAP grad', fill: 'rgba(249,115,22,0.10)', stroke: color },
-    { x: 422, y: 55, w: 70,  h: 90,  label: 'Soma + ReLU',  sub: 'heatmap', fill: 'rgba(249,115,22,0.85)', stroke: '#f97316' },
+    { x: 10,  y: 60, w: 70,  h: 80,  label: 'Entrada',      sub: '224×224', fill: 'var(--bg-secondary)', stroke: '#4a9eed' },
+    { x: 110, y: 55, w: 70,  h: 90,  label: 'Conv Blocos',  sub: '1–N',     fill: 'rgba(74,158,237,0.08)', stroke: '#4a9eed' },
+    { x: 210, y: 50, w: 80,  h: 100, label: 'Último Conv',  sub: 'K mapas', fill: 'rgba(74,158,237,0.08)', stroke: '#4a9eed' },
+    { x: 322, y: 60, w: 70,  h: 80,  label: 'Pesos αₖ',    sub: 'GAP grad', fill: 'rgba(74,158,237,0.10)', stroke: color },
+    { x: 422, y: 55, w: 70,  h: 90,  label: 'Soma + ReLU',  sub: 'heatmap', fill: 'rgba(74,158,237,0.85)', stroke: '#4a9eed' },
   ];
   const arrows = [[80,100],[180,100],[290,100],[392,100]];
   return (
@@ -133,8 +133,8 @@ function SVGGradCAM() {
       {boxes.map((b, i) => (
         <g key={i}>
           <rect x={b.x} y={b.y} width={b.w} height={b.h} rx={6} fill={b.fill} stroke={b.stroke} strokeWidth={1.5} />
-          <text x={b.x + b.w / 2} y={b.y + b.h / 2 - 6} textAnchor="middle" fontSize="9" fontWeight="700" fill={b.fill === 'rgba(249,115,22,0.85)' ? '#fff' : 'var(--text-secondary)'}>{b.label}</text>
-          <text x={b.x + b.w / 2} y={b.y + b.h / 2 + 8} textAnchor="middle" fontSize="8" fill={b.fill === 'rgba(249,115,22,0.85)' ? '#fff' : 'var(--text-secondary)'}>{b.sub}</text>
+          <text x={b.x + b.w / 2} y={b.y + b.h / 2 - 6} textAnchor="middle" fontSize="9" fontWeight="700" fill={b.fill === 'rgba(74,158,237,0.85)' ? '#fff' : 'var(--text-secondary)'}>{b.label}</text>
+          <text x={b.x + b.w / 2} y={b.y + b.h / 2 + 8} textAnchor="middle" fontSize="8" fill={b.fill === 'rgba(74,158,237,0.85)' ? '#fff' : 'var(--text-secondary)'}>{b.sub}</text>
         </g>
       ))}
       {arrows.map(([x, y], i) => (
@@ -148,7 +148,7 @@ function SVGGradCAM() {
         </marker>
       </defs>
       {/* Heatmap overlay suggestion */}
-      <rect x={422} y={160} width={70} height={18} rx={4} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
+      <rect x={422} y={160} width={70} height={18} rx={4} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
       <text x={457} y={173} textAnchor="middle" fontSize="8" fill={color}>→ Overlay s/ Imagem</text>
       <line x1={457} y1={145} x2={457} y2={160} stroke={color} strokeWidth={1} strokeDasharray="3 2" />
     </svg>
@@ -248,18 +248,18 @@ function SVGTCAVConcept() {
       <text x={18} y={130} textAnchor="middle" fontSize="9" fill="var(--text-secondary)" transform="rotate(-90,18,130)">Activação Dim 2</text>
       {/* Positive concept points (listrado) */}
       {[[110,80],[140,65],[125,95],[160,78],[135,110],[90,100],[155,55]].map(([x,y],i) => (
-        <circle key={i} cx={x} cy={y} r={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
+        <circle key={i} cx={x} cy={y} r={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
       ))}
       {/* Random points */}
       {[[280,150],[320,170],[300,130],[360,155],[340,185],[270,175],[390,140]].map(([x,y],i) => (
-        <circle key={i} cx={x} cy={y} r={6} fill="rgba(249,115,22,0.15)" stroke="var(--text-secondary)" strokeWidth={1} />
+        <circle key={i} cx={x} cy={y} r={6} fill="rgba(74,158,237,0.15)" stroke="var(--text-secondary)" strokeWidth={1} />
       ))}
       {/* CAV hyperplane */}
-      <line x1={200} y1={40} x2={230} y2={215} stroke="#f97316" strokeWidth={2} strokeDasharray="6 3" />
-      <text x={208} y={35} fontSize="9" fontWeight="700" fill="#f97316">CAV (hiperplano)</text>
+      <line x1={200} y1={40} x2={230} y2={215} stroke="#4a9eed" strokeWidth={2} strokeDasharray="6 3" />
+      <text x={208} y={35} fontSize="9" fontWeight="700" fill="#4a9eed">CAV (hiperplano)</text>
       {/* Test image point */}
-      <circle cx={175} cy={120} r={9} fill="#fbbf24" stroke="#f97316" strokeWidth={2} />
-      <text x={175} y={150} textAnchor="middle" fontSize="9" fontWeight="600" fill="#f97316">Imagem Teste</text>
+      <circle cx={175} cy={120} r={9} fill="#7dd3fc" stroke="#4a9eed" strokeWidth={2} />
+      <text x={175} y={150} textAnchor="middle" fontSize="9" fontWeight="600" fill="#4a9eed">Imagem Teste</text>
       {/* Directional derivative arrow */}
       <line x1={175} y1={120} x2={155} y2={88} stroke={color} strokeWidth={2} markerEnd="url(#tcav_arr)" />
       <text x={120} y={82} fontSize="8" fill={color} fontWeight="600">∇h·v^C</text>
@@ -269,11 +269,11 @@ function SVGTCAVConcept() {
         </marker>
       </defs>
       {/* Legend */}
-      <circle cx={60} cy={H - 20} r={5} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1} />
+      <circle cx={60} cy={H - 20} r={5} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
       <text x={70} y={H - 16} fontSize="9" fill="var(--text-secondary)">Conceito "listrado"</text>
-      <circle cx={190} cy={H - 20} r={5} fill="rgba(249,115,22,0.15)" stroke="var(--text-secondary)" strokeWidth={1} />
+      <circle cx={190} cy={H - 20} r={5} fill="rgba(74,158,237,0.15)" stroke="var(--text-secondary)" strokeWidth={1} />
       <text x={200} y={H - 16} fontSize="9" fill="var(--text-secondary)">Amostras aleatórias</text>
-      <circle cx={320} cy={H - 20} r={7} fill="#fbbf24" stroke="#f97316" strokeWidth={1.5} />
+      <circle cx={320} cy={H - 20} r={7} fill="#7dd3fc" stroke="#4a9eed" strokeWidth={1.5} />
       <text x={332} y={H - 16} fontSize="9" fill="var(--text-secondary)">Imagem de teste (zebra)</text>
     </svg>
   );
@@ -286,26 +286,26 @@ function SVGDecisionGuide() {
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ fontFamily: 'sans-serif' }}>
       <text x={W / 2} y={16} textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Guia de Selecção de Método</text>
       {/* Start */}
-      <rect x={200} y={28} width={160} height={32} rx={16} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.5} />
+      <rect x={200} y={28} width={160} height={32} rx={16} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.5} />
       <text x={280} y={49} textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>Qual o teu modelo?</text>
       {/* CNN branch */}
       <line x1={220} y1={60} x2={120} y2={100} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#dg_arr)" />
       <text x={115} y={88} fontSize="9" fill="var(--text-secondary)">CNN</text>
-      <rect x={50} y={100} width={140} height={32} rx={6} fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth={1.2} />
-      <text x={120} y={121} textAnchor="middle" fontSize="9" fontWeight="600" fill="#f97316">Grad-CAM / Score-CAM</text>
+      <rect x={50} y={100} width={140} height={32} rx={6} fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth={1.2} />
+      <text x={120} y={121} textAnchor="middle" fontSize="9" fontWeight="600" fill="#4a9eed">Grad-CAM / Score-CAM</text>
       {/* Transformer branch */}
       <line x1={280} y1={60} x2={280} y2={100} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#dg_arr)" />
       <text x={285} y={88} fontSize="9" fill="var(--text-secondary)">Transformer</text>
-      <rect x={190} y={100} width={180} height={32} rx={6} fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth={1.2} />
-      <text x={280} y={121} textAnchor="middle" fontSize="9" fontWeight="600" fill="#f97316">Attention Rollout + IG</text>
+      <rect x={190} y={100} width={180} height={32} rx={6} fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth={1.2} />
+      <text x={280} y={121} textAnchor="middle" fontSize="9" fontWeight="600" fill="#4a9eed">Attention Rollout + IG</text>
       {/* Concepts branch */}
       <line x1={340} y1={60} x2={440} y2={100} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#dg_arr)" />
       <text x={425} y={88} fontSize="9" fill="var(--text-secondary)">Qualquer</text>
-      <rect x={370} y={100} width={160} height={32} rx={6} fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth={1.2} />
-      <text x={450} y={121} textAnchor="middle" fontSize="9" fontWeight="600" fill="#ea580c">TCAV</text>
+      <rect x={370} y={100} width={160} height={32} rx={6} fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth={1.2} />
+      <text x={450} y={121} textAnchor="middle" fontSize="9" fontWeight="600" fill="#0369a1">TCAV</text>
       {/* Model-agnostic */}
       <line x1={280} y1={132} x2={280} y2={175} stroke={color} strokeWidth={1.5} strokeDasharray="4 2" markerEnd="url(#dg_arr)" />
-      <rect x={170} y={175} width={220} height={32} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth={1.2} />
+      <rect x={170} y={175} width={220} height={32} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1.2} />
       <text x={280} y={196} textAnchor="middle" fontSize="9" fontWeight="600" fill={color}>IG sobre inputs (model-agnostic)</text>
       {/* Saliency note */}
       <rect x={10} y={175} width={148} height={32} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1} />
@@ -333,11 +333,6 @@ export default function XAI5() {
       {/* Header */}
       <span style={S.tag}>MÓDULO 05</span>
       <h1 style={S.h1}>Métodos Específicos de Modelo — Redes Neurais</h1>
-      <p style={S.lead}>
-        Grad-CAM, Saliência, Integrated Gradients, Atenção e TCAV: uma análise aprofundada dos métodos de
-        explicabilidade desenhados especificamente para redes neurais profundas, com maior fidelidade e
-        eficiência do que as abordagens agnósticas.
-      </p>
 
       {/* ── SECÇÃO 1 ── */}
       <section style={S.section}>
@@ -348,11 +343,6 @@ export default function XAI5() {
           Os métodos <strong>específicos de modelo</strong> exploram a estrutura interna — gradientes, pesos
           de atenção, mapas de activação — para gerar explicações mais fiéis e muito mais rápidas.
         </p>
-        <p style={S.p}>
-          Este módulo foca-se exclusivamente em redes neurais. Para árvores de decisão e caminhos de decisão,
-          consulta o <strong>MÓDULO 07</strong>.
-        </p>
-
         <table style={S.table}>
           <thead>
             <tr>
@@ -716,35 +706,8 @@ export default function XAI5() {
       <hr style={S.divider} />
 
       {/* ── SECÇÃO 8 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Os métodos específicos de modelo para redes neurais oferecem uma janela privilegiada para
-          o processo de decisão interno: em vez de tratar o modelo como caixa negra, exploram
-          directamente os gradientes, os mapas de activação e os pesos de atenção que a rede
-          computou.
-        </p>
-        <p style={S.p}>
-          Os <strong>mapas de saliência</strong> são o ponto de partida — simples e rápidos, mas
-          ruidosos. O <strong>SmoothGrad</strong> e o <strong>Gradient×Input</strong> melhoram a
-          estabilidade visual sem custos axiomáticos. Os <strong>Integrated Gradients</strong>
-          elevam o padrão ao satisfazer completude e sensibilidade, tornando-se a referência para
-          atribuições rigorosas em NLP e dados tabulares.
-        </p>
-        <p style={S.p}>
-          O <strong>Grad-CAM</strong> e as suas variantes dominam o domínio da visão por computador:
-          rápidos, localizadores de objectos e sem necessidade de re-arquitectura. Para
-          Transformers, o <strong>Attention Rollout</strong> oferece uma visão do fluxo de
-          informação multi-camada, mas deve ser combinado com métodos baseados em gradientes para
-          maior robustez.
-        </p>
-        <p style={S.p}>
-          Finalmente, o <strong>TCAV</strong> eleva a explicabilidade ao nível conceptual — em vez
-          de "este pixel foi importante", responde a "este conceito humano influencia a predição?".
-          É o método mais adequado para auditorias de equidade e compreensão de representações
-          aprendidas.
-        </p>
-      </section>
+      
+
     </div>
   );
 }

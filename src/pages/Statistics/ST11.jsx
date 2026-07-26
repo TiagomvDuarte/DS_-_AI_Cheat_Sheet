@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
-
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -100,9 +99,9 @@ function SVGDecomposicao() {
 
   const panels = [
     { label: 'Original', data: original, min: Math.min(...original) - 1, max: Math.max(...original) + 1, col: color },
-    { label: 'Tendência', data: trend, min: Math.min(...trend) - 1, max: Math.max(...trend) + 1, col: '#f97316' },
-    { label: 'Sazonal', data: seasonal, min: Math.min(...seasonal) - 1, max: Math.max(...seasonal) + 1, col: '#f97316' },
-    { label: 'Resíduos', data: residuals, min: -1.2, max: 1.2, col: '#f97316' },
+    { label: 'Tendência', data: trend, min: Math.min(...trend) - 1, max: Math.max(...trend) + 1, col: '#4a9eed' },
+    { label: 'Sazonal', data: seasonal, min: Math.min(...seasonal) - 1, max: Math.max(...seasonal) + 1, col: '#4a9eed' },
+    { label: 'Resíduos', data: residuals, min: -1.2, max: 1.2, col: '#4a9eed' },
   ];
 
   return (
@@ -150,14 +149,14 @@ function SVGEstacionariedade() {
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
       {/* labels */}
-      <text x={ox1 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#f97316">Estacionária</text>
-      <text x={ox2 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#f97316">Não Estacionária</text>
+      <text x={ox1 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#4a9eed">Estacionária</text>
+      <text x={ox2 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#4a9eed">Não Estacionária</text>
       {/* mean line stationary */}
       <line x1={ox1} x2={ox1 + panelW} y1={padT + H2 / 2} y2={padT + H2 / 2}
-        stroke="#f97316" strokeWidth={1} strokeDasharray="5,3" opacity={0.5} />
+        stroke="#4a9eed" strokeWidth={1} strokeDasharray="5,3" opacity={0.5} />
       {/* series */}
-      <polyline points={pts(stat, statMin, statMax, ox1)} fill="none" stroke="#f97316" strokeWidth={1.8} strokeLinejoin="round" />
-      <polyline points={pts(nonstat, nsMin, nsMax, ox2)} fill="none" stroke="#f97316" strokeWidth={1.8} strokeLinejoin="round" />
+      <polyline points={pts(stat, statMin, statMax, ox1)} fill="none" stroke="#4a9eed" strokeWidth={1.8} strokeLinejoin="round" />
+      <polyline points={pts(nonstat, nsMin, nsMax, ox2)} fill="none" stroke="#4a9eed" strokeWidth={1.8} strokeLinejoin="round" />
       {/* axes */}
       <line x1={ox1} x2={ox1 + panelW} y1={H - padB} y2={H - padB} stroke="var(--text-secondary)" strokeWidth={1} />
       <line x1={ox2} x2={ox2 + panelW} y1={H - padB} y2={H - padB} stroke="var(--text-secondary)" strokeWidth={1} />
@@ -193,15 +192,15 @@ function SVGAcf() {
       ))}
       {/* confidence bands */}
       <line x1={padL} x2={W - padR} y1={yConf} y2={yConf}
-        stroke="#f97316" strokeWidth={1} strokeDasharray="6,3" opacity={0.7} />
+        stroke="#4a9eed" strokeWidth={1} strokeDasharray="6,3" opacity={0.7} />
       <line x1={padL} x2={W - padR} y1={yConfN} y2={yConfN}
-        stroke="#f97316" strokeWidth={1} strokeDasharray="6,3" opacity={0.7} />
+        stroke="#4a9eed" strokeWidth={1} strokeDasharray="6,3" opacity={0.7} />
       {/* zero line */}
       <line x1={padL} x2={W - padR} y1={y0} y2={y0} stroke="var(--text-secondary)" strokeWidth={1} />
       {/* bars */}
       {acf.map((v, k) => {
         const outside = k > 0 && Math.abs(v) > confBand;
-        const barColor = k === 0 ? color : outside ? '#f97316' : color;
+        const barColor = k === 0 ? color : outside ? '#7dd3fc' : 'var(--text-secondary)';
         const barY = v >= 0 ? py(v) : y0;
         const barH = Math.abs(py(v) - y0);
         return (
@@ -224,71 +223,7 @@ function SVGAcf() {
       <text x={W / 2} y={H - 2} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">Desfasamento (k)</text>
       <text x={12} y={H / 2} textAnchor="middle" fontSize={11} fill="var(--text-secondary)"
         transform={`rotate(-90,12,${H / 2})`}>ACF</text>
-      <text x={W - padR} y={yConf - 4} textAnchor="end" fontSize={9} fill="#f97316">+1.96/sqrt(n)</text>
-    </svg>
-  );
-}
-
-/* ── SVG 5: PACF — 4 pequenos correlograms ── */
-function SVGPacf() {
-  const W = 760, H = 220;
-  const smallW = (W - 40) / 2, smallH = 90;
-  const padL = 30, padR = 8, padT = 24, padB = 20;
-  const lags = 8;
-  const conf = 0.22;
-
-  // AR(1): ACF decays, PACF cuts off at lag 1
-  const ar1Acf  = [1, 0.7, 0.49, 0.34, 0.24, 0.17, 0.12, 0.08];
-  const ar1Pacf = [1, 0.7, 0.05, 0.03, -0.02, 0.01, 0.02, -0.01];
-  // MA(1): ACF cuts off at lag 1, PACF decays
-  const ma1Acf  = [1, 0.5, 0.05, 0.02, -0.01, 0.02, 0.01, -0.01];
-  const ma1Pacf = [1, 0.5, -0.25, 0.13, -0.06, 0.03, -0.02, 0.01];
-
-  const panels = [
-    { label: 'ACF — AR(1)', data: ar1Acf,  ox: 10,          oy: 10 },
-    { label: 'PACF — AR(1)', data: ar1Pacf, ox: 10 + smallW + 20, oy: 10 },
-    { label: 'ACF — MA(1)', data: ma1Acf,  ox: 10,          oy: 10 + smallH + 30 },
-    { label: 'PACF — MA(1)', data: ma1Pacf, ox: 10 + smallW + 20, oy: 10 + smallH + 30 },
-  ];
-
-  const minY = -0.4, maxY = 1.1;
-  const plotW = smallW - padL - padR;
-  const plotH = smallH - padT - padB;
-  const py = (v, oy) => oy + padT + plotH - ((v - minY) / (maxY - minY)) * plotH;
-  const cx = (k, ox) => ox + padL + (k + 0.5) * (plotW / lags);
-  const barW = (plotW / lags) * 0.45;
-
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
-      {panels.map((p, pi) => {
-        const y0 = py(0, p.oy);
-        const yConf = py(conf, p.oy);
-        const yConfN = py(-conf, p.oy);
-        return (
-          <g key={pi}>
-            <text x={p.ox + smallW / 2} y={p.oy + 14} textAnchor="middle" fontSize={11} fontWeight={600} fill={color}>{p.label}</text>
-            <line x1={p.ox + padL} x2={p.ox + smallW - padR} y1={y0} y2={y0} stroke="var(--text-secondary)" strokeWidth={1} />
-            <line x1={p.ox + padL} x2={p.ox + smallW - padR} y1={yConf} y2={yConf}
-              stroke="#f97316" strokeWidth={1} strokeDasharray="4,2" opacity={0.6} />
-            <line x1={p.ox + padL} x2={p.ox + smallW - padR} y1={yConfN} y2={yConfN}
-              stroke="#f97316" strokeWidth={1} strokeDasharray="4,2" opacity={0.6} />
-            {p.data.map((v, k) => {
-              const outside = k > 0 && Math.abs(v) > conf;
-              const bColor = k === 0 ? color : outside ? '#f97316' : color;
-              const bY = v >= 0 ? py(v, p.oy) : y0;
-              const bH = Math.abs(py(v, p.oy) - y0);
-              return (
-                <rect key={k} x={cx(k, p.ox) - barW / 2} y={bY} width={barW} height={bH}
-                  fill={bColor} opacity={0.8} rx={1} />
-              );
-            })}
-            {p.data.map((_, k) => (
-              <text key={k} x={cx(k, p.ox)} y={p.oy + smallH - 4} textAnchor="middle" fontSize={8} fill="var(--text-secondary)">{k}</text>
-            ))}
-            <rect x={p.ox} y={p.oy} width={smallW} height={smallH} fill="none" stroke="var(--text-secondary)" strokeWidth={1} rx={4} />
-          </g>
-        );
-      })}
+      <text x={W - padR} y={yConf - 4} textAnchor="end" fontSize={9} fill="#4a9eed">+1.96/sqrt(n)</text>
     </svg>
   );
 }
@@ -319,10 +254,10 @@ function SVGPasseioAleatorio() {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
-      <text x={ox1 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#f97316">Passeio Aleatório (yₜ)</text>
-      <text x={ox2 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#f97316">1ª Diferença (Δyₜ)</text>
-      <polyline points={pts(walk, minW, maxW, ox1)} fill="none" stroke="#f97316" strokeWidth={2} strokeLinejoin="round" />
-      <polyline points={pts(diffs, minD, maxD, ox2)} fill="none" stroke="#f97316" strokeWidth={2} strokeLinejoin="round" />
+      <text x={ox1 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#4a9eed">Passeio Aleatório (yₜ)</text>
+      <text x={ox2 + panelW / 2} y={padT - 8} textAnchor="middle" fontSize={12} fontWeight={600} fill="#4a9eed">1ª Diferença (Δyₜ)</text>
+      <polyline points={pts(walk, minW, maxW, ox1)} fill="none" stroke="#4a9eed" strokeWidth={2} strokeLinejoin="round" />
+      <polyline points={pts(diffs, minD, maxD, ox2)} fill="none" stroke="#4a9eed" strokeWidth={2} strokeLinejoin="round" />
       {/* zero line for diffs */}
       <line x1={ox2} x2={ox2 + panelW}
         y1={padT + H2 - ((0 - minD) / (maxD - minD)) * H2}
@@ -337,6 +272,213 @@ function SVGPasseioAleatorio() {
 }
 
 /* ── Main Component ── */
+// --- SVG: AR(1) phi=0.8 vs phi=-0.6 ---
+const arPhi08 = [0, 0.8, 0.64, 0.512, 0.41, 0.328, 0.262, 0.21, 0.168, 0.134, 0.107, 0.086, 0.069, 0.055, 0.044, 0.035, 0.028, 0.022, 0.018, 0.014, 0.011, 0.009, 0.007, 0.006, 0.005, 0.004, 0.003, 0.002];
+const arPhiN06 = [0, -0.6, 0.36, -0.216, 0.13, -0.078, 0.047, -0.028, 0.017, -0.01, 0.006, -0.004, 0.002, -0.001, 0.001, -0.001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+function ARSeriesChart() {
+  const W = 760, H = 120, pad = 30, n = 28;
+  const xs = (i) => pad + (i / (n - 1)) * (W - 2 * pad);
+  const ys08 = (v) => H / 2 - v * 50;
+  const ysN06 = (v) => H / 2 - v * 50;
+
+  const path08 = arPhi08.map((v, i) => `${i === 0 ? 'M' : 'L'}${xs(i)},${ys08(v)}`).join(' ');
+  const pathN06 = arPhiN06.map((v, i) => `${i === 0 ? 'M' : 'L'}${xs(i)},${ysN06(v)}`).join(' ');
+
+  return (
+    <div style={S.diagram}>
+      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+        AR(1): resposta ao impulso — phi=0.8 (cima) vs phi=-0.6 (baixo)
+      </div>
+      <svg width="100%" viewBox={`0 0 ${W} ${H * 2 + 20}`} style={{ display: 'block' }}>
+        {/* Panel 1: phi=0.8 */}
+        <line x1={pad} y1={H / 2} x2={W - pad} y2={H / 2} stroke="var(--text-secondary)" strokeWidth="1" />
+        <path d={path08} fill="none" stroke={color} strokeWidth="2" />
+        <text x={pad} y={14} fontSize="11" fill="var(--text-secondary)">phi=0.8 (persistente)</text>
+        {/* Panel 2: phi=-0.6 */}
+        <g transform={`translate(0,${H + 20})`}>
+          <line x1={pad} y1={H / 2} x2={W - pad} y2={H / 2} stroke="var(--text-secondary)" strokeWidth="1" />
+          <path d={pathN06} fill="none" stroke="#4a9eed" strokeWidth="2" />
+          <text x={pad} y={14} fontSize="11" fill="var(--text-secondary)">phi=-0.6 (oscilante)</text>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+// --- SVG: MA(1) theta=0.7 ---
+const maTheta07 = [1, 0.7, 0, 0, 0, 0.05, -0.03, 0.02, -0.01, 0.01, 0, 0, 0.02, -0.01, 0, 0.01, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0];
+
+function MASeriesChart() {
+  const W = 760, H = 120, pad = 30, n = 28;
+  const xs = (i) => pad + (i / (n - 1)) * (W - 2 * pad);
+  const ys = (v) => H / 2 - v * 55;
+  const pathMA = maTheta07.map((v, i) => `${i === 0 ? 'M' : 'L'}${xs(i)},${ys(v)}`).join(' ');
+
+  return (
+    <div style={S.diagram}>
+      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+        MA(1) com theta=0.7: resposta ao impulso (trunca após lag 1)
+      </div>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+        <line x1={pad} y1={H / 2} x2={W - pad} y2={H / 2} stroke="var(--text-secondary)" strokeWidth="1" />
+        <path d={pathMA} fill="none" stroke={color} strokeWidth="2" />
+      </svg>
+    </div>
+  );
+}
+
+// --- SVG: Correlograma grid (ACF + PACF para AR, MA, ARMA) ---
+const acfAR = [1, 0.8, 0.64, 0.51, 0.41, 0.33, 0.26, 0.21, 0.17];
+const pacfAR = [1, 0.8, 0.03, -0.02, 0.01, 0, 0.01, -0.01, 0];
+const acfMA = [1, 0.47, 0.0, 0.0, 0.01, -0.01, 0.01, 0, 0];
+const pacfMA = [1, 0.47, -0.28, 0.18, -0.12, 0.08, -0.05, 0.03, -0.02];
+const acfARMA = [1, 0.75, 0.55, 0.40, 0.29, 0.21, 0.15, 0.11, 0.08];
+const pacfARMA = [1, 0.75, 0.22, 0.08, 0.03, 0.01, -0.01, 0, 0.01];
+
+function CorrelogramGrid() {
+  const bW = 110, bH = 80, pad = 10, barW = 8, n = 9;
+  const band = 1.96 / Math.sqrt(50);
+  const xs = (i) => pad + i * ((bW - 2 * pad) / (n - 1));
+  const ys = (v) => bH / 2 - v * (bH / 2 - pad);
+
+  function Bars({ data, label, xOff, yOff }) {
+    return (
+      <g transform={`translate(${xOff},${yOff})`}>
+        <rect x={0} y={0} width={bW} height={bH} fill="var(--bg-secondary)" rx="4" />
+        <text x={bW / 2} y={10} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{label}</text>
+        <line x1={pad} y1={bH / 2} x2={bW - pad} y2={bH / 2} stroke="var(--text-secondary)" strokeWidth="0.8" />
+        <line x1={pad} y1={ys(band)} x2={bW - pad} y2={ys(band)} stroke="var(--text-secondary)" strokeWidth="0.6" strokeDasharray="2,2" />
+        <line x1={pad} y1={ys(-band)} x2={bW - pad} y2={ys(-band)} stroke="var(--text-secondary)" strokeWidth="0.6" strokeDasharray="2,2" />
+        {data.map((v, i) => {
+          const x = xs(i);
+          const cy = bH / 2;
+          const barH = Math.abs(ys(v) - cy);
+          return (
+            <rect
+              key={i}
+              x={x - barW / 2}
+              y={v >= 0 ? ys(v) : cy}
+              width={barW}
+              height={barH}
+              fill={color}
+              opacity={i === 0 ? 0.3 : 0.75}
+            />
+          );
+        })}
+      </g>
+    );
+  }
+
+  const gap = 18;
+  const colW = bW + gap;
+  const rowH = bH + gap;
+
+  return (
+    <div style={S.diagram}>
+      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+        Correlograma teórico: ACF e PACF para AR(1), MA(1) e ARMA(1,1)
+      </div>
+      <svg width="100%" viewBox={`0 0 ${colW * 3 + 60} ${rowH * 2 + 20}`} style={{ display: 'block' }}>
+        <text x={colW * 0 + bW / 2 + 60} y={12} textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>AR(1)</text>
+        <text x={colW * 1 + bW / 2 + 60} y={12} textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>MA(1)</text>
+        <text x={colW * 2 + bW / 2 + 60} y={12} textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>ARMA(1,1)</text>
+        <text x={14} y={rowH * 0 + bH / 2 + 20} textAnchor="middle" fontSize="9" fill="var(--text-secondary)" transform={`rotate(-90,14,${rowH * 0 + bH / 2 + 20})`}>ACF</text>
+        <text x={14} y={rowH * 1 + bH / 2 + 20} textAnchor="middle" fontSize="9" fill="var(--text-secondary)" transform={`rotate(-90,14,${rowH * 1 + bH / 2 + 20})`}>PACF</text>
+        <Bars data={acfAR} label="ACF — AR(1)" xOff={60} yOff={18} />
+        <Bars data={acfMA} label="ACF — MA(1)" xOff={60 + colW} yOff={18} />
+        <Bars data={acfARMA} label="ACF — ARMA(1,1)" xOff={60 + colW * 2} yOff={18} />
+        <Bars data={pacfAR} label="PACF — AR(1)" xOff={60} yOff={18 + rowH} />
+        <Bars data={pacfMA} label="PACF — MA(1)" xOff={60 + colW} yOff={18 + rowH} />
+        <Bars data={pacfARMA} label="PACF — ARMA(1,1)" xOff={60 + colW * 2} yOff={18 + rowH} />
+      </svg>
+    </div>
+  );
+}
+
+// --- SVG: ACF dos resíduos (todos dentro das bandas) ---
+const residAcf = [0.04, -0.06, 0.03, -0.02, 0.05, -0.03, 0.01, 0.04, -0.02, 0.03, -0.04, 0.02];
+
+function ResidualACFChart() {
+  const W = 600, H = 140, pad = 30, barW = 18, n = residAcf.length;
+  const band = 1.96 / Math.sqrt(80);
+  const maxAbs = 0.25;
+  const xs = (i) => pad + 20 + i * ((W - 2 * pad - 20) / (n - 1));
+  const mid = H / 2;
+  const ys = (v) => mid - (v / maxAbs) * (mid - pad);
+
+  return (
+    <div style={S.diagram}>
+      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+        ACF dos resíduos: barras dentro das bandas ±1.96/√n — ruído branco
+      </div>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+        <line x1={pad} y1={mid} x2={W - pad} y2={mid} stroke="var(--text-secondary)" strokeWidth="1" />
+        <line x1={pad} y1={ys(band)} x2={W - pad} y2={ys(band)} stroke={color} strokeWidth="1" strokeDasharray="4,3" />
+        <line x1={pad} y1={ys(-band)} x2={W - pad} y2={ys(-band)} stroke={color} strokeWidth="1" strokeDasharray="4,3" />
+        <text x={W - pad + 2} y={ys(band) + 4} fontSize="9" fill={color}>+1.96/√n</text>
+        <text x={W - pad + 2} y={ys(-band) + 4} fontSize="9" fill={color}>-1.96/√n</text>
+        {residAcf.map((v, i) => {
+          const x = xs(i);
+          const barH = Math.abs(ys(v) - mid);
+          return (
+            <g key={i}>
+              <rect
+                x={x - barW / 2}
+                y={v >= 0 ? ys(v) : mid}
+                width={barW}
+                height={Math.max(barH, 2)}
+                fill={color}
+                opacity={0.75}
+              />
+              <text x={x} y={H - 4} fontSize="9" fill="var(--text-secondary)" textAnchor="middle">{i + 1}</text>
+            </g>
+          );
+        })}
+        <text x={pad - 5} y={mid + 4} fontSize="9" fill="var(--text-secondary)" textAnchor="end">0</text>
+        <text x={2} y={mid - 5} fontSize="9" fill="var(--text-secondary)" textAnchor="start" transform={`rotate(-90,10,${mid})`}>ACF</text>
+      </svg>
+    </div>
+  );
+}
+
+// --- SVG: I(0), I(1), I(2) ---
+const noiseI0 = [0.1, -0.3, 0.5, -0.2, 0.4, -0.1, 0.3, -0.4, 0.2, -0.3, 0.5, 0.1, -0.4, 0.3, -0.2, 0.4, -0.1, 0.2, -0.3, 0.5, -0.1, 0.3, -0.4, 0.2, -0.1, 0.4, -0.3, 0.1];
+const rwI1 = (() => { let s = 0; return noiseI0.map(v => { s += v; return s; }); })();
+const rwI2 = (() => { let s = 0; return rwI1.map(v => { s += v; return s; }); })();
+
+function IntegrationChart() {
+  const W = 720, H = 90, pad = 28, n = 28;
+  const xs = (i) => pad + (i / (n - 1)) * (W - 2 * pad);
+
+  function Panel({ data, label, yOff, clr }) {
+    const mn = Math.min(...data), mx = Math.max(...data);
+    const rng = mx - mn || 1;
+    const ys = (v) => H - pad - ((v - mn) / rng) * (H - 2 * pad);
+    const pts = data.map((v, i) => `${i === 0 ? 'M' : 'L'}${xs(i)},${ys(v)}`).join(' ');
+    return (
+      <g transform={`translate(0,${yOff})`}>
+        <text x={pad} y={12} fontSize="10" fill="var(--text-secondary)">{label}</text>
+        <line x1={pad} y1={H - pad} x2={W - pad} y2={H - pad} stroke="var(--text-secondary)" strokeWidth="1" />
+        <path d={pts} fill="none" stroke={clr} strokeWidth="1.8" />
+      </g>
+    );
+  }
+
+  return (
+    <div style={S.diagram}>
+      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+        Comparacao de I(0), I(1) e I(2): estacionaridade vs passeio aleatorio
+      </div>
+      <svg width="100%" viewBox={`0 0 ${W} ${H * 3 + 10}`} style={{ display: 'block' }}>
+        <Panel data={noiseI0} label="I(0) — ruido branco (estacionario)" yOff={0} clr={color} />
+        <Panel data={rwI1} label="I(1) — passeio aleatorio (nao estacionario)" yOff={H} clr="#4a9eed" />
+        <Panel data={rwI2} label="I(2) — dupla integracao" yOff={H * 2} clr="#4a9eed" />
+      </svg>
+    </div>
+  );
+}
+// ── Main component ──
 export default function ST11() {
   return (
     <div style={S.page}>
@@ -348,15 +490,9 @@ export default function ST11() {
 
       {/* Header */}
       <div style={S.tag}>MÓDULO 11</div>
-      <h1 style={S.h1}>Fundamentos de Séries Temporais</h1>
-      <p style={S.lead}>
-        Uma série temporal é uma sequência de observações ordenadas no tempo. Este módulo apresenta
-        os conceitos essenciais — componentes, estacionariedade, autocorrelação, transformações e
-        decomposição — que constituem a base de toda a modelação temporal em estatística e econometria.
-      </p>
+      <h1 style={S.h1}>Séries Temporais — Fundamentos & ARMA</h1>
 
-      {/* ── 1. O que é uma Série Temporal ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>1. O que é uma Série Temporal</h2>
         <p style={S.p}>
           Uma <strong>série temporal</strong> é um conjunto de observações <InlineMath math="\{y_1, y_2, \ldots, y_T\}" /> recolhidas
@@ -364,7 +500,13 @@ export default function ST11() {
           fundamental que a distingue de dados seccionais é a <strong>dependência temporal</strong>: o valor
           em <InlineMath math="t" /> tende a estar correlacionado com os valores em <InlineMath math="t-1, t-2" />, etc.
         </p>
-        
+        <div style={S.note}>
+          <strong>ARMA</strong> (AutoRegressive Moving Average) é a família de modelos central deste módulo:
+          combina uma componente <strong>AR</strong> (o valor atual depende dos valores passados da própria série)
+          com uma componente <strong>MA</strong> (o valor atual depende de erros passados). É a base para modelar
+          e prever séries temporais estacionárias, e será desenvolvida em detalhe nas secções seguintes.
+        </div>
+
           <strong>Notação:</strong> <InlineMath math="\{y_t\}_{t=1}^{T}" />, onde <InlineMath math="T" /> é o comprimento da série. Cada <InlineMath math="y_t" /> é uma
           realização do processo estocástico <InlineMath math="Y(t)" />.
         
@@ -424,10 +566,7 @@ export default function ST11() {
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 2. Componentes ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>2. Componentes de uma Série Temporal</h2>
         <p style={S.p}>
           A decomposição clássica decompõe a série em quatro componentes distintas, cada uma capturando
@@ -488,10 +627,7 @@ export default function ST11() {
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 3. Estacionariedade ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>3. Estacionariedade</h2>
         <p style={S.p}>
           A estacionariedade é o pressuposto mais importante em análise de séries temporais. Sem ela,
@@ -572,10 +708,7 @@ export default function ST11() {
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 4. ACF ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>4. Função de Autocorrelação (ACF)</h2>
         <p style={S.p}>
           A <strong>função de autocorrelação</strong> mede a correlação linear entre <InlineMath math="y_t" /> e <InlineMath math="y_{t-k}" />
@@ -596,8 +729,8 @@ export default function ST11() {
         </p>
 
         <h3 style={S.h3}>Estimador de Amostra</h3>
-        <div style={S.code}>
-          {`r_k = [ Σₜ₌ₖ₊₁ᵀ (yₜ − ȳ)(yₜ₋ₖ − ȳ) ] / [ Σₜ₌₁ᵀ (yₜ − ȳ)² ]`}
+        <div style={S.diagram}>
+          <BlockMath math="r_k = \frac{\sum_{t=k+1}^{T} (y_t - \bar{y})(y_{t-k} - \bar{y})}{\sum_{t=1}^{T} (y_t - \bar{y})^2}" />
         </div>
         <p style={S.p}>
           Sob a hipótese nula de que <InlineMath math="\{y_t\}" /> é ruído branco, <InlineMath math="r_k" /> tem distribuição assimptótica
@@ -611,7 +744,7 @@ export default function ST11() {
           <SVGAcf />
         </div>
         <div style={S.note}>
-          As barras a vermelho ultrapassam as bandas de confiança (linhas tracejadas a vermelho), indicando
+          As barras em destaque ultrapassam as bandas de confiança (linhas tracejadas a azul), indicando
           autocorrelação estatisticamente significativa nesses desfasamentos — padrão típico de um processo AR.
         </div>
 
@@ -625,10 +758,7 @@ export default function ST11() {
         </ul>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 5. PACF ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>5. Função de Autocorrelação Parcial (PACF)</h2>
         <p style={S.p}>
           A <strong>autocorrelação parcial</strong> ao desfasamento <InlineMath math="k" /> mede a correlação entre <InlineMath math="y_t" /> e <InlineMath math="y_{t-k}" />
@@ -675,17 +805,6 @@ export default function ST11() {
           </table>
         </div>
 
-        <div style={S.diagram}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Figura 5 — ACF e PACF para AR(1) e MA(1)
-          </div>
-          <SVGPacf />
-        </div>
-        <div style={S.note}>
-          No AR(1): a ACF decai exponencialmente e a PACF corta após o lag 1.
-          No MA(1): a ACF corta após o lag 1 e a PACF decai gradualmente — padrão oposto.
-        </div>
-
         <h3 style={S.h3}>Procedimento de Box-Jenkins</h3>
         <p style={S.p}>
           A metodologia clássica de Box-Jenkins (1970) identifica modelos ARIMA em três etapas:
@@ -697,10 +816,7 @@ export default function ST11() {
         </ol>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 6. Ruído Branco ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>6. Ruído Branco</h2>
         <p style={S.p}>
           O <strong>ruído branco</strong> é o processo mais simples de série temporal e serve como
@@ -732,14 +848,14 @@ export default function ST11() {
           O teste de <strong>Ljung-Box</strong> testa conjuntamente se as primeiras <InlineMath math="m" /> autocorrelações
           são nulas. A estatística é:
         </p>
-        <div style={S.code}>
-          {`Q(m) = T(T+2) Σₖ₌₁ᵐ [ rₖ² / (T−k) ]
-
-H₀: ρ₁ = ρ₂ = … = ρₘ = 0  (série é ruído branco)
-H₁: existe algum ρₖ ≠ 0
-
-Distribuição assimptótica: Q(m) ~ χ²(m) sob H₀`}
+        <div style={S.diagram}>
+          <BlockMath math="Q(m) = T(T+2) \sum_{k=1}^{m} \frac{r_k^2}{T-k}" />
         </div>
+        <p style={S.p}>
+          <InlineMath math="H_0: \rho_1 = \rho_2 = \ldots = \rho_m = 0" /> (série é ruído branco) &nbsp;|&nbsp; <InlineMath math="H_1" />: existe algum <InlineMath math="\rho_k \neq 0" />
+          <br />
+          Distribuição assimptótica: <InlineMath math="Q(m) \sim \chi^2(m)" /> sob <InlineMath math="H_0" />
+        </p>
         <p style={S.p}>
           O teste é frequentemente aplicado aos <em>resíduos</em> de um modelo ajustado para verificar
           se o modelo capturou toda a dependência temporal da série. Nesse caso, os graus de liberdade
@@ -752,10 +868,7 @@ Distribuição assimptótica: Q(m) ~ χ²(m) sob H₀`}
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 7. Passeio Aleatório ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>7. Passeio Aleatório</h2>
         <p style={S.p}>
           O <strong>passeio aleatório</strong> (random walk) é o exemplo canónico de série não estacionária
@@ -824,10 +937,7 @@ Distribuição assimptótica: Q(m) ~ χ²(m) sob H₀`}
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 8. Transformações ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>8. Transformações para Estacionariedade</h2>
         <p style={S.p}>
           Quando uma série apresenta não estacionariedade, existem várias transformações que podem
@@ -838,10 +948,10 @@ Distribuição assimptótica: Q(m) ~ χ²(m) sob H₀`}
         <p style={S.p}>
           A <strong>primeira diferença</strong> remove tendências lineares estocásticas:
         </p>
-        <div style={S.code}>
-          {`Δyₜ = yₜ − yₜ₋₁       (1ª diferença)
-Δ²yₜ = Δyₜ − Δyₜ₋₁   (2ª diferença, remove tendência quadrática)
-Δᵈyₜ                   (d-ésima diferença para processo I(d))`}
+        <div style={S.diagram}>
+          <BlockMath math="\Delta y_t = y_t - y_{t-1} \quad \text{(1ª diferença)}" />
+          <BlockMath math="\Delta^2 y_t = \Delta y_t - \Delta y_{t-1} \quad \text{(2ª diferença, remove tendência quadrática)}" />
+          <BlockMath math="\Delta^d y_t \quad \text{(d-ésima diferença para processo } I(d)\text{)}" />
         </div>
         <p style={S.p}>
           Um processo integrado de ordem d, denotado I(d), torna-se estacionário após d diferenciações.
@@ -853,38 +963,34 @@ Distribuição assimptótica: Q(m) ~ χ²(m) sob H₀`}
           Quando a variância da série cresce proporcionalmente com o nível (heteroscedasticidade
           multiplicativa), o logaritmo estabiliza a variância:
         </p>
-        <div style={S.code}>
-          {`wₜ = log(yₜ)
-
-Nota: Δlog(yₜ) ≈ (yₜ − yₜ₋₁)/yₜ₋₁ = taxa de crescimento percentual
-      → muito útil em finanças e macroeconomia`}
+        <div style={S.diagram}>
+          <BlockMath math="w_t = \log(y_t)" />
         </div>
+        <p style={S.p}>
+          Nota: <InlineMath math="\Delta \log(y_t) \approx \frac{y_t - y_{t-1}}{y_{t-1}}" /> = taxa de crescimento percentual — muito útil em finanças e macroeconomia.
+        </p>
 
         <h3 style={S.h3}>Diferenciação Sazonal</h3>
         <p style={S.p}>
           Para séries com sazonalidade (período m), a diferença sazonal remove padrões sazonais:
         </p>
-        <div style={S.code}>
-          {`Δₘyₜ = yₜ − yₜ₋ₘ
-
-Exemplo (dados mensais, m=12):
-  Δ₁₂yₜ = yₜ − yₜ₋₁₂ = "igual mês do ano anterior"`}
+        <div style={S.diagram}>
+          <BlockMath math="\Delta_m y_t = y_t - y_{t-m}" />
         </div>
+        <p style={S.p}>
+          Exemplo (dados mensais, <InlineMath math="m=12" />): <InlineMath math="\Delta_{12} y_t = y_t - y_{t-12}" /> = "igual mês do ano anterior".
+        </p>
 
         <h3 style={S.h3}>Transformação Box-Cox</h3>
         <p style={S.p}>
           A família Box-Cox generaliza o logaritmo com um parâmetro λ estimado dos dados:
         </p>
-        <div style={S.code}>
-          {`yₜ(λ) = (yₜᵏ − 1) / λ    se λ ≠ 0
-yₜ(λ) = log(yₜ)           se λ = 0
-
-Casos especiais:
-  λ = 1  → sem transformação
-  λ = 0  → logaritmo natural
-  λ = 0.5 → raiz quadrada
-  λ = −1 → recíproco`}
+        <div style={S.diagram}>
+          <BlockMath math="y_t^{(\lambda)} = \begin{cases} \dfrac{y_t^\lambda - 1}{\lambda} & \text{se } \lambda \neq 0 \\ \log(y_t) & \text{se } \lambda = 0 \end{cases}" />
         </div>
+        <p style={S.p}>
+          Casos especiais: <InlineMath math="\lambda = 1" /> → sem transformação; <InlineMath math="\lambda = 0" /> → logaritmo natural; <InlineMath math="\lambda = 0.5" /> → raiz quadrada; <InlineMath math="\lambda = -1" /> → recíproco.
+        </p>
 
         <h3 style={S.h3}>Quando aplicar cada transformação</h3>
         <div style={{ overflowX: 'auto' }}>
@@ -918,10 +1024,7 @@ Casos especiais:
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 9. Decomposição Aditiva ── */}
-      <section style={S.section}>
+<section style={S.section}>
         <h2 style={S.h2}>9. Decomposição Aditiva — Exemplo Numérico</h2>
         <p style={S.p}>
           A decomposição clássica aditiva estima cada componente sequencialmente. Ilustramos com
@@ -963,12 +1066,9 @@ Casos especiais:
         </div>
 
         <h3 style={S.h3}>Passo 1 — Estimar a Tendência (Média Móvel Centrada)</h3>
-        <div style={S.code}>
-          {`Para m=4 (par), usa-se média móvel de ordem 2×4:
-T̂₃ = (0.5×y₁ + y₂ + y₃ + y₄ + 0.5×y₅) / 4
-    = (0.5×45 + 58 + 62 + 41 + 0.5×49) / 4
-    = (22.5 + 58 + 62 + 41 + 24.5) / 4
-    = 208 / 4 = 52.0`}
+        <p style={S.p}>Para m=4 (par), usa-se média móvel de ordem 2×4:</p>
+        <div style={S.diagram}>
+          <BlockMath math="\hat{T}_3 = \frac{0.5 y_1 + y_2 + y_3 + y_4 + 0.5 y_5}{4} = \frac{0.5(45) + 58 + 62 + 41 + 0.5(49)}{4} = \frac{208}{4} = 52.0" />
         </div>
 
         <h3 style={S.h3}>Passo 2 — Calcular Índices Sazonais</h3>
@@ -1009,88 +1109,480 @@ T̂₃ = (0.5×y₁ + y₂ + y₃ + y₄ + 0.5×y₅) / 4
         </div>
 
         <h3 style={S.h3}>Passo 3 — Dessazonalizar e Obter Resíduos</h3>
-        <div style={S.code}>
-          {`Série dessazonalizada: dₜ = yₜ − Ŝₜ
-Resíduos:             Iₜ = yₜ − T̂ₜ − Ŝₜ
+        <div style={S.diagram}>
+          <BlockMath math="d_t = y_t - \hat{S}_t \quad \text{(série dessazonalizada)}" />
+          <BlockMath math="I_t = y_t - \hat{T}_t - \hat{S}_t \quad \text{(resíduos)}" />
+        </div>
+        <p style={S.p}>
+          Exemplo para t=3 (Q3): <InlineMath math="d_3 = 62 - 9.9 = 52.1" />, <InlineMath math="I_3 = 62 - 52.0 - 9.9 = 0.1" />.
+        </p>
+      </section>
 
-Exemplo para t=3 (Q3):
-  d₃ = 62 − 9.9 = 52.1
-  I₃ = 62 − 52.0 − 9.9 = 0.1`}
+<section style={S.section}>
+        <h2 style={S.h2}>10. Processo AR(p)</h2>
+        <p style={S.p}>
+          Um processo autoregressivo de ordem <em>p</em> expressa o valor actual como combinação linear
+          dos <em>p</em> valores passados mais um choque aleatório:
+        </p>
+        <BlockMath math="y_t = \phi_1 y_{t-1} + \phi_2 y_{t-2} + \cdots + \phi_p y_{t-p} + \varepsilon_t, \quad \varepsilon_t \sim \text{RB}(0, \sigma^2)" />
+        <p style={S.p}>
+          A <strong>condição de estacionaridade</strong> exige que todas as raízes do polinómio característico
+          Φ(z) = 1 − φ₁z − … − φ<sub>p</sub>z<sup>p</sup> estejam <em>fora</em> do círculo unitário (|z| &gt; 1).
+          No caso AR(1), isso reduz-se a |φ₁| &lt; 1.
+        </p>
+        <h3 style={S.h3}>AR(1): caso especial</h3>
+        <p style={S.p}>
+          Com <em>p</em> = 1 temos y<sub>t</sub> = φy<sub>t-1</sub> + ε<sub>t</sub>.
+          A ACF decai geometricamente: ρ<sub>k</sub> = φ<sup>k</sup>.
+          Para φ &gt; 0 o decaimento é monotónico; para φ &lt; 0 é alternado (oscilante).
+        </p>
+        <ARSeriesChart />
+        <div style={S.note}>
+          A persistência aumenta com |φ|. Quando φ → 1 o processo aproxima-se de um passeio aleatório (raiz unitária).
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 10. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
+<section style={S.section}>
+        <h2 style={S.h2}>11. Operador Lag (L)</h2>
         <p style={S.p}>
-          Este módulo estabeleceu os alicerces conceptuais e práticos necessários para analisar
-          séries temporais. Os conceitos-chave a reter são:
+          O operador atraso <strong>L</strong> é definido por Ly<sub>t</sub> = y<sub>t-1</sub>, e mais genericamente
+          L<sup>k</sup>y<sub>t</sub> = y<sub>t-k</sub>. Permite escrever o modelo AR(p) de forma compacta:
         </p>
-
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Conceito</th>
-                <th style={S.th}>Definição Essencial</th>
-                <th style={S.th}>Relevância Prática</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Série Temporal', 'Sequência ordenada de observações no tempo', 'Base de toda a modelação temporal'],
-                ['Componentes', 'Tendência, Sazonalidade, Ciclo, Irregular', 'Decomposição e interpretação da variação'],
-                ['Estacionariedade', 'Média, variância e autocovariância constantes', 'Pressuposto dos modelos ARMA'],
-                ['ACF', 'Correlação entre yₜ e yₜ₋ₖ', 'Identifica MA(q): corte após lag q'],
-                ['PACF', 'Correlação parcial entre yₜ e yₜ₋ₖ', 'Identifica AR(p): corte após lag p'],
-                ['Ruído Branco', 'εₜ iid(0,σ²), sem dependência temporal', 'Bloco fundamental; alvo dos resíduos'],
-                ['Passeio Aleatório', 'yₜ = yₜ₋₁ + εₜ, raiz unitária', 'Modelo de preços financeiros (hipótese eficiente)'],
-                ['Diferenciação', 'Δyₜ = yₜ − yₜ₋₁', 'Induz estacionariedade em I(1)'],
-                ['Transformação Log', 'log(yₜ)', 'Estabiliza variância; crescimento relativo'],
-                ['Decomposição', 'Separar T, S, I por médias móveis', 'Análise descritiva e dessazonalização'],
-              ].map(([a, b, c], i) => (
-                <tr key={i}>
-                  <td style={S.td}><strong>{a}</strong></td>
-                  <td style={S.td}>{b}</td>
-                  <td style={S.td}>{c}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h3 style={S.h3}>Fluxo de Análise Recomendado</h3>
-        <div style={S.highlight}>
-          <ol style={{ margin: 0, paddingLeft: '1.2rem', lineHeight: 2 }}>
-            <li>Visualizar a série (plot.ts) — identificar tendência, sazonalidade, outliers</li>
-            <li>Testar estacionariedade (ADF + KPSS) e visualizar ACF/PACF</li>
-            <li>Transformar se necessário (log, diferenciação, diferenciação sazonal)</li>
-            <li>Re-testar estacionariedade da série transformada</li>
-            <li>Identificar modelo ARIMA pela ACF/PACF e critérios de informação</li>
-            <li>Estimar o modelo e analisar diagnósticos dos resíduos</li>
-            <li>Validar com Ljung-Box e inspecção visual dos resíduos</li>
-            <li>Produzir previsões e intervalos de confiança</li>
-          </ol>
-        </div>
-
-        <h3 style={S.h3}>Ligações para Módulos Seguintes</h3>
+        <BlockMath math="\Phi(L)y_t = \varepsilon_t \quad \text{onde} \quad \Phi(L) = 1 - \phi_1 L - \phi_2 L^2 - \cdots - \phi_p L^p" />
         <p style={S.p}>
-          Os fundamentos deste módulo são o ponto de partida directo para:
+          A notação em operadores de atraso simplifica muito a álgebra de séries temporais:
+          inverter Φ(L) dá a representação MA(∞), e fatorizar os polinómios facilita a análise de raízes.
+          A condição de estacionaridade equivale a todas as raízes de Φ(z) = 0 satisfazerem |z| &gt; 1.
         </p>
-        <ul style={{ ...S.p, paddingLeft: '1.5rem' }}>
-          <li><strong>ST12 — Processos AR e MA:</strong> modelos paramétricos para séries estacionárias.</li>
-          <li><strong>ST13 — Modelos ARIMA:</strong> extensão para séries integradas com identificação formal.</li>
-          <li><strong>ST14 — Modelos SARIMA:</strong> componente sazonal explícita no modelo ARIMA.</li>
-          <li><strong>ST15 — Modelos ARCH/GARCH:</strong> volatilidade condicional para dados financeiros.</li>
-          <li><strong>ST16 — Vectores Autoregressivos (VAR):</strong> sistemas de séries temporais multivariadas.</li>
-        </ul>
-
         <div style={S.note}>
-          A análise de séries temporais é iterativa: raramente o primeiro modelo identificado é o
-          definitivo. A prática sistemática com dados reais — usando as ferramentas R apresentadas
-          neste módulo — é indispensável para desenvolver intuição sobre padrões temporais.
+          Em termos computacionais, R e Python representam os modelos ARMA exactamente através dos coeficientes de Φ(L) e Θ(L).
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>12. Processo MA(q)</h2>
+        <p style={S.p}>
+          Um processo de médias móveis de ordem <em>q</em> é uma combinação linear do choque actual e dos
+          <em>q</em> choques anteriores:
+        </p>
+        <BlockMath math="y_t = \varepsilon_t + \theta_1\varepsilon_{t-1} + \theta_2\varepsilon_{t-2} + \cdots + \theta_q\varepsilon_{t-q}" />
+        <p style={S.p}>
+          Um processo MA(q) é <strong>sempre estacionário</strong> (tem média e variância finitas independentes do tempo),
+          pois é uma soma finita de variáveis de ruído branco. A ACF é exactamente zero para lags superiores a <em>q</em> —
+          propriedade de corte que identifica a ordem.
+        </p>
+        <h3 style={S.h3}>Invertibilidade</h3>
+        <p style={S.p}>
+          Para que o processo MA(q) admita uma representação AR(∞) é necessário que as raízes de{' '}
+          <InlineMath math="\Theta(z) = 1 + \theta_1 z + \ldots + \theta_q z^q" /> estejam fora do círculo unitário.
+          Esta condição de <strong>invertibilidade</strong> é o análogo da estacionaridade no caso AR.
+        </p>
+        <h3 style={S.h3}>MA(1): ACF analítica</h3>
+        <BlockMath math="\rho_1 = \frac{\theta}{1 + \theta^2}, \quad \rho_k = 0 \text{ para } k > 1" />
+        <p style={S.p}>
+          Note que θ e 1/θ produzem o mesmo ρ₁, pelo que a condição de invertibilidade (|θ| &lt; 1) selecciona
+          a solução canónica única.
+        </p>
+        <MASeriesChart />
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>13. Processo ARMA(p,q)</h2>
+        <p style={S.p}>
+          O modelo ARMA(p,q) combina os dois componentes numa única equação:
+        </p>
+        <BlockMath math="\Phi(L)y_t = \Theta(L)\varepsilon_t" />
+          <BlockMath math="y_t - \phi_1 y_{t-1} - \cdots - \phi_p y_{t-p} = \varepsilon_t + \theta_1\varepsilon_{t-1} + \cdots + \theta_q\varepsilon_{t-q}" />
+        <h3 style={S.h3}>Parcimónia</h3>
+        <p style={S.p}>
+          O principal argumento a favor do ARMA é a <strong>parcimónia</strong>: muitas séries que exigiriam
+          um AR(15) ou MA(20) podem ser bem aproximadas por um ARMA(2,1) ou ARMA(1,2), reduzindo
+          drasticamente o número de parâmetros a estimar e o risco de sobreajustamento.
+        </p>
+        <h3 style={S.h3}>Teorema de Wold</h3>
+        <p style={S.p}>
+          O teorema de decomposição de Wold garante que qualquer processo estacionário de covariância pode
+          ser representado como um MA(∞). O ARMA fornece uma aproximação paramétrica finita e eficiente dessa
+          representação infinita.
+        </p>
+        <h3 style={S.h3}>Condições</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Propriedade</th>
+              <th style={S.th}>Condição</th>
+              <th style={S.th}>Polinómio envolvido</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Estacionaridade</td>
+              <td style={S.td}>Raízes de Φ(z)=0 fora do círculo unitário</td>
+              <td style={S.td}>Componente AR</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Invertibilidade</td>
+              <td style={S.td}>Raízes de Θ(z)=0 fora do círculo unitário</td>
+              <td style={S.td}>Componente MA</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Identificabilidade</td>
+              <td style={S.td}>Φ(z) e Θ(z) sem raízes comuns</td>
+              <td style={S.td}>Ambos</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>14. ACF e PACF — Identificação da Ordem</h2>
+        <p style={S.p}>
+          A Função de Autocorrelação (ACF) e a Função de Autocorrelação Parcial (PACF) são as ferramentas
+          clássicas para identificar a estrutura ARMA. Os padrões teóricos são:
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Processo</th>
+              <th style={S.th}>ACF</th>
+              <th style={S.th}>PACF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>AR(p)</strong></td>
+              <td style={S.td}>Decai (exponencial ou oscilante) — cauda</td>
+              <td style={S.td}>Corta a zero após lag p</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>MA(q)</strong></td>
+              <td style={S.td}>Corta a zero após lag q</td>
+              <td style={S.td}>Decai (exponencial ou oscilante) — cauda</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>ARMA(p,q)</strong></td>
+              <td style={S.td}>Decai após lag q — cauda</td>
+              <td style={S.td}>Decai após lag p — cauda</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Ruído branco</strong></td>
+              <td style={S.td}>Todos os lags ≈ 0</td>
+              <td style={S.td}>Todos os lags ≈ 0</td>
+            </tr>
+          </tbody>
+        </table>
+        <CorrelogramGrid />
+        <div style={S.note}>
+          Na prática, "corta" significa que os valores saem das bandas de confiança ±1.96/√n para lags até à ordem e ficam dentro depois. "Cauda" significa que decaem gradualmente mas nunca são exactamente zero.
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>15. Estimação de Modelos ARMA</h2>
+        <h3 style={S.h3}>Máxima Verosimilhança Condicional</h3>
+        <p style={S.p}>
+          O método padrão é a <strong>Máxima Verosimilhança (MV)</strong>, tipicamente condicional aos primeiros
+          valores observados. Sob normalidade, minimiza a soma dos quadrados dos resíduos de previsão de um passo.
+          Para o componente AR puro, as equações de <strong>Yule-Walker</strong> fornecem estimadores de momentos
+          consistentes e computacionalmente mais simples.
+        </p>
+        <h3 style={S.h3}>Critérios de Selecção de Ordem</h3>
+        
+          <BlockMath math="\text{AIC} = -2\log\hat{L} + 2k" />
+          <BlockMath math="\text{BIC} = -2\log\hat{L} + k\cdot\log(n)" />
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            k = número de parâmetros estimados &nbsp;|&nbsp; n = dimensão da amostra
+          </div>
+        
+        <p style={S.p}>
+          O BIC penaliza mais fortemente a complexidade do modelo, pelo que tende a seleccionar ordens
+          mais baixas que o AIC, especialmente em amostras grandes. A estratégia habitual consiste em
+          ajustar vários modelos ARMA(p,q) numa grelha de p e q, seleccionando o que minimiza AIC ou BIC.
+        </p>
+        <h3 style={S.h3}>auto.arima</h3>
+        <p style={S.p}>
+          A função <code>auto.arima()</code> do pacote <em>forecast</em> em R implementa um algoritmo de pesquisa
+          stepwise que combina testes de raiz unitária (para determinar d), análise de ACF/PACF e minimização
+          de AIC corrigido (AICc). É o ponto de partida prático para a maioria das aplicações.
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Critério</th>
+              <th style={S.th}>Penalização</th>
+              <th style={S.th}>Tendência</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>AIC</td>
+              <td style={S.td}>2k</td>
+              <td style={S.td}>Mais parâmetros (pode sobreajustar)</td>
+            </tr>
+            <tr>
+              <td style={S.td}>AICc</td>
+              <td style={S.td}>2k·n/(n−k−1)</td>
+              <td style={S.td}>Correcção para amostras pequenas</td>
+            </tr>
+            <tr>
+              <td style={S.td}>BIC</td>
+              <td style={S.td}>k·log(n)</td>
+              <td style={S.td}>Mais parcimonioso em amostras grandes</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>16. Diagnóstico de Resíduos</h2>
+        <p style={S.p}>
+          Após a estimação, os resíduos do modelo devem comportar-se como <strong>ruído branco</strong>.
+          O diagnóstico padrão inclui:
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Diagnóstico</th>
+              <th style={S.th}>Método</th>
+              <th style={S.th}>Resultado esperado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Autocorrelação</td>
+              <td style={S.td}>ACF dos resíduos</td>
+              <td style={S.td}>Todos os lags dentro de ±1.96/√n</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Teste de Ljung-Box</td>
+              <td style={S.td}>Q ~ χ²(m−p−q)</td>
+              <td style={S.td}>p-valor &gt; 0.05 (não rejeitar H₀)</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Normalidade</td>
+              <td style={S.td}>Shapiro-Wilk, QQ-plot</td>
+              <td style={S.td}>Distribuição aproximadamente normal</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Heterocedasticidade</td>
+              <td style={S.td}>ARCH-LM, resíduos ao quadrado</td>
+              <td style={S.td}>Ausência de padrão</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Teste de Ljung-Box</h3>
+        
+          <BlockMath math="Q(m) = n(n+2)\sum_{k=1}^{m} \frac{\hat{\rho}_k^2}{n-k}" />
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            H₀: ausência de autocorrelação até ao lag m &nbsp;|&nbsp; <InlineMath math="Q \sim \chi^2(m-p-q)" /> sob H₀
+          </div>
+        
+        <p style={S.p}>
+          Recomenda-se usar m = min(10, n/5) para séries não sazonais. A rejeição de H₀ indica que
+          o modelo não capturou toda a estrutura de dependência — aumentar p ou q ou reconsiderar a especificação.
+        </p>
+        <ResidualACFChart />
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>17. Raiz Unitária e Integração</h2>
+        <p style={S.p}>
+          Um processo diz-se <strong>integrado de ordem d</strong>, denotado I(d), se é não estacionário
+          mas a sua d-ésima diferença é estacionária I(0). Os modelos ARMA assumem estacionaridade;
+          é portanto crucial diagnosticar e remover raízes unitárias antes de ajustar.
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Classe</th>
+              <th style={S.th}>Definição</th>
+              <th style={S.th}>Transformação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>I(0)</strong></td>
+              <td style={S.td}>Processo estacionário (média e variância finitas)</td>
+              <td style={S.td}>Nenhuma</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>I(1)</strong></td>
+              <td style={S.td}>Passeio aleatório; Δy<sub>t</sub> ~ I(0)</td>
+              <td style={S.td}>Primeira diferença</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>I(2)</strong></td>
+              <td style={S.td}>Δy<sub>t</sub> ~ I(1); Δ²y<sub>t</sub> ~ I(0)</td>
+              <td style={S.td}>Segunda diferença</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style={S.p}>
+          O <strong>passeio aleatório</strong> y<sub>t</sub> = y<sub>t-1</sub> + ε<sub>t</sub> é o exemplo
+          paradigmático de I(1). A sua variância cresce linearmente com t (→ ∞), as autocorrelações amostrais
+          decaem muito lentamente, e regressões entre passeios aleatórios independentes produzem resultados
+          espúrios (correlações artificialmente elevadas).
+        </p>
+        <IntegrationChart />
+        <div style={S.note}>
+          Diferenciar um processo I(1) elimina a raiz unitária mas introduz um componente MA(1) nos resíduos.
+          Diferenciar em excesso é também problemático — daí a importância dos testes formais.
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>18. Teste Dickey-Fuller Aumentado (ADF)</h2>
+        <p style={S.p}>
+          O teste ADF testa formalmente a presença de uma raiz unitária. A equação de regressão auxiliar é:
+        </p>
+        
+          <BlockMath math="\Delta y_t = \alpha + \beta t + \gamma y_{t-1} + \sum_j \delta_j \Delta y_{t-j} + \varepsilon_t" />
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            H₀: <InlineMath math="\gamma = 0" /> (existe raiz unitária) &nbsp;|&nbsp; H₁: <InlineMath math="\gamma < 0" /> (processo estacionário)
+          </div>
+        
+        <p style={S.p}>
+          Os lags de Δy<sub>t</sub> são incluídos para eliminar autocorrelação serial nos resíduos.
+          A estatística de teste <em>t</em> sobre γ̂ não segue a distribuição t de Student — segue
+          a <strong>distribuição de MacKinnon</strong>, com valores críticos tabelados mais negativos.
+        </p>
+        <h3 style={S.h3}>Variantes do modelo ADF</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Especificação</th>
+              <th style={S.th}>Regressores</th>
+              <th style={S.th}>Uso típico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>Sem constante, sem tendência</strong></td>
+              <td style={S.td}>γy<sub>t-1</sub> + lags</td>
+              <td style={S.td}>Séries com média zero (raro)</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Com constante (drift)</strong></td>
+              <td style={S.td}>α + γy<sub>t-1</sub> + lags</td>
+              <td style={S.td}>Séries com média não nula</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Com constante e tendência</strong></td>
+              <td style={S.td}>α + βt + γy<sub>t-1</sub> + lags</td>
+              <td style={S.td}>Séries com tendência determinística</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Valores críticos de MacKinnon (aproximados)</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Especificação</th>
+              <th style={S.th}>1%</th>
+              <th style={S.th}>5%</th>
+              <th style={S.th}>10%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Sem constante</td>
+              <td style={S.td}>-2.56</td>
+              <td style={S.td}>-1.94</td>
+              <td style={S.td}>-1.62</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Com constante</td>
+              <td style={S.td}>-3.43</td>
+              <td style={S.td}>-2.86</td>
+              <td style={S.td}>-2.57</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Constante e tendência</td>
+              <td style={S.td}>-3.96</td>
+              <td style={S.td}>-3.41</td>
+              <td style={S.td}>-3.13</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style={S.note}>
+          Rejeita-se H₀ (raiz unitária) se a estatística t for mais negativa que o valor crítico. A escolha
+          da especificação deve reflectir o comportamento observado da série (com ou sem tendência visível).
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>19. Teste KPSS</h2>
+        <p style={S.p}>
+          O teste de Kwiatkowski-Phillips-Schmidt-Shin (KPSS) inverte as hipóteses do ADF:
+        </p>
+        <BlockMath math="H_0: \text{processo estacionário} \quad | \quad H_1: \text{raiz unitária}" />
+        <p style={S.p}>
+          O KPSS baseia-se na estatística LM que quantifica o quanto os resíduos de uma regressão em tendência
+          se afastam de um processo estacionário. Rejeitar H₀ é evidência de não estacionaridade; não rejeitar
+          é evidência a favor da estacionaridade.
+        </p>
+        <h3 style={S.h3}>Estratégia complementar ADF + KPSS</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>ADF</th>
+              <th style={S.th}>KPSS</th>
+              <th style={S.th}>Conclusão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Não rejeita H₀ (raiz unit.)</td>
+              <td style={S.td}>Rejeita H₀ (estac.)</td>
+              <td style={S.td}>Forte evidência de I(1)</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Rejeita H₀</td>
+              <td style={S.td}>Não rejeita H₀</td>
+              <td style={S.td}>Forte evidência de I(0)</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Não rejeita H₀</td>
+              <td style={S.td}>Não rejeita H₀</td>
+              <td style={S.td}>Inconclusivo — série pode ser fracamente I(1)</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Rejeita H₀</td>
+              <td style={S.td}>Rejeita H₀</td>
+              <td style={S.td}>Contradição — possível quebra estrutural ou série fraccionada</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style={S.note}>
+          Usar os dois testes em conjunto reduz significativamente a probabilidade de erro de diagnóstico.
+          Em caso de contradição, investigar a presença de quebras estruturais (teste Zivot-Andrews).
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>20. Cointegração — Introdução</h2>
+        <p style={S.p}>
+          Quando duas ou mais séries são individualmente I(1) mas existe uma combinação linear entre elas que
+          é I(0), diz-se que as séries são <strong>cointegradas</strong>. Isso implica uma relação de equilíbrio
+          de longo prazo entre elas.
+        </p>
+        <BlockMath math="\text{Se } x_t \sim I(1) \text{ e } y_t \sim I(1), \text{ e } \exists\,\beta \text{ tal que } y_t - \beta x_t \sim I(0)," />
+          <BlockMath math="\text{então } x_t \text{ e } y_t \text{ são cointegradas com vector } (1,\,-\beta)." />
+        <h3 style={S.h3}>Teste de Engle-Granger</h3>
+        <p style={S.p}>
+          O procedimento de dois passos de Engle-Granger consiste em: (1) estimar por OLS a regressão de
+          equilíbrio y<sub>t</sub> = α + βx<sub>t</sub> + u<sub>t</sub>; (2) testar os resíduos û<sub>t</sub>
+          para raiz unitária com ADF. Se û<sub>t</sub> ~ I(0), as séries são cointegradas.
+        </p>
+        <h3 style={S.h3}>Modelo de Correcção de Erros (VECM)</h3>
+        <p style={S.p}>
+          Na presença de cointegração, a dinâmica de curto prazo é correctamente modelada por um
+          <strong> Vector Error Correction Model (VECM)</strong>: Δy<sub>t</sub> = α(y<sub>t-1</sub> − βx<sub>t-1</sub>) + lags + ε<sub>t</sub>.
+          O termo de correcção de erro captura o ajustamento de volta ao equilíbrio de longo prazo.
+        </p>
+        <div style={S.note}>
+          A cointegração é tratada em detalhe no módulo ST14 (Vectores Autoregressivos e VECM).
+          O teste de Johansen permite múltiplos vectores de cointegração em sistemas de maior dimensão.
         </div>
       </section>
     </div>

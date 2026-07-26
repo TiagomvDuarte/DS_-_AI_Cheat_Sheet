@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './Logic';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -14,17 +14,16 @@ const S = {
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
-  diagram: { background: '#0f172a', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
+  diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
 };
 
 export default function LOG4() {
   return (
     <div style={S.page}>
-      <Link to="/logic" style={S.back}>← Lógica & Raciocínio</Link>
-      <div style={S.badge}>{modules[3].num} — LÓGICA & RACIOCÍNIO</div>
+      <Link to="/logic" style={S.back}>← Logic</Link>
+      <div style={S.badge}>MÓDULO {modules[3].num}</div>
       <h1 style={S.h1}>{modules[3].title}</h1>
-      <p style={S.sub}>{modules[3].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -67,7 +66,7 @@ export default function LOG4() {
               '→ Professor(alice)  [inferido]',
             ].map((line, i) => (
               <text key={i} x="365" y={70 + i * 17}
-                fill={i === 6 ? '#fbbf24' : '#f97316'}
+                fill={i === 6 ? '#bae6fd' : '#4a9eed'}
                 fontSize="11" fontFamily="monospace">{line}</text>
             ))}
             {/* Raciocínio */}
@@ -112,29 +111,31 @@ export default function LOG4() {
             <rect width="680" height="220" fill="var(--bg-secondary)" rx="10" />
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="monospace">Grafo RDF — entidade pessoa com propriedades</text>
             {/* central node: person */}
-            <ellipse cx="340" cy="110" rx="60" ry="30" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+            <ellipse cx="340" cy="110" rx="60" ry="30" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="2" />
             <text x="340" y="106" textAnchor="middle" fill={C} fontSize="11" fontFamily="monospace" fontWeight="700">:alice</text>
             <text x="340" y="122" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">foaf:Person</text>
             {/* name */}
-            <rect x="30" y="48" width="130" height="28" fill="#111827" stroke="#f97316" strokeWidth="1.5" rx="6" />
-            <text x="95" y="67" textAnchor="middle" fill="#f97316" fontSize="12" fontFamily="monospace">"Alice Silva"</text>
-            <line x1="280" y1="95" x2="160" y2="68" stroke="#475569" strokeWidth="1.5" />
-            <text x="230å" y="82" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">foaf:name</text>
+            <rect x="15" y="48" width="160" height="28" fill="#111827" stroke="#4a9eed" strokeWidth="1.5" rx="6" />
+            <text x="95" y="67" textAnchor="middle" fill="#4a9eed" fontSize="12" fontFamily="monospace">"Alice Silva"</text>
+            <line x1="280" y1="95" x2="175" y2="68" stroke="#475569" strokeWidth="1.5" />
+            <polygon points="175,68 185.7,66.6 183.7,74.4" fill="#475569" />
+            <text x="230" y="82" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">foaf:name</text>
             {/* birthdate */}
-            <rect x="30" y="150" width="140" height="28" fill="#111827" stroke="#f97316" strokeWidth="1.5" rx="6" />
-            <text x="100" y="169" textAnchor="middle" fill="#f97316" fontSize="12" fontFamily="monospace">"1990-03-15"^^xsd:date</text>
-            <line x1="280" y1="125" x2="170" y2="164" stroke="#475569" strokeWidth="1.5" />
-            <text x="220" y="155" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">schema:birthDate</text>
+            <rect x="0" y="150" width="205" height="28" fill="#111827" stroke="#4a9eed" strokeWidth="1.5" rx="6" />
+            <text x="102" y="169" textAnchor="middle" fill="#4a9eed" fontSize="11" fontFamily="monospace">"1990-03-15"^^xsd:date</text>
+            <line x1="280" y1="125" x2="205" y2="164" stroke="#475569" strokeWidth="1.5" />
+            <polygon points="205,164 215.7,162.9 212,155.8" fill="#475569" />
+            <text x="225" y="185" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">schema:birthDate</text>
             {/* worksAt org */}
-            <ellipse cx="560" cy="80" rx="80" ry="25" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" />
-            <text x="560" y="76" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="monospace">:universidade_x</text>
+            <ellipse cx="560" cy="80" rx="80" ry="25" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" />
+            <text x="560" y="76" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="monospace">:universidade_x</text>
             <text x="560" y="92" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">org:Organization</text>
             <line x1="400" y1="95" x2="480" y2="83" stroke="#475569" strokeWidth="1.5" />
             <polygon points="476,78 486,84 477,90" fill="#475569" />
             <text x="405" y="82" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">org:memberOf</text>
             {/* knows */}
-            <ellipse cx="560" cy="160" rx="60" ry="25" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" />
-            <text x="560" y="156" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="monospace">:bob</text>
+            <ellipse cx="560" cy="160" rx="60" ry="25" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" />
+            <text x="560" y="156" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="monospace">:bob</text>
             <text x="560" y="171" textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">foaf:Person</text>
             <line x1="400" y1="118" x2="500" y2="155" stroke="#475569" strokeWidth="1.5" />
             <polygon points="496,150 506,156 497,162" fill="#475569" />
@@ -178,29 +179,29 @@ export default function LOG4() {
             <rect width="680" height="250" fill="var(--bg-secondary)" rx="10" />
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="monospace">Ontologia Universitária em OWL 2</text>
             {/* Classes hierarquia */}
-            <ellipse cx="120" cy="80" rx="55" ry="22" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+            <ellipse cx="120" cy="80" rx="55" ry="22" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="2" />
             <text x="120" y="85" textAnchor="middle" fill={C} fontSize="12" fontFamily="monospace" fontWeight="700">Person</text>
-            <ellipse cx="120" cy="155" rx="60" ry="22" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="120" cy="155" rx="60" ry="22" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="1.5" />
             <text x="120" y="160" textAnchor="middle" fill={C} fontSize="11" fontFamily="monospace">Professor</text>
             <line x1="120" y1="102" x2="120" y2="133" stroke="#475569" strokeWidth="1.5" />
             <text x="128" y="122" fill="#64748b" fontSize="9" fontFamily="sans-serif">⊑</text>
-            <ellipse cx="340" cy="155" rx="65" ry="22" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="340" y="160" textAnchor="middle" fill="#f97316" fontSize="11" fontFamily="monospace">Course</text>
-            <ellipse cx="570" cy="155" rx="70" ry="22" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" />
-            <text x="570" y="160" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="monospace">Department</text>
+            <ellipse cx="340" cy="155" rx="65" ry="22" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="340" y="160" textAnchor="middle" fill="#4a9eed" fontSize="11" fontFamily="monospace">Course</text>
+            <ellipse cx="570" cy="155" rx="70" ry="22" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" />
+            <text x="570" y="160" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="monospace">Department</text>
             {/* teaches arrow */}
-            <line x1="180" y1="155" x2="271" y2="155" stroke="#fbbf24" strokeWidth="1.5" />
-            <polygon points="267,150 277,155 267,160" fill="#fbbf24" />
-            <text x="218" y="148" textAnchor="middle" fill="#fbbf24" fontSize="9" fontFamily="sans-serif">teaches</text>
+            <line x1="180" y1="155" x2="271" y2="155" stroke="#bae6fd" strokeWidth="1.5" />
+            <polygon points="267,150 277,155 267,160" fill="#bae6fd" />
+            <text x="218" y="148" textAnchor="middle" fill="#bae6fd" fontSize="9" fontFamily="sans-serif">teaches</text>
             {/* belongsTo */}
-            <line x1="405" y1="155" x2="496" y2="155" stroke="#fbbf24" strokeWidth="1.5" />
-            <polygon points="492,150 502,155 492,160" fill="#fbbf24" />
-            <text x="450" y="148" textAnchor="middle" fill="#fbbf24" fontSize="9" fontFamily="sans-serif">belongsTo</text>
+            <line x1="405" y1="155" x2="496" y2="155" stroke="#bae6fd" strokeWidth="1.5" />
+            <polygon points="492,150 502,155 492,160" fill="#bae6fd" />
+            <text x="450" y="148" textAnchor="middle" fill="#bae6fd" fontSize="9" fontFamily="sans-serif">belongsTo</text>
             {/* Axiomas OWL */}
             <rect x="20" y="195" width="640" height="48" fill="#111827" rx="6" />
             <text x="30" y="212" fill="#94a3b8" fontSize="10" fontFamily="sans-serif">Axiomas OWL 2:</text>
             <text x="30" y="228" fill={C} fontSize="11" fontFamily="monospace">Professor ≡ Person ⊓ ∃teaches.Course ⊓ (≥1 belongsTo.Department)</text>
-            <text x="30" y="244" fill="#f97316" fontSize="11" fontFamily="monospace">teaches  Functional: cada professor ensina exactamente 1 curso por semana (FunctionalProperty)</text>
+            <text x="30" y="244" fill="#4a9eed" fontSize="11" fontFamily="monospace">teaches  Functional: cada professor ensina exactamente 1 curso por semana (FunctionalProperty)</text>
           </svg>
         </div>
 
@@ -245,24 +246,24 @@ export default function LOG4() {
             <text x="45" y="120" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="sans-serif" transform="rotate(-90, 45, 120)">dim 2</text>
             {/* vectors */}
             {/* h = Paris */}
-            <circle cx="110" cy="160" r="8" fill="#f97316" />
-            <text x="110" y="148" textAnchor="middle" fill="#f97316" fontSize="11" fontFamily="sans-serif">Paris (h)</text>
+            <circle cx="110" cy="160" r="8" fill="#4a9eed" />
+            <text x="110" y="148" textAnchor="middle" fill="#4a9eed" fontSize="11" fontFamily="sans-serif">Paris (h)</text>
             {/* t = France */}
-            <circle cx="240" cy="90" r="8" fill="#fbbf24" />
-            <text x="240" y="78" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="sans-serif">France (t)</text>
+            <circle cx="240" cy="90" r="8" fill="#bae6fd" />
+            <text x="240" y="78" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="sans-serif">France (t)</text>
             {/* h + r → t */}
             <line x1="118" y1="155" x2="228" y2="98" stroke={C} strokeWidth="2" strokeDasharray="6,3" />
             <polygon points="222,93 234,95 226,105" fill={C} />
             <text x="220" y="117" fill={C} fontSize="11" fontFamily="sans-serif" fontWeight="700">r = capitalOf</text>
             <text x="180" y="130" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">h + r ≈ t</text>
             {/* analogia */}
-            <circle cx="130" cy="90" r="6" fill="#fbbf24" />
-            <text x="130" y="78" textAnchor="middle" fill="#fbbf24" fontSize="10" fontFamily="sans-serif">Berlin (h')</text>
-            <circle cx="260" cy="40" r="6" fill="#fbbf24" />
-            <text x="260" y="30" textAnchor="middle" fill="#fbbf24" fontSize="10" fontFamily="sans-serif">Germany (t')</text>
-            <line x1="136" y1="86" x2="250" y2="47" stroke="#fbbf24" strokeWidth="1.5" strokeDasharray="4,3" />
-            <polygon points="244,42 256,44 248,54" fill="#fbbf24" />
-            <text x="150" y="62" fill="#fbbf24" fontSize="9" fontFamily="sans-serif">mesmo r</text>
+            <circle cx="130" cy="90" r="6" fill="#bae6fd" />
+            <text x="130" y="78" textAnchor="middle" fill="#bae6fd" fontSize="10" fontFamily="sans-serif">Berlin (h')</text>
+            <circle cx="260" cy="40" r="6" fill="#bae6fd" />
+            <text x="260" y="30" textAnchor="middle" fill="#bae6fd" fontSize="10" fontFamily="sans-serif">Germany (t')</text>
+            <line x1="136" y1="86" x2="250" y2="47" stroke="#bae6fd" strokeWidth="1.5" strokeDasharray="4,3" />
+            <polygon points="244,42 256,44 248,54" fill="#bae6fd" />
+            <text x="150" y="62" fill="#bae6fd" fontSize="9" fontFamily="sans-serif">mesmo r</text>
             {/* right panel: other models */}
             <rect x="360" y="35" width="300" height="185" fill="#111827" rx="6" />
             <text x="510" y="55" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="sans-serif" fontWeight="700">Modelos de Embedding KG</text>
@@ -302,18 +303,6 @@ export default function LOG4() {
           </p>
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Knowledge Representation e Description Logic</strong> — as Lógicas de Descrição são subfamílias decidíveis da FOL que permitem representar classes, propriedades e relações entre indivíduos com raciocínio automático garantido; a DL SROIQ é a base formal de OWL 2 e suporta tarefas como subsumção e verificação de consistência.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>RDF e Web Semântica</strong> — o RDF modela o conhecimento como triplos (sujeito, predicado, objecto) identificados por URIs, formando um grafo de conhecimento interligável; SPARQL é a linguagem de consulta que permite integrar e interrogar dados de múltiplas fontes heterogéneas na Web.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>OWL 2 — Ontologias Formais</strong> — OWL 2 é a linguagem padrão do W3C para ontologias formais, com perfis para diferentes trade-offs entre expressividade e complexidade computacional; reasoners como HermiT e ELK classificam automaticamente ontologias de domínio como Gene Ontology e SNOMED CT.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Knowledge Graphs Modernos</strong> — KGs como Wikidata e Google KG integram centenas de biliões de factos estruturados; embeddings de entidades (TransE, RotatE, ComplEx) permitem link prediction e KGQA em linguagem natural, sendo a base de sistemas de QA de alta precisão.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

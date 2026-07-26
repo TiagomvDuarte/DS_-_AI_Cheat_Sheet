@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -27,33 +27,33 @@ const DeltaArchDiagram = () => (
     <svg viewBox="0 0 580 200" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-dl" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* Object Storage */}
-      <rect x="10" y="130" width="560" height="55" rx="8" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="290" y="152" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Object Storage (S3 / GCS / ADLS)</text>
+      <rect x="10" y="130" width="560" height="55" rx="8" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="290" y="152" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Object Storage (S3 / GCS / ADLS)</text>
       <text x="290" y="168" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Ficheiros Parquet imutáveis + _delta_log/ (transaction log JSON)</text>
 
       {/* Delta Lake Layer */}
-      <rect x="10" y="65" width="560" height="55" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="290" y="87" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Delta Lake — Transaction Log</text>
+      <rect x="10" y="65" width="560" height="55" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="290" y="87" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Delta Lake — Transaction Log</text>
       <text x="290" y="103" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">ACID commits | Schema enforcement | Time travel | MERGE/UPDATE/DELETE | Z-ordering</text>
 
       {/* Engines */}
       {[
-        { x: 10,  label: 'Apache Spark', c: '#f97316' },
-        { x: 150, label: 'Databricks SQL', c: '#f97316' },
-        { x: 290, label: 'Presto / Trino', c: '#f97316' },
-        { x: 430, label: 'Apache Flink', c: '#f97316' },
+        { x: 10,  label: 'Apache Spark', c: '#4a9eed' },
+        { x: 150, label: 'Databricks SQL', c: '#4a9eed' },
+        { x: 290, label: 'Presto / Trino', c: '#4a9eed' },
+        { x: 430, label: 'Apache Flink', c: '#4a9eed' },
       ].map(({ x, label, c }) => (
         <g key={label}>
           <rect x={x} y="10" width="130" height="40" rx="7" fill={`${c}12`} stroke={c} strokeWidth="1.5" />
           <text x={x + 65} y="35" textAnchor="middle" fill={c} fontSize="10" fontWeight="700">{label}</text>
-          <line x1={x + 65} y1="50" x2={x + 65} y2="65" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-dl)" />
+          <line x1={x + 65} y1="50" x2={x + 65} y2="65" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-dl)" />
         </g>
       ))}
-      <line x1="290" y1="120" x2="290" y2="130" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-dl)" />
+      <line x1="290" y1="120" x2="290" y2="130" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-dl)" />
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Delta Lake é uma camada entre os motores de query e o object storage — adiciona transacções e gestão sem mover os dados.</p>
   </div>
@@ -63,35 +63,35 @@ const FeatureExplorer = () => {
   const [feat, setFeat] = useState(0);
   const features = [
     {
-      name: 'ACID Transactions', color: '#f97316',
+      name: 'ACID Transactions', color: '#4a9eed',
       problema: 'Object storage (S3, GCS) é eventually consistent e não tem transacções. Se um job Spark escreve 1.000 ficheiros Parquet e falha a meio, ficam 500 ficheiros inconsistentes no storage — metade da tabela está corrompida e outras queries podem ler dados inválidos.',
       solucao: 'Delta Lake mantém um Transaction Log (_delta_log/) — uma sequência de ficheiros JSON que registam cada operação como um commit atómico. Uma escrita ou completa (todos os ficheiros registados) ou não existe. O leitor vê sempre um estado consistente. Dois jobs a escrever simultaneamente não interferem — o segundo detecta o conflito e retenta.',
       exemplo: 'Um job de ETL diário escreve 500 GB de dados novos e falha a 80%. Sem Delta: tabela corrompida, leitura de dados inconsistentes. Com Delta: o commit nunca é registado no log — a tabela permanece no estado anterior, intacta.',
       beneficio: 'Eliminação de corrupção de dados, pipelines que podem ser interrompidos e retomados, operações concorrentes seguras.',
     },
     {
-      name: 'Time Travel', color: '#f97316',
+      name: 'Time Travel', color: '#4a9eed',
       problema: 'Datasets históricos em Parquet são imutáveis mas não versionados. Se um bug no pipeline sobrescreve dados incorrectamente ou se precisas de comparar o estado da tabela ontem vs. hoje, não há forma nativa de o fazer — os dados anteriores estão perdidos.',
       solucao: 'O Transaction Log regista cada versão da tabela com um número de versão e timestamp. Qualquer leitura pode especificar VERSION AS OF N ou TIMESTAMP AS OF "2024-01-15" para ler exactamente aquela versão. Os ficheiros Parquet das versões anteriores são mantidos até ao VACUUM (cleanup configurable).',
       exemplo: 'Pipeline de ML treina um modelo com dados de ontem. Hoje os dados foram actualizados. Para reproduzir o treino, fazemos leitura com TIMESTAMP AS OF "2024-01-14T00:00:00" e obtemos exactamente os dados que existiam nessa altura.',
       beneficio: 'Reprodutibilidade de experimentos ML, auditoria de dados, rollback fácil de erros de pipeline, comparação temporal.',
     },
     {
-      name: 'Schema Evolution', color: '#f97316',
+      name: 'Schema Evolution', color: '#4a9eed',
       problema: 'Em Parquet puro, se o schema muda entre escritas (nova coluna adicionada, tipo alterado), as leituras falham com erros de schema mismatch. Cada schema change requer migração manual de todos os ficheiros históricos ou criação de nova tabela.',
       solucao: 'Delta Lake suporta schema evolution: novas colunas podem ser adicionadas automaticamente (mergeSchema=True) ou explicitamente com ALTER TABLE ADD COLUMN. O Transaction Log regista cada evolução de schema com a versão do commit. Leituras de dados antigos retornam null nas novas colunas — backward compatible.',
       exemplo: 'A tabela de eventos começa com 5 colunas. Seis meses depois, o produto adiciona o campo "device_type". Com Delta e mergeSchema=True, a escrita adiciona a coluna automaticamente e dados históricos mostram null em device_type — sem migrações manuais.',
       beneficio: 'Evolução do schema sem downtime ou migrations, compatibilidade backward/forward, dados históricos preservados.',
     },
     {
-      name: 'MERGE (Upsert)', color: '#f97316',
+      name: 'MERGE (Upsert)', color: '#4a9eed',
       problema: 'Parquet é append-only — não suporta UPDATE ou DELETE nativos. Para actualizar um registo, é necessário reescrever toda a partição, o que é lento e caro. Change Data Capture (CDC) de bases de dados relacionais envia inserts, updates, e deletes — impossíveis de aplicar eficientemente em Parquet.',
       solucao: 'Delta Lake implementa MERGE INTO com semântica SQL completa: quando um registo existe, actualiza (WHEN MATCHED); quando não existe, insere (WHEN NOT MATCHED). Internamente, Delta reescreve apenas os ficheiros Parquet afectados pelo merge, não a tabela toda. Ideal para aplicar CDC de bases de dados OLTP.',
       exemplo: 'Stream Kafka com eventos de change data capture (INSERT/UPDATE/DELETE) de PostgreSQL. MERGE INTO delta_table USING kafka_batch ON id WHEN MATCHED AND op="D" THEN DELETE WHEN MATCHED THEN UPDATE WHEN NOT MATCHED THEN INSERT aplica todas as mudanças eficientemente.',
       beneficio: 'CDC nativo, upserts eficientes, sincronização com bases de dados OLTP, SCD (Slowly Changing Dimensions) sem reescrita total.',
     },
     {
-      name: 'Z-Ordering', color: '#f97316',
+      name: 'Z-Ordering', color: '#4a9eed',
       problema: 'Numa tabela particionada por data com dados de muitos países, uma query que filtra por country="Portugal" ainda precisa de ler todos os ficheiros Parquet dentro de cada partição de data — mesmo que só 1% dos dados seja Portugal. Sem co-localização de dados relacionados, o file pruning é limitado.',
       solucao: 'OPTIMIZE table ZORDER BY (country) reorganiza os dados dentro de cada partição para co-localizar valores do mesmo country no mesmo conjunto de ficheiros Parquet. Delta Lake mantém estatísticas de min/max por ficheiro — uma query com WHERE country="Portugal" pode saltar 99% dos ficheiros que não contêm Portugal.',
       exemplo: 'Tabela de logs particionada por dia com 10.000 ficheiros por partição. Query filtra WHERE country="PT" AND user_id=12345. Sem Z-order: lê 10.000 ficheiros. Com ZORDER BY (country, user_id): lê ~50 ficheiros com os dados co-localizados.',
@@ -116,7 +116,7 @@ const FeatureExplorer = () => {
       <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', textAlign: 'left', border: `1.5px solid ${f.color}40` }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.6rem' }}>
           <div>
-            <span style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em' }}>O problema sem Delta Lake</span>
+            <span style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>O problema sem Delta Lake</span>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-primary)', margin: '0.2rem 0 0' }}>{f.problema}</p>
           </div>
           <div>
@@ -137,28 +137,28 @@ const DQExplorer = () => {
   const [tool, setTool] = useState(0);
   const tools = [
     {
-      name: 'Great Expectations', color: '#f97316',
+      name: 'Great Expectations', color: '#4a9eed',
       desc: 'Framework Python open-source para validação de dados. Define "Expectations" — asserções sobre os dados (ex: "a coluna age nunca tem valores negativos", "email é sempre único"). Corre estas validações e produz um Data Docs report HTML com o resultado de cada Expectation.',
       quando: 'Validar dados na entrada de um pipeline (raw data do S3), validar dados após transformação antes de escrever, testes de regressão para detectar quando dados mudam de distribuição.',
       conceitos: ['Expectation Suite — conjunto nomeado de validações para uma tabela/dataset', 'Checkpoint — une um dataset a uma Suite e define onde reportar resultados', 'Data Docs — documentação automática gerada com resultados de cada validação', 'Profiler automático — analisa dados e sugere Expectations baseado no histórico'],
       exemplo: 'Após ingestão de dados de vendas do dia: expect_column_values_to_not_be_null("order_id"), expect_column_values_to_be_between("amount", 0, 100000), expect_column_pair_values_A_to_be_greater_than_B("created_at", "updated_at").',
     },
     {
-      name: 'dbt Tests', color: '#f97316',
+      name: 'dbt Tests', color: '#4a9eed',
       desc: 'dbt tem um sistema de testes built-in para modelos SQL. Dois tipos: testes genéricos (not_null, unique, accepted_values, relationships — configurados em YAML) e testes singulares (queries SQL custom que retornam linhas quando falham). Correm com dbt test após dbt run.',
       quando: 'Validar modelos SQL dbt dentro do Data Warehouse. Garantir integridade referencial entre tabelas. Testar invariantes de negócio (ex: receita nunca é negativa). Integrar em CI/CD para bloquear deploys com dados inválidos.',
       conceitos: ['not_null — coluna não tem NULLs', 'unique — coluna tem valores únicos', 'accepted_values — coluna só tem valores de uma lista definida', 'relationships — chave estrangeira existe na tabela referenciada', 'custom SQL tests — qualquer query que retorna linhas = falha'],
       exemplo: 'Em schema.yml: tests: [not_null] em order_id, [unique] em order_id, [accepted_values: [pending, confirmed, shipped, cancelled]] em status, [relationships: to: ref("customers"), field: id] em customer_id.',
     },
     {
-      name: 'Soda Core', color: '#f97316',
+      name: 'Soda Core', color: '#4a9eed',
       desc: 'Framework de data quality com configuração YAML declarativa. Define checks em YAML human-readable sem escrever Python ou SQL. Suporta múltiplos data sources (Spark, BigQuery, Snowflake, Redshift, Postgres). Soda Cloud é a versão gerida com alertas, histórico de checks, e dashboards de qualidade.',
       quando: 'Equipas que preferem configuração YAML a código Python (Great Expectations). Monitorização contínua de qualidade de dados em produção. Alertas automáticos quando métricas de qualidade degradam.',
       conceitos: ['Check — asserção sobre uma coluna ou tabela ("row_count > 0")', 'Scan — execução de um conjunto de checks sobre uma tabela', 'Metric — valor calculado (row_count, missing_count, min, max, avg, percentile)', 'Freshness check — verificar que dados são recentes (última actualização < 2 horas)'],
       exemplo: 'check for orders: row_count > 0, missing_count(order_id) = 0, duplicate_count(order_id) = 0, min(amount) >= 0, freshness(created_at) < 2h.',
     },
     {
-      name: 'Spark Built-in', color: '#f97316',
+      name: 'Spark Built-in', color: '#4a9eed',
       desc: 'Spark tem capacidades nativas de validação sem bibliotecas externas: schema enforcement no Delta Lake rejeita dados com schema errado, constraints em tabelas Delta (ALTER TABLE ADD CONSTRAINT) definem regras a nível de storage, e DataFrame assertions com quando(condição).otherwise(). Para validações simples, não é necessário uma ferramenta separada.',
       quando: 'Validações simples que não justificam uma ferramenta completa. Schema enforcement na escrita. Constraints de negócio directamente na tabela Delta. Equipas que querem menos dependências externas.',
       conceitos: ['Delta constraints — NOT NULL, CHECK constraints a nível de tabela', 'Schema enforcement — Delta rejeita escritas com schema diferente do definido', 'DataFrame .filter().count() — contar violações de uma regra', 'Column statistics via describe() — min, max, mean, stddev, count para deteção de anomalias'],
@@ -174,7 +174,7 @@ const DQExplorer = () => {
           <button key={i} onClick={() => setTool(i)} style={{
             padding: '0.4rem 0.9rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem',
             background: tool === i ? tl.color : 'var(--bg-primary)',
-            color: tool === i ? (tl.color === '#f97316' ? '#000' : 'white') : 'var(--text-primary)',
+            color: tool === i ? (tl.color === '#4a9eed' ? '#000' : 'white') : 'var(--text-primary)',
             border: `1.5px solid ${tool === i ? tl.color : 'var(--card-border)'}`,
             transition: 'all 0.2s',
           }}>{tl.name}</button>
@@ -207,7 +207,6 @@ export default function BDM7() {
         <Link to="/bigdata-mgmt" style={S.back}><ArrowLeft size={16} /> Voltar a Big Data Mgmt</Link>
         <div style={S.tag}>Module 7</div>
         <h1 style={S.h1}>Data Warehouses, Data Lakes & Lakehouses</h1>
-        <p style={S.lead}>As organizações armazenam dados analíticos em três grandes paradigmas — Data Warehouses, Data Lakes, e mais recentemente Lakehouses. Cada um surgiu para resolver as limitações do anterior: warehouses trazem estrutura e performance mas são caros e rígidos; lakes trazem escala e flexibilidade mas arriscam tornar-se "pântanos" sem governança; lakehouses tentam combinar o melhor dos dois mundos sobre object storage. Este módulo explora os três paradigmas, a sua arquitectura, e como garantir qualidade de dados em qualquer um deles.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Data Warehouses</h2>
@@ -236,8 +235,8 @@ export default function BDM7() {
                 ].map(([c, oltp, olap]) => (
                   <tr key={c}>
                     <td style={{ ...S.td, fontWeight: 600 }}>{c}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{oltp}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{olap}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{oltp}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{olap}</td>
                   </tr>
                 ))}
               </tbody>
@@ -251,15 +250,15 @@ export default function BDM7() {
           <div style={S.diagram}>
             <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Star Schema — Fact Table no centro, Dimensões à volta</p>
             <svg viewBox="0 0 580 280" style={{ maxWidth: '100%', height: 'auto' }}>
-              <rect x="220" y="110" width="140" height="60" rx="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="2" />
-              <text x="290" y="135" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">fact_sales</text>
+              <rect x="220" y="110" width="140" height="60" rx="8" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="2" />
+              <text x="290" y="135" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">fact_sales</text>
               <text x="290" y="150" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">qty, amount, discount, FKs</text>
               {[
-                { x: 230, y: 10, label: 'dim_date', c: '#f97316' },
-                { x: 430, y: 10, label: 'dim_product', c: '#f97316' },
-                { x: 30, y: 110, label: 'dim_customer', c: '#f97316' },
-                { x: 430, y: 210, label: 'dim_store', c: '#f97316' },
-                { x: 230, y: 210, label: 'dim_promotion', c: '#f97316' },
+                { x: 230, y: 10, label: 'dim_date', c: '#4a9eed' },
+                { x: 430, y: 10, label: 'dim_product', c: '#4a9eed' },
+                { x: 30, y: 110, label: 'dim_customer', c: '#4a9eed' },
+                { x: 430, y: 210, label: 'dim_store', c: '#4a9eed' },
+                { x: 230, y: 210, label: 'dim_promotion', c: '#4a9eed' },
               ].map(({ x, y, label, c }) => (
                 <g key={label}>
                   <rect x={x} y={y} width="120" height="50" rx="8" fill={`${c}12`} stroke={c} strokeWidth="1.5" />
@@ -291,8 +290,8 @@ export default function BDM7() {
                 ].map(([a, star, snow]) => (
                   <tr key={a}>
                     <td style={{ ...S.td, fontWeight: 600 }}>{a}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{star}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{snow}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{star}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{snow}</td>
                   </tr>
                 ))}
               </tbody>
@@ -317,7 +316,7 @@ export default function BDM7() {
                   ['Amazon Redshift', 'Cloud, baseado em PostgreSQL', 'Integração nativa com o ecossistema AWS, RA3 nodes separam compute de storage (S3)'],
                 ].map(([p, m, c]) => (
                   <tr key={p}>
-                    <td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{p}</td>
+                    <td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{p}</td>
                     <td style={S.td}>{m}</td>
                     <td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{c}</td>
                   </tr>
@@ -359,8 +358,8 @@ export default function BDM7() {
                 ].map(([a, dw, dl]) => (
                   <tr key={a}>
                     <td style={{ ...S.td, fontWeight: 600 }}>{a}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{dw}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{dl}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{dw}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{dl}</td>
                   </tr>
                 ))}
               </tbody>
@@ -393,17 +392,17 @@ export default function BDM7() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
               {
-                n: 'Bronze (Raw)', c: '#f97316', bg: 'rgba(146,64,14,0.08)', border: 'rgba(146,64,14,0.25)',
+                n: 'Bronze (Raw)', c: '#b45309', bg: 'rgba(180,83,9,0.08)', border: 'rgba(180,83,9,0.35)',
                 desc: 'Dados brutos ingeridos directamente das fontes, sem transformação. Preserva exactamente o que chegou — incluindo erros, duplicados, e schema original. Serve como fonte da verdade imutável para reprocessamento futuro.',
                 props: ['Schema conforme fonte original (pode ser nested JSON, CSV)', 'Append-only — nunca modificar dados Bronze', 'Partition por data de ingestão (não data de evento)', 'Retenção longa (meses a anos) — é o backup de última instância', 'Exemplos: raw Kafka events, API responses completas, dumps de tabelas OLTP'],
               },
               {
-                n: 'Silver (Cleaned)', c: '#94a3b8', bg: 'rgba(107,114,128,0.08)', border: 'rgba(107,114,128,0.25)',
+                n: 'Silver (Cleaned)', c: '#94a3b8', bg: 'rgba(148,163,184,0.08)', border: 'rgba(148,163,184,0.35)',
                 desc: 'Dados limpos, validados, e deduplicados. Schema normalizado e consistente. Aplicação de regras de qualidade e enriquecimento com lookups. É a camada "single source of truth" para equipas de analytics e ciência de dados.',
                 props: ['Deduplicação por chave de negócio (order_id, user_id)', 'Normalização de tipos (strings de data → TimestampType)', 'Enriquecimento: join com tabelas de referência (country codes, product catalogue)', 'Validação: NULLs eliminados, valores out-of-range filtrados ou corrigidos', 'Partition por data de evento (não de ingestão) — para queries temporais'],
               },
               {
-                n: 'Gold (Business)', c: '#f97316', bg: 'rgba(249,115,22,0.10)', border: 'rgba(249,115,22,0.10)',
+                n: 'Gold (Business)', c: '#d4a017', bg: 'rgba(212,160,23,0.08)', border: 'rgba(212,160,23,0.35)',
                 desc: 'Agregações e métricas prontas para consumo por dashboards, APIs, e modelos ML. Optimizadas para performance de leitura — Z-ordered pelas dimensões mais consultadas. Schema desenhado para o consumidor final, não para normalização.',
                 props: ['Aggregações diárias/semanais/mensais de métricas de negócio', 'Tabelas wide (desnormalizadas) para BI tools (Tableau, Power BI)', 'Features computadas para modelos ML (avg_purchase_30d, churn_score)', 'SCD Tipo 2 para histórico de dimensões (clientes, produtos)', 'ZORDER BY dimensões de filtro mais comuns (country, product_category)'],
               },
@@ -444,9 +443,9 @@ export default function BDM7() {
                 ].map(([d, dl, ic, hu]) => (
                   <tr key={d}>
                     <td style={{ ...S.td, fontWeight: 600 }}>{d}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{dl}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{ic}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{hu}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{dl}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{ic}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{hu}</td>
                   </tr>
                 ))}
               </tbody>
@@ -484,9 +483,9 @@ export default function BDM7() {
                 ].map(([d, dw, dl, lh]) => (
                   <tr key={d}>
                     <td style={{ ...S.td, fontWeight: 600 }}>{d}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{dw}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{dl}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{lh}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{dw}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{dl}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{lh}</td>
                   </tr>
                 ))}
               </tbody>
@@ -522,10 +521,10 @@ export default function BDM7() {
                   ['Timeliness', 'Dados suficientemente recentes para o uso pretendido', 'max(event_time) < now - 2h, row_count(today) > row_count(yesterday) * 0.5', 'Dashboards a mostrar dados de ontem como "hoje", alertas com atraso'],
                 ].map(([d, def, ex, cons]) => (
                   <tr key={d}>
-                    <td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{d}</td>
+                    <td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{d}</td>
                     <td style={S.td}>{def}</td>
                     <td style={{ ...S.td, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{ex}</td>
-                    <td style={{ ...S.td, fontSize: '0.82rem', color: '#f97316' }}>{cons}</td>
+                    <td style={{ ...S.td, fontSize: '0.82rem', color: '#4a9eed' }}>{cons}</td>
                   </tr>
                 ))}
               </tbody>
@@ -550,9 +549,9 @@ export default function BDM7() {
                   ['Em produção (contínuo)', 'Data drift — distribuição de valores muda ao longo do tempo (features de ML), completeness e uniqueness diários', 'Alertas automáticos (email/Slack/PagerDuty), trigger re-treino de modelos ML', 'Databricks Lakehouse Monitoring, Great Expectations + Airflow scheduling'],
                 ].map(([p, v, a, f]) => (
                   <tr key={p}>
-                    <td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{p}</td>
+                    <td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{p}</td>
                     <td style={S.td}>{v}</td>
-                    <td style={{ ...S.td, fontSize: '0.83rem', color: '#f97316' }}>{a}</td>
+                    <td style={{ ...S.td, fontSize: '0.83rem', color: '#4a9eed' }}>{a}</td>
                     <td style={{ ...S.td, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{f}</td>
                   </tr>
                 ))}
@@ -561,20 +560,6 @@ export default function BDM7() {
           </div>
         </div>
 
-        <hr style={S.divider} />
-
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ paddingLeft: '1.2rem', margin: 0, lineHeight: 1.9 }}>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Data Warehouse</strong> — dados estruturados num modelo dimensional (star/snowflake schema) optimizado para OLAP; fact tables com métricas + dimension tables com atributos; ETL transforma antes de carregar.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Data Lake</strong> — armazena qualquer tipo de dado a baixo custo sobre object storage (S3/ADLS/GCS) com schema-on-read; flexível mas arrisca tornar-se "Data Swamp" sem governança.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Lakehouse</strong> — combina escala do Data Lake com garantias do Warehouse através de open table formats (Delta Lake, Iceberg, Hudi) que adicionam ACID + schema evolution + time travel sobre Parquet.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Medallion Architecture (Bronze/Silver/Gold)</strong> — Bronze é raw e imutável, Silver é limpo e validado, Gold é agregado e optimizado para consumo analítico.</li>
-              <li style={{ marginBottom: '0.4rem' }}><strong>Qualidade de Dados</strong> — 5 dimensões: Completeness, Uniqueness, Validity, Consistency, Timeliness; validar em cada camada com Great Expectations (Python), dbt tests (SQL), ou Soda (YAML).</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

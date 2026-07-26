@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)', verticalAlign: 'top' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   mathBlock: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1.25rem', margin: '1.5rem 0', textAlign: 'center', overflowX: 'auto' },
@@ -30,12 +30,12 @@ const S = {
 function HexagonRAI() {
   const cx = 300, cy = 220, R = 150, r = 55;
   const pillars = [
-    { label: 'Fairness', angle: -90, fill: '#f97316' },
-    { label: 'Reliability', angle: -30, fill: '#f97316' },
-    { label: 'Privacy', angle: 30, fill: '#f97316' },
-    { label: 'Inclusiveness', angle: 90, fill: '#f97316' },
-    { label: 'Transparency', angle: 150, fill: '#f97316' },
-    { label: 'Accountability', angle: 210, fill: '#f97316' },
+    { label: 'Fairness', angle: -90, fill: '#4a9eed' },
+    { label: 'Reliability', angle: -30, fill: '#4a9eed' },
+    { label: 'Privacy', angle: 30, fill: '#4a9eed' },
+    { label: 'Inclusiveness', angle: 90, fill: '#4a9eed' },
+    { label: 'Transparency', angle: 150, fill: '#4a9eed' },
+    { label: 'Accountability', angle: 210, fill: '#4a9eed' },
   ];
   const toRad = d => (d * Math.PI) / 180;
   const vx = (a) => cx + R * Math.cos(toRad(a));
@@ -118,14 +118,14 @@ function BiasPipeline() {
             <path d="M0,0 L0,6 L8,3 z" fill="var(--text-secondary)" />
           </marker>
           <marker id="arrRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
+            <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
           </marker>
         </defs>
         {/* stage boxes */}
         {stages.map((s, i) => (
           <g key={`stage-${i}`}>
             <rect x={s.x} y={38} width={s.w} height={34} rx={6}
-              fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+              fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
             <text x={s.x + s.w / 2} y={58} textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>
               {s.label}
             </text>
@@ -135,11 +135,11 @@ function BiasPipeline() {
         {biasLabels.map((b, i) => (
           <g key={`bias-${i}`}>
             <line x1={b.x} y1={38} x2={b.x} y2={20}
-              stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrRed)" />
-            <text x={b.x} y={14} textAnchor="middle" fontSize="9" fill="#f97316" fontWeight="600">{b.text}</text>
+              stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrRed)" />
+            <text x={b.x} y={14} textAnchor="middle" fontSize="9" fill="#4a9eed" fontWeight="600">{b.text}</text>
           </g>
         ))}
-        <text x={330} y={150} textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">
+        <text x={330} y={150} textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">
           ▲ Pontos de injecção de bias
         </text>
       </svg>
@@ -151,10 +151,10 @@ function BiasPipeline() {
 function ConfusionMatrixPair() {
   const renderMatrix = (ox, oy, label, tp, fp, fn, tn, fprHigh) => {
     const cells = [
-      { r: 0, c: 0, val: `TP=${tp}`, fill: 'rgba(249,115,22,0.18)' },
-      { r: 0, c: 1, val: `FP=${fp}`, fill: fprHigh ? 'rgba(194,65,12,0.50)' : 'rgba(194,65,12,0.18)' },
-      { r: 1, c: 0, val: `FN=${fn}`, fill: 'rgba(194,65,12,0.18)' },
-      { r: 1, c: 1, val: `TN=${tn}`, fill: 'rgba(249,115,22,0.18)' },
+      { r: 0, c: 0, val: `TP=${tp}`, fill: 'rgba(74,158,237,0.18)' },
+      { r: 0, c: 1, val: `FP=${fp}`, fill: fprHigh ? 'rgba(7,89,133,0.50)' : 'rgba(7,89,133,0.18)' },
+      { r: 1, c: 0, val: `FN=${fn}`, fill: 'rgba(7,89,133,0.18)' },
+      { r: 1, c: 1, val: `TN=${tn}`, fill: 'rgba(74,158,237,0.18)' },
     ];
     const w = 72, h = 44;
     return (
@@ -196,11 +196,11 @@ function ConfusionMatrixPair() {
 /* ─── SVG: Regulation Timeline ───────────────────────────────────────── */
 function RegTimeline() {
   const events = [
-    { year: '2018', label: 'GDPR\nem vigor', color: '#f97316' },
-    { year: '2021', label: 'Proposta\nEU AI Act', color: '#f97316' },
+    { year: '2018', label: 'GDPR\nem vigor', color: '#4a9eed' },
+    { year: '2021', label: 'Proposta\nEU AI Act', color: '#4a9eed' },
     { year: '2024', label: 'EU AI Act\naprovoado', color: color },
-    { year: '2025', label: 'Proibições\nativas', color: '#f97316' },
-    { year: '2026', label: 'Alto risco\nenforcement', color: '#f97316' },
+    { year: '2025', label: 'Proibições\nativas', color: '#4a9eed' },
+    { year: '2026', label: 'Alto risco\nenforcement', color: '#4a9eed' },
   ];
   const xs = [60, 170, 290, 410, 530];
 
@@ -225,10 +225,10 @@ function RegTimeline() {
 /* ─── SVG: EU AI Act Risk Pyramid ────────────────────────────────────── */
 function RiskPyramid() {
   const layers = [
-    { label: 'Risco Mínimo',   sub1: 'Filtros spam,',           sub2: 'recomendação de conteúdo',  fill: '#fb923c', y: 200, w: 500, h: 62 },
-    { label: 'Risco Limitado', sub1: 'Chatbots —',             sub2: 'obrigação de transparência', fill: '#f97316', y: 142, w: 380, h: 52 },
-    { label: 'Alto Risco',     sub1: 'Crédito, recrutamento,', sub2: 'saúde, justiça criminal',    fill: '#ea580c', y: 84,  w: 260, h: 52 },
-    { label: 'Proibido',       sub1: 'Pontuação social,',      sub2: 'vigilância biométrica',      fill: '#c2410c', y: 26,  w: 180, h: 52 },
+    { label: 'Risco Mínimo',   sub1: 'Filtros spam,',           sub2: 'recomendação de conteúdo',  fill: '#38bdf8', y: 200, w: 500, h: 62 },
+    { label: 'Risco Limitado', sub1: 'Chatbots —',             sub2: 'obrigação de transparência', fill: '#4a9eed', y: 142, w: 380, h: 52 },
+    { label: 'Alto Risco',     sub1: 'Crédito, recrutamento,', sub2: 'saúde, justiça criminal',    fill: '#0369a1', y: 84,  w: 260, h: 52 },
+    { label: 'Proibido',       sub1: 'Pontuação social,',      sub2: 'vigilância biométrica',      fill: '#075985', y: 26,  w: 180, h: 52 },
   ];
   const cx = 290;
 
@@ -305,12 +305,6 @@ export default function XAI6() {
 
       <div style={S.tag}>MÓDULO 06</div>
       <h1 style={S.h1}>Responsible AI — Fairness, Bias e Regulação</h1>
-      <p style={S.lead}>
-        A explicabilidade é um componente de um desafio mais amplo: o desenvolvimento de sistemas de IA que sejam
-        justos, fiáveis, privados e legalmente conformes. Este módulo cobre os seis pilares do Responsible AI,
-        as fontes e métricas de bias, as técnicas de mitigação, a regulação europeia e os desafios práticos
-        de manter sistemas XAI em produção.
-      </p>
 
       {/* ── SECTION 1 ── */}
       <div style={S.section}>
@@ -325,12 +319,12 @@ export default function XAI6() {
         <div style={S.highlight}>
           <strong>Os Seis Pilares do Responsible AI:</strong>
           <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.4rem', lineHeight: 2.1 }}>
-            <li><strong style={{ color: '#f97316' }}>Fairness:</strong> Sistemas de IA não devem discriminar com base em características protegidas (raça, género, idade, religião, deficiência). As decisões devem ser equitativas entre grupos demográficos.</li>
-            <li><strong style={{ color: '#f97316' }}>Reliability &amp; Safety:</strong> Os modelos devem funcionar de forma consistente e segura, mesmo em condições inesperadas ou adversariais, com testes robustos antes do deployment.</li>
-            <li><strong style={{ color: '#f97316' }}>Privacy &amp; Security:</strong> Os dados pessoais utilizados no treino e inferência devem ser protegidos. Os modelos não devem memorizar ou revelar informação sensível.</li>
-            <li><strong style={{ color: '#f97316' }}>Inclusiveness:</strong> Os sistemas de IA devem servir todas as pessoas, incluindo grupos marginalizados, e ser acessíveis independentemente de capacidades físicas ou cognitivas.</li>
-            <li><strong style={{ color: '#f97316' }}>Transparency:</strong> As decisões dos sistemas de IA devem ser explicáveis aos utilizadores afectados, aos reguladores e ao público — é aqui que o XAI tem papel central.</li>
-            <li><strong style={{ color: '#f97316' }}>Accountability:</strong> Deve existir responsabilização clara por decisões automatizadas. As organizações devem poder auditar, contestar e corrigir sistemas que causem dano.</li>
+            <li><strong style={{ color: '#4a9eed' }}>Fairness:</strong> Sistemas de IA não devem discriminar com base em características protegidas (raça, género, idade, religião, deficiência). As decisões devem ser equitativas entre grupos demográficos.</li>
+            <li><strong style={{ color: '#4a9eed' }}>Reliability &amp; Safety:</strong> Os modelos devem funcionar de forma consistente e segura, mesmo em condições inesperadas ou adversariais, com testes robustos antes do deployment.</li>
+            <li><strong style={{ color: '#4a9eed' }}>Privacy &amp; Security:</strong> Os dados pessoais utilizados no treino e inferência devem ser protegidos. Os modelos não devem memorizar ou revelar informação sensível.</li>
+            <li><strong style={{ color: '#4a9eed' }}>Inclusiveness:</strong> Os sistemas de IA devem servir todas as pessoas, incluindo grupos marginalizados, e ser acessíveis independentemente de capacidades físicas ou cognitivas.</li>
+            <li><strong style={{ color: '#4a9eed' }}>Transparency:</strong> As decisões dos sistemas de IA devem ser explicáveis aos utilizadores afectados, aos reguladores e ao público — é aqui que o XAI tem papel central.</li>
+            <li><strong style={{ color: '#4a9eed' }}>Accountability:</strong> Deve existir responsabilização clara por decisões automatizadas. As organizações devem poder auditar, contestar e corrigir sistemas que causem dano.</li>
           </ul>
         </div>
         <p style={S.p}>
@@ -458,8 +452,8 @@ export default function XAI6() {
         </p>
         <ConfusionMatrixPair />
 
-        <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' }}>
-          <strong style={{ color: '#f97316' }}>Teorema da Impossibilidade (Chouldechova, 2017):</strong>
+        <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' }}>
+          <strong style={{ color: '#4a9eed' }}>Teorema da Impossibilidade (Chouldechova, 2017):</strong>
           <p style={{ margin: '0.5rem 0 0', fontSize: '0.95rem', color: 'var(--text-primary)' }}>
             Se as prevalências (base rates) de Y=1 diferem entre grupos A=0 e A=1, então é matematicamente
             impossível que um classificador satisfaça simultaneamente demographic parity, equalized odds
@@ -610,22 +604,22 @@ export default function XAI6() {
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(249,115,22,0.20)', color: '#f97316' }}>Mínimo</span></td>
+              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(74,158,237,0.20)', color: '#4a9eed' }}>Mínimo</span></td>
               <td style={S.td}>Filtros de spam, sistemas de recomendação de conteúdo, IA em jogos de vídeo</td>
               <td style={S.td}>Sem obrigações específicas. Recomenda-se código de conduta voluntário.</td>
             </tr>
             <tr>
-              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(234,88,12,0.22)', color: '#ea580c' }}>Limitado</span></td>
+              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(3,105,161,0.22)', color: '#0369a1' }}>Limitado</span></td>
               <td style={S.td}>Chatbots, deepfakes, sistemas de geração de conteúdo sintético</td>
               <td style={S.td}>Transparência obrigatória: os utilizadores devem saber que interagem com IA. Deepfakes devem ser identificados.</td>
             </tr>
             <tr>
-              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(234,88,12,0.25)', color: '#ea580c' }}>Alto Risco</span></td>
+              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(3,105,161,0.25)', color: '#0369a1' }}>Alto Risco</span></td>
               <td style={S.td}>Crédito, recrutamento, educação (notas automatizadas), saúde, policiamento, administração de justiça, infraestruturas críticas</td>
               <td style={S.td}>Avaliação de conformidade, documentação técnica, gestão de risco, supervisão humana, logs de auditoria, registo na base de dados EU, transparência ao utilizador.</td>
             </tr>
             <tr>
-              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(194,65,12,0.30)', color: '#c2410c' }}>Proibido</span></td>
+              <td style={S.td}><span style={{ ...S.pill, background: 'rgba(7,89,133,0.30)', color: '#075985' }}>Proibido</span></td>
               <td style={S.td}>Sistemas de pontuação social (social scoring) por governos, vigilância biométrica em tempo real em espaços públicos (com excepções), manipulação subliminar, exploração de vulnerabilidades de grupos</td>
               <td style={S.td}>Proibição absoluta na UE. Multas de até 35 milhões de euros ou 7% do volume de negócios global.</td>
             </tr>
@@ -650,7 +644,7 @@ export default function XAI6() {
         </p>
         <ProductionLoop />
         <div style={S.highlight}>
-          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#f97316' }}>Explanation Drift</p>
+          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#4a9eed' }}>Explanation Drift</p>
           <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
             Quando o modelo é actualizado (retraining, fine-tuning), as explicações geradas pela versão anterior
             tornam-se inválidas — mas os utilizadores e auditores podem não ser notificados. É necessário
@@ -659,7 +653,7 @@ export default function XAI6() {
           </p>
         </div>
         <div style={S.highlight}>
-          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#f97316' }}>Explanation Gaming</p>
+          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#4a9eed' }}>Explanation Gaming</p>
           <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
             Utilizadores adversariais que conhecem a lógica das explicações podem manipular as suas inputs
             para obter explicações favoráveis sem alterar a sua situação real. Um candidato a crédito que sabe
@@ -669,7 +663,7 @@ export default function XAI6() {
           </p>
         </div>
         
-          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#f97316' }}>Custo Computacional</p>
+          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#4a9eed' }}>Custo Computacional</p>
           <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
             SHAP Kernel tem complexidade <InlineMath math={"O(2^p)"} /> no número de features e pode ser proibitivamente
             lento para modelos com muitas features em produção com alta throughput. Estratégias:
@@ -679,7 +673,7 @@ export default function XAI6() {
           </p>
         
         <div style={S.highlight}>
-          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#f97316' }}>Audience Gap</p>
+          <p style={{ margin: '0 0 0.75rem', fontWeight: 700, color: '#4a9eed' }}>Audience Gap</p>
           <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
             Uma explicação técnica correcta ("o valor SHAP da feature X foi +0.34 log-odds") é inútil para
             um utilizador final. As explicações devem ser calibradas ao audiência: engenheiros precisam de
@@ -700,48 +694,8 @@ export default function XAI6() {
       <hr style={S.divider} />
 
       {/* ── SECTION 8 ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <div style={{ ...S.highlight, borderRadius: 10 }}>
-          <p style={{ margin: '0 0 0.85rem', fontWeight: 700, fontSize: '1rem', color }}>Pontos-Chave</p>
-          <ul style={{ margin: 0, paddingLeft: '1.4rem', lineHeight: 2.1, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-            <li>
-              <strong>Responsible AI tem seis pilares</strong> — Fairness, Reliability, Privacy, Inclusiveness,
-              Transparency e Accountability — que devem ser tratados em conjunto, não isoladamente.
-            </li>
-            <li>
-              <strong>O bias entra no pipeline em três momentos distintos</strong>: nos dados (histórico),
-              no algoritmo (escolhas técnicas) e no deployment (feedback loops). Cada fase requer estratégias
-              específicas de detecção e mitigação.
-            </li>
-            <li>
-              <strong>O teorema da impossibilidade</strong> (Chouldechova, 2017) garante que demographic parity,
-              equalized odds e calibration não podem ser satisfeitas simultaneamente quando as base rates diferem.
-              Toda a escolha de métrica é uma escolha ética.
-            </li>
-            <li>
-              <strong>As técnicas de mitigação organizam-se em três fases</strong>: pré-processamento
-              (reweighting, resampling), in-processing (fairness constraints, adversarial debiasing) e
-              pós-processamento (threshold calibration), com trade-offs distintos em cada fase.
-            </li>
-            <li>
-              <strong>O GDPR (Art. 22.º) e o EU AI Act</strong> impõem obrigações legais concretas para sistemas
-              de alto risco: supervisão humana, direito a explicação, logs de auditoria e documentação técnica.
-              O não-cumprimento pode implicar multas de até 7% do volume de negócios global.
-            </li>
-            <li>
-              <strong>XAI em produção enfrenta quatro desafios</strong>: explanation drift, explanation gaming,
-              custo computacional e audience gap. Cada um requer arquitectura e monitorização específicas.
-            </li>
-          </ul>
-        </div>
-        <div style={S.note}>
-          <strong>Nota importante:</strong> Fairness e accuracy não são sempre opostos — modelos treinados com
-          dados biased têm frequentemente pior generalização e portanto menor accuracy real em populações
-          sub-representadas. Investir em dados mais representativos e em técnicas de fairness é frequentemente
-          um investimento em qualidade do modelo, não apenas em ética.
-        </div>
-      </div>
+      
+
     </div>
   );
 }

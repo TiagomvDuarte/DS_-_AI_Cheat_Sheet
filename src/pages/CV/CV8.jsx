@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -26,16 +26,16 @@ const TransferDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Transfer Learning — Do que se transfere</p>
     <svg viewBox="0 0 520 130" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr8" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arr8" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
       {/* Source model */}
       <text x="100" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5" fontWeight="700">Modelo pré-treinado (ImageNet)</text>
       {[
-        { x: 5, w: 45, label: 'Conv\nBlocks', color: '#f97316', frozen: false },
-        { x: 55, w: 45, label: 'Conv\nBlocks', color: '#f97316', frozen: false },
-        { x: 105, w: 45, label: 'Conv\nBlocks', color: '#f97316', frozen: false },
-        { x: 155, w: 35, label: 'GAP', color: '#f97316', frozen: false },
-        { x: 195, w: 35, label: 'FC\n1000', color: '#f97316', frozen: false },
+        { x: 5, w: 45, label: 'Conv\nBlocks', color: '#4a9eed', frozen: false },
+        { x: 55, w: 45, label: 'Conv\nBlocks', color: '#4a9eed', frozen: false },
+        { x: 105, w: 45, label: 'Conv\nBlocks', color: '#4a9eed', frozen: false },
+        { x: 155, w: 35, label: 'GAP', color: '#4a9eed', frozen: false },
+        { x: 195, w: 35, label: 'FC\n1000', color: '#4a9eed', frozen: false },
       ].map(({ x, w, label, color }, i) => (
         <g key={i}>
           <rect x={x} y={22} width={w-3} height={45} rx="5" fill={`${color}20`} stroke={color} strokeWidth="1.5"/>
@@ -47,17 +47,17 @@ const TransferDiagram = () => (
       <text x="205" y="94" fill="var(--text-secondary)" fontSize="7">1000 classes</text>
 
       {/* Arrow down */}
-      <line x1="260" y1="50" x2="290" y2="50" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr8)"/>
-      <text x="275" y="43" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">transferir</text>
+      <line x1="260" y1="50" x2="290" y2="50" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr8)"/>
+      <text x="275" y="43" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">transferir</text>
 
       {/* Target model */}
       <text x="420" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5" fontWeight="700">Modelo fine-tuned (nova tarefa)</text>
       {[
-        { x: 298, w: 45, label: 'Conv\nBlocks', color: '#f97316', frozen: true },
-        { x: 348, w: 45, label: 'Conv\nBlocks', color: '#f97316', frozen: true },
-        { x: 398, w: 45, label: 'Conv\nBlocks', color: '#f97316', frozen: false },
-        { x: 448, w: 35, label: 'GAP', color: '#f97316', frozen: false },
-        { x: 488, w: 28, label: 'FC\nN', color: '#f97316', frozen: false, head: true },
+        { x: 298, w: 45, label: 'Conv\nBlocks', color: '#4a9eed', frozen: true },
+        { x: 348, w: 45, label: 'Conv\nBlocks', color: '#4a9eed', frozen: true },
+        { x: 398, w: 45, label: 'Conv\nBlocks', color: '#4a9eed', frozen: false },
+        { x: 448, w: 35, label: 'GAP', color: '#4a9eed', frozen: false },
+        { x: 488, w: 28, label: 'FC\nN', color: '#4a9eed', frozen: false, head: true },
       ].map(({ x, w, label, color, frozen, head }, i) => (
         <g key={i}>
           <rect x={x} y={22} width={w-3} height={45} rx="5"
@@ -69,14 +69,14 @@ const TransferDiagram = () => (
           {frozen && <text x={x+(w-3)/2} y={73} textAnchor="middle" fill="var(--text-secondary)" fontSize="6"> frozen</text>}
         </g>
       ))}
-      <text x="502" y="94" fill="#f97316" fontSize="7">N classes</text>
+      <text x="502" y="94" fill="#4a9eed" fontSize="7">N classes</text>
 
       {/* Legend */}
-      <rect x="298" y="105" width="10" height="10" rx="2" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" strokeDasharray="4,2"/>
+      <rect x="298" y="105" width="10" height="10" rx="2" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,2"/>
       <text x="312" y="113" fill="var(--text-secondary)" fontSize="7">Frozen (não actualiza)</text>
-      <rect x="390" y="105" width="10" height="10" rx="2" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2"/>
+      <rect x="390" y="105" width="10" height="10" rx="2" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2"/>
       <text x="404" y="113" fill="var(--text-secondary)" fontSize="7">Fine-tuned</text>
-      <rect x="460" y="105" width="10" height="10" rx="2" fill="#f97316" stroke="#f97316" strokeWidth="2"/>
+      <rect x="460" y="105" width="10" height="10" rx="2" fill="#4a9eed" stroke="#4a9eed" strokeWidth="2"/>
       <text x="474" y="113" fill="var(--text-secondary)" fontSize="7">Novo head</text>
     </svg>
   </div>
@@ -88,70 +88,70 @@ const SSLDiagram = () => (
     <svg viewBox="0 0 560 192" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrssl" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)"/></marker>
-        <marker id="arrsslO" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrsslO" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Titles */}
-      <text x="135" y="12" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Contrastive (SimCLR / MoCo)</text>
-      <text x="422" y="12" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Self-Distillation (DINO)</text>
+      <text x="135" y="12" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Contrastive (SimCLR / MoCo)</text>
+      <text x="422" y="12" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Self-Distillation (DINO)</text>
 
       {/* All diagram content shifted down by 12px */}
       <g transform="translate(0,12)">
-        <rect x="10" y="24" width="40" height="28" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2"/>
-        <text x="30" y="42" textAnchor="middle" fill="#f97316" fontSize="7.5">imagem</text>
+        <rect x="10" y="24" width="40" height="28" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2"/>
+        <text x="30" y="42" textAnchor="middle" fill="#4a9eed" fontSize="7.5">imagem</text>
 
         <line x1="50" y1="32" x2="76" y2="42" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
         <line x1="50" y1="40" x2="76" y2="62" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
         <text x="55" y="28" fill="var(--text-secondary)" fontSize="6.5">aug A</text>
         <text x="55" y="76" fill="var(--text-secondary)" fontSize="6.5">aug B</text>
 
-        <rect x="78" y="30" width="50" height="22" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
-        <text x="103" y="44" textAnchor="middle" fill="#f97316" fontSize="7">encoder f</text>
-        <rect x="78" y="58" width="50" height="22" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
-        <text x="103" y="72" textAnchor="middle" fill="#f97316" fontSize="7">encoder f</text>
+        <rect x="78" y="30" width="50" height="22" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
+        <text x="103" y="44" textAnchor="middle" fill="#4a9eed" fontSize="7">encoder f</text>
+        <rect x="78" y="58" width="50" height="22" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
+        <text x="103" y="72" textAnchor="middle" fill="#4a9eed" fontSize="7">encoder f</text>
 
         <line x1="128" y1="41" x2="148" y2="41" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
         <line x1="128" y1="69" x2="148" y2="69" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
 
-        <circle cx="158" cy="41" r="9" fill="#f97316" opacity="0.7"/>
+        <circle cx="158" cy="41" r="9" fill="#4a9eed" opacity="0.7"/>
         <text x="158" y="44" textAnchor="middle" fill="white" fontSize="6.5" fontWeight="700">z₁</text>
-        <circle cx="158" cy="69" r="9" fill="#f97316" opacity="0.7"/>
+        <circle cx="158" cy="69" r="9" fill="#4a9eed" opacity="0.7"/>
         <text x="158" y="72" textAnchor="middle" fill="white" fontSize="6.5" fontWeight="700">z₂</text>
 
-        <line x1="158" y1="50" x2="158" y2="60" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrsslO)"/>
-        <text x="176" y="57" fill="#f97316" fontSize="7" fontWeight="700">aproximar</text>
+        <line x1="158" y1="50" x2="158" y2="60" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrsslO)"/>
+        <text x="176" y="57" fill="#4a9eed" fontSize="7" fontWeight="700">aproximar</text>
 
         <text x="110" y="98" fill="var(--text-secondary)" fontSize="7" textAnchor="middle">duas augmentations da mesma</text>
         <text x="110" y="109" fill="var(--text-secondary)" fontSize="7" textAnchor="middle">imagem → embeddings próximos</text>
 
-        <text x="110" y="128" fill="#f97316" fontSize="7" fontWeight="700" textAnchor="middle">afastar de negativos (outras imagens):</text>
+        <text x="110" y="128" fill="#4a9eed" fontSize="7" fontWeight="700" textAnchor="middle">afastar de negativos (outras imagens):</text>
         {[90, 108, 126].map((x, i) => (
-          <circle key={i} cx={x} cy="143" r="7" fill="#f97316" opacity="0.5"/>
+          <circle key={i} cx={x} cy="143" r="7" fill="#4a9eed" opacity="0.5"/>
         ))}
 
         <line x1="285" y1="-7" x2="285" y2="170" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3"/>
 
-        <rect x="300" y="32" width="40" height="28" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2"/>
-        <text x="320" y="50" textAnchor="middle" fill="#f97316" fontSize="7.5">imagem</text>
+        <rect x="300" y="32" width="40" height="28" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2"/>
+        <text x="320" y="50" textAnchor="middle" fill="#4a9eed" fontSize="7.5">imagem</text>
 
         <line x1="340" y1="38" x2="366" y2="30" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
         <line x1="340" y1="50" x2="366" y2="72" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
         <text x="324" y="24" fill="var(--text-secondary)" fontSize="6.5">crop global</text>
         <text x="324" y="76" fill="var(--text-secondary)" fontSize="6.5">crop local</text>
 
-        <rect x="368" y="20" width="62" height="22" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2"/>
-        <text x="399" y="34" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">teacher (EMA)</text>
-        <rect x="368" y="62" width="62" height="22" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1"/>
-        <text x="399" y="76" textAnchor="middle" fill="#f97316" fontSize="7">student</text>
+        <rect x="368" y="20" width="62" height="22" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2"/>
+        <text x="399" y="34" textAnchor="middle" fill="#4a9eed" fontSize="7" fontWeight="700">teacher (EMA)</text>
+        <rect x="368" y="62" width="62" height="22" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1"/>
+        <text x="399" y="76" textAnchor="middle" fill="#4a9eed" fontSize="7">student</text>
 
         <line x1="430" y1="31" x2="452" y2="31" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
         <line x1="430" y1="73" x2="452" y2="73" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrssl)"/>
-        <text x="457" y="35" fill="#f97316" fontSize="7" fontWeight="700">p_t</text>
-        <text x="457" y="77" fill="#f97316" fontSize="7" fontWeight="700">p_s</text>
+        <text x="457" y="35" fill="#4a9eed" fontSize="7" fontWeight="700">p_t</text>
+        <text x="457" y="77" fill="#4a9eed" fontSize="7" fontWeight="700">p_s</text>
 
-        <line x1="465" y1="39" x2="465" y2="65" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrsslO)"/>
-        <text x="482" y="52" fill="#f97316" fontSize="7" fontWeight="700">cross-</text>
-        <text x="482" y="62" fill="#f97316" fontSize="7" fontWeight="700">entropy</text>
+        <line x1="465" y1="39" x2="465" y2="65" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrsslO)"/>
+        <text x="482" y="52" fill="#4a9eed" fontSize="7" fontWeight="700">cross-</text>
+        <text x="482" y="62" fill="#4a9eed" fontSize="7" fontWeight="700">entropy</text>
 
         <text x="399" y="106" fill="var(--text-secondary)" fontSize="7" textAnchor="middle">student aprende a prever</text>
         <text x="399" y="117" fill="var(--text-secondary)" fontSize="7" textAnchor="middle">a distribuição do teacher</text>
@@ -171,7 +171,7 @@ const PEFTDiagram = () => {
     <div style={{ ...S.diagram, textAlign: 'center' }}>
       <p style={{ fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>PEFT — Backbone congelado + módulos pequenos treináveis</p>
       <div style={{ display: 'flex', gap: '0.4rem', justifyContent: 'center', marginBottom: '1rem', flexWrap: 'wrap' }}>
-        {[['lora', 'LoRA', '#f97316'], ['adapter', 'Adapters', '#f97316'], ['prompt', 'Visual Prompt Tuning', '#f97316']].map(([k, l, c]) => (
+        {[['lora', 'LoRA', '#4a9eed'], ['adapter', 'Adapters', '#4a9eed'], ['prompt', 'Visual Prompt Tuning', '#4a9eed']].map(([k, l, c]) => (
           <button key={k} onClick={() => setMode(k)} style={{ padding: '0.3rem 0.7rem', borderRadius: 20, cursor: 'pointer', fontWeight: 600, fontSize: '0.75rem', background: mode === k ? c : 'var(--bg-primary)', color: mode === k ? '#fff' : 'var(--text-primary)', border: `1.5px solid ${mode === k ? c : 'var(--card-border)'}` }}>{l}</button>
         ))}
       </div>
@@ -189,8 +189,8 @@ const PEFTDiagram = () => {
         ))}
         <line x1="20" y1="44" x2="55" y2="44" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrpeft)"/>
         <text x="20" y="38" fill="var(--text-secondary)" fontSize="7">patches</text>
-        <line x1="445" y1="44" x2="477" y2="44" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrpeft)"/>
-        <rect x="478" y="24" width="36" height="40" rx="6" fill="#f97316" stroke="#f97316" strokeWidth="1.5"/>
+        <line x1="445" y1="44" x2="477" y2="44" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrpeft)"/>
+        <rect x="478" y="24" width="36" height="40" rx="6" fill="#4a9eed" stroke="#4a9eed" strokeWidth="1.5"/>
         <text x="496" y="41" textAnchor="middle" fill="white" fontSize="7" fontWeight="700">novo</text>
         <text x="496" y="52" textAnchor="middle" fill="white" fontSize="7" fontWeight="700">head</text>
 
@@ -198,10 +198,10 @@ const PEFTDiagram = () => {
           <>
             {[60, 160, 260, 360].map((x, i) => (
               <g key={i}>
-                <rect x={x+12} y="90" width="56" height="26" rx="5" fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="1.5"/>
-                <text x={x+40} y="106" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">LoRA A·B</text>
-                <line x1={x+40} y1="64" x2={x+40} y2="70" stroke="#f97316" strokeWidth="1.2" strokeDasharray="2,2"/>
-                <line x1={x+40} y1="90" x2={x+40} y2="64" stroke="#f97316" strokeWidth="1" strokeDasharray="2,2" markerEnd="url(#arrpeft)"/>
+                <rect x={x+12} y="90" width="56" height="26" rx="5" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1.5"/>
+                <text x={x+40} y="106" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">LoRA A·B</text>
+                <line x1={x+40} y1="64" x2={x+40} y2="70" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="2,2"/>
+                <line x1={x+40} y1="90" x2={x+40} y2="64" stroke="#4a9eed" strokeWidth="1" strokeDasharray="2,2" markerEnd="url(#arrpeft)"/>
               </g>
             ))}
             <text x="260" y="130" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">LoRA decompõe ΔW = B·A (rank r baixo) e soma-se aos pesos Q/K/V/projecções congelados</text>
@@ -212,10 +212,10 @@ const PEFTDiagram = () => {
           <>
             {[60, 160, 260, 360].map((x, i) => (
               <g key={i}>
-                <rect x={x+18} y="76" width="44" height="26" rx="13" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-                <text x={x+40} y="93" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">Adapter</text>
-                <line x1={x+40} y1="64" x2={x+40} y2="76" stroke="#f97316" strokeWidth="1.2"/>
-                <line x1={x+40} y1="102" x2={x+40} y2="115" stroke="#f97316" strokeWidth="1.2" markerEnd="url(#arrpeft)"/>
+                <rect x={x+18} y="76" width="44" height="26" rx="13" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+                <text x={x+40} y="93" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">Adapter</text>
+                <line x1={x+40} y1="64" x2={x+40} y2="76" stroke="#4a9eed" strokeWidth="1.2"/>
+                <line x1={x+40} y1="102" x2={x+40} y2="115" stroke="#4a9eed" strokeWidth="1.2" markerEnd="url(#arrpeft)"/>
               </g>
             ))}
             <text x="260" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Pequenos MLPs "bottleneck" (down-project → não-linearidade → up-project)</text>
@@ -224,9 +224,9 @@ const PEFTDiagram = () => {
         )}
         {mode === 'prompt' && (
           <>
-            <rect x="20" y="76" width="120" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-            <text x="80" y="93" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">[P₁ P₂ ... Pₖ] tokens aprendíveis</text>
-            <line x1="80" y1="76" x2="80" y2="64" stroke="#f97316" strokeWidth="1.2" markerEnd="url(#arrpeft)"/>
+            <rect x="20" y="76" width="120" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+            <text x="80" y="93" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">[P₁ P₂ ... Pₖ] tokens aprendíveis</text>
+            <line x1="80" y1="76" x2="80" y2="64" stroke="#4a9eed" strokeWidth="1.2" markerEnd="url(#arrpeft)"/>
             <text x="260" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Adiciona-se um pequeno conjunto de "prompt tokens" treináveis à sequência de patches de entrada</text>
             <text x="260" y="150" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">(ou a cada camada, em VPT-Deep). O backbone permanece 100% congelado.</text>
           </>
@@ -246,34 +246,34 @@ const ProtoNetDiagram = () => (
 
       {/* class A support points */}
       {[[70,70],[95,55],[60,100]].map(([x,y],i) => (
-        <circle key={'a'+i} cx={x} cy={y} r="5" fill="#f97316" opacity="0.7"/>
+        <circle key={'a'+i} cx={x} cy={y} r="5" fill="#4a9eed" opacity="0.7"/>
       ))}
-      <circle cx="75" cy="75" r="11" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
-      <text x="75" y="78" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">c_A</text>
-      <text x="75" y="118" textAnchor="middle" fill="#f97316" fontSize="7.5">protótipo A = média dos 3 support</text>
+      <circle cx="75" cy="75" r="11" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
+      <text x="75" y="78" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">c_A</text>
+      <text x="75" y="118" textAnchor="middle" fill="#4a9eed" fontSize="7.5">protótipo A = média dos 3 support</text>
 
       {/* class B support points */}
       {[[300,140],[330,160],[290,170]].map(([x,y],i) => (
-        <circle key={'b'+i} cx={x} cy={y} r="5" fill="#f97316" opacity="0.7"/>
+        <circle key={'b'+i} cx={x} cy={y} r="5" fill="#4a9eed" opacity="0.7"/>
       ))}
-      <circle cx="307" cy="157" r="11" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
-      <text x="307" y="160" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">c_B</text>
-      <text x="307" y="183" textAnchor="middle" fill="#f97316" fontSize="7.5">protótipo B = média dos 3 support</text>
+      <circle cx="307" cy="157" r="11" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
+      <text x="307" y="160" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">c_B</text>
+      <text x="307" y="183" textAnchor="middle" fill="#4a9eed" fontSize="7.5">protótipo B = média dos 3 support</text>
 
       {/* class C support points */}
       {[[330,40],[360,55],[345,75]].map(([x,y],i) => (
-        <circle key={'c'+i} cx={x} cy={y} r="5" fill="#f97316" opacity="0.7"/>
+        <circle key={'c'+i} cx={x} cy={y} r="5" fill="#4a9eed" opacity="0.7"/>
       ))}
-      <circle cx="345" cy="57" r="11" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="3,2"/>
-      <text x="345" y="60" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">c_C</text>
+      <circle cx="345" cy="57" r="11" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2"/>
+      <text x="345" y="60" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">c_C</text>
 
       {/* query point */}
-      <rect x="160" y="105" width="11" height="11" fill="#f97316" opacity="0.85" transform="rotate(45 165 110)"/>
-      <text x="165" y="135" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">query (não rotulado)</text>
-      <line x1="166" y1="111" x2="80" y2="78" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2"/>
-      <line x1="166" y1="111" x2="302" y2="153" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" opacity="0.5"/>
-      <line x1="166" y1="111" x2="345" y2="60" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" opacity="0.5"/>
-      <text x="120" y="92" fill="#f97316" fontSize="8" fontWeight="700">d mínima → classifica A</text>
+      <rect x="160" y="105" width="11" height="11" fill="#4a9eed" opacity="0.85" transform="rotate(45 165 110)"/>
+      <text x="165" y="135" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">query (não rotulado)</text>
+      <line x1="166" y1="111" x2="80" y2="78" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2"/>
+      <line x1="166" y1="111" x2="302" y2="153" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" opacity="0.5"/>
+      <line x1="166" y1="111" x2="345" y2="60" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" opacity="0.5"/>
+      <text x="120" y="92" fill="#4a9eed" fontSize="8" fontWeight="700">d mínima → classifica A</text>
     </svg>
   </div>
 );
@@ -282,7 +282,7 @@ export default function CV8() {
   const [strategy, setStrategy] = useState(0);
   const strategies = [
     {
-      name: 'Feature Extraction', color: '#f97316',
+      name: 'Feature Extraction', color: '#4a9eed',
       when: 'Dataset pequeno (<1000 imagens), domínio semelhante ao de pré-treino (fotografias naturais).',
       what: 'Congelar todo o backbone. Apenas treinar uma nova camada FC no topo. O backbone actua como extractor de features fixo.',
       lr: 'Apenas para o novo head: 1e-3 a 1e-2.',
@@ -290,7 +290,7 @@ export default function CV8() {
       note: 'Pode-se usar os features do backbone directamente com SVM ou regressão logística sem qualquer fine-tuning.',
     },
     {
-      name: 'Fine-tuning Parcial', color: '#f97316',
+      name: 'Fine-tuning Parcial', color: '#4a9eed',
       when: 'Dataset médio (1K-50K imagens), domínio semelhante ou ligeiramente diferente.',
       what: 'Congelar as primeiras camadas (features genéricas: edges, texturas). Fine-tune das últimas camadas conv + novo head. As camadas iniciais já aprenderam features universais que provavelmente são úteis.',
       lr: 'Backbone descongelado: 1e-5 a 1e-4. Novo head: 1e-3.',
@@ -298,7 +298,7 @@ export default function CV8() {
       note: 'Regra geral: as primeiras camadas aprendem features genéricas (universais), as últimas aprendem features específicas do domínio de pré-treino.',
     },
     {
-      name: 'Fine-tuning Total', color: '#f97316',
+      name: 'Fine-tuning Total', color: '#4a9eed',
       when: 'Dataset grande (50K+ imagens) ou domínio muito diferente do de pré-treino (ex: imagens médicas vs. fotografias).',
       what: 'Descongelar todo o backbone e treinar end-to-end com LR muito baixa. O pré-treino apenas fornece uma boa inicialização de pesos.',
       lr: 'Backbone: 1e-5. Head: 1e-4. Ou usar LR discriminativa (LR menor nas primeiras camadas).',
@@ -306,7 +306,7 @@ export default function CV8() {
       note: 'Learning rate scheduling com warmup é essencial. Iniciar com feature extraction por algumas épocas antes de descongelar tudo é uma boa prática.',
     },
     {
-      name: 'Domain Adaptation', color: '#f97316',
+      name: 'Domain Adaptation', color: '#4a9eed',
       when: 'Distribuição dos dados de destino muito diferente da fonte (ex: estilo artístico, radiografias, satélite).',
       what: 'Técnicas especializadas: adversarial domain adaptation (treinar para que features sejam indistinguíveis entre domínios), CORAL (alinhar estatísticas de segunda ordem), ou pré-treino domain-specific antes do fine-tuning.',
       lr: 'Depende da abordagem.',
@@ -319,19 +319,19 @@ export default function CV8() {
   const [peftStrat, setPeftStrat] = useState(0);
   const peftStrategies = [
     {
-      name: 'LoRA (Low-Rank Adaptation)', color: '#f97316',
+      name: 'LoRA (Low-Rank Adaptation)', color: '#4a9eed',
       idea: 'Em vez de actualizar a matriz de pesos W de cada projecção (Q, K, V, ou MLP), congela-se W e aprende-se uma actualização de baixa-rank ΔW = B·A, onde B e A são matrizes finas (rank r, tipicamente 4-16). O output passa a ser W·x + B·A·x.',
       params: 'Tipicamente 0.1% a 1% dos parâmetros totais do modelo.',
       pros: 'Treino rápido, pouca memória (não há gradientes para W), múltiplos "LoRAs" podem ser trocados ao mesmo backbone para diferentes tarefas, e podem ser fundidos com W no final sem custo extra na inferência.',
     },
     {
-      name: 'Adapters', color: '#f97316',
+      name: 'Adapters', color: '#4a9eed',
       idea: 'Inserem-se pequenos módulos MLP "bottleneck" (down-projection → não-linearidade → up-projection) em série dentro de cada bloco transformer. Apenas estes adapters são treinados; o resto fica congelado.',
       params: 'Tipicamente 1-5% dos parâmetros totais.',
       pros: 'Modular — diferentes adapters por tarefa. Ligeira sobrecarga na latência de inferência (camadas extra em série, ao contrário de LoRA que pode ser fundido).',
     },
     {
-      name: 'Visual Prompt Tuning (VPT)', color: '#f97316',
+      name: 'Visual Prompt Tuning (VPT)', color: '#4a9eed',
       idea: 'Adicionam-se alguns "prompt tokens" aprendíveis à sequência de patch embeddings de entrada do ViT (VPT-Shallow: só na primeira camada; VPT-Deep: em todas as camadas). O backbone fica 100% congelado — só os prompts e o head são treinados.',
       params: 'Tipicamente <1% dos parâmetros totais (apenas alguns milhares de valores).',
       pros: 'Extremamente leve, sem alterar a arquitectura interna. Funciona surpreendentemente bem em ViTs grandes pré-treinados em datasets massivos.',
@@ -345,7 +345,6 @@ export default function CV8() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 8</div>
         <h1 style={S.h1}>Transfer Learning & Fine-tuning</h1>
-        <p style={S.lead}>Treinar uma CNN ou ViT do zero em datasets pequenos quase nunca funciona bem — há poucos dados para aprender milhões (ou biliões) de parâmetros. Transfer learning reutiliza representações aprendidas em datasets grandes (ImageNet, LAION, vídeos não rotulados) para novas tarefas, reduzindo drasticamente o número de exemplos e o custo computacional necessários.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O que se Transfere e Porquê Funciona</h2>
@@ -368,7 +367,7 @@ export default function CV8() {
                   ['Adaptar um ViT-Large/Huge a uma nova tarefa', 'Qualquer', 'Qualquer', 'PEFT (LoRA, adapters, visual prompts) — secção 4'],
                   ['Reconhecimento de espécies raras (poucos exemplos por classe)', 'Muito pequeno (&lt;10/classe)', 'Variável', 'Few-shot / zero-shot — secção 5'],
                 ].map(([c, ds, sim, rec]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={S.td}>{ds}</td><td style={S.td}>{sim}</td><td style={{ ...S.td, color: '#f97316', fontWeight: 600, fontSize: '0.85rem' }}>{rec}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600 }}>{c}</td><td style={S.td}>{ds}</td><td style={S.td}>{sim}</td><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600, fontSize: '0.85rem' }}>{rec}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -389,10 +388,10 @@ export default function CV8() {
             </div>
             <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: `1.5px solid ${s.color}30` }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.85rem' }}>
-                <div><strong style={{ color: '#f97316' }}>Quando usar:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }} dangerouslySetInnerHTML={{__html: s.when}}/></div>
+                <div><strong style={{ color: '#4a9eed' }}>Quando usar:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }} dangerouslySetInnerHTML={{__html: s.when}}/></div>
                 <div><strong style={{ color: s.color }}>O que fazer:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }}>{s.what}</p></div>
-                <div><strong style={{ color: '#f97316' }}>Learning rate:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }}>{s.lr}</p></div>
-                <div><strong style={{ color: '#f97316' }}>Risco principal:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }}>{s.risk}</p></div>
+                <div><strong style={{ color: '#4a9eed' }}>Learning rate:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }}>{s.lr}</p></div>
+                <div><strong style={{ color: '#4a9eed' }}>Risco principal:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.7, color: 'var(--text-primary)' }}>{s.risk}</p></div>
               </div>
               <div style={{ marginTop: '0.75rem', background: 'var(--bg-secondary)', borderRadius: 6, padding: '0.75rem', fontSize: '0.83rem', color: 'var(--text-secondary)' }}>
                  {s.note}
@@ -437,7 +436,7 @@ export default function CV8() {
                   ['DINOv2', 'Self-distillation, escala industrial', 'Não', 'Features densos state-of-the-art para transfer'],
                   ['MAE (Masked Autoencoder)', 'Reconstrução de patches mascarados', 'Não', 'Pré-treino muito eficiente em compute'],
                 ].map(([m, par, neg, str]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{m}</td><td style={S.td}>{par}</td><td style={S.td}>{neg}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{str}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{m}</td><td style={S.td}>{par}</td><td style={S.td}>{neg}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{str}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -463,7 +462,7 @@ export default function CV8() {
             </div>
             <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: `1.5px solid ${p.color}30` }}>
               <p style={{ marginBottom: '0.6rem', lineHeight: 1.7, color: 'var(--text-primary)', fontSize: '0.9rem' }}><strong style={{ color: p.color }}>Ideia:</strong> {p.idea}</p>
-              <p style={{ marginBottom: '0.6rem', lineHeight: 1.7, color: 'var(--text-primary)', fontSize: '0.9rem' }}><strong style={{ color: '#f97316' }}>Parâmetros treináveis:</strong> {p.params}</p>
+              <p style={{ marginBottom: '0.6rem', lineHeight: 1.7, color: 'var(--text-primary)', fontSize: '0.9rem' }}><strong style={{ color: '#4a9eed' }}>Parâmetros treináveis:</strong> {p.params}</p>
               <div style={{ background: 'var(--bg-secondary)', borderRadius: 6, padding: '0.75rem', fontSize: '0.83rem', color: 'var(--text-secondary)' }}> {p.pros}</div>
             </div>
           </div>
@@ -482,7 +481,7 @@ export default function CV8() {
                   ['Visual Prompt Tuning', '&lt;1%', 'Mínimo (mais alguns tokens na sequência)', 'Sim — trocar prompts é trivial'],
                   ['Linear probing (só head)', '&lt;0.1%', 'Nenhum', 'Sim, mas menor capacidade de adaptação'],
                 ].map(([t, pct, ov, multi]) => (
-                  <tr key={t}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{t}</td><td style={S.td}>{pct}</td><td style={S.td}>{ov}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{multi}</td></tr>
+                  <tr key={t}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{t}</td><td style={S.td}>{pct}</td><td style={S.td}>{ov}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{multi}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -505,7 +504,7 @@ export default function CV8() {
           <p style={S.p}>Esta abordagem é "N-way K-shot": N classes, K exemplos por classe no conjunto de suporte. Não há gradientes calculados na hora de classificar — toda a "aprendizagem" reduz-se a calcular médias e distâncias. Frequentemente, o backbone foi treinado especificamente com um objectivo <em>meta-learning</em> (treinado em muitas tarefas de N-way K-shot simuladas), o que o torna particularmente bom a produzir embeddings onde esta heurística de distância funciona bem.</p>
 
           <h3 style={S.h3}>CLIP — Zero-Shot via Similaridade Texto-Imagem</h3>
-          <p style={S.p}>O CLIP (Contrastive Language-Image Pre-training) foi treinado em ~400M pares (imagem, legenda) da web, aprendendo um espaço de embeddings partilhado onde imagens e textos semanticamente relacionados ficam próximos. Para classificação zero-shot: constrói-se um prompt de texto para cada classe candidata (e.g., "a photo of a {`{classe}`}"), calcula-se o embedding de texto de cada um, calcula-se o embedding da imagem, e escolhe-se a classe cujo embedding de texto tem maior similaridade cosseno com o embedding da imagem — sem qualquer treino adicional.</p>
+          <p style={S.p}>O CLIP (Contrastive Language-Image Pre-training) foi treinado em ~400M pares (imagem, legenda) da web, aprendendo um espaço de embeddings partilhado onde imagens e textos semanticamente relacionados ficam próximos (a arquitectura dual-encoder e a loss contrastiva são vistas em detalhe no curso de Deep Learning, módulo "Multimodal Learning"). Para classificação zero-shot: constrói-se um prompt de texto para cada classe candidata (e.g., "a photo of a {`{classe}`}"), calcula-se o embedding de texto de cada um, calcula-se o embedding da imagem, e escolhe-se a classe cujo embedding de texto tem maior similaridade cosseno com o embedding da imagem — sem qualquer treino adicional.</p>
 
           <div style={{ overflowX: 'auto' }}>
             <table style={S.table}>
@@ -517,7 +516,7 @@ export default function CV8() {
                   ['CLIP linear probe', 'Algumas centenas a milhares de exemplos', 'Sim, mas só um classificador linear sobre features CLIP congelados', 'Quando há algum dado e se quer mais precisão que zero-shot'],
                   ['Fine-tuning / PEFT', 'Centenas a milhares+ de exemplos', 'Sim', 'Quando há dados suficientes e a tarefa é específica/recorrente'],
                 ].map(([ab, dados, treino, quando]) => (
-                  <tr key={ab}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{ab}</td><td style={S.td}>{dados}</td><td style={S.td}>{treino}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{quando}</td></tr>
+                  <tr key={ab}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{ab}</td><td style={S.td}>{dados}</td><td style={S.td}>{treino}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{quando}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -546,7 +545,7 @@ export default function CV8() {
                   ['LR muito baixa + poucas épocas', 'Limitar a magnitude da actualização de pesos durante o fine-tuning, mantendo o modelo "perto" da inicialização pré-treinada.', 'Compromisso — pode limitar também o desempenho na nova tarefa.'],
                   ['Distillation a partir do modelo original', 'Durante o fine-tuning, adicionar uma loss extra que força as previsões do novo modelo a permanecerem próximas das do modelo original em dados gerais.', 'Custo computacional extra (precisa correr o modelo original em paralelo).'],
                 ].map(([nm, how, lim]) => (
-                  <tr key={nm}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{nm}</td><td style={{ ...S.td, fontSize: '0.85rem' }}>{how}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{lim}</td></tr>
+                  <tr key={nm}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{nm}</td><td style={{ ...S.td, fontSize: '0.85rem' }}>{how}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{lim}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -572,7 +571,7 @@ export default function CV8() {
                   ['DINOv2', 'LVD-142M (sem labels)', 'Features densos excelentes para tasks densas (segmentação, profundidade)', 'Segmentação, profundidade, matching'],
                   ['SAM (Segment Anything)', 'SA-1B (1B máscaras)', 'Segmentação promptable zero-shot, generaliza a objectos não vistos', 'Segmentação interactiva, anotação automática'],
                 ].map(([m, p, s, b]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{m}</td><td style={S.td}>{p}</td><td style={S.td}>{s}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{b}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{m}</td><td style={S.td}>{p}</td><td style={S.td}>{s}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{b}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -600,7 +599,7 @@ export default function CV8() {
                   ['8', 'Decidir critério de paragem', 'Early stopping com base na loss/métrica de validação. Para fine-tuning total, parar assim que a validação parar de melhorar — treinar mais tempo só aumenta o risco de overfitting/forgetting.'],
                   ['9', 'Considerar continual learning', 'Se o modelo vai receber novas classes/dados ao longo do tempo, planear desde já uma estratégia (PEFT modular por versão, replay buffer, ou EWC) em vez de re-treinar do zero a cada actualização.'],
                 ].map(([n, dec, how]) => (
-                  <tr key={n}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{n}</td><td style={{ ...S.td, fontWeight: 600 }}>{dec}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{how}</td></tr>
+                  <tr key={n}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{n}</td><td style={{ ...S.td, fontWeight: 600 }}>{dec}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{how}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -611,23 +610,7 @@ export default function CV8() {
 
         
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Porquê funciona: features de baixo nível (edges, texturas) são universais. Só as features de alto nível são específicas do domínio.</li>
-            <li>Feature extraction: backbone frozen, só treinar novo head. Para datasets pequenos (&lt;1K imagens).</li>
-            <li>Fine-tuning parcial: descongelar últimas camadas conv + head. LR discriminativa (menor nas primeiras camadas), warmup, gradual unfreezing.</li>
-            <li>Fine-tuning total: backbone + head com LR muito baixa (1e-5). Para datasets grandes ou domínios muito diferentes.</li>
-            <li>Pré-treino auto-supervisionado (SimCLR/MoCo via contrastive, DINO/DINOv2 via self-distillation) produz backbones que muitas vezes transferem melhor que supervisionados para tarefas densas.</li>
-            <li>PEFT (LoRA, adapters, visual prompts) adapta modelos enormes treinando &lt;1% dos parâmetros — mais barato, multi-tarefa, e protege contra catastrophic forgetting.</li>
-            <li>Few-shot (prototypical networks) e zero-shot (CLIP) evitam fine-tuning quando há pouquíssimos ou nenhuns dados rotulados.</li>
-            <li>Catastrophic forgetting: fine-tuning agressivo apaga conhecimento prévio. Mitigar com replay, EWC, arquitecturas modulares/PEFT, ou distillation.</li>
-            <li>Checklist prático: começar simples (zero-shot/linear probe), escalar gradualmente conforme dados disponíveis e necessidade de desempenho.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

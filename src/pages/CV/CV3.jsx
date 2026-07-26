@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto', fontFamily: 'monospace', fontSize: '0.95rem', color: 'var(--text-primary)' },
 };
@@ -28,7 +28,7 @@ const ConvDiagram = () => (
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>Input 5×5 × 1 canal, Kernel 3×3, stride=1, padding=0 → Output 3×3</p>
     <svg viewBox="0 0 520 140" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arr3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
       {/* Input 5x5 */}
       <text x="65" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Input (5×5)</text>
@@ -36,27 +36,27 @@ const ConvDiagram = () => (
         const highlighted = r < 3 && c < 3;
         return (
           <rect key={`${r}-${c}`} x={c*24+5} y={r*24+18} width={22} height={22} rx="2"
-            fill={highlighted ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)'}
-            stroke={highlighted ? '#f97316' : 'var(--card-border)'} strokeWidth={highlighted ? 2 : 1}/>
+            fill={highlighted ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'}
+            stroke={highlighted ? '#4a9eed' : 'var(--card-border)'} strokeWidth={highlighted ? 2 : 1}/>
         );
       }))}
 
       {/* Arrow */}
-      <line x1={137} y1={73} x2={173} y2={73} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3)"/>
+      <line x1={137} y1={73} x2={173} y2={73} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3)"/>
 
       {/* Kernel 3x3 */}
       <text x="224" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Kernel (3×3)</text>
       {[[-1,0,1],[-2,0,2],[-1,0,1]].map((row,r) => row.map((v,c) => (
         <g key={`k-${r}-${c}`}>
           <rect x={c*32+180} y={r*32+18} width={30} height={30} rx="3"
-            fill={v > 0 ? 'rgba(249,115,22,0.10)' : v < 0 ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)'}
-            stroke={v !== 0 ? (v > 0 ? '#f97316' : '#f97316') : 'var(--card-border)'} strokeWidth="1.5"/>
-          <text x={c*32+195} y={r*32+37} textAnchor="middle" fill={v > 0 ? '#f97316' : v < 0 ? '#f97316' : 'var(--text-secondary)'} fontSize="10" fontWeight="700">{v}</text>
+            fill={v > 0 ? 'rgba(74,158,237,0.10)' : v < 0 ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'}
+            stroke={v !== 0 ? (v > 0 ? '#4a9eed' : '#4a9eed') : 'var(--card-border)'} strokeWidth="1.5"/>
+          <text x={c*32+195} y={r*32+37} textAnchor="middle" fill={v > 0 ? '#4a9eed' : v < 0 ? '#4a9eed' : 'var(--text-secondary)'} fontSize="10" fontWeight="700">{v}</text>
         </g>
       )))}
 
       {/* Arrow */}
-      <line x1={283} y1={73} x2={313} y2={73} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3)"/>
+      <line x1={283} y1={73} x2={313} y2={73} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3)"/>
 
       {/* Output 3x3 */}
       <text x="375" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Feature Map (3×3)</text>
@@ -67,8 +67,8 @@ const ConvDiagram = () => (
         return (
           <g key={`o-${r}-${c}`}>
             <rect x={c*36+320} y={r*36+18} width={34} height={34} rx="3"
-              fill={v > 0 ? `rgba(249,115,22,0.10)` : v < 0 ? `rgba(249,115,22,0.10)` : 'var(--bg-primary)'}
-              stroke="#f97316" strokeWidth="1.5"/>
+              fill={v > 0 ? `rgba(74,158,237,0.10)` : v < 0 ? `rgba(74,158,237,0.10)` : 'var(--bg-primary)'}
+              stroke="#4a9eed" strokeWidth="1.5"/>
             <text x={c*36+337} y={r*36+39} textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontWeight="700">{v}</text>
           </g>
         );
@@ -94,20 +94,20 @@ const PaddingStrideExplorer = () => {
         <div>
           <div style={{ marginBottom: '1rem' }}>
             <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Padding: {config.padding}</label>
-            <input type="range" min="0" max="3" value={config.padding} onChange={e => setConfig(c => ({ ...c, padding: +e.target.value }))} style={{ width: '100%', accentColor: '#f97316' }}/>
+            <input type="range" min="0" max="3" value={config.padding} onChange={e => setConfig(c => ({ ...c, padding: +e.target.value }))} style={{ width: '100%', accentColor: '#4a9eed' }}/>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-secondary)' }}><span>0 (valid)</span><span>1 (same p/ k=3,s=1)</span><span>2</span><span>3</span></div>
           </div>
           <div>
             <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Stride: {config.stride}</label>
-            <input type="range" min="1" max="3" value={config.stride} onChange={e => setConfig(c => ({ ...c, stride: +e.target.value }))} style={{ width: '100%', accentColor: '#f97316' }}/>
+            <input type="range" min="1" max="3" value={config.stride} onChange={e => setConfig(c => ({ ...c, stride: +e.target.value }))} style={{ width: '100%', accentColor: '#4a9eed' }}/>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-secondary)' }}><span>1</span><span>2</span><span>3</span></div>
           </div>
         </div>
-        <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: '1.5px solid rgba(249,115,22,0.10)' }}>
+        <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: '1.5px solid rgba(74,158,237,0.10)' }}>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>Input: {inputSize}×{inputSize} &nbsp;|&nbsp; Kernel: {kernelSize}×{kernelSize}</p>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>Fórmula: ⌊(I − K + 2P) / S⌋ + 1</p>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>= ⌊({inputSize} − {kernelSize} + {2*config.padding}) / {config.stride}⌋ + 1</p>
-          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: isValid ? '#f97316' : '#f97316', textAlign: 'center', margin: '0.75rem 0' }}>
+          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: isValid ? '#4a9eed' : '#4a9eed', textAlign: 'center', margin: '0.75rem 0' }}>
             {isValid ? `Output: ${outputSize}×${outputSize}` : 'Inválido'}
           </div>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textAlign: 'center' }}>
@@ -132,7 +132,7 @@ const ReceptiveFieldExplorer = () => {
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Explorador: Crescimento do Receptive Field</p>
       <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Número de camadas convolucionais 3×3, stride 1: {layers}</label>
-      <input type="range" min="1" max="6" value={layers} onChange={e => setLayers(+e.target.value)} style={{ width: '100%', accentColor: '#f97316', marginBottom: '1rem' }}/>
+      <input type="range" min="1" max="6" value={layers} onChange={e => setLayers(+e.target.value)} style={{ width: '100%', accentColor: '#4a9eed', marginBottom: '1rem' }}/>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <svg viewBox={`0 0 ${gridSize*20} ${gridSize*20}`} style={{ maxWidth: 320, width: '100%', height: 'auto' }}>
           {Array.from({length: gridSize}).map((_, r) => Array.from({length: gridSize}).map((_, c) => {
@@ -140,14 +140,14 @@ const ReceptiveFieldExplorer = () => {
             const isCenter = r === center && c === center;
             return (
               <rect key={`${r}-${c}`} x={c*20} y={r*20} width={19} height={19} rx="2"
-                fill={isCenter ? '#f97316' : inField ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)'}
-                stroke={inField ? '#f97316' : 'var(--card-border)'} strokeWidth={isCenter ? 2 : 1}/>
+                fill={isCenter ? '#4a9eed' : inField ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'}
+                stroke={inField ? '#4a9eed' : 'var(--card-border)'} strokeWidth={isCenter ? 2 : 1}/>
             );
           }))}
         </svg>
       </div>
       <p style={{ textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-        Receptive field do neurónio (a roxo escuro) na camada {layers}: <strong style={{ color: '#f97316' }}>{rf}×{rf}</strong> píxeis do input original.
+        Receptive field do neurónio (a roxo escuro) na camada {layers}: <strong style={{ color: '#4a9eed' }}>{rf}×{rf}</strong> píxeis do input original.
         &nbsp;Fórmula: RF = 1 + L×(K−1) com K=3 → RF = 1 + {layers}×2 = {rf}
       </p>
     </div>
@@ -160,20 +160,20 @@ const TransposedConvDiagram = () => (
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>Input 2×2, Kernel 3×3, stride=2 → Output 5×5 (cada valor de input "espalha" o kernel sobre o output, com sobreposições somadas)</p>
     <svg viewBox="0 0 480 210" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrT" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrT" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Input 2x2 */}
       <text x="55" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Input (2×2)</text>
       {[[1,2],[3,4]].map((row,r) => row.map((v,c) => (
         <g key={`in-${r}-${c}`}>
-          <rect x={c*45+10} y={r*45+25} width={42} height={42} rx="3" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2"/>
-          <text x={c*45+31} y={r*45+51} textAnchor="middle" fill="#f97316" fontSize="14" fontWeight="700">{v}</text>
+          <rect x={c*45+10} y={r*45+25} width={42} height={42} rx="3" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2"/>
+          <text x={c*45+31} y={r*45+51} textAnchor="middle" fill="#4a9eed" fontSize="14" fontWeight="700">{v}</text>
         </g>
       )))}
 
       {/* Arrow */}
-      <line x1={108} y1={92} x2={148} y2={92} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrT)"/>
+      <line x1={108} y1={92} x2={148} y2={92} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrT)"/>
       <text x="128" y="84" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">kernel 3×3</text>
       <text x="128" y="108" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">stride 2</text>
 
@@ -192,7 +192,7 @@ const TransposedConvDiagram = () => (
         return (
           <g key={`out-${r}-${c}`}>
             <rect x={c*34+165} y={r*34+25} width={32} height={32} rx="3"
-              fill={`rgba(249,115,22,0.10)`} stroke="#f97316" strokeWidth="1"/>
+              fill={`rgba(74,158,237,0.10)`} stroke="#4a9eed" strokeWidth="1"/>
             <text x={c*34+181} y={r*34+45} textAnchor="middle" fill="var(--text-primary)" fontSize="9" fontWeight="700">{v}×</text>
           </g>
         );
@@ -215,7 +215,7 @@ const DilatedConvDiagram = () => {
       <p style={{ fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)', textAlign: 'center' }}>Convolução Dilatada (Atrous)</p>
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '1rem', textAlign: 'center' }}>Um kernel 3×3 com "buracos" entre os pesos — o dilation rate controla o espaçamento</p>
       <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Dilation rate: {dilation}</label>
-      <input type="range" min="1" max="3" value={dilation} onChange={e => setDilation(+e.target.value)} style={{ width: '100%', accentColor: '#f97316', marginBottom: '1rem' }}/>
+      <input type="range" min="1" max="3" value={dilation} onChange={e => setDilation(+e.target.value)} style={{ width: '100%', accentColor: '#4a9eed', marginBottom: '1rem' }}/>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <svg viewBox={`0 0 ${gridSize*28} ${gridSize*28}`} style={{ maxWidth: 320, width: '100%', height: 'auto' }}>
           {Array.from({length: gridSize}).map((_, r) => Array.from({length: gridSize}).map((_, c) => {
@@ -223,14 +223,14 @@ const DilatedConvDiagram = () => {
             const isKernelCell = offsets.includes(dr) && offsets.includes(dc);
             return (
               <rect key={`${r}-${c}`} x={c*28} y={r*28} width={26} height={26} rx="3"
-                fill={isKernelCell ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)'}
-                stroke={isKernelCell ? '#f97316' : 'var(--card-border)'} strokeWidth={isKernelCell ? 2 : 1}/>
+                fill={isKernelCell ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'}
+                stroke={isKernelCell ? '#4a9eed' : 'var(--card-border)'} strokeWidth={isKernelCell ? 2 : 1}/>
             );
           }))}
         </svg>
       </div>
       <p style={{ textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-        Os 9 pesos do kernel mantêm-se, mas cobrem uma área de <strong style={{ color: '#f97316' }}>{span}×{span}</strong> píxeis. Fórmula: campo efectivo = (K−1)×D + 1 = (3−1)×{dilation}+1 = {span}.
+        Os 9 pesos do kernel mantêm-se, mas cobrem uma área de <strong style={{ color: '#4a9eed' }}>{span}×{span}</strong> píxeis. Fórmula: campo efectivo = (K−1)×D + 1 = (3−1)×{dilation}+1 = {span}.
         &nbsp;{dilation === 1 ? 'Convolução normal (sem dilatação).' : 'Mesmo número de parâmetros e custo computacional, mas vê uma área muito maior.'}
       </p>
     </div>
@@ -243,7 +243,7 @@ const DepthwiseSeparableDiagram = () => (
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>Decomposição em duas etapas: Depthwise (espacial, por canal) + Pointwise (1×1, combina canais)</p>
     <svg viewBox="0 0 520 170" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrD" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrD" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Input: 3 channels stacked */}
@@ -252,7 +252,7 @@ const DepthwiseSeparableDiagram = () => (
         <rect key={`in-${i}`} x={20+i*8} y={25+i*8} width={60} height={60} rx="4" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.2" opacity={0.9 - i*0.15}/>
       ))}
 
-      <line x1={100} y1={75} x2={150} y2={75} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrD)"/>
+      <line x1={100} y1={75} x2={150} y2={75} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrD)"/>
       <text x="125" y="65" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">Depthwise</text>
       <text x="125" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">3×3 por canal</text>
 
@@ -260,26 +260,26 @@ const DepthwiseSeparableDiagram = () => (
       <text x="195" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Depthwise out (H×W×3)</text>
       {[0,1,2].map(i => (
         <g key={`dw-${i}`}>
-          <rect x={160+i*8} y={25+i*8} width={60} height={60} rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" opacity={0.95 - i*0.1}/>
+          <rect x={160+i*8} y={25+i*8} width={60} height={60} rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" opacity={0.95 - i*0.1}/>
         </g>
       ))}
       <text x="195" y="110" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">cada canal filtrado</text>
       <text x="195" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">com o seu próprio 3×3</text>
 
-      <line x1={240} y1={75} x2={270} y2={75} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrD)"/>
+      <line x1={240} y1={75} x2={270} y2={75} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrD)"/>
       <text x="255" y="65" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">Pointwise</text>
       <text x="255" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">1×1×3 → N</text>
 
       {/* Pointwise kernel */}
-      <rect x="278" y="50" width="26" height="50" rx="3" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="291" y="78" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">1×1</text>
+      <rect x="278" y="50" width="26" height="50" rx="3" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="291" y="78" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">1×1</text>
 
-      <line x1={308} y1={75} x2={338} y2={75} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrD)"/>
+      <line x1={308} y1={75} x2={338} y2={75} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrD)"/>
 
       {/* Final output: N channels */}
       <text x="430" y="14" textAnchor="middle" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Output (H×W×N)</text>
       {[0,1,2,3,4].map(i => (
-        <rect key={`out-${i}`} x={350+i*15} y={25+i*8} width={60} height={60} rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" opacity={0.95 - i*0.08}/>
+        <rect key={`out-${i}`} x={350+i*15} y={25+i*8} width={60} height={60} rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" opacity={0.95 - i*0.08}/>
       ))}
       <text x="430" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">N feature maps combinando</text>
       <text x="430" y="146" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">informação de todos os canais</text>
@@ -296,7 +296,7 @@ const GroupedConvDiagram = () => {
   const totalParams = paramsPerGroup * groups;
   const fullParams = cIn * cOut * 9;
 
-  const groupColors = ['#f97316','#fb923c','#f59e0b','#ea580c','#fbbf24','#c2410c','#fed7aa','#fdba74'];
+  const groupColors = ['#4a9eed','#38bdf8','#0284c7','#0369a1','#7dd3fc','#075985','#e0f2fe','#bae6fd'];
   const chanW = 30, chanH = 28, gap = 4;
   const totalW = 8 * chanW + 7 * gap;
 
@@ -306,7 +306,7 @@ const GroupedConvDiagram = () => {
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '1rem', textAlign: 'center' }}>8 canais de entrada → 8 canais de saída, kernel 3×3, divididos em grupos independentes</p>
       <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.5rem' }}>Número de grupos (g): {groups}</label>
       <input type="range" min="0" max="2" step="1" value={[1,2,8].indexOf(groups)}
-        onChange={e => setGroups([1,2,8][+e.target.value])} style={{ width: '100%', accentColor: '#f97316', marginBottom: '0.25rem' }}/>
+        onChange={e => setGroups([1,2,8][+e.target.value])} style={{ width: '100%', accentColor: '#4a9eed', marginBottom: '0.25rem' }}/>
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
         <span>g=1 (normal)</span><span>g=2</span><span>g=8 (= depthwise)</span>
       </div>
@@ -351,8 +351,8 @@ const GroupedConvDiagram = () => {
       </div>
 
       <p style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '1rem' }}>
-        Cada grupo processa <strong style={{ color: '#f97316' }}>{inPerGroup}</strong> canais de entrada → <strong style={{ color: '#f97316' }}>{outPerGroup}</strong> canais de saída, de forma independente.{' '}
-        Parâmetros totais: <strong style={{ color: '#f97316' }}>{totalParams}</strong> (vs. {fullParams} normal — redução de {(fullParams/totalParams).toFixed(0)}×).
+        Cada grupo processa <strong style={{ color: '#4a9eed' }}>{inPerGroup}</strong> canais de entrada → <strong style={{ color: '#4a9eed' }}>{outPerGroup}</strong> canais de saída, de forma independente.{' '}
+        Parâmetros totais: <strong style={{ color: '#4a9eed' }}>{totalParams}</strong> (vs. {fullParams} normal — redução de {(fullParams/totalParams).toFixed(0)}×).
         {groups === 8 && ' g = C_in = C_out → convolução depthwise.'}
       </p>
     </div>
@@ -376,8 +376,8 @@ const DeformableConvDiagram = () => {
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)', textAlign: 'center' }}>Convolução Deformável: grelha regular vs. amostragem aprendida</p>
       <div style={{ textAlign: 'center', marginBottom: '0.75rem' }}>
-        <button onClick={() => setDeform(false)} style={{ padding: '0.4rem 1rem', marginRight: '0.5rem', borderRadius: 6, border: deform ? '1px solid var(--card-border)' : '2px solid #f97316', background: deform ? 'var(--bg-primary)' : 'rgba(249,115,22,0.10)', color: 'var(--text-primary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}>Convolução normal</button>
-        <button onClick={() => setDeform(true)} style={{ padding: '0.4rem 1rem', borderRadius: 6, border: deform ? '2px solid #f97316' : '1px solid var(--card-border)', background: deform ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)', color: 'var(--text-primary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}>Convolução deformável</button>
+        <button onClick={() => setDeform(false)} style={{ padding: '0.4rem 1rem', marginRight: '0.5rem', borderRadius: 6, border: deform ? '1px solid var(--card-border)' : '2px solid #4a9eed', background: deform ? 'var(--bg-primary)' : 'rgba(74,158,237,0.10)', color: 'var(--text-primary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}>Convolução normal</button>
+        <button onClick={() => setDeform(true)} style={{ padding: '0.4rem 1rem', borderRadius: 6, border: deform ? '2px solid #4a9eed' : '1px solid var(--card-border)', background: deform ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)', color: 'var(--text-primary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}>Convolução deformável</button>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <svg viewBox={`0 0 ${gridSize*cell} ${gridSize*cell}`} style={{ maxWidth: 320, width: '100%', height: 'auto' }}>
@@ -393,9 +393,9 @@ const DeformableConvDiagram = () => {
             const baseCy = (r0 + 0.5) * cell;
             return (
               <g key={`pt-${i}`}>
-                {deform && <line x1={baseCx} y1={baseCy} x2={cx} y2={cy} stroke="#f59e0b" strokeWidth="1" strokeDasharray="2,2"/>}
+                {deform && <line x1={baseCx} y1={baseCy} x2={cx} y2={cy} stroke="#0284c7" strokeWidth="1" strokeDasharray="2,2"/>}
                 {deform && <circle cx={baseCx} cy={baseCy} r="3" fill="none" stroke="var(--text-secondary)" strokeWidth="1"/>}
-                <circle cx={cx} cy={cy} r="5" fill={i===4 ? '#f97316' : 'rgba(249,115,22,0.10)'} stroke="#f97316" strokeWidth="1.5"/>
+                <circle cx={cx} cy={cy} r="5" fill={i===4 ? '#4a9eed' : 'rgba(74,158,237,0.10)'} stroke="#4a9eed" strokeWidth="1.5"/>
               </g>
             );
           })}
@@ -417,7 +417,6 @@ export default function CV3() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 3</div>
         <h1 style={S.h1}>A Convolução nas CNNs</h1>
-        <p style={S.lead}>O coração de uma CNN é a camada convolucional. Ao contrário dos filtros manuais do módulo anterior, aqui os kernels são parâmetros aprendíveis — a rede descobre automaticamente que filtros são úteis para a tarefa. Este módulo detalha como funcionam feature maps, padding, stride, canais e receptive field, e depois explora variantes avançadas — convoluções transpostas, dilatadas, separáveis, agrupadas e deformáveis — que sustentam arquitecturas modernas de detecção, segmentação e geração de imagem.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Convolução com Filtros Aprendíveis</h2>
@@ -453,7 +452,7 @@ export default function CV3() {
                   ['Replicate padding', 'Repete o píxel da borda', 'Alternativa ao reflect, mais simples'],
                   ['Valid (sem padding)', 'Output reduz consoante o kernel', 'Quando a redução de tamanho é desejada'],
                 ].map(([t, h, w]) => (
-                  <tr key={t}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{t}</td><td style={S.td}>{h}</td><td style={S.td}>{w}</td></tr>
+                  <tr key={t}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{t}</td><td style={S.td}>{h}</td><td style={S.td}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -478,7 +477,7 @@ export default function CV3() {
                   ['64 canais, 128 filtros 3×3', '3×3×64 cada', '128 × (576+1) = 73.856', '128 feature maps (H×W×128)'],
                   ['Filtro 1×1 (pointwise)', '1×1×C_in', 'C_in + 1', 'Combina canais sem contexto espacial'],
                 ].map(([c, d, p, o]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{c}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: '#f97316' }}>{p}</td><td style={S.td}>{o}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{c}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: '#4a9eed' }}>{p}</td><td style={S.td}>{o}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -515,7 +514,7 @@ export default function CV3() {
                   ['16 camadas', '33×33', 'Objectos completos (em imagem 224×224)'],
                   ['Com stride 2 em 3 camadas', '~50×50', 'Contexto global — mas menos detalhe local'],
                 ].map(([n, r, v]) => (
-                  <tr key={n}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{n}</td><td style={{ ...S.td, color: '#f97316' }}>{r}</td><td style={S.td}>{v}</td></tr>
+                  <tr key={n}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{n}</td><td style={{ ...S.td, color: '#4a9eed' }}>{r}</td><td style={S.td}>{v}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -549,7 +548,7 @@ export default function CV3() {
                   ['Pixel Shuffle (sub-pixel conv)', 'Convolução normal produz C×r² canais, depois rearranjados em espaço (H×r, W×r)', 'Eficiente, sem artefactos típicos da transposta; usado em super-resolução'],
                   ['Unpooling', 'Inverte max-pooling usando índices guardados do encoder', 'Requer arquitectura simétrica encoder-decoder com partilha de índices'],
                 ].map(([m, h, v]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{m}</td><td style={S.td}>{h}</td><td style={S.td}>{v}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{m}</td><td style={S.td}>{h}</td><td style={S.td}>{v}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -604,7 +603,7 @@ export default function CV3() {
                   ['Pointwise (etapa 2)', '1² × C_in × C_out', '1 × 128 × 256 = 32.768'],
                   ['Total separável', 'K² × C_in + C_in × C_out', '1.152 + 32.768 = 33.920'],
                 ].map(([o, p, ex]) => (
-                  <tr key={o}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{o}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{p}</td><td style={S.td}>{ex}</td></tr>
+                  <tr key={o}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{o}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{p}</td><td style={S.td}>{ex}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -640,7 +639,7 @@ export default function CV3() {
                   ['Convolução agrupada', '1 < g < C_in', 'Cada grupo é uma convolução standard menor, independente'],
                   ['Convolução depthwise', 'g = C_in (= C_out)', 'Cada canal processado isoladamente — caso extremo de agrupamento'],
                 ].map(([t, g, b]) => (
-                  <tr key={t}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{t}</td><td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{g}</td><td style={S.td}>{b}</td></tr>
+                  <tr key={t}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{t}</td><td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed' }}>{g}</td><td style={S.td}>{b}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -677,7 +676,7 @@ export default function CV3() {
                   ['Comparação com dilatação', 'Dilatação usa um padrão de amostragem fixo mas espaçado; deformável usa um padrão aprendido e dinâmico, específico para cada posição/imagem'],
                   ['DCNv2', 'Adiciona também um peso de modulação por posição (além do offset), permitindo à rede "ignorar" amostras irrelevantes atribuindo-lhes peso próximo de zero'],
                 ].map(([a, d]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: '#f97316', whiteSpace: 'nowrap' }}>{a}</td><td style={S.td}>{d}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed', whiteSpace: 'nowrap' }}>{a}</td><td style={S.td}>{d}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -688,24 +687,7 @@ export default function CV3() {
 
         
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>10. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Kernel learnable: os pesos são aprendidos por backprop. A rede descobre que filtros são úteis para a tarefa.</li>
-            <li>Weight sharing: o mesmo kernel aplica-se em todas as posições — invariância à translação e poucos parâmetros.</li>
-            <li>Output size: ⌊(I − K + 2P) / S⌋ + 1. Padding="same" (P=1, K=3, S=1) preserva o tamanho espacial.</li>
-            <li>C_out filtros → C_out feature maps. Cada filtro detecta um padrão diferente.</li>
-            <li>Receptive field cresce linearmente com a profundidade (RF = 1 + L×(K−1) para K=3, stride=1) — camadas profundas vêem contexto global.</li>
-            <li>Convolução transposta: upsampling aprendível via espalhamento e soma de sobreposições — Output = (I−1)×S − 2P + K.</li>
-            <li>Convolução dilatada: aumenta o receptive field (campo efectivo = (K−1)×D+1) sem custo extra nem perda de resolução — base do DeepLab.</li>
-            <li>Depthwise separable = depthwise (espacial, por canal) + pointwise (1×1, mistura canais) — redução de FLOPs ≈ 1/K² + 1/C_out, base do MobileNet.</li>
-            <li>Convoluções agrupadas (g grupos) interpolam entre standard (g=1) e depthwise (g=C_in); usadas em AlexNet e ResNeXt para reduzir custo/parâmetros.</li>
-            <li>Convoluções deformáveis aprendem offsets espaciais (Δx, Δy) por posição, adaptando o receptive field à geometria do objecto — úteis em detecção e segmentação.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

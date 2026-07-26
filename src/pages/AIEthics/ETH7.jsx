@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH7() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[6].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[6].title}</h1>
-      <p style={S.sub}>{modules[6].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -61,7 +60,7 @@ export default function ETH7() {
               { x: 430, label: 'Comportamento\nTreinado', sub: 'o que o modelo faz' },
             ].map((b, i) => (
               <g key={b.label}>
-                <rect x={b.x} y="40" width="160" height="70" rx="8" fill="rgba(249,115,22,0.08)" stroke={C} strokeWidth="1.5" />
+                <rect x={b.x} y="40" width="160" height="70" rx="8" fill="rgba(74,158,237,0.08)" stroke={C} strokeWidth="1.5" />
                 <text x={b.x + 80} y="72" textAnchor="middle" fill="#e2e8f0" fontSize="12" fontWeight="700">{b.label.split('\n')[0]}</text>
                 <text x={b.x + 80} y="87" textAnchor="middle" fill="#e2e8f0" fontSize="12" fontWeight="700">{b.label.split('\n')[1]}</text>
                 <text x={b.x + 80} y="103" textAnchor="middle" fill="#64748b" fontSize="9">{b.sub}</text>
@@ -181,18 +180,7 @@ export default function ETH7() {
       </div>
 
       <hr style={S.divider} />
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>O Problema do Alinhamento</strong> — alinhamento refere-se ao desafio de garantir que sistemas de IA persigam objetivos verdadeiramente alinhados com os valores e intenções humanas; problemas como a especificação incorreta de recompensas (reward hacking) ou a generalização inesperada mostram que este problema é tecnicamente difícil mesmo em sistemas atuais.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>RLHF e Constitutional AI</strong> — o Reinforcement Learning from Human Feedback treina um modelo de recompensa a partir de preferências humanas e usa-o para afinar o LLM via PPO; o Constitutional AI da Anthropic vai mais longe ao usar um conjunto de princípios para que o modelo se critique e revise as suas próprias respostas, reduzindo a dependência de anotadores humanos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Interpretabilidade para Safety</strong> — compreender o que acontece internamente nos modelos (via análise de circuitos, sondas lineares ou steering vectors) é fundamental para detetar representações perigosas, verificar se o modelo segue genuinamente as instruções ou apenas as simula, e para construir garantias formais de comportamento seguro.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Debate sobre Risco Existencial</strong> — investigadores como Bostrom, Russell e os de organizações como MIRI ou Center for Human-Compatible AI argumentam que AGI mal alinhada representa um risco civilizacional; outros, como LeCun ou Ng, contestam a plausibilidade ou urgência deste cenário, defendendo que os riscos presentes e imediatos merecem maior prioridade.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

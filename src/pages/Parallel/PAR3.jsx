@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto', textAlign: 'center' },
@@ -33,32 +33,32 @@ function DiagramProcessosThreads() {
       {/* Processo A */}
       <rect x="20" y="10" width="170" height="210" rx="10" fill="none" stroke={color} strokeWidth="2" />
       <text x="105" y="32" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Processo A</text>
-      <rect x="35" y="42" width="140" height="38" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="35" y="42" width="140" height="38" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="105" y="58" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Globals / BSS</text>
       <text x="105" y="74" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">variáveis globais</text>
-      <rect x="35" y="88" width="140" height="38" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="35" y="88" width="140" height="38" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="105" y="104" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Heap</text>
       <text x="105" y="120" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">alocação dinâmica</text>
-      <rect x="35" y="134" width="140" height="38" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="35" y="134" width="140" height="38" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="105" y="150" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Stack</text>
       <text x="105" y="166" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">frames de função</text>
-      <rect x="35" y="180" width="140" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="35" y="180" width="140" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="105" y="200" textAnchor="middle" fontSize="11" fill="var(--text-primary)">File Descriptors / PID</text>
 
       {/* Processo B */}
-      <rect x="210" y="10" width="170" height="210" rx="10" fill="none" stroke="#f97316" strokeWidth="2" />
-      <text x="295" y="32" textAnchor="middle" fontSize="13" fontWeight="700" fill="#f97316">Processo B</text>
-      <rect x="225" y="42" width="140" height="38" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+      <rect x="210" y="10" width="170" height="210" rx="10" fill="none" stroke="#4a9eed" strokeWidth="2" />
+      <text x="295" y="32" textAnchor="middle" fontSize="13" fontWeight="700" fill="#4a9eed">Processo B</text>
+      <rect x="225" y="42" width="140" height="38" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
       <text x="295" y="58" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Globals / BSS</text>
       <text x="295" y="74" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">espaço separado</text>
-      <rect x="225" y="88" width="140" height="38" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+      <rect x="225" y="88" width="140" height="38" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
       <text x="295" y="104" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Heap</text>
       <text x="295" y="120" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">espaço separado</text>
-      <rect x="225" y="134" width="140" height="38" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+      <rect x="225" y="134" width="140" height="38" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
       <text x="295" y="150" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Stack</text>
       <text x="295" y="166" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">frames de função</text>
-      <rect x="225" y="180" width="140" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="295" y="200" textAnchor="middle" fontSize="11" fill="#f97316">File Descriptors / PID</text>
+      <rect x="225" y="180" width="140" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="295" y="200" textAnchor="middle" fontSize="11" fill="#4a9eed">File Descriptors / PID</text>
 
       {/* VS label */}
       <text x="395" y="125" textAnchor="middle" fontSize="18" fontWeight="800" fill="var(--text-secondary)">vs</text>
@@ -67,12 +67,12 @@ function DiagramProcessosThreads() {
       <rect x="420" y="10" width="340" height="210" rx="10" fill="none" stroke={color} strokeWidth="2" />
       <text x="590" y="32" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Processo C — memória partilhada</text>
       {/* shared areas */}
-      <rect x="435" y="42" width="310" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="435" y="42" width="310" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="590" y="62" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Globals / Heap — partilhado por todas as threads</text>
       {/* 4 thread stacks */}
       {[0,1,2,3].map(i => (
         <g key={i}>
-          <rect x={435 + i * 78} y="82" width="70" height="130" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" strokeDasharray="4 2" />
+          <rect x={435 + i * 78} y="82" width="70" height="130" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" strokeDasharray="4 2" />
           <text x={470 + i * 78} y="102" textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>T{i}</text>
           <text x={470 + i * 78} y="118" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Stack</text>
           <text x={470 + i * 78} y="132" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">privada</text>
@@ -86,8 +86,8 @@ function DiagramProcessosThreads() {
 
 /* ── GIL Timeline ─────────────────────────────────────────────────── */
 function DiagramGIL() {
-  const c1 = '#f97316'; // Thread 1 — orange
-  const c2 = '#f59e0b'; // Thread 2 — amber
+  const c1 = '#4a9eed'; // Thread 1 — orange
+  const c2 = '#0284c7'; // Thread 2 — amber
   const cSwitch = '#94a3b8';
   // slots: [x, width, owner] — 0=T1 1=T2 null=switch
   const W = 660;
@@ -185,7 +185,7 @@ function DiagramGIL() {
 
 /* ── I/O-bound threads timeline ────────────────────────────────────── */
 function DiagramIOThreads() {
-  const tColors = ['#f97316', '#f59e0b', '#fb923c', '#fbbf24'];
+  const tColors = ['#4a9eed', '#0284c7', '#38bdf8', '#7dd3fc'];
   // segments: x in "timeline units" (0–300), scaled to SVG pixels
   const startX = 80;
   const scale = 1.8; // px per unit
@@ -211,9 +211,9 @@ function DiagramIOThreads() {
       </defs>
 
       {/* Legend */}
-      <rect x={startX} y={8} width={16} height={12} rx="2" fill="#f97316" />
+      <rect x={startX} y={8} width={16} height={12} rx="2" fill="#4a9eed" />
       <text x={startX+20} y={19} fontSize="10" fill="var(--text-secondary)">CPU (executa código)</text>
-      <rect x={startX+165} y={8} width={16} height={12} rx="2" fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth="1" strokeDasharray="3,2" />
+      <rect x={startX+165} y={8} width={16} height={12} rx="2" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="1" strokeDasharray="3,2" />
       <text x={startX+185} y={19} fontSize="10" fill="var(--text-secondary)">I/O bloqueada (aguarda rede/disco)</text>
 
       {/* Thread rows */}
@@ -232,7 +232,7 @@ function DiagramIOThreads() {
               return (
                 <g key={si}>
                   <rect x={sx} y={y+2} width={sw} height={rowH-4} rx="3"
-                    fill={isCpu ? c : 'rgba(249,115,22,0.12)'}
+                    fill={isCpu ? c : 'rgba(74,158,237,0.12)'}
                     stroke={isCpu ? 'none' : c}
                     strokeWidth={isCpu ? 0 : 1}
                     strokeDasharray={isCpu ? 'none' : '4,2'}
@@ -274,7 +274,7 @@ function DiagramIOThreads() {
 
 /* ── SVG: multiprocessing — 4 cores ───────────────────────────────── */
 function DiagramMultiprocessing() {
-  const pw = ['#f97316', '#f97316', '#f97316', '#f97316'];
+  const pw = ['#4a9eed', '#4a9eed', '#4a9eed', '#4a9eed'];
   return (
     <svg width="700" height="200" viewBox="0 0 700 200" style={{ maxWidth: '100%' }}>
       {pw.map((c, i) => (
@@ -316,7 +316,7 @@ function DiagramAsyncio() {
       ].map((c, i) => (
         <g key={i}>
           <rect x={c.cx - 55} y={c.cy - 18} width="110" height="36" rx="8"
-            fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
           <text x={c.cx} y={c.cy + 6} textAnchor="middle" fontSize="10" fill="var(--text-primary)">{c.label}</text>
         </g>
       ))}
@@ -345,8 +345,8 @@ function DiagramAsyncio() {
 
 /* ── Race Condition diagram ─────────────────────────────────────────── */
 function DiagramRaceCondition() {
-  const cA = '#f97316';
-  const cB = '#f59e0b';
+  const cA = '#4a9eed';
+  const cB = '#0284c7';
   const steps = [
     { t: 'A', label: 'lê counter = 0',       note: null },
     { t: 'A', label: 'calcula 0 + 1 = 1',    note: null },
@@ -378,7 +378,7 @@ function DiagramRaceCondition() {
 
       {/* shared counter badge */}
       <div style={{ textAlign: 'center', marginBottom: '0.8rem' }}>
-        <span style={{ background: 'rgba(249,115,22,0.12)', border: '1.5px solid #f97316', borderRadius: 8, padding: '4px 18px', fontSize: '0.85rem', fontWeight: 700, color: '#f97316' }}>
+        <span style={{ background: 'rgba(74,158,237,0.12)', border: '1.5px solid #4a9eed', borderRadius: 8, padding: '4px 18px', fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed' }}>
           counter = 0 &nbsp;(memória partilhada)
         </span>
       </div>
@@ -394,7 +394,7 @@ function DiagramRaceCondition() {
             <div key={i} style={{ display: 'grid', gridTemplateColumns: colW, gap: '0.5rem', alignItems: 'center' }}>
               {/* Thread A column */}
               <div style={isA ? stepStyle(true, cA) : { opacity: 0 }}>
-                {isA && <><span style={{ marginRight: 6, opacity: 0.6 }}>{i+1}.</span>{label}{note && <span style={{ marginLeft: 8, color: '#ea580c', fontSize: '0.72rem' }}>{note}</span>}</>}
+                {isA && <><span style={{ marginRight: 6, opacity: 0.6 }}>{i+1}.</span>{label}{note && <span style={{ marginLeft: 8, color: '#0369a1', fontSize: '0.72rem' }}>{note}</span>}</>}
               </div>
               {/* centre tick */}
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -405,7 +405,7 @@ function DiagramRaceCondition() {
               </div>
               {/* Thread B column */}
               <div style={isB ? stepStyle(true, cB) : (isWarn ? { fontSize: '0.75rem', color: '#64748b', textAlign: 'center' } : { opacity: 0 })}>
-                {isB && <><span style={{ marginRight: 6, opacity: 0.6 }}>{i+1}.</span>{label}{note && <span style={{ marginLeft: 8, color: '#ea580c', fontSize: '0.72rem' }}>{note}</span>}</>}
+                {isB && <><span style={{ marginRight: 6, opacity: 0.6 }}>{i+1}.</span>{label}{note && <span style={{ marginLeft: 8, color: '#0369a1', fontSize: '0.72rem' }}>{note}</span>}</>}
                 {isWarn && 'Thread B activa'}
               </div>
             </div>
@@ -415,10 +415,10 @@ function DiagramRaceCondition() {
 
       {/* result */}
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-        <span style={{ background: 'rgba(249,115,22,0.08)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '5px 14px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+        <span style={{ background: 'rgba(74,158,237,0.08)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '5px 14px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
           esperado: <strong style={{ color: cA }}>counter = 2</strong>
         </span>
-        <span style={{ background: 'rgba(234,88,12,0.12)', border: '1.5px solid #ea580c', borderRadius: 6, padding: '5px 14px', fontSize: '0.8rem', color: '#ea580c', fontWeight: 600 }}>
+        <span style={{ background: 'rgba(3,105,161,0.12)', border: '1.5px solid #0369a1', borderRadius: 6, padding: '5px 14px', fontSize: '0.8rem', color: '#0369a1', fontWeight: 600 }}>
           real: counter = 1 &nbsp;← lost update!
         </span>
       </div>
@@ -442,13 +442,10 @@ export default function PAR3() {
       <div style={S.section}>
         <h2 style={S.h2}>1. Processos vs Threads</h2>
         <p style={S.p}>
-          Um <strong>processo</strong> é uma instância de programa em execução com o seu próprio espaço de endereçamento virtual: heap, stack, variáveis globais e descritores de ficheiro. A comunicação entre processos (IPC) exige mecanismos explícitos como pipes, sockets ou memória partilhada gerida pelo SO.
+          Um <strong>processo</strong> é uma instância de programa em execução com o seu próprio espaço de endereçamento virtual: heap, stack, globais e descritores de ficheiro. A comunicação entre processos (IPC) exige mecanismos explícitos como pipes ou sockets.
         </p>
         <p style={S.p}>
-          Uma <strong>thread</strong> (fio de execução) é uma unidade de execução <em>leve</em> que partilha o espaço de memória do processo pai. Múltiplas threads no mesmo processo partilham o heap e as globais, mas têm stacks independentes, program counters e registos. A criação de uma thread é tipicamente 10&ndash;100× mais rápida que a criação de um processo.
-        </p>
-        <p style={S.p}>
-          O <strong>escalonamento</strong> do SO decide quando cada thread ou processo executa. A troca de contexto (<em>context switch</em>) entre threads do mesmo processo é mais barata do que entre processos distintos, porque não é necessário mudar o mapa de memória virtual.
+          Uma <strong>thread</strong> é uma unidade de execução <em>leve</em> que partilha o espaço de memória do processo pai: partilha heap e globais, mas tem stack, program counter e registos próprios. A criação de uma thread é tipicamente 10&ndash;100× mais rápida que a de um processo, e a troca de contexto entre threads é mais barata do que entre processos.
         </p>
         <div style={S.math}>
           <BlockMath math={`T_{\\text{context switch processo}} \\approx 5\\text{–}10\\,\\mu s \\quad \\gg \\quad T_{\\text{context switch thread}} \\approx 1\\text{–}3\\,\\mu s`} />
@@ -460,7 +457,7 @@ export default function PAR3() {
           </p>
         </div>
         <div style={S.note}>
-          No Linux, threads são implementadas como <em>lightweight processes</em> (LWP) via <code>clone()</code>. No Windows, o modelo é semelhante mas a API difere. Em Python, cada thread SO tem uma thread Python correspondente.
+          No Linux, threads são implementadas como <em>lightweight processes</em> (LWP) via <code>clone()</code>.
         </div>
       </div>
 
@@ -470,10 +467,7 @@ export default function PAR3() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Python GIL — Global Interpreter Lock</h2>
         <p style={S.p}>
-          O GIL é um <strong>mutex</strong> interno do CPython que garante que apenas <em>uma thread</em> executa bytecode Python de cada vez, mesmo em máquinas multicore. Existe por razões de implementação: a gestão de memória do CPython usa <strong>reference counting</strong> para determinar quando libertar objetos. Sem proteção, duas threads poderiam decrementar simultaneamente o mesmo contador de referências, corrompendo a heap.
-        </p>
-        <p style={S.p}>
-          A consequência prática é devastadora para código CPU-bound: adicionar mais threads Python <strong>não acelera</strong> cálculos puros; pode inclusivamente torná-los mais lentos devido ao overhead de aquisição/libertação do GIL.
+          O GIL é um <strong>mutex</strong> interno do CPython que garante que apenas <em>uma thread</em> executa bytecode Python de cada vez, mesmo em máquinas multicore. Existe porque a gestão de memória do CPython usa <strong>reference counting</strong>: sem proteção, duas threads poderiam decrementar simultaneamente o mesmo contador, corrompendo a heap. Consequência prática: adicionar mais threads Python <strong>não acelera</strong> cálculos CPU-bound puros — pode até torná-los mais lentos pelo overhead de aquisição/libertação do GIL.
         </p>
         <div style={S.math}>
           <BlockMath math={`\\text{Speedup}_\\text{threading CPU-bound} = \\frac{T_1}{T_n} \\approx 1 \\quad (\\text{com GIL})`} />
@@ -505,7 +499,7 @@ export default function PAR3() {
             ].map(([sit, gil, ex]) => (
               <tr key={sit}>
                 <td style={S.td}>{sit}</td>
-                <td style={S.td}><span style={{ color: gil === 'Sim' || gil.startsWith('Sim') ? color : '#f97316', fontWeight: 700 }}>{gil}</span></td>
+                <td style={S.td}><span style={{ color: gil === 'Sim' || gil.startsWith('Sim') ? color : '#4a9eed', fontWeight: 700 }}>{gil}</span></td>
                 <td style={S.td}><code>{ex}</code></td>
               </tr>
             ))}
@@ -524,10 +518,7 @@ export default function PAR3() {
       <div style={S.section}>
         <h2 style={S.h2}>3. threading — Concorrência I/O-Bound</h2>
         <p style={S.p}>
-          Apesar do GIL, o módulo <code>threading</code> é <strong>muito eficaz</strong> para tarefas I/O-bound. Enquanto uma thread aguarda uma resposta de rede ou disco, o GIL é libertado e outra thread pode executar. O resultado é sobreposição de esperas e um speedup real.
-        </p>
-        <p style={S.p}>
-          A classe <code>Thread</code> aceita um argumento <code>target</code> (função a executar) e <code>args</code>/<code>kwargs</code>. Threads <strong>daemon</strong> terminam automaticamente quando o processo principal termina, ao contrário das threads não-daemon que bloqueiam a saída.
+          Apesar do GIL, o módulo <code>threading</code> é <strong>muito eficaz</strong> para tarefas I/O-bound. Enquanto uma thread aguarda uma resposta de rede ou disco, o GIL é libertado e outra thread pode executar — o resultado é sobreposição de esperas e um speedup real.
         </p>
         <div style={S.diagram}>
           <DiagramIOThreads />
@@ -546,10 +537,7 @@ export default function PAR3() {
       <div style={S.section}>
         <h2 style={S.h2}>4. multiprocessing — Tarefas CPU-Bound</h2>
         <p style={S.p}>
-          O módulo <code>multiprocessing</code> contorna o GIL lançando <strong>processos filhos</strong> completos, cada um com o seu próprio intérprete Python e GIL. Cada processo corre num core diferente, permitindo paralelismo verdadeiro.
-        </p>
-        <p style={S.p}>
-          O custo é maior: criação de processo, serialização de dados via <em>pickle</em> entre processos, e comunicação IPC. Justifica-se quando o trabalho por tarefa é suficientemente pesado.
+          O módulo <code>multiprocessing</code> contorna o GIL lançando <strong>processos filhos</strong> completos, cada um com o seu próprio intérprete Python e GIL, correndo em cores diferentes. O custo é maior — criação de processo, serialização via <em>pickle</em>, comunicação IPC — e só se justifica quando o trabalho por tarefa é suficientemente pesado.
         </p>
         <div style={S.math}>
           <BlockMath math={`\\text{Speedup ideal} = \\frac{T_1}{T_n} \\approx n \\quad (\\text{Lei de Amdahl: } S = \\frac{1}{1-p + p/n})`} />
@@ -573,10 +561,7 @@ export default function PAR3() {
       <div style={S.section}>
         <h2 style={S.h2}>5. asyncio — Concorrência Cooperativa</h2>
         <p style={S.p}>
-          O módulo <code>asyncio</code> implementa concorrência <strong>cooperativa</strong> num único thread, através de um <em>event loop</em>. Coroutines são funções definidas com <code>async def</code>; <code>await</code> suspende a coroutine actual e devolve controlo ao event loop, que pode então avançar outra coroutine pronta para executar.
-        </p>
-        <p style={S.p}>
-          Ao contrário de threads, não há preempção pelo SO: a coroutine corre até voluntariamente fazer <code>await</code>. Isto elimina a maioria das race conditions, mas exige que o código seja escrito de forma assíncrona — bloquear o event loop com código síncrono lento prejudica todas as coroutines.
+          O módulo <code>asyncio</code> implementa concorrência <strong>cooperativa</strong> num único thread, através de um <em>event loop</em>. Coroutines são funções definidas com <code>async def</code>; <code>await</code> suspende a coroutine actual e devolve controlo ao loop. Ao contrário de threads, não há preempção pelo SO — a coroutine corre até voluntariamente fazer <code>await</code>, o que elimina a maioria das race conditions, mas exige código escrito de forma assíncrona.
         </p>
         <div style={S.diagram}>
           <DiagramAsyncio />
@@ -645,10 +630,7 @@ export default function PAR3() {
       <div style={S.section}>
         <h2 style={S.h2}>7. concurrent.futures — Interface Unificada</h2>
         <p style={S.p}>
-          O módulo <code>concurrent.futures</code> fornece uma interface de alto nível que abstrai threads e processos através de executores (<em>executors</em>) e futuros (<em>futures</em>). Um <code>Future</code> representa o resultado de uma computação assíncrona — pode ser inspeccionado, cancelado, ou aguardado.
-        </p>
-        <p style={S.p}>
-          A grande vantagem é que <code>ThreadPoolExecutor</code> e <code>ProcessPoolExecutor</code> partilham a mesma API — mudar de threads para processos é trivial. Padrões comuns incluem <code>map()</code> para colecções e <code>as_completed()</code> para processar resultados à medida que chegam.
+          O módulo <code>concurrent.futures</code> fornece uma interface de alto nível que abstrai threads e processos através de executores e futuros. A grande vantagem é que <code>ThreadPoolExecutor</code> e <code>ProcessPoolExecutor</code> partilham a mesma API — mudar de threads para processos é trivial.
         </p>
         <div style={S.note}>
           Padrão de decisão rápida: é CPU-bound com cálculo pesado por item? → <code>ProcessPoolExecutor</code>. É I/O-bound (rede, disco, base de dados)? → <code>ThreadPoolExecutor</code> ou <code>asyncio</code>. Mistura de ambos? → <code>asyncio</code> com <code>run_in_executor()</code> para offload de bloqueios.
@@ -661,24 +643,6 @@ export default function PAR3() {
         </p>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ── SECÇÃO 8 ── Síntese */}
-              <h2 style={{ ...S.h2, borderLeft: 'none', paddingLeft: 0, marginBottom: '0.75rem' }}>8. Síntese do Módulo</h2>
-<div style={{ ...S.highlight, borderRadius: 10 }}>
-        <ul style={{ paddingLeft: '1.25rem', color: 'var(--text-primary)', lineHeight: 2.1, marginBottom: '1rem' }}>
-          <li><strong>Processos vs Threads:</strong> processos têm memória isolada e são mais pesados; threads partilham memória e são mais leves, mas exigem sincronização.</li>
-          <li><strong>GIL (CPython):</strong> impede paralelismo real de bytecode Python em múltiplas threads; <code>threading</code> só ajuda em I/O-bound porque o GIL é libertado em esperas.</li>
-          <li><strong>threading:</strong> ideal para I/O-bound (rede, disco, APIs); use <code>ThreadPoolExecutor</code> para gestão automática do pool.</li>
-          <li><strong>multiprocessing:</strong> ideal para CPU-bound; cada worker tem o seu GIL e corre num core separado; use <code>Pool.map</code> / <code>Pool.starmap</code>.</li>
-          <li><strong>asyncio:</strong> melhor para I/O-bound massivo com um único thread; evita overhead de threads; exige código assíncrono (<code>async</code>/<code>await</code>).</li>
-          <li><strong>Race conditions:</strong> surgem quando operações não-atómicas são intercaladas; resolver com <code>Lock</code>, <code>RLock</code>, <code>Semaphore</code>, ou estruturas thread-safe como <code>queue.Queue</code>.</li>
-          <li><strong>concurrent.futures:</strong> interface unificada para threads e processos; <code>as_completed()</code> e <code>wait()</code> permitem padrões avançados de orquestração.</li>
-        </ul>
-        <div style={S.math}>
-          <InlineMath math={`\\text{Regra de ouro: } \\begin{cases} \\text{CPU-bound} \\Rightarrow \\texttt{multiprocessing} \\\\ \\text{I/O-bound poucas tarefas} \\Rightarrow \\texttt{threading} \\\\ \\text{I/O-bound massivo} \\Rightarrow \\texttt{asyncio} \\end{cases}`} />
-        </div>
-      </div>
     </div>
   );
 }

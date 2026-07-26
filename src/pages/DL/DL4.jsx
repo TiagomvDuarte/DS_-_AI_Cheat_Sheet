@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(168,85,247,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -41,20 +41,20 @@ const LossCurvesDiagram = () => (
       <text x="500" y="198" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Épocas</text>
 
       <path d="M 50 170 C 120 110, 200 70, 280 50 C 360 38, 440 30, 500 25"
-        fill="none" stroke="#fdba74" strokeWidth="2.5" />
+        fill="none" stroke="#bae6fd" strokeWidth="2.5" />
       <path d="M 50 175 C 120 115, 200 78, 280 65 C 360 75, 440 105, 500 145"
-        fill="none" stroke="#f97316" strokeWidth="2.5" />
+        fill="none" stroke="#4a9eed" strokeWidth="2.5" />
 
-      <line x1="280" y1="20" x2="280" y2="180" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,3" />
-      <circle cx="280" cy="65" r="5" fill="#f59e0b" />
-      <text x="280" y="14" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">ponto óptimo (early stopping)</text>
+      <line x1="280" y1="20" x2="280" y2="180" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="4,3" />
+      <circle cx="280" cy="65" r="5" fill="#0284c7" />
+      <text x="280" y="14" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">ponto óptimo (early stopping)</text>
 
       <text x="150" y="198" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">underfitting</text>
       <text x="370" y="198" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">overfitting (gap cresce)</text>
 
-      <line x1="170" y1="228" x2="195" y2="228" stroke="#fdba74" strokeWidth="2.5" />
+      <line x1="170" y1="228" x2="195" y2="228" stroke="#bae6fd" strokeWidth="2.5" />
       <text x="200" y="232" fill="var(--text-secondary)" fontSize="9">treino</text>
-      <line x1="280" y1="228" x2="305" y2="228" stroke="#f97316" strokeWidth="2.5" />
+      <line x1="280" y1="228" x2="305" y2="228" stroke="#4a9eed" strokeWidth="2.5" />
       <text x="310" y="232" fill="var(--text-secondary)" fontSize="9">validação</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
@@ -67,35 +67,35 @@ const LossCurvesDiagram = () => (
 
 // === Diagram: decision boundaries — underfit / good fit / overfit ===
 const BoundaryDiagram = () => {
-  const points = [[60, 50, '#f97316'], [100, 90, '#f97316'], [140, 40, '#f97316'], [180, 100, '#f97316'], [70, 150, '#f97316'], [120, 170, '#f97316'], [160, 160, '#f97316'], [40, 120, '#f97316'], [190, 60, '#f97316'], [150, 190, '#f97316']];
+  const points = [[60, 50, '#4a9eed'], [100, 90, '#4a9eed'], [140, 40, '#4a9eed'], [180, 100, '#4a9eed'], [70, 150, '#4a9eed'], [120, 170, '#4a9eed'], [160, 160, '#4a9eed'], [40, 120, '#4a9eed'], [190, 60, '#4a9eed'], [150, 190, '#4a9eed']];
   const renderPoints = (offsetX) => points.map(([x, y, c], i) => (
     <circle key={i} cx={x + offsetX} cy={y} r="4" fill={c} stroke="var(--bg-primary)" strokeWidth="1" />
   ));
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Fronteiras de Decisão: Underfit, Boa Generalização e Overfit</p>
-      <svg viewBox="0 0 660 250" style={{ maxWidth: '100%', height: 'auto' }}>
+      <svg viewBox="0 0 660 262" style={{ maxWidth: '100%', height: 'auto' }}>
         {/* Underfit */}
         <rect x="10" y="10" width="200" height="200" rx="8" fill="var(--bg-primary)" stroke="var(--text-secondary)" />
-        <line x1="20" y1="60" x2="200" y2="120" stroke="#f59e0b" strokeWidth="2.5" />
+        <line x1="20" y1="60" x2="200" y2="120" stroke="#0284c7" strokeWidth="2.5" />
         {renderPoints(20)}
-        <text x="110" y="218" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Underfitting (alto bias)</text>
-        <text x="110" y="236" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Bias: alto · Variância: baixa</text>
+        <text x="110" y="228" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Underfitting (alto bias)</text>
+        <text x="110" y="246" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Bias: alto · Variância: baixa</text>
 
         {/* Good fit */}
         <rect x="230" y="10" width="200" height="200" rx="8" fill="var(--bg-primary)" stroke="var(--text-secondary)" />
-        <path d="M 250 50 Q 300 90 330 110 Q 370 140 430 150" fill="none" stroke="#f97316" strokeWidth="2.5" />
+        <path d="M 250 50 Q 300 90 330 110 Q 370 140 430 150" fill="none" stroke="#4a9eed" strokeWidth="2.5" />
         {renderPoints(240)}
-        <text x="330" y="218" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Boa generalização</text>
-        <text x="330" y="236" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Bias: baixo · Variância: baixa</text>
+        <text x="330" y="228" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Boa generalização</text>
+        <text x="330" y="246" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Bias: baixo · Variância: baixa</text>
 
         {/* Overfit */}
         <rect x="450" y="10" width="200" height="200" rx="8" fill="var(--bg-primary)" stroke="var(--text-secondary)" />
         <path d="M 470 55 Q 485 75 478 95 Q 510 100 505 75 Q 540 90 530 115 Q 560 130 550 150 Q 590 145 600 165 Q 615 175 630 160"
-          fill="none" stroke="#f97316" strokeWidth="2.5" />
+          fill="none" stroke="#4a9eed" strokeWidth="2.5" />
         {renderPoints(460)}
-        <text x="550" y="218" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Overfitting (alta variância)</text>
-        <text x="550" y="236" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Bias: baixo · Variância: alta</text>
+        <text x="550" y="228" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Overfitting (alta variância)</text>
+        <text x="550" y="246" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Bias: baixo · Variância: alta</text>
       </svg>
       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
         Underfitting: a fronteira (linear) é demasiado simples para separar bem as classes. Boa generalização:
@@ -117,7 +117,7 @@ const DropoutDiagram = () => {
       <svg viewBox="0 0 520 220" style={{ maxWidth: '100%', height: 'auto' }}>
         <text x="120" y="16" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">Treino (p = 0.5)</text>
         {layer1.map((y, i) => (
-          <circle key={`t1-${i}`} cx="60" cy={y + 20} r="12" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+          <circle key={`t1-${i}`} cx="60" cy={y + 20} r="12" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
         ))}
         {layer2.map((y, i) => {
           const dropped = droppedTrain.includes(i);
@@ -131,7 +131,7 @@ const DropoutDiagram = () => {
                   opacity={dropped ? 0.3 : 0.5} />
               ))}
               <circle cx="180" cy={y + 20} r="12"
-                fill={dropped ? 'var(--bg-primary)' : 'rgba(249,115,22,0.10)'}
+                fill={dropped ? 'var(--bg-primary)' : 'rgba(74,158,237,0.10)'}
                 stroke={dropped ? 'var(--card-border)' : color}
                 strokeWidth="1.5"
                 strokeDasharray={dropped ? '3,2' : '0'} />
@@ -145,14 +145,14 @@ const DropoutDiagram = () => {
 
         <text x="390" y="16" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">Inferência (eval)</text>
         {layer1.map((y, i) => (
-          <circle key={`i1-${i}`} cx="320" cy={y + 20} r="12" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+          <circle key={`i1-${i}`} cx="320" cy={y + 20} r="12" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
         ))}
         {layer2.map((y, i) => (
           <g key={`i2-${i}`}>
             {layer1.map((yy, j) => (
               <line key={j} x1="332" y1={yy + 20} x2="428" y2={y + 20} stroke={color} strokeWidth="1" opacity="0.5" />
             ))}
-            <circle cx="440" cy={y + 20} r="12" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            <circle cx="440" cy={y + 20} r="12" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
           </g>
         ))}
         <text x="380" y="210" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">todos os neurónios activos (sem scaling extra)</text>
@@ -169,7 +169,7 @@ const DropoutDiagram = () => {
 const BNPositionDiagram = () => (
   <div style={S.diagram}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Onde o BatchNorm se insere numa camada</p>
-    <svg viewBox="0 0 580 110" style={{ maxWidth: '100%', height: 'auto' }}>
+    <svg viewBox="0 0 620 110" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrBN" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
@@ -177,9 +177,9 @@ const BNPositionDiagram = () => (
       </defs>
       {[
         [62, 'Entrada\nx', 'var(--bg-primary)', 'var(--text-secondary)'],
-        [202, 'Linear / Conv\n(W·x + b)', 'rgba(138,180,248,0.15)', '#fdba74'],
-        [342, 'BatchNorm\n(normaliza + γ,β)', 'rgba(249,115,22,0.10)', color],
-        [482, 'Activação\n(ReLU)', 'rgba(249,115,22,0.10)', '#f97316'],
+        [202, 'Linear / Conv\n(W·x + b)', 'rgba(138,180,248,0.15)', '#bae6fd'],
+        [342, 'BatchNorm\n(normaliza + γ,β)', 'rgba(74,158,237,0.10)', color],
+        [482, 'Activação\n(ReLU)', 'rgba(74,158,237,0.10)', '#4a9eed'],
       ].map(([cx, label, bg, col]) => (
         <g key={label}>
           <rect x={cx - 62} y="25" width="124" height="55" rx="10" fill={bg} stroke={col} strokeWidth="1.2" />
@@ -229,9 +229,9 @@ const NormAxesDiagram = () => {
         de valores cuja média/variância é calculada em conjunto (cada célula resume também as dimensões espaciais H×W).
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', justifyItems: 'center' }}>
-        <Cube title="BatchNorm" hl="#fdba74" cells={() => true} />
-        <Cube title="LayerNorm" hl="#fb923c" cells={(r) => r === 0} />
-        <Cube title="InstanceNorm" hl="#f59e0b" cells={(r, c2) => r === 0 && c2 === 0} />
+        <Cube title="BatchNorm" hl="#bae6fd" cells={() => true} />
+        <Cube title="LayerNorm" hl="#38bdf8" cells={(r) => r === 0} />
+        <Cube title="InstanceNorm" hl="#0284c7" cells={(r, c2) => r === 0 && c2 === 0} />
         <Cube title="GroupNorm (G=2)" hl={color} cells={(r, c2) => r === 0 && c2 < 2} />
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginTop: '0.5rem' }}>
@@ -251,7 +251,7 @@ const WeightShrinkDiagram = () => (
     <svg viewBox="0 0 400 140" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrW" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
         <marker id="arrW2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
@@ -261,9 +261,9 @@ const WeightShrinkDiagram = () => (
       <circle cx="200" cy="70" r="3" fill="var(--text-secondary)" />
       <text x="200" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">0</text>
 
-      <circle cx="320" cy="70" r="5" fill="#f97316" />
-      <text x="320" y="50" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">w* (só perda de dados)</text>
-      <line x1="200" y1="70" x2="305" y2="70" stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,2" markerEnd="url(#arrW)" />
+      <circle cx="320" cy="70" r="5" fill="#4a9eed" />
+      <text x="320" y="50" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">w* (só perda de dados)</text>
+      <line x1="200" y1="70" x2="305" y2="70" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="3,2" markerEnd="url(#arrW)" />
 
       <circle cx="270" cy="70" r="5" fill={color} />
       <text x="270" y="115" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">w final (com weight decay)</text>
@@ -283,15 +283,8 @@ export default function DL4() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 04</div>
+      <div style={S.tag}>MÓDULO 04</div>
       <h1 style={S.h1}>Regularização &amp; Normalização</h1>
-      <p style={S.lead}>
-        Redes profundas têm milhões (ou milhares de milhões) de parâmetros e capacidade quase ilimitada para
-        memorizar os dados de treino — incluindo o ruído. Este módulo explora <strong>como diagnosticar</strong> esse
-        problema através das curvas de aprendizagem e das fronteiras de decisão, e <strong>como o controlar</strong>:
-        Dropout, Batch/Layer/Group/Instance Normalization, weight decay (L2) e early stopping. O objectivo é
-        sempre o mesmo — fazer com que o que a rede aprende generalize para dados nunca vistos.
-      </p>
 
       {/* === SECTION 1: Overfitting vs underfitting === */}
       <div style={S.section}>
@@ -619,7 +612,7 @@ export default function DL4() {
         <h3 style={S.h3}>Casos de uso</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '1rem' }}>
           <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: '1px solid rgba(138,180,248,0.3)' }}>
-            <div style={{ fontWeight: 700, color: '#fdba74', marginBottom: '0.3rem' }}>CNNs clássicas (ResNet, VGG)</div>
+            <div style={{ fontWeight: 700, color: '#bae6fd', marginBottom: '0.3rem' }}>CNNs clássicas (ResNet, VGG)</div>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>
               BatchNorm: o batch é normalmente grande e as estatísticas por canal através de N, H, W são estáveis
               e informativas.
@@ -632,15 +625,15 @@ export default function DL4() {
               exemplo (independente do batch) é mais robusto.
             </p>
           </div>
-          <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: '1px solid rgba(249,115,22,0.10)' }}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>Detecção / segmentação</div>
+          <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: '1px solid rgba(74,158,237,0.10)' }}>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>Detecção / segmentação</div>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>
               GroupNorm: imagens de alta resolução forçam batches pequenos (1–2) por limitação de memória — BN
               seria instável; GroupNorm não depende do tamanho do batch.
             </p>
           </div>
-          <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: '1px solid rgba(245,158,11,0.3)' }}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.3rem' }}>Style transfer</div>
+          <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '0.9rem', border: '1px solid rgba(2,132,199,0.3)' }}>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.3rem' }}>Style transfer</div>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>
               InstanceNorm: normalizar cada imagem e canal independentemente remove informação de "estilo"
               global (contraste, brilho), permitindo transferi-la separadamente.
@@ -702,30 +695,6 @@ export default function DL4() {
 
         <WeightShrinkDiagram />
 
-        <h3 style={S.h3}>Exemplo numérico</h3>
-        <p style={S.p}>
-          Suponha <InlineMath math="w = 0.5" />, <InlineMath math="\eta = 0.1" />,{' '}
-          <InlineMath math="\lambda = 0.1" />, e gradiente da perda <InlineMath math="\partial L/\partial w = 0.02" />.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Componente</th>
-              <th style={S.th}>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}>Termo de decaimento <InlineMath math="\eta \lambda w = 0.1 \times 0.1 \times 0.5" /></td><td style={S.td}><strong>0.005</strong></td></tr>
-            <tr><td style={S.td}>Termo do gradiente <InlineMath math="\eta \cdot \partial L/\partial w = 0.1 \times 0.02" /></td><td style={S.td}><strong>0.002</strong></td></tr>
-            <tr><td style={S.td}>Actualização total <InlineMath math="w \leftarrow w - 0.005 - 0.002" /></td><td style={S.td}><InlineMath math="0.5 - 0.007 = " /> <strong>0.493</strong></td></tr>
-          </tbody>
-        </table>
-        <p style={S.p}>
-          Mesmo que o gradiente da perda fosse <InlineMath math="0" /> (peso já óptimo para os dados), o weight
-          decay continuaria a puxar <InlineMath math="w" /> em direcção a zero a cada passo — até atingir um
-          equilíbrio onde a "força" do gradiente da perda contraria exactamente a "força" do decaimento.
-        </p>
-
         <h3 style={S.h3}>L2 com SGD vs com Adam</h3>
         <p style={S.p}>
           Em SGD puro, adicionar <InlineMath math="\lambda w" /> ao gradiente é matematicamente equivalente a
@@ -769,23 +738,23 @@ export default function DL4() {
             <text x="500" y="190" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">Épocas</text>
 
             <path d="M 50 160 C 130 100, 220 60, 320 35 C 400 22, 460 14, 500 10"
-              fill="none" stroke="#fdba74" strokeWidth="2.5" />
+              fill="none" stroke="#bae6fd" strokeWidth="2.5" />
             <path d="M 50 165 C 130 105, 220 70, 290 60 C 340 65, 400 90, 500 135"
-              fill="none" stroke="#f97316" strokeWidth="2.5" />
+              fill="none" stroke="#4a9eed" strokeWidth="2.5" />
 
-            <circle cx="290" cy="60" r="6" fill="#f97316" stroke="var(--bg-primary)" strokeWidth="1.5" />
-            <line x1="290" y1="20" x2="290" y2="170" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" />
-            <text x="290" y="14" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">melhor val loss</text>
+            <circle cx="290" cy="60" r="6" fill="#4a9eed" stroke="var(--bg-primary)" strokeWidth="1.5" />
+            <line x1="290" y1="20" x2="290" y2="170" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" />
+            <text x="290" y="14" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">melhor val loss</text>
 
-            <rect x="290" y="20" width="100" height="150" fill="#f59e0b" opacity="0.08" />
-            <text x="340" y="185" textAnchor="middle" fill="#f59e0b" fontSize="10">janela de "patience"</text>
+            <rect x="290" y="20" width="100" height="150" fill="#0284c7" opacity="0.08" />
+            <text x="340" y="185" textAnchor="middle" fill="#0284c7" fontSize="10">janela de "patience"</text>
 
-            <line x1="390" y1="20" x2="390" y2="170" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="2,2" />
-            <text x="390" y="14" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">treino parado aqui</text>
+            <line x1="390" y1="20" x2="390" y2="170" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="2,2" />
+            <text x="390" y="14" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">treino parado aqui</text>
 
-            <line x1="60" y1="195" x2="85" y2="195" stroke="#fdba74" strokeWidth="2.5" />
+            <line x1="60" y1="195" x2="85" y2="195" stroke="#bae6fd" strokeWidth="2.5" />
             <text x="90" y="199" fill="var(--text-secondary)" fontSize="9">treino</text>
-            <line x1="140" y1="195" x2="165" y2="195" stroke="#f97316" strokeWidth="2.5" />
+            <line x1="140" y1="195" x2="165" y2="195" stroke="#4a9eed" strokeWidth="2.5" />
             <text x="170" y="199" fill="var(--text-secondary)" fontSize="9">validação</text>
           </svg>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
@@ -833,81 +802,6 @@ export default function DL4() {
           conjunto com outras técnicas de regularização, não como substituto.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>7. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Cada técnica actua num ponto diferente do pipeline de treino — umas alteram a arquitectura (Dropout,
-          Normalização), outras a função de perda (weight decay), outras o procedimento de treino (early
-          stopping). Na prática, combinam-se várias.
-        </p>
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Técnica</th>
-              <th style={S.th}>O que faz</th>
-              <th style={S.th}>Quando usar</th>
-              <th style={S.th}>Hiperparâmetros típicos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>Dropout</strong></td>
-              <td style={S.td}>Desactiva neurónios aleatoriamente no treino, força redundância</td>
-              <td style={S.td}>Camadas fully-connected, attention em Transformers</td>
-              <td style={S.td}><InlineMath math="p = 0.1\text{–}0.5" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>BatchNorm</strong></td>
-              <td style={S.td}>Normaliza activações por mini-batch; γ, β aprendidos</td>
-              <td style={S.td}>CNNs com batch ≥ 16</td>
-              <td style={S.td}><InlineMath math="\epsilon \approx 10^{-5}" />, momentum ≈ 0.1</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>LayerNorm</strong></td>
-              <td style={S.td}>Normaliza sobre as features de cada exemplo, independente do batch</td>
-              <td style={S.td}>Transformers, RNNs, LLMs, batch pequeno</td>
-              <td style={S.td}><InlineMath math="\epsilon \approx 10^{-5}" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>GroupNorm</strong></td>
-              <td style={S.td}>Normaliza dentro de subgrupos de canais</td>
-              <td style={S.td}>Detecção/segmentação, batch=1–2</td>
-              <td style={S.td}>nº de grupos (8, 16, 32)</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>InstanceNorm</strong></td>
-              <td style={S.td}>Normaliza cada exemplo e canal independentemente (espacial)</td>
-              <td style={S.td}>Style transfer, geração de imagem</td>
-              <td style={S.td}><InlineMath math="\epsilon \approx 10^{-5}" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Weight Decay (L2 / AdamW)</strong></td>
-              <td style={S.td}>Penaliza pesos grandes, encolhe-os em direcção a zero</td>
-              <td style={S.td}>Quase sempre, com qualquer optimizador</td>
-              <td style={S.td}><InlineMath math="\lambda \approx 10^{-4}\text{–}10^{-2}" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Early Stopping</strong></td>
-              <td style={S.td}>Pára o treino quando o val loss deixa de melhorar</td>
-              <td style={S.td}>Sempre como baseline</td>
-              <td style={S.td}>patience = 5–15 épocas</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style={S.highlight}>
-          <strong>Takeaway central:</strong> regularização não é um extra opcional — é parte do design de
-          qualquer rede profunda. A combinação típica é: uma camada de normalização adequada à arquitectura
-          (BatchNorm em CNNs, LayerNorm em Transformers), Dropout em camadas fully-connected/attention, weight
-          decay via AdamW, e early stopping baseado no loss de validação. O diagnóstico via curvas de
-          aprendizagem indica sempre qual destas alavancas ajustar primeiro.
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

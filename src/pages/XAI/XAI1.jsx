@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
@@ -32,12 +32,6 @@ export default function XAI1() {
 
       <div style={S.tag}>MÓDULO 01</div>
       <h1 style={S.h1}>Introdução ao XAI</h1>
-      <p style={S.lead}>
-        À medida que os modelos de machine learning se tornam mais complexos e são aplicados em domínios de alto risco,
-        a capacidade de compreender, auditar e justificar as suas decisões deixou de ser opcional — é uma necessidade técnica,
-        ética e legal. Este módulo apresenta os fundamentos da Explainable AI (XAI): porque é necessária, como se organiza
-        taxonomicamente, e de que forma se integra no ciclo de vida de um sistema de ML.
-      </p>
 
       {/* ── Secção 1 ── */}
       <div style={S.section}>
@@ -89,27 +83,27 @@ export default function XAI1() {
           </p>
           <svg viewBox="0 0 780 200" width="100%" style={{ display: 'block' }}>
             {/* Coluna Baixo Risco */}
-            <rect x="10" y="30" width="230" height="140" rx="10" fill="rgba(249,115,22,0.10)" stroke="#fed7aa" strokeWidth="1.5" />
-            <text x="125" y="60" textAnchor="middle" fontWeight="700" fontSize="13" fill="#ea580c">Risco Limitado</text>
-            <text x="125" y="82" textAnchor="middle" fontSize="11" fill="#ea580c">Obrigações de transparência</text>
+            <rect x="10" y="30" width="230" height="140" rx="10" fill="rgba(74,158,237,0.10)" stroke="#e0f2fe" strokeWidth="1.5" />
+            <text x="125" y="60" textAnchor="middle" fontWeight="700" fontSize="13" fill="#0369a1">Risco Limitado</text>
+            <text x="125" y="82" textAnchor="middle" fontSize="11" fill="#0369a1">Obrigações de transparência</text>
             <text x="125" y="102" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Recomendação Spotify</text>
             <text x="125" y="120" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Chatbots de apoio</text>
             <text x="125" y="138" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Filtros de spam</text>
             <text x="125" y="158" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Reconhecimento de imagem</text>
 
             {/* Coluna Alto Risco */}
-            <rect x="275" y="30" width="230" height="140" rx="10" fill="rgba(249,115,22,0.10)" stroke="#fbbf24" strokeWidth="1.5" />
-            <text x="390" y="60" textAnchor="middle" fontWeight="700" fontSize="13" fill="#c2410c">Alto Risco</text>
-            <text x="390" y="80" textAnchor="middle" fontSize="11" fill="#c2410c">Auditabilidade obrigatória</text>
+            <rect x="275" y="30" width="230" height="140" rx="10" fill="rgba(74,158,237,0.10)" stroke="#7dd3fc" strokeWidth="1.5" />
+            <text x="390" y="60" textAnchor="middle" fontWeight="700" fontSize="13" fill="#075985">Alto Risco</text>
+            <text x="390" y="80" textAnchor="middle" fontSize="11" fill="#075985">Auditabilidade obrigatória</text>
             <text x="390" y="100" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Scoring de crédito</text>
             <text x="390" y="118" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Recrutamento automatizado</text>
             <text x="390" y="136" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Diagnóstico médico</text>
             <text x="390" y="154" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Triagem judicial</text>
 
             {/* Coluna Risco Inaceitável */}
-            <rect x="540" y="30" width="230" height="140" rx="10" fill="rgba(249,115,22,0.10)" stroke="#fb923c" strokeWidth="1.5" />
-            <text x="655" y="60" textAnchor="middle" fontWeight="700" fontSize="13" fill="#c2410c">Risco Inaceitável</text>
-            <text x="655" y="80" textAnchor="middle" fontSize="11" fill="#c2410c">Proibido pela lei</text>
+            <rect x="540" y="30" width="230" height="140" rx="10" fill="rgba(74,158,237,0.10)" stroke="#38bdf8" strokeWidth="1.5" />
+            <text x="655" y="60" textAnchor="middle" fontWeight="700" fontSize="13" fill="#075985">Risco Inaceitável</text>
+            <text x="655" y="80" textAnchor="middle" fontSize="11" fill="#075985">Proibido pela lei</text>
             <text x="655" y="100" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Pontuação social (social scoring)</text>
             <text x="655" y="118" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Manipulação subliminar</text>
             <text x="655" y="136" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Reconhecimento em tempo real</text>
@@ -163,38 +157,38 @@ export default function XAI1() {
             <line x1="350" y1="20" x2="350" y2="320" stroke="var(--card-border)" strokeWidth="1.5" />
 
             {/* Rótulos de eixo */}
-            <text x="185" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#f97316">ANTE-HOC</text>
-            <text x="520" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#f97316">POST-HOC</text>
-            <text x="14" y="100" textAnchor="middle" fontWeight="700" fontSize="12" fill="#f97316" transform="rotate(-90, 14, 100)">LOCAL</text>
-            <text x="14" y="260" textAnchor="middle" fontWeight="700" fontSize="12" fill="#f97316" transform="rotate(-90, 14, 260)">GLOBAL</text>
+            <text x="185" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#4a9eed">ANTE-HOC</text>
+            <text x="520" y="16" textAnchor="middle" fontWeight="700" fontSize="12" fill="#4a9eed">POST-HOC</text>
+            <text x="14" y="100" textAnchor="middle" fontWeight="700" fontSize="12" fill="#4a9eed" transform="rotate(-90, 14, 100)">LOCAL</text>
+            <text x="14" y="260" textAnchor="middle" fontWeight="700" fontSize="12" fill="#4a9eed" transform="rotate(-90, 14, 260)">GLOBAL</text>
 
             {/* Quadrante: Ante-hoc / Local */}
-            <rect x="30" y="30" width="300" height="130" rx="8" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
-            <text x="180" y="58" textAnchor="middle" fontWeight="600" fontSize="12" fill="#f97316">Ante-hoc · Local</text>
+            <rect x="30" y="30" width="300" height="130" rx="8" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
+            <text x="180" y="58" textAnchor="middle" fontWeight="600" fontSize="12" fill="#4a9eed">Ante-hoc · Local</text>
             <text x="180" y="80" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Caminho folha numa árvore de decisão</text>
             <text x="180" y="98" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Regra SE…ENTÃO para uma instância</text>
             <text x="180" y="116" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Coeficiente de regressão local</text>
             <text x="180" y="134" textAnchor="middle" fontSize="10" fill="var(--text-secondary)" fontStyle="italic">Exemplos: Decision Tree leaf path</text>
 
             {/* Quadrante: Post-hoc / Local */}
-            <rect x="360" y="30" width="300" height="130" rx="8" fill="rgba(249,115,22,0.07)" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
-            <text x="510" y="58" textAnchor="middle" fontWeight="600" fontSize="12" fill="#f97316">Post-hoc · Local</text>
+            <rect x="360" y="30" width="300" height="130" rx="8" fill="rgba(74,158,237,0.07)" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
+            <text x="510" y="58" textAnchor="middle" fontWeight="600" fontSize="12" fill="#4a9eed">Post-hoc · Local</text>
             <text x="510" y="80" textAnchor="middle" fontSize="11" fill="var(--text-primary)">LIME (aprox. linear local)</text>
             <text x="510" y="98" textAnchor="middle" fontSize="11" fill="var(--text-primary)">SHAP force plot</text>
             <text x="510" y="116" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Counterfactual explanations</text>
             <text x="510" y="134" textAnchor="middle" fontSize="10" fill="var(--text-secondary)" fontStyle="italic">Explicam uma predição individual</text>
 
             {/* Quadrante: Ante-hoc / Global */}
-            <rect x="30" y="185" width="300" height="120" rx="8" fill="rgba(249,115,22,0.07)" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
-            <text x="180" y="210" textAnchor="middle" fontWeight="600" fontSize="12" fill="#ea580c">Ante-hoc · Global</text>
+            <rect x="30" y="185" width="300" height="120" rx="8" fill="rgba(74,158,237,0.07)" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
+            <text x="180" y="210" textAnchor="middle" fontWeight="600" fontSize="12" fill="#0369a1">Ante-hoc · Global</text>
             <text x="180" y="232" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Coeficientes de regressão linear</text>
             <text x="180" y="250" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Estrutura completa da árvore</text>
             <text x="180" y="268" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Funções suaves de um GAM</text>
             <text x="180" y="286" textAnchor="middle" fontSize="10" fill="var(--text-secondary)" fontStyle="italic">Descrevem o modelo inteiro</text>
 
             {/* Quadrante: Post-hoc / Global */}
-            <rect x="360" y="185" width="300" height="120" rx="8" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.3)" strokeWidth="1" />
-            <text x="510" y="210" textAnchor="middle" fontWeight="600" fontSize="12" fill="#c2410c">Post-hoc · Global</text>
+            <rect x="360" y="185" width="300" height="120" rx="8" fill="rgba(2,132,199,0.07)" stroke="rgba(2,132,199,0.3)" strokeWidth="1" />
+            <text x="510" y="210" textAnchor="middle" fontWeight="600" fontSize="12" fill="#075985">Post-hoc · Global</text>
             <text x="510" y="232" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Partial Dependence Plots (PDP)</text>
             <text x="510" y="250" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Permutation Feature Importance</text>
             <text x="510" y="268" textAnchor="middle" fontSize="11" fill="var(--text-primary)">SHAP summary plot</text>
@@ -242,16 +236,16 @@ export default function XAI1() {
             {/* Gradiente de fundo */}
             <defs>
               <linearGradient id="specGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="rgba(249,115,22,0.10)" />
-                <stop offset="50%" stopColor="rgba(249,115,22,0.10)" />
-                <stop offset="100%" stopColor="rgba(249,115,22,0.10)" />
+                <stop offset="0%" stopColor="rgba(74,158,237,0.10)" />
+                <stop offset="50%" stopColor="rgba(74,158,237,0.10)" />
+                <stop offset="100%" stopColor="rgba(74,158,237,0.10)" />
               </linearGradient>
             </defs>
             <rect x="30" y="40" width="680" height="50" rx="8" fill="url(#specGrad)" />
 
             {/* Rótulos do espectro */}
-            <text x="30" y="32" fontSize="11" fontWeight="700" fill="#ea580c">Totalmente Interpretável</text>
-            <text x="620" y="32" fontSize="11" fontWeight="700" fill="#c2410c">Opaco</text>
+            <text x="30" y="32" fontSize="11" fontWeight="700" fill="#0369a1">Totalmente Interpretável</text>
+            <text x="620" y="32" fontSize="11" fontWeight="700" fill="#075985">Opaco</text>
 
             {/* Modelos no espectro */}
             <line x1="80" y1="90" x2="80" y2="120" stroke="var(--text-secondary)" strokeWidth="1.5" />
@@ -280,16 +274,16 @@ export default function XAI1() {
             {/* Setas de tradeoff */}
             <defs>
               <marker id="arrL" markerWidth="7" markerHeight="7" refX="0" refY="3" orient="auto">
-                <path d="M7,0 L7,6 L0,3 z" fill="#f97316" />
+                <path d="M7,0 L7,6 L0,3 z" fill="#4a9eed" />
               </marker>
               <marker id="arrR" markerWidth="7" markerHeight="7" refX="7" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L7,3 z" fill="#f97316" />
+                <path d="M0,0 L0,6 L7,3 z" fill="#4a9eed" />
               </marker>
             </defs>
-            <line x1="200" y1="185" x2="640" y2="185" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrR)" />
-            <text x="420" y="200" textAnchor="middle" fontSize="10" fill="#f97316">Capacidade preditiva crescente →</text>
-            <line x1="600" y1="165" x2="160" y2="165" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrR)" />
-            <text x="380" y="160" textAnchor="middle" fontSize="10" fill="#f97316">← Interpretabilidade crescente</text>
+            <line x1="200" y1="185" x2="640" y2="185" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrR)" />
+            <text x="420" y="200" textAnchor="middle" fontSize="10" fill="#4a9eed">Capacidade preditiva crescente →</text>
+            <line x1="600" y1="165" x2="160" y2="165" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrR)" />
+            <text x="380" y="160" textAnchor="middle" fontSize="10" fill="#4a9eed">← Interpretabilidade crescente</text>
           </svg>
         </div>
 
@@ -457,27 +451,27 @@ export default function XAI1() {
             <path
               d="M 80,50 C 120,55 180,80 260,140 S 380,200 440,215"
               fill="none"
-              stroke="#f97316"
+              stroke="#4a9eed"
               strokeWidth="2.5"
               strokeDasharray="none"
             />
 
             {/* Pontos anotados */}
-            <circle cx="100" cy="52" r="5" fill="#f97316" />
-            <text x="108" y="48" fontSize="10" fill="#f97316">Modelo opaco</text>
-            <text x="138" y="60" fontSize="10" fill="#f97316">(alta fidelidade)</text>
+            <circle cx="100" cy="52" r="5" fill="#4a9eed" />
+            <text x="108" y="48" fontSize="10" fill="#4a9eed">Modelo opaco</text>
+            <text x="138" y="60" fontSize="10" fill="#4a9eed">(alta fidelidade)</text>
 
-            <circle cx="260" cy="140" r="5" fill="#f97316" />
-            <text x="265" y="126" fontSize="10" fill="#f97316">EBM / GAM</text>
-            <text x="268" y="138" fontSize="10" fill="#f97316">(equilíbrio)</text>
+            <circle cx="260" cy="140" r="5" fill="#4a9eed" />
+            <text x="265" y="126" fontSize="10" fill="#4a9eed">EBM / GAM</text>
+            <text x="268" y="138" fontSize="10" fill="#4a9eed">(equilíbrio)</text>
 
-            <circle cx="430" cy="213" r="5" fill="#f97316" />
-            <text x="370" y="190" fontSize="10" fill="#f97316">Regressão linear</text>
-            <text x="390" y="200" fontSize="10" fill="#f97316">(alta interpretab.)</text>
+            <circle cx="430" cy="213" r="5" fill="#4a9eed" />
+            <text x="370" y="190" fontSize="10" fill="#4a9eed">Regressão linear</text>
+            <text x="390" y="200" fontSize="10" fill="#4a9eed">(alta interpretab.)</text>
 
             {/* Zona ideal */}
-            <rect x="200" y="110" width="120" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" strokeDasharray="4,2" />
-            <text x="230" y="155" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="600">Zona ideal</text>
+            <rect x="200" y="110" width="120" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" strokeDasharray="4,2" />
+            <text x="230" y="155" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="600">Zona ideal</text>
           </svg>
         </div>
 
@@ -558,7 +552,7 @@ export default function XAI1() {
               { x: 600, label: 'Monitorização', sub: 'Drift e\nretraining' },
             ].map(({ x, label, sub }) => (
               <g key={x}>
-                <rect x={x} y="60" width="120" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+                <rect x={x} y="60" width="120" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
                 <text x={x + 60} y="86" textAnchor="middle" fontWeight="700" fontSize="12" fill={color}>{label}</text>
                 <text x={x + 60} y="103" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{sub.split('\n')[0]}</text>
                 <text x={x + 60} y="114" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{sub.split('\n')[1]}</text>
@@ -589,7 +583,7 @@ export default function XAI1() {
             ))}
 
             {/* Rótulo XAI transversal */}
-            <rect x="20" y="240" width="720" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+            <rect x="20" y="240" width="720" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
             <text x="380" y="258" textAnchor="middle" fontSize="11" fontWeight="600" fill={color}>
               XAI — transversal a todo o ciclo de vida do sistema de ML
             </text>
@@ -620,23 +614,6 @@ export default function XAI1() {
           </ul>
         </div>
       </div>
-
-      {/* ── Síntese ── */}
-      
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>7. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Porquê Explicabilidade?</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Taxonomia XAI</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Black Box vs. White Box</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Modelos Intrinsecamente Interpretáveis</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Fidelidade vs. Interpretabilidade</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>XAI no Pipeline de ML</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
-    </div>
+</div>
   );
 }

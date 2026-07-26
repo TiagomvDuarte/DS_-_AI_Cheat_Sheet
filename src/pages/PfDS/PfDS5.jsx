@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,11 +15,11 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
-  svgWrap: { background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 10, padding: '1.25rem', margin: '1.25rem 0', overflowX: 'auto' },
+  svgWrap: { background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 10, padding: '1.25rem', margin: '1.25rem 0', overflowX: 'auto' },
 };
 
 /* ── SVG 1: Pure Function Box ── */
@@ -27,28 +27,28 @@ function PureFunctionSVG() {
   return (
     <svg width="560" height="170" viewBox="0 0 560 170" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       {/* Input A */}
-      <rect x="10" y="55" width="90" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="55" y="76" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">INPUT</text>
+      <rect x="10" y="55" width="90" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="55" y="76" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">INPUT</text>
       <text x="55" y="93" textAnchor="middle" fontSize="13" fill="var(--text-primary)" fontWeight="600">x = 5</text>
 
       {/* Arrow 1 */}
-      <line x1="100" y1="80" x2="148" y2="80" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="148,75 158,80 148,85" fill="#f97316" />
+      <line x1="100" y1="80" x2="148" y2="80" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="148,75 158,80 148,85" fill="#4a9eed" />
 
       {/* Function box */}
-      <rect x="158" y="30" width="144" height="100" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="230" y="55" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">FUNÇÃO PURA</text>
+      <rect x="158" y="30" width="144" height="100" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="230" y="55" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">FUNÇÃO PURA</text>
       <text x="230" y="76" textAnchor="middle" fontSize="14" fill="var(--text-primary)" fontWeight="700">f(x) = x * 2</text>
       <text x="230" y="96" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">sem side effects</text>
       <text x="230" y="112" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">determinística</text>
 
       {/* Arrow 2 */}
-      <line x1="302" y1="80" x2="350" y2="80" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="350,75 360,80 350,85" fill="#f97316" />
+      <line x1="302" y1="80" x2="350" y2="80" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="350,75 360,80 350,85" fill="#4a9eed" />
 
       {/* Output */}
-      <rect x="360" y="55" width="90" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="405" y="76" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">OUTPUT</text>
+      <rect x="360" y="55" width="90" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="405" y="76" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">OUTPUT</text>
       <text x="405" y="93" textAnchor="middle" fontSize="13" fill="var(--text-primary)" fontWeight="600">10</text>
 
       {/* Same input label */}
@@ -58,7 +58,7 @@ function PureFunctionSVG() {
       <text x="405" y="145" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">resultado 2: 10</text>
 
       {/* Always label */}
-      <text x="405" y="160" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">sempre igual!</text>
+      <text x="405" y="160" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">sempre igual!</text>
     </svg>
   );
 }
@@ -76,14 +76,14 @@ function LambdaPipelineSVG() {
       {boxes.map((b, i) => (
         <g key={i}>
           <rect x={b.x} y="25" width="120" height="55" rx="8"
-            fill={i === 1 ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'}
-            stroke="#f97316" strokeWidth={i === 1 ? 2 : 1.5} />
+            fill={i === 1 ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'}
+            stroke="#4a9eed" strokeWidth={i === 1 ? 2 : 1.5} />
           <text x={b.x + 60} y="48" textAnchor="middle" fontSize="11" fill="var(--text-primary)" fontWeight="700">{b.label}</text>
           <text x={b.x + 60} y="65" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{b.sub}</text>
           {i < boxes.length - 1 && (
             <>
-              <line x1={b.x + 120} y1="52" x2={b.x + 148} y2="52" stroke="#f97316" strokeWidth="1.5" />
-              <polygon points={`${b.x + 148},47 ${b.x + 158},52 ${b.x + 148},57`} fill="#f97316" />
+              <line x1={b.x + 120} y1="52" x2={b.x + 142} y2="52" stroke="#4a9eed" strokeWidth="1.5" />
+              <polygon points={`${b.x + 142},47 ${b.x + 150},52 ${b.x + 142},57`} fill="#4a9eed" />
             </>
           )}
         </g>
@@ -96,48 +96,48 @@ function LambdaPipelineSVG() {
 /* ── SVG 3: map/filter/reduce pipeline ── */
 function MapFilterReduceSVG() {
   return (
-    <svg width="600" height="140" viewBox="0 0 600 140" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
+    <svg width="630" height="140" viewBox="0 0 630 140" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       {/* Source list */}
-      <rect x="5" y="45" width="95" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="52" y="66" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">LISTA</text>
+      <rect x="5" y="45" width="95" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="52" y="66" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">LISTA</text>
       <text x="52" y="82" textAnchor="middle" fontSize="10" fill="var(--text-primary)">[1..10]</text>
 
       {/* Arrow */}
-      <line x1="100" y1="70" x2="130" y2="70" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="130,65 140,70 130,75" fill="#f97316" />
+      <line x1="100" y1="70" x2="130" y2="70" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="130,65 140,70 130,75" fill="#4a9eed" />
 
       {/* map box */}
-      <rect x="140" y="30" width="105" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="192" y="55" textAnchor="middle" fontSize="12" fill="#f97316" fontWeight="700">map()</text>
+      <rect x="140" y="30" width="105" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="192" y="55" textAnchor="middle" fontSize="12" fill="#4a9eed" fontWeight="700">map()</text>
       <text x="192" y="72" textAnchor="middle" fontSize="10" fill="var(--text-primary)">transforma</text>
       <text x="192" y="87" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">cada elemento</text>
       <text x="192" y="102" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">x → x**2</text>
 
-      <line x1="245" y1="70" x2="275" y2="70" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="275,65 285,70 275,75" fill="#f97316" />
+      <line x1="245" y1="70" x2="275" y2="70" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="275,65 285,70 275,75" fill="#4a9eed" />
 
       {/* filter box */}
-      <rect x="285" y="30" width="105" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="337" y="55" textAnchor="middle" fontSize="12" fill="#f97316" fontWeight="700">filter()</text>
+      <rect x="285" y="30" width="105" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="337" y="55" textAnchor="middle" fontSize="12" fill="#4a9eed" fontWeight="700">filter()</text>
       <text x="337" y="72" textAnchor="middle" fontSize="10" fill="var(--text-primary)">selecciona</text>
       <text x="337" y="87" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">predicate True</text>
       <text x="337" y="102" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">x % 2 == 0</text>
 
-      <line x1="390" y1="70" x2="420" y2="70" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="420,65 430,70 420,75" fill="#f97316" />
+      <line x1="390" y1="70" x2="420" y2="70" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="420,65 430,70 420,75" fill="#4a9eed" />
 
       {/* reduce box */}
-      <rect x="430" y="30" width="105" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="482" y="55" textAnchor="middle" fontSize="12" fill="#f97316" fontWeight="700">reduce()</text>
+      <rect x="430" y="30" width="105" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="482" y="55" textAnchor="middle" fontSize="12" fill="#4a9eed" fontWeight="700">reduce()</text>
       <text x="482" y="72" textAnchor="middle" fontSize="10" fill="var(--text-primary)">agrega</text>
       <text x="482" y="87" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">a um valor</text>
       <text x="482" y="102" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">a + b</text>
 
-      <line x1="535" y1="70" x2="565" y2="70" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="565,65 575,70 565,75" fill="#f97316" />
+      <line x1="535" y1="70" x2="565" y2="70" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="565,65 575,70 565,75" fill="#4a9eed" />
 
       {/* Result */}
-      <text x="580" y="74" textAnchor="start" fontSize="14" fill="#f97316" fontWeight="700">220</text>
+      <text x="580" y="74" textAnchor="start" fontSize="14" fill="#4a9eed" fontWeight="700">220</text>
 
       <text x="300" y="128" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">cada passo devolve um iterador lazy — só materializa com list()</text>
     </svg>
@@ -149,32 +149,32 @@ function ClosureSVG() {
   return (
     <svg width="520" height="190" viewBox="0 0 520 190" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       {/* Outer scope */}
-      <rect x="10" y="10" width="200" height="160" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" strokeDasharray="6,3" />
-      <text x="110" y="30" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">scope: multiplicador()</text>
-      <rect x="30" y="45" width="160" height="35" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+      <rect x="10" y="10" width="200" height="160" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="6,3" />
+      <text x="110" y="30" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">scope: multiplicador()</text>
+      <rect x="30" y="45" width="160" height="35" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
       <text x="110" y="61" textAnchor="middle" fontSize="11" fill="var(--text-primary)" fontWeight="600">fator = 2</text>
       <text x="110" y="74" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">variável livre capturada</text>
 
       {/* Inner scope */}
-      <rect x="30" y="100" width="160" height="55" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="110" y="118" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">closure: aplicar()</text>
+      <rect x="30" y="100" width="160" height="55" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="110" y="118" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">closure: aplicar()</text>
       <text x="110" y="134" textAnchor="middle" fontSize="11" fill="var(--text-primary)">return numero * fator</text>
       <text x="110" y="148" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">__closure__[0] → fator</text>
 
       {/* Arrow from inner to outer variable */}
-      <line x1="110" y1="100" x2="110" y2="80" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" />
-      <polygon points="105,80 110,70 115,80" fill="#f97316" />
+      <line x1="110" y1="100" x2="110" y2="88" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" />
+      <polygon points="105,88 110,80 115,88" fill="#4a9eed" />
 
       {/* After return */}
-      <rect x="260" y="60" width="240" height="100" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="380" y="82" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">após retorno de multiplicador()</text>
+      <rect x="260" y="60" width="240" height="100" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="380" y="82" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">após retorno de multiplicador()</text>
       <text x="380" y="100" textAnchor="middle" fontSize="12" fill="var(--text-primary)" fontWeight="600">dobrar = aplicar</text>
       <text x="380" y="118" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">fator ainda acessível via</text>
       <text x="380" y="133" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">dobrar.__closure__[0]</text>
       <text x="380" y="150" textAnchor="middle" fontSize="11" fill="var(--text-primary)">dobrar(5) → 10</text>
 
-      <line x1="210" y1="110" x2="258" y2="110" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="258,105 268,110 258,115" fill="#f97316" />
+      <line x1="210" y1="110" x2="252" y2="110" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="252,105 260,110 252,115" fill="#4a9eed" />
     </svg>
   );
 }
@@ -184,35 +184,35 @@ function DecoratorSVG() {
   return (
     <svg width="600" height="180" viewBox="0 0 600 180" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       {/* Input */}
-      <rect x="5" y="70" width="75" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="42" y="85" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">INPUT</text>
+      <rect x="5" y="70" width="75" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="42" y="85" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">INPUT</text>
       <text x="42" y="100" textAnchor="middle" fontSize="10" fill="var(--text-primary)">*args</text>
 
-      <line x1="80" y1="90" x2="108" y2="90" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="108,85 118,90 108,95" fill="#f97316" />
+      <line x1="80" y1="90" x2="108" y2="90" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="108,85 118,90 108,95" fill="#4a9eed" />
 
       {/* Wrapper outer */}
-      <rect x="118" y="15" width="370" height="150" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" strokeDasharray="7,3" />
-      <text x="300" y="34" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">wrapper() — camada do decorator</text>
+      <rect x="118" y="15" width="370" height="150" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" strokeDasharray="7,3" />
+      <text x="300" y="34" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">wrapper() — camada do decorator</text>
 
       {/* Pre logic */}
-      <rect x="135" y="50" width="90" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+      <rect x="135" y="50" width="90" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
       <text x="180" y="68" textAnchor="middle" fontSize="10" fill="var(--text-primary)" fontWeight="600">antes</text>
       <text x="180" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">logging, timer...</text>
 
-      <line x1="225" y1="70" x2="248" y2="70" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="248,65 258,70 248,75" fill="#f97316" />
+      <line x1="225" y1="70" x2="248" y2="70" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="248,65 258,70 248,75" fill="#4a9eed" />
 
       {/* Original fn */}
-      <rect x="258" y="50" width="100" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="308" y="68" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">func()</text>
+      <rect x="258" y="50" width="100" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="308" y="68" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">func()</text>
       <text x="308" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">função original</text>
 
-      <line x1="358" y1="70" x2="380" y2="70" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="380,65 390,70 380,75" fill="#f97316" />
+      <line x1="358" y1="70" x2="380" y2="70" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="380,65 390,70 380,75" fill="#4a9eed" />
 
       {/* Post logic */}
-      <rect x="390" y="50" width="90" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+      <rect x="390" y="50" width="90" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
       <text x="435" y="68" textAnchor="middle" fontSize="10" fill="var(--text-primary)" fontWeight="600">depois</text>
       <text x="435" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">métricas, cache...</text>
 
@@ -220,11 +220,11 @@ function DecoratorSVG() {
       <text x="300" y="148" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">@functools.wraps preserva __name__ e __doc__</text>
 
       {/* Output */}
-      <line x1="480" y1="90" x2="495" y2="90" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="495,85 505,90 495,95" fill="#f97316" />
+      <line x1="480" y1="90" x2="495" y2="90" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="495,85 505,90 495,95" fill="#4a9eed" />
 
-      <rect x="505" y="70" width="65" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="537" y="85" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">OUTPUT</text>
+      <rect x="505" y="70" width="65" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="537" y="85" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">OUTPUT</text>
       <text x="537" y="100" textAnchor="middle" fontSize="10" fill="var(--text-primary)">result</text>
     </svg>
   );
@@ -233,8 +233,8 @@ function DecoratorSVG() {
 /* ── SVG 6: lru_cache performance bar chart ── */
 function CacheBarSVG() {
   const bars = [
-    { label: 'sem cache fib(35)', value: 95, color: '#f97316' },
-    { label: 'com @lru_cache fib(35)', value: 4, color: '#f97316' },
+    { label: 'sem cache fib(35)', value: 95, color: '#4a9eed' },
+    { label: 'com @lru_cache fib(35)', value: 4, color: '#4a9eed' },
   ];
   const maxVal = 100;
   const barH = 28;
@@ -275,13 +275,13 @@ function ItertoolsSVG() {
         const x = 20 + i * 128;
         return (
           <g key={i}>
-            <rect x={x} y="28" width="108" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x={x + 54} y="52" textAnchor="middle" fontSize="12" fill="#f97316" fontWeight="700">{s.label}</text>
+            <rect x={x} y="28" width="108" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x={x + 54} y="52" textAnchor="middle" fontSize="12" fill="#4a9eed" fontWeight="700">{s.label}</text>
             <text x={x + 54} y="70" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{s.sub}</text>
             {i < stages.length - 1 && (
               <>
-                <line x1={x + 108} y1="58" x2={x + 126} y2="58" stroke="#f97316" strokeWidth="1.5" />
-                <polygon points={`${x + 126},53 ${x + 136},58 ${x + 126},63`} fill="#f97316" />
+                <line x1={x + 108} y1="58" x2={x + 120} y2="58" stroke="#4a9eed" strokeWidth="1.5" />
+                <polygon points={`${x + 120},53 ${x + 128},58 ${x + 120},63`} fill="#4a9eed" />
               </>
             )}
           </g>
@@ -297,30 +297,30 @@ function GeneratorSVG() {
   return (
     <svg width="520" height="190" viewBox="0 0 520 190" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       {/* List side */}
-      <rect x="10" y="15" width="225" height="155" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="122" y="36" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">list — tudo em memória</text>
+      <rect x="10" y="15" width="225" height="155" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="122" y="36" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">list — tudo em memória</text>
       {[0,1,2,3,4].map(i => (
-        <rect key={i} x={25 + i * 38} y="50" width="30" height="30" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+        <rect key={i} x={25 + i * 38} y="50" width="30" height="30" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
       ))}
       {[0,1,2,3,4].map(i => (
         <text key={i} x={40 + i * 38} y="70" textAnchor="middle" fontSize="11" fill="var(--text-primary)" fontWeight="600">{i * i}</text>
       ))}
       <text x="122" y="105" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">todos os valores criados</text>
       <text x="122" y="120" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">imediatamente</text>
-      <text x="122" y="140" textAnchor="middle" fontSize="10" fill="#f97316">memória: O(n)</text>
+      <text x="122" y="140" textAnchor="middle" fontSize="10" fill="#4a9eed">memória: O(n)</text>
       <text x="122" y="158" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">[x*x for x in range(n)]</text>
 
       {/* vs */}
       <text x="260" y="100" textAnchor="middle" fontSize="14" fill="var(--text-secondary)" fontWeight="700">vs</text>
 
       {/* Generator side */}
-      <rect x="285" y="15" width="225" height="155" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="397" y="36" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">generator — lazy</text>
-      <rect x="330" y="50" width="130" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="395" y="70" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">yield x*x</text>
+      <rect x="285" y="15" width="225" height="155" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="397" y="36" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">generator — lazy</text>
+      <rect x="330" y="50" width="130" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="395" y="70" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">yield x*x</text>
       <text x="397" y="105" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">produz um valor</text>
       <text x="397" y="120" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">de cada vez</text>
-      <text x="397" y="140" textAnchor="middle" fontSize="10" fill="#f97316">memória: O(1)</text>
+      <text x="397" y="140" textAnchor="middle" fontSize="10" fill="#4a9eed">memória: O(1)</text>
       <text x="397" y="158" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">(x*x for x in range(n))</text>
     </svg>
   );
@@ -332,32 +332,32 @@ function CurrySVG() {
     <svg width="500" height="120" viewBox="0 0 500 120" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       <text x="250" y="16" textAnchor="middle" fontSize="11" fill="var(--text-secondary)" fontWeight="600">Currying — cada chamada fixa um argumento</text>
 
-      <rect x="10" y="30" width="80" height="55" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="50" y="52" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">add(a)</text>
+      <rect x="10" y="30" width="80" height="55" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="50" y="52" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">add(a)</text>
       <text x="50" y="68" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">a=3</text>
       <text x="50" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">retorna fn</text>
 
-      <line x1="90" y1="57" x2="118" y2="57" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="118,52 128,57 118,62" fill="#f97316" />
+      <line x1="90" y1="57" x2="118" y2="57" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="118,52 128,57 118,62" fill="#4a9eed" />
 
-      <rect x="128" y="30" width="90" height="55" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="173" y="52" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">add(3)(b)</text>
+      <rect x="128" y="30" width="90" height="55" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="173" y="52" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">add(3)(b)</text>
       <text x="173" y="68" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">b=4</text>
       <text x="173" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">retorna fn</text>
 
-      <line x1="218" y1="57" x2="246" y2="57" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="246,52 256,57 246,62" fill="#f97316" />
+      <line x1="218" y1="57" x2="246" y2="57" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="246,52 256,57 246,62" fill="#4a9eed" />
 
-      <rect x="256" y="30" width="110" height="55" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="311" y="52" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">add(3)(4)(c)</text>
+      <rect x="256" y="30" width="110" height="55" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="311" y="52" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">add(3)(4)(c)</text>
       <text x="311" y="68" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">c=5</text>
       <text x="311" y="82" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">retorna valor</text>
 
-      <line x1="366" y1="57" x2="394" y2="57" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="394,52 404,57 394,62" fill="#f97316" />
+      <line x1="366" y1="57" x2="394" y2="57" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="394,52 404,57 394,62" fill="#4a9eed" />
 
-      <rect x="404" y="40" width="80" height="35" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="444" y="63" textAnchor="middle" fontSize="16" fill="#f97316" fontWeight="700">12</text>
+      <rect x="404" y="40" width="80" height="35" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="444" y="63" textAnchor="middle" fontSize="16" fill="#4a9eed" fontWeight="700">12</text>
 
       <text x="250" y="108" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">partial application: fixa alguns argumentos agora, passa o resto depois</text>
     </svg>
@@ -384,9 +384,9 @@ function ComparisonSVG() {
         return (
           <g key={ci}>
             <rect x={x} y="8" width={colW[ci] - 4} height="26" rx="4"
-              fill={ci === 1 ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'}
-              stroke="#f97316" strokeWidth="1" />
-            <text x={x + (colW[ci] - 4) / 2} y="26" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">{c}</text>
+              fill={ci === 1 ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'}
+              stroke="#4a9eed" strokeWidth="1" />
+            <text x={x + (colW[ci] - 4) / 2} y="26" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">{c}</text>
           </g>
         );
       })}
@@ -398,10 +398,10 @@ function ComparisonSVG() {
           return (
             <g key={ci}>
               <rect x={x} y={y} width={colW[ci] - 4} height="28" rx="4"
-                fill={ci === 1 ? 'rgba(249,115,22,0.10)' : ri % 2 === 0 ? 'rgba(249,115,22,0.10)' : 'transparent'}
-                stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+                fill={ci === 1 ? 'rgba(74,158,237,0.10)' : ri % 2 === 0 ? 'rgba(74,158,237,0.10)' : 'transparent'}
+                stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               <text x={x + (colW[ci] - 4) / 2} y={y + 18} textAnchor="middle" fontSize="10"
-                fill={ci === 0 ? '#f97316' : 'var(--text-primary)'} fontWeight={ci === 0 ? '600' : '400'}>{v}</text>
+                fill={ci === 0 ? '#4a9eed' : 'var(--text-primary)'} fontWeight={ci === 0 ? '600' : '400'}>{v}</text>
             </g>
           );
         });
@@ -426,15 +426,15 @@ function SynthesisPipelineSVG() {
         return (
           <g key={i}>
             <rect x={x} y="20" width="100" height="70" rx="8"
-              fill={i === 0 || i === 4 ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'}
-              stroke="#f97316" strokeWidth={i === 0 || i === 4 ? 1.5 : 2} />
-            <text x={x + 50} y="42" textAnchor="middle" fontSize="18" fill="#f97316">{s.icon}</text>
+              fill={i === 0 || i === 4 ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'}
+              stroke="#4a9eed" strokeWidth={i === 0 || i === 4 ? 1.5 : 2} />
+            <text x={x + 50} y="42" textAnchor="middle" fontSize="18" fill="#4a9eed">{s.icon}</text>
             <text x={x + 50} y="62" textAnchor="middle" fontSize="11" fill="var(--text-primary)" fontWeight="700">{s.label}</text>
             <text x={x + 50} y="78" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{s.sub}</text>
             {i < stages.length - 1 && (
               <>
-                <line x1={x + 100} y1="55" x2={x + 110} y2="55" stroke="#f97316" strokeWidth="1.5" />
-                <polygon points={`${x + 110},50 ${x + 120},55 ${x + 110},60`} fill="#f97316" />
+                <line x1={x + 100} y1="55" x2={x + 110} y2="55" stroke="#4a9eed" strokeWidth="1.5" />
+                <polygon points={`${x + 110},50 ${x + 120},55 ${x + 110},60`} fill="#4a9eed" />
               </>
             )}
           </g>
@@ -450,14 +450,8 @@ export default function PfDS5() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <span style={S.tag}>MÓDULO 05</span>
+      <span style={S.tag}>MÓDULO 06</span>
       <h1 style={S.h1}>Functional Programming em Python</h1>
-      <p style={S.lead}>
-        A programação funcional trata funções como cidadãos de primeira classe — podem ser
-        passadas como argumentos, retornadas de outras funções e compostas em pipelines.
-        Os seus padrões — map, filter, reduce, closures, decorators, generators — são
-        ubíquos em ciência de dados e ferramentas modernas como Pandas, Spark e scikit-learn.
-      </p>
 
       {/* ── 1. Princípios ── */}
       <section style={S.section}>
@@ -472,7 +466,7 @@ export default function PfDS5() {
         <div style={S.svgWrap}>
           <PureFunctionSVG />
         </div>
-        <div style={S.code}>{`# ❌ Impura — side effect (modifica argumento) e resultado não determinístico
+        <div style={S.code}>{`# Impura — side effect (modifica argumento) e resultado não determinístico
 import random
 dados_globais = []
 
@@ -481,7 +475,7 @@ def adicionar_impuro(lista, valor):
     dados_globais.append(valor)  # altera estado global!
     return lista
 
-# ✅ Pura — cria novo objecto, sem side effects
+# Pura — cria novo objecto, sem side effects
 def adicionar_puro(lista, valor):
     return lista + [valor]       # não altera a original
 
@@ -1159,89 +1153,8 @@ print(resultado_oop)   # 220`}</div>
         </div>
       </section>
 
-      <hr style={S.divider} />
 
-      {/* ── 11. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Síntese — Pipeline de Transformação Funcional</h2>
-        <p style={S.p}>
-          Um pipeline funcional encadeia transformações puras. Cada passo recebe dados, transforma-os
-          e passa o resultado ao passo seguinte — sem modificar os dados originais.
-        </p>
-        <div style={S.svgWrap}>
-          <SynthesisPipelineSVG />
-        </div>
-        <div style={S.code}>{`from functools import reduce, partial
-import itertools
 
-# Pipeline funcional completo — limpeza e análise de dados de texto
-dados_brutos = [
-    "  Ana Silva ", "rui costa", "ANA SILVA", " Maria ", "rui costa",
-    "pedro alves", "MARIA SANTOS", "  ", "joão silva"
-]
-
-# Passo 1: limpar e normalizar
-limpar  = partial(str.strip)
-normali = str.title
-
-# Passo 2: filtrar vazios e duplicados
-valido  = lambda s: len(s) > 0
-
-# Pipeline completo
-pipeline = [
-    lambda lst: [limpar(x) for x in lst],
-    lambda lst: [normali(x) for x in lst],
-    lambda lst: filter(valido, lst),
-    lambda lst: sorted(set(lst)),
-]
-
-resultado = reduce(lambda data, fn: list(fn(data)), pipeline, dados_brutos)
-print(resultado)
-# ['Ana Silva', 'João Silva', 'Maria', 'Maria Santos', 'Pedro Alves', 'Rui Costa']`}</div>
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Ferramenta</th>
-              <th style={S.th}>Módulo</th>
-              <th style={S.th}>Uso principal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td style={S.td}><code>lambda</code></td><td style={S.td}>built-in</td><td style={S.td}>Função anónima em linha</td></tr>
-            <tr><td style={S.td}><code>map()</code></td><td style={S.td}>built-in</td><td style={S.td}>Transformar cada elemento</td></tr>
-            <tr><td style={S.td}><code>filter()</code></td><td style={S.td}>built-in</td><td style={S.td}>Seleccionar elementos</td></tr>
-            <tr><td style={S.td}><code>reduce()</code></td><td style={S.td}>functools</td><td style={S.td}>Agregar em valor único</td></tr>
-            <tr><td style={S.td}><code>partial()</code></td><td style={S.td}>functools</td><td style={S.td}>Fixar argumentos antecipadamente</td></tr>
-            <tr><td style={S.td}><code>lru_cache()</code></td><td style={S.td}>functools</td><td style={S.td}>Memoization automática</td></tr>
-            <tr><td style={S.td}><code>wraps()</code></td><td style={S.td}>functools</td><td style={S.td}>Preservar metadados em decorators</td></tr>
-            <tr><td style={S.td}><code>yield</code></td><td style={S.td}>built-in</td><td style={S.td}>Generators lazy</td></tr>
-            <tr><td style={S.td}><code>yield from</code></td><td style={S.td}>built-in</td><td style={S.td}>Delegar para sub-generator</td></tr>
-            <tr><td style={S.td}><code>itertools</code></td><td style={S.td}>itertools</td><td style={S.td}>Combinatória e iteradores lazy</td></tr>
-          </tbody>
-        </table>
-        <div style={S.note}>
-          Programação funcional em Python não é "tudo ou nada" — usa as ferramentas certas
-          para cada problema. Funções puras para transformações de dados, closures e decorators
-          para cross-cutting concerns, generators para sequências grandes, e OOP quando o modelo
-          de domínio beneficia de encapsulamento de estado.
-        </div>
-      </section>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>12. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Princípios da Programação Funcional</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Lambda — Funções Anónimas</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>map(), filter() e reduce()</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Closures em Profundidade</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Decorators</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Decorators Úteis da Biblioteca Padrão</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Itertools — Ferramentas para Iteradores Lazy</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

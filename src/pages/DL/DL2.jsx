@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
@@ -37,39 +37,39 @@ const ComputationGraphDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
         <marker id="bwdArrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
 
       {/* Input nodes */}
-      <circle cx="50" cy="55" r="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="50" cy="55" r="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="50" y="51" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">x</text>
       <text x="50" y="67" textAnchor="middle" fill={color} fontSize="10">= 2</text>
 
-      <circle cx="50" cy="190" r="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="50" cy="190" r="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="50" y="186" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">w</text>
       <text x="50" y="202" textAnchor="middle" fill={color} fontSize="10">= 3</text>
 
-      <circle cx="290" cy="270" r="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="290" cy="270" r="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="290" y="266" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">b</text>
       <text x="290" y="282" textAnchor="middle" fill={color} fontSize="10">= -1</text>
 
       {/* × node: p = x·w */}
-      <rect x="140" y="98" width="60" height="48" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="140" y="98" width="60" height="48" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="170" y="128" textAnchor="middle" fill="var(--text-primary)" fontSize="16" fontWeight="700">×</text>
       <text x="280" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">p = 6</text>
 
       {/* + node: z = p + b */}
-      <rect x="380" y="98" width="60" height="48" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="380" y="98" width="60" height="48" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="410" y="128" textAnchor="middle" fill="var(--text-primary)" fontSize="16" fontWeight="700">+</text>
       <text x="490" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="11" fontWeight="700">z = 5</text>
 
       {/* σ node: a = ReLU(z) */}
-      <rect x="520" y="98" width="60" height="48" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="520" y="98" width="60" height="48" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="550" y="128" textAnchor="middle" fill="var(--text-primary)" fontSize="16" fontWeight="700">σ</text>
 
       {/* a output */}
-      <circle cx="650" cy="122" r="26" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+      <circle cx="650" cy="122" r="26" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
       <text x="650" y="118" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">a</text>
       <text x="650" y="134" textAnchor="middle" fill="var(--text-primary)" fontSize="10">= 5</text>
 
@@ -82,25 +82,25 @@ const ComputationGraphDiagram = () => (
       <line x1="580" y1="122" x2="622" y2="122" stroke={color} strokeWidth="1.5" markerEnd="url(#fwdArrow)" />
 
       {/* Backward arrows (dashed, red) — offset from the forward lines so labels don't overlap */}
-      <line x1="624" y1="138" x2="582" y2="138" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
-      <line x1="518" y1="138" x2="442" y2="138" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
-      <line x1="378" y1="138" x2="202" y2="138" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
-      <line x1="397" y1="160" x2="312" y2="262" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
-      <line x1="143" y1="124" x2="73" y2="78" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
-      <line x1="143" y1="153" x2="73" y2="198" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="624" y1="138" x2="582" y2="138" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="518" y1="138" x2="442" y2="138" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="378" y1="138" x2="202" y2="138" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="397" y1="160" x2="312" y2="262" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="143" y1="124" x2="73" y2="78" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="143" y1="153" x2="73" y2="198" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
 
       {/* Backward gradient labels — each placed clear of every line */}
-      <text x="603" y="156" textAnchor="middle" fill="#f97316" fontSize="10">∂a/∂a = 1</text>
-      <text x="480" y="156" textAnchor="middle" fill="#f97316" fontSize="10">∂a/∂z = σ'(z) = 1</text>
-      <text x="290" y="156" textAnchor="middle" fill="#f97316" fontSize="10">∂a/∂p = ∂a/∂z·∂z/∂p = 1</text>
-      <text x="430" y="218" textAnchor="middle" fill="#f97316" fontSize="10">∂a/∂b = ∂a/∂z·∂z/∂b = 1</text>
-      <text x="180" y="80" textAnchor="middle" fill="#f97316" fontSize="10">∂a/∂x = ∂a/∂p·∂p/∂x = 1·w = 3</text>
-      <text x="170" y="200" textAnchor="middle" fill="#f97316" fontSize="10">∂a/∂w = ∂a/∂p·∂p/∂w = 1·x = 2</text>
+      <text x="603" y="156" textAnchor="middle" fill="#4a9eed" fontSize="10">∂a/∂a = 1</text>
+      <text x="480" y="156" textAnchor="middle" fill="#4a9eed" fontSize="10">∂a/∂z = σ'(z) = 1</text>
+      <text x="290" y="156" textAnchor="middle" fill="#4a9eed" fontSize="10">∂a/∂p = ∂a/∂z·∂z/∂p = 1</text>
+      <text x="430" y="218" textAnchor="middle" fill="#4a9eed" fontSize="10">∂a/∂b = ∂a/∂z·∂z/∂b = 1</text>
+      <text x="180" y="80" textAnchor="middle" fill="#4a9eed" fontSize="10">∂a/∂x = ∂a/∂p·∂p/∂x = 1·w = 3</text>
+      <text x="170" y="200" textAnchor="middle" fill="#4a9eed" fontSize="10">∂a/∂w = ∂a/∂p·∂p/∂w = 1·x = 2</text>
 
       {/* Legend */}
       <line x1="20" y1="305" x2="50" y2="305" stroke={color} strokeWidth="1.5" markerEnd="url(#fwdArrow)" />
       <text x="56" y="309" fill="var(--text-secondary)" fontSize="10">forward (valores)</text>
-      <line x1="200" y1="305" x2="230" y2="305" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
+      <line x1="200" y1="305" x2="230" y2="305" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#bwdArrow)" />
       <text x="236" y="309" fill="var(--text-secondary)" fontSize="10">backward (gradientes)</text>
     </svg>
     <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.75rem', textAlign: 'left' }}>
@@ -155,16 +155,16 @@ const VanishingExplodingDiagram = () => {
         <text x={(w) / 2} y={h - 4} textAnchor="middle" fill="var(--text-secondary)" fontSize="10">camada (1 → 8, sentido do backward)</text>
 
         {/* Vanishing line */}
-        <path d={toPath(vanishPts)} fill="none" stroke="#f97316" strokeWidth="2" />
-        {vanishPts.map((p, i) => <circle key={'v'+i} cx={p[0]} cy={p[1]} r="2.5" fill="#f97316" />)}
+        <path d={toPath(vanishPts)} fill="none" stroke="#4a9eed" strokeWidth="2" />
+        {vanishPts.map((p, i) => <circle key={'v'+i} cx={p[0]} cy={p[1]} r="2.5" fill="#4a9eed" />)}
 
         {/* Exploding line */}
-        <path d={toPath(explodePts)} fill="none" stroke="#f97316" strokeWidth="2" />
-        {explodePts.map((p, i) => <circle key={'e'+i} cx={p[0]} cy={p[1]} r="2.5" fill="#f97316" />)}
+        <path d={toPath(explodePts)} fill="none" stroke="#4a9eed" strokeWidth="2" />
+        {explodePts.map((p, i) => <circle key={'e'+i} cx={p[0]} cy={p[1]} r="2.5" fill="#4a9eed" />)}
 
         {/* Labels */}
-        <text x={vanishPts[layers-1][0] - 60} y={vanishPts[layers-1][1] + 15} fill="#f97316" fontSize="10" fontWeight="700">vanishing (factor 0.5)</text>
-        <text x={explodePts[2][0]} y={explodePts[3][1] - 12} fill="#f97316" fontSize="10" fontWeight="700">exploding (factor 1.5)</text>
+        <text x={vanishPts[layers-1][0] - 60} y={vanishPts[layers-1][1] + 15} fill="#4a9eed" fontSize="10" fontWeight="700">vanishing (factor 0.5)</text>
+        <text x={explodePts[2][0]} y={explodePts[3][1] - 12} fill="#4a9eed" fontSize="10" fontWeight="700">exploding (factor 1.5)</text>
       </svg>
       <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
         <strong>Como ler este gráfico:</strong> o eixo horizontal representa as 8 camadas da rede, mas no
@@ -176,7 +176,7 @@ const VanishingExplodingDiagram = () => {
         acima, repetida agora 8 vezes seguidas.
       </p>
       <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
-        A linha <strong style={{ color: '#f97316' }}>azul</strong> simula uma rede em que, em média, cada camada
+        A linha <strong style={{ color: '#4a9eed' }}>azul</strong> simula uma rede em que, em média, cada camada
         contribui com um gradiente local de magnitude <InlineMath math="0.5" /> (factor <InlineMath math="< 1" />).
         Após 8 camadas, o gradiente fica em <InlineMath math="0.5^8 \approx 0.0039" /> — menos de
         meio porcento do valor original. As camadas mais próximas da entrada recebem, na prática, um sinal
@@ -184,7 +184,7 @@ const VanishingExplodingDiagram = () => {
         (<strong>vanishing gradients</strong>).
       </p>
       <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
-        A linha <strong style={{ color: '#f97316' }}>vermelha</strong> mostra o cenário oposto: cada camada
+        A linha <strong style={{ color: '#4a9eed' }}>vermelha</strong> mostra o cenário oposto: cada camada
         amplifica o gradiente por um factor médio de <InlineMath math="1.5" /> (factor <InlineMath math="> 1" />).
         Após 8 camadas, o gradiente cresce para <InlineMath math="1.5^8 \approx 25.6" /> vezes o valor original —
         e este crescimento é <em>exponencial</em>, não linear: numa rede com 20 ou 30 camadas, o mesmo factor
@@ -215,20 +215,20 @@ const AutogradDiagram = () => (
         </marker>
       </defs>
       {/* Step 1 */}
-      <rect x="20" y="20" width="150" height="64" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="20" y="20" width="150" height="64" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="95" y="45" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">1. Forward pass</text>
       <text x="95" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">cada operação cria um</text>
       <text x="95" y="74" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">nó com referência ao "pai"</text>
 
       {/* Step 2 */}
-      <rect x="205" y="20" width="150" height="64" rx="10" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="280" y="45" textAnchor="middle" fill="#f59e0b" fontSize="12" fontWeight="700">2. Grafo dinâmico</text>
+      <rect x="205" y="20" width="150" height="64" rx="10" fill="rgba(2,132,199,0.1)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="280" y="45" textAnchor="middle" fill="#0284c7" fontSize="12" fontWeight="700">2. Grafo dinâmico</text>
       <text x="280" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">tape regista a ordem das</text>
       <text x="280" y="74" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">operações (define-by-run)</text>
 
       {/* Step 3 */}
-      <rect x="390" y="20" width="150" height="64" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="465" y="45" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">3. Backward pass</text>
+      <rect x="390" y="20" width="150" height="64" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="465" y="45" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">3. Backward pass</text>
       <text x="465" y="62" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">percorre a tape ao contrário,</text>
       <text x="465" y="74" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">acumula gradientes em cada nó</text>
 
@@ -474,7 +474,7 @@ const NeuralNetStepper = () => {
   const [step, setStep] = useState(0);
   const steps = mode === 'forward' ? nnForwardSteps : nnBackwardSteps;
   const cur = steps[step];
-  const accentColor = mode === 'forward' ? color : '#f97316';
+  const accentColor = mode === 'forward' ? color : '#4a9eed';
 
   const switchMode = (m) => { setMode(m); setStep(0); };
 
@@ -490,7 +490,7 @@ const NeuralNetStepper = () => {
 
       <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
         <button onClick={() => switchMode('forward')} style={{ ...stepBtnStyle(false), background: mode === 'forward' ? color : 'transparent', color: mode === 'forward' ? '#fff' : color }}>Forward pass</button>
-        <button onClick={() => switchMode('backward')} style={{ ...stepBtnStyle(false), background: mode === 'backward' ? '#f97316' : 'transparent', borderColor: '#f97316', color: mode === 'backward' ? '#fff' : '#f97316' }}>Backward pass</button>
+        <button onClick={() => switchMode('backward')} style={{ ...stepBtnStyle(false), background: mode === 'backward' ? '#4a9eed' : 'transparent', borderColor: '#4a9eed', color: mode === 'backward' ? '#fff' : '#4a9eed' }}>Backward pass</button>
       </div>
 
       <p style={{ fontSize: '0.85rem', color: accentColor, fontWeight: 700, marginBottom: '1rem' }}>
@@ -503,7 +503,7 @@ const NeuralNetStepper = () => {
             <path d="M0,0 L6,3 L0,6 Z" fill={color} />
           </marker>
           <marker id="nnBwd" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+            <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
           </marker>
         </defs>
 
@@ -520,7 +520,7 @@ const NeuralNetStepper = () => {
           return (
             <line
               key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke={isFocus ? '#f97316' : (active ? accentColor : 'var(--card-border)')}
+              stroke={isFocus ? '#4a9eed' : (active ? accentColor : 'var(--card-border)')}
               strokeWidth={isFocus ? 3.5 : (active ? 2.25 : 1)}
               opacity={isFocus ? 1 : (active ? 1 : 0.35)}
               markerEnd={active ? (mode === 'forward' ? 'url(#nnFwd)' : 'url(#nnBwd)') : undefined}
@@ -535,7 +535,7 @@ const NeuralNetStepper = () => {
           const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
           return (
             <g>
-              <rect x={mx - 38} y={my - 28} width="76" height="18" rx="4" fill="#f59e0b" />
+              <rect x={mx - 38} y={my - 28} width="76" height="18" rx="4" fill="#0284c7" />
               <text x={mx} y={my - 15} textAnchor="middle" fill="#1c1917" fontSize="10" fontWeight="700">{cur.weightExample.weightLabel}</text>
             </g>
           );
@@ -550,10 +550,10 @@ const NeuralNetStepper = () => {
               <circle
                 cx={n.x} cy={n.y} r={isLoss ? 24 : 22}
                 fill={active ? `${accentColor}26` : 'var(--bg-primary)'}
-                stroke={active ? accentColor : (isLoss ? '#f97316' : color)}
+                stroke={active ? accentColor : (isLoss ? '#4a9eed' : color)}
                 strokeWidth={active ? 2.5 : 1.5}
               />
-              <text x={n.x} y={n.y - 1} textAnchor="middle" fill={active ? accentColor : (isLoss ? '#f97316' : 'var(--text-primary)')} fontSize="12" fontWeight="700">{n.label}</text>
+              <text x={n.x} y={n.y - 1} textAnchor="middle" fill={active ? accentColor : (isLoss ? '#4a9eed' : 'var(--text-primary)')} fontSize="12" fontWeight="700">{n.label}</text>
               <text x={n.x} y={n.y + 12} textAnchor="middle" fill="var(--text-secondary)" fontSize="8">{n.value}</text>
             </g>
           );
@@ -604,10 +604,10 @@ const NeuralNetStepper = () => {
       )}
 
       {cur.weightExample && (
-        <div style={{ ...S.highlight, textAlign: 'left', marginTop: '0.5rem', borderColor: '#f97316' }}>
+        <div style={{ ...S.highlight, textAlign: 'left', marginTop: '0.5rem', borderColor: '#4a9eed' }}>
           <p style={{ ...S.p, marginBottom: '0.5rem', fontWeight: 700 }}>{cur.weightExample.title}</p>
           <p style={{ ...S.p, fontSize: '0.85rem', marginBottom: '0.5rem' }}>
-            Destacado a <strong style={{ color: '#f97316' }}>laranja</strong> no diagrama. Substituindo os valores
+            Destacado a <strong style={{ color: '#4a9eed' }}>laranja</strong> no diagrama. Substituindo os valores
             numéricos deste exemplo na fórmula geral acima:
           </p>
           {cur.weightExample.rows.map((r, i) => (
@@ -674,7 +674,7 @@ const WeightGradientExplorer = () => {
               )}
               <line
                 x1={a.x} y1={a.y} x2={b.x} y2={b.y}
-                stroke={isSelected ? '#f97316' : (isWeight ? color : 'var(--card-border)')}
+                stroke={isSelected ? '#4a9eed' : (isWeight ? color : 'var(--card-border)')}
                 strokeWidth={isSelected ? 3.5 : (isWeight ? 1.5 : 1)}
                 opacity={isWeight ? 1 : 0.35}
                 markerEnd="url(#wgArrow)"
@@ -689,8 +689,8 @@ const WeightGradientExplorer = () => {
           const isLoss = n.id === 'L';
           return (
             <g key={n.id}>
-              <circle cx={n.x} cy={n.y} r={isLoss ? 24 : 22} fill="var(--bg-primary)" stroke={isLoss ? '#f97316' : color} strokeWidth="1.5" />
-              <text x={n.x} y={n.y - 1} textAnchor="middle" fill={isLoss ? '#f97316' : 'var(--text-primary)'} fontSize="12" fontWeight="700">{n.label}</text>
+              <circle cx={n.x} cy={n.y} r={isLoss ? 24 : 22} fill="var(--bg-primary)" stroke={isLoss ? '#4a9eed' : color} strokeWidth="1.5" />
+              <text x={n.x} y={n.y - 1} textAnchor="middle" fill={isLoss ? '#4a9eed' : 'var(--text-primary)'} fontSize="12" fontWeight="700">{n.label}</text>
               <text x={n.x} y={n.y + 12} textAnchor="middle" fill="var(--text-secondary)" fontSize="8">{n.value}</text>
             </g>
           );
@@ -709,12 +709,12 @@ const WeightGradientExplorer = () => {
 
       <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
         Clique em qualquer linha a {' '}<strong style={{ color }}>azul</strong> (um peso) — fica a {' '}
-        <strong style={{ color: '#f97316' }}>laranja</strong> e a caixa abaixo mostra a <strong>regra da
+        <strong style={{ color: '#4a9eed' }}>laranja</strong> e a caixa abaixo mostra a <strong>regra da
         cadeia</strong> que dá o gradiente desse peso, decompondo <InlineMath math="\partial L/\partial w" /> nos
         gradientes locais de cada operação que está entre esse peso e a perda.
       </p>
 
-      <div style={{ ...S.highlight, textAlign: 'left', marginTop: '0.75rem', borderColor: '#f97316' }}>
+      <div style={{ ...S.highlight, textAlign: 'left', marginTop: '0.75rem', borderColor: '#4a9eed' }}>
         <p style={{ ...S.p, marginBottom: '0.5rem', fontWeight: 700 }}>
           Peso seleccionado: <InlineMath math={cur.tex} />
         </p>
@@ -735,10 +735,10 @@ const LossLandscapeDiagram = () => (
     <svg viewBox="0 0 480 240" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="llArrowUp" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
         <marker id="llArrowDown" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
 
@@ -747,22 +747,22 @@ const LossLandscapeDiagram = () => (
         fill="none" stroke={color} strokeWidth="2.5" />
 
       {/* Minimum marker */}
-      <circle cx="240" cy="175" r="5" fill="#f97316" />
-      <text x="240" y="202" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">mínimo (loss baixa)</text>
+      <circle cx="240" cy="175" r="5" fill="#4a9eed" />
+      <text x="240" y="202" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">mínimo (loss baixa)</text>
 
       {/* Left point: negative slope (loss decreasing to the right) */}
-      <circle cx="120" cy="100" r="6" fill="#f59e0b" />
-      <line x1="120" y1="100" x2="92" y2="58" stroke="#f97316" strokeWidth="2" markerEnd="url(#llArrowUp)" />
-      <text x="60" y="50" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">∇L aponta p/ cima</text>
-      <line x1="120" y1="100" x2="158" y2="142" stroke="#f97316" strokeWidth="2" markerEnd="url(#llArrowDown)" />
-      <text x="180" y="118" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">passo: -η∇L</text>
+      <circle cx="120" cy="100" r="6" fill="#0284c7" />
+      <line x1="120" y1="100" x2="92" y2="58" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#llArrowUp)" />
+      <text x="60" y="50" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">∇L aponta p/ cima</text>
+      <line x1="120" y1="100" x2="158" y2="142" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#llArrowDown)" />
+      <text x="180" y="118" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">passo: -η∇L</text>
 
       {/* Right point: positive slope (loss increasing to the right) */}
-      <circle cx="360" cy="100" r="6" fill="#f59e0b" />
-      <line x1="360" y1="100" x2="392" y2="56" stroke="#f97316" strokeWidth="2" markerEnd="url(#llArrowUp)" />
-      <text x="412" y="48" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">∇L aponta p/ cima</text>
-      <line x1="360" y1="100" x2="320" y2="144" stroke="#f97316" strokeWidth="2" markerEnd="url(#llArrowDown)" />
-      <text x="300" y="118" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">passo: -η∇L</text>
+      <circle cx="360" cy="100" r="6" fill="#0284c7" />
+      <line x1="360" y1="100" x2="392" y2="56" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#llArrowUp)" />
+      <text x="412" y="48" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">∇L aponta p/ cima</text>
+      <line x1="360" y1="100" x2="320" y2="144" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#llArrowDown)" />
+      <text x="300" y="118" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">passo: -η∇L</text>
 
       <text x="35" y="75" fill="var(--text-secondary)" fontSize="10">loss alta</text>
       <text x="445" y="75" textAnchor="end" fill="var(--text-secondary)" fontSize="10">loss alta</text>
@@ -811,16 +811,8 @@ export default function DL2() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 02</div>
+      <div style={S.tag}>MÓDULO 02</div>
       <h1 style={S.h1}>Backpropagation</h1>
-      <p style={S.lead}>
-        Backpropagation é o algoritmo que torna o treino de redes neuronais profundas computacionalmente viável:
-        em vez de calcular cada derivada parcial de raiz, reaproveita-se sistematicamente trabalho já feito,
-        propagando gradientes ao longo de um grafo de operações. Neste módulo desconstruímos esse processo
-        peça a peça — desde a estrutura de um grafo de computação, passando pela regra da cadeia aplicada
-        camada a camada, até ao fenómeno do desaparecimento/explosão de gradientes em redes profundas e ao
-        funcionamento conceptual dos motores de <em>autograd</em> que tornam tudo isto automático.
-      </p>
 
       {/* === SECTION 1: Backpropagation summary === */}
       <div style={S.section}>
@@ -850,7 +842,7 @@ export default function DL2() {
             </p>
           </div>
           <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid #ef444430' }}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Backward pass</div>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Backward pass</div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
               Percorre a rede da saída para a entrada, aplicando a regra da cadeia repetidamente para calcular
               quanto cada peso contribuiu para a perda — ou seja, os <strong>gradientes</strong>.
@@ -1140,30 +1132,8 @@ export default function DL2() {
       <hr style={S.divider} />
 
       {/* === Synthesis === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Backpropagation não é um algoritmo "extra" sobreposto às redes neuronais — é a aplicação directa,
-          mecânica e sistemática da regra da cadeia a um grafo de operações. Tudo o resto (autograd, técnicas
-          de estabilização de gradientes, escolhas de arquitectura) decorre desta ideia simples.
-        </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>O forward pass calcula valores e <strong>guarda-os</strong>; o backward pass reutiliza-os para
-              calcular gradientes locais.</li>
-            <li>Cada nó contribui com um único factor multiplicativo: <em>gradiente que sai = gradiente local ×
-              gradiente que entra</em>.</li>
-            <li>Em redes profundas, o gradiente final é o produto de muitos factores — daí o vanishing/exploding
-              gradient, mitigado por activações, inicialização, normalização, residuals e clipping.</li>
-            <li>Motores de autograd constroem o grafo dinamicamente durante o forward e percorrem-no ao
-              contrário automaticamente; gradientes de exemplos no mesmo batch são acumulados (somados) por
-              defeito.</li>
-            <li>O exemplo numérico completo mostra como, na prática, calcular cada gradiente não passa de
-              multiplicar a activação que entrou num peso pelo gradiente que saiu dessa camada.</li>
-          </ul>
-        </div>
-      </div>
+      
+
     </div>
   );
 }

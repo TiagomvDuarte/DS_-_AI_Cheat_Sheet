@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -43,16 +43,16 @@ function LossSurfaceSVG() {
       <text x="625" y="272" textAnchor="end" fontSize="11" fill="var(--text-secondary)">params →</text>
       <text x="38" y="22" fontSize="11" fill="var(--text-secondary)">loss ↑</text>
       {/* Local min at x≈155, y≈65 (low on screen = low loss) */}
-      <circle cx="155" cy="65" r="6" fill="#f59e0b" />
-      <line x1="155" y1="65" x2="155" y2="275" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.4" />
-      <text x="155" y="54" textAnchor="middle" fontSize="11" fill="#f59e0b">local min</text>
+      <circle cx="155" cy="65" r="6" fill="#7dd3fc" />
+      <line x1="155" y1="65" x2="155" y2="275" stroke="#7dd3fc" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.4" />
+      <text x="155" y="54" textAnchor="middle" fontSize="11" fill="#7dd3fc">local min</text>
       {/* Saddle at x≈270, y≈165 (inflection) */}
-      <circle cx="270" cy="165" r="6" fill="#fb923c" />
-      <text x="260" y="154" textAnchor="middle" fontSize="11" fill="#fb923c">saddle</text>
+      <circle cx="270" cy="165" r="6" fill="#bae6fd" />
+      <text x="260" y="154" textAnchor="middle" fontSize="11" fill="#bae6fd">saddle</text>
       {/* Global min at x≈420, y≈240 (lowest point on curve) */}
-      <circle cx="420" cy="240" r="7" fill="#f97316" />
-      <line x1="420" y1="240" x2="420" y2="275" stroke="#f97316" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.4" />
-      <text x="440" y="228" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">global min</text>
+      <circle cx="420" cy="240" r="7" fill="#4a9eed" />
+      <line x1="420" y1="240" x2="420" y2="275" stroke="#4a9eed" strokeWidth="1" strokeDasharray="3,3" strokeOpacity="0.4" />
+      <text x="440" y="228" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">global min</text>
       {/* Plateau near x=530 */}
       <line x1="490" y1="237" x2="600" y2="230" stroke="var(--text-secondary)" strokeWidth="1.5" strokeOpacity="0.5" />
       <text x="545" y="220" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">plateau</text>
@@ -87,14 +87,14 @@ function GDContoursVG() {
         <ellipse key={i} cx={cx} cy={cy} rx={c.rx} ry={c.ry} fill="none" stroke={color} strokeWidth="1.5" opacity={c.op * 3} />
       ))}
       {/* Center (minimum) */}
-      <circle cx={cx} cy={cy} r="5" fill="#f97316" />
-      <text x={cx + 8} y={cy + 4} fontSize="11" fill="#f97316">min</text>
+      <circle cx={cx} cy={cy} r="5" fill="#4a9eed" />
+      <text x={cx + 8} y={cy + 4} fontSize="11" fill="#4a9eed">min</text>
       {/* GD path */}
-      <polyline points={polyline} fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="4,2" />
+      <polyline points={polyline} fill="none" stroke="#7dd3fc" strokeWidth="2" strokeDasharray="4,2" />
       {pts.map((p, i) => (
-        <circle key={i} cx={p[0]} cy={p[1]} r="3" fill="#f59e0b" />
+        <circle key={i} cx={p[0]} cy={p[1]} r="3" fill="#7dd3fc" />
       ))}
-      <text x="120" y="255" fontSize="11" fill="#f59e0b">start</text>
+      <text x="120" y="255" fontSize="11" fill="#7dd3fc">start</text>
       {/* Labels */}
       <text x="12" y="20" fontSize="13" fill="#94a3b8" fontWeight="bold">Gradient Descent on Elliptic Loss</text>
     </svg>
@@ -111,22 +111,22 @@ function HessianSVG() {
       {[70, 50, 32, 18, 8].map((r, i) => (
         <ellipse key={i} cx={cx} cy={cy} rx={r * 2.2} ry={r} fill="none" stroke={color} strokeWidth="1.4" opacity={0.4 + i * 0.1} transform={`rotate(-30, ${cx}, ${cy})`} />
       ))}
-      <circle cx={cx} cy={cy} r="5" fill="#f97316" />
+      <circle cx={cx} cy={cy} r="5" fill="#4a9eed" />
       {/* Eigenvector 1 — major axis direction */}
-      <line x1={cx} y1={cy} x2={cx + 90} y2={cy - 52} stroke="#fbbf24" strokeWidth="2.5" />
-      <polygon points={`${cx + 90},${cy - 52} ${cx + 78},${cy - 44} ${cx + 84},${cy - 58}`} fill="#fbbf24" />
-      <text x={cx + 95} y={cy - 54} fontSize="11" fill="#fbbf24">v1 (λ1 small)</text>
+      <line x1={cx} y1={cy} x2={cx + 90} y2={cy - 52} stroke="#e0f2fe" strokeWidth="2.5" />
+      <polygon points={`${cx + 90},${cy - 52} ${cx + 82.1},${cy - 41.7} ${cx + 77.1},${cy - 50.3}`} fill="#e0f2fe" />
+      <text x={cx + 95} y={cy - 54} fontSize="11" fill="#e0f2fe">v1 (λ1 small)</text>
       {/* Eigenvector 2 — minor axis direction */}
-      <line x1={cx} y1={cy} x2={cx + 48} y2={cy + 82} stroke="#f97316" strokeWidth="2.5" />
-      <polygon points={`${cx + 48},${cy + 82} ${cx + 40},${cy + 70} ${cx + 54},${cy + 72}`} fill="#f97316" />
-      <text x={cx + 52} y={cy + 94} fontSize="11" fill="#f97316">v2 (λ2 large)</text>
+      <line x1={cx} y1={cy} x2={cx + 48} y2={cy + 82} stroke="#4a9eed" strokeWidth="2.5" />
+      <polygon points={`${cx + 48},${cy + 82} ${cx + 37.6},${cy + 74.2} ${cx + 46.3},${cy + 69.1}`} fill="#4a9eed" />
+      <text x={cx + 52} y={cy + 94} fontSize="11" fill="#4a9eed">v2 (λ2 large)</text>
       {/* Right panel: eigenvalue classification */}
-      <rect x="380" y="40" width="240" height="220" rx="8" fill="rgba(249,115,22,0.06)" />
+      <rect x="380" y="40" width="240" height="220" rx="8" fill="rgba(74,158,237,0.06)" />
       <text x="500" y="68" textAnchor="middle" fontSize="13" fill="#94a3b8" fontWeight="bold">Classification</text>
       {[
-        { label: 'All λ > 0', desc: 'Local Min', color: '#f97316', y: 100 },
-        { label: 'All λ < 0', desc: 'Local Max', color: '#fb923c', y: 135 },
-        { label: 'Mixed λ', desc: 'Saddle Point', color: '#f97316', y: 170 },
+        { label: 'All λ > 0', desc: 'Local Min', color: '#4a9eed', y: 100 },
+        { label: 'All λ < 0', desc: 'Local Max', color: '#bae6fd', y: 135 },
+        { label: 'Mixed λ', desc: 'Saddle Point', color: '#4a9eed', y: 170 },
         { label: 'Some λ = 0', desc: 'Degenerate', color: '#94a3b8', y: 205 },
       ].map(r => (
         <g key={r.label}>
@@ -145,29 +145,29 @@ function ConvexSVG() {
     <svg width="640" height="260" viewBox="0 0 640 260" style={{ maxWidth: '100%' }}>
       <rect width="640" height="260" rx="8" fill="var(--bg-secondary)" />
       {/* Left: convex function */}
-      <text x="160" y="25" textAnchor="middle" fontSize="13" fill="#f97316" fontWeight="bold">Convex</text>
-      <path d="M60,220 Q160,40 260,220" fill="none" stroke="#f97316" strokeWidth="3" />
+      <text x="160" y="25" textAnchor="middle" fontSize="13" fill="#4a9eed" fontWeight="bold">Convex</text>
+      <path d="M60,220 Q160,40 260,220" fill="none" stroke="#4a9eed" strokeWidth="3" />
       {/* Chord line */}
-      <line x1="90" y1="182" x2="230" y2="182" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-      <circle cx="90" cy="182" r="4" fill="#f97316" />
-      <circle cx="230" cy="182" r="4" fill="#f97316" />
-      <text x="160" y="196" textAnchor="middle" fontSize="10" fill="#f97316">chord above curve</text>
+      <line x1="90" y1="182" x2="230" y2="182" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+      <circle cx="90" cy="182" r="4" fill="#4a9eed" />
+      <circle cx="230" cy="182" r="4" fill="#4a9eed" />
+      <text x="160" y="196" textAnchor="middle" fontSize="10" fill="#4a9eed">chord above curve</text>
       <text x="160" y="240" textAnchor="middle" fontSize="10" fill="#64748b">f(λx+(1-λ)y) ≤ λf(x)+(1-λ)f(y)</text>
       {/* Divider */}
       <line x1="320" y1="20" x2="320" y2="240" stroke="var(--card-border)" strokeWidth="1" />
       {/* Right: non-convex function */}
-      <text x="480" y="25" textAnchor="middle" fontSize="13" fill="#fb923c" fontWeight="bold">Non-Convex</text>
-      <path d="M360,220 C380,160 400,200 430,120 C455,55 470,170 500,150 C530,130 550,210 580,220" fill="none" stroke="#fb923c" strokeWidth="3" />
+      <text x="480" y="25" textAnchor="middle" fontSize="13" fill="#bae6fd" fontWeight="bold">Non-Convex</text>
+      <path d="M360,220 C380,160 400,200 430,120 C455,55 470,170 500,150 C530,130 550,210 580,220" fill="none" stroke="#bae6fd" strokeWidth="3" />
       {/* Chord that goes above the function */}
-      <line x1="375" y1="196" x2="555" y2="200" stroke="#fb923c" strokeWidth="1.5" strokeDasharray="5,3" />
-      <circle cx="375" cy="196" r="4" fill="#fb923c" />
-      <circle cx="555" cy="200" r="4" fill="#fb923c" />
-      <text x="465" y="215" textAnchor="middle" fontSize="10" fill="#fb923c">chord below curve</text>
+      <line x1="375" y1="196" x2="555" y2="200" stroke="#bae6fd" strokeWidth="1.5" strokeDasharray="5,3" />
+      <circle cx="375" cy="196" r="4" fill="#bae6fd" />
+      <circle cx="555" cy="200" r="4" fill="#bae6fd" />
+      <text x="465" y="215" textAnchor="middle" fontSize="10" fill="#bae6fd">chord below curve</text>
       {/* Local minima markers */}
-      <circle cx="430" cy="120" r="4" fill="#f59e0b" />
-      <text x="420" y="112" textAnchor="middle" fontSize="9" fill="#f59e0b">local</text>
-      <circle cx="500" cy="150" r="4" fill="#f59e0b" />
-      <text x="500" y="142" textAnchor="middle" fontSize="9" fill="#f59e0b">local</text>
+      <circle cx="430" cy="120" r="4" fill="#7dd3fc" />
+      <text x="420" y="112" textAnchor="middle" fontSize="9" fill="#7dd3fc">local</text>
+      <circle cx="500" cy="150" r="4" fill="#7dd3fc" />
+      <text x="500" y="142" textAnchor="middle" fontSize="9" fill="#7dd3fc">local</text>
     </svg>
   );
 }
@@ -189,21 +189,21 @@ function OptimizerTrajSVG() {
       {[120, 90, 62, 38, 18].map((r, i) => (
         <ellipse key={i} cx={cx} cy={cy} rx={r * 1.7} ry={r * 0.65} fill="none" stroke={color} strokeWidth="1.2" opacity={0.3 + i * 0.08} />
       ))}
-      <circle cx={cx} cy={cy} r="5" fill="#f97316" />
+      <circle cx={cx} cy={cy} r="5" fill="#4a9eed" />
       {/* Trajectories */}
-      <polyline points={toStr(gd)} fill="none" stroke="#fb923c" strokeWidth="2" strokeDasharray="5,3" />
-      <polyline points={toStr(mom)} fill="none" stroke="#f59e0b" strokeWidth="2" />
-      <polyline points={toStr(nes)} fill="none" stroke="#fbbf24" strokeWidth="2.5" />
+      <polyline points={toStr(gd)} fill="none" stroke="#bae6fd" strokeWidth="2" strokeDasharray="5,3" />
+      <polyline points={toStr(mom)} fill="none" stroke="#7dd3fc" strokeWidth="2" />
+      <polyline points={toStr(nes)} fill="none" stroke="#e0f2fe" strokeWidth="2.5" />
       {/* Start dot */}
       <circle cx="80" cy="260" r="5" fill="var(--text-secondary)" />
       {/* Legend */}
-      <rect x="400" y="200" width="220" height="80" rx="6" fill="rgba(249,115,22,0.06)" />
-      <line x1="415" y1="220" x2="445" y2="220" stroke="#fb923c" strokeWidth="2" strokeDasharray="5,3" />
-      <text x="452" y="224" fontSize="11" fill="#fb923c">GD (oscillating)</text>
-      <line x1="415" y1="240" x2="445" y2="240" stroke="#f59e0b" strokeWidth="2" />
-      <text x="452" y="244" fontSize="11" fill="#f59e0b">Momentum</text>
-      <line x1="415" y1="260" x2="445" y2="260" stroke="#fbbf24" strokeWidth="2.5" />
-      <text x="452" y="264" fontSize="11" fill="#fbbf24">Nesterov</text>
+      <rect x="400" y="200" width="220" height="80" rx="6" fill="rgba(74,158,237,0.06)" />
+      <line x1="415" y1="220" x2="445" y2="220" stroke="#bae6fd" strokeWidth="2" strokeDasharray="5,3" />
+      <text x="452" y="224" fontSize="11" fill="#bae6fd">GD (oscillating)</text>
+      <line x1="415" y1="240" x2="445" y2="240" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="452" y="244" fontSize="11" fill="#7dd3fc">Momentum</text>
+      <line x1="415" y1="260" x2="445" y2="260" stroke="#e0f2fe" strokeWidth="2.5" />
+      <text x="452" y="264" fontSize="11" fill="#e0f2fe">Nesterov</text>
     </svg>
   );
 }
@@ -221,18 +221,18 @@ function AdaptiveSVG() {
       {[130, 95, 64, 38, 16].map((r, i) => (
         <ellipse key={i} cx={cx} cy={cy} rx={r * 1.8} ry={r * 0.6} fill="none" stroke={color} strokeWidth="1.2" opacity={0.25 + i * 0.1} />
       ))}
-      <circle cx={cx} cy={cy} r="5" fill="#f97316" />
-      <polyline points={toStr(adagrad)} fill="none" stroke="#fb923c" strokeWidth="2" strokeDasharray="6,3" />
-      <polyline points={toStr(rmsprop)} fill="none" stroke="#f59e0b" strokeWidth="2" />
-      <polyline points={toStr(adam)} fill="none" stroke="#fbbf24" strokeWidth="2.5" />
+      <circle cx={cx} cy={cy} r="5" fill="#4a9eed" />
+      <polyline points={toStr(adagrad)} fill="none" stroke="#bae6fd" strokeWidth="2" strokeDasharray="6,3" />
+      <polyline points={toStr(rmsprop)} fill="none" stroke="#7dd3fc" strokeWidth="2" />
+      <polyline points={toStr(adam)} fill="none" stroke="#e0f2fe" strokeWidth="2.5" />
       <circle cx="60" cy="260" r="5" fill="var(--text-secondary)" />
-      <rect x="390" y="195" width="230" height="85" rx="6" fill="rgba(249,115,22,0.06)" />
-      <line x1="405" y1="218" x2="440" y2="218" stroke="#fb923c" strokeWidth="2" strokeDasharray="6,3" />
-      <text x="448" y="222" fontSize="11" fill="#fb923c">AdaGrad (stalls)</text>
-      <line x1="405" y1="240" x2="440" y2="240" stroke="#f59e0b" strokeWidth="2" />
-      <text x="448" y="244" fontSize="11" fill="#f59e0b">RMSprop</text>
-      <line x1="405" y1="262" x2="440" y2="262" stroke="#fbbf24" strokeWidth="2.5" />
-      <text x="448" y="266" fontSize="11" fill="#fbbf24">Adam</text>
+      <rect x="390" y="195" width="230" height="85" rx="6" fill="rgba(74,158,237,0.06)" />
+      <line x1="405" y1="218" x2="440" y2="218" stroke="#bae6fd" strokeWidth="2" strokeDasharray="6,3" />
+      <text x="448" y="222" fontSize="11" fill="#bae6fd">AdaGrad (stalls)</text>
+      <line x1="405" y1="240" x2="440" y2="240" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="448" y="244" fontSize="11" fill="#7dd3fc">RMSprop</text>
+      <line x1="405" y1="262" x2="440" y2="262" stroke="#e0f2fe" strokeWidth="2.5" />
+      <text x="448" y="266" fontSize="11" fill="#e0f2fe">Adam</text>
     </svg>
   );
 }
@@ -271,20 +271,20 @@ function LRScheduleSVG() {
       <text x="320" y="250" textAnchor="middle" fontSize="11" fill="#475569">Epoch</text>
       <text x="18" y="130" textAnchor="middle" fontSize="11" fill="#475569" transform="rotate(-90,18,130)">LR</text>
       {/* Schedules */}
-      <polyline points={step} fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="6,3" />
-      <polyline points={exp} fill="none" stroke="#f59e0b" strokeWidth="2" />
-      <polyline points={cos} fill="none" stroke="#fb923c" strokeWidth="2" strokeDasharray="4,3" />
-      <polyline points={warm} fill="none" stroke="#fbbf24" strokeWidth="2.5" />
+      <polyline points={step} fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="6,3" />
+      <polyline points={exp} fill="none" stroke="#7dd3fc" strokeWidth="2" />
+      <polyline points={cos} fill="none" stroke="#bae6fd" strokeWidth="2" strokeDasharray="4,3" />
+      <polyline points={warm} fill="none" stroke="#e0f2fe" strokeWidth="2.5" />
       {/* Legend */}
-      <rect x="420" y="50" width="200" height="100" rx="6" fill="rgba(249,115,22,0.06)" />
-      <line x1="432" y1="70" x2="460" y2="70" stroke="#f97316" strokeWidth="2" strokeDasharray="6,3" />
-      <text x="468" y="74" fontSize="10" fill="#f97316">Step Decay</text>
-      <line x1="432" y1="90" x2="460" y2="90" stroke="#f59e0b" strokeWidth="2" />
-      <text x="468" y="94" fontSize="10" fill="#f59e0b">Exponential</text>
-      <line x1="432" y1="110" x2="460" y2="110" stroke="#fb923c" strokeWidth="2" strokeDasharray="4,3" />
-      <text x="468" y="114" fontSize="10" fill="#fb923c">Cosine</text>
-      <line x1="432" y1="130" x2="460" y2="130" stroke="#fbbf24" strokeWidth="2.5" />
-      <text x="468" y="134" fontSize="10" fill="#fbbf24">Warmup+Cosine</text>
+      <rect x="420" y="50" width="200" height="100" rx="6" fill="rgba(74,158,237,0.06)" />
+      <line x1="432" y1="70" x2="460" y2="70" stroke="#4a9eed" strokeWidth="2" strokeDasharray="6,3" />
+      <text x="468" y="74" fontSize="10" fill="#4a9eed">Step Decay</text>
+      <line x1="432" y1="90" x2="460" y2="90" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="468" y="94" fontSize="10" fill="#7dd3fc">Exponential</text>
+      <line x1="432" y1="110" x2="460" y2="110" stroke="#bae6fd" strokeWidth="2" strokeDasharray="4,3" />
+      <text x="468" y="114" fontSize="10" fill="#bae6fd">Cosine</text>
+      <line x1="432" y1="130" x2="460" y2="130" stroke="#e0f2fe" strokeWidth="2.5" />
+      <text x="468" y="134" fontSize="10" fill="#e0f2fe">Warmup+Cosine</text>
     </svg>
   );
 }
@@ -311,19 +311,19 @@ function LagrangeSVG() {
         <circle key={i} cx={cx} cy={cy} r={r} fill="none" stroke={color} strokeWidth="1.5" opacity={0.3 + i * 0.08} />
       ))}
       {/* Constraint line */}
-      <line x1={lx1} y1={ly1} x2={lx2} y2={ly2} stroke="#f59e0b" strokeWidth="2.5" />
-      <text x={lx2 - 10} y={ly2 + 15} fontSize="12" fill="#f59e0b">x + y = 1</text>
+      <line x1={lx1} y1={ly1} x2={lx2} y2={ly2} stroke="#7dd3fc" strokeWidth="2.5" />
+      <text x={lx2 - 10} y={ly2 + 15} fontSize="12" fill="#7dd3fc">x + y = 1</text>
       {/* Tangent point */}
-      <circle cx={ox} cy={oy} r="7" fill="#f97316" />
-      <text x={ox + 10} y={oy - 10} fontSize="11" fill="#f97316">optimal (0.5, 0.5)</text>
+      <circle cx={ox} cy={oy} r="7" fill="#4a9eed" />
+      <text x={ox + 10} y={oy - 10} fontSize="11" fill="#4a9eed">optimal (0.5, 0.5)</text>
       {/* Gradient arrows at optimal */}
-      <line x1={ox} y1={oy} x2={ox - 28} y2={oy + 28} stroke="#f59e0b" strokeWidth="2" />
-      <polygon points={`${ox - 28},${oy + 28} ${ox - 18},${oy + 20} ${ox - 22},${oy + 30}`} fill="#f59e0b" />
-      <text x={ox - 35} y={oy + 45} fontSize="10" fill="#f59e0b">∇f</text>
-      <line x1={ox} y1={oy} x2={ox - 28} y2={oy + 28} stroke="#fb923c" strokeWidth="1.5" strokeDasharray="3,2" />
-      <text x={ox} y={oy + 28} fontSize="10" fill="#fb923c">∇g</text>
+      <line x1={ox} y1={oy} x2={ox - 28} y2={oy + 28} stroke="#7dd3fc" strokeWidth="2" />
+      <polygon points={`${ox - 28},${oy + 28} ${ox - 18},${oy + 20} ${ox - 22},${oy + 30}`} fill="#7dd3fc" />
+      <text x={ox - 35} y={oy + 45} fontSize="10" fill="#7dd3fc">∇f</text>
+      <line x1={ox} y1={oy} x2={ox - 28} y2={oy + 28} stroke="#bae6fd" strokeWidth="1.5" strokeDasharray="3,2" />
+      <text x={ox} y={oy + 28} fontSize="10" fill="#bae6fd">∇g</text>
       {/* Right panel: explanation */}
-      <rect x="370" y="40" width="255" height="225" rx="8" fill="rgba(249,115,22,0.06)" />
+      <rect x="370" y="40" width="255" height="225" rx="8" fill="rgba(74,158,237,0.06)" />
       <text x="497" y="65" textAnchor="middle" fontSize="12" fill="#e2e8f0" fontWeight="bold">Lagrange Conditions</text>
       <text x="385" y="95" fontSize="11" fill="#94a3b8">Minimize f(x,y) = x² + y²</text>
       <text x="385" y="115" fontSize="11" fill="#94a3b8">Subject to: x + y = 1</text>
@@ -333,7 +333,7 @@ function LagrangeSVG() {
       <text x="385" y="206" fontSize="10" fill="#94a3b8">∂L/∂x = 2x - λ = 0</text>
       <text x="385" y="222" fontSize="10" fill="#94a3b8">∂L/∂y = 2y - λ = 0</text>
       <text x="385" y="238" fontSize="10" fill="#94a3b8">x + y = 1</text>
-      <text x="385" y="256" fontSize="10" fill="#f97316">→ x=y=0.5, λ=1</text>
+      <text x="385" y="256" fontSize="10" fill="#4a9eed">→ x=y=0.5, λ=1</text>
     </svg>
   );
 }
@@ -349,22 +349,22 @@ function KKTSVG() {
       <text x="160" y="183" textAnchor="middle" fontSize="12" fill={color}>Region</text>
       {/* Objective contours centered at x=310 — max r=120 → extends to x=430 */}
       {[30, 60, 90, 120].map((r, i) => (
-        <circle key={i} cx="310" cy="155" r={r} fill="none" stroke="#f59e0b" strokeWidth="1.2" opacity={0.3 + i * 0.12} />
+        <circle key={i} cx="310" cy="155" r={r} fill="none" stroke="#7dd3fc" strokeWidth="1.2" opacity={0.3 + i * 0.12} />
       ))}
       {/* KKT point on constraint boundary */}
-      <circle cx="260" cy="155" r="7" fill="#f97316" />
-      <text x="248" y="145" fontSize="11" fill="#f97316">x*</text>
+      <circle cx="260" cy="155" r="7" fill="#4a9eed" />
+      <text x="248" y="145" fontSize="11" fill="#4a9eed">x*</text>
       {/* Gradient arrows */}
-      <line x1="260" y1="155" x2="310" y2="155" stroke="#f59e0b" strokeWidth="2" />
-      <polygon points="310,155 300,150 300,160" fill="#f59e0b" />
-      <text x="314" y="152" fontSize="10" fill="#f59e0b">∇f</text>
-      <line x1="260" y1="155" x2="260" y2="195" stroke="#fb923c" strokeWidth="2" strokeDasharray="3,2" />
-      <polygon points="260,195 255,183 265,183" fill="#fb923c" />
-      <text x="265" y="210" fontSize="10" fill="#fb923c">-λ∇g</text>
+      <line x1="260" y1="155" x2="310" y2="155" stroke="#7dd3fc" strokeWidth="2" />
+      <polygon points="310,155 300,150 300,160" fill="#7dd3fc" />
+      <text x="314" y="152" fontSize="10" fill="#7dd3fc">∇f</text>
+      <line x1="260" y1="155" x2="260" y2="195" stroke="#bae6fd" strokeWidth="2" strokeDasharray="3,2" />
+      <polygon points="260,195 255,183 265,183" fill="#bae6fd" />
+      <text x="265" y="210" fontSize="10" fill="#bae6fd">-λ∇g</text>
       {/* Title */}
       <text x="160" y="28" textAnchor="middle" fontSize="12" fill="#e2e8f0" fontWeight="bold">KKT: Inequality Constraint</text>
       {/* Right panel — starts at x=470, clear of contours */}
-      <rect x="470" y="40" width="330" height="220" rx="8" fill="rgba(249,115,22,0.06)" />
+      <rect x="470" y="40" width="330" height="220" rx="8" fill="rgba(74,158,237,0.06)" />
       <text x="635" y="68" textAnchor="middle" fontSize="12" fill="#e2e8f0" fontWeight="bold">KKT Conditions</text>
       {[
         ['1. Stationarity:', color],
@@ -404,7 +404,7 @@ function SaddleSVG() {
       const py = 150 - (x * x - y * y) * 12 - y * 15;
       pts.push(`${px},${py}`);
     }
-    lines.push({ pts: pts.join(' '), stroke: '#fb923c', op: 0.25 + Math.abs(x) * 0.05 });
+    lines.push({ pts: pts.join(' '), stroke: '#bae6fd', op: 0.25 + Math.abs(x) * 0.05 });
   }
   const sadX = 200, sadY = 150;
   return (
@@ -413,17 +413,17 @@ function SaddleSVG() {
       {lines.map((l, i) => (
         <polyline key={i} points={l.pts} fill="none" stroke={l.stroke} strokeWidth="1.2" opacity={l.op} />
       ))}
-      <circle cx={sadX} cy={sadY} r="6" fill="#f59e0b" />
-      <text x={sadX + 10} y={sadY - 8} fontSize="11" fill="#f59e0b">saddle point</text>
+      <circle cx={sadX} cy={sadY} r="6" fill="#7dd3fc" />
+      <text x={sadX + 10} y={sadY - 8} fontSize="11" fill="#7dd3fc">saddle point</text>
       <text x={sadX + 10} y={sadY + 8} fontSize="10" fill="#94a3b8">∇f=0 but not min/max</text>
       {/* Right annotation */}
-      <rect x="380" y="30" width="240" height="140" rx="8" fill="rgba(249,115,22,0.06)" />
+      <rect x="380" y="30" width="240" height="140" rx="8" fill="rgba(74,158,237,0.06)" />
       <text x="500" y="55" textAnchor="middle" fontSize="12" fill="#e2e8f0" fontWeight="bold">High Dimensions</text>
       <text x="390" y="80" fontSize="10" fill="#94a3b8">P(all λ same sign) → 0</text>
       <text x="390" y="98" fontSize="10" fill="#94a3b8">exponentially fast in dim.</text>
       <text x="390" y="120" fontSize="10" fill={color}>Most critical points</text>
       <text x="390" y="138" fontSize="10" fill={color}>are saddles, not minima.</text>
-      <text x="390" y="158" fontSize="10" fill="#f97316">SGD noise helps escape!</text>
+      <text x="390" y="158" fontSize="10" fill="#4a9eed">SGD noise helps escape!</text>
     </svg>
   );
 }
@@ -441,10 +441,6 @@ export default function CALC5() {
       {/* Header */}
       <div style={S.tag}>MÓDULO 05</div>
       <h1 style={S.h1}>Optimização</h1>
-      <p style={S.subtitle}>
-        Fundamentos matemáticos de otimização para machine learning — da análise de superfícies de perda
-        a otimizadores modernos como Adam, passando por multiplicadores de Lagrange e condições KKT.
-      </p>
 
       {/* ── Section 1 ── */}
       <section style={S.section}>
@@ -457,7 +453,7 @@ export default function CALC5() {
           pontos de sela e regiões planas (platôs).
         </p>
         <div style={S.infoBox}>
-          <strong style={S.highlight}>Ponto crítico:</strong> qualquer ponto onde {'∇'}f = 0.
+          <strong style={S.highlight}>Ponto crítico:</strong> qualquer ponto onde <InlineMath math="\nabla f = 0" />.
           Pode ser mínimo local, máximo local ou ponto de sela. A derivada zero é condição necessária
           mas não suficiente para otimalidade.
         </div>
@@ -469,7 +465,7 @@ export default function CALC5() {
           sela, não mínimos locais.
         </p>
         <p style={S.p}>
-          Observação empírica importante: os mínimos locais que o treinamento encontra em redes profundas
+          Observação empírica importante: os mínimos locais que o treino encontra em redes profundas
           tendem a ter valores de perda muito próximos ao mínimo global. Isso sugere que a não-convexidade
           do problema de DL não é tão prejudicial quanto se poderia temer.
         </p>
@@ -496,20 +492,20 @@ export default function CALC5() {
           <BlockMath math="\text{Ponto crítico: } (1, 0),\; f(1,0) = -1" />
         </div>
         <p style={S.p}>
-          Para problemas convexos com soluções de forma fechada, resolver {'∇'}f = 0 diretamente
+          Para problemas convexos com soluções de forma fechada, resolver <InlineMath math="\nabla f = 0" /> diretamente
           fornece a solução global. Exemplos clássicos: regressão linear (equação normal), LDA, PCA.
           Quando a forma fechada não existe (redes neurais), recorremos ao gradiente descendente.
         </p>
         <div style={S.infoBox}>
           <strong style={S.highlight}>Regressão linear — solução exata:</strong>{' '}
-          minimizar ||Xw {'−'} y||{'²'} leva a {'∇'} = 2X{'ᴵ'}(Xw{'−'}y) = 0,
-          portanto w* = (X{'ᴵ'}X){'⁻¹'}X{'ᴵ'}y. Custo O(n{'³'}) — impraticável
+          minimizar <InlineMath math="\|Xw - y\|^2" /> leva a <InlineMath math="\nabla = 2X^\top(Xw-y) = 0" />,
+          portanto <InlineMath math="w^* = (X^\top X)^{-1}X^\top y" />. Custo <InlineMath math="O(n^3)" /> — impraticável
           para n grande, donde o gradiente descendente.
         </div>
         <p style={S.p}>
           Para problemas restritos, a condição de estacionaridade é substituída pela condição KKT
           (ver Secção 10). Para problemas com restrições de igualdade, usamos multiplicadores de Lagrange
-          (Secção 9). A condição {'∇'}f = 0 permanece válida para o Lagrangiano aumentado.
+          (Secção 9). A condição <InlineMath math="\nabla f = 0" /> permanece válida para o Lagrangiano aumentado.
         </p>
       </section>
 
@@ -518,9 +514,9 @@ export default function CALC5() {
         <h2 style={S.h2}>3. Hessiana e Condições de 2ª Ordem</h2>
         <div style={S.svgBox}><HessianSVG /></div>
         <p style={S.p}>
-          A matriz Hessiana H = {'∇²'}f captura a curvatura da função em cada direção. Formalmente,
-          o elemento (i,j) da Hessiana é H{'ᵢⱼ'} = {'∂²'}f / {'∂'}x{'ᵢ'}{'∂'}x{'ⱼ'}.
-          Para funções suficientemente suaves, H é simétrica.
+          A matriz Hessiana <InlineMath math="H = \nabla^2 f" /> captura a curvatura da função em cada direção. Formalmente,
+          o elemento <InlineMath math="(i,j)" /> da Hessiana é <InlineMath math="H_{ij} = \dfrac{\partial^2 f}{\partial x_i \partial x_j}" />.
+          Para funções suficientemente suaves, <InlineMath math="H" /> é simétrica.
         </p>
         <div style={S.formulaBox}>
           <BlockMath math="H = \left[\frac{\partial^2 f}{\partial x_i \partial x_j}\right]" />
@@ -554,13 +550,13 @@ export default function CALC5() {
           </tbody>
         </table>
         <p style={S.p}>
-          A decomposição espectral H = Q{'Λ'}Q{'ᴵ'} (onde Q contém os autovetores e {'Λ'} os autovalores)
+          A decomposição espectral <InlineMath math="H = Q\Lambda Q^\top" /> (onde Q contém os autovetores e <InlineMath math="\Lambda" /> os autovalores)
           revela as direções principais de curvatura. Ao longo do autovetor com maior autovalor, a curvatura
-          é mais acentuada (aprendizado mais lento para gradiente descendente). Ao longo do menor autovetor,
+          é mais acentuada (aprendizagem mais lento para gradiente descendente). Ao longo do menor autovetor,
           a curvatura é suave. Esta diferença de escala é a origem do problema de condicionamento.
         </p>
         <div style={S.infoBox}>
-          <strong style={S.highlight}>Número de condição:</strong> {'κ'}(H) = {'λ'}max / {'λ'}min.
+          <strong style={S.highlight}>Número de condição:</strong> <InlineMath math="\kappa(H) = \lambda_{max} / \lambda_{min}" />.
           Quanto maior, mais difícil para o GD convergir (é necessário passo pequeno para evitar
           divergência na direção de alta curvatura, mas isso é lento na direção de baixa curvatura).
         </div>
@@ -571,12 +567,12 @@ export default function CALC5() {
         <h2 style={S.h2}>4. Convexidade</h2>
         <div style={S.svgBox}><ConvexSVG /></div>
         <p style={S.p}>
-          Um conjunto C é <em>convexo</em> se para quaisquer x, y em C e {'λ'} em [0,1],
-          o ponto {'λ'}x + (1{'−'}{'λ'})y também pertence a C — i.e., o segmento de
+          Um conjunto C é <em>convexo</em> se para quaisquer x, y em C e <InlineMath math="\lambda" /> em [0,1],
+          o ponto <InlineMath math="\lambda x + (1-\lambda)y" /> também pertence a C — i.e., o segmento de
           reta entre quaisquer dois pontos está inteiramente no conjunto.
         </p>
         <p style={S.p}>
-          Uma função f: C {'→'} {'ℝ'} é <em>convexa</em> se o epígrafo (conjunto de pontos
+          Uma função <InlineMath math="f: C \to \mathbb{R}" /> é <em>convexa</em> se o epígrafo (conjunto de pontos
           acima do gráfico) é um conjunto convexo, equivalentemente:
         </p>
         <div style={S.formulaBox}>
@@ -587,7 +583,7 @@ export default function CALC5() {
         <p style={S.p}>
           A propriedade mais importante da convexidade em otimização: <strong>qualquer mínimo local é
           também mínimo global</strong>. Isso elimina a preocupação com pontos de sela e mínimos locais
-          espúrios — basta encontrar onde {'∇'}f = 0.
+          espúrios — basta encontrar onde <InlineMath math="\nabla f = 0" />.
         </p>
         <table style={S.table}>
           <thead>
@@ -608,7 +604,7 @@ export default function CALC5() {
             ].map(([p, c, m]) => (
               <tr key={p}>
                 <td style={S.td}>{p}</td>
-                <td style={S.td} style={{ color: c === 'Sim' ? '#f97316' : '#fb923c' }}>{c}</td>
+                <td style={S.td} style={{ color: c === 'Sim' ? '#4a9eed' : '#bae6fd' }}>{c}</td>
                 <td style={S.td}>{m}</td>
               </tr>
             ))}
@@ -631,9 +627,9 @@ export default function CALC5() {
           <BlockMath math="\text{Convexo: } f(x_n) - f^* \leq O(1/k) \qquad \text{Não-convexo: } \|\nabla f\|^2 \leq O(1/\sqrt{k})" />
         </div>
         <p style={S.p}>
-          A escolha da taxa de aprendizado {'α'} é crítica. Se {'α'} {'>'} 2/L, o algoritmo diverge
-          para funções quadráticas. Se {'α'} {'<'}{'<'} 1/L, a convergência é desnecessariamente lenta.
-          A busca exata em linha (exact line search) encontra o {'α'} ótimo a cada passo via minimização
+          A escolha da taxa de aprendizagem <InlineMath math="\alpha" /> é crítica. Se <InlineMath math="\alpha > 2/L" />, o algoritmo diverge
+          para funções quadráticas. Se <InlineMath math="\alpha \ll 1/L" />, a convergência é desnecessariamente lenta.
+          A busca exata em linha (exact line search) encontra o <InlineMath math="\alpha" /> ótimo a cada passo via minimização
           1D, mas é computacionalmente caro. A busca de Armijo/Wolfe fornece um compromisso razoável.
         </p>
         <div style={S.infoBox}>
@@ -686,13 +682,13 @@ export default function CALC5() {
           <BlockMath math="v_t = \beta\, v_{t-1} + \nabla f(x_t - \alpha\beta\, v_{t-1}) \qquad x_{t+1} = x_t - \alpha\, v_t" />
         </div>
         <p style={S.p}>
-          O NAG obtém taxa de convergência O(1/k{'²'}) para funções convexas, vs O(1/k) do GD simples —
+          O NAG obtém taxa de convergência <InlineMath math="O(1/k^2)" /> para funções convexas, vs <InlineMath math="O(1/k)" /> do GD simples —
           uma melhoria significativa demonstrada por Nesterov em 1983. A intuição é que ao avaliar o gradiente
           no ponto "onde o momentum nos levaria", conseguimos corrigir antecipadamente.
         </p>
         <div style={S.infoBox}>
-          <strong style={S.highlight}>Escolha de {'β'}:</strong> valores típicos são 0.9, 0.95 ou 0.99.
-          Um {'β'} maior preserva mais velocidade acumulada mas pode overshoot. Em DL, {'β'} = 0.9 é
+          <strong style={S.highlight}>Escolha de <InlineMath math="\beta" />:</strong> valores típicos são 0.9, 0.95 ou 0.99.
+          Um <InlineMath math="\beta" /> maior preserva mais velocidade acumulada mas pode overshoot. Em DL, <InlineMath math="\beta = 0.9" /> é
           o padrão mais comum.
         </div>
       </section>
@@ -702,7 +698,7 @@ export default function CALC5() {
         <h2 style={S.h2}>7. Optimizadores Adaptativos</h2>
         <div style={S.svgBox}><AdaptiveSVG /></div>
         <p style={S.p}>
-          Os otimizadores adaptativos ajustam a taxa de aprendizado individualmente por parâmetro,
+          Os otimizadores adaptativos ajustam a taxa de aprendizagem individualmente por parâmetro,
           com base no histórico de gradientes. Isso é especialmente útil quando diferentes parâmetros
           têm escalas de gradiente muito distintas (e.g., embeddings raros vs. pesos densos).
         </p>
@@ -725,7 +721,7 @@ export default function CALC5() {
           <BlockMath math="\text{AdamW: } x_{t+1} = x_t - \frac{\alpha\,\hat{m}_t}{\sqrt{\hat{v}_t} + \varepsilon} - \alpha\lambda\, x_t \quad \text{(weight decay desacoplado)}" />
         </div>
         <div style={S.infoBox}>
-          <strong style={S.highlight}>Problema do AdaGrad:</strong> G{'ₜ'} cresce monotonicamente,
+          <strong style={S.highlight}>Problema do AdaGrad:</strong> <InlineMath math="G_t" /> cresce monotonicamente,
           fazendo o passo efetivo tender a zero. O RMSprop corrige isso com média exponencial (memória finita).
           O Adam combina momentum (1º momento) com RMSprop (2º momento) e adiciona correção de bias nas
           iterações iniciais onde m e v são subestimados.
@@ -737,7 +733,7 @@ export default function CALC5() {
         <h2 style={S.h2}>8. Learning Rate Schedules</h2>
         <div style={S.svgBox}><LRScheduleSVG /></div>
         <p style={S.p}>
-          A taxa de aprendizado fixa raramente é ótima ao longo de todo o treinamento. Schedules adaptativos
+          A taxa de aprendizagem fixa raramente é ótima ao longo de todo o treino. Schedules adaptativos
           permitem exploração agressiva no início e refinamento fino ao final.
         </p>
         <table style={S.table}>
@@ -750,9 +746,9 @@ export default function CALC5() {
           </thead>
           <tbody>
             {[
-              ['Step Decay', 'α × γ^(época/s)', 'ResNets clássicas'],
-              ['Exponential', 'α₀ × e^(-λt)', 'Decaimento suave geral'],
-              ['Cosine Annealing', 'α_min + ½(α_max−α_min)(1+cos(πt/T))', 'Transformers, ViT'],
+              ['Step Decay', <InlineMath math="\alpha \times \gamma^{(\text{época}/s)}" />, 'ResNets clássicas'],
+              ['Exponential', <InlineMath math="\alpha_0 \times e^{-\lambda t}" />, 'Decaimento suave geral'],
+              ['Cosine Annealing', <InlineMath math="\alpha_{min} + \tfrac{1}{2}(\alpha_{max}-\alpha_{min})(1+\cos(\pi t/T))" />, 'Transformers, ViT'],
               ['Warm Restarts (SGDR)', 'Cosine com resets periódicos', 'Ensemble via snapshots'],
               ['Linear Warmup + Cosine', 'Ramp-up linear, depois cosine', 'BERT, GPT, LLMs'],
               ['1-Cycle Policy', 'Sobe e desce em 1 ciclo', 'Fast.ai, fine-tuning'],
@@ -766,7 +762,7 @@ export default function CALC5() {
           </tbody>
         </table>
         <div style={S.infoBox}>
-          <strong style={S.highlight}>Por que warmup?</strong> No início do treinamento, os pesos são
+          <strong style={S.highlight}>Por que warmup?</strong> No início do treino, os pesos são
           aleatórios e os gradientes são ruidosos e de grande magnitude. Uma LR alta nesse estágio pode
           causar instabilidade (especialmente em transformers com layer norm). O warmup linear permite que
           os parâmetros se ajustem a uma região razoável antes de acelerar.
@@ -796,22 +792,22 @@ export default function CALC5() {
           <BlockMath math="\nabla f(x^*) = \lambda\,\nabla g(x^*) \quad \text{(gradientes paralelos)}" />
         </div>
         <p style={S.p}>
-          A interpretação geométrica é elegante: no ponto ótimo, as curvas de nível de f são tangentes
-          à curva de restrição g = 0. Isso acontece exatamente quando os gradientes de f e g são paralelos
-          (proporcionais), com o multiplicador {'λ'} sendo a constante de proporcionalidade.
+          A interpretação geométrica é elegante: no ponto ótimo, as curvas de nível de <InlineMath math="f" /> são tangentes
+          à curva de restrição <InlineMath math="g = 0" />. Isso acontece exatamente quando os gradientes de <InlineMath math="f" /> e <InlineMath math="g" /> são paralelos
+          (proporcionais), com o multiplicador <InlineMath math="\lambda" /> sendo a constante de proporcionalidade.
         </p>
         <p style={S.p}>
-          Para múltiplas restrições de igualdade g{'ᵢ'}(x) = 0, i = 1,...,m:
+          Para múltiplas restrições de igualdade <InlineMath math="g_i(x) = 0,\ i = 1,...,m" />:
         </p>
         <div style={S.formulaBox}>
           <BlockMath math="\mathcal{L}(x, \lambda) = f(x) - \sum_i \lambda_i\, g_i(x)" />
           <BlockMath math="\nabla_x \mathcal{L} = 0 \;\text{ e }\; g_i(x) = 0 \;\forall\, i" />
         </div>
         <div style={S.infoBox}>
-          <strong style={S.highlight}>SVM — margin maximization:</strong> maximizar 2/||w|| sujeito a
-          y{'ᵢ'}(w{'ᴵ'}x{'ᵢ'} + b) {'≥'} 1. O dual Lagrangiano leva à formulação QP:
-          max {'Σ'}{'αᵢ'} {'−'} ½{'Σ'}{'ᵢⱼ'}{'αᵢ'}{'αⱼ'}y{'ᵢ'}y{'ⱼ'}{'⟨'}x{'ᵢ'},x{'ⱼ'}{'⟩'},
-          onde os {'αᵢ'} {'>'} 0 são os multiplicadores de Lagrange dos support vectors.
+          <strong style={S.highlight}>SVM — margin maximization:</strong> maximizar <InlineMath math="2/\|w\|" /> sujeito a
+          <InlineMath math="y_i(w^\top x_i + b) \geq 1" />. O dual Lagrangiano leva à formulação QP:
+          <InlineMath math="\max \sum \alpha_i - \tfrac{1}{2}\sum_{ij} \alpha_i \alpha_j y_i y_j \langle x_i, x_j\rangle" />,
+          onde os <InlineMath math="\alpha_i > 0" /> são os multiplicadores de Lagrange dos support vectors.
         </div>
       </section>
 
@@ -832,20 +828,20 @@ export default function CALC5() {
         </div>
         <p style={S.p}>
           A condição de slackness complementar é particularmente importante: para cada restrição de
-          desigualdade, ou a restrição está ativa (g{'ᵢ'} = 0, {'λᵢ'} pode ser {'>'} 0)
-          ou o multiplicador é zero ({'λᵢ'} = 0, g{'ᵢ'} {'<'} 0 — restrição inativa).
+          desigualdade, ou a restrição está ativa (<InlineMath math="g_i = 0" />, <InlineMath math="\lambda_i" /> pode ser <InlineMath math="> 0" />)
+          ou o multiplicador é zero (<InlineMath math="\lambda_i = 0" />, <InlineMath math="g_i < 0" /> — restrição inativa).
           Nunca ambos são simultaneamente não-nulos.
         </p>
         <div style={S.infoBox}>
           <strong style={S.highlight}>SVM e KKT:</strong> os support vectors são exatamente os pontos
-          onde a restrição g{'ᵢ'} = 0 está ativa, correspondendo a {'αᵢ'} {'>'} 0.
-          Pontos corretamente classificados com margem larga têm {'αᵢ'} = 0 e não contribuem
+          onde a restrição <InlineMath math="g_i = 0" /> está ativa, correspondendo a <InlineMath math="\alpha_i > 0" />.
+          Pontos corretamente classificados com margem larga têm <InlineMath math="\alpha_i = 0" /> e não contribuem
           para o hiperplano. O kernel trick funciona porque a solução depende apenas de produtos internos
-          {'⟨'}x{'ᵢ'}, x{'ⱼ'}{'⟩'}.
+          <InlineMath math="\langle x_i, x_j\rangle" />.
         </div>
         <p style={S.p}>
           O <em>caminho de solução do LASSO</em> (LARS algorithm) é outro exemplo de KKT: à medida que
-          o parâmetro de regularização {'λ'} varia, diferentes subconjuntos de coeficientes entram
+          o parâmetro de regularização <InlineMath math="\lambda" /> varia, diferentes subconjuntos de coeficientes entram
           e saem de zero, e as condições KKT determinam exatamente quando cada transição ocorre.
         </p>
       </section>
@@ -856,7 +852,7 @@ export default function CALC5() {
         <div style={S.svgBox}><SaddleSVG /></div>
         <p style={S.p}>
           Em alta dimensionalidade, os pontos de sela dominam o landscape de otimização. Para uma rede
-          com n parâmetros, um ponto crítico aleatório tem probabilidade 2{'⁻ⁿ'} de ser um
+          com n parâmetros, um ponto crítico aleatório tem probabilidade <InlineMath math="2^{-n}" /> de ser um
           mínimo local (todos os autovalores positivos). Com n na ordem de milhões, isso é efetivamente
           impossível.
         </p>
@@ -886,99 +882,11 @@ export default function CALC5() {
           <p style={{margin:'0.5rem 0 0', fontSize:'0.9rem'}}>O gerador G minimiza, o discriminador D maximiza. O equilíbrio é um ponto de sela — nem min nem max global.</p>
         </div>
         <p style={S.p}>
-          Isso torna o treinamento de GANs inerentemente instável: os algoritmos de gradiente padrão
+          Isso torna o treino de GANs inerentemente instável: os algoritmos de gradiente padrão
           não convergem garantidamente para o equilíbrio de Nash do jogo min-max. Variantes como
           Wasserstein GAN e técnicas de estabilização (gradient penalty, spectral normalization)
           foram desenvolvidas especificamente para mitigar este problema.
         </p>
-      </section>
-
-      {/* ── Section 12 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Tabela de seleção de algoritmo de otimização por tipo de problema:
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Tipo de Problema</th>
-              <th style={S.th}>Algoritmo Recomendado</th>
-              <th style={S.th}>Taxa de Convergência</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Quadrático (mínimos quadrados)', 'Equação normal / CG', 'Finito / linear'],
-              ['Convexo suave', 'GD com step 1/L', 'O(1/k)'],
-              ['Fortemente convexo', 'GD acelerado (Nesterov)', 'O(1/k²)'],
-              ['DL (geral)', 'Adam / AdamW', 'Heurístico'],
-              ['DL (fine-tuning LLM)', 'AdamW + warmup + cosine', 'Heurístico'],
-              ['Convexo com restrições', 'Projeção + GD / ADMM', 'O(1/k) ou linear'],
-              ['SVM / QP', 'SMO / OSQP', 'Linear/superlinear'],
-              ['Não-diferenciável', 'Subgradiente / proximal', 'O(1/√k)'],
-            ].map(([t, a, r]) => (
-              <tr key={t}>
-                <td style={S.td}>{t}</td>
-                <td style={S.td} style={{ color }}>{a}</td>
-                <td style={S.td}>{r}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <p style={S.p}>Fórmulas-chave para referência rápida:</p>
-        <div style={S.formulaBox}>
-          <BlockMath math="\text{GD: } x_{n+1} = x_n - \alpha\,\nabla f(x_n)" />
-          <BlockMath math="\text{Momentum: } v_t = \beta\, v_{t-1} + \nabla f;\quad x_{n+1} = x_n - \alpha\, v_t" />
-          <BlockMath math="\text{Adam: } x_{n+1} = x_n - \frac{\alpha\,\hat{m}_t}{\sqrt{\hat{v}_t} + \varepsilon}" />
-          <BlockMath math="\text{Lagrangiano: } \mathcal{L} = f(x) - \lambda\, g(x)" />
-          <BlockMath math="\text{KKT: } \nabla f + \sum_i\lambda_i\nabla g_i = 0,\; \lambda_i \geq 0,\; \lambda_i g_i = 0" />
-          <BlockMath math="\text{Nesterov: } O(1/k^2) \text{ vs GD } O(1/k)" />
-        </div>
-
-        <p style={S.p}>Dicas práticas para treinamento de DL:</p>
-        <ul style={S.ul}>
-          <li>
-            <strong>Gradient clipping:</strong> clip by norm — ||g||{'₂'} {'>'} {'θ'}
-            implica g = {'θ'} g/||g||. Previne exploding gradients em RNNs e transformers.
-            Valor típico: {'θ'} = 1.0.
-          </li>
-          <li>
-            <strong>Learning rate finder (Smith, 2015):</strong> aumentar LR exponencialmente de 10{'⁻⁷'}
-            a 10{'°'} e plotar loss. Escolher LR logo antes do ponto de divergência. Método rápido
-            para calibrar a escala correta.
-          </li>
-          <li>
-            <strong>Weight decay vs L2:</strong> em Adam, L2 regularization e weight decay NÃO são equivalentes.
-            Use AdamW (weight decay desacoplado) para regularização correta. Valores típicos: 10{'⁻⁴'}
-            a 10{'⁻²'}.
-          </li>
-          <li>
-            <strong>Batch size e LR:</strong> regra linear de escala — duplicar o batch size implica
-            duplicar a LR (equivalência empírica para muitos problemas). Com warmup longo, pode-se
-            usar batch size muito grande.
-          </li>
-          <li>
-            <strong>Flat minima e generalização:</strong> mínimos com Hessiana de menor norma espectral
-            tendem a generalizar melhor. SAM (Sharpness-Aware Minimization) otimiza explicitamente
-            para mínimos mais planos.
-          </li>
-          <li>
-            <strong>Verificação de gradiente:</strong> para debugging, comparar gradiente analítico com
-            diferença finita: (f(x+{'ε'}e{'ᵢ'}) {'−'} f(x{'−'}{'ε'}e{'ᵢ'})) / (2{'ε'}).
-            Erro relativo deve ser inferior a 10{'⁻₅'}.
-          </li>
-        </ul>
-
-        <div style={S.infoBox}>
-          <strong style={S.highlight}>Perspectiva geral:</strong> a otimização em DL é empiricamente
-          bem-sucedida apesar da falta de garantias teóricas. Os três pilares que tornam isso possível
-          são: (1) o landscape de redes profundas tem poucos mínimos locais ruins; (2) o ruído do SGD
-          funciona como regularização e ajuda a escapar de selas; (3) os otimizadores adaptativos como
-          Adam compensam o mal-condicionamento sem requerer a Hessiana explicitamente. A teoria continua
-          a evoluir para explicar estas observações empíricas.
-        </div>
       </section>
     </div>
   );

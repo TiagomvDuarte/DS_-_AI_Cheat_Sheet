@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,10 +17,10 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
+  code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
 
 /* ── SVG: Parallel Timelines ── */
@@ -64,9 +64,9 @@ function ConfoundingDAGSVG() {
       </defs>
       <ellipse cx="250" cy="40" rx="40" ry="22" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1.5" />
       <text x="250" y="45" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-secondary)">Z</text>
-      <ellipse cx="100" cy="140" rx="40" ry="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <ellipse cx="100" cy="140" rx="40" ry="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="100" y="145" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>D</text>
-      <ellipse cx="400" cy="140" rx="40" ry="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <ellipse cx="400" cy="140" rx="40" ry="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="400" y="145" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Y</text>
       <line x1="215" y1="55" x2="135" y2="125" stroke="var(--text-secondary)" strokeWidth="2" markerEnd="url(#arr1)" />
       <line x1="285" y1="55" x2="365" y2="125" stroke="var(--text-secondary)" strokeWidth="2" markerEnd="url(#arr1)" />
@@ -94,26 +94,26 @@ function FullDAGSVG() {
           <path d="M0,0 L0,6 L8,3 z" fill="var(--text-secondary)" />
         </marker>
       </defs>
-      <ellipse cx="320" cy="45" rx="48" ry="22" fill="rgba(245,158,11,0.25)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="320" y="49" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f59e0b">Z1</text>
-      <text x="320" y="62" textAnchor="middle" fontSize="9" fill="#f59e0b">confundidor</text>
-      <ellipse cx="120" cy="145" rx="48" ry="22" fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="2" />
-      <text x="120" y="149" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">X</text>
-      <text x="120" y="162" textAnchor="middle" fontSize="9" fill="#f97316">tratamento</text>
-      <ellipse cx="320" cy="145" rx="48" ry="22" fill="rgba(251,146,60,0.25)" stroke="#fb923c" strokeWidth="1.5" />
-      <text x="320" y="149" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fb923c">Z2</text>
-      <text x="320" y="162" textAnchor="middle" fontSize="9" fill="#fb923c">mediador</text>
-      <ellipse cx="520" cy="145" rx="48" ry="22" fill="rgba(253,186,116,0.25)" stroke="#fbbf24" strokeWidth="2" />
-      <text x="520" y="149" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fbbf24">Y</text>
-      <text x="520" y="162" textAnchor="middle" fontSize="9" fill="#fbbf24">resultado</text>
-      <ellipse cx="320" cy="230" rx="48" ry="22" fill="rgba(253,230,138,0.20)" stroke="#fde68a" strokeWidth="1.5" />
-      <text x="320" y="234" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fde68a">Z3</text>
-      <text x="320" y="247" textAnchor="middle" fontSize="9" fill="#fde68a">colisor</text>
-      <line x1="276" y1="57" x2="162" y2="130" stroke="#f59e0b" strokeWidth="1.8" markerEnd="url(#dag1)" />
-      <line x1="364" y1="57" x2="478" y2="130" stroke="#f59e0b" strokeWidth="1.8" markerEnd="url(#dag1)" />
-      <line x1="168" y1="145" x2="272" y2="145" stroke="#f97316" strokeWidth="2" markerEnd="url(#dag2)" />
-      <line x1="368" y1="145" x2="472" y2="145" stroke="#fb923c" strokeWidth="1.8" markerEnd="url(#dag1)" />
-      <path d="M 165 132 Q 320 90 475 132" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="5,2" markerEnd="url(#dag2)" />
+      <ellipse cx="320" cy="45" rx="48" ry="22" fill="rgba(2,132,199,0.25)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="320" y="49" textAnchor="middle" fontSize="12" fontWeight="700" fill="#0284c7">Z1</text>
+      <text x="320" y="62" textAnchor="middle" fontSize="9" fill="#0284c7">confundidor</text>
+      <ellipse cx="120" cy="145" rx="48" ry="22" fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="120" y="149" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">X</text>
+      <text x="120" y="162" textAnchor="middle" fontSize="9" fill="#4a9eed">tratamento</text>
+      <ellipse cx="320" cy="145" rx="48" ry="22" fill="rgba(56,189,248,0.25)" stroke="#38bdf8" strokeWidth="1.5" />
+      <text x="320" y="149" textAnchor="middle" fontSize="12" fontWeight="700" fill="#38bdf8">Z2</text>
+      <text x="320" y="162" textAnchor="middle" fontSize="9" fill="#38bdf8">mediador</text>
+      <ellipse cx="520" cy="145" rx="48" ry="22" fill="rgba(186,230,253,0.25)" stroke="#7dd3fc" strokeWidth="2" />
+      <text x="520" y="149" textAnchor="middle" fontSize="12" fontWeight="700" fill="#7dd3fc">Y</text>
+      <text x="520" y="162" textAnchor="middle" fontSize="9" fill="#7dd3fc">resultado</text>
+      <ellipse cx="320" cy="230" rx="48" ry="22" fill="rgba(125,211,252,0.20)" stroke="#7dd3fc" strokeWidth="1.5" />
+      <text x="320" y="234" textAnchor="middle" fontSize="12" fontWeight="700" fill="#7dd3fc">Z3</text>
+      <text x="320" y="247" textAnchor="middle" fontSize="9" fill="#7dd3fc">colisor</text>
+      <line x1="276" y1="57" x2="162" y2="130" stroke="#0284c7" strokeWidth="1.8" markerEnd="url(#dag1)" />
+      <line x1="364" y1="57" x2="478" y2="130" stroke="#0284c7" strokeWidth="1.8" markerEnd="url(#dag1)" />
+      <line x1="168" y1="145" x2="272" y2="145" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#dag2)" />
+      <line x1="368" y1="145" x2="472" y2="145" stroke="#38bdf8" strokeWidth="1.8" markerEnd="url(#dag1)" />
+      <path d="M 165 132 Q 320 90 475 132" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="5,2" markerEnd="url(#dag2)" />
       <line x1="148" y1="163" x2="276" y2="218" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#dag3)" />
       <line x1="492" y1="163" x2="364" y2="218" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#dag3)" />
       <text x="320" y="15" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">DAG completo com todos os tipos de no</text>
@@ -134,8 +134,8 @@ function PSMBalanceSVG() {
     <svg viewBox="0 0 640 210" style={{ width: '100%', maxWidth: 640, display: 'block', margin: '0 auto' }}>
       <text x="10" y="20" fontSize="13" fontWeight="700" fill="var(--text-primary)">Diferenca Padronizada (Standardized Difference)</text>
       <line x1="140" y1="30" x2="140" y2="195" stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1="280" y1="25" x2="280" y2="195" stroke="#f97316" strokeWidth="1" strokeDasharray="4,2" />
-      <text x="280" y="202" textAnchor="middle" fontSize="9" fill="#f97316">limiar 0.25</text>
+      <line x1="280" y1="25" x2="280" y2="195" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,2" />
+      <text x="280" y="202" textAnchor="middle" fontSize="9" fill="#4a9eed">limiar 0.25</text>
       {vars.map((v, i) => {
         const y = offsetY + i * (barH + gap);
         const bW = before[i] * maxW;
@@ -143,12 +143,12 @@ function PSMBalanceSVG() {
         return (
           <g key={v}>
             <text x="135" y={y + 15} textAnchor="end" fontSize="11" fill="var(--text-primary)">{v}</text>
-            <rect x="140" y={y + 2} width={bW} height={barH - 4} fill="#fdba74" rx="3" opacity="0.8" />
+            <rect x="140" y={y + 2} width={bW} height={barH - 4} fill="#bae6fd" rx="3" opacity="0.8" />
             <rect x="140" y={y + 8} width={aW} height={barH - 14} fill={color} rx="2" />
           </g>
         );
       })}
-      <rect x="400" y="80" width="14" height="10" fill="#fdba74" rx="2" />
+      <rect x="400" y="80" width="14" height="10" fill="#bae6fd" rx="2" />
       <text x="418" y="90" fontSize="11" fill="var(--text-secondary)">Antes do matching</text>
       <rect x="400" y="98" width="14" height="10" fill={color} rx="2" />
       <text x="418" y="108" fontSize="11" fill="var(--text-secondary)">Apos o matching</text>
@@ -235,18 +235,13 @@ export default function ST10() {
 
       <span style={S.tag}>MÓDULO 10</span>
       <h1 style={S.h1}>Inferência Causal</h1>
-      <p style={S.lead}>
-        Causalidade vai além da correlação: pretendemos estimar o efeito de uma intervenção D sobre um resultado Y,
-        isolando influências confundidoras. Este módulo cobre os principais métodos de identificação causal
-        usados em econometria, epidemiologia e ciências sociais.
-      </p>
 
       {/* ── 1. Problema Fundamental ── */}
       <section style={S.section}>
         <h2 style={S.h2}>1. Problema Fundamental da Causalidade</h2>
         <p style={S.p}>
           O enquadramento dos <strong>resultados potenciais</strong> (Rubin, 1974) define para cada unidade i
-          dois mundos paralelos: Y(1)i — o resultado <em>se tratada</em> — e Y(0)i — o resultado <em>se não tratada</em>.
+          dois mundos paralelos: <InlineMath math="Y(1)_i" /> — o resultado <em>se tratada</em> — e <InlineMath math="Y(0)_i" /> — o resultado <em>se não tratada</em>.
           O efeito causal individual é:
         </p>
         <BlockMath math="\tau_i = Y(1)_i - Y(0)_i" />
@@ -268,17 +263,17 @@ export default function ST10() {
           <tbody>
             <tr>
               <td style={S.td}><strong>ATE</strong></td>
-              <td style={S.td}>E[Y(1) - Y(0)]</td>
+              <td style={S.td}><InlineMath math="E[Y(1) - Y(0)]" /></td>
               <td style={S.td}>Efeito médio do tratamento na população</td>
             </tr>
             <tr>
               <td style={S.td}><strong>ATT</strong></td>
-              <td style={S.td}>E[Y(1) - Y(0) | D=1]</td>
+              <td style={S.td}><InlineMath math="E[Y(1) - Y(0) \mid D=1]" /></td>
               <td style={S.td}>Efeito médio nos efetivamente tratados</td>
             </tr>
             <tr>
               <td style={S.td}><strong>LATE</strong></td>
-              <td style={S.td}>E[Y(1) - Y(0) | complier]</td>
+              <td style={S.td}><InlineMath math="E[Y(1) - Y(0) \mid \text{complier}]" /></td>
               <td style={S.td}>Efeito local (IV ou RDD) nos cumpridores</td>
             </tr>
           </tbody>
@@ -584,13 +579,12 @@ Y = b0 + b1*D_hat + b2*X + e2
         </div>
 
         <h3 style={S.h3}>Formulação em Regressão (Two-Way Fixed Effects)</h3>
-        <div style={S.code}>
-          {`Yit = ai + lt + b*(Di x Postt) + eit
-
-# ai = efeitos fixos de unidade (controlam diferenças permanentes)
-# lt = efeitos fixos de tempo (controlam choques comuns)
-# b  = estimador DiD`}
-        </div>
+        <BlockMath math="Y_{it} = \alpha_i + \lambda_t + \beta \cdot (D_i \times \text{Post}_t) + \varepsilon_{it}" />
+        <p style={S.p}>
+          onde <InlineMath math="\alpha_i" /> são os efeitos fixos de unidade (controlam diferenças permanentes),{' '}
+          <InlineMath math="\lambda_t" /> são os efeitos fixos de tempo (controlam choques comuns), e{' '}
+          <InlineMath math="\beta" /> é o estimador DiD.
+        </p>
 
         <h3 style={S.h3}>DiD Escalonado (Staggered DiD)</h3>
         <p style={S.p}>
@@ -673,8 +667,7 @@ Y = b0 + b1*D_hat + b2*X + e2
         </p>
         <BlockMath math="\hat{Y}_1(0)_t = \sum_j w_j Y_{jt}, \quad w_j \geq 0, \quad \sum_j w_j = 1" />
         <p style={S.p}>
-          O efeito estimado no período pós-tratamento é:
-          <strong> at = Y1t - Y1(0)t</strong> — o desvio entre o tratado real e o seu sintético.
+          O efeito estimado no período pós-tratamento é <InlineMath math="\hat{\alpha}_t = Y_{1t} - \hat{Y}_1(0)_t" /> — o desvio entre o tratado real e o seu sintético.
         </p>
 
         <h3 style={S.h3}>Exemplo: Estudo do Tabaco na Califórnia</h3>
@@ -713,84 +706,6 @@ Y = b0 + b1*D_hat + b2*X + e2
           evidência de efeito real.
         </div>
       </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 10. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Inferência causal requer sempre uma <strong>estratégia de identificação</strong> — um argumento
-          de porque a variação no tratamento que exploramos é exógena (quase-aleatória). A escolha do
-          método depende dos dados disponíveis e do contexto institucional:
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Método</th>
-              <th style={S.th}>Hipótese central</th>
-              <th style={S.th}>Estimando</th>
-              <th style={S.th}>Quando usar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>RCT</strong></td>
-              <td style={S.td}>Aleatorização</td>
-              <td style={S.td}>ATE</td>
-              <td style={S.td}>Quando eticamente possível</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Matching / IPW</strong></td>
-              <td style={S.td}>CIA (unconfoundedness)</td>
-              <td style={S.td}>ATE / ATT</td>
-              <td style={S.td}>Seleção em observáveis</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>IV / 2SLS</strong></td>
-              <td style={S.td}>Relevância + exclusão</td>
-              <td style={S.td}>LATE</td>
-              <td style={S.td}>Confundidores não observados com instrumento</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>DiD</strong></td>
-              <td style={S.td}>Tendências paralelas</td>
-              <td style={S.td}>ATT</td>
-              <td style={S.td}>Dados em painel com variação temporal</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>RDD</strong></td>
-              <td style={S.td}>Continuidade perto do limiar</td>
-              <td style={S.td}>LATE local</td>
-              <td style={S.td}>Regras baseadas em limiar</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>Controlo Sintético</strong></td>
-              <td style={S.td}>Ajuste pré-tratamento</td>
-              <td style={S.td}>ATT</td>
-              <td style={S.td}>Uma unidade tratada, poucas de controlo</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style={S.highlight}>
-          <p style={{ margin: 0, fontWeight: 700, marginBottom: '0.5rem', color }}>
-            Princípios Fundamentais
-          </p>
-          <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: 2, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-            <li>Nunca interpretar correlação como causalidade sem estratégia de identificação explícita</li>
-            <li>Usar DAGs para formalizar os pressupostos causais antes de escolher o método</li>
-            <li>Verificar sempre os pressupostos de identificação com testes de robustez</li>
-            <li>Distinguir o estimando (ATE vs ATT vs LATE) e a população alvo</li>
-            <li>Reportar análises de sensibilidade a violações dos pressupostos</li>
-            <li>Triangular evidências com múltiplos métodos quando possível</li>
-          </ul>
-        </div>
-        <div style={S.note}>
-          "Correlação não é causalidade" é o ponto de partida; identificar e quantificar efeitos causais
-          com dados observacionais é o objetivo central da econometria moderna e das ciências sociais quantitativas.
-        </div>
-      </section>
-    </div>
+</div>
   );
 }

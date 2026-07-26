@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1rem', margin: '1.25rem 0', overflowX: 'auto' },
@@ -82,20 +82,20 @@ function ClockSpeedSVG() {
         ))}
 
         {/* plateau annotation */}
-        <line x1={toX(2003)} y1={20} x2={toX(2003)} y2={370} stroke="#f59e0b" strokeWidth={1.5} strokeDasharray="6,3" />
-        <text x={toX(2004)} y={25} fill="#f59e0b" fontSize={10}>Plateau ~2003</text>
+        <line x1={toX(2003)} y1={20} x2={toX(2003)} y2={370} stroke="#0284c7" strokeWidth={1.5} strokeDasharray="6,3" />
+        <text x={toX(2004)} y={25} fill="#0284c7" fontSize={10}>Plateau ~2003</text>
 
         {/* clock speed line */}
         <polyline points={clockPoints} fill="none" stroke={color} strokeWidth={2.5} strokeLinejoin="round" />
 
         {/* cores line */}
-        <polyline points={corePoints} fill="none" stroke="#f97316" strokeWidth={2} strokeLinejoin="round" strokeDasharray="5,2" />
+        <polyline points={corePoints} fill="none" stroke="#4a9eed" strokeWidth={2} strokeLinejoin="round" strokeDasharray="5,2" />
 
         {/* legend */}
         <rect x={540} y={38} width={180} height={54} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" />
         <line x1={550} y1={54} x2={578} y2={54} stroke={color} strokeWidth={2.5} />
         <text x={584} y={58} fill="var(--text-primary)" fontSize={11}>Frequência do relógio</text>
-        <line x1={550} y1={74} x2={578} y2={74} stroke="#f97316" strokeWidth={2} strokeDasharray="5,2" />
+        <line x1={550} y1={74} x2={578} y2={74} stroke="#4a9eed" strokeWidth={2} strokeDasharray="5,2" />
         <text x={584} y={78} fill="var(--text-primary)" fontSize={11}>Nº de núcleos (aprox.)</text>
 
         {/* axis labels */}
@@ -121,9 +121,9 @@ function AmdahlSVG() {
   const amdahl = (n, serial) => 1 / (serial + (1 - serial) / n);
 
   const curves = [
-    { s: 0.05, label: 's = 5%', stroke: '#f97316' },
-    { s: 0.10, label: 's = 10%', stroke: '#fb923c' },
-    { s: 0.25, label: 's = 25%', stroke: '#f59e0b' },
+    { s: 0.05, label: 's = 5%', stroke: '#7dd3fc' },
+    { s: 0.10, label: 's = 10%', stroke: '#3b82f6' },
+    { s: 0.25, label: 's = 25%', stroke: '#1e3a8a' },
     { s: 0.50, label: 's = 50%', stroke: '#94a3b8' },
   ];
 
@@ -216,7 +216,7 @@ function AmdahlVsGustafsonSVG() {
         {/* Amdahl */}
         <polyline
           points={ns.map((n) => `${toX(n)},${toY(Math.min(amdahl(n), maxS))}`).join(' ')}
-          fill="none" stroke="#f97316" strokeWidth={2.5} strokeLinejoin="round"
+          fill="none" stroke="#4a9eed" strokeWidth={2.5} strokeLinejoin="round"
         />
         {/* Gustafson */}
         <polyline
@@ -233,7 +233,7 @@ function AmdahlVsGustafsonSVG() {
 
         {/* legend */}
         <rect x={padL + 10} y={padT + 8} width={195} height={50} rx={5} fill="var(--bg-secondary)" stroke="var(--text-secondary)" />
-        <line x1={padL + 18} y1={padT + 22} x2={padL + 42} y2={padT + 22} stroke="#f97316" strokeWidth={2.5} />
+        <line x1={padL + 18} y1={padT + 22} x2={padL + 42} y2={padT + 22} stroke="#4a9eed" strokeWidth={2.5} />
         <text x={padL + 48} y={padT + 26} fill="var(--text-primary)" fontSize={11}>Amdahl (plateaux)</text>
         <line x1={padL + 18} y1={padT + 42} x2={padL + 42} y2={padT + 42} stroke="#94a3b8" strokeWidth={2.5} />
         <text x={padL + 48} y={padT + 46} fill="var(--text-primary)" fontSize={11}>Gustafson (linear)</text>
@@ -250,9 +250,9 @@ function AmdahlVsGustafsonSVG() {
 function FlynnSVG() {
   const boxes = [
     { x: 20,  y: 20,  label: 'SISD', sub: 'Single Instruction\nSingle Data', eg: 'CPU escalar clássica\n(Von Neumann)', color: '#64748b' },
-    { x: 360, y: 20,  label: 'SIMD', sub: 'Single Instruction\nMultiple Data', eg: 'GPU, AVX/SSE\nTPU, vectorização', color: '#f97316' },
-    { x: 20,  y: 170, label: 'MISD', sub: 'Multiple Instruction\nSingle Data', eg: 'Pipeline de tolerância\na falhas (raro)', color: '#f97316' },
-    { x: 360, y: 170, label: 'MIMD', sub: 'Multiple Instruction\nMultiple Data', eg: 'Multi-core, clusters\nSupercomputadores', color: '#f97316' },
+    { x: 360, y: 20,  label: 'SIMD', sub: 'Single Instruction\nMultiple Data', eg: 'GPU, AVX/SSE\nTPU, vectorização', color: '#4a9eed' },
+    { x: 20,  y: 170, label: 'MISD', sub: 'Multiple Instruction\nSingle Data', eg: 'Pipeline de tolerância\na falhas (raro)', color: '#4a9eed' },
+    { x: 360, y: 170, label: 'MIMD', sub: 'Multiple Instruction\nMultiple Data', eg: 'Multi-core, clusters\nSupercomputadores', color: '#4a9eed' },
   ];
 
   return (
@@ -326,8 +326,8 @@ function EfficiencySVG() {
         <line x1={padL} y1={padT + chartH} x2={W - padR} y2={padT + chartH} stroke="var(--text-secondary)" />
 
         <polyline points={toPoints(ideal)} fill="none" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="6,3" />
-        <polyline points={toPoints(superlinear)} fill="none" stroke="#f59e0b" strokeWidth={2} strokeLinejoin="round" />
-        <polyline points={toPoints(real)} fill="none" stroke={color} strokeWidth={2.5} strokeLinejoin="round" />
+        <polyline points={toPoints(superlinear)} fill="none" stroke="#7dd3fc" strokeWidth={2} strokeLinejoin="round" />
+        <polyline points={toPoints(real)} fill="none" stroke="#1e3a8a" strokeWidth={2.5} strokeLinejoin="round" />
 
         {yTicks.map((v) => (
           <text key={v} x={padL - 6} y={toY(v) + 4} textAnchor="end" fill="var(--text-secondary)" fontSize={10}>{v.toFixed(2)}</text>
@@ -340,9 +340,9 @@ function EfficiencySVG() {
         <rect x={padL + chartW - 200} y={padT + 8} width={200} height={72} rx={5} fill="var(--bg-secondary)" stroke="var(--text-secondary)" />
         <line x1={padL + chartW - 192} y1={padT + 22} x2={padL + chartW - 168} y2={padT + 22} stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="6,3" />
         <text x={padL + chartW - 162} y={padT + 26} fill="var(--text-primary)" fontSize={11}>Ideal (E=1)</text>
-        <line x1={padL + chartW - 192} y1={padT + 42} x2={padL + chartW - 168} y2={padT + 42} stroke="#f59e0b" strokeWidth={2} />
+        <line x1={padL + chartW - 192} y1={padT + 42} x2={padL + chartW - 168} y2={padT + 42} stroke="#7dd3fc" strokeWidth={2} />
         <text x={padL + chartW - 162} y={padT + 46} fill="var(--text-primary)" fontSize={11}>Superlinear (cache)</text>
-        <line x1={padL + chartW - 192} y1={padT + 62} x2={padL + chartW - 168} y2={padT + 62} stroke={color} strokeWidth={2.5} />
+        <line x1={padL + chartW - 192} y1={padT + 62} x2={padL + chartW - 168} y2={padT + 62} stroke="#1e3a8a" strokeWidth={2.5} />
         <text x={padL + chartW - 162} y={padT + 66} fill="var(--text-primary)" fontSize={11}>Real (overhead comm.)</text>
 
         <text x={14} y={padT + chartH / 2} fill="var(--text-secondary)" fontSize={11} transform={`rotate(-90,14,${padT + chartH / 2})`} textAnchor="middle">Eficiência E(n)</text>
@@ -407,8 +407,8 @@ function RooflineSVG() {
         <polyline points={roofPoints.join(' ')} fill="none" stroke={color} strokeWidth={3} strokeLinejoin="round" />
 
         {/* ridge point */}
-        <circle cx={toX(ridge)} cy={toY(Ppeak)} r={5} fill="#f59e0b" />
-        <text x={toX(ridge) - 40} y={toY(Ppeak) - 8} fill="#f59e0b" fontSize={10} fontWeight={700}>Ridge Point</text>
+        <circle cx={toX(ridge)} cy={toY(Ppeak)} r={5} fill="#0284c7" />
+        <text x={toX(ridge) - 40} y={toY(Ppeak) - 8} fill="#0284c7" fontSize={10} fontWeight={700}>Ridge Point</text>
 
         {/* horizontal roof label */}
         <text x={W - padR - 130} y={toY(Ppeak) - 25} fill={color} fontSize={10} fontWeight={600}>Compute Roof ({Ppeak} GFLOP/s)</text>
@@ -417,13 +417,13 @@ function RooflineSVG() {
         <text x={toX(0.03)} y={toY(0.3)} fill="#64748b" fontSize={9} transform={`rotate(-35,${toX(0.03)},${toY(0.3)})`}>Memory BW slope</text>
 
         {/* Kernel A */}
-        <circle cx={toX(memBoundKernel.I)} cy={toY(memBoundKernel.perf)} r={7} fill="#f97316" />
-        <text x={toX(memBoundKernel.I) - 5} y={toY(memBoundKernel.perf) + 22} fill="#f97316" fontSize={10} fontWeight={700}>A</text>
+        <circle cx={toX(memBoundKernel.I)} cy={toY(memBoundKernel.perf)} r={7} fill="#4a9eed" />
+        <text x={toX(memBoundKernel.I) - 5} y={toY(memBoundKernel.perf) + 22} fill="#4a9eed" fontSize={10} fontWeight={700}>A</text>
         <text x={toX(memBoundKernel.I) - 5} y={toY(memBoundKernel.perf) + 34} fill="var(--text-secondary)" fontSize={9}>mem-bound</text>
 
         {/* Kernel B */}
-        <circle cx={toX(compBoundKernel.I)} cy={toY(compBoundKernel.perf)} r={7} fill="#f97316" />
-        <text x={toX(compBoundKernel.I) - 5} y={toY(compBoundKernel.perf) + 22} fill="#f97316" fontSize={10} fontWeight={700}>B</text>
+        <circle cx={toX(compBoundKernel.I)} cy={toY(compBoundKernel.perf)} r={7} fill="#4a9eed" />
+        <text x={toX(compBoundKernel.I) - 5} y={toY(compBoundKernel.perf) + 22} fill="#4a9eed" fontSize={10} fontWeight={700}>B</text>
         <text x={toX(compBoundKernel.I) - 5} y={toY(compBoundKernel.perf) + 34} fill="var(--text-secondary)" fontSize={9}>compute-bound</text>
 
         {yTicks.map((v) => (
@@ -446,51 +446,51 @@ function ParallelismTypesSVG() {
   const types = [
     {
       title: 'Data Parallelism',
-      color: '#f97316',
+      color: '#4a9eed',
       sub: 'Dados idênticos, ops paralelas',
       footer: 'Ex: map(), vetores, GPU',
       content: () => (
         <div>
           <div style={{ display: 'flex', gap: '0.25rem', justifyContent: 'center', marginBottom: '0.3rem' }}>
             {['D1','D2','D3','D4'].map(d => (
-              <div key={d} style={{ background: 'rgba(249,115,22,0.7)', borderRadius: 3, padding: '0.2rem 0.35rem', fontSize: '0.6rem', color: '#fff', fontFamily: 'monospace', fontWeight: 700 }}>{d}</div>
+              <div key={d} style={{ background: 'rgba(74,158,237,0.7)', borderRadius: 3, padding: '0.2rem 0.35rem', fontSize: '0.6rem', color: '#fff', fontFamily: 'monospace', fontWeight: 700 }}>{d}</div>
             ))}
           </div>
           <div style={{ fontSize: '0.58rem', color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '0.3rem' }}>↓ mesma operação</div>
           <div style={{ display: 'flex', gap: '0.25rem', justifyContent: 'center', marginBottom: '0.3rem' }}>
             {['P1','P2','P3','P4'].map(p => (
-              <div key={p} style={{ background: 'rgba(249,115,22,0.5)', borderRadius: 3, padding: '0.2rem 0.35rem', fontSize: '0.6rem', color: '#fff', fontFamily: 'monospace', fontWeight: 700 }}>{p}</div>
+              <div key={p} style={{ background: 'rgba(74,158,237,0.5)', borderRadius: 3, padding: '0.2rem 0.35rem', fontSize: '0.6rem', color: '#fff', fontFamily: 'monospace', fontWeight: 700 }}>{p}</div>
             ))}
           </div>
           <div style={{ fontSize: '0.58rem', color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '0.3rem' }}>↓ resultados</div>
-          <div style={{ background: 'rgba(249,115,22,0.35)', borderRadius: 3, padding: '0.2rem 0', textAlign: 'center', fontSize: '0.6rem', color: '#fff', fontFamily: 'monospace' }}>Resultado Unificado</div>
+          <div style={{ background: 'rgba(74,158,237,0.35)', borderRadius: 3, padding: '0.2rem 0', textAlign: 'center', fontSize: '0.6rem', color: '#fff', fontFamily: 'monospace' }}>Resultado Unificado</div>
         </div>
       ),
     },
     {
       title: 'Task Parallelism',
-      color: '#fb923c',
+      color: '#38bdf8',
       sub: 'Dados distintos, tarefas diferentes',
       footer: 'Ex: OpenMP sections, futures',
       content: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
           {[['T1','Compressão'],['T2','Cifra'],['T3','Upload']].map(([t, l], i) => (
-            <div key={t} style={{ background: `rgba(251,146,60,${0.55 - i*0.08})`, borderRadius: 4, padding: '0.25rem 0.5rem', fontSize: '0.62rem', color: '#fff', fontFamily: 'monospace', textAlign: 'center' }}>{t}: {l}</div>
+            <div key={t} style={{ background: `rgba(56,189,248,${0.55 - i*0.08})`, borderRadius: 4, padding: '0.25rem 0.5rem', fontSize: '0.62rem', color: '#fff', fontFamily: 'monospace', textAlign: 'center' }}>{t}: {l}</div>
           ))}
         </div>
       ),
     },
     {
       title: 'Pipeline Parallelism',
-      color: '#f59e0b',
+      color: '#0284c7',
       sub: 'Stages encadeados',
       footer: 'Ex: CPU pipeline, streaming',
       content: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem', alignItems: 'center' }}>
           {[['S1','Leitura'],['S2','Processo'],['S3','Escrita']].map(([s, l], i) => (
             <React.Fragment key={s}>
-              <div style={{ background: `rgba(245,158,11,${0.5 + i*0.1})`, borderRadius: 4, padding: '0.25rem 0.5rem', fontSize: '0.62rem', color: '#fff', fontFamily: 'monospace', textAlign: 'center', width: '100%' }}>{s}: {l}</div>
-              {i < 2 && <div style={{ fontSize: '0.7rem', color: '#f59e0b', lineHeight: 1 }}>↓</div>}
+              <div style={{ background: `rgba(2,132,199,${0.5 + i*0.1})`, borderRadius: 4, padding: '0.25rem 0.5rem', fontSize: '0.62rem', color: '#fff', fontFamily: 'monospace', textAlign: 'center', width: '100%' }}>{s}: {l}</div>
+              {i < 2 && <div style={{ fontSize: '0.7rem', color: '#0284c7', lineHeight: 1 }}>↓</div>}
             </React.Fragment>
           ))}
         </div>
@@ -498,13 +498,13 @@ function ParallelismTypesSVG() {
     },
     {
       title: 'Model Parallelism',
-      color: '#fbbf24',
+      color: '#7dd3fc',
       sub: 'Modelo fragmentado',
       footer: 'Ex: LLMs, GPT, pipeline ML',
       content: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
           {[['GPU 0','Camadas 1-4'],['GPU 1','Camadas 5-8'],['GPU 2','Camadas 9-12']].map(([g, l], i) => (
-            <div key={g} style={{ background: `rgba(251,191,36,${0.45 + i*0.1})`, borderRadius: 4, padding: '0.25rem 0.5rem', textAlign: 'center' }}>
+            <div key={g} style={{ background: `rgba(125,211,252,${0.45 + i*0.1})`, borderRadius: 4, padding: '0.25rem 0.5rem', textAlign: 'center' }}>
               <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#fff', fontFamily: 'monospace' }}>{g}</div>
               <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.85)', fontFamily: 'monospace' }}>{l}</div>
             </div>
@@ -555,19 +555,11 @@ export default function PAR1() {
         <h2 style={S.h2}>1. Porquê Paralelizar?</h2>
 
         <p style={S.p}>
-          Durante décadas, a resposta à necessidade de mais desempenho foi simples: esperar pelo próximo
-          processador. A <strong>Lei de Moore</strong> (1965) previa que o número de transístores num
-          circuito integrado duplicaria aproximadamente a cada dois anos, e essa previsão manteve-se
-          surpreendentemente precisa durante quase quarenta anos. O que mudou não foi a densidade de
-          transístores — ainda aumenta — mas sim a frequência de relógio.
-        </p>
-
-        <p style={S.p}>
-          Por volta de 2003–2005, os processadores atingiram os 3 GHz e a frequência estagnou. O
-          motivo é físico: aumentar a frequência implica aumentar a tensão e a dissipação de calor
-          (potência ∝ C·V²·f). A partir de um certo ponto, refrigerar o chip torna-se inviável
-          economicamente. Os fabricantes responderam com uma mudança de paradigma: em vez de um núcleo
-          mais rápido, múltiplos núcleos a frequência moderada.
+          A <strong>Lei de Moore</strong> (1965) previu que o número de transístores duplicaria a
+          cada dois anos — e manteve-se precisa durante décadas. Mas por volta de 2003–2005 a
+          frequência de relógio estagnou nos 3 GHz: aumentá-la implicaria dissipação de calor
+          inviável (potência ∝ C·V²·f). Os fabricantes responderam com múltiplos núcleos a
+          frequência moderada em vez de um único núcleo mais rápido.
         </p>
 
         <div style={S.highlight}>
@@ -609,10 +601,9 @@ export default function PAR1() {
         </p>
 
         <p style={S.p}>
-          Alguns problemas são <strong>embarrassingly parallel</strong> (trivialmente paralelizáveis):
-          não há dependências entre sub-tarefas. Exemplos clássicos incluem renderização de imagens
-          (cada pixel é independente), simulações Monte Carlo, e treino de modelos de <em>machine
-          learning</em> com mini-batches. Nestes casos, scaling próximo do linear é atingível.
+          Alguns problemas são <strong>embarrassingly parallel</strong>: não há dependências entre
+          sub-tarefas (ex: renderização de imagens, simulações Monte Carlo). Nestes casos, scaling
+          próximo do linear é atingível.
         </p>
 
         <ClockSpeedSVG />
@@ -644,18 +635,11 @@ export default function PAR1() {
         </div>
 
         <p style={S.p}>
-          <strong>Derivação intuitiva:</strong> o trabalho total é normalizado para 1. A fracção
-          sequencial <InlineMath math={"s"} /> demora sempre o mesmo tempo. A fracção paralela{' '}
-          <InlineMath math={"1-s"} /> é dividida por <InlineMath math={"n"} /> processadores, demorando{' '}
-          <InlineMath math={"(1-s)/n"} />. O tempo total com <InlineMath math={"n"} /> processadores
-          é <InlineMath math={"s + (1-s)/n"} />, e o speedup é o rácio entre o tempo sequencial (1) e
-          esse valor.
-        </p>
-
-        <p style={S.p}>
-          Quando <InlineMath math={"n \\to \\infty"} />, o speedup converge para{' '}
-          <InlineMath math={"1/s"} />. Esta é a <strong>barreira de Amdahl</strong>: a parte
-          sequencial torna-se o gargalo absoluto.
+          O trabalho total é normalizado para 1: a fracção sequencial <InlineMath math={"s"} /> demora
+          sempre o mesmo tempo, e a fracção paralela <InlineMath math={"1-s"} /> divide-se por{' '}
+          <InlineMath math={"n"} /> processadores. Quando <InlineMath math={"n \\to \\infty"} />, o
+          speedup converge para <InlineMath math={"1/s"} /> — a <strong>barreira de Amdahl</strong>:
+          a parte sequencial torna-se o gargalo absoluto.
         </p>
 
         <AmdahlSVG />
@@ -707,15 +691,9 @@ export default function PAR1() {
 
         <p style={S.p}>
           Em 1988, John Gustafson argumentou que a Lei de Amdahl era excessivamente pessimista porque
-          assumia um problema de tamanho fixo. Na prática, os utilizadores tendem a usar mais
-          processadores para resolver <em>problemas maiores</em> no mesmo tempo, não os mesmos
-          problemas mais depressa — um conceito chamado <strong>weak scaling</strong>.
-        </p>
-
-        <p style={S.p}>
-          Se o tamanho do problema escala com <InlineMath math={"n"} /> processadores, e se{' '}
-          <InlineMath math={"s"} /> é a fracção sequencial <em>medida num sistema paralelo</em> (não
-          no sequencial), o speedup escalado é:
+          assumia um problema de tamanho fixo. Na prática, usa-se mais processadores para resolver
+          <em> problemas maiores</em> no mesmo tempo — conceito chamado <strong>weak scaling</strong>.
+          Se o tamanho do problema escala com <InlineMath math={"n"} />, o speedup escalado é:
         </p>
 
         <div style={S.math}>
@@ -778,10 +756,9 @@ export default function PAR1() {
         <h2 style={S.h2}>4. Taxonomia de Flynn</h2>
 
         <p style={S.p}>
-          Em 1966, Michael Flynn propôs classificar arquitecturas de computador segundo dois eixos
-          independentes: o número de <strong>fluxos de instruções</strong> e o número de{' '}
-          <strong>fluxos de dados</strong> processados em simultâneo. A combinação destes dois eixos
-          produz quatro classes.
+          Em 1966, Michael Flynn propôs classificar arquitecturas segundo dois eixos: o número de{' '}
+          <strong>fluxos de instruções</strong> e de <strong>fluxos de dados</strong> processados em
+          simultâneo — produzindo quatro classes.
         </p>
 
         <FlynnSVG />
@@ -842,13 +819,8 @@ export default function PAR1() {
         <h2 style={S.h2}>5. Métricas de Desempenho</h2>
 
         <p style={S.p}>
-          Avaliar uma implementação paralela requer mais do que medir o tempo de execução. Quatro
-          métricas padronizadas permitem comparar implementações, identificar ineficiências e guiar
-          decisões de optimização.
-        </p>
-
-        <p style={S.p}>
-          Sejam <InlineMath math={"T_1"} /> o tempo de execução com 1 processador e{' '}
+          Avaliar uma implementação paralela requer mais do que medir o tempo de execução. Sejam{' '}
+          <InlineMath math={"T_1"} /> o tempo de execução com 1 processador e{' '}
           <InlineMath math={"T_n"} /> o tempo com <InlineMath math={"n"} /> processadores. O
           <strong> speedup</strong> e a <strong>eficiência</strong> definem-se como:
         </p>
@@ -897,11 +869,10 @@ export default function PAR1() {
         <EfficiencySVG />
 
         <p style={S.p}>
-          O gráfico mostra três cenários típicos. A linha ideal (<InlineMath math={"E = 1"} />) é
-          inatingível em sistemas reais. A curva <em>superlinear</em> (roxa) ocorre brevemente quando
-          dados pequenos cabem inteiramente em cache com mais núcleos — um efeito benéfico mas
-          transitório. A curva real (azul) decresce monotonamente à medida que o overhead de
-          comunicação e sincronização cresce com <InlineMath math={"n"} />.
+          A linha ideal (<InlineMath math={"E = 1"} />) é inatingível em sistemas reais. A curva{' '}
+          <em>superlinear</em> ocorre brevemente quando dados pequenos cabem inteiramente em cache
+          com mais núcleos; a curva real decresce à medida que o overhead de comunicação cresce com{' '}
+          <InlineMath math={"n"} />.
         </p>
 
         <div style={S.note}>
@@ -921,10 +892,9 @@ export default function PAR1() {
         <h2 style={S.h2}>6. Roofline Model</h2>
 
         <p style={S.p}>
-          O Roofline Model (Williams et al., 2009) é uma ferramenta visual que permite identificar
-          rapidamente se um kernel computacional está limitado pela capacidade de cálculo do processador
-          (<em>compute-bound</em>) ou pela largura de banda de memória (<em>memory-bound</em>). O
-          modelo baseia-se no conceito de <strong>intensidade aritmética</strong>:
+          O Roofline Model (Williams et al., 2009) identifica rapidamente se um kernel está limitado
+          pela capacidade de cálculo (<em>compute-bound</em>) ou pela largura de banda de memória
+          (<em>memory-bound</em>), com base na <strong>intensidade aritmética</strong>:
         </p>
 
         <div style={S.math}>
@@ -943,10 +913,8 @@ export default function PAR1() {
         </div>
 
         <p style={S.p}>
-          O ponto onde as duas rampas se cruzam chama-se <strong>ridge point</strong> e corresponde
-          à intensidade aritmética mínima para atingir o pico de computação. Kernels com{' '}
-          <InlineMath math={"I"} /> abaixo do ridge point são <em>memory-bound</em>; acima, são
-          <em> compute-bound</em>.
+          O ponto onde as duas rampas se cruzam chama-se <strong>ridge point</strong>: kernels com{' '}
+          <InlineMath math={"I"} /> abaixo são <em>memory-bound</em>; acima, <em>compute-bound</em>.
         </p>
 
         <RooflineSVG />
@@ -989,9 +957,8 @@ export default function PAR1() {
         <h2 style={S.h2}>7. Tipos de Paralelismo</h2>
 
         <p style={S.p}>
-          Nem todo o paralelismo tem a mesma estrutura. Consoante a forma como o trabalho e os dados
-          são decompostos, distinguem-se quatro padrões fundamentais — cada um com diferentes
-          requisitos de comunicação, granularidade e ferramentas adequadas.
+          Consoante a forma como o trabalho e os dados são decompostos, distinguem-se quatro padrões
+          fundamentais, cada um com diferentes requisitos de comunicação e ferramentas.
         </p>
 
         <ParallelismTypesSVG />
@@ -1034,11 +1001,8 @@ export default function PAR1() {
         </table>
 
         <p style={S.p}>
-          Em sistemas de <em>machine learning</em> modernos, os quatro tipos coexistem: o treino de
-          um LLM usa tipicamente <strong>data parallelism</strong> (batches em paralelo),{' '}
-          <strong>model parallelism</strong> (camadas em GPUs distintas) e{' '}
-          <strong>pipeline parallelism</strong> (micro-batches em pipeline entre stages). Esta
-          combinação chama-se <em>3D parallelism</em> e é usada em sistemas como GPT-4 e Llama.
+          No treino de LLMs, os três tipos coexistem — data, model e pipeline parallelism combinados
+          chamam-se <em>3D parallelism</em>, usado em sistemas como GPT-4 e Llama.
         </p>
 
         <div style={S.note}>
@@ -1048,48 +1012,6 @@ export default function PAR1() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ══════════════════════════════════════ */}
-      {/* SECÇÃO 8 — SÍNTESE DO MÓDULO           */}
-      {/* ══════════════════════════════════════ */}
-              <h2 style={{ ...S.h2, borderLeft: 'none', paddingLeft: 0, marginBottom: '0.75rem' }}>
-          8. Síntese do Módulo
-        </h2>
-<div style={{ ...S.highlight, borderRadius: 10 }}>
-        <ul style={{ paddingLeft: '1.25rem', color: 'var(--text-primary)', lineHeight: 2.1, fontSize: '0.97rem' }}>
-          <li>
-            <strong>Porquê paralelizar:</strong> o fim da Lei de Moore em frequência (plateau ~2003)
-            obrigou a indústria a adoptar múltiplos núcleos — o desempenho single-thread estagnou.
-          </li>
-          <li>
-            <strong>Lei de Amdahl</strong> (<InlineMath math={"S = 1/(s + (1-s)/n)"} />): a fracção
-            sequencial limita o speedup máximo; com s=5%, o tecto é 20× independentemente do hardware.
-          </li>
-          <li>
-            <strong>Lei de Gustafson</strong> (<InlineMath math={"S = n - s(n-1)"} />): quando o
-            problema cresce com os recursos, o speedup é quase linear — weak scaling é o regime
-            dominante em HPC científico.
-          </li>
-          <li>
-            <strong>Taxonomia de Flynn:</strong> SIMD (GPU, AVX) e MIMD (multi-core, clusters) são as
-            classes dominantes; os CPUs modernos combinam ambas.
-          </li>
-          <li>
-            <strong>Métricas:</strong> speedup <InlineMath math={"S(n)"} />, eficiência{' '}
-            <InlineMath math={"E(n) = S(n)/n"} />, overhead e scalability caracterizam
-            completamente uma implementação paralela.
-          </li>
-          <li>
-            <strong>Roofline Model:</strong> a intensidade aritmética (FLOP/byte) determina se um
-            kernel é memory-bound ou compute-bound — e qual a optimização prioritária.
-          </li>
-          <li>
-            <strong>Tipos de paralelismo:</strong> data, task, pipeline e model parallelism têm
-            padrões de comunicação e ferramentas distintas; sistemas modernos de ML combinam todos.
-          </li>
-        </ul>
-      </div>
     </div>
   );
 }

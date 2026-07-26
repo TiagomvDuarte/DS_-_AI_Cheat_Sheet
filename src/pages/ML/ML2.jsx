@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -29,11 +29,11 @@ const S = {
 // === Diagram: the Master Algorithm wheel ===
 const MasterAlgorithmWheel = () => {
   const nodes = [
-    { angle: -90, name: 'Simbolistas', sub: 'Dedução Inversa', c: '#f97316' },
-    { angle: -18, name: 'Conexionistas', sub: 'Backpropagation', c: '#f97316' },
-    { angle: 54, name: 'Evolucionários', sub: 'Algoritmos Genéticos', c: '#f97316' },
-    { angle: 126, name: 'Bayesianos', sub: 'Teorema de Bayes', c: '#f97316' },
-    { angle: 198, name: 'Analogizadores', sub: 'Kernel / kNN', c: '#f97316' },
+    { angle: -90, name: 'Simbolistas', sub: 'Dedução Inversa', c: '#4a9eed' },
+    { angle: -18, name: 'Conexionistas', sub: 'Backpropagation', c: '#4a9eed' },
+    { angle: 54, name: 'Evolucionários', sub: 'Algoritmos Genéticos', c: '#4a9eed' },
+    { angle: 126, name: 'Bayesianos', sub: 'Teorema de Bayes', c: '#4a9eed' },
+    { angle: 198, name: 'Analogizadores', sub: 'Kernel / kNN', c: '#4a9eed' },
   ];
   const cx = 260, cy = 200, r = 150;
   const toXY = (deg) => {
@@ -53,7 +53,7 @@ const MasterAlgorithmWheel = () => {
           const x2 = nx - 47 * cos, y2 = ny - 47 * sin;
           return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--text-secondary)" strokeWidth="1.5" strokeDasharray="4,3" />;
         })}
-        <circle cx={cx} cy={cy} r="55" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+        <circle cx={cx} cy={cy} r="55" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
         <text x={cx} y={cy - 6} textAnchor="middle" fill={color} fontSize="13" fontWeight="700">Master</text>
         <text x={cx} y={cy + 12} textAnchor="middle" fill={color} fontSize="13" fontWeight="700">Algorithm</text>
         {nodes.map((n, i) => {
@@ -81,16 +81,16 @@ const MasterAlgorithmWheel = () => {
 // === Diagram: historical timeline of all tribes ===
 const FullTimelineDiagram = () => {
   const events = [
-    { year: '1763', label: 'Bayes\n(publicado)', x: 30, c: '#f97316' },
-    { year: '1943', label: 'McCulloch\n& Pitts', x: 110, c: '#f97316' },
-    { year: '1950s', label: 'Lógica\nSimbólica IA', x: 190, c: '#f97316' },
-    { year: '1957', label: 'Perceptron\n(Rosenblatt)', x: 270, c: '#f97316' },
-    { year: '1967', label: 'kNN\n(Cover & Hart)', x: 350, c: '#f97316' },
-    { year: '1975', label: 'Algoritmos\nGenéticos (Holland)', x: 430, c: '#f97316' },
-    { year: '1986', label: 'Backprop\n(Rumelhart)', x: 510, c: '#f97316' },
-    { year: '1992', label: 'SVMs\n(Vapnik)', x: 590, c: '#f97316' },
-    { year: '1995', label: 'Random\nForests', x: 670, c: '#f97316' },
-    { year: '2006', label: 'Deep\nBelief Nets', x: 750, c: '#f97316' },
+    { year: '1763', label: 'Bayes\n(publicado)', x: 30, c: '#4a9eed' },
+    { year: '1943', label: 'McCulloch\n& Pitts', x: 110, c: '#4a9eed' },
+    { year: '1950s', label: 'Lógica\nSimbólica IA', x: 190, c: '#4a9eed' },
+    { year: '1957', label: 'Perceptron\n(Rosenblatt)', x: 270, c: '#4a9eed' },
+    { year: '1967', label: 'kNN\n(Cover & Hart)', x: 350, c: '#4a9eed' },
+    { year: '1975', label: 'Algoritmos\nGenéticos (Holland)', x: 430, c: '#4a9eed' },
+    { year: '1986', label: 'Backprop\n(Rumelhart)', x: 510, c: '#4a9eed' },
+    { year: '1992', label: 'SVMs\n(Vapnik)', x: 590, c: '#4a9eed' },
+    { year: '1995', label: 'Random\nForests', x: 670, c: '#4a9eed' },
+    { year: '2006', label: 'Deep\nBelief Nets', x: 750, c: '#4a9eed' },
   ];
   return (
     <div style={S.diagram}>
@@ -127,8 +127,8 @@ const DecisionTreeDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
       </defs>
-      <rect x="190" y="10" width="100" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="240" y="35" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Tempo?</text>
+      <rect x="190" y="10" width="100" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="240" y="35" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Tempo?</text>
 
       <line x1="220" y1="50" x2="100" y2="90" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDT)" />
       <text x="145" y="68" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Chuva</text>
@@ -137,36 +137,36 @@ const DecisionTreeDiagram = () => (
       <line x1="260" y1="50" x2="380" y2="90" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDT)" />
       <text x="335" y="68" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Sol</text>
 
-      <rect x="55" y="90" width="100" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="105" y="115" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Vento?</text>
+      <rect x="55" y="90" width="100" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="105" y="115" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Vento?</text>
 
-      <rect x="195" y="90" width="90" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="240" y="115" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Joga = SIM</text>
+      <rect x="195" y="90" width="90" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="240" y="115" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Joga = SIM</text>
 
-      <rect x="330" y="90" width="100" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="380" y="115" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Humidade?</text>
+      <rect x="330" y="90" width="100" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="380" y="115" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Humidade?</text>
 
       <line x1="85" y1="130" x2="40" y2="170" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDT)" />
       <text x="40" y="155" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Forte</text>
       <line x1="125" y1="130" x2="160" y2="170" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDT)" />
       <text x="165" y="155" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Fraco</text>
 
-      <rect x="5" y="170" width="90" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="50" y="195" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Joga = NÃO</text>
+      <rect x="5" y="170" width="90" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="50" y="195" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Joga = NÃO</text>
 
-      <rect x="115" y="170" width="90" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="160" y="195" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Joga = SIM</text>
+      <rect x="115" y="170" width="90" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="160" y="195" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Joga = SIM</text>
 
       <line x1="360" y1="130" x2="330" y2="170" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDT)" />
       <text x="325" y="155" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Alta</text>
       <line x1="400" y1="130" x2="430" y2="170" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDT)" />
       <text x="438" y="155" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Normal</text>
 
-      <rect x="285" y="170" width="90" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="330" y="195" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Joga = NÃO</text>
+      <rect x="285" y="170" width="90" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="330" y="195" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Joga = NÃO</text>
 
-      <rect x="390" y="170" width="90" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="435" y="195" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Joga = SIM</text>
+      <rect x="390" y="170" width="90" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="435" y="195" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Joga = SIM</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       Cada nó interno testa um atributo, cada ramo representa um valor possível desse atributo, e cada folha
@@ -184,7 +184,7 @@ const GeneticAlgorithmDiagram = () => (
     <svg viewBox="0 0 480 260" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrGA" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {[
@@ -195,17 +195,17 @@ const GeneticAlgorithmDiagram = () => (
         { x: 70, y: 100, label: 'Mutação' },
       ].map((n, i) => (
         <g key={i}>
-          <rect x={n.x - 55} y={n.y - 25} width="110" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+          <rect x={n.x - 55} y={n.y - 25} width="110" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
           {n.label.split('\n').map((l, li) => (
-            <text key={li} x={n.x} y={n.y - 2 + li * 13} textAnchor="middle" fill="#f97316" fontSize="10" fontWeight={li === 0 ? '700' : '400'}>{l}</text>
+            <text key={li} x={n.x} y={n.y - 2 + li * 13} textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight={li === 0 ? '700' : '400'}>{l}</text>
           ))}
         </g>
       ))}
-      <path d="M 290 45 Q 380 60 405 75" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrGA)" />
-      <path d="M 405 125 Q 390 175 380 200" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrGA)" />
-      <path d="M 295 225 Q 230 230 185 225" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrGA)" />
-      <path d="M 100 200 Q 80 165 72 130" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrGA)" />
-      <path d="M 95 80 Q 150 45 190 35" fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrGA)" />
+      <path d="M 290 45 Q 380 60 405 75" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrGA)" />
+      <path d="M 405 125 Q 390 175 380 200" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrGA)" />
+      <path d="M 295 225 Q 230 230 185 225" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrGA)" />
+      <path d="M 100 200 Q 80 165 72 130" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrGA)" />
+      <path d="M 95 80 Q 150 45 190 35" fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrGA)" />
       <text x="240" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="10" fontStyle="italic">repete até critério de paragem</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
@@ -226,11 +226,11 @@ const NaiveBayesDiagram = () => (
     <svg viewBox="0 0 400 180" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrNB" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
         </marker>
       </defs>
-      <circle cx="200" cy="35" r="32" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="200" y="40" textAnchor="middle" fill="#f59e0b" fontSize="12" fontWeight="700">Classe Y</text>
+      <circle cx="200" cy="35" r="32" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="200" y="40" textAnchor="middle" fill="#0284c7" fontSize="12" fontWeight="700">Classe Y</text>
       {[
         [50, 'x₁'],
         [150, 'x₂'],
@@ -238,7 +238,7 @@ const NaiveBayesDiagram = () => (
         [350, 'x₄'],
       ].map(([x, label], i) => (
         <g key={i}>
-          <line x1="200" y1="67" x2={x} y2="114" stroke="#f59e0b" strokeWidth="1.5" markerEnd="url(#arrNB)" />
+          <line x1="200" y1="67" x2={x} y2="114" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#arrNB)" />
           <circle cx={x} cy="140" r="24" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5" />
           <text x={x} y="145" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">{label}</text>
         </g>
@@ -263,29 +263,29 @@ const AnalogyDiagram = () => (
       <div>
         <svg viewBox="0 0 180 180" width="180" height="180">
           {[
-            [40, 40, '#f97316'], [55, 70, '#f97316'], [70, 50, '#f97316'], [50, 100, '#f97316'],
-            [130, 130, '#f97316'], [140, 100, '#f97316'], [110, 140, '#f97316'], [150, 150, '#f97316'],
-            [90, 90, '#f97316'],
+            [40, 40, '#4a9eed'], [55, 70, '#4a9eed'], [70, 50, '#4a9eed'], [50, 100, '#4a9eed'],
+            [130, 130, '#4a9eed'], [140, 100, '#4a9eed'], [110, 140, '#4a9eed'], [150, 150, '#4a9eed'],
+            [90, 90, '#4a9eed'],
           ].map(([cx, cy, c], i) => (
-            <circle key={i} cx={cx} cy={cy} r={c === '#f97316' ? 8 : 6} fill={c} stroke={c === '#f97316' ? 'var(--text-primary)' : 'none'} strokeWidth="1.5" />
+            <circle key={i} cx={cx} cy={cy} r={c === '#4a9eed' ? 8 : 6} fill={c} stroke={c === '#4a9eed' ? 'var(--text-primary)' : 'none'} strokeWidth="1.5" />
           ))}
-          <circle cx="90" cy="90" r="42" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="4,3" />
-          <text x="90" y="20" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">k = 3 vizinhos</text>
+          <circle cx="90" cy="90" r="42" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="4,3" />
+          <text x="90" y="20" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">k = 3 vizinhos</text>
         </svg>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>kNN: a classe do ponto novo (centro) é decidida pelos k vizinhos mais próximos (maioria)</p>
       </div>
       <div>
         <svg viewBox="0 0 180 180" width="180" height="180">
           {[
-            [30, 40, '#f97316'], [45, 70, '#f97316'], [25, 100, '#f97316'], [60, 30, '#f97316'],
-            [150, 130, '#f97316'], [160, 100, '#f97316'], [140, 160, '#f97316'], [170, 60, '#f97316'],
+            [30, 40, '#4a9eed'], [45, 70, '#4a9eed'], [25, 100, '#4a9eed'], [60, 30, '#4a9eed'],
+            [150, 130, '#4a9eed'], [160, 100, '#4a9eed'], [140, 160, '#4a9eed'], [170, 60, '#4a9eed'],
           ].map(([cx, cy, c], i) => (
             <circle key={i} cx={cx} cy={cy} r="6" fill={c} />
           ))}
-          <line x1="10" y1="170" x2="170" y2="10" stroke="#f97316" strokeWidth="2" />
-          <line x1="10" y1="150" x2="150" y2="10" stroke="#f97316" strokeWidth="1" strokeDasharray="3,2" />
-          <line x1="30" y1="170" x2="170" y2="30" stroke="#f97316" strokeWidth="1" strokeDasharray="3,2" />
-          <text x="90" y="190" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">margem máxima</text>
+          <line x1="10" y1="170" x2="170" y2="10" stroke="#4a9eed" strokeWidth="2" />
+          <line x1="10" y1="150" x2="150" y2="10" stroke="#4a9eed" strokeWidth="1" strokeDasharray="3,2" />
+          <line x1="30" y1="170" x2="170" y2="30" stroke="#4a9eed" strokeWidth="1" strokeDasharray="3,2" />
+          <text x="90" y="190" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">margem máxima</text>
         </svg>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>SVM: encontra o hiperplano que maximiza a margem entre as classes</p>
       </div>
@@ -302,17 +302,17 @@ const AnalogyDiagram = () => (
 // === NEW Diagram: how each tribe solves the same problem ===
 const SameProblemDiagram = () => {
   const approaches = [
-    { name: 'Simbolista', c: '#f97316', repr: 'SE idade<30 E saldo<0\nENTÃO risco=ALTO', desc: 'regra lógica explícita' },
-    { name: 'Conexionista', c: '#f97316', repr: 'rede neuronal\nw₁·idade + w₂·saldo + ...\n→ P(risco)', desc: 'pesos aprendidos por gradiente' },
-    { name: 'Evolucionário', c: '#f97316', repr: 'população de regras/árvores\nevolui por gerações', desc: 'selecção + crossover + mutação' },
-    { name: 'Bayesiano', c: '#f97316', repr: 'P(risco | idade,saldo)\n∝ P(idade,saldo|risco)·P(risco)', desc: 'actualização probabilística' },
-    { name: 'Analogizador', c: '#f97316', repr: 'clientes parecidos\ntiveram risco=ALTO', desc: 'comparação com casos vizinhos' },
+    { name: 'Simbolista', c: '#4a9eed', repr: 'SE idade<30 E saldo<0\nENTÃO risco=ALTO', desc: 'regra lógica explícita' },
+    { name: 'Conexionista', c: '#4a9eed', repr: 'rede neuronal\nw₁·idade + w₂·saldo + ...\n→ P(risco)', desc: 'pesos aprendidos por gradiente' },
+    { name: 'Evolucionário', c: '#4a9eed', repr: 'população de regras/árvores\nevolui por gerações', desc: 'selecção + crossover + mutação' },
+    { name: 'Bayesiano', c: '#4a9eed', repr: 'P(risco | idade,saldo)\n∝ P(idade,saldo|risco)·P(risco)', desc: 'actualização probabilística' },
+    { name: 'Analogizador', c: '#4a9eed', repr: 'clientes parecidos\ntiveram risco=ALTO', desc: 'comparação com casos vizinhos' },
   ];
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>O Mesmo Problema, Cinco Soluções — "Este cliente vai entrar em incumprimento?"</p>
       <svg viewBox="0 0 560 380" style={{ maxWidth: '100%', height: 'auto' }}>
-        <rect x="180" y="10" width="200" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+        <rect x="180" y="10" width="200" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
         <text x="280" y="35" textAnchor="middle" fill={color} fontSize="12" fontWeight="700">Dados: idade, saldo, histórico...</text>
         {approaches.map((a, i) => {
           const y = 80 + i * 60;
@@ -355,46 +355,46 @@ const PipelinesDiagram = () => (
 
       {/* FILTER row */}
       <text x="20" y="22" fill={color} fontSize="12" fontWeight="800">FILTER</text>
-      <rect x="90" y="6" width="100" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x="90" y="6" width="100" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="140" y="26" textAnchor="middle" fill={color} fontSize="10">Dados (todas features)</text>
       <line x1="190" y1="22" x2="240" y2="22" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="240" y="6" width="110" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x="240" y="6" width="110" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="295" y="26" textAnchor="middle" fill={color} fontSize="10">Score estatístico</text>
       <line x1="350" y1="22" x2="400" y2="22" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="400" y="6" width="100" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x="400" y="6" width="100" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="450" y="26" textAnchor="middle" fill={color} fontSize="10">Top-k features</text>
       <line x1="450" y1="38" x2="450" y2="58" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="400" y="58" width="100" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="450" y="76" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Modelo final</text>
+      <rect x="400" y="58" width="100" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="450" y="76" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Modelo final</text>
 
       {/* WRAPPER row */}
-      <text x="20" y="122" fill="#f97316" fontSize="12" fontWeight="800">WRAPPER</text>
-      <rect x="90" y="106" width="100" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="140" y="126" textAnchor="middle" fill="#f97316" fontSize="10">Subset candidato</text>
+      <text x="20" y="122" fill="#4a9eed" fontSize="12" fontWeight="800">WRAPPER</text>
+      <rect x="90" y="106" width="100" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="140" y="126" textAnchor="middle" fill="#4a9eed" fontSize="10">Subset candidato</text>
       <line x1="190" y1="122" x2="240" y2="122" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="240" y="106" width="110" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="295" y="126" textAnchor="middle" fill="#f97316" fontSize="10">Treina + avalia modelo</text>
-      <path d="M 295 138 C 295 165, 140 165, 140 138" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrPL2)" />
-      <text x="218" y="178" textAnchor="middle" fill="#f97316" fontSize="9">repete (loop de busca)</text>
+      <rect x="240" y="106" width="110" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="295" y="126" textAnchor="middle" fill="#4a9eed" fontSize="10">Treina + avalia modelo</text>
+      <path d="M 295 138 C 295 165, 140 165, 140 138" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrPL2)" />
+      <text x="218" y="178" textAnchor="middle" fill="#4a9eed" fontSize="9">repete (loop de busca)</text>
       <line x1="350" y1="122" x2="400" y2="122" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="400" y="106" width="100" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="450" y="126" textAnchor="middle" fill="#f97316" fontSize="10">Melhor subset</text>
+      <rect x="400" y="106" width="100" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="450" y="126" textAnchor="middle" fill="#4a9eed" fontSize="10">Melhor subset</text>
       <line x1="450" y1="138" x2="450" y2="158" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="400" y="158" width="100" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="450" y="176" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Modelo final</text>
+      <rect x="400" y="158" width="100" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="450" y="176" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Modelo final</text>
 
       {/* EMBEDDED row */}
-      <text x="10" y="222" fill="#f97316" fontSize="12" fontWeight="800">EMBEDDED</text>
-      <rect x="90" y="206" width="100" height="32" rx="6" fill="rgba(16,185,129,0.12)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="140" y="226" textAnchor="middle" fill="#f97316" fontSize="10">Dados (todas features)</text>
+      <text x="10" y="222" fill="#4a9eed" fontSize="12" fontWeight="800">EMBEDDED</text>
+      <rect x="90" y="206" width="100" height="32" rx="6" fill="rgba(16,185,129,0.12)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="140" y="226" textAnchor="middle" fill="#4a9eed" fontSize="10">Dados (todas features)</text>
       <line x1="190" y1="222" x2="240" y2="222" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="240" y="206" width="110" height="32" rx="6" fill="rgba(16,185,129,0.12)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="295" y="223" textAnchor="middle" fill="#f97316" fontSize="10">Treino com</text>
-      <text x="295" y="235" textAnchor="middle" fill="#f97316" fontSize="10">regularização (L1/L2)</text>
+      <rect x="240" y="206" width="110" height="32" rx="6" fill="rgba(16,185,129,0.12)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="295" y="223" textAnchor="middle" fill="#4a9eed" fontSize="10">Treino com</text>
+      <text x="295" y="235" textAnchor="middle" fill="#4a9eed" fontSize="10">regularização (L1/L2)</text>
       <line x1="350" y1="222" x2="400" y2="222" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrPL2)" />
-      <rect x="400" y="206" width="100" height="32" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="450" y="223" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Modelo final</text>
-      <text x="450" y="235" textAnchor="middle" fill="#f97316" fontSize="9">(já com features seleccionadas)</text>
+      <rect x="400" y="206" width="100" height="32" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="450" y="223" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Modelo final</text>
+      <text x="450" y="235" textAnchor="middle" fill="#4a9eed" fontSize="9">(já com features seleccionadas)</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       Nos métodos <strong>Filter</strong>, a selecção é feita uma única vez, antes de qualquer modelo, usando
@@ -428,7 +428,7 @@ const CurseDiagram = () => {
           <svg viewBox="0 0 140 140" width="140" height="140">
             <rect x="15" y="15" width="110" height="110" fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
             {[[30, 30], [95, 50], [55, 100], [105, 110], [25, 105]].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r="4" fill="#f59e0b" />
+              <circle key={i} cx={x} cy={y} r="4" fill="#0284c7" />
             ))}
           </svg>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>2D: 5 pontos já cobrem mal o quadrado</p>
@@ -443,7 +443,7 @@ const CurseDiagram = () => {
             <line x1="95" y1="110" x2="110" y2="130" stroke="var(--text-secondary)" strokeWidth="1.2" />
             <line x1="95" y1="30" x2="110" y2="50" stroke="var(--text-secondary)" strokeWidth="1.2" />
             {[[45, 60], [85, 95]].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r="4" fill="#f97316" />
+              <circle key={i} cx={x} cy={y} r="4" fill="#4a9eed" />
             ))}
           </svg>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>3D: apenas 2 pontos "perdidos" no cubo</p>
@@ -479,11 +479,11 @@ const PCADiagram = () => {
         <text x="8" y="14" fontSize="9" fill="var(--text-secondary)">x₂</text>
 
         {/* principal component axis (PC1) */}
-        <line x1="25" y1="125" x2="150" y2="30" stroke="#f59e0b" strokeWidth="2" />
-        <text x="155" y="28" fontSize="9" fill="#f59e0b" fontWeight="700">PC1</text>
+        <line x1="25" y1="125" x2="150" y2="30" stroke="#0284c7" strokeWidth="2" />
+        <text x="155" y="28" fontSize="9" fill="#0284c7" fontWeight="700">PC1</text>
         {/* secondary axis (PC2), perpendicular, much shorter */}
-        <line x1="80" y1="60" x2="100" y2="80" stroke="#f97316" strokeWidth="1.5" strokeDasharray="3,2" />
-        <text x="103" y="85" fontSize="9" fill="#f97316" fontWeight="700">PC2</text>
+        <line x1="80" y1="60" x2="100" y2="80" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="3,2" />
+        <text x="103" y="85" fontSize="9" fill="#4a9eed" fontWeight="700">PC2</text>
 
         {points.map(([x, y], i) => {
           const x0 = 25, y0 = 125, dx = 150 - 25, dy = 30 - 125;
@@ -494,7 +494,7 @@ const PCADiagram = () => {
             <g key={i}>
               <line x1={x} y1={y} x2={px} y2={py} stroke="var(--text-secondary)" strokeWidth="0.6" strokeDasharray="2,2" />
               <circle cx={x} cy={y} r="2.6" fill={color} />
-              <circle cx={px} cy={py} r="2" fill="#f59e0b" opacity="0.7" />
+              <circle cx={px} cy={py} r="2" fill="#0284c7" opacity="0.7" />
             </g>
           );
         })}
@@ -538,24 +538,24 @@ const ExplainedVarianceDiagram = () => {
           const cy = H - padB - cums[i] * plotH;
           return (
             <g key={i}>
-              <rect x={x} y={y} width={barW} height={h} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+              <rect x={x} y={y} width={barW} height={h} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
               <text x={x + barW / 2} y={y - 6} textAnchor="middle" fontSize="9" fill={color} fontWeight="700">{(ratios[i] * 100).toFixed(0)}%</text>
               <text x={x + barW / 2} y={H - padB + 16} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">PC{i + 1}</text>
-              <circle cx={x + barW / 2} cy={cy} r="3" fill="#f59e0b" />
+              <circle cx={x + barW / 2} cy={cy} r="3" fill="#0284c7" />
               {i > 0 && (
                 <line
                   x1={padL + (i - 1 + 0.225) * (plotW / eigvals.length) + barW / 2}
                   y1={H - padB - cums[i - 1] * plotH}
                   x2={x + barW / 2}
                   y2={cy}
-                  stroke="#f59e0b" strokeWidth="1.5"
+                  stroke="#0284c7" strokeWidth="1.5"
                 />
               )}
             </g>
           );
         })}
-        <line x1={padL} y1={H - padB - 0.95 * plotH} x2={W - padR} y2={H - padB - 0.95 * plotH} stroke="#f97316" strokeWidth="1" strokeDasharray="4,3" />
-        <text x={W - padR} y={H - padB - 0.95 * plotH - 4} textAnchor="end" fontSize="9" fill="#f97316" fontWeight="700">limiar 95% (acumulado)</text>
+        <line x1={padL} y1={H - padB - 0.95 * plotH} x2={W - padR} y2={H - padB - 0.95 * plotH} stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" />
+        <text x={W - padR} y={H - padB - 0.95 * plotH - 4} textAnchor="end" fontSize="9" fill="#4a9eed" fontWeight="700">limiar 95% (acumulado)</text>
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
         As barras (roxo) mostram a <strong>proporção de variância</strong> explicada por cada componente
@@ -574,30 +574,30 @@ const EigenDecompositionDiagram = () => (
   <div style={S.diagram}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Eigendecomposição da Matriz de Covariância (caso 2×2)</p>
     <svg viewBox="0 0 540 200" style={{ maxWidth: '100%', height: 'auto' }}>
-      <rect x="10" y="20" width="140" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x="10" y="20" width="140" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="80" y="40" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Σ (covariância)</text>
       <text x="80" y="65" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontFamily="monospace">[ 4.0  1.8 ]</text>
       <text x="80" y="85" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontFamily="monospace">[ 1.8  2.8 ]</text>
 
       <text x="175" y="65" textAnchor="middle" fill="var(--text-secondary)" fontSize="16">=</text>
 
-      <rect x="195" y="20" width="100" height="80" rx="8" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" strokeWidth="1.2" />
-      <text x="245" y="40" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">V</text>
+      <rect x="195" y="20" width="100" height="80" rx="8" fill="rgba(2,132,199,0.1)" stroke="#0284c7" strokeWidth="1.2" />
+      <text x="245" y="40" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">V</text>
       <text x="245" y="60" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">(eigenvectors</text>
       <text x="245" y="73" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">em colunas)</text>
       <text x="245" y="90" textAnchor="middle" fill="var(--text-primary)" fontSize="9" fontFamily="monospace">[0.83 -0.55]</text>
 
       <text x="310" y="65" textAnchor="middle" fill="var(--text-secondary)" fontSize="16">·</text>
 
-      <rect x="330" y="20" width="100" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="380" y="40" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Λ (diagonal)</text>
+      <rect x="330" y="20" width="100" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="380" y="40" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Λ (diagonal)</text>
       <text x="380" y="65" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontFamily="monospace">[ 4.83  0  ]</text>
       <text x="380" y="85" textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontFamily="monospace">[  0  1.97]</text>
 
       <text x="445" y="65" textAnchor="middle" fill="var(--text-secondary)" fontSize="16">·</text>
 
-      <rect x="460" y="20" width="75" height="80" rx="8" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" strokeWidth="1.2" />
-      <text x="497" y="40" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Vᵗ</text>
+      <rect x="460" y="20" width="75" height="80" rx="8" fill="rgba(2,132,199,0.1)" stroke="#0284c7" strokeWidth="1.2" />
+      <text x="497" y="40" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Vᵗ</text>
       <text x="497" y="65" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">(transposta</text>
       <text x="497" y="78" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">de V)</text>
 
@@ -634,15 +634,15 @@ const RegularizationGeometryDiagram = () => (
           <text x="148" y="84" fontSize="9" fill="var(--text-secondary)">β₁</text>
           <text x="84" y="14" fontSize="9" fill="var(--text-secondary)">β₂</text>
           {/* L1 diamond */}
-          <polygon points="80,30 130,80 80,130 30,80" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
+          <polygon points="80,30 130,80 80,130 30,80" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
           {/* elliptical contours of loss, off-center, intersecting a corner */}
           {[1, 2, 3].map((s, i) => (
             <ellipse key={i} cx="110" cy="55" rx={20 + s * 14} ry={14 + s * 9} fill="none" stroke={color} strokeWidth="1" opacity={0.5} />
           ))}
-          <circle cx="80" cy="30" r="4" fill="#f97316" />
-          <text x="80" y="22" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">solução (β₁=0)</text>
+          <circle cx="80" cy="30" r="4" fill="#4a9eed" />
+          <text x="80" y="22" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">solução (β₁=0)</text>
         </svg>
-        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f97316', margin: 0 }}>L1 — região em diamante</p>
+        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed', margin: 0 }}>L1 — região em diamante</p>
         <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: 0 }}>vértices nos eixos → coeficientes exactamente 0</p>
       </div>
       <div>
@@ -652,14 +652,14 @@ const RegularizationGeometryDiagram = () => (
           <text x="148" y="84" fontSize="9" fill="var(--text-secondary)">β₁</text>
           <text x="84" y="14" fontSize="9" fill="var(--text-secondary)">β₂</text>
           {/* L2 circle */}
-          <circle cx="80" cy="80" r="50" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
+          <circle cx="80" cy="80" r="50" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
           {[1, 2, 3].map((s, i) => (
             <ellipse key={i} cx="110" cy="55" rx={20 + s * 14} ry={14 + s * 9} fill="none" stroke={color} strokeWidth="1" opacity={0.5} />
           ))}
-          <circle cx="100" cy="48" r="4" fill="#f97316" />
-          <text x="100" y="40" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">solução (β≠0)</text>
+          <circle cx="100" cy="48" r="4" fill="#4a9eed" />
+          <text x="100" y="40" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">solução (β≠0)</text>
         </svg>
-        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f97316', margin: 0 }}>L2 — região circular</p>
+        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#4a9eed', margin: 0 }}>L2 — região circular</p>
         <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: 0 }}>fronteira suave → coeficientes pequenos, raramente 0</p>
       </div>
     </div>
@@ -689,17 +689,17 @@ const WrapperSearchDiagram = () => (
       <text x="10" y="20" fill={color} fontSize="11" fontWeight="800">Forward</text>
       {['{}', '{x₂}', '{x₂,x₅}', '{x₂,x₅,x₁}'].map((label, i) => (
         <g key={i}>
-          <rect x={10 + i * 135} y="30" width="120" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+          <rect x={10 + i * 135} y="30" width="120" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
           <text x={70 + i * 135} y="48" textAnchor="middle" fill={color} fontSize="11" fontFamily="monospace">{label}</text>
           {i < 3 && <line x1={130 + i * 135} y1="44" x2={145 + i * 135} y2="44" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrWS2)" />}
         </g>
       ))}
       {/* Backward */}
-      <text x="10" y="85" fill="#f97316" fontSize="11" fontWeight="800">Backward</text>
+      <text x="10" y="85" fill="#4a9eed" fontSize="11" fontWeight="800">Backward</text>
       {['{x₁..x₅}', '{x₁,x₂,x₃,x₅}', '{x₁,x₂,x₅}', '{x₂,x₅}'].map((label, i) => (
         <g key={i}>
-          <rect x={10 + i * 135} y="95" width="120" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-          <text x={70 + i * 135} y="113" textAnchor="middle" fill="#f97316" fontSize="11" fontFamily="monospace">{label}</text>
+          <rect x={10 + i * 135} y="95" width="120" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+          <text x={70 + i * 135} y="113" textAnchor="middle" fill="#4a9eed" fontSize="11" fontFamily="monospace">{label}</text>
           {i < 3 && <line x1={130 + i * 135} y1="109" x2={145 + i * 135} y2="109" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrWS2)" />}
         </g>
       ))}
@@ -724,10 +724,10 @@ const MIGridDiagram = () => (
   <div style={S.diagram}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Informação Mútua — Entropia Partilhada entre X e Y</p>
     <svg viewBox="0 0 420 200" style={{ maxWidth: '100%', height: 'auto' }}>
-      <circle cx="160" cy="100" r="80" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
-      <circle cx="260" cy="100" r="80" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1.5" />
+      <circle cx="160" cy="100" r="80" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="260" cy="100" r="80" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1.5" />
       <text x="105" y="60" fill={color} fontSize="13" fontWeight="700">H(X)</text>
-      <text x="305" y="60" fill="#f59e0b" fontSize="13" fontWeight="700">H(Y)</text>
+      <text x="305" y="60" fill="#0284c7" fontSize="13" fontWeight="700">H(Y)</text>
       <text x="210" y="104" textAnchor="middle" fill="var(--text-primary)" fontSize="12" fontWeight="700">I(X;Y)</text>
       <text x="210" y="120" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">informação</text>
       <text x="210" y="132" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">partilhada</text>
@@ -751,11 +751,11 @@ const MIGridDiagram = () => (
 );
 
 const tribes = [
-  { name: 'Simbolistas', color: '#f97316', master: 'Inverse Deduction', algo: 'Decision Trees / Rule Induction', strengths: 'Interpretável, regras explícitas, raciocínio lógico', weaknesses: 'Frágil a ruído, dificuldade em alta dimensão' },
-  { name: 'Conexionistas', color: '#f97316', master: 'Backpropagation', algo: 'MLP, CNN, RNN, Transformers', strengths: 'Aprende features automaticamente, estado da arte', weaknesses: 'Caixa negra, exige muitos dados/computação' },
-  { name: 'Evolucionários', color: '#f97316', master: 'Genetic Programming', algo: 'Algoritmos/Programação Genética', strengths: 'Sem gradiente, optimiza qualquer função', weaknesses: 'Lento, custoso, muitos hiperparâmetros' },
-  { name: 'Bayesianos', color: '#f97316', master: 'Probabilistic Inference', algo: 'Naive Bayes, Redes Bayesianas, HMMs', strengths: 'Incerteza explícita, funciona com poucos dados', weaknesses: 'Priors difíceis, intratável em alta dimensão' },
-  { name: 'Analogizadores', color: '#f97316', master: 'Kernel Machines', algo: 'SVM, kNN, LWR, Case-Based Reasoning', strengths: 'Versátil, garantias teóricas (SVM)', weaknesses: 'Lento na inferência, escolha do kernel/métrica' },
+  { name: 'Simbolistas', color: '#4a9eed', master: 'Inverse Deduction', algo: 'Decision Trees / Rule Induction', strengths: 'Interpretável, regras explícitas, raciocínio lógico', weaknesses: 'Frágil a ruído, dificuldade em alta dimensão' },
+  { name: 'Conexionistas', color: '#4a9eed', master: 'Backpropagation', algo: 'MLP, CNN, RNN, Transformers', strengths: 'Aprende features automaticamente, estado da arte', weaknesses: 'Caixa negra, exige muitos dados/computação' },
+  { name: 'Evolucionários', color: '#4a9eed', master: 'Genetic Programming', algo: 'Algoritmos/Programação Genética', strengths: 'Sem gradiente, optimiza qualquer função', weaknesses: 'Lento, custoso, muitos hiperparâmetros' },
+  { name: 'Bayesianos', color: '#4a9eed', master: 'Probabilistic Inference', algo: 'Naive Bayes, Redes Bayesianas, HMMs', strengths: 'Incerteza explícita, funciona com poucos dados', weaknesses: 'Priors difíceis, intratável em alta dimensão' },
+  { name: 'Analogizadores', color: '#4a9eed', master: 'Kernel Machines', algo: 'SVM, kNN, LWR, Case-Based Reasoning', strengths: 'Versátil, garantias teóricas (SVM)', weaknesses: 'Lento na inferência, escolha do kernel/métrica' },
 ];
 
 export default function ML2() {
@@ -763,21 +763,8 @@ export default function ML2() {
     <div style={S.page}>
       <Link to="/ml" style={S.back}><ArrowLeft size={16} /> Voltar a Machine Learning</Link>
 
-      <div style={S.tag}>Module 02</div>
+      <div style={S.tag}>Módulo 02</div>
       <h1 style={S.h1}>As 5 Tribos de Machine Learning &amp; Seleção de Features</h1>
-      <p style={S.lead}>
-        Em "The Master Algorithm" (2015), o investigador Pedro Domingos propõe uma lente fascinante para olhar
-        para todo o campo do Machine Learning: em vez de uma disciplina única e coesa, o ML é o produto de
-        <strong> cinco "tribos" científicas</strong> que evoluíram quase independentemente, cada uma com a sua
-        origem disciplinar, a sua forma de representar conhecimento, o seu critério de avaliação e o seu
-        algoritmo "mestre" preferido. Na primeira metade deste módulo vamos percorrer cada uma destas tribos —
-        Simbolistas, Conexionistas, Evolucionários, Bayesianos e Analogizadores — com os seus algoritmos
-        representativos, fórmulas-chave, diagramas e exemplos numéricos. Na segunda metade, vamos ver como —
-        independentemente da tribo escolhida — a <strong>qualidade das features de entrada</strong> é muitas
-        vezes o factor com maior impacto no desempenho final: exploramos métodos de <strong>selecção de
-        features</strong> (Filter, Wrapper, Embedded), a curse of dimensionality, e a redução de
-        dimensionalidade via PCA, com vários exemplos numéricos detalhados.
-      </p>
 
       {/* === SECTION 1: O Mapa === */}
       <div style={S.section}>
@@ -840,22 +827,6 @@ export default function ML2() {
           <BlockMath math="\text{Gain}(S, A) = H(S) - \sum_{v \in \text{valores}(A)} \frac{|S_v|}{|S|} H(S_v)" />
         </div>
         <DecisionTreeDiagram />
-
-        <h3 style={S.h3}>Exemplo Numérico — Cálculo de Entropia</h3>
-        <p style={S.p}>
-          Suponha um conjunto de 14 exemplos onde 9 jogam ténis ("SIM") e 5 não jogam ("NÃO"). A entropia
-          deste conjunto antes de qualquer divisão é:
-        </p>
-        
-          <BlockMath math="H(S) = -\frac{9}{14}\log_2\frac{9}{14} - \frac{5}{14}\log_2\frac{5}{14}" />
-          <BlockMath math="H(S) \approx -(0.643)(-0.637) - (0.357)(-1.485) \approx 0.410 + 0.530 = 0.940" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Um valor próximo de 1.0 indica grande "desordem" (as duas classes estão bastante misturadas).
-            Se uma divisão por "Tempo" reduzir a entropia média ponderada dos subconjuntos para, digamos,
-            0.69, o ganho de informação seria <InlineMath math="0.940 - 0.69 = 0.25" /> — e este atributo
-            seria preferido a outros com ganho menor.
-          </p>
-        
 
         <h3 style={S.h3}>Rule Induction — RIPPER e Sistemas Baseados em Regras</h3>
         <p style={S.p}>
@@ -970,46 +941,6 @@ export default function ML2() {
 
         <GeneticAlgorithmDiagram />
 
-        <h3 style={S.h3}>Exemplo Numérico — Uma Geração de um Algoritmo Genético</h3>
-        <p style={S.p}>
-          Considere cromossomas binários de 5 bits, onde a fitness é simplesmente o <strong>número de bits a
-          1</strong> (o objectivo é encontrar "11111"). A população inicial tem 4 indivíduos:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Indivíduo</th><th style={S.th}>Cromossoma</th><th style={S.th}>Fitness</th><th style={S.th}>P(selecção)</th></tr></thead>
-            <tbody>
-              {[
-                ['A', '1 1 0 0 1', '3', '3/10 = 0.30'],
-                ['B', '0 1 1 1 0', '3', '3/10 = 0.30'],
-                ['C', '1 0 0 0 1', '2', '2/10 = 0.20'],
-                ['D', '0 1 0 1 0', '2', '2/10 = 0.20'],
-              ].map(([ind, chrom, fit, p]) => (
-                <tr key={ind}>
-                  <td style={{ ...S.td, fontWeight: 700 }}>{ind}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace' }}>{chrom}</td>
-                  <td style={S.td}>{fit}</td>
-                  <td style={S.td}>{p}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo 1 — Selecção:</strong> suponha que A e B são seleccionados como pais (maior fitness combinada).</p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo 2 — Crossover</strong> (ponto de corte após o 2º bit):</p>
-          <p style={{ fontFamily: 'monospace', fontSize: '0.9rem', margin: '0.3rem 0' }}>Pai A: 11 | 001 &nbsp;&nbsp;&nbsp; Pai B: 01 | 110</p>
-          <p style={{ fontFamily: 'monospace', fontSize: '0.9rem', margin: '0.3rem 0' }}>Filho 1: 11 110 = <strong>11110</strong> (fitness = 4)</p>
-          <p style={{ fontFamily: 'monospace', fontSize: '0.9rem', margin: '0.3rem 0' }}>Filho 2: 01 001 = <strong>01001</strong> (fitness = 2)</p>
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}><strong>Passo 3 — Mutação</strong> (probabilidade baixa por bit, ex. 5%): suponha que o último bit do Filho 1 sofre mutação de 0 → 1:</p>
-          <p style={{ fontFamily: 'monospace', fontSize: '0.9rem', margin: '0.3rem 0' }}>11110 → <strong>11111</strong> (fitness = 5 — solução óptima encontrada!)</p>
-          <p style={{ ...S.p, marginBottom: 0, marginTop: '0.75rem' }}>
-            Numa única geração, a fitness média da população subiu de 2.5 para potencialmente 5 — ilustrando
-            como crossover e mutação podem, por acaso, descobrir a solução óptima. Em problemas reais, este
-            processo repete-se durante centenas ou milhares de gerações.
-          </p>
-        </div>
-
         <h3 style={S.h3}>Genetic Programming (GP)</h3>
         <p style={S.p}>
           Em vez de evoluir strings de bits, a <strong>Programação Genética</strong> evolui directamente
@@ -1111,26 +1042,64 @@ export default function ML2() {
 
       <hr style={S.divider} />
 
-      {/* === SYNTHESIS === */}
+      {/* === SECTION 6: Analogizadores === */}
       <div style={S.section}>
-        <h2 style={S.h2}>6. Síntese do Módulo</h2>
+        <h2 style={S.h2}>6. Analogizadores — Aprender é Raciocinar por Semelhança</h2>
         <p style={S.p}>
-          As 5 tribos representam cinco filosofias diferentes — e <strong>complementares</strong> — sobre o
-          que significa "aprender" e como o conhecimento deve ser representado.
+          Para os Analogizadores, a aprendizagem não passa por extrair regras, ajustar pesos, evoluir populações
+          ou actualizar crenças — passa por <strong>comparar</strong>. A previsão para um caso novo é feita com
+          base na sua semelhança com casos já conhecidos. É o método mais próximo da forma como os humanos
+          raciocinam no dia-a-dia: "este caso parece-se com aquele outro, por isso deve ter um resultado
+          semelhante".
         </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li><strong>Simbolistas</strong>: conhecimento = regras lógicas; dedução inversa; Decision Trees, RIPPER</li>
-            <li><strong>Conexionistas</strong>: conhecimento = pesos numa rede; backpropagation; MLP → CNN/RNN/Transformers</li>
-            <li><strong>Evolucionários</strong>: conhecimento = população de soluções; selecção, crossover, mutação; GAs e Genetic Programming</li>
-            <li><strong>Bayesianos</strong>: conhecimento = distribuições de probabilidade; Teorema de Bayes; Naive Bayes, Redes Bayesianas, HMMs</li>
-            <li><strong>Analogizadores</strong>: conhecimento = exemplos + função de similaridade; kNN, LWR, SVM, CBR</li>
-            <li>Nenhuma tribo é universalmente superior — a escolha depende da estrutura do problema</li>
-          </ul>
+
+        <h3 style={S.h3}>k-Nearest Neighbors (kNN)</h3>
+        <p style={S.p}>
+          O kNN é o algoritmo Analogizador mais simples: para classificar um ponto novo, encontram-se os{' '}
+          <InlineMath math="k" /> pontos de treino mais próximos (segundo uma métrica de distância, tipicamente
+          euclidiana) e atribui-se a classe mais comum entre eles (ou, em regressão, a média dos seus valores).
+          Não há fase de "treino" no sentido tradicional — todo o conjunto de dados é o modelo, e o trabalho
+          computacional acontece no momento da previsão (<em>lazy learning</em>).
+        </p>
+        <div style={S.math}>
+          <BlockMath math="\hat{y}(x) = \text{moda}\left(\{y_i : x_i \in N_k(x)\}\right)" />
+        </div>
+        <p style={S.p}>
+          onde <InlineMath math="N_k(x)" /> é o conjunto dos <InlineMath math="k" /> vizinhos mais próximos de{' '}
+          <InlineMath math="x" />. A escolha de <InlineMath math="k" /> controla o trade-off bias-variância: k
+          pequeno é sensível a ruído (alta variância), k grande suaviza demasiado a fronteira de decisão (alto
+          bias).
+        </p>
+
+        <h3 style={S.h3}>Support Vector Machines (SVM) e o Kernel Trick</h3>
+        <p style={S.p}>
+          O SVM leva a analogia mais longe: em vez de comparar com todos os vizinhos, foca-se apenas nos pontos
+          mais difíceis de classificar — os <strong>vectores de suporte</strong>, situados na fronteira entre
+          classes — e encontra o hiperplano que <strong>maximiza a margem</strong> entre eles. Quando os dados
+          não são linearmente separáveis, o <strong>kernel trick</strong> permite projectar implicitamente os
+          dados para um espaço de maior dimensão onde já são separáveis, sem nunca calcular essa projecção
+          explicitamente.
+        </p>
+
+        <AnalogyDiagram />
+
+        <h3 style={S.h3}>Locally Weighted Regression (LWR) e Case-Based Reasoning</h3>
+        <p style={S.p}>
+          A <strong>Locally Weighted Regression</strong> ajusta um modelo de regressão simples (ex.: linear)
+          apenas na vizinhança local do ponto a prever, ponderando cada exemplo de treino pela sua proximidade —
+          combinando a flexibilidade do kNN com a suavidade de um modelo paramétrico. O{' '}
+          <strong>Case-Based Reasoning</strong> generaliza a ideia a domínios não numéricos (ex.: sistemas
+          jurídicos ou de diagnóstico médico): resolve-se um problema novo adaptando a solução do caso mais
+          semelhante já resolvido no passado.
+        </p>
+        <div style={S.note}>
+          O maior desafio dos Analogizadores é a <strong>escolha da métrica de distância</strong>: em espaços de
+          alta dimensão, a noção de "proximidade" degrada-se (a chamada <em>maldição da dimensionalidade</em>) —
+          todos os pontos tendem a ficar equidistantes. Escolher ou aprender uma boa métrica (ex.: via kernel) é
+          tão importante quanto o próprio algoritmo de comparação.
         </div>
       </div>
-    </div>
+</div>
   );
 }
 

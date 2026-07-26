@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -37,9 +37,9 @@ const ptLin = valores.map((v, i) => `${xPos(i)},${yLin(v)}`).join(' ');
 const ptLog = valores.map((v, i) => `${xPos(i)},${yLog(v)}`).join(' ');
 
 /* ── Paletas de cor para Section 2 ── */
-const seqColors  = ['rgba(249,115,22,0.05)','#bbf7d0','#fde8d8','#fbbf24','#f97316','#f97316','#f97316','#c2410c'];
-const divColors  = ['#f97316','#f97316','#f97316','#fde8d8','#fde8d8','#fb923c','#ea580c','#c2410c'];
-const qualColors = ['#f97316','#f97316','#f97316','#f97316','#f97316','#f97316','#f97316','#f97316'];
+const seqColors  = ['#eff6ff','#dbeafe','#bfdbfe','#93c5fd','#60a5fa','#3b82f6','#2563eb','#1e3a8a'];
+const divColors  = ['#c2410c','#ea580c','#fb923c','#fed7aa','#bfdbfe','#60a5fa','#2563eb','#1e3a8a'];
+const qualColors = ['#4a9eed','#f97316','#22c55e','#ef4444','#a855f7','#06b6d4','#eab308','#ec4899'];
 
 /* ── Roda de cores: 12 passos de hue ── */
 const hueSteps = Array.from({ length: 12 }, (_, i) => i * 30);
@@ -65,7 +65,7 @@ const intensities = Array.from({ length: weeks * days }, (_, i) => {
   if (seed < 90) return 3;
   return 4;
 });
-const heatColors = ['#1e293b','rgba(249,115,22,0.25)','rgba(249,115,22,0.5)','#f97316','#ea580c'];
+const heatColors = ['#1e293b','rgba(74,158,237,0.25)','rgba(74,158,237,0.5)','#4a9eed','#0369a1'];
 
 /* ── Distritos Portugal ordenados por intensidade ── */
 const distritos = [
@@ -86,7 +86,7 @@ const distritos = [
   { nome: 'Bragança',         v: 0.30 },
   { nome: 'Beja',             v: 0.30 },
 ];
-const distColor = v => `rgba(249,115,22,${(0.15 + v * 0.85).toFixed(2)})`;
+const distColor = v => `rgba(74,158,237,${(0.15 + v * 0.85).toFixed(2)})`;
 
 export default function DV3() {
   return (
@@ -97,12 +97,6 @@ export default function DV3() {
         <Link to="/dv" style={S.back}><ArrowLeft size={16} /> Voltar para Visualização de Dados</Link>
         <div style={S.tag}>MÓDULO 03</div>
         <h1 style={S.h1}>Escalas, Cores e Percepção Visual</h1>
-        <p style={S.lead}>
-          A visualização não é só matemática — é psicologia. O cérebro humano interpreta tamanho,
-          cor e posição de formas não-lineares. A escolha da escala errada pode ocultar tendências;
-          a paleta errada pode induzir interpretações falsas. Este módulo cobre os princípios que
-          separam uma visualização correcta de uma que comunica com clareza e rigor.
-        </p>
 
         {/* ── SECTION 1 ── */}
         <div style={S.section}>
@@ -150,7 +144,7 @@ export default function DV3() {
               ))}
 
               {/* ── Painel Log ── */}
-              <text x="420" y="14" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">Escala Logarítmica</text>
+              <text x="420" y="14" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">Escala Logarítmica</text>
               <line x1="320" y1="30" x2="320" y2="195" stroke="var(--text-secondary)" strokeWidth="1"/>
               <line x1="320" y1="195" x2="550" y2="195" stroke="var(--text-secondary)" strokeWidth="1"/>
               {[1,10,100,1000].map(v => (
@@ -165,10 +159,10 @@ export default function DV3() {
               {/* linha de dados (log) */}
               <polyline
                 points={valores.map((v, i) => `${320 + 40 + i * 37},${yLog(v)}`).join(' ')}
-                fill="none" stroke="#f97316" strokeWidth="2" strokeLinejoin="round"
+                fill="none" stroke="#4a9eed" strokeWidth="2" strokeLinejoin="round"
               />
               {valores.map((v, i) => (
-                <circle key={i} cx={320 + 40 + i * 37} cy={yLog(v)} r="4" fill="#f97316"/>
+                <circle key={i} cx={320 + 40 + i * 37} cy={yLog(v)} r="4" fill="#4a9eed"/>
               ))}
             </svg>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem', marginBottom: 0 }}>
@@ -241,14 +235,14 @@ export default function DV3() {
               ))}
 
               {/* Fila 2 — Divergente */}
-              <text x="0" y="82" fontSize="10" fontWeight="700" fill="#f97316">Divergente</text>
+              <text x="0" y="82" fontSize="10" fontWeight="700" fill="#4a9eed">Divergente</text>
               <text x="0" y="94" fontSize="8" fill="var(--text-secondary)">dados com ponto neutro central</text>
               {divColors.map((c, i) => (
                 <rect key={i} x={120 + i * 54} y="72" width="50" height="28" rx="3" fill={c} stroke="var(--text-secondary)" strokeWidth="0.5"/>
               ))}
 
               {/* Fila 3 — Qualitativa */}
-              <text x="0" y="142" fontSize="10" fontWeight="700" fill="#f97316">Qualitativa</text>
+              <text x="0" y="142" fontSize="10" fontWeight="700" fill="#4a9eed">Qualitativa</text>
               <text x="0" y="154" fontSize="8" fill="var(--text-secondary)">categorias sem ordem implícita</text>
               {qualColors.map((c, i) => (
                 <rect key={i} x={120 + i * 54} y="132" width="50" height="28" rx="3" fill={c} stroke="var(--text-secondary)" strokeWidth="0.5"/>
@@ -338,24 +332,24 @@ export default function DV3() {
               {/* Bom contraste 2: branco sobre verde */}
               <rect x="150" y="10" width="120" height="42" rx="6" fill={color}/>
               <text x="210" y="29" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ffffff">Texto branco</text>
-              <text x="210" y="44" textAnchor="middle" fontSize="8" fill="#ffffff">fundo verde</text>
+              <text x="210" y="44" textAnchor="middle" fontSize="8" fill="#ffffff">fundo azul</text>
               <text x="210" y="64" textAnchor="middle" fontSize="8" fill={color} fontWeight="700">✓ Rácio 4,6:1</text>
 
               {/* Mau contraste 1: cinza claro sobre cinza */}
               <rect x="290" y="10" width="120" height="42" rx="6" fill="#d1d5db" stroke="#d1d5db" strokeWidth="1"/>
               <text x="350" y="29" textAnchor="middle" fontSize="11" fontWeight="700" fill="#9ca3af">Texto cinza</text>
               <text x="350" y="44" textAnchor="middle" fontSize="8" fill="#9ca3af">fundo cinza</text>
-              <text x="350" y="64" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">✗ Rácio 1,6:1</text>
+              <text x="350" y="64" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">✗ Rácio 1,6:1</text>
 
               {/* Mau contraste 2: amarelo sobre branco */}
               <rect x="430" y="10" width="120" height="42" rx="6" fill="#ffffff" stroke="#d1d5db" strokeWidth="1"/>
-              <text x="490" y="29" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fbbf24">Texto amarelo</text>
-              <text x="490" y="44" textAnchor="middle" fontSize="8" fill="#fbbf24">fundo branco</text>
-              <text x="490" y="64" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">✗ Rácio 1,8:1</text>
+              <text x="490" y="29" textAnchor="middle" fontSize="11" fontWeight="700" fill="#7dd3fc">Texto azul-claro</text>
+              <text x="490" y="44" textAnchor="middle" fontSize="8" fill="#7dd3fc">fundo branco</text>
+              <text x="490" y="64" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">✗ Rácio 1,8:1</text>
 
               {/* Labels */}
               <text x="140" y="100" textAnchor="middle" fontSize="9" fill={color} fontWeight="700">Bom Contraste</text>
-              <text x="420" y="100" textAnchor="middle" fontSize="9" fill="#f97316" fontWeight="700">Mau Contraste</text>
+              <text x="420" y="100" textAnchor="middle" fontSize="9" fill="#4a9eed" fontWeight="700">Mau Contraste</text>
               <line x1="280" y1="5" x2="280" y2="105" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4,3"/>
             </svg>
           </div>
@@ -393,13 +387,13 @@ export default function DV3() {
             <svg viewBox="0 0 560 210" style={{ width: '100%', height: 'auto', display: 'block' }}>
               <defs>
                 <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
-                  <line x1="0" y1="0" x2="0" y2="6" stroke="#f97316" strokeWidth="2"/>
+                  <line x1="0" y1="0" x2="0" y2="6" stroke="#4a9eed" strokeWidth="2"/>
                 </pattern>
               </defs>
 
               {/* Títulos */}
-              <text x="140" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">✗ Inacessível</text>
-              <text x="140" y="26" textAnchor="middle" fontSize="7.5" fill="var(--text-secondary)">vermelho vs. verde — confuso para daltónicos</text>
+              <text x="140" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">✗ Inacessível</text>
+              <text x="140" y="26" textAnchor="middle" fontSize="7.5" fill="var(--text-secondary)">azul claro vs. azul escuro — baixo contraste, difícil de distinguir</text>
               <text x="420" y="14" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>✓ Acessível</text>
               <text x="420" y="26" textAnchor="middle" fontSize="7.5" fill="var(--text-secondary)">azul/laranja + hachura — distinguível por todos</text>
 
@@ -411,8 +405,8 @@ export default function DV3() {
                 { label: 'Abr', a: 50, b: 95 },
               ].map(({ label, a, b }, i) => (
                 <g key={label}>
-                  <rect x={30 + i * 60} y={175 - a} width="22" height={a} fill="#f97316" rx="2"/>
-                  <rect x={54 + i * 60} y={175 - b} width="22" height={b} fill="#f97316" rx="2"/>
+                  <rect x={30 + i * 60} y={175 - a} width="22" height={a} fill="#60a5fa" rx="2"/>
+                  <rect x={54 + i * 60} y={175 - b} width="22" height={b} fill="#3b82f6" rx="2"/>
                   <text x={52 + i * 60} y="188" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">{label}</text>
                 </g>
               ))}
@@ -426,22 +420,22 @@ export default function DV3() {
                 { label: 'Abr', a: 50, b: 95 },
               ].map(({ label, a, b }, i) => (
                 <g key={label}>
-                  <rect x={305 + i * 60} y={175 - a} width="22" height={a} fill="#f97316" rx="2"/>
-                  <rect x={329 + i * 60} y={175 - b} width="22" height={b} fill="url(#hatch)" stroke="#f97316" strokeWidth="1" rx="2"/>
+                  <rect x={305 + i * 60} y={175 - a} width="22" height={a} fill="#4a9eed" rx="2"/>
+                  <rect x={329 + i * 60} y={175 - b} width="22" height={b} fill="url(#hatch)" stroke="#4a9eed" strokeWidth="1" rx="2"/>
                   <text x={327 + i * 60} y="188" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">{label}</text>
                 </g>
               ))}
               <line x1="297" y1="175" x2="545" y2="175" stroke="var(--text-secondary)" strokeWidth="1"/>
 
               {/* Legendas — abaixo das labels de eixo */}
-              <rect x="30" y="196" width="10" height="8" fill="#f97316" rx="1"/>
+              <rect x="30" y="196" width="10" height="8" fill="#60a5fa" rx="1"/>
               <text x="44" y="204" fontSize="8" fill="var(--text-secondary)">Série A</text>
-              <rect x="90" y="196" width="10" height="8" fill="#f97316" rx="1"/>
+              <rect x="90" y="196" width="10" height="8" fill="#3b82f6" rx="1"/>
               <text x="104" y="204" fontSize="8" fill="var(--text-secondary)">Série B</text>
 
-              <rect x="305" y="196" width="10" height="8" fill="#f97316" rx="1"/>
+              <rect x="305" y="196" width="10" height="8" fill="#4a9eed" rx="1"/>
               <text x="319" y="204" fontSize="8" fill="var(--text-secondary)">Série A</text>
-              <rect x="365" y="196" width="10" height="8" fill="url(#hatch)" stroke="#f97316" strokeWidth="1" rx="1"/>
+              <rect x="365" y="196" width="10" height="8" fill="url(#hatch)" stroke="#4a9eed" strokeWidth="1" rx="1"/>
               <text x="379" y="204" fontSize="8" fill="var(--text-secondary)">Série B (hachura)</text>
             </svg>
           </div>
@@ -476,18 +470,18 @@ export default function DV3() {
           <div style={S.diagram}>
             <svg viewBox="0 0 560 160" style={{ width: '100%', height: 'auto', display: 'block' }}>
               {/* Versão errada */}
-              <text x="140" y="16" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">✗ Errado — raio proporcional ao valor</text>
+              <text x="140" y="16" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">✗ Errado — raio proporcional ao valor</text>
               {[
                 { v: 100, r: 10, cx: 55 },
                 { v: 200, r: 20, cx: 120 },
                 { v: 400, r: 40, cx: 220 },
               ].map(({ v, r, cx }) => (
                 <g key={v}>
-                  <circle cx={cx} cy={90} r={r} fill="#f97316" opacity="0.7"/>
+                  <circle cx={cx} cy={90} r={r} fill="#4a9eed" opacity="0.7"/>
                   <text x={cx} y={90 + r + 12} textAnchor="middle" fontSize="8" fill="var(--text-secondary)">{v}</text>
                 </g>
               ))}
-              <text x="140" y="158" textAnchor="middle" fontSize="8" fill="#f97316">400 parece 16× maior que 100 (é apenas 4×)</text>
+              <text x="140" y="158" textAnchor="middle" fontSize="8" fill="#4a9eed">400 parece 16× maior que 100 (é apenas 4×)</text>
 
               {/* Divisória */}
               <line x1="280" y1="10" x2="280" y2="150" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4,3"/>
@@ -602,7 +596,7 @@ export default function DV3() {
                   <tr key={p}>
                     <td style={{ ...S.td, fontWeight: 700, color }}>{p}</td>
                     <td style={S.td}>{pr}</td>
-                    <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{d}</td>
+                    <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{d}</td>
                     <td style={{ ...S.td, fontSize: '0.85rem' }}>{u}</td>
                   </tr>
                 ))}
@@ -636,8 +630,8 @@ export default function DV3() {
               {/* Escala de cores */}
               <defs>
                 <linearGradient id="cg" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0%" stopColor="rgba(249,115,22,0.15)" />
-                  <stop offset="100%" stopColor="rgba(249,115,22,1)" />
+                  <stop offset="0%" stopColor="rgba(74,158,237,0.15)" />
+                  <stop offset="100%" stopColor="rgba(74,158,237,1)" />
                 </linearGradient>
               </defs>
               <rect x="118" y="294" width="200" height="8" rx="3" fill="url(#cg)" />
@@ -655,33 +649,7 @@ export default function DV3() {
             90 projecções através do módulo <code style={{ fontFamily: 'monospace', fontSize: '0.85em' }}>d3-geo-projection</code>.
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* ── SÍNTESE ── */}
-        <div style={S.section}>
-          <h2 style={S.h2}>8. Síntese do Módulo</h2>
-          <p style={S.p}>
-            As decisões de escala e cor não são ornamentais — são decisões de codificação que
-            determinam o que o leitor consegue ou não percepcionar. Uma escala errada pode ocultar
-            uma tendência crítica. Uma paleta inadequada pode criar padrões falsos. A falta de
-            atenção à acessibilidade exclui uma parte significativa da audiência.
-          </p>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.6rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-              <li>Usar escala logarítmica quando a razão máximo/mínimo excede 100. Indicar sempre explicitamente no eixo.</li>
-              <li>Paleta sequencial para dados ordenados unidireccionais; divergente para dados com zero natural; qualitativa para categorias nominais.</li>
-              <li>HSL é o modelo de cor mais intuitivo para visualização — hue para categorias, lightness para magnitude.</li>
-              <li>Contraste mínimo WCAG: 4,5:1 para texto normal; 3:1 para texto grande.</li>
-              <li>8% dos homens têm daltonismo — nunca usar vermelho/verde como única distinção. Complementar com forma ou textura.</li>
-              <li>Em bubble charts, mapear o valor à área e não ao raio: <code style={{ fontFamily: 'monospace', fontSize: '0.85em' }}>r = sqrt(valor / π)</code>.</li>
-              <li>Granularidade temporal deve ser escolhida em função do padrão a revelar — dia, semana, mês ou ano.</li>
-              <li>Choropleth maps requerem projecção de área igual para não distorcer a leitura visual.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
+</div>
     </div>
   );
 }

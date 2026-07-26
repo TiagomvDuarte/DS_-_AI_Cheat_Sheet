@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
-const color = '#f97316'
+const color = '#4a9eed'
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -16,8 +16,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 }
@@ -66,12 +66,12 @@ function RequestCycleSVG() {
         const nextX = gap + (i + 1) * (bw + gap);
         return (
           <g key={i}>
-            <rect x={nx} y="38" width={bw} height="34" rx="6" fill={i === 0 || i === 4 ? 'rgba(249,115,22,0.15)' : 'var(--card-border)'} stroke={color} strokeWidth="1.2" />
+            <rect x={nx} y="38" width={bw} height="34" rx="6" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.2" />
             {n.label.split('\n').map((line, li) => (
               <text key={li} x={nx + bw/2} y={52 + li * 13} textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">{line}</text>
             ))}
             {i < nodes.length - 1 && (
-              <line x1={nx + bw} y1="55" x2={nextX} y2="55" stroke={color} strokeWidth="1.5" markerEnd="url(#arr)" />
+              <line x1={nx + bw} y1="55" x2={nextX - 6} y2="55" stroke={color} strokeWidth="1.5" markerEnd="url(#arr)" />
             )}
           </g>
         );
@@ -88,10 +88,10 @@ function RequestCycleSVG() {
 
 function URLAnatomySVG() {
   const parts = [
-    { label: 'protocol', value: 'https://', color: '#f97316' },
-    { label: 'host', value: 'api.exemplo.com', color: '#f97316' },
+    { label: 'protocol', value: 'https://', color: '#4a9eed' },
+    { label: 'host', value: 'api.exemplo.com', color: '#4a9eed' },
     { label: 'path param', value: '/items/42', color: color },
-    { label: 'query string', value: '?skip=0&limit=10', color: '#f97316' },
+    { label: 'query string', value: '?skip=0&limit=10', color: '#4a9eed' },
   ]
   let x = 20
   return (
@@ -131,7 +131,7 @@ function PydanticPipelineSVG() {
         const bx = 15 + i * 104
         return (
           <g key={i}>
-            <rect x={bx} y="36" width="88" height="36" rx="6" fill={i === 0 ? 'rgba(249,115,22,0.10)' : i === 4 ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'} stroke={i === 0 ? '#f97316' : i === 4 ? '#f97316' : color} strokeWidth="1.2" />
+            <rect x={bx} y="36" width="88" height="36" rx="6" fill={i === 0 ? 'rgba(74,158,237,0.10)' : i === 4 ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'} stroke={i === 0 ? '#4a9eed' : i === 4 ? '#4a9eed' : color} strokeWidth="1.2" />
             {s.split('\n').map((line, li) => (
               <text key={li} x={bx + 44} y={50 + li * 13} textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">{line}</text>
             ))}
@@ -153,25 +153,25 @@ function ErrorFlowSVG() {
       <text x="260" y="18" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Fluxo de Erros FastAPI</text>
       <defs>
         <marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
         <marker id="arr3g" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
-      <rect x="20" y="58" width="100" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+      <rect x="20" y="58" width="100" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       <text x="70" y="76" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">Req. Inválido</text>
-      <line x1="120" y1="72" x2="160" y2="72" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3)" />
-      <rect x="160" y="58" width="100" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <line x1="120" y1="72" x2="160" y2="72" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3)" />
+      <rect x="160" y="58" width="100" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="210" y="76" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">Validator</text>
-      <line x1="260" y1="72" x2="300" y2="48" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3g)" />
-      <line x1="260" y1="72" x2="300" y2="96" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3)" />
-      <rect x="300" y="34" width="110" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+      <line x1="260" y1="72" x2="300" y2="48" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3g)" />
+      <line x1="260" y1="72" x2="300" y2="96" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3)" />
+      <rect x="300" y="34" width="110" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       <text x="355" y="52" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">200/201 OK</text>
-      <rect x="300" y="82" width="110" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+      <rect x="300" y="82" width="110" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       <text x="355" y="100" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">422 / 400 / 500</text>
-      <rect x="30" y="126" width="460" height="50" rx="6" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
-      <text x="260" y="142" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f97316">Structured Error Body (JSON)</text>
+      <rect x="30" y="126" width="460" height="50" rx="6" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
+      <text x="260" y="142" textAnchor="middle" fontSize="10" fontWeight="700" fill="#4a9eed">Structured Error Body (JSON)</text>
       <text x="260" y="158" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{'{"detail": [{"loc": ["body","price"], "msg": "value is not a valid float", "type": "..."}]}'}</text>
     </svg>
   )
@@ -187,16 +187,16 @@ function DependencyGraphSVG() {
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
       </defs>
-      <rect x="175" y="34" width="150" height="32" rx="6" fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.5" />
+      <rect x="175" y="34" width="150" height="32" rx="6" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
       <text x="250" y="54" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>Endpoint /predict</text>
       <line x1="250" y1="66" x2="250" y2="90" stroke={color} strokeWidth="1.5" markerEnd="url(#arr4)" />
-      <rect x="175" y="90" width="150" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x="175" y="90" width="150" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x="250" y="109" textAnchor="middle" fontSize="11" fontWeight="600" fill="var(--text-primary)">get_current_user</text>
       <line x1="250" y1="120" x2="140" y2="145" stroke={color} strokeWidth="1.2" markerEnd="url(#arr4)" />
       <line x1="250" y1="120" x2="360" y2="145" stroke={color} strokeWidth="1.2" markerEnd="url(#arr4)" />
-      <rect x="60" y="145" width="150" height="30" rx="6" fill="rgba(249,115,22,0.07)" stroke={color} strokeWidth="1" />
+      <rect x="60" y="145" width="150" height="30" rx="6" fill="rgba(74,158,237,0.07)" stroke={color} strokeWidth="1" />
       <text x="135" y="164" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">get_db_session</text>
-      <rect x="290" y="145" width="150" height="30" rx="6" fill="rgba(249,115,22,0.07)" stroke={color} strokeWidth="1" />
+      <rect x="290" y="145" width="150" height="30" rx="6" fill="rgba(74,158,237,0.07)" stroke={color} strokeWidth="1" />
       <text x="365" y="164" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">get_settings</text>
       <text x="250" y="192" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">FastAPI resolve e injeta dependências automaticamente em cada request</text>
     </svg>
@@ -206,10 +206,10 @@ function DependencyGraphSVG() {
 function MLServingSVG() {
   const W = 580, bh = 44, by = 50;
   const defs = [
-    { label: 'Model File\n(.pkl / .joblib)', col: '#f97316', bw: 110 },
+    { label: 'Model File\n(.pkl / .joblib)', col: '#4a9eed', bw: 110 },
     { label: 'Load on\nStartup (lifespan)', col: color, bw: 120 },
     { label: 'FastAPI\n/predict', col: color, bw: 100 },
-    { label: 'JSON\nResponse', col: '#f97316', bw: 100 },
+    { label: 'JSON\nResponse', col: '#4a9eed', bw: 100 },
   ];
   const totalBW = defs.reduce((s, b) => s + b.bw, 0);
   const gap = (W - 20 - totalBW) / (defs.length - 1);
@@ -237,7 +237,7 @@ function MLServingSVG() {
         </g>
       ))}
       <line x1={loadBox.x + loadBox.bw/2} y1={loadBox.y + bh} x2={loadBox.x + loadBox.bw/2} y2={118} stroke={color} strokeWidth="1" strokeDasharray="3,2" />
-      <rect x={loadBox.x - 30} y="118" width={loadBox.bw + 60} height="18" rx="4" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="0.8" />
+      <rect x={loadBox.x - 30} y="118" width={loadBox.bw + 60} height="18" rx="4" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="0.8" />
       <text x={loadBox.x + loadBox.bw/2} y="130" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)">modelo em memória partilhado</text>
     </svg>
   )
@@ -248,15 +248,15 @@ function AsyncVsSyncSVG() {
     <svg viewBox="0 0 520 200" style={{ width: '100%', maxWidth: '100%', display: 'block', margin: '1rem auto' }}>
       <rect width="520" height="200" rx="10" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1" />
       <text x="260" y="20" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Sync vs Async — Concorrência de Requests</text>
-      <text x="130" y="40" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">SYNC (def)</text>
-      <text x="390" y="40" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">ASYNC (async def)</text>
+      <text x="130" y="40" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">SYNC (def)</text>
+      <text x="390" y="40" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">ASYNC (async def)</text>
       <line x1="260" y1="28" x2="260" y2="195" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4" />
       {[0, 1, 2].map(i => {
         const y = 52 + i * 42
         return (
           <g key={i}>
-            <rect x="20" y={y} width="220" height="28" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-            <rect x="20" y={y} width={i === 1 ? 120 : 220} height="28" rx="4" fill="rgba(249,115,22,0.10)" />
+            <rect x="20" y={y} width="220" height="28" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+            <rect x="20" y={y} width={i === 1 ? 120 : 220} height="28" rx="4" fill="rgba(74,158,237,0.10)" />
             <text x="130" y={y + 17} textAnchor="middle" fontSize="9" fill="var(--text-primary)">Thread bloqueada {i + 1}</text>
           </g>
         )
@@ -266,8 +266,8 @@ function AsyncVsSyncSVG() {
         const work = [60, 40, 80]
         return (
           <g key={i}>
-            <rect x="278" y={y} width="220" height="28" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-            <rect x="278" y={y} width={work[i]} height="28" rx="4" fill="rgba(249,115,22,0.35)" />
+            <rect x="278" y={y} width="220" height="28" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+            <rect x="278" y={y} width={work[i]} height="28" rx="4" fill="rgba(74,158,237,0.35)" />
             <text x="388" y={y + 17} textAnchor="middle" fontSize="9" fill="var(--text-primary)">coroutine {i + 1} (yield ao I/O)</text>
           </g>
         )
@@ -298,7 +298,7 @@ function JWTFlowSVG() {
       </defs>
       {steps.map((s, i) => (
         <g key={i}>
-          <rect x={s.x} y="38" width={bw} height="46" rx="8" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+          <rect x={s.x} y="38" width={bw} height="46" rx="8" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
           {s.label.split('\n').map((l, li) => (
             <text key={li} x={s.x + bw/2} y={58 + li * 15} textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">{l}</text>
           ))}
@@ -307,7 +307,7 @@ function JWTFlowSVG() {
           )}
         </g>
       ))}
-      <rect x="10" y="100" width={W - 20} height="62" rx="8" fill="rgba(249,115,22,0.07)" stroke={color} strokeWidth="1" />
+      <rect x="10" y="100" width={W - 20} height="62" rx="8" fill="rgba(74,158,237,0.07)" stroke={color} strokeWidth="1" />
       <text x={W/2} y="118" textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>JWT: Header.Payload.Signature</text>
       <text x={W/2} y="135" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)">eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTY5MH0.xXxXxXxX</text>
       <text x={W/2} y="152" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)">Authorization: Bearer {`<token>`} em cada request protegido</text>
@@ -318,9 +318,9 @@ function JWTFlowSVG() {
 function LayeredArchSVG() {
   const layers = [
     { label: 'FastAPI Router', sub: 'endpoints, path params, request validation', col: color },
-    { label: 'Service Layer', sub: 'lógica de negócio, orquestração', col: '#f97316' },
-    { label: 'Repository / ORM (SQLAlchemy)', sub: 'queries, mapeamento objeto-relacional', col: '#f97316' },
-    { label: 'Database (SQLite dev / PostgreSQL prod)', sub: 'persistência de dados', col: '#f97316' },
+    { label: 'Service Layer', sub: 'lógica de negócio, orquestração', col: '#4a9eed' },
+    { label: 'Repository / ORM (SQLAlchemy)', sub: 'queries, mapeamento objeto-relacional', col: '#4a9eed' },
+    { label: 'Database (SQLite dev / PostgreSQL prod)', sub: 'persistência de dados', col: '#4a9eed' },
   ]
   return (
     <svg viewBox="0 0 520 192" style={{ width: '100%', maxWidth: '100%', display: 'block', margin: '1rem auto' }}>
@@ -351,12 +351,12 @@ function TestPyramidSVG() {
     <svg viewBox="0 0 400 180" style={{ width: '100%', maxWidth: '100%', display: 'block', margin: '1rem auto' }}>
       <rect width="400" height="180" rx="10" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="1" />
       <text x="200" y="20" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Pirâmide de Testes para APIs</text>
-      <polygon points="200,35 310,130 90,130" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="200,60 280,115 120,115" fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="1.5" />
-      <polygon points="200,90 260,115 140,115" fill="rgba(16,185,129,0.2)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="200" y="108" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#f97316">Unit</text>
-      <text x="200" y="82" textAnchor="middle" fontSize="8" fill="#f97316">Integration</text>
-      <text x="200" y="58" textAnchor="middle" fontSize="8" fill="#f97316">E2E</text>
+      <polygon points="200,35 310,130 90,130" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="200,60 280,115 120,115" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1.5" />
+      <polygon points="200,90 260,115 140,115" fill="rgba(74,158,237,0.28)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="200" y="108" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#4a9eed">Unit</text>
+      <text x="200" y="82" textAnchor="middle" fontSize="8" fill="#4a9eed">Integration</text>
+      <text x="200" y="58" textAnchor="middle" fontSize="8" fill="#4a9eed">E2E</text>
       <text x="320" y="118" fontSize="9" fill="var(--text-secondary)">rápidos, muitos</text>
       <text x="10" y="58" fontSize="9" fill="var(--text-secondary)">lentos, poucos</text>
       <text x="200" y="155" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">TestClient (sync) | httpx AsyncClient (async) | pytest-asyncio</text>
@@ -374,23 +374,23 @@ function DeployArchSVG() {
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
       </defs>
-      <rect x="210" y="32" width="140" height="30" rx="6" fill="rgba(249,115,22,0.15)" stroke={color} strokeWidth="1.5" />
+      <rect x="210" y="32" width="140" height="30" rx="6" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
       <text x="280" y="51" textAnchor="middle" fontSize="10" fontWeight="700" fill={color}>Load Balancer / Nginx</text>
       <line x1="240" y1="62" x2="160" y2="90" stroke={color} strokeWidth="1.4" markerEnd="url(#arr8)" />
       <line x1="320" y1="62" x2="400" y2="90" stroke={color} strokeWidth="1.4" markerEnd="url(#arr8)" />
       {[{ x: 80 }, { x: 320 }].map((p, i) => (
         <g key={i}>
-          <rect x={p.x} y="90" width="160" height="38" rx="6" fill="rgba(249,115,22,0.08)" stroke={color} strokeWidth="1.2" />
+          <rect x={p.x} y="90" width="160" height="38" rx="6" fill="rgba(74,158,237,0.08)" stroke={color} strokeWidth="1.2" />
           <text x={p.x + 80} y="106" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">FastAPI Container</text>
           <text x={p.x + 80} y="120" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">gunicorn + uvicorn workers</text>
         </g>
       ))}
       <line x1="160" y1="128" x2="200" y2="155" stroke={color} strokeWidth="1.2" markerEnd="url(#arr8)" />
       <line x1="400" y1="128" x2="360" y2="155" stroke={color} strokeWidth="1.2" markerEnd="url(#arr8)" />
-      <rect x="80" y="155" width="160" height="34" rx="6" fill="rgba(249,115,22,0.1)" stroke="#f97316" strokeWidth="1.2" />
+      <rect x="80" y="155" width="160" height="34" rx="6" fill="rgba(74,158,237,0.1)" stroke="#4a9eed" strokeWidth="1.2" />
       <text x="160" y="170" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">PostgreSQL</text>
       <text x="160" y="183" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">persistência principal</text>
-      <rect x="310" y="155" width="160" height="34" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
+      <rect x="310" y="155" width="160" height="34" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
       <text x="390" y="170" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--text-primary)">Redis</text>
       <text x="390" y="183" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">cache / rate limiting</text>
       <text x="280" y="205" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">+ Prometheus/Grafana para monitoring e alertas</text>
@@ -402,13 +402,8 @@ export default function PfDS13() {
   return (
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
-      <div style={S.tag}>Module 13</div>
+      <div style={S.tag}>Module 11</div>
       <h1 style={S.h1}>FastAPI — APIs para Data Science</h1>
-      <p style={S.lead}>
-        FastAPI é o framework Python mais moderno para construir APIs de alto desempenho. Com suporte nativo a async/await,
-        validação automática via Pydantic, geração de documentação OpenAPI e type hints, é a escolha ideal para servir modelos
-        de machine learning, pipelines de dados e microsserviços em produção.
-      </p>
 
       {/* Section 1 */}
       <section style={S.section}>
@@ -760,7 +755,7 @@ async def model_not_loaded_handler(request: Request, exc: ModelNotLoadedError):
               ['500 Internal Error', 'Erro do servidor', 'Exceções não tratadas'],
             ].map(([code, meaning, when]) => (
               <tr key={code}>
-                <td style={{ ...S.td, fontFamily: 'monospace', color: code.startsWith('2') ? '#f97316' : code.startsWith('4') ? '#f97316' : '#f97316' }}>{code}</td>
+                <td style={{ ...S.td, fontFamily: 'monospace', color: code.startsWith('2') ? '#4a9eed' : code.startsWith('4') ? '#4a9eed' : '#4a9eed' }}>{code}</td>
                 <td style={S.td}>{meaning}</td>
                 <td style={S.td}>{when}</td>
               </tr>
@@ -1537,25 +1532,8 @@ def get_settings() -> Settings:
       <hr style={S.divider} />
 
       {/* ─── SECTION 13 ─── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>13. Síntese do Módulo</h2>
-        <div style={S.highlight}>
-          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Porquê FastAPI</strong> — ASGI, tipagem, documentação automática OpenAPI.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Primeira API</strong> — <code>@app.get</code>, Uvicorn, Swagger UI em <code>/docs</code>.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Path &amp; Query Parameters</strong> — type hints validam automaticamente.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Pydantic Models</strong> — validação e serialização do request body.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Error Handling</strong> — <code>HTTPException</code>, <code>ValidationError</code>, handlers globais.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Dependency Injection</strong> — <code>Depends()</code> para auth, DB, configuração partilhada.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Servir Modelos ML</strong> — <code>lifespan</code> para carregar modelo uma vez, predict endpoint.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Async &amp; Background Tasks</strong> — <code>async def</code>, <code>BackgroundTasks</code>, concorrência I/O.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Autenticação</strong> — JWT Bearer, OAuth2, <code>HTTPBearer</code>.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Base de Dados</strong> — SQLAlchemy async, session via <code>Depends</code>.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Testes</strong> — <code>TestClient</code>, <code>pytest</code>, override de dependências.</li>
-            <li style={{ marginBottom: '0.4rem' }}><strong>Deployment</strong> — Docker, Render, Railway, GCP Cloud Run, Fly.io.</li>
-          </ul>
-        </div>
-      </section>
+      
+
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -37,7 +37,7 @@ const GrammarPipeline = () => {
           const x = 10 + i * (w + gap);
           return (
             <g key={i}>
-              <rect x={x} y={12} width={w} height={46} rx={7} fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.4" />
+              <rect x={x} y={12} width={w} height={46} rx={7} fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.4" />
               <text x={x + w / 2} y={32} textAnchor="middle" fill={color} fontSize="8" fontWeight="700">{label}</text>
               <text x={x + w / 2} y={46} textAnchor="middle" fill="var(--text-secondary)" fontSize="6.5">
                 {['df, csv', 'bin, agg', 'linear, log', 'point, bar', 'axis, legend', 'cartesian'][i]}
@@ -77,7 +77,7 @@ const EncodingTable = () => {
       </p>
       <svg viewBox="0 0 560 260" style={{ maxWidth: '100%', height: 'auto' }}>
         {/* header */}
-        <rect x={0} y={0} width={560} height={22} fill="rgba(249,115,22,0.10)" rx={4} />
+        <rect x={0} y={0} width={560} height={22} fill="rgba(74,158,237,0.10)" rx={4} />
         <text x={12} y={15} fill={color} fontSize="8.5" fontWeight="700">Canal</text>
         <text x={80} y={15} fill={color} fontSize="8.5" fontWeight="700">Tipos de Dado</text>
         <text x={200} y={15} fill={color} fontSize="8.5" fontWeight="700">Descrição</text>
@@ -86,16 +86,16 @@ const EncodingTable = () => {
           const y = 22 + i * 47;
           return (
             <g key={i}>
-              <rect x={0} y={y} width={560} height={47} fill={i % 2 === 0 ? 'rgba(249,115,22,0.10)' : 'transparent'} />
+              <rect x={0} y={y} width={560} height={47} fill={i % 2 === 0 ? 'rgba(74,158,237,0.10)' : 'transparent'} />
               <text x={12} y={y + 24} fill={color} fontSize="9.5" fontWeight="700" fontFamily="monospace">{r.canal}</text>
               <text x={80} y={y + 24} fill="var(--text-secondary)" fontSize="8" fontFamily="monospace">{r.tipo}</text>
               <text x={200} y={y + 24} fill="var(--text-primary)" fontSize="8">{r.exemplo}</text>
               {/* mini visual hint */}
               {r.shape === 'color' && (
                 <>
-                  <circle cx={438} cy={y + 22} r={7} fill="#f97316" />
-                  <circle cx={452} cy={y + 22} r={7} fill="#f97316" />
-                  <circle cx={466} cy={y + 22} r={7} fill="#f97316" />
+                  <circle cx={438} cy={y + 22} r={7} fill="#4a9eed" />
+                  <circle cx={452} cy={y + 22} r={7} fill="#4a9eed" />
+                  <circle cx={466} cy={y + 22} r={7} fill="#4a9eed" />
                 </>
               )}
               {r.shape === 'size' && (
@@ -108,8 +108,8 @@ const EncodingTable = () => {
               {r.shape === 'shape' && (
                 <>
                   <circle cx={438} cy={y + 22} r={6} fill="none" stroke={color} strokeWidth="1.5" />
-                  <rect x={448} y={y + 16} width={12} height={12} fill="none" stroke="#f97316" strokeWidth="1.5" />
-                  <path d="M468,28 L474,16 L480,28 Z" fill="none" stroke="#f97316" strokeWidth="1.5" transform={`translate(0,${y - 6})`} />
+                  <rect x={448} y={y + 16} width={12} height={12} fill="none" stroke="#4a9eed" strokeWidth="1.5" />
+                  <path d="M468,28 L474,16 L480,28 Z" fill="none" stroke="#4a9eed" strokeWidth="1.5" transform={`translate(0,${y - 6})`} />
                 </>
               )}
               {r.shape === 'axis' && (
@@ -173,7 +173,7 @@ const MarksGallery = () => {
           const x = i * 100;
           return (
             <g key={i}>
-              <rect x={x + 2} y={50} width={94} height={88} rx={6} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
+              <rect x={x + 2} y={50} width={94} height={88} rx={6} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
               <text x={x + 49} y={144} textAnchor="middle" fill={color} fontSize="7.5" fontWeight="700">{m.name}</text>
               <line x1={x + 6} y1={120} x2={x + 90} y2={120} stroke="var(--text-secondary)" strokeWidth="0.8" />
               {m.draw(x + 2)}
@@ -207,7 +207,7 @@ const TransformPipeline = () => (
         { x: 430, label: 'Mark + Encode',       sub: 'gráfico\nfinal' },
       ].map((b, i, arr) => (
         <g key={i}>
-          <rect x={b.x} y={18} width={118} height={52} rx={8} fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.4" />
+          <rect x={b.x} y={18} width={118} height={52} rx={8} fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.4" />
           <text x={b.x + 59} y={38} textAnchor="middle" fill={color} fontSize="8.5" fontWeight="700">{b.label}</text>
           {b.sub.split('\n').map((s, j) => (
             <text key={j} x={b.x + 59} y={52 + j * 11} textAnchor="middle" fill="var(--text-secondary)" fontSize="7">{s}</text>
@@ -233,22 +233,22 @@ const CompositionLayout = () => (
     <svg viewBox="0 0 560 300" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* Layer */}
       <text x={70} y={18} textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Layer  (chart1 + chart2)</text>
-      <rect x={10} y={24} width={120} height={70} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
-      <rect x={18} y={32} width={104} height={54} rx={4} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
-      <rect x={26} y={40} width={88} height={38} rx={3} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x={10} y={24} width={120} height={70} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x={18} y={32} width={104} height={54} rx={4} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
+      <rect x={26} y={40} width={88} height={38} rx={3} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x={70} y={64} textAnchor="middle" fill={color} fontSize="7.5">sobrepostos</text>
 
       {/* HConcat */}
       <text x={210} y={18} textAnchor="middle" fill={color} fontSize="9" fontWeight="700">HConcat  (chart1 | chart2)</text>
-      <rect x={150} y={24} width={55} height={70} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
-      <rect x={215} y={24} width={55} height={70} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x={150} y={24} width={55} height={70} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x={215} y={24} width={55} height={70} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x={178} y={62} textAnchor="middle" fill={color} fontSize="7">A</text>
       <text x={243} y={62} textAnchor="middle" fill={color} fontSize="7">B</text>
 
       {/* VConcat */}
       <text x={370} y={18} textAnchor="middle" fill={color} fontSize="9" fontWeight="700">VConcat  (chart1 & chart2)</text>
-      <rect x={310} y={24} width={120} height={32} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
-      <rect x={310} y={62} width={120} height={32} rx={6} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x={310} y={24} width={120} height={32} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
+      <rect x={310} y={62} width={120} height={32} rx={6} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       <text x={370} y={44} textAnchor="middle" fill={color} fontSize="7">A</text>
       <text x={370} y={82} textAnchor="middle" fill={color} fontSize="7">B</text>
 
@@ -257,7 +257,7 @@ const CompositionLayout = () => (
       {[0, 1, 2, 3, 4, 5].map(i => (
         <g key={i}>
           <rect x={10 + (i % 3) * 180} y={128 + Math.floor(i / 3) * 78} width={165} height={68} rx={6}
-            fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+            fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
           <text x={97 + (i % 3) * 180} y={148 + Math.floor(i / 3) * 78}
             textAnchor="middle" fill={color} fontSize="7.5" fontWeight="700">Categoria {i + 1}</text>
           <polyline
@@ -278,7 +278,7 @@ const LinkedViewsSVG = () => (
     </p>
     <svg viewBox="0 0 560 220" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* Scatter */}
-      <rect x={10} y={20} width={240} height={160} rx={8} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
+      <rect x={10} y={20} width={240} height={160} rx={8} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
       <text x={130} y={14} textAnchor="middle" fill={color} fontSize="8.5" fontWeight="700">Scatter Plot (brush aqui)</text>
       <line x1={30} y1={165} x2={240} y2={165} stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1={30} y1={165} x2={30} y2={30} stroke="var(--text-secondary)" strokeWidth="1" />
@@ -289,7 +289,7 @@ const LinkedViewsSVG = () => (
           opacity={cx >= 110 && cx <= 200 && cy >= 70 && cy <= 130 ? 0.85 : 0.3} />
       ))}
       {/* brush rectangle */}
-      <rect x={110} y={70} width={90} height={60} fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" strokeDasharray="4,3" rx={3} />
+      <rect x={110} y={70} width={90} height={60} fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" strokeDasharray="4,3" rx={3} />
       <text x={155} y={106} textAnchor="middle" fill={color} fontSize="7" fontWeight="700">brush</text>
 
       {/* Arrow */}
@@ -302,7 +302,7 @@ const LinkedViewsSVG = () => (
       </defs>
 
       {/* Bar Chart */}
-      <rect x={300} y={20} width={240} height={160} rx={8} fill="rgba(249,115,22,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
+      <rect x={300} y={20} width={240} height={160} rx={8} fill="rgba(74,158,237,0.10)" stroke="var(--text-secondary)" strokeWidth="1" />
       <text x={420} y={14} textAnchor="middle" fill={color} fontSize="8.5" fontWeight="700">Bar Chart (filtrado)</text>
       <line x1={320} y1={165} x2={530} y2={165} stroke="var(--text-secondary)" strokeWidth="1" />
       <line x1={320} y1={165} x2={320} y2={30} stroke="var(--text-secondary)" strokeWidth="1" />
@@ -328,12 +328,6 @@ export default function DV6() {
         <Link to="/dv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 06</div>
         <h1 style={S.h1}>Gramática dos Gráficos & Altair</h1>
-        <p style={S.lead}>
-          A Gramática dos Gráficos de Leland Wilkinson (2005) formalizou que qualquer visualização pode ser
-          descrita com uma linguagem unificada: dados, mapeamentos (encodings), marcas (marks), escalas e guias.
-          O Vega-Altair implementa esta filosofia em Python com uma sintaxe declarativa elegante — descreve-se
-          o que se quer ver, não como o renderizar.
-        </p>
 
         {/* ── Secção 1 ── */}
         <div style={S.section}>
@@ -401,7 +395,7 @@ export default function DV6() {
                 ].map(([t, a, w, s]) => (
                   <tr key={t}>
                     <td style={{ ...S.td, fontWeight: 700, color }}>{t}</td>
-                    <td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316' }}>{a}</td>
+                    <td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed' }}>{a}</td>
                     <td style={S.td}>{w}</td>
                     <td style={S.td}>{s}</td>
                   </tr>
@@ -620,39 +614,7 @@ export default function DV6() {
             ))}
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* ── Síntese ── */}
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <p style={S.p}>
-            A Gramática dos Gráficos é mais do que uma teoria — é uma mudança de perspectiva: passa-se de
-            memorizar tipos de gráficos para compreender os componentes que os constituem. Isto liberta
-            a criatividade analítica e torna possível construir visualizações exactamente adequadas à pergunta
-            em análise, sem depender do catálogo de um software específico.
-          </p>
-          <p style={S.p}>
-            O Altair materializa esta gramática em Python com elegância: a sintaxe declarativa é próxima da
-            especificação conceptual, as selecções interactivas são compostas sem callbacks, e a portabilidade
-            do JSON Vega-Lite permite partilhar gráficos que funcionam em qualquer browser.
-          </p>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.6rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-              <li><strong>Gramática:</strong> Data → Transformations → Scales → Marks → Guides → Coord. System</li>
-              <li><strong>Encodings:</strong> associação entre coluna e canal visual (x, y, color, size, shape, opacity)</li>
-              <li><strong>Tipos em Altair:</strong> :Q quantitativo, :N nominal, :O ordinal, :T temporal — afectam escala e paleta</li>
-              <li><strong>Marks:</strong> mark_point, mark_line, mark_bar, mark_area, mark_text, mark_rect — compostos com <code>+</code></li>
-              <li><strong>Transformações:</strong> aggregate (mean, count), bin (histograma), calculate, filter — executadas no browser</li>
-              <li><strong>Escalas e guias:</strong> alt.Scale, alt.Axis, alt.Legend — resolve_scale para compostos</li>
-              <li><strong>Composição:</strong> <code>+</code> layer, <code>|</code> hconcat, <code>&amp;</code> vconcat, <code>.facet()</code> small multiples</li>
-              <li><strong>Selecções:</strong> selection_point, selection_interval + alt.condition — linked views sem JavaScript</li>
-              <li><strong>Escolha de biblioteca:</strong> Altair para interactividade declarativa; Plotly para rapidez; ggplot2 para publicação; Matplotlib para controlo total</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
+</div>
     </div>
   );
 }

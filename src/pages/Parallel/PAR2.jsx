@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -28,11 +28,11 @@ const S = {
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
   highlight: {
-    background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)',
+    background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)',
     borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem',
   },
   note: {
-    background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`,
+    background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`,
     borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem',
     fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0',
   },
@@ -58,11 +58,11 @@ const S = {
 /* ─── SVG: Pirâmide de Hierarquia de Memória ─── */
 function PyramidSVG() {
   const layers = [
-    { label: 'Registos',   lat: '1 ciclo',    bw: '~TB/s',    cap: '<1 KB',  fill: '#f97316' },
-    { label: 'Cache L1',   lat: '4 ciclos',   bw: '1 TB/s',   cap: '32 KB',  fill: '#ea580c' },
-    { label: 'Cache L2',   lat: '12 ciclos',  bw: '400 GB/s', cap: '256 KB', fill: '#fb923c' },
-    { label: 'Cache L3',   lat: '40 ciclos',  bw: '100 GB/s', cap: '8 MB',   fill: '#f59e0b' },
-    { label: 'RAM (DRAM)', lat: '200 ciclos', bw: '50 GB/s',  cap: '32 GB',  fill: '#fbbf24' },
+    { label: 'Registos',   lat: '1 ciclo',    bw: '~TB/s',    cap: '<1 KB',  fill: '#4a9eed' },
+    { label: 'Cache L1',   lat: '4 ciclos',   bw: '1 TB/s',   cap: '32 KB',  fill: '#0369a1' },
+    { label: 'Cache L2',   lat: '12 ciclos',  bw: '400 GB/s', cap: '256 KB', fill: '#38bdf8' },
+    { label: 'Cache L3',   lat: '40 ciclos',  bw: '100 GB/s', cap: '8 MB',   fill: '#0284c7' },
+    { label: 'RAM (DRAM)', lat: '200 ciclos', bw: '50 GB/s',  cap: '32 GB',  fill: '#7dd3fc' },
     { label: 'NVMe SSD',   lat: '~100 µs',    bw: '7 GB/s',   cap: '2 TB',   fill: '#94a3b8' },
   ];
   const W = 700, H = 340;
@@ -94,7 +94,7 @@ function PyramidSVG() {
           </g>
         );
       })}
-      <text x="6" y="20" fill="#f97316" fontSize="10" fontWeight="600">↑ Rápido</text>
+      <text x="6" y="20" fill="#4a9eed" fontSize="10" fontWeight="600">↑ Rápido</text>
       <text x="6" y={H - 8} fill="#6b7280" fontSize="10" fontWeight="600">↓ Lento</text>
     </svg>
   );
@@ -123,7 +123,7 @@ function LocalitySVG() {
                 key={idx}
                 x={c * CS} y={r * CS + 20}
                 width={CS - 3} height={CS - 3} rx="4"
-                fill={isHit ? hlColor : isMiss ? 'rgba(249,115,22,0.15)' : 'var(--bg-secondary)'}
+                fill={isHit ? hlColor : isMiss ? 'rgba(74,158,237,0.15)' : 'var(--bg-secondary)'}
                 stroke={isHit ? hlColor : 'var(--card-border)'}
                 strokeWidth={isHit ? 2 : 1}
                 opacity={isHit ? 1 : 0.7}
@@ -145,12 +145,12 @@ function LocalitySVG() {
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ maxWidth: '100%' }}>
       {/* Row-major */}
-      <Grid offsetX={pad} label="Row-major (amigo da cache)" highlight={rowMajorAccess} hlColor="#f97316" />
+      <Grid offsetX={pad} label="Row-major (amigo da cache)" highlight={rowMajorAccess} hlColor="#4a9eed" />
       {/* Column-major */}
       <Grid offsetX={pad + COLS * CS + 40} label="Column-major (inimigo da cache)" highlight={colMajorAccess} hlColor="#94a3b8" missIndices={colMajorAccess} />
       {/* Labels */}
-      <text x={pad + COLS * CS / 2} y={H - 4} textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="600">✓ Sequencial — prefetch eficiente</text>
-      <text x={pad + COLS * CS + 40 + COLS * CS / 2} y={H - 4} textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="600">✗ Salto de {COLS} elementos — cache miss</text>
+      <text x={pad + COLS * CS / 2} y={H - 4} textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="600">✓ Sequencial — prefetch eficiente</text>
+      <text x={pad + COLS * CS + 40 + COLS * CS / 2} y={H - 4} textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="600">✗ Salto de {COLS} elementos — cache miss</text>
     </svg>
   );
 }
@@ -159,9 +159,9 @@ function LocalitySVG() {
 function MesiSVG() {
   const W = 600, H = 320;
   const states = [
-    { id: 'M', label: 'Modified', x: 120, y: 80, fill: '#f97316' },
-    { id: 'E', label: 'Exclusive', x: 480, y: 80, fill: '#f97316' },
-    { id: 'S', label: 'Shared', x: 480, y: 240, fill: '#f97316' },
+    { id: 'M', label: 'Modified', x: 120, y: 80, fill: '#4a9eed' },
+    { id: 'E', label: 'Exclusive', x: 480, y: 80, fill: '#4a9eed' },
+    { id: 'S', label: 'Shared', x: 480, y: 240, fill: '#4a9eed' },
     { id: 'I', label: 'Invalid', x: 120, y: 240, fill: '#94a3b8' },
   ];
   const R = 38;
@@ -213,27 +213,27 @@ function FalseSharingSVG() {
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ maxWidth: '100%' }}>
       {/* Cache line box */}
       <rect x={80} y={90} width={400} height={60} rx="8"
-        fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+        fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x={280} y={78} textAnchor="middle" fontSize="11" fill="var(--text-secondary)" fontWeight="600">
         Linha de cache — 64 bytes
       </text>
       {/* Variable a */}
       <rect x={90} y={100} width={180} height={40} rx="5"
-        fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="1.5" />
-      <text x={180} y={124} textAnchor="middle" fontSize="13" fontWeight="700" fill="#f97316">a (8 bytes)</text>
+        fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x={180} y={124} textAnchor="middle" fontSize="13" fontWeight="700" fill="#4a9eed">a (8 bytes)</text>
       {/* Variable b */}
       <rect x={290} y={100} width={180} height={40} rx="5"
-        fill="rgba(251,191,36,0.25)" stroke="#fbbf24" strokeWidth="1.5" />
-      <text x={380} y={124} textAnchor="middle" fontSize="13" fontWeight="700" fill="#fbbf24">b (8 bytes)</text>
+        fill="rgba(125,211,252,0.25)" stroke="#7dd3fc" strokeWidth="1.5" />
+      <text x={380} y={124} textAnchor="middle" fontSize="13" fontWeight="700" fill="#7dd3fc">b (8 bytes)</text>
       {/* Thread arrows */}
-      <path d="M180,90 L180,50" fill="none" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr2)" />
-      <text x={180} y={40} textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">Thread 0 escreve a</text>
-      <path d="M380,90 L380,50" fill="none" stroke="#f97316" strokeWidth="2" markerEnd="url(#arr2)" />
-      <text x={380} y={40} textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">Thread 1 escreve b</text>
+      <path d="M180,90 L180,50" fill="none" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr2)" />
+      <text x={180} y={40} textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">Thread 0 escreve a</text>
+      <path d="M380,90 L380,50" fill="none" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr2)" />
+      <text x={380} y={40} textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">Thread 1 escreve b</text>
       {/* Invalidation arrows */}
-      <path d="M80,160 Q40,180 40,200" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="4 2" />
-      <path d="M480,160 Q520,180 520,200" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="4 2" />
-      <text x={280} y={195} textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="600">
+      <path d="M80,160 Q40,180 40,200" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="4 2" />
+      <path d="M480,160 Q520,180 520,200" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="4 2" />
+      <text x={280} y={195} textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="600">
         Toda a linha invalidada em ambos os núcleos a cada escrita
       </text>
       <defs>
@@ -252,42 +252,42 @@ function NumaSVG() {
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ maxWidth: '100%' }}>
       {/* Socket 0 */}
       <rect x={10} y={10} width={250} height={240} rx="12"
-        fill="rgba(249,115,22,0.2)" stroke="#f97316" strokeWidth="2" />
-      <text x={135} y={32} textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Socket 0</text>
+        fill="rgba(74,158,237,0.2)" stroke="#4a9eed" strokeWidth="2" />
+      <text x={135} y={32} textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">Socket 0</text>
       {[0, 1, 2, 3].map(i => (
         <g key={i}>
           <rect x={20 + (i % 2) * 110} y={45 + Math.floor(i / 2) * 65} width={90} height={50} rx="8"
-            fill="#f97316" opacity="0.8" />
+            fill="#4a9eed" opacity="0.8" />
           <text x={65 + (i % 2) * 110} y={74 + Math.floor(i / 2) * 65} textAnchor="middle"
             fontSize="11" fontWeight="700" fill="#fff">Core {i}</text>
         </g>
       ))}
-      <rect x={30} y={190} width={200} height={40} rx="8" fill="#f97316" opacity="0.7" />
+      <rect x={30} y={190} width={200} height={40} rx="8" fill="#4a9eed" opacity="0.7" />
       <text x={130} y={214} textAnchor="middle" fontSize="11" fill="#fff" fontWeight="600">RAM Local — 32 GB</text>
 
       {/* Socket 1 */}
       <rect x={360} y={10} width={250} height={240} rx="12"
-        fill="rgba(251,191,36,0.08)" stroke="#fbbf24" strokeWidth="2" />
-      <text x={485} y={32} textAnchor="middle" fontSize="12" fontWeight="700" fill="#fbbf24">Socket 1</text>
+        fill="rgba(125,211,252,0.08)" stroke="#7dd3fc" strokeWidth="2" />
+      <text x={485} y={32} textAnchor="middle" fontSize="12" fontWeight="700" fill="#7dd3fc">Socket 1</text>
       {[4, 5, 6, 7].map((c, i) => (
         <g key={c}>
           <rect x={370 + (i % 2) * 110} y={45 + Math.floor(i / 2) * 65} width={90} height={50} rx="8"
-            fill="#fbbf24" opacity="0.8" />
+            fill="#7dd3fc" opacity="0.8" />
           <text x={415 + (i % 2) * 110} y={74 + Math.floor(i / 2) * 65} textAnchor="middle"
             fontSize="11" fontWeight="700" fill="#fff">Core {c}</text>
         </g>
       ))}
-      <rect x={380} y={190} width={200} height={40} rx="8" fill="#fbbf24" opacity="0.7" />
+      <rect x={380} y={190} width={200} height={40} rx="8" fill="#7dd3fc" opacity="0.7" />
       <text x={480} y={214} textAnchor="middle" fontSize="11" fill="#fff" fontWeight="600">RAM Local — 32 GB</text>
 
       {/* QPI/UPI link */}
-      <line x1={260} y1={135} x2={360} y2={135} stroke="#f97316" strokeWidth="3" strokeDasharray="8 4" />
-      <text x={310} y={125} textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">QPI/UPI</text>
+      <line x1={260} y1={135} x2={360} y2={135} stroke="#4a9eed" strokeWidth="3" strokeDasharray="8 4" />
+      <text x={310} y={125} textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">QPI/UPI</text>
       <text x={310} y={155} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">~2-3× latência remota</text>
 
       {/* Local access label */}
-      <text x={135} y={270} textAnchor="middle" fontSize="9.5" fill="#f97316" fontWeight="600">acesso local: 1× latência</text>
-      <text x={485} y={270} textAnchor="middle" fontSize="9.5" fill="#fbbf24" fontWeight="600">acesso local: 1× latência</text>
+      <text x={135} y={270} textAnchor="middle" fontSize="9.5" fill="#4a9eed" fontWeight="600">acesso local: 1× latência</text>
+      <text x={485} y={270} textAnchor="middle" fontSize="9.5" fill="#7dd3fc" fontWeight="600">acesso local: 1× latência</text>
     </svg>
   );
 }
@@ -306,9 +306,9 @@ function PrefetchSVG() {
       </text>
       {items.map((label, i) => {
         const x = startX + i * (CW + 24);
-        const fills   = ['var(--bg-secondary)', '#f97316', 'rgba(249,115,22,0.35)', 'rgba(249,115,22,0.22)', 'rgba(249,115,22,0.12)'];
-        const strokes = ['var(--card-border)',   '#f97316', '#f97316',               '#fb923c',               '#f59e0b'];
-        const textC   = ['var(--text-secondary)','#fff',    '#f97316',               '#fb923c',               '#f59e0b'];
+        const fills   = ['var(--bg-secondary)', '#4a9eed', 'rgba(74,158,237,0.35)', 'rgba(74,158,237,0.22)', 'rgba(74,158,237,0.12)'];
+        const strokes = ['var(--card-border)',   '#4a9eed', '#4a9eed',               '#38bdf8',               '#0284c7'];
+        const textC   = ['var(--text-secondary)','#fff',    '#4a9eed',               '#38bdf8',               '#0284c7'];
         return (
           <g key={i}>
             <rect x={x} y={y} width={CW} height={CH} rx="8"
@@ -317,14 +317,14 @@ function PrefetchSVG() {
               fill={textC[i]} fontSize="13" fontWeight={i === 1 ? '800' : '600'}>{label}</text>
             {i < items.length - 1 && (
               <path d={`M${x + CW + 3},${y + CH / 2} L${x + CW + 21},${y + CH / 2}`}
-                fill="none" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr3)" />
+                fill="none" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr3)" />
             )}
           </g>
         );
       })}
       <defs>
         <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L7,3 z" fill="#f97316" />
+          <path d="M0,0 L0,6 L7,3 z" fill="#4a9eed" />
         </marker>
       </defs>
       <text x={startX + CW / 2} y={y + CH + 18} textAnchor="middle" fontSize="9.5" fill="var(--text-secondary)">em L1</text>
@@ -345,11 +345,11 @@ function TilingSVG() {
         {Array.from({ length: N }).map((_, r) =>
           Array.from({ length: N }).map((_, c) => (
             <rect key={`${r}-${c}`} x={c * CS} y={r * CS} width={CS - 2} height={CS - 2} rx="3"
-              fill={r === 0 ? 'rgba(249,115,22,0.45)' : c === 0 ? 'rgba(249,115,22,0.25)' : 'var(--bg-secondary)'}
+              fill={r === 0 ? 'rgba(74,158,237,0.45)' : c === 0 ? 'rgba(74,158,237,0.25)' : 'var(--bg-secondary)'}
               stroke="var(--text-secondary)" strokeWidth="1" />
           ))
         )}
-        <text x={N * CS / 2} y={N * CS + 16} textAnchor="middle" fontSize="9" fill="#f97316">acesso por coluna → cache miss</text>
+        <text x={N * CS / 2} y={N * CS + 16} textAnchor="middle" fontSize="9" fill="#4a9eed">acesso por coluna → cache miss</text>
       </g>
     );
   }
@@ -360,7 +360,7 @@ function TilingSVG() {
         {Array.from({ length: N }).map((_, r) =>
           Array.from({ length: N }).map((_, c) => {
             const tr = Math.floor(r / T), tc = Math.floor(c / T);
-            const colors = ['rgba(249,115,22,0.35)', 'rgba(251,191,36,0.30)', 'rgba(234,88,12,0.30)', 'rgba(245,158,11,0.35)', 'rgba(249,115,22,0.20)', 'rgba(251,191,36,0.20)', 'rgba(234,88,12,0.20)', 'rgba(249,115,22,0.15)', 'rgba(245,158,11,0.15)', 'rgba(251,191,36,0.15)'];
+            const colors = ['rgba(74,158,237,0.35)', 'rgba(125,211,252,0.30)', 'rgba(3,105,161,0.30)', 'rgba(2,132,199,0.35)', 'rgba(74,158,237,0.20)', 'rgba(125,211,252,0.20)', 'rgba(3,105,161,0.20)', 'rgba(74,158,237,0.15)', 'rgba(2,132,199,0.15)', 'rgba(125,211,252,0.15)'];
             return (
               <rect key={`${r}-${c}`} x={c * CS} y={r * CS} width={CS - 2} height={CS - 2} rx="3"
                 fill={colors[(tr * 3 + tc) % colors.length]}
@@ -405,10 +405,9 @@ export default function PAR2() {
       <div style={S.section}>
         <h2 style={S.h2}>1. Hierarquia de Memória</h2>
         <p style={S.p}>
-          Os sistemas modernos organizam a memória em múltiplos níveis com um compromisso fundamental:
-          quanto mais rápido o nível, menor a capacidade e mais elevado o custo por bit.
-          O processador começa sempre por procurar dados no nível mais rápido disponível (registo) e
-          sobe a hierarquia em caso de <em>miss</em>.
+          Os sistemas modernos organizam a memória em múltiplos níveis: quanto mais rápido o nível,
+          menor a capacidade e mais elevado o custo por bit. O processador procura sempre no nível
+          mais rápido primeiro (registo) e sobe a hierarquia em caso de <em>miss</em>.
         </p>
         <div style={S.diagram}>
           <PyramidSVG />
@@ -460,15 +459,11 @@ export default function PAR2() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Cache Lines e Localidade</h2>
         <p style={S.p}>
-          A cache não opera byte a byte. Quando um dado é pedido e não está em cache (<em>cache miss</em>),
-          o controlador de memória carrega um bloco contíguo de <strong>64 bytes</strong> denominado
-          <em> cache line</em>. Se o programa aceder sequencialmente a elementos adjacentes, a maior
-          parte deles já estará em cache quando forem pedidos — <em>spatial locality</em>.
-        </p>
-        <p style={S.p}>
-          <strong>Localidade espacial</strong> — acesso a elementos próximos na memória (e.g., percorrer
-          um array sequencialmente). <strong>Localidade temporal</strong> — reutilização do mesmo dado
-          num curto intervalo de tempo (e.g., variável de controlo de um ciclo).
+          A cache não opera byte a byte: quando um dado não está em cache (<em>cache miss</em>), o
+          controlador carrega um bloco contíguo de <strong>64 bytes</strong> (<em>cache line</em>).
+          Isto explora dois padrões — <strong>localidade espacial</strong> (acesso a elementos
+          próximos, e.g. percorrer um array sequencialmente) e <strong>localidade temporal</strong>{' '}
+          (reutilização do mesmo dado num curto intervalo, e.g. variável de controlo de um ciclo).
         </p>
         <div style={S.diagram}>
           <LocalitySVG />
@@ -527,9 +522,8 @@ export default function PAR2() {
           </ol>
         </div>
         <div style={S.note}>
-          O mecanismo de <em>snooping</em> implica que cada controlador de cache "escuta" o bus
-          de interligação. Em sistemas com muitos núcleos, o protocolo evolui para abordagens baseadas
-          em directório para reduzir o tráfego no bus.
+          O mecanismo de <em>snooping</em> implica que cada controlador de cache "escuta" o bus.
+          Em sistemas com muitos núcleos, evolui-se para protocolos baseados em directório.
         </div>
       </div>
 
@@ -566,10 +560,9 @@ export default function PAR2() {
       <div style={S.section}>
         <h2 style={S.h2}>5. NUMA — Non-Uniform Memory Access</h2>
         <p style={S.p}>
-          Em servidores com vários sockets, cada socket tem a sua própria memória RAM local ligada
-          por um bus dedicado (QPI ou UPI). Um núcleo pode aceder à RAM do outro socket, mas com
-          latência <strong>2 a 3 vezes superior</strong> e largura de banda inferior.
-          Esta assimetria denomina-se NUMA (<em>Non-Uniform Memory Access</em>).
+          Em servidores com vários sockets, cada socket tem RAM local ligada por um bus dedicado
+          (QPI/UPI). Um núcleo pode aceder à RAM do outro socket, mas com latência{' '}
+          <strong>2 a 3 vezes superior</strong> — esta assimetria denomina-se NUMA.
         </p>
         <div style={S.diagram}>
           <NumaSVG />
@@ -621,15 +614,12 @@ export default function PAR2() {
         <h2 style={S.h2}>6. Prefetching e Políticas de Escrita</h2>
         <p style={S.p}>
           O <strong>hardware prefetcher</strong> detecta padrões de acesso regular (strides fixos)
-          e carrega dados antecipadamente para L1/L2, ocultando a latência de memória. Quando o
-          padrão é irregular, o prefetcher falha e o processador bloqueia à espera de dados.
+          e carrega dados antecipadamente para L1/L2. Quando o padrão é irregular, o prefetcher
+          falha e o processador bloqueia à espera de dados.
         </p>
         <div style={S.diagram}>
           <PrefetchSVG />
         </div>
-        <p style={S.p}>
-          Além do hardware prefetcher, o programador pode inserir <strong>dicas de software</strong>:
-        </p>
         <table style={S.table}>
           <thead>
             <tr>
@@ -658,8 +648,7 @@ export default function PAR2() {
         </table>
         <div style={S.note}>
           Os <em>store buffers</em> permitem que o processador continue a executar instruções
-          enquanto as escritas são drenadas para cache. Sem store buffers, cada escrita bloquearia
-          o pipeline durante dezenas de ciclos.
+          enquanto as escritas são drenadas para cache.
         </div>
       </div>
 
@@ -691,12 +680,10 @@ export default function PAR2() {
           (três tiles A, B, C) caibam na cache L2 ou L3.
         </p>
         <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Algoritmos cache-oblivious</strong></p>
           <p style={{ ...S.p, marginBottom: 0 }}>
-            Algoritmos como o de Frigo et al. (1999) para ordenação e multiplicação de matrizes
-            funcionam recursivamente, dividindo o problema a metade até caber em cache — sem
-            saber a priori o tamanho da cache. São óptimos para qualquer nível da hierarquia
-            simultaneamente.
+            <strong>Algoritmos cache-oblivious</strong> (Frigo et al., 1999) dividem o problema
+            recursivamente a metade até caber em cache, sem saber a priori o seu tamanho — óptimos
+            para qualquer nível da hierarquia.
           </p>
         </div>
         <table style={S.table}>
@@ -725,45 +712,6 @@ export default function PAR2() {
         </table>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ── Síntese ── */}
-              <h2 style={{ ...S.h2, borderLeft: 'none', paddingLeft: 0, marginBottom: '0.75rem' }}>
-          8. Síntese do Módulo
-        </h2>
-<div style={{ ...S.highlight, borderRadius: 10 }}>
-        <ul style={{ paddingLeft: '1.25rem', color: 'var(--text-primary)', lineHeight: 2.1, margin: 0 }}>
-          <li>
-            <strong>Hierarquia de memória:</strong> registos → L1 (4 ciclos/32 KB) → L2 (12 ciclos/256 KB)
-            → L3 (40 ciclos/8 MB) → RAM (200 ciclos/32 GB) → NVMe. Cada nível é ordens de grandeza
-            mais lento mas maior que o anterior.
-          </li>
-          <li>
-            <strong>Cache lines de 64 bytes:</strong> toda a transferência é a este granulado.
-            Acesso row-major é amigo da cache (1 miss por linha); column-major é inimigo (1 miss por elemento).
-          </li>
-          <li>
-            <strong>Protocolo MESI:</strong> garante coerência em multi-core através de quatro estados
-            (Modified, Exclusive, Shared, Invalid) e invalidações via bus snooping.
-          </li>
-          <li>
-            <strong>False sharing:</strong> variáveis distintas na mesma cache line causam ping-pong
-            de invalidações entre threads. Solução: padding/alinhamento a 64 bytes.
-          </li>
-          <li>
-            <strong>NUMA:</strong> em sistemas multi-socket, acesso à RAM remota é 2–3× mais lento.
-            Usar <code>numactl</code>, thread pinning e inicialização paralela (first-touch NUMA-aware).
-          </li>
-          <li>
-            <strong>Prefetching e políticas de escrita:</strong> o hardware prefetcher oculta
-            latência em acessos com stride fixo; write-back é mais eficiente que write-through.
-          </li>
-          <li>
-            <strong>Blocking/tiling:</strong> aumenta a intensidade aritmética ao reutilizar dados
-            em cache; fundamental para matmul, convoluções e outros kernels HPC.
-          </li>
-        </ul>
-      </div>
     </div>
   );
 }

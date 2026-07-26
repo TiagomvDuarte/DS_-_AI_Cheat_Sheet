@@ -7,19 +7,19 @@ import 'katex/dist/katex.min.css';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -28,11 +28,11 @@ const FiveVsDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1.25rem', color: 'var(--text-primary)' }}>Os 5 Vs do Big Data</p>
     <svg viewBox="0 0 560 200" style={{ maxWidth: '100%', height: 'auto' }}>
       {[
-        { label: 'Volume', sub: 'Terabytes → Petabytes', x: 56, color: '#f97316' },
-        { label: 'Velocity', sub: 'Batch → Real-time', x: 168, color: '#f97316' },
-        { label: 'Variety', sub: 'Structured / Semi / Unstructured', x: 280, color: '#f97316' },
-        { label: 'Veracity', sub: 'Ruído, Bias, Incerteza', x: 392, color: '#f97316' },
-        { label: 'Value', sub: 'Insights accionáveis', x: 504, color: '#f97316' },
+        { label: 'Volume', sub: 'Terabytes → Petabytes', x: 56, color: '#4a9eed' },
+        { label: 'Velocity', sub: 'Batch → Real-time', x: 168, color: '#4a9eed' },
+        { label: 'Variety', sub: 'Structured / Semi / Unstructured', x: 280, color: '#4a9eed' },
+        { label: 'Veracity', sub: 'Ruído, Bias, Incerteza', x: 392, color: '#4a9eed' },
+        { label: 'Value', sub: 'Insights accionáveis', x: 504, color: '#4a9eed' },
       ].map(({ label, sub, x, color }) => (
         <g key={label}>
           <circle cx={x} cy={80} r={46} fill={`${color}18`} stroke={color} strokeWidth="2" />
@@ -42,8 +42,8 @@ const FiveVsDiagram = () => (
           <line x1={x} y1="128" x2={x} y2="145" stroke={color} strokeWidth="1.5" />
         </g>
       ))}
-      <rect x="20" y="145" width="520" height="40" rx="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-      <text x="280" y="169" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Big Data = dados demasiado grandes, rápidos ou variados para ferramentas tradicionais</text>
+      <rect x="20" y="145" width="520" height="40" rx="8" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+      <text x="280" y="169" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Big Data = dados demasiado grandes, rápidos ou variados para ferramentas tradicionais</text>
     </svg>
   </div>
 );
@@ -52,27 +52,27 @@ const ScalingDiagram = () => (
   <div style={S.diagram}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Escala Vertical vs. Escala Horizontal</p>
     <svg viewBox="0 0 560 160" style={{ maxWidth: '100%', height: 'auto' }}>
-      <text x="130" y="18" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Escala Vertical (Scale Up)</text>
-      <rect x="105" y="25" width="50" height="35" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="130" y="47" textAnchor="middle" fill="#f97316" fontSize="9">Server</text>
+      <text x="130" y="18" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Escala Vertical (Scale Up)</text>
+      <rect x="105" y="25" width="50" height="35" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="130" y="47" textAnchor="middle" fill="#4a9eed" fontSize="9">Server</text>
       <text x="130" y="75" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">→ CPU mais potente</text>
       <text x="130" y="87" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">→ Limite físico</text>
       <text x="130" y="99" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">→ Downtime</text>
-      <rect x="75" y="110" width="110" height="22" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="130" y="125" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">Mainframe tradicional</text>
+      <rect x="75" y="110" width="110" height="22" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="130" y="125" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">Mainframe tradicional</text>
       <line x1="260" y1="10" x2="260" y2="150" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4,3" />
-      <text x="410" y="18" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Escala Horizontal (Scale Out)</text>
+      <text x="410" y="18" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Escala Horizontal (Scale Out)</text>
       {[300, 360, 420, 480].map((x, i) => (
         <g key={x}>
-          <rect x={x - 22} y="25" width="44" height="28" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-          <text x={x} y="43" textAnchor="middle" fill="#f97316" fontSize="8">Node {i + 1}</text>
+          <rect x={x - 22} y="25" width="44" height="28" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+          <text x={x} y="43" textAnchor="middle" fill="#4a9eed" fontSize="8">Node {i + 1}</text>
         </g>
       ))}
       <text x="410" y="75" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">→ Commodity hardware</text>
       <text x="410" y="87" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">→ Escala linear</text>
       <text x="410" y="99" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">→ Tolerante a falhas</text>
-      <rect x="310" y="110" width="200" height="22" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="410" y="125" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">Hadoop / Spark Cluster</text>
+      <rect x="310" y="110" width="200" height="22" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="410" y="125" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">Hadoop / Spark Cluster</text>
     </svg>
   </div>
 );
@@ -86,20 +86,20 @@ const HDFSDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
       </defs>
-      <rect x="200" y="20" width="160" height="50" rx="8" fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth="2" />
-      <text x="280" y="42" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">NameNode</text>
+      <rect x="200" y="20" width="160" height="50" rx="8" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="280" y="42" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">NameNode</text>
       <text x="280" y="58" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">Metadata — onde está cada bloco</text>
       {[70, 210, 350, 490].map((x, i) => (
         <g key={x}>
-          <rect x={x - 42} y="120" width="84" height="60" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-          <text x={x} y="142" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="600">DataNode {i + 1}</text>
+          <rect x={x - 42} y="120" width="84" height="60" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+          <text x={x} y="142" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="600">DataNode {i + 1}</text>
           <text x={x} y="157" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Bloco A</text>
           <text x={x} y="169" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Bloco B / C</text>
           <line x1={x} y1="120" x2={i < 2 ? 260 : 300} y2="70" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,2" markerEnd="url(#arr-hdfs)" />
         </g>
       ))}
-      <rect x="180" y="190" width="200" height="22" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="280" y="205" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="600">Replicação = 3 (por omissão)</text>
+      <rect x="180" y="190" width="200" height="22" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="280" y="205" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="600">Replicação = 3 (por omissão)</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Ficheiros divididos em blocos de 128 MB. O NameNode guarda o mapa; os DataNodes guardam os dados.</p>
   </div>
@@ -108,10 +108,10 @@ const HDFSDiagram = () => (
 const MapReduceDemo = () => {
   const [step, setStep] = useState(0);
   const steps = [
-    { label: 'Input', color: '#f97316', content: ['"big data is big"', '"data is everywhere"'], desc: 'Texto distribuído pelos mappers. Cada linha é processada independentemente pelo seu mapper local — os dados não saem do nó onde residem.' },
-    { label: 'Map', color: '#f97316', content: ['(big,1) (data,1) (is,1) (big,1)', '(data,1) (is,1) (everywhere,1)'], desc: 'Cada palavra → par (palavra, 1). A função Map é pura — não tem estado partilhado com outros mappers. Pode correr em paralelo total.' },
-    { label: 'Shuffle & Sort', color: '#f97316', content: ['big: [1,1]', 'data: [1,1]', 'everywhere: [1]', 'is: [1,1]'], desc: 'Framework agrupa os pares por chave e redistribui pela rede — cada reducer recebe todas as ocorrências da sua chave. Esta é a fase mais lenta (I/O de disco + rede).' },
-    { label: 'Reduce', color: '#f97316', content: ['(big, 2)', '(data, 2)', '(everywhere, 1)', '(is, 2)'], desc: 'Soma todos os valores de cada chave. O resultado final é escrito de volta no HDFS, distribuído pelos reducers.' },
+    { label: 'Input', color: '#4a9eed', content: ['"big data is big"', '"data is everywhere"'], desc: 'Texto distribuído pelos mappers. Cada linha é processada independentemente pelo seu mapper local — os dados não saem do nó onde residem.' },
+    { label: 'Map', color: '#4a9eed', content: ['(big,1) (data,1) (is,1) (big,1)', '(data,1) (is,1) (everywhere,1)'], desc: 'Cada palavra → par (palavra, 1). A função Map é pura — não tem estado partilhado com outros mappers. Pode correr em paralelo total.' },
+    { label: 'Shuffle & Sort', color: '#4a9eed', content: ['big: [1,1]', 'data: [1,1]', 'everywhere: [1]', 'is: [1,1]'], desc: 'Framework agrupa os pares por chave e redistribui pela rede — cada reducer recebe todas as ocorrências da sua chave. Esta é a fase mais lenta (I/O de disco + rede).' },
+    { label: 'Reduce', color: '#4a9eed', content: ['(big, 2)', '(data, 2)', '(everywhere, 1)', '(is, 2)'], desc: 'Soma todos os valores de cada chave. O resultado final é escrito de volta no HDFS, distribuído pelos reducers.' },
   ];
   const s = steps[step];
   return (
@@ -140,15 +140,15 @@ const GenTimeline = () => (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
       {[
         { year: '2001', event: 'Gartner define 3Vs', color: '#94a3b8' },
-        { year: '2003', event: 'Google GFS paper', color: '#f97316' },
-        { year: '2004', event: 'Google MapReduce paper', color: '#f97316' },
-        { year: '2006', event: 'Yahoo! lança Hadoop', color: '#f97316' },
-        { year: '2008', event: 'Hadoop Yahoo: 1000 nós', color: '#f97316' },
-        { year: '2009', event: 'Spark — UC Berkeley AMPLab', color: '#f97316' },
-        { year: '2011', event: 'McKinsey Big Data Report', color: '#f97316' },
-        { year: '2014', event: 'Spark supera MapReduce (sort)', color: '#f97316' },
-        { year: '2019', event: 'Cloud-native Spark (K8s)', color: '#f97316' },
-        { year: '2022', event: 'Lakehouse + LLM Data', color: '#f97316' },
+        { year: '2003', event: 'Google GFS paper', color: '#4a9eed' },
+        { year: '2004', event: 'Google MapReduce paper', color: '#4a9eed' },
+        { year: '2006', event: 'Yahoo! lança Hadoop', color: '#4a9eed' },
+        { year: '2008', event: 'Hadoop Yahoo: 1000 nós', color: '#4a9eed' },
+        { year: '2009', event: 'Spark — UC Berkeley AMPLab', color: '#4a9eed' },
+        { year: '2011', event: 'McKinsey Big Data Report', color: '#4a9eed' },
+        { year: '2014', event: 'Spark supera MapReduce (sort)', color: '#4a9eed' },
+        { year: '2019', event: 'Cloud-native Spark (K8s)', color: '#4a9eed' },
+        { year: '2022', event: 'Lakehouse + LLM Data', color: '#4a9eed' },
       ].map(({ year, event, color }) => (
         <div key={year} style={{ background: `${color}08`, border: `1px solid ${color}25`, borderRadius: 8, padding: '0.6rem 0.9rem', textAlign: 'center', minWidth: 120 }}>
           <div style={{ fontWeight: 800, color, fontSize: '0.9rem' }}>{year}</div>
@@ -166,7 +166,6 @@ export default function CBD1() {
         <Link to="/cloud-bigdata" style={S.back}><ArrowLeft size={16} /> Voltar a Cloud &amp; Big Data</Link>
         <div style={S.tag}>Module 1</div>
         <h1 style={S.h1}>Big Data Fundamentals</h1>
-        <p style={S.lead}>O que é Big Data, a mudança de paradigma que obrigou a repensar toda a arquitectura de software, como o HDFS resolve o armazenamento distribuído em commodity hardware, e porque o MapReduce foi a primeira resposta industrial ao problema de processar petabytes.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. A Origem do Problema</h2>
@@ -187,7 +186,7 @@ export default function CBD1() {
                   ['Veracity', 'Qualidade, ruído, bias e incerteza nos dados', '80% do tempo de um Data Scientist = limpeza de dados (Forbes 2020)', 'Data quality tools, lineage'],
                   ['Value', 'Valor de negócio extraível dos dados', 'Recomendações Amazon: 35% das receitas; Uber surge pricing: optimização em tempo real', 'ML, analytics, dashboards'],
                 ].map(([v, d, ex, t]) => (
-                  <tr key={v}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{v}</td><td style={S.td}>{d}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{ex}</td><td style={{ ...S.td, fontSize: '0.82rem', fontFamily: 'monospace', color: '#f97316' }}>{t}</td></tr>
+                  <tr key={v}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{v}</td><td style={S.td}>{d}</td><td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{ex}</td><td style={{ ...S.td, fontSize: '0.82rem', fontFamily: 'monospace', color: '#4a9eed' }}>{t}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -218,7 +217,7 @@ export default function CBD1() {
                   ['Complexidade operacional', 'Baixa — um servidor', 'Alta — network, partitioning, consensus'],
                   ['Exemplo prático', 'Oracle Exadata, IBM POWER', 'Hadoop cluster, Spark on K8s'],
                 ].map(([a, v, h]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={S.td}>{v}</td><td style={{ ...S.td, color: '#f97316' }}>{h}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600 }}>{a}</td><td style={S.td}>{v}</td><td style={{ ...S.td, color: '#4a9eed' }}>{h}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -248,7 +247,7 @@ export default function CBD1() {
                   ['Serving / Catalog', 'Organizar, catalogar e servir resultados', 'Hive Metastore, Apache Atlas, Unity Catalog, Iceberg', 'Governance, lineage, discovery'],
                   ['Analytics & ML', 'Extrair insights e construir modelos', 'Spark MLlib, MLflow, TensorFlow, Jupyter, Tableau', 'DS, BI, recomendações, anomalias'],
                 ].map(([c, f, t, w]) => (
-                  <tr key={c}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{c}</td><td style={S.td}>{f}</td><td style={{ ...S.td, fontSize: '0.82rem', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{t}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{w}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{c}</td><td style={S.td}>{f}</td><td style={{ ...S.td, fontSize: '0.82rem', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{t}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -258,7 +257,7 @@ export default function CBD1() {
           <p style={S.p}>A arquitectura de dados evoluiu em três gerações. O Data Warehouse (anos 90) impõe um schema rígido antes da escrita — ideal para relatórios mas inflexível para dados não-estruturados. O Data Lake (anos 2010) armazena tudo em bruto mas tornou-se um "data swamp" sem governança. O Lakehouse (anos 2020) combina os dois: storage barato do Lake com as garantias ACID e schema do Warehouse.</p>
           <div style={{ overflowX: 'auto' }}>
             <table style={S.table}>
-              <thead><tr><th style={S.th}></th><th style={S.th}>Data Lake</th><th style={S.th}>Data Warehouse</th><th style={S.th}>Lakehouse ✅</th></tr></thead>
+              <thead><tr><th style={S.th}></th><th style={S.th}>Data Lake</th><th style={S.th}>Data Warehouse</th><th style={S.th}>Lakehouse</th></tr></thead>
               <tbody>
                 {[
                   ['Schema', 'Schema-on-Read (qualquer formato)', 'Schema-on-Write (rígido)', 'Schema-on-Read + Evolution + Gov.'],
@@ -269,7 +268,7 @@ export default function CBD1() {
                   ['Time Travel', 'Não', 'Limitado', 'Sim — consultar versões anteriores'],
                   ['Exemplos', 'HDFS raw, S3 raw', 'Redshift, BigQuery, Snowflake', 'Databricks, Apache Iceberg, Delta Lake'],
                 ].map(([f, l, w, lh]) => (
-                  <tr key={f}><td style={{ ...S.td, fontWeight: 600 }}>{f}</td><td style={S.td}>{l}</td><td style={S.td}>{w}</td><td style={{ ...S.td, color: '#f97316', fontWeight: 600 }}>{lh}</td></tr>
+                  <tr key={f}><td style={{ ...S.td, fontWeight: 600 }}>{f}</td><td style={S.td}>{l}</td><td style={S.td}>{w}</td><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600 }}>{lh}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -288,10 +287,10 @@ export default function CBD1() {
           <h3 style={S.h3}>Princípios de Design</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              ['Write-once, Read-many (WORM)', 'Ficheiros HDFS não são editáveis após escrita (apenas append). Elimina a complexidade de locks e conflitos de escrita concorrente em sistemas distribuídos.', '#f97316'],
-              ['Move code to data', 'Em vez de mover terabytes pela rede para um servidor central, o framework leva o programa de computação ao nó onde os dados já estão — reduzindo drasticamente o tráfego de rede.', '#f97316'],
-              ['Replicação por defeito = 3', 'Cada bloco tem 3 réplicas: 2 no mesmo rack (acesso rápido), 1 noutro rack (tolerância a falha de rack inteiro). Sem RAID, sem hardware especializado.', '#f97316'],
-              ['Blocos de 128 MB', 'Blocos grandes minimizam o metadata no NameNode e maximizam a eficiência de leituras sequenciais. Um ficheiro de 1 GB = apenas 8 entradas no NameNode. Um ficheiro de 1 KB = 1 bloco desperdiçado.', '#f97316'],
+              ['Write-once, Read-many (WORM)', 'Ficheiros HDFS não são editáveis após escrita (apenas append). Elimina a complexidade de locks e conflitos de escrita concorrente em sistemas distribuídos.', '#4a9eed'],
+              ['Move code to data', 'Em vez de mover terabytes pela rede para um servidor central, o framework leva o programa de computação ao nó onde os dados já estão — reduzindo drasticamente o tráfego de rede.', '#4a9eed'],
+              ['Replicação por defeito = 3', 'Cada bloco tem 3 réplicas: 2 no mesmo rack (acesso rápido), 1 noutro rack (tolerância a falha de rack inteiro). Sem RAID, sem hardware especializado.', '#4a9eed'],
+              ['Blocos de 128 MB', 'Blocos grandes minimizam o metadata no NameNode e maximizam a eficiência de leituras sequenciais. Um ficheiro de 1 GB = apenas 8 entradas no NameNode. Um ficheiro de 1 KB = 1 bloco desperdiçado.', '#4a9eed'],
             ].map(([t, d, c]) => (
               <div key={t} style={{ background: `${c}08`, border: `1px solid ${c}25`, borderRadius: 8, padding: '0.9rem' }}>
                 <div style={{ fontWeight: 700, color: c, fontSize: '0.9rem', marginBottom: '0.35rem' }}>{t}</div>
@@ -337,7 +336,7 @@ export default function CBD1() {
                   ['Reduce', 'Cada reducer recebe todas as ocorrências de um subconjunto de chaves e agrega com a função Reduce.', 'Código do programador', 'CPU + escrita disco (HDFS)'],
                   ['Output', 'Resultado escrito de volta no HDFS, distribuído por N ficheiros (um por reducer).', 'Framework', 'I/O de escrita disco'],
                 ].map(([f, w, r, c]) => (
-                  <tr key={f}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{f}</td><td style={S.td}>{w}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{r}</td><td style={{ ...S.td, fontSize: '0.83rem', color: c.includes('Alto') ? '#f97316' : 'var(--text-secondary)' }}>{c}</td></tr>
+                  <tr key={f}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{f}</td><td style={S.td}>{w}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{r}</td><td style={{ ...S.td, fontSize: '0.83rem', color: c.includes('Alto') ? '#4a9eed' : 'var(--text-secondary)' }}>{c}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -359,7 +358,7 @@ export default function CBD1() {
                   ['API verbosa', 'Java verboso: mapper, reducer, job config, inputformat, outputformat — centenas de linhas para Word Count', 'Curva de aprendizagem íngreme, código difícil de manter', 'DataFrames com API Python concisa — 5-10 linhas'],
                   ['DAG fixo (2 fases)', 'MapReduce só tem Map→Shuffle→Reduce. Pipelines complexos = cadeia de jobs dependentes', 'Cada job = nova leitura de disco do output do job anterior', 'DAG arbitrário multi-stage — stages encadeados em memória'],
                 ].map(([l, c, i, s]) => (
-                  <tr key={l}><td style={{ ...S.td, color: '#f97316', fontWeight: 600 }}>{l}</td><td style={S.td}>{c}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{i}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.83rem' }}>{s}</td></tr>
+                  <tr key={l}><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600 }}>{l}</td><td style={S.td}>{c}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{i}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.83rem' }}>{s}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -368,18 +367,6 @@ export default function CBD1() {
           <div style={S.note}>Em 2014, uma equipa do Databricks/Spark ganhou o Sortbenchmark, ordenando 100 TB em 23 minutos com Spark — 3× mais rápido que o recorde anterior do MapReduce usando 10× menos nós. Este resultado prático consolidou a transição do ecossistema para Spark.</div>
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>A Origem do Problema</strong> — o crescimento exponencial de dados tornou as arquitecturas scale-up inviáveis; escala horizontal em commodity hardware é a resposta — os 5 Vs (Volume, Velocity, Variety, Veracity, Value) definem o desafio.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>HDFS</strong> — distribui dados em blocos de 128 MB com replicação tripla (rack-aware); o NameNode só guarda metadata; DataNodes guardam os blocos — a localidade dos dados é explorada pelo MapReduce para minimizar tráfego de rede.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>MapReduce</strong> — separa lógica de negócio da distribuição: o programador define Map e Reduce, o framework trata scheduling, tolerância a falhas e shuffle; o gargalo é o Shuffle &amp; Sort (disco + rede) — motivou a criação do Spark.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Ecosistema Big Data</strong> — o ecossistema Hadoop (HDFS, YARN, MapReduce, Hive, Pig, Sqoop, HBase) cobre ingestão, armazenamento distribuído e processamento batch; evoluiu de batch → interactivo (Spark SQL) → stream → Lakehouse.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

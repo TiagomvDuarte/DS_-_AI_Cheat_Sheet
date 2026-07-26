@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const C = '#f97316';
+const C = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: C, color: '#fff', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: C, border: `1.5px solid ${C}`, fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${C}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${C}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem 1.25rem', fontFamily: 'monospace', fontSize: '0.85rem', lineHeight: 2, color: 'var(--text-primary)', marginBottom: '1.25rem' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
@@ -30,7 +30,7 @@ const TabuSearchDiagram = () => (
     <svg viewBox="0 0 580 200" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arr-ts" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill={C} /></marker>
-        <marker id="arr-red" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
+        <marker id="arr-red" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
       </defs>
 
       {/* Current solution */}
@@ -43,19 +43,19 @@ const TabuSearchDiagram = () => (
       <text x="125" y="89" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">gera N(x)</text>
 
       {/* Neighbourhood candidates */}
-      <rect x="155" y="30" width="80" height="35" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="195" y="52" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">y₁ — válido</text>
+      <rect x="155" y="30" width="80" height="35" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="195" y="52" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">y₁ — válido</text>
 
-      <rect x="155" y="78" width="80" height="35" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="195" y="96" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">y₂ — TABU ✗</text>
-      <text x="195" y="107" textAnchor="middle" fill="#f97316" fontSize="8">na lista tabu</text>
+      <rect x="155" y="78" width="80" height="35" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="195" y="96" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">y₂ — TABU ✗</text>
+      <text x="195" y="107" textAnchor="middle" fill="#4a9eed" fontSize="8">na lista tabu</text>
 
-      <rect x="155" y="126" width="80" height="35" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="195" y="148" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">y₃ — válido</text>
+      <rect x="155" y="126" width="80" height="35" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="195" y="148" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">y₃ — válido</text>
 
       {/* Arrow to best non-tabu */}
-      <line x1="235" y1="47" x2="300" y2="75" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-ts)"/>
-      <text x="290" y="50" textAnchor="middle" fill="#f97316" fontSize="8">melhor não-tabu</text>
+      <line x1="235" y1="47" x2="300" y2="75" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-ts)"/>
+      <text x="290" y="50" textAnchor="middle" fill="#4a9eed" fontSize="8">melhor não-tabu</text>
 
       {/* New current */}
       <rect x="305" y="60" width="90" height="50" rx="8" fill={`${C}15`} stroke={C} strokeWidth="1.5"/>
@@ -66,16 +66,16 @@ const TabuSearchDiagram = () => (
       <line x1="395" y1="85" x2="440" y2="85" stroke={C} strokeWidth="1.5" markerEnd="url(#arr-ts)"/>
 
       {/* Tabu list */}
-      <rect x="445" y="55" width="120" height="70" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="505" y="75" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Lista Tabu</text>
+      <rect x="445" y="55" width="120" height="70" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="505" y="75" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Lista Tabu</text>
       <text x="505" y="89" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">move(x→x') ← novo</text>
       <text x="505" y="101" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">TTL = tenure τ</text>
       <text x="505" y="113" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">move antigo → apagado</text>
 
       {/* Aspiration arrow */}
-      <path d="M 235,96 Q 260,160 305,120" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-ts)"/>
-      <text x="265" y="175" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Critério de Aspiração:</text>
-      <text x="265" y="186" textAnchor="middle" fill="#f97316" fontSize="8">aceitar tabu se f melhor que best-known</text>
+      <path d="M 235,96 Q 260,160 305,120" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-ts)"/>
+      <text x="265" y="175" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Critério de Aspiração:</text>
+      <text x="265" y="186" textAnchor="middle" fill="#4a9eed" fontSize="8">aceitar tabu se f melhor que best-known</text>
     </svg>
   </div>
 );
@@ -85,14 +85,14 @@ const ILSDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1.2rem', color: 'var(--text-primary)' }}>Iterated Local Search — Ciclo de Perturbação</p>
     <svg viewBox="0 0 780 160" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr-ils" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
-        <marker id="arr-ils2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
+        <marker id="arr-ils" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
+        <marker id="arr-ils2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
       </defs>
       {[
-        { x: 10,  label: 'Solução\nInicial x₀', color: '#f97316' },
-        { x: 175, label: 'Local\nSearch(x₀)', color: '#f97316' },
-        { x: 340, label: 'Perturbação\n→ x\'', color: '#f97316' },
-        { x: 505, label: 'Local\nSearch(x\')', color: '#f97316' },
+        { x: 10,  label: 'Solução\nInicial x₀', color: '#4a9eed' },
+        { x: 175, label: 'Local\nSearch(x₀)', color: '#4a9eed' },
+        { x: 340, label: 'Perturbação\n→ x\'', color: '#4a9eed' },
+        { x: 505, label: 'Local\nSearch(x\')', color: '#4a9eed' },
       ].map(({ x, label, color }, i) => (
         <g key={i}>
           <rect x={x} y={35} width={120} height={50} rx={10} fill={`${color}12`} stroke={color} strokeWidth="1.5"/>
@@ -103,13 +103,13 @@ const ILSDiagram = () => (
         </g>
       ))}
       {/* Accept/reject decision */}
-      <rect x="662" y="35" width="106" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="715" y="56" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Aceitar?</text>
-      <text x="715" y="73" textAnchor="middle" fill="#f97316" fontSize="9">critério</text>
-      <line x1="662" y1="60" x2="629" y2="60" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-ils2)"/>
+      <rect x="662" y="35" width="106" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="715" y="56" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Aceitar?</text>
+      <text x="715" y="73" textAnchor="middle" fill="#4a9eed" fontSize="9">critério</text>
+      <line x1="662" y1="60" x2="629" y2="60" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-ils2)"/>
       {/* Loop back arrow */}
-      <path d="M 715,85 Q 715,128 530,135 Q 360,142 360,88" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arr-ils)"/>
-      <text x="535" y="150" textAnchor="middle" fill="#f97316" fontSize="9">perturba novamente se aceite → repete</text>
+      <path d="M 715,85 Q 715,128 530,135 Q 360,142 360,88" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arr-ils)"/>
+      <text x="535" y="150" textAnchor="middle" fill="#4a9eed" fontSize="9">perturba novamente se aceite → repete</text>
     </svg>
   </div>
 );
@@ -118,7 +118,7 @@ const TabuExplorer = () => {
   const [sel, setSel] = useState(0);
   const items = [
     {
-      name: 'Memória de Curto Prazo', color: '#f97316',
+      name: 'Memória de Curto Prazo', color: '#4a9eed',
       desc: 'A lista tabu é a estrutura central do Tabu Search. Guarda os movimentos (ou atributos de movimentos) realizados recentemente e proíbe-os durante um número de iterações chamado tenure (τ). Não guarda soluções — guarda características de movimentos.',
       detalhes: [
         'Move-based: regista o movimento efectuado (ex: trocar cidades i↔j no TSP)',
@@ -129,7 +129,7 @@ const TabuExplorer = () => {
       exemplo: 'TSP: acabei de fazer swap(3,7). Proíbo reverse(3,7) por τ=10 iterações. Isto evita desfazer o move que acabo de fazer.',
     },
     {
-      name: 'Critério de Aspiração', color: '#f97316',
+      name: 'Critério de Aspiração', color: '#4a9eed',
       desc: 'Um movimento tabu pode ser aceite (aspiração) se satisfizer um critério de aspiração. O critério mais comum: aceitar um movimento tabu se a solução resultante for melhor que a melhor solução alguma vez encontrada (best-known). Sobrepõe-se à proibição tabu.',
       detalhes: [
         'Motivação: a lista tabu é conservadora — pode bloquear movimentos excepcionalmente bons',
@@ -140,7 +140,7 @@ const TabuExplorer = () => {
       exemplo: 'Todos os moves são tabu? Move A é tabu mas produz f=1250 (melhor que best=1300)? Aceitar A mesmo sendo tabu.',
     },
     {
-      name: 'Memória de Longo Prazo', color: '#f97316',
+      name: 'Memória de Longo Prazo', color: '#4a9eed',
       desc: 'Para além da lista tabu (curto prazo), o Tabu Search pode usar memória de longo prazo para guiar a pesquisa: frequência de uso de atributos, recência de visita a regiões, ou a melhor solução encontrada em cada região. Permite intensificação e diversificação.',
       detalhes: [
         'Frequency-based: evitar movimentos frequentemente usados → diversificação',
@@ -151,7 +151,7 @@ const TabuExplorer = () => {
       exemplo: 'Se o atributo "cidade 7 na posição 3" apareceu em 80% das soluções visitadas, penalizar soluções com esse atributo para forçar diversificação.',
     },
     {
-      name: 'Escolha do Tenure τ', color: '#f97316',
+      name: 'Escolha do Tenure τ', color: '#4a9eed',
       desc: 'O tenure é o parâmetro mais crítico do Tabu Search. τ pequeno → pouca memória, pode ciclar. τ grande → muito restritivo, reduz exploração. A escolha óptima depende do problema e do tamanho da vizinhança.',
       detalhes: [
         'Heurística comum: τ ∈ [5, 20] para problemas combinatórios de dimensão média',
@@ -189,7 +189,7 @@ const ILSStrategyExplorer = () => {
   const [sel, setSel] = useState(0);
   const strategies = [
     {
-      name: 'Perturbação', color: '#f97316',
+      name: 'Perturbação', color: '#4a9eed',
       desc: 'A perturbação é o coração do ILS. Deve ser forte o suficiente para escapar do basin of attraction do ótimo local atual, mas não tão forte que seja equivalente a reiniciar aleatoriamente. O tamanho da perturbação é o parâmetro mais crítico.',
       tipos: [
         'Double-bridge move (TSP): corta a rota em 4 segmentos e reconecta diferentemente — escapa de 3-opt local optima',
@@ -199,7 +199,7 @@ const ILSStrategyExplorer = () => {
       ],
     },
     {
-      name: 'Critério de Aceitação', color: '#f97316',
+      name: 'Critério de Aceitação', color: '#4a9eed',
       desc: 'Após aplicar local search à solução perturbada x\', decide se x\' substitui a solução corrente x. Diferentes critérios produzem comportamentos muito diferentes — de ganancioso (só aceitar melhorias) a exploratório (sempre aceitar).',
       tipos: [
         'Best improvement: aceitar x\' apenas se f(x\') > f(best-known). Conservador — não perde qualidade',
@@ -209,7 +209,7 @@ const ILSStrategyExplorer = () => {
       ],
     },
     {
-      name: 'Historial (s_home)', color: '#f97316',
+      name: 'Historial (s_home)', color: '#4a9eed',
       desc: 'O ILS mantém um "s_home" — a solução de referência a partir da qual se aplica a perturbação. Pode ser sempre a melhor encontrada, ou pode mudar (ex: última solução aceite). A escolha afecta o balanço entre intensificação e diversificação.',
       tipos: [
         's_home = best-known: perturba sempre a melhor solução. Intensificação máxima em torno do ótimo atual',
@@ -241,9 +241,8 @@ export default function CIO9() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/cio" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
-        <div style={S.tag}>Module 9</div>
+        <div style={S.tag}>Módulo 4</div>
         <h1 style={S.h1}>Tabu Search & Iterated Local Search</h1>
-        <p style={S.lead}>Hill Climbing e Simulated Annealing são a base — mas para problemas onde os ótimos locais são verdadeiramente difíceis de escapar, precisamos de memória explícita (Tabu Search) ou de perturbações estruturadas (ILS). Estes dois algoritmos representam a pesquisa local inteligente: não apenas subir colinas, mas lembrar onde já estivemos e dar saltos deliberados.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Tabu Search — Pesquisa Local com Memória</h2>
@@ -303,7 +302,7 @@ export default function CIO9() {
 
           <h3 style={S.h3}>Pseudocódigo do ILS</h3>
           <div style={S.code}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Iterated Local Search</div>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Iterated Local Search</div>
             <div>1. x₀ ← solução inicial</div>
             <div>2. x* ← LocalSearch(x₀)  <span style={{ color: 'var(--text-secondary)' }}>// qualquer pesquisa local: HC, SA, TS</span></div>
             <div>3. <strong>Repetir</strong> até critério de paragem:</div>
@@ -321,7 +320,7 @@ export default function CIO9() {
             <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)', textAlign: 'center' }}>Double-Bridge Move no TSP</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '0.9rem' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>ANTES — rota original</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>ANTES — rota original</div>
                 <div style={{ fontFamily: 'monospace', fontSize: '0.82rem', color: 'var(--text-primary)' }}>A — B — C — D — E — F — G — H — A</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
                   Cortar em 4 pontos: (A-B), (C-D), (E-F), (G-H)<br/>
@@ -329,7 +328,7 @@ export default function CIO9() {
                 </div>
               </div>
               <div style={{ background: 'var(--bg-primary)', borderRadius: 8, padding: '0.9rem' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>DEPOIS — double-bridge</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>DEPOIS — double-bridge</div>
                 <div style={{ fontFamily: 'monospace', fontSize: '0.82rem', color: 'var(--text-primary)' }}>A — D-E — B-C — F-G — H — A</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
                   Reagrupa segmentos: A + [D-E] + [B-C] + [F-G] + H<br/>
@@ -363,18 +362,8 @@ export default function CIO9() {
           </div>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>4. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>Tabu Search usa memória explícita (lista tabu) para proibir moves recentes e evitar ciclos — aceita pioras estrategicamente</li>
-              <li>Tenure τ é o parâmetro mais crítico do TS: τ pequeno → ciclagem; τ grande → restrição excessiva. Heurística: τ ≈ √n</li>
-              <li>Critério de aspiração: aceitar move tabu se produzir melhor solução que best-known — sobrepõe-se à proibição</li>
-              <li>ILS = local search + perturbação estruturada + critério de aceitação. Mais eficiente que random restart porque preserva estrutura boa</li>
-              <li>Double-bridge é a perturbação canónica para TSP: garante saída do basin of attraction porque 2-opt/3-opt não conseguem desfazê-la</li>
-            </ul>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

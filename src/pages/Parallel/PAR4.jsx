@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -27,8 +27,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', margin: '1.25rem 0', overflowX: 'auto' },
@@ -38,8 +38,8 @@ const S = {
 /* ── SVG: Fork-Join Timeline ── */
 function ForkJoinSVG() {
   const W = 820, H = 260;
-  const amber = '#f97316';
-  const threads = ['#f97316', '#f97316', '#f97316', '#f97316'];
+  const amber = '#4a9eed';
+  const threads = ['#4a9eed', '#4a9eed', '#4a9eed', '#4a9eed'];
   const forkX = 160, joinX = 640;
   const masterY = 40;
   const threadYs = [100, 140, 180, 220];
@@ -62,8 +62,8 @@ function ForkJoinSVG() {
       {/* Nested fork on thread index 1 (y=140) */}
       <line x1={nestedForkX} y1={140} x2={nestedForkX} y2={nestedY1} stroke="#94a3b8" strokeWidth={1} strokeDasharray="3 2" />
       <line x1={nestedForkX} y1={140} x2={nestedForkX} y2={nestedY2} stroke="#94a3b8" strokeWidth={1} strokeDasharray="3 2" />
-      <line x1={nestedForkX} y1={nestedY1} x2={nestedJoinX} y2={nestedY1} stroke="#fbbf24" strokeWidth={1.5} />
-      <line x1={nestedForkX} y1={nestedY2} x2={nestedJoinX} y2={nestedY2} stroke="#fbbf24" strokeWidth={1.5} />
+      <line x1={nestedForkX} y1={nestedY1} x2={nestedJoinX} y2={nestedY1} stroke="#7dd3fc" strokeWidth={1.5} />
+      <line x1={nestedForkX} y1={nestedY2} x2={nestedJoinX} y2={nestedY2} stroke="#7dd3fc" strokeWidth={1.5} />
       <line x1={nestedJoinX} y1={nestedY1} x2={nestedJoinX} y2={nestedY2} stroke="#94a3b8" strokeWidth={1} strokeDasharray="3 2" />
       {/* Join lines */}
       {threadYs.map((y, i) => (
@@ -72,16 +72,16 @@ function ForkJoinSVG() {
       {/* Master after join */}
       <line x1={joinX} y1={masterY} x2={W - 20} y2={masterY} stroke={amber} strokeWidth={3} />
       {/* Implicit barrier marker */}
-      <rect x={joinX - 4} y={masterY - 10} width={8} height={H - masterY - 10} fill="rgba(249,115,22,0.10)" rx={2} />
+      <rect x={joinX - 4} y={masterY - 10} width={8} height={H - masterY - 10} fill="rgba(74,158,237,0.10)" rx={2} />
       {/* Labels */}
       <text x={20} y={masterY - 10} fill="var(--text-secondary)" fontSize={11}>Thread mestre</text>
       <text x={forkX + 8} y={masterY - 10} fill={amber} fontSize={11} fontWeight="700">fork</text>
       <text x={joinX + 8} y={masterY - 10} fill={amber} fontSize={11} fontWeight="700">join</text>
-      <text x={joinX - 2} y={H - 4} fill="rgba(249,115,22,0.10)" fontSize={10}>barreira implícita</text>
+      <text x={joinX - 2} y={H - 4} fill="rgba(74,158,237,0.10)" fontSize={10}>barreira implícita</text>
       {threadYs.map((y, i) => (
         <text key={i} x={forkX + 8} y={y - 5} fill={threads[i]} fontSize={10}>T{i}</text>
       ))}
-      <text x={nestedForkX + 4} y={nestedY1 - 4} fill="#fbbf24" fontSize={9}>aninhado</text>
+      <text x={nestedForkX + 4} y={nestedY1 - 4} fill="#7dd3fc" fontSize={9}>aninhado</text>
       {/* Dots master start/end */}
       <circle cx={20} cy={masterY} r={5} fill={amber} />
       <circle cx={W - 20} cy={masterY} r={5} fill={amber} />
@@ -91,7 +91,7 @@ function ForkJoinSVG() {
 
 /* ── SVG: Static scheduling — 16 iterations across 4 threads ── */
 function StaticScheduleSVG() {
-  const colors = ['#f97316', '#f59e0b', '#fb923c', '#fbbf24'];
+  const colors = ['#4a9eed', '#0284c7', '#38bdf8', '#7dd3fc'];
   const bw = 38, bh = 28, gap = 2;
   const iters = Array.from({ length: 16 }, (_, i) => i);
   return (
@@ -119,7 +119,7 @@ function StaticScheduleSVG() {
 
 /* ── SVG: Three scheduling modes side by side ── */
 function SchedulingDiagramSVG() {
-  const colors = ['#f97316', '#f59e0b', '#fb923c', '#fbbf24'];
+  const colors = ['#4a9eed', '#0284c7', '#38bdf8', '#7dd3fc'];
   // static: 4 equal blocks; dynamic: first-come; guided: decreasing
   const staticAssign = [0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3];
   // dynamic: simulate out-of-order pick (unbalanced workload => some get more)
@@ -154,10 +154,10 @@ function SchedulingDiagramSVG() {
 /* ── Reduction diagram ──────────────────────────────────────────────── */
 function ReductionSVG() {
   const threads = [
-    { c: '#f97316', label: 'sum_0', sub: 'Thread 0' },
-    { c: '#f59e0b', label: 'sum_1', sub: 'Thread 1' },
-    { c: '#fb923c', label: 'sum_2', sub: 'Thread 2' },
-    { c: '#fbbf24', label: 'sum_3', sub: 'Thread 3' },
+    { c: '#4a9eed', label: 'sum_0', sub: 'Thread 0' },
+    { c: '#0284c7', label: 'sum_1', sub: 'Thread 1' },
+    { c: '#38bdf8', label: 'sum_2', sub: 'Thread 2' },
+    { c: '#7dd3fc', label: 'sum_3', sub: 'Thread 3' },
   ];
   return (
     <div style={{ ...S.diagram, padding: '1.2rem 1.4rem' }}>
@@ -192,21 +192,21 @@ function ReductionSVG() {
         {/* barrier */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, flexShrink: 0 }}>
           <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600 }}>barreira</div>
-          <div style={{ width: 10, height: 70, background: 'rgba(249,115,22,0.15)', border: '1.5px solid rgba(249,115,22,0.4)', borderRadius: 4 }} />
+          <div style={{ width: 10, height: 70, background: 'rgba(74,158,237,0.15)', border: '1.5px solid rgba(74,158,237,0.4)', borderRadius: 4 }} />
         </div>
 
         {/* arrow to result */}
         <svg width="36" height="20" viewBox="0 0 36 20" style={{ flexShrink: 0 }}>
           <defs>
             <marker id="redArr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-              <path d="M0,0 L0,7 L7,3.5 z" fill="#f97316" />
+              <path d="M0,0 L0,7 L7,3.5 z" fill="#4a9eed" />
             </marker>
           </defs>
-          <line x1="0" y1="10" x2="30" y2="10" stroke="#f97316" strokeWidth="2" markerEnd="url(#redArr2)" />
+          <line x1="0" y1="10" x2="30" y2="10" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#redArr2)" />
         </svg>
 
         {/* result */}
-        <div style={{ background: '#f97316', borderRadius: 8, padding: '0.6rem 1rem', textAlign: 'center', flexShrink: 0 }}>
+        <div style={{ background: '#4a9eed', borderRadius: 8, padding: '0.6rem 1rem', textAlign: 'center', flexShrink: 0 }}>
           <div style={{ fontWeight: 800, fontSize: '1rem', color: '#fff' }}>Σ total</div>
           <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.8)', marginTop: 2 }}>master thread</div>
         </div>
@@ -224,7 +224,7 @@ function ReductionSVG() {
 
 /* ── SVG: Task DAG — Fibonacci tree ── */
 function TaskDAGSVG() {
-  const amber = '#f97316';
+  const amber = '#4a9eed';
   const nodeR = 18;
   const nodes = [
     { id: 'fib5', x: 300, y: 30, label: 'fib(5)' },
@@ -286,7 +286,7 @@ export default function PAR4() {
           <ForkJoinSVG />
         </div>
         <p style={S.p}>
-          O paralelismo pode ser <strong>aninhado</strong> (<em>nested parallelism</em>): uma thread de uma equipa pode, ela própria, criar uma sub-equipa. Por omissão o aninhamento está desactivado; activa-se com <code>OMP_NESTED=true</code> ou <code>omp_set_nested(1)</code>.
+          O paralelismo pode ser <strong>aninhado</strong>: uma thread de uma equipa pode criar uma sub-equipa. Por omissão está desactivado; activa-se com <code>OMP_NESTED=true</code>.
         </p>
         <div style={S.math}>
           <BlockMath math={String.raw`T_p = T_1 / p + T_\infty \quad\Rightarrow\quad S_p = \frac{T_1}{T_p}`} />
@@ -356,7 +356,7 @@ export default function PAR4() {
       <div style={S.section}>
         <h2 style={S.h2}>3. Cláusula Reduction</h2>
         <p style={S.p}>
-          A cláusula <code>reduction</code> permite combinar resultados parciais de várias threads <strong>sem condições de corrida</strong>. Cada thread recebe uma cópia privada da variável, inicializada com o elemento neutro do operador. No fim da região, todas as cópias são combinadas com o operador e o resultado é escrito na variável partilhada original.
+          A cláusula <code>reduction</code> combina resultados parciais de várias threads <strong>sem condições de corrida</strong>: cada thread recebe uma cópia privada inicializada com o elemento neutro do operador, e no fim da região as cópias são combinadas na variável partilhada original.
         </p>
         <div style={S.diagram}>
           <ReductionSVG />
@@ -477,10 +477,7 @@ export default function PAR4() {
       <div style={S.section}>
         <h2 style={S.h2}>6. Tasks — Paralelismo Irregular</h2>
         <p style={S.p}>
-          As directivas <code>#pragma omp task</code> (OpenMP 3.0+) permitem expressar paralelismo <strong>irregular</strong> — algoritmos recursivos, travessia de árvores, quicksort, processamento de listas ligadas — onde o número e tamanho das unidades de trabalho não é conhecido em tempo de compilação.
-        </p>
-        <p style={S.p}>
-          Uma <strong>task</strong> é uma unidade de trabalho que pode ser executada por qualquer thread disponível. A thread que encontra a directiva cria a task e pode suspender-se ou continuar; outra thread pode executar a task mais tarde.
+          As directivas <code>#pragma omp task</code> permitem expressar paralelismo <strong>irregular</strong> — recursão, travessia de árvores, quicksort — onde o número e tamanho das unidades de trabalho não é conhecido em tempo de compilação. Uma <strong>task</strong> é uma unidade de trabalho que pode ser executada por qualquer thread disponível.
         </p>
 
         <div style={S.diagram}>
@@ -558,24 +555,6 @@ export default function PAR4() {
         </table>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ── SECÇÃO 8: Síntese ── */}
-              <h2 style={{ ...S.h2, borderLeft: 'none', paddingLeft: 0, marginBottom: '0.75rem' }}>8. Síntese do Módulo</h2>
-<div style={{ ...S.highlight, borderRadius: 10 }}>
-        <ul style={{ paddingLeft: '1.25rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-          <li><strong>Modelo fork-join:</strong> thread mestre faz fork numa região <code>parallel</code>, cria equipa, barreira implícita no fim, join. Aninhamento possível mas desactivado por omissão.</li>
-          <li><strong>Directivas básicas:</strong> <code>#pragma omp parallel for</code> distribui iterações; variáveis <code>private</code>/<code>shared</code>/<code>firstprivate</code>/<code>lastprivate</code> controlam visibilidade; <code>default(none)</code> é boa prática.</li>
-          <li><strong>Reduction:</strong> cláusula <code>reduction(op:var)</code> elimina races em acumulações (soma, produto, min, max). Cada thread tem cópia privada; combinação na barreira final.</li>
-          <li><strong>Scheduling:</strong> <code>static</code> (round-robin, baixo overhead), <code>dynamic</code> (fila global, melhor balanceamento), <code>guided</code> (chunks decrescentes, compromisso), <code>runtime</code> (configurável via <code>OMP_SCHEDULE</code>).</li>
-          <li><strong>Sincronização:</strong> <code>critical</code> usa mutex (custo elevado); <code>atomic</code> usa hardware (preferível para ops simples); <code>barrier</code> sincroniza todas as threads; <code>single</code> executa em uma thread com barreira; <code>master</code> executa na mestre sem barreira.</li>
-          <li><strong>Tasks:</strong> <code>#pragma omp task</code> para paralelismo irregular (recursão, grafos); <code>taskwait</code> aguarda filhas; <code>depend</code> define DAG de dependências; <code>if(n&gt;k)</code> evita overhead em problemas pequenos.</li>
-          <li><strong>Secções/SIMD/Offload:</strong> <code>sections</code> para blocos heterogéneos; <code>simd</code> para vectorização; <code>target</code>/<code>teams</code> para GPU.</li>
-        </ul>
-        <div style={{ ...S.math, marginTop: '1rem' }}>
-          <BlockMath math={String.raw`\text{Speedup ideal} = \min\!\left(p,\; \frac{1}{1-f}\right) \quad\text{(Lei de Amdahl)}`} />
-        </div>
-      </div>
     </div>
   );
 }

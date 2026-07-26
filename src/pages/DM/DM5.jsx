@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -20,70 +20,10 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
-};
-
-// === Diagram: Missing values imputation comparison ===
-const ImputationDiagram = () => {
-  const rows = [
-    { id: 'A', idade: '34', salario: '2100', original: true },
-    { id: 'B', idade: '—', salario: '1800', original: false },
-    { id: 'C', idade: '41', salario: '—', original: false },
-    { id: 'D', idade: '29', salario: '2400', original: true },
-    { id: 'E', idade: '38', salario: '2050', original: true },
-  ];
-  // Idade: mean of 34,41,29,38 = 35.5 ; Salário median of 2100,1800,2400,2050 = 2075
-  const strategies = [
-    { name: 'Eliminar registo', idadeB: '(removido)', salarioC: '(removido)', c: '#f97316' },
-    { name: 'Imputar média/mediana', idadeB: '35.5 (média)', salarioC: '2075 (mediana)', c: '#f97316' },
-    { name: 'Imputar por KNN (k=2)', idadeB: '≈36.0 (vizinhos)', salarioC: '≈2075 (vizinhos)', c: '#f97316' },
-  ];
-  return (
-    <div style={S.diagram}>
-      <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Dataset com Missing Values e Diferentes Estratégias de Imputação</p>
-      <div style={{ overflowX: 'auto' }}>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}>Cliente</th><th style={S.th}>Idade</th><th style={S.th}>Salário (€)</th></tr></thead>
-          <tbody>
-            {rows.map(r => (
-              <tr key={r.id}>
-                <td style={S.td}>{r.id}</td>
-                <td style={{ ...S.td, color: r.idade === '—' ? '#f97316' : 'var(--text-primary)', fontWeight: r.idade === '—' ? 700 : 400 }}>{r.idade}</td>
-                <td style={{ ...S.td, color: r.salario === '—' ? '#f97316' : 'var(--text-primary)', fontWeight: r.salario === '—' ? 700 : 400 }}>{r.salario}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: '0.75rem 0' }}>
-        A Idade do cliente B e o Salário do cliente C estão em falta (destacados a vermelho). Eis como cada
-        estratégia trata estes dois valores:
-      </p>
-      <div style={{ overflowX: 'auto' }}>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}>Estratégia</th><th style={S.th}>Idade de B</th><th style={S.th}>Salário de C</th></tr></thead>
-          <tbody>
-            {strategies.map(s => (
-              <tr key={s.name}>
-                <td style={{ ...S.td, fontWeight: 700, color: s.c }}>{s.name}</td>
-                <td style={S.td}>{s.idadeB}</td>
-                <td style={S.td}>{s.salarioC}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
-        Note como cada escolha tem um custo diferente: eliminar o registo perde toda a informação das outras
-        colunas desse cliente; imputar pela média/mediana é simples mas ignora a relação entre Idade e Salário
-        (alguém mais velho tende a ganhar mais); imputar por KNN usa os clientes mais semelhantes (vizinhos mais
-        próximos noutras features) para estimar um valor mais plausível.
-      </p>
-    </div>
-  );
 };
 
 // === Diagram: z-score vs IQR boundaries on a distribution ===
@@ -111,25 +51,25 @@ const OutlierBoundsDiagram = () => {
         <path d={path} fill="none" stroke="var(--text-secondary)" strokeWidth="2" />
 
         {/* IQR band */}
-        <rect x={iqrLow} y={pad} width={iqrHigh - iqrLow} height={h - 2 * pad} fill="rgba(249,115,22,0.5)" opacity="0.08" />
-        <line x1={iqrLow} y1={pad} x2={iqrLow} y2={h - pad} stroke="rgba(249,115,22,0.5)" strokeWidth="1.5" strokeDasharray="4,3" />
-        <line x1={iqrHigh} y1={pad} x2={iqrHigh} y2={h - pad} stroke="rgba(249,115,22,0.5)" strokeWidth="1.5" strokeDasharray="4,3" />
-        <text x={iqrLow} y={pad - 20} textAnchor="middle" fill="rgba(249,115,22,0.5)" fontSize="9" fontWeight="700">Q1-1.5·IQR</text>
-        <text x={iqrHigh} y={pad - 20} textAnchor="middle" fill="rgba(249,115,22,0.5)" fontSize="9" fontWeight="700">Q3+1.5·IQR</text>
+        <rect x={iqrLow} y={pad} width={iqrHigh - iqrLow} height={h - 2 * pad} fill="rgba(74,158,237,0.5)" opacity="0.08" />
+        <line x1={iqrLow} y1={pad} x2={iqrLow} y2={h - pad} stroke="rgba(74,158,237,0.5)" strokeWidth="1.5" strokeDasharray="4,3" />
+        <line x1={iqrHigh} y1={pad} x2={iqrHigh} y2={h - pad} stroke="rgba(74,158,237,0.5)" strokeWidth="1.5" strokeDasharray="4,3" />
+        <text x={iqrLow} y={pad - 20} textAnchor="middle" fill="rgba(74,158,237,0.5)" fontSize="9" fontWeight="700">Q1-1.5·IQR</text>
+        <text x={iqrHigh} y={pad - 20} textAnchor="middle" fill="rgba(74,158,237,0.5)" fontSize="9" fontWeight="700">Q3+1.5·IQR</text>
 
         {/* z-score bounds */}
-        <line x1={zLow} y1={pad} x2={zLow} y2={h - pad} stroke="#f97316" strokeWidth="1.5" strokeDasharray="2,2" />
-        <line x1={zHigh} y1={pad} x2={zHigh} y2={h - pad} stroke="#f97316" strokeWidth="1.5" strokeDasharray="2,2" />
-        <text x={zLow} y={pad - 6} textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">μ-3σ</text>
-        <text x={zHigh} y={pad - 6} textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">μ+3σ</text>
+        <line x1={zLow} y1={pad} x2={zLow} y2={h - pad} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="2,2" />
+        <line x1={zHigh} y1={pad} x2={zHigh} y2={h - pad} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="2,2" />
+        <text x={zLow} y={pad - 6} textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">μ-3σ</text>
+        <text x={zHigh} y={pad - 6} textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">μ+3σ</text>
 
         <text x={mean} y={h - pad + 16} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">μ (centro da distribuição)</text>
 
         {/* Outlier points */}
         {[zHigh + 25, zHigh + 45, pad + 5].map((x, i) => (
-          <circle key={i} cx={x} cy={h - pad - 6} r="4" fill="#f97316" />
+          <circle key={i} cx={x} cy={h - pad - 6} r="4" fill="#4a9eed" />
         ))}
-        <text x={zHigh + 35} y={h - pad - 16} textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">outliers</text>
+        <text x={zHigh + 35} y={h - pad - 16} textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">outliers</text>
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
         O critério de <strong>z-score</strong> (linhas vermelhas tracejadas) define como outlier qualquer ponto a
@@ -154,34 +94,34 @@ const CorrelationMatrixDiagram = () => {
     [-0.31, -0.22, -0.45, 1.00, -0.19],
     [0.08, 0.04, 0.51, -0.19, 1.00],
   ];
-  const cell = 78, off = 130;
+  const cell = 50, off = 60;
   const colorFor = (v) => {
     const a = Math.abs(v);
-    if (v > 0) return `rgba(249,115,22,0.10)`;
-    return `rgba(249,115,22,0.10)`;
+    if (v > 0) return `rgba(74,158,237,0.10)`;
+    return `rgba(74,158,237,0.10)`;
   };
   return (
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Matriz de Correlação — Identificar Redundância</p>
-      <svg viewBox={`0 0 ${off + cell * 5 + 10} ${off + cell * 5 + 10}`} style={{ maxWidth: '100%', height: 'auto' }}>
+      <svg viewBox={`0 0 ${off + cell * 5 + 10} ${off + cell * 5 + 10}`} style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: 380, height: 'auto' }}>
         {features.map((f, i) => (
-          <text key={'col' + i} x={off + i * cell + cell / 2} y={off - 10} textAnchor="middle" fill="var(--text-secondary)" fontSize="9" transform={`rotate(-30 ${off + i * cell + cell / 2} ${off - 10})`}>{f}</text>
+          <text key={'col' + i} x={off + (i + 1) * cell - 2} y={12} textAnchor="end" fill="var(--text-secondary)" fontSize="7" transform={`rotate(-45 ${off + (i + 1) * cell - 2} 12)`}>{f}</text>
         ))}
         {features.map((f, i) => (
-          <text key={'row' + i} x={off - 10} y={off + i * cell + cell / 2 + 4} textAnchor="end" fill="var(--text-secondary)" fontSize="9">{f}</text>
+          <text key={'row' + i} x={off - 8} y={off + i * cell + cell / 2 + 3} textAnchor="end" fill="var(--text-secondary)" fontSize="7">{f}</text>
         ))}
         {matrix.map((row, i) => row.map((v, j) => (
           <g key={`${i}-${j}`}>
             <rect x={off + j * cell} y={off + i * cell} width={cell - 2} height={cell - 2} fill={colorFor(v)} stroke="var(--text-secondary)" strokeWidth="0.5" />
-            <text x={off + j * cell + cell / 2} y={off + i * cell + cell / 2 + 4} textAnchor="middle" fill="var(--text-primary)" fontSize="11" fontWeight={Math.abs(v) >= 0.85 && i !== j ? 700 : 400}>{v.toFixed(2)}</text>
+            <text x={off + j * cell + cell / 2} y={off + i * cell + cell / 2 + 3} textAnchor="middle" fill="var(--text-primary)" fontSize="8" fontWeight={Math.abs(v) >= 0.85 && i !== j ? 700 : 400}>{v.toFixed(2)}</text>
           </g>
         )))}
         {/* Highlight redundant pair */}
-        <rect x={off} y={off + cell} width={cell - 2} height={cell - 2} fill="none" stroke="#f97316" strokeWidth="2.5" rx="4" />
-        <rect x={off + cell} y={off} width={cell - 2} height={cell - 2} fill="none" stroke="#f97316" strokeWidth="2.5" rx="4" />
+        <rect x={off} y={off + cell} width={cell - 2} height={cell - 2} fill="none" stroke="#4a9eed" strokeWidth="2.5" rx="4" />
+        <rect x={off + cell} y={off} width={cell - 2} height={cell - 2} fill="none" stroke="#4a9eed" strokeWidth="2.5" rx="4" />
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
-        <strong>Área (m²)</strong> e <strong>Nº Quartos</strong> têm correlação 0.86 (destacado a vermelho) —
+        <strong>Área (m²)</strong> e <strong>Nº Quartos</strong> têm correlação 0.86 (destacado a azul) —
         casas maiores tendem a ter mais quartos. São <strong>redundantes</strong>: manter ambas acrescenta pouca
         informação extra, mas aumenta a dimensionalidade e pode introduzir multicolinearidade em modelos
         lineares. Já <strong>Distância ao Centro</strong> tem correlações fracas com quase todas as outras
@@ -197,17 +137,17 @@ const SelectionPipelinesDiagram = () => {
   const pipelines = [
     {
       name: 'Filter',
-      c: '#f97316',
+      c: '#4a9eed',
       steps: ['Todas as\nfeatures', 'Score c/\ntarget\n(corr, MI)', 'Ranking +\nthreshold', 'Treinar\nmodelo'],
     },
     {
       name: 'Wrapper',
-      c: '#f97316',
+      c: '#4a9eed',
       steps: ['Subconjunto\nde features', 'Treinar\nmodelo', 'Avaliar\nperformance', 'Ajustar\nsubconjunto\n(repetir)'],
     },
     {
       name: 'Embedded',
-      c: '#f97316',
+      c: '#4a9eed',
       steps: ['Todas as\nfeatures', 'Treinar c/\nregularização\n(LASSO, RF)', 'Importância\né subproduto\ndo treino', 'Modelo\nfinal'],
     },
   ];
@@ -241,7 +181,7 @@ const SelectionPipelinesDiagram = () => {
                 );
               })}
               {pi === 1 && (
-                <path d={`M${70 + 3 * (boxW + gap) + boxW / 2} ${y + boxH} C ${70 + 3 * (boxW + gap) + boxW / 2 + 30} ${y + boxH + 25}, ${70 + boxW / 2 - 30} ${y + boxH + 25}, ${70 + boxW / 2} ${y + boxH + 2}`} fill="none" stroke="var(--text-secondary)" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arr-sel)" />
+                <path d={`M${70 + 3 * (boxW + gap) + boxW / 2} ${y + boxH} C ${70 + 3 * (boxW + gap) + boxW / 2 + 30} ${y + boxH + 15}, ${70 + boxW / 2 - 30} ${y + boxH + 15}, ${70 + boxW / 2} ${y + boxH + 2}`} fill="none" stroke="var(--text-secondary)" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arr-sel)" />
               )}
             </g>
           );
@@ -265,18 +205,6 @@ export default function DM5() {
       <Link to="/dm" style={S.back}><ArrowLeft size={16} /> Voltar a Data Mining</Link>
       <div style={S.tag}>MÓDULO 02</div>
       <h1 style={S.h1}>Preparação de Dados &amp; Feature Engineering</h1>
-      <p style={S.lead}>
-        A preparação de dados é, de forma consistente, a fase que consome mais tempo num projeto de Data
-        Mining — entre <strong>60% e 80%</strong> do esforço total, segundo a maioria dos estudos sobre o
-        ciclo de vida de projetos analíticos. Isto inclui tratar sinal vs. ruído, lidar com valores em falta,
-        detetar e tratar outliers, e discretizar variáveis contínuas. Mas preparar os dados não é só
-        "limpá-los": a <strong>qualidade das features</strong> que alimentam o modelo determina, em larga
-        medida, a qualidade do modelo final — por vezes mais do que a escolha do próprio algoritmo. Por isso,
-        este módulo combina a <strong>preparação de dados</strong> (sinal/ruído, missing values, outliers,
-        discretização) com o <strong>pré-processamento e feature engineering</strong> (redução do espaço de
-        features, seleção de features, criação de novas features, normalização, e uma breve introdução ao
-        PCA).
-      </p>
 
       {/* === SECTION 1: Sinal vs Ruído === */}
       <div style={S.section}>
@@ -345,22 +273,10 @@ export default function DM5() {
               ['Imputar com moda', 'Variáveis categóricas', 'Pode sobre-representar a categoria mais comum, distorcendo a distribuição'],
               ['Imputação por modelo (KNN, Regressão, Random Forest)', 'MCAR ou MAR; muitos missing; relações fortes com outras variáveis', 'Computacionalmente mais pesado; pode "inventar" relações que não existem se o modelo for mal ajustado'],
               ['Criar categoria "Desconhecido" / flag binária de missing', 'MNAR; a própria ausência é informativa', 'Aumenta a dimensionalidade; útil sobretudo em modelos baseados em árvores'],
-            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{c}</td></tr>)}
+            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{c}</td></tr>)}
           </tbody>
         </table>
 
-        <h3 style={S.h3}>Exemplo: Comparar Estratégias num Mini-Dataset</h3>
-        <p style={S.p}>
-          Considere o seguinte conjunto de 5 clientes, com a Idade do cliente B e o Salário do cliente C em
-          falta. A tabela abaixo mostra como diferentes estratégias de imputação preencheriam esses dois
-          valores:
-        </p>
-        <ImputationDiagram />
-        <div style={S.note}>
-          <strong>Regra geral:</strong> a imputação por média/mediana é a opção "default" segura para um
-          primeiro modelo (baseline), mas raramente é a melhor opção final — sempre que o tempo permitir, vale
-          a pena testar imputação por KNN ou por modelo, e comparar o impacto na performance final.
-        </div>
       </div>
 
       <hr style={S.divider} />
@@ -397,35 +313,6 @@ export default function DM5() {
 
         <OutlierBoundsDiagram />
 
-        <h3 style={S.h3}>Exemplo Numérico: Calcular os Limites IQR</h3>
-        <p style={S.p}>
-          Considere 9 valores de "tempo de permanência no site" (em minutos), já ordenados:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"2,\\ 3,\\ 4,\\ 4,\\ 5,\\ 6,\\ 6,\\ 7,\\ 32"} />
-        </div>
-        <p style={S.p}>
-          O valor 32 destaca-se claramente dos restantes. Para confirmar formalmente se é um outlier pelo
-          critério IQR:
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Passo a passo:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li><InlineMath math={"Q1"} /> (25º percentil, mediana da primeira metade): <InlineMath math={"Q1 = 4"} /></li>
-            <li><InlineMath math={"Q3"} /> (75º percentil, mediana da segunda metade): <InlineMath math={"Q3 = 6"} /></li>
-            <li><InlineMath math={"IQR = Q3 - Q1 = 6 - 4 = 2"} /></li>
-            <li>Limite inferior: <InlineMath math={"Q1 - 1.5 \\times IQR = 4 - 3 = 1"} /></li>
-            <li>Limite superior: <InlineMath math={"Q3 + 1.5 \\times IQR = 6 + 3 = 9"} /></li>
-          </ul>
-        
-        <p style={S.p}>
-          Como <InlineMath math={"32 > 9"} />, o valor 32 é classificado como outlier pelo critério IQR. Se
-          calculássemos o z-score usando a média (≈ 7.7) e o desvio-padrão (≈ 9.1) deste pequeno conjunto, o
-          próprio outlier "infla" o desvio-padrão (<InlineMath math={"z = (32-7.7)/9.1 \\approx 2.67"} />), o que
-          poderia ficar abaixo do limiar de 3 e <strong>não</strong> ser detetado — ilustrando exatamente a
-          fragilidade do z-score em amostras pequenas ou muito assimétricas.
-        </p>
-
         <h3 style={S.h3}>Tratamento</h3>
         <div style={S.note}><strong>Capping (Winsorizing):</strong> Em vez de remover outliers, substituí-los
           pelo valor do percentil 1% ou 99% (ou pelos limites IQR). Mantém todos os registos (preservando o
@@ -454,47 +341,10 @@ export default function DM5() {
               ['Não Supervisionada', 'Equal-Frequency (Equal-Depth): bins com igual número de observações', 'Distribuição uniforme entre bins; lida melhor com distribuições assimétricas'],
               ['Supervisionada', 'Baseada em Entropia (Information Gain) — escolhe os cortes que melhor separam as classes', 'Maximiza a discriminação entre classes; bins refletem a relação com o target'],
               ['Supervisionada', 'Chi-merge: agrupa iterativamente bins adjacentes com distribuições de classe estatisticamente similares', 'Estatisticamente fundamentada; reduz nº de bins sem perder poder discriminativo'],
-            ].map(([a, b, c]) => <tr key={b}><td style={{ ...S.td, color: a === 'Supervisionada' ? '#f97316' : color, fontWeight: 600 }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c}</td></tr>)}
+            ].map(([a, b, c]) => <tr key={b}><td style={{ ...S.td, color: a === 'Supervisionada' ? '#4a9eed' : color, fontWeight: 600 }}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c}</td></tr>)}
           </tbody>
         </table>
 
-        <h3 style={S.h3}>Exemplo Numérico: Discretizar a Idade em 3 Bins</h3>
-        <p style={S.p}>
-          Suponha 10 clientes com as seguintes idades, ordenadas, e um indicador binário de "comprou produto
-          premium" (Sim/Não):
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Idade</th>{['18','22','25','30','35','40','45','55','60','65'].map(a => <th key={a} style={{ ...S.th, textAlign: 'center' }}>{a}</th>)}</tr></thead>
-            <tbody>
-              <tr>
-                <td style={{ ...S.td, fontWeight: 700 }}>Comprou Premium?</td>
-                {['Não','Não','Não','Não','Sim','Não','Sim','Sim','Sim','Sim'].map((v, i) => (
-                  <td key={i} style={{ ...S.td, textAlign: 'center', color: v === 'Sim' ? '#f97316' : 'var(--text-secondary)', fontWeight: v === 'Sim' ? 700 : 400 }}>{v}</td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}>Método</th><th style={S.th}>Bins resultantes (3 bins)</th><th style={S.th}>Comentário</th></tr></thead>
-          <tbody>
-            {[
-              ['Equal-Width', '[18–34], [34–50], [50–65] — largura ≈ 15.7 cada', 'Bins de tamanho igual em idade, mas o nº de clientes por bin varia (4, 3, 3)'],
-              ['Equal-Frequency', '[18–28], [30–43], [45–65] — cada bin com ≈ 3–4 clientes', 'Cada bin tem aproximadamente o mesmo nº de observações, mas larguras desiguais'],
-              ['Entropia (supervisionada)', '[18–32], [32–47], [47–65]', 'Os cortes são escolhidos para maximizar a separação entre "Sim" e "Não" — o 1º bin é quase todo "Não", o 3º quase todo "Sim"'],
-            ].map(([a, b, c]) => (
-              <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{b}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c}</td></tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.note}>
-          Note como a discretização por entropia produz bins alinhados com a variável target — o primeiro bin
-          (idades 18–32) contém sobretudo clientes que não compraram o produto premium, enquanto o último (47–65)
-          contém sobretudo clientes que compraram. Isto torna a variável discretizada altamente informativa para
-          um classificador, mas tem o risco de <em>overfitting</em> ao conjunto de treino específico — os cortes
-          devem ser determinados apenas nos dados de treino.
-        </div>
       </div>
 
       <hr style={S.divider} />
@@ -558,33 +408,6 @@ export default function DM5() {
         </table>
         <SelectionPipelinesDiagram />
 
-        <h3 style={S.h3}>Exemplo: Filtro de Correlação em 5 Features</h3>
-        <p style={S.p}>
-          Suponha que, num problema de previsão de "Preço de Venda" de uma casa, calculamos a correlação de
-          Pearson de 5 features candidatas com o target:
-        </p>
-        <table style={S.table}>
-          <thead><tr><th style={S.th}>Feature</th><th style={S.th}>Correlação com Target</th><th style={S.th}>Decisão (threshold |r| ≥ 0.2)</th></tr></thead>
-          <tbody>
-            {[
-              ['Área (m²)', '0.78', 'Manter — forte relação com o preço'],
-              ['Nº Quartos', '0.71', 'Avaliar redundância com "Área" (correlação entre si = 0.86, ver secção 5) — manter apenas uma, ou combinar'],
-              ['Distância ao Centro', '0.34', 'Manter — relação moderada e razoavelmente independente das outras'],
-              ['Cor da Porta', '0.02', 'Remover — irrelevante para o preço'],
-              ['Ano de Construção', '0.41', 'Manter — relação moderada com o preço'],
-            ].map(([a, b, c]) => (
-              <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{b}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c}</td></tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.note}>
-          Este exemplo ilustra também a limitação dos métodos <em>filter</em>: "Cor da Porta" tem correlação
-          quase nula com o preço de venda — mas, em combinação com "Bairro", poderia revelar um padrão (ex.:
-          casas com portas de cor X em bairros premium tendem a ser renovações recentes). Um método
-          <em> filter</em> baseado em correlação individual não deteta este tipo de sinergia — só métodos
-          <em> wrapper</em> ou certos métodos <em>embedded</em> (ex.: interações em árvores) o conseguem captar.
-          Melhores features individuais nem sempre formam o melhor conjunto.
-        </div>
       </div>
 
       <hr style={S.divider} />
@@ -655,42 +478,14 @@ export default function DM5() {
           <thead><tr><th style={S.th}>Método</th><th style={S.th}>Fórmula</th><th style={S.th}>Quando usar</th></tr></thead>
           <tbody>
             {[
-              ['Padronização (Z-score)', 'z = (x - μ) / σ', 'Algoritmos baseados em distância (KNN, SVM, PCA) e gradiente; resulta em média 0 e desvio-padrão 1'],
-              ['Min-Max Scaling', 'x\' = (x - min) / (max - min)', 'Redes neuronais; quando se quer garantir uma escala fixa [0,1]'],
-              ['Robust Scaling', 'x\' = (x - Q2) / IQR', 'Dados com outliers — usa mediana e IQR (estatísticas robustas) em vez de média e desvio-padrão'],
-              ['Log Transform', 'x\' = log(x)', 'Distribuições muito assimétricas à direita (rendimentos, preços, contagens)'],
-            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{b}</td><td style={S.td}>{c}</td></tr>)}
+              ['Padronização (Z-score)', 'z = \\dfrac{x - \\mu}{\\sigma}', 'Algoritmos baseados em distância (KNN, SVM, PCA) e gradiente; resulta em média 0 e desvio-padrão 1'],
+              ['Min-Max Scaling', "x' = \\dfrac{x - min}{max - min}", 'Redes neuronais; quando se quer garantir uma escala fixa [0,1]'],
+              ['Robust Scaling', "x' = \\dfrac{x - Q_2}{IQR}", 'Dados com outliers — usa mediana e IQR (estatísticas robustas) em vez de média e desvio-padrão'],
+              ['Log Transform', "x' = \\log(x)", 'Distribuições muito assimétricas à direita (rendimentos, preços, contagens)'],
+            ].map(([a, b, c]) => <tr key={a}><td style={{ ...S.td, fontWeight: 700, color }}>{a}</td><td style={S.td}><InlineMath math={b} /></td><td style={S.td}>{c}</td></tr>)}
           </tbody>
         </table>
 
-        <h3 style={S.h3}>Exemplo Numérico: Padronizar e Normalizar um Array</h3>
-        <p style={S.p}>
-          Considere os valores de "rendimento mensal" (em centenas de euros) de 5 clientes:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"x = [10,\\ 12,\\ 14,\\ 16,\\ 18]"} />
-        </div>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Padronização (Z-score):</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-            <li>Média: <InlineMath math={"\\mu = (10+12+14+16+18)/5 = 14"} /></li>
-            <li>Desvio-padrão (populacional): <InlineMath math={"\\sigma = \\sqrt{(16+4+0+4+16)/5} = \\sqrt{8} \\approx 2.83"} /></li>
-            <li>Valores padronizados: <InlineMath math={"z = (x-14)/2.83 \\approx [-1.41,\\ -0.71,\\ 0,\\ 0.71,\\ 1.41]"} /></li>
-          </ul>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Min-Max Scaling:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Mínimo = 10, Máximo = 18, amplitude = 8</li>
-            <li>Valores escalados: <InlineMath math={"x' = (x-10)/8 = [0,\\ 0.25,\\ 0.5,\\ 0.75,\\ 1.0]"} /></li>
-          </ul>
-        
-        <p style={S.p}>
-          Note como ambas as transformações preservam a <strong>ordem relativa</strong> e as proporções entre os
-          valores, mas em escalas diferentes: a padronização centra os dados em 0 com unidades de
-          desvio-padrão (útil quando queremos comparar a "distância relativa à média" entre variáveis com
-          escalas muito diferentes), enquanto o min-max comprime tudo para o intervalo [0,1] — útil quando um
-          algoritmo (ex.: redes neuronais com funções de ativação como sigmoid) espera inputs num intervalo
-          limitado.
-        </p>
         <div style={S.note}>
           Árvores de decisão e Random Forests <strong>não</strong> precisam de normalização — são invariantes a
           transformações monotónicas das features (uma árvore que decide "x &gt; 5" decide igualmente "x' &gt; 0.5"
@@ -706,62 +501,6 @@ export default function DM5() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* === SECTION 9: PCA breve introdução === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. PCA — Breve Introdução</h2>
-        <p style={S.p}>
-          O PCA (<em>Principal Component Analysis</em>) é uma técnica de redução de dimensionalidade que
-          projeta os dados originais numa nova base de vetores ortogonais (as <em>componentes principais</em>),
-          ordenados por quanto da variância total dos dados conseguem explicar. Aqui apresentamos apenas o
-          esqueleto do algoritmo — a intuição e o "para que serve" — sem entrar em detalhe matemático.
-        </p>
-        <div style={S.diagram}>
-          <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Algoritmo PCA (resumo)</p>
-          {[
-            ['1', 'Padronizar os dados', 'Média=0 e Desvio Padrão=1 para cada feature'],
-            ['2', 'Calcular a matriz de covariância', 'Σ = (1/n) XᵀX'],
-            ['3', 'Eigendecomposição', 'Σ = VΛVᵀ → eigenvectors V, eigenvalues λ'],
-            ['4', 'Ordenar por eigenvalue descendente', 'Componentes com maior variância primeiro'],
-            ['5', 'Selecionar k componentes', 'Critério: variância explicada acumulada ≥ 95%'],
-            ['6', 'Projetar dados', 'Z = XV_k (n × k)'],
-          ].map(([n, t, d]) => (
-            <div key={n} style={{ display: 'flex', gap: '1rem', marginBottom: '0.6rem', alignItems: 'flex-start' }}>
-              <div style={{ background: color, color: 'white', borderRadius: '50%', width: 26, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>{n}</div>
-              <div><span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.88rem' }}>{t}: </span><span style={{ color: 'var(--text-secondary)', fontFamily: 'monospace', fontSize: '0.82rem' }}>{d}</span></div>
-            </div>
-          ))}
-        </div>
-        <div style={S.highlight}>
-          <strong>Atenção:</strong> PCA preserva variância, não separabilidade de classes. Uma componente com
-          alta variância pode ser irrelevante para classificação. Para classificação, considerar LDA (Linear
-          Discriminant Analysis), que maximiza a separação entre classes em vez da variância total.
-        </div>
-        <div style={S.note}>
-          A matemática completa do PCA (eigendecomposição, variância explicada, scree plots) — assim como
-          outras técnicas de redução de dimensionalidade como t-SNE e UMAP — é tratada em profundidade no
-          Módulo sobre Redução de Dimensionalidade. Aqui basta reter a ideia central: PCA cria novas features
-          (combinações lineares das originais) que concentram o máximo de variância possível em poucas
-          dimensões, depois de padronizar os dados.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>10. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Sinal vs. Ruído</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Missing Values</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Outliers — Deteção e Tratamento</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Discretização</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Redução do Espaço de Features</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Feature Selection</strong> — conceito central desta lecture.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Feature Engineering — Criação de Novas Features</strong> — conceito central desta lecture.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,8 +15,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -28,9 +28,6 @@ export default function RDB2() {
 
       <div style={S.tag}>MÓDULO 2</div>
       <h1 style={S.h1}>Arquitectura DBMS e Modelo Entidade-Relacionamento</h1>
-      <p style={S.lead}>
-        Compreender como um SGBD está organizado internamente e como modelar a realidade através do modelo E-R são as bases do design de bases de dados relacionais robustas e eficientes.
-      </p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Arquitectura DBMS</h2>
@@ -168,20 +165,6 @@ ALTER TABLE Produto
   ADD CONSTRAINT chk_preco CHECK (preco > 0);`}</div>
       </div>
 
-      <hr style={S.divider} />
-
-      <div style={S.section}>
-        <h2 style={S.h2}>6. Síntese</h2>
-        <div style={{ ...S.highlight, borderColor: color }}>
-          <ul style={{ margin: '0 0 0 1.2rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-            <li>Um SGBD é composto por storage engine, query processor, transaction manager, buffer pool e log manager.</li>
-            <li>O modelo E-R representa entidades, atributos e relacionamentos com cardinalidades 1:1, 1:N e N:M.</li>
-            <li>O mapeamento E-R→Relacional transforma entidades em tabelas e relacionamentos N:M em tabelas de associação.</li>
-            <li>Chaves surrogates evitam problemas de mutabilidade; chaves naturais têm semântica de negócio.</li>
-            <li>A integridade de entidade, referencial e de domínio são as três camadas de consistência garantidas pelo SGBD.</li>
-          </ul>
-        </div>
-      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH1() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[0].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[0].title}</h1>
-      <p style={S.sub}>{modules[0].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -52,37 +51,37 @@ export default function ETH1() {
 
             {/* Developers - top left */}
             <line x1="206" y1="140" x2="130" y2="80" stroke={C} strokeWidth="1.5" strokeOpacity="0.5" />
-            <ellipse cx="100" cy="68" rx="52" ry="24" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="100" cy="68" rx="52" ry="24" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="100" y="63" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Desenvol-</text>
             <text x="100" y="77" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">vedores</text>
 
             {/* Empresas - top right */}
             <line x1="314" y1="140" x2="390" y2="80" stroke={C} strokeWidth="1.5" strokeOpacity="0.5" />
-            <ellipse cx="420" cy="68" rx="52" ry="24" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="420" cy="68" rx="52" ry="24" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="420" y="63" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Empresas</text>
             <text x="420" y="77" textAnchor="middle" fill="#94a3b8" fontSize="9">deploy &amp; funding</text>
 
             {/* Reguladores - left */}
             <line x1="200" y1="160" x2="80" y2="160" stroke={C} strokeWidth="1.5" strokeOpacity="0.5" />
-            <ellipse cx="48" cy="160" rx="44" ry="24" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="48" cy="160" rx="44" ry="24" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="48" y="155" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Regula-</text>
             <text x="48" y="169" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">dores</text>
 
             {/* Utilizadores - bottom left */}
             <line x1="210" y1="182" x2="130" y2="240" stroke={C} strokeWidth="1.5" strokeOpacity="0.5" />
-            <ellipse cx="100" cy="254" rx="52" ry="24" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="100" cy="254" rx="52" ry="24" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="100" y="249" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Utilizadores</text>
             <text x="100" y="263" textAnchor="middle" fill="#94a3b8" fontSize="9">finais</text>
 
             {/* Sociedade Civil - bottom right */}
             <line x1="310" y1="182" x2="390" y2="240" stroke={C} strokeWidth="1.5" strokeOpacity="0.5" />
-            <ellipse cx="420" cy="254" rx="52" ry="24" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="420" cy="254" rx="52" ry="24" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="420" y="249" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Sociedade</text>
             <text x="420" y="263" textAnchor="middle" fill="#94a3b8" fontSize="9">Civil</text>
 
             {/* Reguladores right side */}
             <line x1="320" y1="160" x2="440" y2="160" stroke={C} strokeWidth="1.5" strokeOpacity="0.5" />
-            <ellipse cx="472" cy="160" rx="44" ry="24" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="472" cy="160" rx="44" ry="24" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="472" y="155" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Academia</text>
             <text x="472" y="169" textAnchor="middle" fill="#94a3b8" fontSize="9">&amp; ONGs</text>
           </svg>
@@ -113,7 +112,7 @@ export default function ETH1() {
           <svg viewBox="0 0 480 260" width="100%" style={{ display: 'block' }}>
             {/* Grid 2x2 */}
             {/* Top-left: Utilitarismo */}
-            <rect x="10" y="10" width="220" height="110" rx="8" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <rect x="10" y="10" width="220" height="110" rx="8" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="120" y="38" textAnchor="middle" fill={C} fontSize="12" fontWeight="700">Utilitarismo</text>
             <text x="120" y="58" textAnchor="middle" fill="#94a3b8" fontSize="10">Maximizar bem-estar</text>
             <text x="120" y="74" textAnchor="middle" fill="#94a3b8" fontSize="10">agregado</text>
@@ -121,7 +120,7 @@ export default function ETH1() {
             <text x="120" y="108" textAnchor="middle" fill="#64748b" fontSize="9">→ Cost-benefit analysis</text>
 
             {/* Top-right: Deontologia */}
-            <rect x="250" y="10" width="220" height="110" rx="8" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <rect x="250" y="10" width="220" height="110" rx="8" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="360" y="38" textAnchor="middle" fill={C} fontSize="12" fontWeight="700">Deontologia</text>
             <text x="360" y="58" textAnchor="middle" fill="#94a3b8" fontSize="10">Imperativos categóricos</text>
             <text x="360" y="74" textAnchor="middle" fill="#94a3b8" fontSize="10">Direitos invioláveis</text>
@@ -129,7 +128,7 @@ export default function ETH1() {
             <text x="360" y="108" textAnchor="middle" fill="#64748b" fontSize="9">→ Privacidade como direito</text>
 
             {/* Bottom-left: Virtue Ethics */}
-            <rect x="10" y="140" width="220" height="110" rx="8" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <rect x="10" y="140" width="220" height="110" rx="8" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="120" y="168" textAnchor="middle" fill={C} fontSize="12" fontWeight="700">Virtue Ethics</text>
             <text x="120" y="188" textAnchor="middle" fill="#94a3b8" fontSize="10">Carácter do agente</text>
             <text x="120" y="204" textAnchor="middle" fill="#94a3b8" fontSize="10">Cultura organizacional</text>
@@ -137,7 +136,7 @@ export default function ETH1() {
             <text x="120" y="238" textAnchor="middle" fill="#64748b" fontSize="9">→ Ética como prática</text>
 
             {/* Bottom-right: Contratualismo */}
-            <rect x="250" y="140" width="220" height="110" rx="8" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <rect x="250" y="140" width="220" height="110" rx="8" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="360" y="168" textAnchor="middle" fill={C} fontSize="12" fontWeight="700">Contratualismo</text>
             <text x="360" y="188" textAnchor="middle" fill="#94a3b8" fontSize="10">Véu da ignorância</text>
             <text x="360" y="204" textAnchor="middle" fill="#94a3b8" fontSize="10">Equidade estrutural</text>
@@ -203,8 +202,8 @@ export default function ETH1() {
         <div style={S.diagram}>
           <svg viewBox="0 0 480 200" width="100%" style={{ display: 'block' }}>
             {/* Road */}
-            <rect x="0" y="90" width="480" height="30" fill="rgba(249,115,22,0.08)" />
-            <line x1="0" y1="105" x2="480" y2="105" stroke="rgba(249,115,22,0.3)" strokeWidth="1" strokeDasharray="20,10" />
+            <rect x="0" y="90" width="480" height="30" fill="rgba(74,158,237,0.08)" />
+            <line x1="0" y1="105" x2="480" y2="105" stroke="rgba(74,158,237,0.3)" strokeWidth="1" strokeDasharray="20,10" />
 
             {/* Fork */}
             <line x1="200" y1="60" x2="200" y2="90" stroke="#475569" strokeWidth="3" />
@@ -216,13 +215,13 @@ export default function ETH1() {
             <text x="200" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700">AV</text>
 
             {/* Pedestrians path 1 */}
-            <circle cx="100" cy="12" r="8" fill="#f97316" opacity="0.8" />
-            <circle cx="85" cy="12" r="8" fill="#f97316" opacity="0.8" />
-            <circle cx="115" cy="12" r="8" fill="#f97316" opacity="0.8" />
+            <circle cx="100" cy="12" r="8" fill="#4a9eed" opacity="0.8" />
+            <circle cx="85" cy="12" r="8" fill="#4a9eed" opacity="0.8" />
+            <circle cx="115" cy="12" r="8" fill="#4a9eed" opacity="0.8" />
             <text x="100" y="35" textAnchor="middle" fill="#94a3b8" fontSize="9">3 pedestres</text>
 
             {/* Passenger path 2 */}
-            <circle cx="300" cy="12" r="8" fill="#f59e0b" opacity="0.8" />
+            <circle cx="300" cy="12" r="8" fill="#0284c7" opacity="0.8" />
             <text x="300" y="35" textAnchor="middle" fill="#94a3b8" fontSize="9">1 passageiro</text>
 
             {/* Question */}
@@ -231,18 +230,7 @@ export default function ETH1() {
           </svg>
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Stakeholders em IA</strong> — os sistemas de IA afetam múltiplos grupos: programadores, empresas, utilizadores diretos, populações afetadas indiretamente e a sociedade em geral; mapear estes stakeholders é o primeiro passo para identificar quem beneficia e quem pode ser prejudicado por uma decisão algorítmica.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Frameworks Éticos</strong> — abordagens como o utilitarismo (maximizar bem-estar agregado), a deontologia (respeitar deveres e direitos independentemente dos resultados) e a ética das virtudes (focar no carácter do agente) fornecem lentes complementares para avaliar o impacto moral dos sistemas de IA.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Casos Históricos</strong> — incidentes como o algoritmo COMPAS (discriminação racial na justiça criminal), o escândalo do Cambridge Analytica e os acidentes com veículos autónomos ilustram como falhas éticas em IA têm consequências reais e serviram para moldar regulação e práticas da indústria.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Dilemas de Design</strong> — os engenheiros de IA deparam-se frequentemente com escolhas de difícil resolução, como o dilema do elétrico aplicado a veículos autónomos ou a tensão entre precisão individual e equidade grupal; estas situações mostram que as opções técnicas incorporam inevitavelmente julgamentos de valor.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

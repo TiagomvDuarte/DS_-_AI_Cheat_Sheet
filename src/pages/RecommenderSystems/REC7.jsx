@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './RecommenderSystems';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -10,7 +10,7 @@ const S = {
   h1: { fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.4rem' },
   sub: { color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' },
   section: { marginBottom: '2.5rem' },
-  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, marginBottom: '1rem' },
+  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, borderLeft: `3px solid ${C}`, paddingLeft: '0.85rem', marginBottom: '1rem' },
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
@@ -24,7 +24,6 @@ export default function REC7() {
       <Link to="/recommender" style={S.back}>← Recommender Systems</Link>
       <div style={S.badge}>MÓDULO {modules[6].num}</div>
       <h1 style={S.h1}>{modules[6].title}</h1>
-      <p style={S.sub}>{modules[6].subtitle}</p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Formulação como Reinforcement Learning</h2>
@@ -46,12 +45,12 @@ export default function REC7() {
             <text x="75" y="88" textAnchor="middle" fill="#94a3b8" fontSize="9">histórico +</text>
             <text x="75" y="100" textAnchor="middle" fill="#94a3b8" fontSize="9">contexto</text>
             {/* Agent box */}
-            <rect x="195" y="50" width="110" height="60" rx="8" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="195" y="50" width="110" height="60" rx="8" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="250" y="75" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="700">Agente</text>
             <text x="250" y="88" textAnchor="middle" fill="#94a3b8" fontSize="9">RecSys</text>
             <text x="250" y="100" textAnchor="middle" fill="#94a3b8" fontSize="9">π(a|s)</text>
             {/* Environment box */}
-            <rect x="370" y="50" width="110" height="60" rx="8" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="370" y="50" width="110" height="60" rx="8" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="425" y="75" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="700">Ambiente</text>
             <text x="425" y="88" textAnchor="middle" fill="#94a3b8" fontSize="9">Utilizador</text>
             <text x="425" y="100" textAnchor="middle" fill="#94a3b8" fontSize="9">reage ao item</text>
@@ -168,18 +167,7 @@ export default function REC7() {
           Em produção: JD.com usa RL para RecSys de e-commerce; a Alibaba usa REINFORCE para otimizar anúncios; a Google aplica RL no YouTube para maximizar o tempo de visionamento a longo prazo em vez de apenas o próximo clique. Todos enfrentam o mesmo trade-off fundamental: exploração (descobrir preferências novas) vs. exploração (maximizar satisfação conhecida).
         </p>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Formulação como Reinforcement Learning</strong> — RecSys como MDP: estado = histórico do utilizador, acção = item recomendado, recompensa = clique/compra/retenção; RL optimiza a longo prazo (LTV) em vez de CTR imediato, evitando armadilhas de engagement local.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Multi-Armed Bandits</strong> — modelam exploração-exploração em recomendação: ε-greedy explora aleatoriamente; UCB1 e Thompson Sampling exploram proporcionalmente à incerteza — adequados para catálogos pequenos ou novas features sem dados históricos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Deep Q-Network para RecSys</strong> — DQN aprende uma função Q(estado, item) que estima o valor cumulativo de recomendar cada item no estado actual; experience replay e target networks estabilizam o treino neste contexto de dados não-estacionários.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Actor-Critic e Offline RL</strong> — Actor-Critic (DDPG, TD3) é mais estável que DQN em espaços de acção contínuos (embeddings); offline RL (CQL, IQL) treina em dados históricos fixos sem interacção com o ambiente — essencial quando A/B tests são caros.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -33,13 +33,6 @@ export default function RL1() {
 
       <div style={S.tag}>MÓDULO 1</div>
       <h1 style={S.h1}>Introdução ao Reinforcement Learning</h1>
-      <p style={S.lead}>
-        Reinforcement Learning (RL) é um paradigma de aprendizagem em que um agente aprende a tomar decisões
-        através da interação com o ambiente, recebendo sinais de recompensa. Diferente do supervised learning
-        (sem labels a cada passo) e do unsupervised learning (tem um objetivo de maximização), o RL é guiado
-        por recompensas escalares e consequências diferidas. Neste módulo estabelecemos o vocabulário, as
-        definições formais e a intuição que sustentam todos os módulos seguintes.
-      </p>
 
       {/* ── Section 1 ── */}
       <div style={S.section}>
@@ -103,7 +96,7 @@ export default function RL1() {
                 <text x="195" y="50" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Modelo</text>
                 <rect x="150" y="90" width="90" height="36" rx="7" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5"/>
                 <text x="195" y="112" textAnchor="middle" fontSize="11" fill="var(--text-primary)">Predição ŷ</text>
-                <rect x="30" y="90" width="90" height="36" rx="7" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5"/>
+                <rect x="30" y="90" width="90" height="36" rx="7" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5"/>
                 <text x="75" y="112" textAnchor="middle" fontSize="11" fill={color}>Loss (y − ŷ)</text>
                 <line x1="120" y1="46" x2="150" y2="46" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr1)"/>
                 <line x1="195" y1="64" x2="195" y2="90" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr1)"/>
@@ -189,7 +182,7 @@ export default function RL1() {
         <div style={S.diagram}>
           <svg viewBox="0 0 700 180" width="100%" style={{ display: 'block' }}>
             {/* Agent box */}
-            <rect x="60" y="60" width="160" height="60" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2"/>
+            <rect x="60" y="60" width="160" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2"/>
             <text x="140" y="86" textAnchor="middle" fontSize="14" fontWeight="700" fill={color}>Agente</text>
             <text x="140" y="104" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">π(a | s)</text>
 
@@ -548,14 +541,14 @@ export default function RL1() {
               Usado como baseline em algoritmos Actor-Critic.
             </p>
           </div>
-          
+          <div style={S.highlight}>
             <p style={{ fontWeight: 700, color, margin: 0, marginBottom: '0.4rem' }}>Q(s,a) — avalia pares estado-ação</p>
             <p style={{ fontSize: '0.88rem', margin: 0, lineHeight: 1.6, color: 'var(--text-primary)' }}>
               Permite selecionar ações sem modelo do ambiente:
               <InlineMath math="\pi(s) = \arg\max_a Q(s,a)" />.
               Base do DQN e variantes.
             </p>
-          
+          </div>
         </div>
         <div style={S.note}>
           A relação entre V e Q é: <InlineMath math="V^\pi(s) = \sum_a \pi(a|s)\, Q^\pi(s,a)" />.
@@ -574,7 +567,7 @@ export default function RL1() {
           do RL. O agente deve constantemente decidir entre:
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', margin: '1rem 0 1.5rem' }}>
-          <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
+          <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
             <p style={{ fontWeight: 700, color, margin: 0, marginBottom: '0.5rem' }}>Exploitation (Exploitação)</p>
             <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.6, color: 'var(--text-primary)' }}>
               Usar o conhecimento atual para maximizar a recompensa imediata.
@@ -714,26 +707,6 @@ export default function RL1() {
           onde cada interação tem custo).
         </p>
 
-        <h3 style={S.h3}>Roteiro do Curso</h3>
-        <div style={S.diagram}>
-          <p style={{ fontWeight: 700, marginBottom: '1rem', margin: 0, color: 'var(--text-primary)' }}>Onde estamos e para onde vamos:</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginTop: '1rem' }}>
-            {[
-              { mod: 'Módulo 01', title: 'Introdução ao RL', current: true, desc: 'Vocabulário, ciclo agente-ambiente, reward hypothesis' },
-              { mod: 'Módulo 02', title: 'MDPs e Bellman', current: false, desc: 'Formalismo MDP, equações de Bellman, V* e Q*' },
-              { mod: 'Módulo 03', title: 'Dynamic Programming', current: false, desc: 'Policy Evaluation, Policy Iteration, Value Iteration' },
-              { mod: 'Módulo 04', title: 'Model-Free Prediction', current: false, desc: 'Monte Carlo, TD(0), TD(λ)' },
-              { mod: 'Módulo 05', title: 'Model-Free Control', current: false, desc: 'SARSA, Q-Learning, bandit algorithms' },
-              { mod: 'Módulo 06+', title: 'Deep RL', current: false, desc: 'DQN, Policy Gradients, PPO, Actor-Critic' },
-            ].map(({ mod, title, current, desc }) => (
-              <div key={mod} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0.75rem', borderRadius: 6, background: current ? 'rgba(249,115,22,0.10)' : 'transparent', border: current ? `1px solid rgba(249,115,22,0.10)` : '1px solid transparent' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: current ? color : 'var(--text-secondary)', minWidth: 80 }}>{mod}</span>
-                <span style={{ fontSize: '0.88rem', fontWeight: 600, color: current ? color : 'var(--text-primary)', minWidth: 160 }}>{title}</span>
-                <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{desc}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       <hr style={S.divider} />
@@ -806,48 +779,6 @@ export default function RL1() {
           impacto imediato e massivo em sistemas físicos complexos do mundo real.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ── Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        
-          <p style={{ fontWeight: 700, color, margin: 0, marginBottom: '0.75rem' }}>Conceitos-chave a reter:</p>
-          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-            <li style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              RL é um paradigma de <strong>decisão sequencial sob incerteza</strong>: um agente interage com
-              um ambiente, recebendo recompensas escalares diferidas — fundamentalmente diferente do supervised
-              (sinal instrutivo) e do unsupervised (sem sinal externo).
-            </li>
-            <li style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              O ciclo agente-ambiente produz trajetórias <InlineMath math="(S_t, A_t, R_{t+1}, S_{t+1}, \ldots)" />.
-              O agente observa estados, toma ações, e o ambiente responde com novo estado e recompensa.
-            </li>
-            <li style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              A <strong>Reward Hypothesis</strong> (Sutton): qualquer objetivo pode ser formulado como
-              maximização do retorno cumulativo esperado <InlineMath math="G_t = \sum_{k=0}^\infty \gamma^k R_{t+k+1}" />.
-            </li>
-            <li style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              O <strong>fator de desconto</strong> <InlineMath math="\gamma \in [0,1]" /> controla o horizonte
-              temporal: <InlineMath math="\gamma = 0" /> (míope) a <InlineMath math="\gamma \to 1" /> (far-sighted).
-            </li>
-            <li style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              A <strong>política</strong> <InlineMath math="\pi(a|s)" /> define o comportamento do agente.
-              As <strong>funções de valor</strong> <InlineMath math="V^\pi(s)" /> e <InlineMath math="Q^\pi(s,a)" /> quantificam o retorno esperado a partir de um estado ou par estado-ação.
-            </li>
-            <li style={{ marginBottom: '0.6rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              O dilema <strong>exploração vs exploitação</strong> é central: sem exploração suficiente,
-              o agente fica preso em ótimos locais; sem exploitação, nunca aproveita o conhecimento adquirido.
-              ε-greedy é a solução mais simples.
-            </li>
-            <li style={{ color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              Agentes podem ser <strong>model-free</strong> (aprendem diretamente da experiência) ou
-              <strong> model-based</strong> (mantêm modelo interno do ambiente para planeamento).
-            </li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

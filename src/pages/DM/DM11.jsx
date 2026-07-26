@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -51,8 +51,8 @@ const SOMArchitectureDiagram = () => {
           const isBMU = r === 1 && c === 3;
           return (
             <g key={`${r}-${c}`}>
-              <rect x={cx} y={cy} width={cell} height={cell} fill={isBMU ? '#f9731625' : 'var(--bg-primary)'} stroke={isBMU ? '#f97316' : 'var(--card-border)'} strokeWidth={isBMU ? 2.5 : 1} />
-              <circle cx={cx + cell / 2} cy={cy + cell / 2} r="3" fill={isBMU ? '#f97316' : color} opacity={isBMU ? 1 : 0.6} />
+              <rect x={cx} y={cy} width={cell} height={cell} fill={isBMU ? '#4a9eed25' : 'var(--bg-primary)'} stroke={isBMU ? '#4a9eed' : 'var(--card-border)'} strokeWidth={isBMU ? 2.5 : 1} />
+              <circle cx={cx + cell / 2} cy={cy + cell / 2} r="3" fill={isBMU ? '#4a9eed' : color} opacity={isBMU ? 1 : 0.6} />
             </g>
           );
         }))}
@@ -97,12 +97,12 @@ const SOMTrainingDiagram = () => {
                 const inNeighborhood = dist <= radius;
                 return (
                   <rect key={`${r}-${c}`} x={px} y={py} width={cell} height={cell}
-                    fill={isBMU ? '#f9731635' : inNeighborhood ? `${color}20` : 'var(--bg-primary)'}
+                    fill={isBMU ? '#4a9eed35' : inNeighborhood ? `${color}20` : 'var(--bg-primary)'}
                     stroke="var(--text-secondary)" strokeWidth="0.6" />
                 );
               }))}
               <circle cx={cx} cy={cy} r={radius * cell} fill="none" stroke={color} strokeWidth="1.5" strokeDasharray="4,3" />
-              <circle cx={cx} cy={cy} r="4" fill="#f97316" />
+              <circle cx={cx} cy={cy} r="4" fill="#4a9eed" />
               <text x={ox + gridW / 2} y={y0 + gridH + 16} textAnchor="middle" fill="var(--text-primary)" fontSize="10" fontWeight="700">{label}</text>
               <text x={ox + gridW / 2} y={y0 + gridH + 30} textAnchor="middle" fill="var(--text-secondary)" fontSize="9">{eta}, raio σ(t) = {radius.toFixed(1)}</text>
             </g>
@@ -132,10 +132,10 @@ const UMatrixDiagram = () => {
     [0.1, 0.18, 0.2, 0.8, 0.22, 0.1],
   ];
   const colorFor = (v) => {
-    // low distance = light orange, high distance = deep orange/brown
-    const r = Math.round(249 - v * 60);
-    const g = Math.round(115 - v * 90);
-    const b = Math.round(22 - v * 10);
+    // low distance = light blue, high distance = deep blue
+    const r = Math.round(186 - v * 183);
+    const g = Math.round(230 - v * 125);
+    const b = Math.round(253 - v * 92);
     return `rgba(${r},${g},${b},${0.15 + v * 0.85})`;
   };
   return (
@@ -169,9 +169,9 @@ const UMatrixDiagram = () => {
 const ComponentPlanesDiagram = () => {
   const cols = 6, rows = 5, cell = 30, gap = 14;
   const planes = [
-    { label: 'Idade', c: '#f97316', pattern: (r, c) => (c / 5) },
-    { label: 'Rendimento', c: '#f97316', pattern: (r, c) => (r / 4) },
-    { label: 'Nº Compras', c: '#f97316', pattern: (r, c) => Math.abs((c - 2.5) / 2.5) },
+    { label: 'Idade', c: '#4a9eed', pattern: (r, c) => (c / 5) },
+    { label: 'Rendimento', c: '#4a9eed', pattern: (r, c) => (r / 4) },
+    { label: 'Nº Compras', c: '#4a9eed', pattern: (r, c) => Math.abs((c - 2.5) / 2.5) },
   ];
   const colorFor = (v, base) => `color-mix(in srgb, ${base} ${20 + v * 60}%, var(--bg-primary))`;
   const planeW = cols * cell;
@@ -212,13 +212,6 @@ export default function DM11() {
       <Link to="/dm" style={S.back}><ArrowLeft size={16} /> Voltar a Data Mining</Link>
       <div style={S.tag}>MÓDULO 07</div>
       <h1 style={S.h1}>Self-Organizing Maps (SOM)</h1>
-      <p style={S.lead}>
-        Self-Organizing Maps são redes neuronais não supervisionadas que projetam dados de alta dimensão
-        numa grelha 2D, preservando a topologia (relações de vizinhança) do espaço original — funcionando
-        simultaneamente como técnica de <strong>clustering</strong> e de <strong>visualização</strong>.
-        Neste módulo cobrimos a arquitetura, o algoritmo de treino (BMU, atualização de vizinhança),
-        e as ferramentas de interpretação: U-Matrix (fronteiras de clusters) e component planes (papel de cada feature).
-      </p>
 
       {/* === SECTION 1: Arquitetura do SOM === */}
       <div style={S.section}>
@@ -372,19 +365,6 @@ export default function DM11() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-      <div style={S.section}>
-        <h2 style={S.h2}>5. Síntese do Módulo</h2>
-        <div style={S.highlight}>
-          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-            <li style={{ marginBottom: '0.5rem' }}>SOM: rede competitiva onde cada neurónio da grelha 2D tem um <strong>vetor de pesos</strong> da mesma dimensão que o input — sem camadas ocultas, sem retropropagação.</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>BMU</strong> = neurónio mais próximo de x; o treino actualiza a BMU e a sua vizinhança em direcção a x, com raio σ(t) e taxa η(t) que decaem ao longo do tempo.</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>U-Matrix</strong>: distâncias entre pesos de neurónios adjacentes — regiões claras = interior de clusters, regiões escuras = fronteiras.</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>Component planes</strong>: um heatmap por feature sobre a mesma grelha — permite interpretar quais variáveis caracterizam cada região/cluster.</li>
-            <li style={{ marginBottom: '0.5rem' }}>SOM vs. k-means/PCA: SOM faz <strong>clustering E embedding 2D topology-preserving</strong> ao mesmo tempo — único entre os três.</li>
-          </ul>
-        </div>
-      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
@@ -41,18 +41,18 @@ const VarianceChart = () => (
     {/* REINFORCE without baseline — noisy high curve */}
     <polyline
       points="50,30 110,55 170,40 230,70 290,45 350,80 410,50 470,65 530,48"
-      fill="none" stroke="#f97316" strokeWidth="2"
+      fill="none" stroke="#4a9eed" strokeWidth="2"
     />
     {/* REINFORCE with baseline — much lower smoother curve */}
     <polyline
       points="50,130 110,120 170,115 230,108 290,105 350,100 410,97 470,94 530,92"
-      fill="none" stroke="#fdba74" strokeWidth="2"
+      fill="none" stroke="#bae6fd" strokeWidth="2"
     />
 
     {/* legend — below the chart */}
-    <rect x="130" y="222" width="12" height="12" fill="#f97316" />
+    <rect x="130" y="222" width="12" height="12" fill="#4a9eed" />
     <text x="146" y="233" fontSize="11" fill="var(--text-secondary)">Sem baseline (REINFORCE puro)</text>
-    <rect x="360" y="222" width="12" height="12" fill="#fdba74" />
+    <rect x="360" y="222" width="12" height="12" fill="#bae6fd" />
     <text x="376" y="233" fontSize="11" fill="var(--text-secondary)">Com baseline V(s)</text>
   </svg>
 );
@@ -61,17 +61,17 @@ const VarianceChart = () => (
 const ActorCriticDiagram = () => (
   <svg viewBox="0 0 580 200" style={{ width: '100%', maxWidth: 580, display: 'block', margin: '0 auto' }}>
     {/* Environment */}
-    <rect x="220" y="70" width="140" height="60" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+    <rect x="220" y="70" width="140" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
     <text x="290" y="97" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Ambiente</text>
     <text x="290" y="115" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">s, r</text>
 
     {/* Actor */}
-    <rect x="20" y="70" width="130" height="60" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+    <rect x="20" y="70" width="130" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
     <text x="85" y="97" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Actor  π_θ</text>
     <text x="85" y="115" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">P(a | s)</text>
 
     {/* Critic */}
-    <rect x="430" y="70" width="130" height="60" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+    <rect x="430" y="70" width="130" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
     <text x="495" y="97" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>Critic  V_w</text>
     <text x="495" y="115" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">V(s)</text>
 
@@ -80,7 +80,7 @@ const ActorCriticDiagram = () => (
         <path d="M0,0 L8,3 L0,6 Z" fill={color} />
       </marker>
       <marker id="acArr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-        <path d="M0,0 L8,3 L0,6 Z" fill="#f97316" />
+        <path d="M0,0 L8,3 L0,6 Z" fill="#4a9eed" />
       </marker>
       <marker id="acArr3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
         <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8" />
@@ -96,8 +96,8 @@ const ActorCriticDiagram = () => (
     <text x="394" y="93" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">estado s</text>
 
     {/* critic -> actor (TD error δ) */}
-    <path d="M495,130 Q495,170 85,170 L85,132" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#acArr2)" />
-    <text x="290" y="185" textAnchor="middle" fontSize="10" fill="#f97316">δ_t = r + γV(s') − V(s)  →  actualiza actor e critic</text>
+    <path d="M495,130 Q495,170 85,170 L85,132" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#acArr2)" />
+    <text x="290" y="185" textAnchor="middle" fontSize="10" fill="#4a9eed">δ_t = r + γV(s') − V(s)  →  actualiza actor e critic</text>
 
     {/* env -> actor (state feedback) */}
     <path d="M290,70 Q290,40 85,40 L85,70" fill="none" stroke="#94a3b8" strokeWidth="1.2" strokeDasharray="4,3" markerEnd="url(#acArr3)" />
@@ -110,15 +110,8 @@ export default function RL7() {
     <div style={S.page}>
       <Link to="/rl" style={S.back}><ArrowLeft size={16} /> Voltar a RL</Link>
 
-      <div style={S.tag}>MÓDULO 7 — Último Módulo</div>
+      <div style={S.tag}>MÓDULO 7</div>
       <h1 style={S.h1}>Policy-Based Reinforcement Learning</h1>
-      <p style={S.lead}>
-        Em vez de aprender <InlineMath math="V(s)" /> ou <InlineMath math="Q(s,a)" /> e derivar uma política,
-        aprendemos diretamente a política <InlineMath math="\pi_\theta" />.
-        Policy gradient oferece vantagens únicas: políticas estocásticas naturais, suporte nativo a espaços
-        de ação contínuos, e convergência mais suave em problemas complexos.
-        Este módulo fecha o percurso desde as equações de Bellman até ao PPO moderno.
-      </p>
 
       {/* ── Section 1 ── */}
       <div style={S.section}>
@@ -144,24 +137,24 @@ export default function RL7() {
                 <td style={S.td}><strong>Value-Based</strong></td>
                 <td style={S.td}><InlineMath math="Q^*(s,a)" /></td>
                 <td style={S.td}>Greedy: <InlineMath math="\pi(s)=\arg\max_a Q^*(s,a)" /></td>
-                <td style={S.td} style={{ color: '#f97316' }}>Não suportado</td>
-                <td style={S.td} style={{ color: '#f97316' }}>Não — greedy é sempre determinístico</td>
+                <td style={S.td} style={{ color: '#4a9eed' }}>Não suportado</td>
+                <td style={S.td} style={{ color: '#4a9eed' }}>Não — greedy é sempre determinístico</td>
                 <td style={S.td}>Q-Learning, DQN, SARSA</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Policy-Based</strong></td>
                 <td style={S.td}><InlineMath math="\pi_\theta(a|s)" /> directamente</td>
                 <td style={S.td}>É a própria saída da rede</td>
-                <td style={S.td} style={{ color: '#f97316' }}>Sim (Gaussiana)</td>
-                <td style={S.td} style={{ color: '#f97316' }}>Sim — por natureza estocástica</td>
+                <td style={S.td} style={{ color: '#4a9eed' }}>Sim (Gaussiana)</td>
+                <td style={S.td} style={{ color: '#4a9eed' }}>Sim — por natureza estocástica</td>
                 <td style={S.td}>REINFORCE, Policy Gradient</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Actor-Critic</strong></td>
                 <td style={S.td}><InlineMath math="\pi_\theta" /> + <InlineMath math="V_w(s)" /></td>
                 <td style={S.td}>Actor é a política; critic reduz variância</td>
-                <td style={S.td} style={{ color: '#f97316' }}>Sim</td>
-                <td style={S.td} style={{ color: '#f97316' }}>Sim</td>
+                <td style={S.td} style={{ color: '#4a9eed' }}>Sim</td>
+                <td style={S.td} style={{ color: '#4a9eed' }}>Sim</td>
                 <td style={S.td}>A3C, PPO, SAC</td>
               </tr>
             </tbody>
@@ -598,163 +591,8 @@ Retornar θ final`}</div>
       <hr style={S.divider} />
 
       {/* ── Section 9 ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. Panorama do RL Moderno — Síntese do Curso</h2>
-        <p style={S.p}>
-          Ao longo dos 7 módulos percorremos o espectro completo dos algoritmos de RL —
-          desde tabelas simples até redes neurais profundas. Esta tabela unifica toda a taxonomia:
-        </p>
-        <div style={S.diagram}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Algoritmo</th>
-                <th style={S.th}>Módulo</th>
-                <th style={S.th}>Tabular / Func. Aprox.</th>
-                <th style={S.th}>Model-Based / Free</th>
-                <th style={S.th}>Paradigma</th>
-                <th style={S.th}>On / Off Policy</th>
-                <th style={S.th}>Espaço ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={S.td}>Policy Iteration</td>
-                <td style={S.td}>RL1</td>
-                <td style={S.td}>Tabular</td>
-                <td style={S.td}>Model-Based</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>On-policy</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>Value Iteration</td>
-                <td style={S.td}>RL1</td>
-                <td style={S.td}>Tabular</td>
-                <td style={S.td}>Model-Based</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>—</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>Monte Carlo</td>
-                <td style={S.td}>RL2</td>
-                <td style={S.td}>Tabular</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>On/Off</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>TD(0) / SARSA</td>
-                <td style={S.td}>RL3</td>
-                <td style={S.td}>Tabular</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>On-policy</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>Q-Learning</td>
-                <td style={S.td}>RL3</td>
-                <td style={S.td}>Tabular</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>Off-policy</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>DQN</td>
-                <td style={S.td}>RL4–5</td>
-                <td style={S.td}>Func. Aprox. (DNN)</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>Off-policy</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>Double DQN / Dueling</td>
-                <td style={S.td}>RL5–6</td>
-                <td style={S.td}>Func. Aprox. (DNN)</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Value-Based</td>
-                <td style={S.td}>Off-policy</td>
-                <td style={S.td}>Discreto</td>
-              </tr>
-              <tr>
-                <td style={S.td}>REINFORCE</td>
-                <td style={S.td}>RL7</td>
-                <td style={S.td}>Func. Aprox. (DNN)</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Policy-Based</td>
-                <td style={S.td}>On-policy</td>
-                <td style={S.td}>Discreto / Contínuo</td>
-              </tr>
-              <tr>
-                <td style={S.td}>Actor-Critic / A3C</td>
-                <td style={S.td}>RL7</td>
-                <td style={S.td}>Func. Aprox. (DNN)</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Actor-Critic</td>
-                <td style={S.td}>On-policy</td>
-                <td style={S.td}>Discreto / Contínuo</td>
-              </tr>
-              <tr>
-                <td style={S.td}><strong>PPO</strong></td>
-                <td style={S.td}>RL7</td>
-                <td style={S.td}>Func. Aprox. (DNN)</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Actor-Critic</td>
-                <td style={S.td}>On-policy</td>
-                <td style={S.td}>Discreto / Contínuo</td>
-              </tr>
-              <tr>
-                <td style={S.td}><strong>SAC</strong></td>
-                <td style={S.td}>RL7</td>
-                <td style={S.td}>Func. Aprox. (DNN)</td>
-                <td style={S.td}>Model-Free</td>
-                <td style={S.td}>Actor-Critic</td>
-                <td style={S.td}>Off-policy</td>
-                <td style={S.td}>Contínuo</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      
 
-        <h3 style={S.h3}>O Arco do Curso</h3>
-        <p style={S.p}>
-          Começámos com <strong>MDPs e equações de Bellman</strong> (RL1) — a fundação matemática que
-          define formalmente o problema de decisão sequencial. Progredimos para métodos de
-          <strong> amostragem</strong> (RL2–3) que eliminam a necessidade de um modelo do ambiente.
-          Introduzimos <strong>aproximação de funções</strong> (RL4–5) para escalar a espaços de
-          estado grandes. Explorámos <strong>extensões do DQN</strong> (RL6) que tornaram o
-          Q-learning robusto. Finalmente, chegámos a <strong>policy gradient e actor-critic</strong> (RL7)
-          — o paradigma que domina as aplicações modernas de RL.
-        </p>
-        <div style={S.note}>
-          O campo de RL continua a evoluir rapidamente. Direcções activas incluem:
-          RL baseado em modelos com world models (Dreamer), RL hierárquico, multi-agent RL,
-          e o já omnipresente RLHF para alinhamento de LLMs — que usa exactamente os algoritmos
-          que aprendemos neste módulo.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 10 — Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        
-          <strong>Policy Gradient Theorem e REINFORCE</strong>
-          <ul style={{ ...S.ul, marginTop: '0.5rem' }}>
-            <li style={S.li}>O Policy Gradient Theorem garante <InlineMath math="\nabla_\theta J(\theta) = \mathbb{E}[\nabla_\theta \log \pi_\theta(a|s) \cdot Q^{\pi}(s,a)]" /> — o log-derivative trick torna o gradiente computável</li>
-            <li style={S.li}>REINFORCE usa <InlineMath math="G_t" /> como estimador não-enviesado de <InlineMath math="Q^{\pi}" /> — simples mas de alta variância</li>
-            <li style={S.li}>A baseline <InlineMath math="b(s) = V^{\pi}(s)" /> reduz variância sem introduzir bias; <InlineMath math="A(s,a) = Q(s,a) - V(s)" /> é a função vantagem</li>
-            <li style={S.li}>Actor-Critic substitui Monte Carlo por bootstrap TD, combinando policy gradient com aprendizagem de valor</li>
-            <li style={S.li}>PPO garante actualizações conservadoras com o objectivo clipped <InlineMath math="L^{\text{CLIP}}" /> — é o algoritmo padrão em aplicações modernas</li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

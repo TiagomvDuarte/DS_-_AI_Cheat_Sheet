@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -26,7 +26,7 @@ const FilterDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Convolução Manual — Filtro de Blur 3×3</p>
     <svg viewBox="0 0 540 150" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
       {/* Input patch */}
       <text x="65" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5" fontWeight="700">Patch da imagem</text>
@@ -50,8 +50,8 @@ const FilterDiagram = () => (
       ].map((row, r) => row.map((val, c) => (
         <g key={`k-${r}-${c}`}>
           <rect x={c*38+168} y={r*38+22} width={36} height={36} rx="3"
-            fill="rgba(249,115,22,0.2)" stroke="#f97316" strokeWidth="1.5"/>
-          <text x={c*38+186} y={r*38+44} textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">1/9</text>
+            fill="rgba(74,158,237,0.2)" stroke="#4a9eed" strokeWidth="1.5"/>
+          <text x={c*38+186} y={r*38+44} textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">1/9</text>
         </g>
       )))}
 
@@ -60,8 +60,8 @@ const FilterDiagram = () => (
 
       {/* Result */}
       <text x="410" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5" fontWeight="700">Pixel de saída</text>
-      <rect x={370} y={52} width={80} height={56} rx="6" fill="rgba(249,115,22,0.15)" stroke="#f97316" strokeWidth="2"/>
-      <text x={410} y={83} textAnchor="middle" fill="#f97316" fontSize="13" fontWeight="800">~134</text>
+      <rect x={370} y={52} width={80} height={56} rx="6" fill="rgba(74,158,237,0.15)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x={410} y={83} textAnchor="middle" fill="#4a9eed" fontSize="13" fontWeight="800">~134</text>
       <text x={410} y={97} textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">média dos 9 píxeis</text>
 
       {/* Formula */}
@@ -74,28 +74,28 @@ const FilterExplorer = () => {
   const [sel, setSel] = useState(0);
   const filters = [
     {
-      name: 'Blur (suavização)', color: '#f97316',
+      name: 'Blur (suavização)', color: '#4a9eed',
       kernel: [[1,1,1],[1,1,1],[1,1,1]], norm: '÷9',
       what: 'Cada píxel é substituído pela média dos seus 9 vizinhos. Remove ruído de alta frequência — suaviza a imagem.',
       use: 'Pré-processamento para remover ruído antes de detectar edges. Também usado como "anti-aliasing".',
       effect: 'Imagem mais "desfocada". Edges tornam-se menos nítidas. Ruído tipo "sal e pimenta" desaparece.',
     },
     {
-      name: 'Sharpen (nitidez)', color: '#f97316',
+      name: 'Sharpen (nitidez)', color: '#4a9eed',
       kernel: [[0,-1,0],[-1,5,-1],[0,-1,0]], norm: '',
       what: 'Amplifica as diferenças locais. O píxel central é multiplicado por 5 e subtraem-se os vizinhos — enfatiza contrastes.',
       use: 'Aumentar a nitidez percebida de imagens ligeiramente desfocadas. Usado em pós-processamento de fotografia.',
       effect: 'Edges ficam mais pronunciadas. Zonas planas mantêm-se. Pode amplificar ruído se a imagem já tiver.',
     },
     {
-      name: 'Sobel X (gradiente horizontal)', color: '#f97316',
+      name: 'Sobel X (gradiente horizontal)', color: '#4a9eed',
       kernel: [[-1,0,1],[-2,0,2],[-1,0,1]], norm: '',
       what: 'Aproxima a derivada parcial ∂I/∂x. Detecta mudanças de intensidade na direcção horizontal — edges verticais.',
       use: 'Detector de edges vertical. Combinado com Sobel Y (derivada vertical) para calcular magnitude do gradiente.',
       effect: 'Edges verticais aparecem como linhas claras. Edges horizontais são ignoradas. Zonas planas ficam a zero.',
     },
     {
-      name: 'Laplaciano (2ª derivada)', color: '#f97316',
+      name: 'Laplaciano (2ª derivada)', color: '#4a9eed',
       kernel: [[0,1,0],[1,-4,1],[0,1,0]], norm: '',
       what: 'A segunda derivada da imagem. Detecta qualquer edge independentemente da orientação. Passa por zero nas edges.',
       use: 'Detector de edges isotrópico (sem preferência de direcção). Base do LoG (Laplacian of Gaussian).',
@@ -116,14 +116,14 @@ const FilterExplorer = () => {
           <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontWeight: 600 }}>Kernel {f.norm}</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 36px)', gap: '2px', justifyContent: 'center' }}>
             {f.kernel.flat().map((v, i) => (
-              <div key={i} style={{ width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 4, background: v > 0 ? `rgba(249,115,22,0.10)*0.4+0.1})` : v < 0 ? `rgba(249,115,22,0.10)*0.4+0.1})` : 'var(--bg-secondary)', border: '1px solid var(--card-border)', fontSize: '0.75rem', fontWeight: 700, color: v > 0 ? '#f97316' : v < 0 ? '#f97316' : 'var(--text-secondary)' }}>{v}</div>
+              <div key={i} style={{ width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 4, background: v > 0 ? `rgba(74,158,237,0.10)*0.4+0.1})` : v < 0 ? `rgba(74,158,237,0.10)*0.4+0.1})` : 'var(--bg-secondary)', border: '1px solid var(--card-border)', fontSize: '0.75rem', fontWeight: 700, color: v > 0 ? '#4a9eed' : v < 0 ? '#4a9eed' : 'var(--text-secondary)' }}>{v}</div>
             ))}
           </div>
         </div>
         <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: `1.5px solid ${f.color}30`, fontSize: '0.85rem' }}>
           <p><strong style={{ color: f.color }}>O que faz:</strong> {f.what}</p>
-          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#f97316' }}>Uso típico:</strong> {f.use}</p>
-          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#f97316' }}>Efeito visual:</strong> {f.effect}</p>
+          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#4a9eed' }}>Uso típico:</strong> {f.use}</p>
+          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#4a9eed' }}>Efeito visual:</strong> {f.effect}</p>
         </div>
       </div>
     </div>
@@ -146,16 +146,16 @@ const OtsuDiagram = () => (
       ))}
       {/* Bimodal histogram bars - right peak (foreground, light) */}
       {[3,6,12,22,40,60,75,68,50,32,18,9].map((h, i) => (
-        <rect key={`r-${i}`} x={250 + i*16} y={160 - h} width="14" height={h} fill="rgba(249,115,22,0.5)" />
+        <rect key={`r-${i}`} x={250 + i*16} y={160 - h} width="14" height={h} fill="rgba(74,158,237,0.5)" />
       ))}
 
       {/* Otsu threshold line */}
-      <line x1="240" y1="15" x2="240" y2="160" stroke="#f97316" strokeWidth="2" strokeDasharray="6,3" />
-      <text x="240" y="12" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">T* (Otsu)</text>
+      <line x1="240" y1="15" x2="240" y2="160" stroke="#4a9eed" strokeWidth="2" strokeDasharray="6,3" />
+      <text x="240" y="12" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">T* (Otsu)</text>
 
       {/* Labels for the two classes */}
       <text x="120" y="35" textAnchor="middle" fill="rgba(100,116,139,1)" fontSize="10" fontWeight="700">Fundo (escuro)</text>
-      <text x="370" y="35" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Objecto (claro)</text>
+      <text x="370" y="35" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Objecto (claro)</text>
       <text x="265" y="178" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">0</text>
       <text x="40" y="178" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">0</text>
       <text x="480" y="178" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">255</text>
@@ -214,31 +214,31 @@ const MorphologyExplorer = () => {
   ];
   const ops = [
     {
-      name: 'Original (binária + ruído)', color: '#ea580c', grid: original,
+      name: 'Original (binária + ruído)', color: '#0369a1', grid: original,
       what: 'Imagem binária resultante de um threshold. Tem um "buraco" (píxel 0 dentro do objecto, linha 4) e um pequeno "ruído" (píxel 1 isolado, canto inferior direito).',
       use: 'Ponto de partida — saída de um threshold ainda imperfeita.',
       effect: 'Forma irregular: um buraco interior e um ponto solto fora da forma principal.',
     },
     {
-      name: 'Erosão', color: '#f97316', grid: eroded,
+      name: 'Erosão', color: '#4a9eed', grid: eroded,
       what: 'Um elemento estruturante (ex: 3×3) desliza sobre a imagem; um píxel só fica branco se TODOS os píxeis sob o elemento forem brancos. "Come" as bordas do objecto.',
       use: 'Remover pequenos pontos de ruído e separar objectos que se tocam por uma fina ligação.',
       effect: 'O objecto encolhe, o ruído isolado e as ligações finas desaparecem por completo.',
     },
     {
-      name: 'Dilatação', color: '#f97316', grid: dilated,
+      name: 'Dilatação', color: '#4a9eed', grid: dilated,
       what: 'Um píxel fica branco se PELO MENOS UM píxel sob o elemento estruturante for branco. "Engorda" o objecto.',
       use: 'Preencher pequenos buracos e juntar fragmentos próximos do mesmo objecto.',
       effect: 'O objecto cresce em todas as direcções; buracos pequenos ficam preenchidos; ruído também cresce.',
     },
     {
-      name: 'Abertura (erosão→dilatação)', color: '#f97316', grid: opened,
+      name: 'Abertura (erosão→dilatação)', color: '#4a9eed', grid: opened,
       what: 'Aplica-se erosão seguida de dilatação com o mesmo elemento. A erosão remove o ruído; a dilatação repõe o tamanho do objecto principal.',
       use: 'Remover ruído tipo "sal" (pequenos pontos brancos isolados) sem alterar significativamente o tamanho dos objectos grandes.',
       effect: 'O ruído desaparece definitivamente; a forma principal regressa perto do tamanho original, mas mais suave.',
     },
     {
-      name: 'Fecho (dilatação→erosão)', color: '#f97316', grid: closed,
+      name: 'Fecho (dilatação→erosão)', color: '#4a9eed', grid: closed,
       what: 'Aplica-se dilatação seguida de erosão com o mesmo elemento. A dilatação fecha buracos e liga fragmentos; a erosão repõe o tamanho.',
       use: 'Fechar pequenos buracos dentro de objectos e ligar partes de um objecto que ficaram separadas pelo threshold.',
       effect: 'Buracos internos pequenos desaparecem; o contorno fica mais suave; o tamanho geral mantém-se aproximadamente.',
@@ -264,8 +264,8 @@ const MorphologyExplorer = () => {
         </div>
         <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: `1.5px solid ${o.color}30`, fontSize: '0.85rem' }}>
           <p><strong style={{ color: o.color }}>O que faz:</strong> {o.what}</p>
-          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#f97316' }}>Uso típico:</strong> {o.use}</p>
-          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#f97316' }}>Efeito:</strong> {o.effect}</p>
+          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#4a9eed' }}>Uso típico:</strong> {o.use}</p>
+          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#4a9eed' }}>Efeito:</strong> {o.effect}</p>
         </div>
       </div>
     </div>
@@ -277,7 +277,7 @@ const FrequencyDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Domínio Espacial vs. Domínio da Frequência</p>
     <svg viewBox="0 0 540 170" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrf" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrf" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Spatial image */}
@@ -290,8 +290,8 @@ const FrequencyDiagram = () => (
       }))}
 
       {/* FFT arrow */}
-      <line x1="170" y1="75" x2="225" y2="75" stroke="#f97316" strokeWidth="2" markerEnd="url(#arrf)" />
-      <text x="197" y="68" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">FFT</text>
+      <line x1="170" y1="75" x2="225" y2="75" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arrf)" />
+      <text x="197" y="68" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">FFT</text>
 
       {/* Frequency spectrum */}
       <text x="320" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Espectro (frequência)</text>
@@ -304,8 +304,8 @@ const FrequencyDiagram = () => (
       <text x="320" y="78" textAnchor="middle" fill="#1a1a1a" fontSize="8" fontWeight="800">DC</text>
 
       {/* IFFT arrow */}
-      <line x1="400" y1="75" x2="455" y2="75" stroke="#f97316" strokeWidth="2" markerEnd="url(#arrf)" />
-      <text x="427" y="68" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">IFFT</text>
+      <line x1="400" y1="75" x2="455" y2="75" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arrf)" />
+      <text x="427" y="68" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">IFFT</text>
 
       {/* Reconstructed */}
       <text x="495" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Reconstrução</text>
@@ -324,13 +324,13 @@ const FrequencyFilterExplorer = () => {
   const [sel, setSel] = useState(0);
   const opts = [
     {
-      name: 'Passa-baixo (low-pass)', color: '#f97316', radius: 14, keep: 'centro',
+      name: 'Passa-baixo (low-pass)', color: '#4a9eed', radius: 14, keep: 'centro',
       what: 'Mantém apenas as frequências baixas (perto do centro do espectro) e elimina/atenua as altas (periferia).',
       spatial: 'Equivalente a aplicar um filtro de blur/gaussiano no domínio espacial — convolução = multiplicação no domínio da frequência.',
       effect: 'A imagem reconstruída fica desfocada: formas gerais mantêm-se, mas detalhes finos, texturas e edges desaparecem.',
     },
     {
-      name: 'Passa-alto (high-pass)', color: '#f97316', radius: 14, keep: 'periferia',
+      name: 'Passa-alto (high-pass)', color: '#4a9eed', radius: 14, keep: 'periferia',
       what: 'Mantém apenas as frequências altas (periferia do espectro) e elimina/atenua as baixas (centro).',
       spatial: 'Equivalente a um filtro de sharpen/detector de edges no domínio espacial — realça transições rápidas de intensidade.',
       effect: 'A imagem reconstruída mostra essencialmente os contornos e texturas finas; regiões planas ficam pretas (perto de zero).',
@@ -363,8 +363,8 @@ const FrequencyFilterExplorer = () => {
         </div>
         <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: `1.5px solid ${f.color}30`, fontSize: '0.85rem' }}>
           <p><strong style={{ color: f.color }}>O que faz:</strong> {f.what}</p>
-          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#f97316' }}>Equivalência espacial:</strong> {f.spatial}</p>
-          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#f97316' }}>Efeito:</strong> {f.effect}</p>
+          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#4a9eed' }}>Equivalência espacial:</strong> {f.spatial}</p>
+          <p style={{ marginTop: '0.5rem' }}><strong style={{ color: '#4a9eed' }}>Efeito:</strong> {f.effect}</p>
         </div>
       </div>
     </div>
@@ -379,25 +379,25 @@ const TemplateMatchingDiagram = () => (
       <text x="120" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Imagem de procura</text>
       <rect x="20" y="25" width="200" height="120" rx="6" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5"/>
       {/* sliding template highlighted */}
-      <rect x="60" y="55" width="50" height="50" rx="4" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="4,2"/>
-      <rect x="130" y="75" width="50" height="50" rx="4" fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="2.5"/>
-      <text x="155" y="103" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">melhor match</text>
-      <text x="85" y="83" textAnchor="middle" fill="#f97316" fontSize="8">a testar...</text>
+      <rect x="60" y="55" width="50" height="50" rx="4" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="4,2"/>
+      <rect x="130" y="75" width="50" height="50" rx="4" fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="2.5"/>
+      <text x="155" y="103" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">melhor match</text>
+      <text x="85" y="83" textAnchor="middle" fill="#4a9eed" fontSize="8">a testar...</text>
 
       {/* Arrow */}
       <text x="265" y="90" fill="var(--text-secondary)" fontSize="20" textAnchor="middle">→</text>
 
       {/* Template */}
       <text x="320" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Template</text>
-      <rect x="290" y="40" width="60" height="60" rx="4" fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="2.5"/>
-      <text x="320" y="74" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">T</text>
+      <rect x="290" y="40" width="60" height="60" rx="4" fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="2.5"/>
+      <text x="320" y="74" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">T</text>
 
       {/* Correlation map */}
       <text x="470" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Mapa de correlação</text>
       <rect x="400" y="25" width="140" height="120" rx="6" fill="#0a0a0a" stroke="var(--text-secondary)" strokeWidth="1.5"/>
-      <circle cx="455" cy="75" r="10" fill="#f97316" />
-      <text x="455" y="100" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">pico = posição</text>
-      <text x="455" y="111" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">do template</text>
+      <circle cx="455" cy="75" r="10" fill="#4a9eed" />
+      <text x="455" y="100" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">pico = posição</text>
+      <text x="455" y="111" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">do template</text>
 
       <text x="270" y="170" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Desliza o template sobre a imagem; em cada posição calcula NCC. O pico do mapa indica a melhor correspondência.</text>
     </svg>
@@ -409,27 +409,27 @@ const OpticalFlowDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Optical Flow — Vectores de Movimento entre Frames</p>
     <svg viewBox="0 0 520 170" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrg" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrg" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       <text x="110" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Frame t</text>
       <rect x="10" y="25" width="200" height="120" rx="6" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5"/>
-      <circle cx="70" cy="85" r="18" fill="rgba(249,115,22,0.3)" stroke="#f97316" strokeWidth="2"/>
-      <text x="70" y="90" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">obj</text>
+      <circle cx="70" cy="85" r="18" fill="rgba(74,158,237,0.3)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="70" y="90" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">obj</text>
 
       <text x="410" y="16" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">Frame t+1</text>
       <rect x="310" y="25" width="200" height="120" rx="6" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1.5"/>
-      <circle cx="450" cy="105" r="18" fill="rgba(249,115,22,0.3)" stroke="#f97316" strokeWidth="2"/>
-      <text x="450" y="110" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">obj</text>
+      <circle cx="450" cy="105" r="18" fill="rgba(74,158,237,0.3)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="450" y="110" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">obj</text>
 
       {/* Flow vector field overlay in middle showing arrows */}
       <text x="260" y="80" textAnchor="middle" fill="var(--text-secondary)" fontSize="20"></text>
-      <text x="260" y="98" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">campo de vectores</text>
-      <text x="260" y="110" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">(u, v) por píxel</text>
+      <text x="260" y="98" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">campo de vectores</text>
+      <text x="260" y="110" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">(u, v) por píxel</text>
 
       {/* small grid of arrows on frame t to suggest flow */}
       {[[60,60],[100,60],[140,60],[60,100],[100,100],[140,100]].map(([x,y], i) => (
-        <line key={i} x1={x} y1={y} x2={x+24} y2={y+8} stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrg)" opacity="0.85"/>
+        <line key={i} x1={x} y1={y} x2={x+24} y2={y+8} stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrg)" opacity="0.85"/>
       ))}
 
       <text x="260" y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Para cada píxel/ponto, o optical flow estima o deslocamento (u,v) entre frames consecutivos.</text>
@@ -444,7 +444,6 @@ export default function CV2() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 2</div>
         <h1 style={S.h1}>Processamento Clássico de Imagem</h1>
-        <p style={S.lead}>Antes das CNNs, a visão computacional era feita com filtros desenhados à mão, regras de segmentação, operações geométricas sobre formas binárias, análise no domínio da frequência e descritores de features locais. Perceber estas técnicas é essencial para entender o que as CNNs aprendem automaticamente — e porque é que isso é revolucionário. Muitas destas técnicas continuam a ser usadas hoje como pré-processamento, baselines rápidos, ou em sistemas com recursos limitados.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Filtros e Convolução Manual</h2>
@@ -483,7 +482,7 @@ export default function CV2() {
                   ['Otsu', 'Valor único, calculado automaticamente do histograma', 'Histograma bimodal claro, iluminação uniforme', 'Falha se as classes não forem bem separadas ou houver gradiente de luz'],
                   ['Adaptativo (local)', 'Um valor por píxel, baseado na vizinhança local', 'Iluminação não-uniforme, sombras, scans de documentos', 'Mais lento; sensível ao tamanho da janela escolhida'],
                 ].map(([m, t, w, l]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{m}</td><td style={S.td}>{t}</td><td style={{ ...S.td, color: '#f97316' }}>{w}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.83rem' }}>{l}</td></tr>
+                  <tr key={m}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{m}</td><td style={S.td}>{t}</td><td style={{ ...S.td, color: '#4a9eed' }}>{w}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.83rem' }}>{l}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -508,7 +507,7 @@ export default function CV2() {
                   ['Abertura', 'Erosão seguida de dilatação', 'Remove ruído mantendo o tamanho geral', 'Limpar "sal" (pontos brancos isolados) sem deformar objectos grandes'],
                   ['Fecho', 'Dilatação seguida de erosão', 'Fecha buracos mantendo o tamanho geral', 'Preencher "buracos" pretos dentro de objectos; ligar partes próximas do mesmo objecto'],
                 ].map(([op, rule, eff, use]) => (
-                  <tr key={op}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{op}</td><td style={S.td}>{rule}</td><td style={S.td}>{eff}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{use}</td></tr>
+                  <tr key={op}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{op}</td><td style={S.td}>{rule}</td><td style={S.td}>{eff}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{use}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -535,7 +534,7 @@ export default function CV2() {
                   ['3. Non-maximum suppression', 'Para cada pixel, manter só se for máximo local na direcção do gradiente', 'Afinar edges de largura múltipla para edges de 1 píxel de espessura'],
                   ['4. Double thresholding', 'Threshold alto: edge forte. Threshold baixo: edge fraca. Edges fracas ligadas a fortes são mantidas', 'Eliminar falsos edges fracos mas manter edges reais que passam por zonas de baixo contraste'],
                 ].map(([s, o, p]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{s}</td><td style={S.td}>{o}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{p}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{s}</td><td style={S.td}>{o}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{p}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -571,7 +570,7 @@ export default function CV2() {
                   ['Sharpen / detector de edges', 'Filtro passa-alto (mantém periferia, atenua centro)', 'Realça contornos e texturas; pode amplificar ruído'],
                   ['Filtro passa-banda', 'Mantém um anel de frequências intermédias', 'Realça texturas de uma escala específica (ex: padrões periódicos)'],
                 ].map(([sp, fr, ef]) => (
-                  <tr key={sp}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{sp}</td><td style={S.td}>{fr}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{ef}</td></tr>
+                  <tr key={sp}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{sp}</td><td style={S.td}>{fr}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{ef}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -603,7 +602,7 @@ export default function CV2() {
                   ['Sensível a oclusão', 'Se parte do objecto estiver tapada, a correlação com o template completo diminui', 'Usar templates parciais ou métodos baseados em features locais (SIFT, ORB)'],
                   ['Custo computacional', 'Deslizar o template sobre toda a imagem, em todas as escalas/rotações, é caro', 'Usar FFT para calcular correlação eficientemente (teorema da convolução)'],
                 ].map(([l, w, m]) => (
-                  <tr key={l}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{l}</td><td style={S.td}>{w}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{m}</td></tr>
+                  <tr key={l}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{l}</td><td style={S.td}>{w}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{m}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -634,7 +633,7 @@ export default function CV2() {
                   ['Compressão de vídeo', 'Codecs usam vectores de movimento semelhantes para evitar re-codificar regiões que apenas se deslocaram'],
                   ['Detecção de acções', 'Padrões característicos de fluxo (ex: membros em movimento) ajudam a reconhecer acções humanas'],
                 ].map(([a, h]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{a}</td><td style={S.td}>{h}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{a}</td><td style={S.td}>{h}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -659,7 +658,7 @@ export default function CV2() {
                   ['HOG', 'Divide a imagem em células, calcula histograma de gradientes em cada célula, normaliza por blocos.', 'Iluminação local', 'Não invariante à rotação ou escala'],
                   ['ORB', 'FAST keypoints + BRIEF descriptor binarizado. Muito rápido.', 'Rotação (parcial)', 'Menos robusto que SIFT em condições difíceis'],
                 ].map(([d, h, i, l]) => (
-                  <tr key={d}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{d}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: '#f97316' }}>{i}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.83rem' }}>{l}</td></tr>
+                  <tr key={d}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{d}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: '#4a9eed' }}>{i}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.83rem' }}>{l}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -692,7 +691,7 @@ export default function CV2() {
                   ['Custo computacional', 'Geralmente baixo, executável em CPU em tempo real', 'Alto, normalmente requer GPU para treino e às vezes inferência'],
                   ['Robustez a variações', 'Limitada — cada técnica cobre um tipo de invariância', 'Robustez aprendida implicitamente, cobre múltiplas variações em simultâneo'],
                 ].map(([a, c, n]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{a}</td><td style={{ ...S.td, color: '#f97316' }}>{c}</td><td style={{ ...S.td, color: '#f97316' }}>{n}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: 'var(--text-secondary)' }}>{a}</td><td style={{ ...S.td, color: '#4a9eed' }}>{c}</td><td style={{ ...S.td, color: '#4a9eed' }}>{n}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -701,24 +700,7 @@ export default function CV2() {
 
         
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>10. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Filtro/kernel: desliza sobre a imagem, multiplica elemento-a-elemento e soma — produz um feature map. Padding e stride controlam bordas e resolução de saída.</li>
-            <li>Diferentes kernels detectam diferentes padrões: blur (média), edges (Sobel/Laplaciano), nitidez.</li>
-            <li>Thresholding binário converte uma imagem em preto/branco; Otsu escolhe T automaticamente maximizando a separação entre as duas classes do histograma; thresholding adaptativo lida com iluminação não-uniforme.</li>
-            <li>Operações morfológicas (erosão, dilatação, abertura, fecho) limpam máscaras binárias: removem ruído, fecham buracos, separam objectos tocados.</li>
-            <li>Canny: blur → gradiente → non-max suppression → double threshold (hysteresis). O detector de edges clássico.</li>
-            <li>O domínio da frequência (FFT) representa a imagem como soma de ondas: centro = baixas frequências (formas), periferia = altas frequências (edges/texturas/ruído). Convolução espacial = multiplicação no domínio da frequência — blur é passa-baixo, sharpen/edges é passa-alto.</li>
-            <li>Template matching (NCC) encontra padrões por correlação cruzada normalizada — eficaz mas sensível a escala, rotação e oclusão.</li>
-            <li>Optical flow (Lucas-Kanade) estima o movimento de píxeis entre frames — base de tracking, estabilização de vídeo e estimativa de ego-motion.</li>
-            <li>SIFT: keypoints multi-escala + histograma de gradientes orientados. Invariante à rotação e escala.</li>
-            <li>CNNs aprendem automaticamente o que a CV clássica desenhava à mão — e vão muito além nas camadas profundas — mas thresholding, morfologia e template matching continuam úteis como pré/pós-processamento.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

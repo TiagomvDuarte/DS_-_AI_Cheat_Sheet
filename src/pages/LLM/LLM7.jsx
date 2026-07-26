@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -19,9 +19,9 @@ const S = {
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
-  td: { padding: '0.5x5rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -35,12 +35,6 @@ export default function LLM7() {
 
       <span style={S.tag}>MÓDULO 07</span>
       <h1 style={S.h1}>Alinhamento &amp; Safety</h1>
-      <p style={S.lead}>
-        O problema central do alinhamento: como garantir que um LLM com capacidades crescentes age de acordo
-        com as intenções humanas? Anthropic, OpenAI e DeepMind têm abordagens distintas — mas convergem em
-        duas frentes: (1) pós-treino cuidadoso e (2) avaliação de segurança contínua. Este módulo cobre
-        desde os fundamentos teóricos até às técnicas de ponta usadas nos sistemas modernos.
-      </p>
 
       {/* ── Section 1 ── */}
       <section style={S.section}>
@@ -80,17 +74,17 @@ export default function LLM7() {
               </marker>
             </defs>
             {/* Boxes */}
-            <rect x="10" y="50" width="180" height="60" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            <rect x="10" y="50" width="180" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
             <text x="100" y="76" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Objectivo Real</text>
             <text x="100" y="94" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">"Sê genuinamente útil"</text>
 
-            <rect x="310" y="50" width="200" height="60" rx="10" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="410" y="76" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f59e0b">Proxy / Recompensa</text>
+            <rect x="310" y="50" width="200" height="60" rx="10" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="410" y="76" textAnchor="middle" fontSize="12" fontWeight="700" fill="#0284c7">Proxy / Recompensa</text>
             <text x="410" y="94" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">"Score do avaliador humano"</text>
 
-            <rect x="630" y="50" width="180" height="60" rx="10" fill="rgba(234,88,12,0.12)" stroke="#ea580c" strokeWidth="1.5" />
-            <text x="720" y="70" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ea580c">Comportamento</text>
-            <text x="720" y="86" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ea580c">Aprendido</text>
+            <rect x="630" y="50" width="180" height="60" rx="10" fill="rgba(3,105,161,0.12)" stroke="#0369a1" strokeWidth="1.5" />
+            <text x="720" y="70" textAnchor="middle" fontSize="12" fontWeight="700" fill="#0369a1">Comportamento</text>
+            <text x="720" y="86" textAnchor="middle" fontSize="12" fontWeight="700" fill="#0369a1">Aprendido</text>
             <text x="720" y="102" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">"O que o modelo faz"</text>
 
             {/* Arrows */}
@@ -100,8 +94,8 @@ export default function LLM7() {
             {/* Gap labels */}
             <text x="248" y="56" textAnchor="middle" fontSize="10" fill={color} fontWeight="600">Outer</text>
             <text x="248" y="68" textAnchor="middle" fontSize="10" fill={color} fontWeight="600">Alignment Gap</text>
-            <text x="568" y="56" textAnchor="middle" fontSize="10" fill="#ea580c" fontWeight="600">Inner</text>
-            <text x="568" y="68" textAnchor="middle" fontSize="10" fill="#ea580c" fontWeight="600">Alignment Gap</text>
+            <text x="568" y="56" textAnchor="middle" fontSize="10" fill="#0369a1" fontWeight="600">Inner</text>
+            <text x="568" y="68" textAnchor="middle" fontSize="10" fill="#0369a1" fontWeight="600">Alignment Gap</text>
 
             {/* Bottom legend */}
             <text x="410" y="155" textAnchor="middle" fontSize="11" fill="var(--text-secondary)">Dois pontos de falha independentes no pipeline de alinhamento</text>
@@ -144,205 +138,7 @@ export default function LLM7() {
 
       {/* ── Section 2 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>2. RLHF Aprofundado</h2>
-
-        <p style={S.p}>
-          Reinforcement Learning from Human Feedback (RLHF) é o paradigma dominante para alinhar LLMs.
-          Introduzido por Christiano et al. (2017) e popularizado no InstructGPT (2022), combina
-          preferências humanas com optimização por reforço.
-        </p>
-
-        <h3 style={S.h3}>Reward Model: Bradley-Terry</h3>
-        <p style={S.p}>
-          O Reward Model aprende a prever qual de duas respostas um humano prefere.
-          O modelo Bradley-Terry define a probabilidade de preferência como:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"P(y_w \\succ y_l \\mid x) = \\sigma\\bigl(r(x, y_w) - r(x, y_l)\\bigr)"} />
-        </div>
-        <p style={S.p}>
-          onde <InlineMath math={"\\sigma"} /> é a função sigmoid, <InlineMath math={"y_w"} /> é a resposta
-          preferida (<em>winner</em>) e <InlineMath math={"y_l"} /> a rejeitada (<em>loser</em>).
-          O RM é treinado minimizando a negative log-likelihood:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{RM} = -\\log \\sigma\\bigl(r(x, y_w) - r(x, y_l)\\bigr)"} />
-        </div>
-
-        <h3 style={S.h3}>PPO com Clipping</h3>
-        <p style={S.p}>
-          Após treinar o RM, o LLM é ajustado com Proximal Policy Optimization (PPO). O objectivo clipped
-          evita updates demasiado grandes:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{\\text{CLIP}} = \\mathbb{E}_t\\!\\left[\\min\\!\\left(r_t A_t,\\; \\mathrm{clip}(r_t, 1-\\varepsilon, 1+\\varepsilon)\\, A_t\\right)\\right]"} />
-        </div>
-        <p style={S.p}>
-          onde <InlineMath math={"r_t = \\pi_\\theta(a_t|s_t) / \\pi_{\\text{old}}(a_t|s_t)"} /> é o ratio
-          de probabilidades e <InlineMath math={"A_t"} /> a vantagem estimada.
-          Para prevenir que o modelo se afaste demasiado da política de referência, adiciona-se uma penalização KL:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"r_{\\text{total}}(x, y) = r_{\\text{RM}}(x, y) - \\beta\\, \\mathrm{KL}\\!\\left(\\pi_\\theta(\\cdot|x) \\,\\|\\, \\pi_{\\text{ref}}(\\cdot|x)\\right)"} />
-        </div>
-
-        <h3 style={S.h3}>Reward Hacking</h3>
-        <p style={S.p}>
-          O RM é um proxy imperfeito do julgamento humano. O modelo PPO, ao optimizar agressivamente o RM,
-          descobre exploits: respostas que obtêm alta pontuação do RM mas que humanos considerariam de
-          baixa qualidade ou perigosas. Este fenómeno chama-se <em>reward hacking</em> e é análogo à
-          Lei de Goodhart aplicada ao treino.
-        </p>
-
-        <div style={S.diagram}>
-          <svg viewBox="0 0 760 320" width="100%" style={{ display: 'block' }}>
-            <defs>
-              <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8" />
-              </marker>
-            </defs>
-            {/* Human */}
-            <rect x="30" y="120" width="120" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
-            <text x="90" y="142" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Humanos</text>
-            <text x="90" y="158" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Preferências</text>
-
-            {/* RM */}
-            <rect x="300" y="30" width="160" height="50" rx="10" fill="rgba(251,191,36,0.1)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="380" y="52" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Reward Model</text>
-            <text x="380" y="68" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Bradley-Terry loss</text>
-
-            {/* LLM */}
-            <rect x="580" y="120" width="140" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="650" y="142" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">LLM (PPO)</text>
-            <text x="650" y="158" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Policy π_θ</text>
-
-            {/* KL */}
-            <rect x="300" y="220" width="160" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="380" y="242" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">KL Penalty</text>
-            <text x="380" y="258" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">π_θ vs π_ref</text>
-
-            {/* Arrows */}
-            <line x1="150" y1="140" x2="296" y2="65" stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#arr2)" />
-            <line x1="460" y1="55" x2="576" y2="130" stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#arr2)" />
-            <line x1="650" y1="170" x2="464" y2="238" stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#arr2)" />
-            <line x1="380" y1="220" x2="380" y2="84" stroke="#f97316" strokeWidth="1" strokeDasharray="5,3" markerEnd="url(#arr2)" />
-            <line x1="580" y1="150" x2="150" y2="150" stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#arr2)" />
-
-            {/* Labels on arrows */}
-            <text x="195" y="90" fontSize="9" fill="var(--text-secondary)" textAnchor="middle">treina RM</text>
-            <text x="565" y="85" fontSize="9" fill="var(--text-secondary)" textAnchor="middle">sinal de recompensa</text>
-            <text x="575" y="218" fontSize="9" fill="var(--text-secondary)" textAnchor="middle">outputs → RM</text>
-            <text x="410" y="135" fontSize="9" fill="#f97316" textAnchor="middle">regulariza</text>
-            <text x="380" y="310" fontSize="10" fill="var(--text-secondary)" textAnchor="middle">Ciclo RLHF completo com feedback KL</text>
-          </svg>
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 3 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>3. DPO — Direct Preference Optimization</h2>
-
-        <p style={S.p}>
-          Rafael et al. (2023) propuseram o DPO como alternativa ao RLHF que elimina o Reward Model explícito
-          e o loop PPO. A ideia central é que o RM óptimo pode ser expresso directamente em termos da
-          política óptima, permitindo optimização directa sobre os dados de preferência.
-        </p>
-
-        <h3 style={S.h3}>Re-parametrização Closed-Form</h3>
-        <p style={S.p}>
-          A solução óptima do RLHF com penalização KL tem uma forma analítica:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"r^*(x, y) = \\beta \\log \\frac{\\pi^*(y \\mid x)}{\\pi_{\\text{ref}}(y \\mid x)} + \\beta \\log Z(x)"} />
-        </div>
-        <p style={S.p}>
-          onde <InlineMath math={"Z(x)"} /> é a função de partição (constante de normalização). Substituindo
-          na loss do Bradley-Terry e cancelando <InlineMath math={"Z(x)"} />, obtém-se a loss DPO:
-        </p>
-        <div style={S.math}>
-          <BlockMath math={"\\mathcal{L}_{\\text{DPO}}(\\pi_\\theta) = -\\mathbb{E}_{(x,y_w,y_l)}\\!\\left[\\log \\sigma\\!\\left(\\beta \\log \\frac{\\pi_\\theta(y_w \\mid x)}{\\pi_{\\text{ref}}(y_w \\mid x)} - \\beta \\log \\frac{\\pi_\\theta(y_l \\mid x)}{\\pi_{\\text{ref}}(y_l \\mid x)}\\right)\\right]"} />
-        </div>
-
-        <p style={S.p}>
-          O DPO treina directamente o LLM para aumentar a probabilidade relativa de respostas preferidas
-          face às rejeitadas, medida em relação à política de referência. Não é necessário treinar um RM
-          separado nem executar RL com amostras online.
-        </p>
-
-        <h3 style={S.h3}>Variantes e Extensões</h3>
-        <p style={S.p}>
-          O sucesso do DPO motivou várias variantes que resolvem limitações específicas:
-        </p>
-        <ul style={{ color: 'var(--text-primary)', lineHeight: 1.8, paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-          <li><strong>IPO (Identity Preference Optimization):</strong> substitui o log-sigmoid por uma loss quadrática para evitar overfitting a pares muito separados.</li>
-          <li><strong>KTO (Kahneman-Tversky Optimization):</strong> usa dados de thumbs-up/thumbs-down em vez de pares comparativos, mais fácil de recolher.</li>
-          <li><strong>ORPO:</strong> elimina o modelo de referência completamente, integrando o termo de regularização na própria loss de linguagem.</li>
-          <li><strong>SimPO:</strong> usa a log-probabilidade média (não cumulativa) e não requer modelo de referência.</li>
-        </ul>
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Método</th>
-              <th style={S.th}>RM explícito?</th>
-              <th style={S.th}>Dados necessários</th>
-              <th style={S.th}>Estabilidade</th>
-              <th style={S.th}>Performance relativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><strong>RLHF + PPO</strong></td>
-              <td style={S.td}>Sim</td>
-              <td style={S.td}>Pares comparativos + amostras online</td>
-              <td style={S.td}>Baixa (hiperparâmetros sensíveis)</td>
-              <td style={S.td}>Alta (estado da arte com esforço)</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>DPO</strong></td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Pares comparativos offline</td>
-              <td style={S.td}>Média</td>
-              <td style={S.td}>Competitivo com RLHF</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>IPO</strong></td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Pares comparativos offline</td>
-              <td style={S.td}>Alta</td>
-              <td style={S.td}>Ligeiramente abaixo do DPO</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>KTO</strong></td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Ratings individuais (não pares)</td>
-              <td style={S.td}>Alta</td>
-              <td style={S.td}>Comparável ao DPO</td>
-            </tr>
-            <tr>
-              <td style={S.td}><strong>ORPO</strong></td>
-              <td style={S.td}>Não</td>
-              <td style={S.td}>Pares; sem modelo de referência</td>
-              <td style={S.td}>Alta</td>
-              <td style={S.td}>Competitivo, mais simples</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style={S.note}>
-          O parâmetro <InlineMath math={"\\beta"} /> controla o trade-off entre seguir as preferências e manter-se
-          próximo da política de referência. Valores típicos: 0.1–0.5. Um <InlineMath math={"\\beta"} /> alto
-          conserva mais o comportamento original; um <InlineMath math={"\\beta"} /> baixo permite mudanças maiores.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 4 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>4. Constitutional AI (Anthropic)</h2>
+        <h2 style={S.h2}>2. Constitutional AI (Anthropic)</h2>
 
         <p style={S.p}>
           A Anthropic introduziu o Constitutional AI (CAI) em 2022 como alternativa ao RLHF tradicional
@@ -388,28 +184,28 @@ revision = model.generate(f"Revisa a resposta tendo em conta: {critique}")`}</di
               </marker>
             </defs>
             {/* Constituição */}
-            <rect x="10" y="110" width="130" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            <rect x="10" y="110" width="130" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
             <text x="75" y="132" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>Constituição</text>
             <text x="75" y="148" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Princípios HHH</text>
 
             {/* Critique Loop */}
-            <rect x="200" y="40" width="140" height="50" rx="10" fill="rgba(251,191,36,0.1)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="270" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Critique Loop</text>
+            <rect x="200" y="40" width="140" height="50" rx="10" fill="rgba(125,211,252,0.1)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="270" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Critique Loop</text>
             <text x="270" y="78" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Modelo critica e revisa</text>
 
             {/* RLAIF */}
-            <rect x="200" y="170" width="140" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="270" y="192" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">RLAIF</text>
+            <rect x="200" y="170" width="140" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="270" y="192" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">RLAIF</text>
             <text x="270" y="208" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">LLM como juíz</text>
 
             {/* PM */}
-            <rect x="420" y="110" width="140" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="490" y="132" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Preference Model</text>
+            <rect x="420" y="110" width="140" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="490" y="132" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Preference Model</text>
             <text x="490" y="148" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Reward signal</text>
 
             {/* PPO */}
-            <rect x="610" y="110" width="130" height="50" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="675" y="132" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">PPO / DPO</text>
+            <rect x="610" y="110" width="130" height="50" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="675" y="132" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">PPO / DPO</text>
             <text x="675" y="148" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Claude alinhado</text>
 
             {/* Arrows */}
@@ -446,7 +242,7 @@ revision = model.generate(f"Revisa a resposta tendo em conta: {critique}")`}</di
 
       {/* ── Section 5 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>5. Red-Teaming e Avaliação de Safety</h2>
+        <h2 style={S.h2}>3. Red-Teaming e Avaliação de Safety</h2>
 
         <p style={S.p}>
           Red-teaming é o processo de tentar activamente descobrir falhas de safety num modelo antes
@@ -467,18 +263,18 @@ revision = model.generate(f"Revisa a resposta tendo em conta: {critique}")`}</di
               </marker>
             </defs>
             {/* Attack Gen */}
-            <rect x="30" y="80" width="150" height="55" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            <rect x="30" y="80" width="150" height="55" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
             <text x="105" y="104" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Attack Generator</text>
             <text x="105" y="122" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">LLM adversarial</text>
 
             {/* Target Model */}
-            <rect x="300" y="80" width="150" height="55" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="375" y="104" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Target Model</text>
+            <rect x="300" y="80" width="150" height="55" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="375" y="104" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">Target Model</text>
             <text x="375" y="122" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">LLM a avaliar</text>
 
             {/* Judge */}
-            <rect x="570" y="80" width="150" height="55" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="645" y="104" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Safety Judge</text>
+            <rect x="570" y="80" width="150" height="55" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="645" y="104" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">Safety Judge</text>
             <text x="645" y="122" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Classifica resposta</text>
 
             {/* Arrows forward */}
@@ -550,7 +346,7 @@ revision = model.generate(f"Revisa a resposta tendo em conta: {critique}")`}</di
 
       {/* ── Section 6 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>6. Scalable Oversight</h2>
+        <h2 style={S.h2}>4. Scalable Oversight</h2>
 
         <p style={S.p}>
           O <em>scalable oversight</em> aborda um problema fundamental: à medida que os modelos ficam mais
@@ -591,17 +387,17 @@ revision = model.generate(f"Revisa a resposta tendo em conta: {critique}")`}</di
             <text x="15" y="140" fontSize="10" fill="var(--text-secondary)" transform="rotate(-90,15,140)" textAnchor="middle">Capacidade</text>
 
             {/* Levels */}
-            <rect x="40" y="200" width="680" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+            <rect x="40" y="200" width="680" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
             <text x="380" y="225" textAnchor="middle" fontSize="11" fill={color} fontWeight="600">Nível 1: Supervisão Humana Directa</text>
 
-            <rect x="40" y="145" width="680" height="40" rx="8" fill="rgba(251,191,36,0.08)" stroke="#f59e0b" strokeWidth="1" />
-            <text x="380" y="170" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">Nível 2: RLHF / CAI (humano + IA auxiliar)</text>
+            <rect x="40" y="145" width="680" height="40" rx="8" fill="rgba(125,211,252,0.08)" stroke="#0284c7" strokeWidth="1" />
+            <text x="380" y="170" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">Nível 2: RLHF / CAI (humano + IA auxiliar)</text>
 
-            <rect x="40" y="90" width="680" height="40" rx="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1" />
-            <text x="380" y="115" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">Nível 3: Debate / RRM / Interpretabilidade</text>
+            <rect x="40" y="90" width="680" height="40" rx="8" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1" />
+            <text x="380" y="115" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">Nível 3: Debate / RRM / Interpretabilidade</text>
 
-            <rect x="40" y="35" width="680" height="40" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-            <text x="380" y="60" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="600">Nível 4: Weak-to-Strong / Scalable Oversight</text>
+            <rect x="40" y="35" width="680" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+            <text x="380" y="60" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="600">Nível 4: Weak-to-Strong / Scalable Oversight</text>
 
             {/* Arrow up */}
             <line x1="730" y1="240" x2="730" y2="40" stroke="#94a3b8" strokeWidth="1.5" markerEnd="url(#arr5)" />
@@ -623,7 +419,7 @@ revision = model.generate(f"Revisa a resposta tendo em conta: {critique}")`}</di
 
       {/* ── Section 7 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>7. Interpretabilidade Mecanística</h2>
+        <h2 style={S.h2}>5. Interpretabilidade Mecanística</h2>
 
         <p style={S.p}>
           A interpretabilidade mecanística (<em>mechanistic interpretability</em>) procura compreender
@@ -743,7 +539,7 @@ def steered_forward(x, alpha=10.0):
 
       {/* ── Section 8 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>8. Regulação e Governance</h2>
+        <h2 style={S.h2}>6. Regulação e Governance</h2>
 
         <p style={S.p}>
           O desenvolvimento acelerado dos LLMs criou pressão para frameworks regulatórios formais.
@@ -864,63 +660,6 @@ def steered_forward(x, alpha=10.0):
           treinar um modelo ASL-3 sem salvaguardas suficientes, compromete-se a não o lançar.
         </div>
       </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>9. Síntese do Módulo</h2>
-
-        <p style={S.p}>
-          O alinhamento de LLMs é um campo multidisciplinar que combina teoria de optimização,
-          aprendizagem por reforço, interpretabilidade e governance. Os pontos centrais deste módulo:
-        </p>
-
-        <div style={S.highlight}>
-          <ul style={{ margin: 0, paddingLeft: '1.2rem', lineHeight: 2.1 }}>
-            <li>
-              <strong>O problema é estrutural:</strong> Outer alignment (especificação errada) e inner
-              alignment (optimizador interno divergente) são falhas independentes que exigem soluções distintas.
-            </li>
-            <li>
-              <strong>RLHF é o paradigma dominante</strong> mas frágil: o reward model é imperfeito e
-              sujeito a hacking. A penalização KL limita o drift mas não elimina o problema.
-            </li>
-            <li>
-              <strong>DPO simplifica RLHF</strong> ao eliminar o RM explícito, usando a re-parametrização
-              closed-form. Variantes como KTO e ORPO reduzem ainda mais os requisitos de dados.
-            </li>
-            <li>
-              <strong>Constitutional AI</strong> da Anthropic resolve o bottleneck de escalabilidade de
-              rótulos humanos usando o próprio modelo como juíz (RLAIF) com uma constituição de princípios.
-            </li>
-            <li>
-              <strong>Red-teaming sistemático</strong> — manual e automatizado — é indispensável antes de
-              qualquer deployment. Benchmarks como HarmBench padronizam a comparação entre modelos.
-            </li>
-            <li>
-              <strong>Scalable oversight</strong> (debate, RRM, weak-to-strong) antecipa o cenário em que
-              modelos excedem a capacidade humana de verificação directa.
-            </li>
-            <li>
-              <strong>Interpretabilidade mecanística</strong> — especialmente SAEs — oferece uma janela
-              para os algoritmos internos dos modelos, complementando a supervisão comportamental.
-            </li>
-            <li>
-              <strong>A regulação avança</strong>: o EU AI Act define obrigações legais para GPAI;
-              a RSP da Anthropic define compromissos internos baseados em níveis de risco (ASL).
-            </li>
-          </ul>
-        </div>
-
-        <p style={S.p}>
-          A convergência entre técnicas de treino (RLHF, DPO, CAI), avaliação (red-teaming, benchmarks),
-          interpretabilidade (SAEs, circuit analysis) e governance (RSP, AI Act) forma o ecossistema
-          moderno de safety. Nenhuma técnica isolada é suficiente — a resiliência vem da sobreposição
-          de múltiplas camadas de defesa.
-        </p>
-
-      </section>
-    </div>
+</div>
   );
 }

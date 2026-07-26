@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './RecommenderSystems';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -10,7 +10,7 @@ const S = {
   h1: { fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.4rem' },
   sub: { color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' },
   section: { marginBottom: '2.5rem' },
-  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, marginBottom: '1rem' },
+  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, borderLeft: `3px solid ${C}`, paddingLeft: '0.85rem', marginBottom: '1rem' },
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
@@ -24,7 +24,6 @@ export default function REC8() {
       <Link to="/recommender" style={S.back}>← Recommender Systems</Link>
       <div style={S.badge}>MÓDULO {modules[7].num}</div>
       <h1 style={S.h1}>{modules[7].title}</h1>
-      <p style={S.sub}>{modules[7].subtitle}</p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. LLMs como Motores de Recomendação</h2>
@@ -44,13 +43,13 @@ export default function REC8() {
           <svg viewBox="0 0 520 160" width="100%" style={{ display: 'block' }}>
             <text x="260" y="18" textAnchor="middle" fill="#94a3b8" fontSize="11" fontWeight="600">P5 — Framework Unificado de Recomendação com T5</text>
             {/* Input tasks */}
-            <rect x="10" y="38" width="105" height="25" rx="5" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="10" y="38" width="105" height="25" rx="5" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="62" y="55" textAnchor="middle" fill="#94a3b8" fontSize="9">Rating Prediction</text>
-            <rect x="10" y="70" width="105" height="25" rx="5" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="10" y="70" width="105" height="25" rx="5" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="62" y="87" textAnchor="middle" fill="#94a3b8" fontSize="9">Item Retrieval</text>
-            <rect x="10" y="102" width="105" height="25" rx="5" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="10" y="102" width="105" height="25" rx="5" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="62" y="119" textAnchor="middle" fill="#94a3b8" fontSize="9">Explanation</text>
-            <rect x="10" y="134" width="105" height="22" rx="5" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="10" y="134" width="105" height="22" rx="5" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="62" y="149" textAnchor="middle" fill="#94a3b8" fontSize="9">Sequential RecSys</text>
             {/* Unified text format */}
             <rect x="140" y="50" width="115" height="80" rx="8" fill={`${C}15`} stroke={C} strokeWidth="1.5" />
@@ -65,7 +64,7 @@ export default function REC8() {
             <line x1="115" y1="115" x2="140" y2="108" stroke="var(--card-border)" strokeWidth="1" markerEnd="url(#arr8g)" />
             <line x1="115" y1="145" x2="140" y2="120" stroke="var(--card-border)" strokeWidth="1" markerEnd="url(#arr8g)" />
             {/* T5 encoder-decoder */}
-            <rect x="278" y="50" width="110" height="80" rx="8" fill="rgba(249,115,22,0.06)" stroke="#475569" strokeWidth="1.5" />
+            <rect x="278" y="50" width="110" height="80" rx="8" fill="rgba(74,158,237,0.06)" stroke="#475569" strokeWidth="1.5" />
             <text x="333" y="80" textAnchor="middle" fill="#e2e8f0" fontSize="11" fontWeight="700">T5</text>
             <text x="333" y="96" textAnchor="middle" fill="#94a3b8" fontSize="9">Encoder-Decoder</text>
             <text x="333" y="110" textAnchor="middle" fill="#475569" fontSize="8">fine-tuned em</text>
@@ -128,15 +127,15 @@ export default function REC8() {
             <text x="55" y="59" textAnchor="middle" fill={C} fontSize="9" fontWeight="700">Preferência</text>
             <text x="55" y="73" textAnchor="middle" fill="#94a3b8" fontSize="8">do utilizador</text>
             {/* Retriever */}
-            <rect x="120" y="42" width="90" height="40" rx="6" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="120" y="42" width="90" height="40" rx="6" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="165" y="59" textAnchor="middle" fill="#e2e8f0" fontSize="9" fontWeight="600">Retriever</text>
             <text x="165" y="73" textAnchor="middle" fill="#475569" fontSize="8">FAISS / Pinecone</text>
             {/* Catalog */}
-            <rect x="230" y="42" width="90" height="40" rx="6" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="230" y="42" width="90" height="40" rx="6" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="275" y="59" textAnchor="middle" fill="#e2e8f0" fontSize="9" fontWeight="600">Catálogo</text>
             <text x="275" y="73" textAnchor="middle" fill="#475569" fontSize="8">Top-K itens</text>
             {/* LLM */}
-            <rect x="340" y="42" width="80" height="40" rx="6" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1" />
+            <rect x="340" y="42" width="80" height="40" rx="6" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1" />
             <text x="380" y="62" textAnchor="middle" fill="#e2e8f0" fontSize="9" fontWeight="600">LLM</text>
             {/* Output */}
             <rect x="440" y="32" width="90" height="60" rx="6" fill={`${C}20`} stroke={C} strokeWidth="1.5" />
@@ -179,18 +178,7 @@ export default function REC8() {
           <strong>Futuro:</strong> os próximos desenvolvimentos apontam para modelos multimodais capazes de recomendar a partir de imagens e voz, agentes autónomos de shopping que executam tarefas completas (pesquisar, comparar, comprar) em nome do utilizador, e RecSys como camada de personalização universal integrada em todos os pontos de contacto digitais — do motor de busca ao assistente de voz ao feed de conteúdos.
         </p>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>LLMs como Motores de Recomendação</strong> — LLMs podem recomendar directamente via prompting (zero-shot) ou fine-tuning; P5 reformula recommendation como text-to-text; a vantagem é o conhecimento do mundo e a capacidade de raciocinar sobre preferências expressas em linguagem natural.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Recomendação Conversacional</strong> — sistemas conversacionais clarificam preferências via diálogo antes de recomendar; LLMs com memória de conversa e function calling para busca em catálogo são a arquitectura emergente — substituindo questionários estáticos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>RAG para RecSys</strong> — RAG recupera informação sobre o utilizador (histórico, preferências, contexto) e items (descrições, avaliações) para enriquecer o contexto do LLM; combina o conhecimento do modelo com dados actualizados do sistema.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Desafios e Futuro</strong> — LLMs em RecSys enfrentam latência (inferência custosa), hallucination de items inexistentes e dificuldade em capturar preferências implícitas; o futuro aponta para sistemas híbridos que combinam retrieval eficiente com raciocínio de LLM.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

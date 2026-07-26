@@ -5,30 +5,30 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
 const TIMELINE = [
-  { year: '1998', name: 'LeNet-5', color: '#f97316', params: '60K', top1: '~1% (MNIST)', desc: 'A primeira CNN moderna. 2 camadas conv + 3 FC. Tanh como activação. Leitura de cheques em bancos. Prova de conceito que ficou esquecida por 14 anos.' },
-  { year: '2012', name: 'AlexNet', color: '#f97316', params: '60M', top1: '63.3% (ImageNet)', desc: 'O "big bang" do deep learning. Ganhou o ImageNet Challenge com margem enorme (~10pp). Introduziu: ReLU, dropout, data augmentation, GPUs para treino, Local Response Normalization.' },
-  { year: '2014', name: 'VGGNet', color: '#f97316', params: '138M', top1: '74.4%', desc: 'Princípio da simplicidade: só filtros 3×3 empilhados em vez de filtros grandes. Profundidade (16-19 camadas) é o que importa. Muito usado como feature extractor até hoje.' },
-  { year: '2014', name: 'GoogLeNet (Inception v1)', color: '#f97316', params: '6.8M', top1: '74.8%', desc: 'Inception module: aplicar filtros 1×1, 3×3, 5×5 e max pool em paralelo e concatenar. Muito mais eficiente que VGG. 138M → 6.8M parâmetros com melhor accuracy.' },
-  { year: '2015', name: 'ResNet', color: '#f97316', params: '25M (ResNet-50)', top1: '80.3% (ResNet-152)', desc: 'Skip connections resolvem o problema do vanishing gradient. Permite treinar redes de 50, 101, 152 camadas. Ganhou ImageNet 2015 com desempenho sobre-humano (5.0% vs 5.1% humano).' },
-  { year: '2017', name: 'DenseNet', color: '#f97316', params: '8M (DenseNet-121)', top1: '79.2%', desc: 'Cada camada recebe como input a concatenação de TODAS as camadas anteriores no bloco (dense connections). Reuso máximo de features, gradientes fluem directamente para qualquer camada anterior, muito eficiente em parâmetros.' },
-  { year: '2018', name: 'SENet (Squeeze-and-Excitation)', color: '#f97316', params: '+0.5M sobre o backbone', top1: '82.7% (top-1, ganhou ILSVRC 2017)', desc: 'Introduz "channel attention": cada bloco aprende a recalibrar a importância de cada canal de feature maps. Pequeno custo computacional extra, ganho consistente de accuracy em qualquer backbone (ResNet, Inception, etc.).' },
+  { year: '1998', name: 'LeNet-5', color: '#4a9eed', params: '60K', top1: '~1% (MNIST)', desc: 'A primeira CNN moderna. 2 camadas conv + 3 FC. Tanh como activação. Leitura de cheques em bancos. Prova de conceito que ficou esquecida por 14 anos.' },
+  { year: '2012', name: 'AlexNet', color: '#4a9eed', params: '60M', top1: '63.3% (ImageNet)', desc: 'O "big bang" do deep learning. Ganhou o ImageNet Challenge com margem enorme (~10pp). Introduziu: ReLU, dropout, data augmentation, GPUs para treino, Local Response Normalization.' },
+  { year: '2014', name: 'VGGNet', color: '#4a9eed', params: '138M', top1: '74.4%', desc: 'Princípio da simplicidade: só filtros 3×3 empilhados em vez de filtros grandes. Profundidade (16-19 camadas) é o que importa. Muito usado como feature extractor até hoje.' },
+  { year: '2014', name: 'GoogLeNet (Inception v1)', color: '#4a9eed', params: '6.8M', top1: '74.8%', desc: 'Inception module: aplicar filtros 1×1, 3×3, 5×5 e max pool em paralelo e concatenar. Muito mais eficiente que VGG. 138M → 6.8M parâmetros com melhor accuracy.' },
+  { year: '2015', name: 'ResNet', color: '#4a9eed', params: '25M (ResNet-50)', top1: '80.3% (ResNet-152)', desc: 'Skip connections resolvem o problema do vanishing gradient. Permite treinar redes de 50, 101, 152 camadas. Ganhou ImageNet 2015 com desempenho sobre-humano (5.0% vs 5.1% humano).' },
+  { year: '2017', name: 'DenseNet', color: '#4a9eed', params: '8M (DenseNet-121)', top1: '79.2%', desc: 'Cada camada recebe como input a concatenação de TODAS as camadas anteriores no bloco (dense connections). Reuso máximo de features, gradientes fluem directamente para qualquer camada anterior, muito eficiente em parâmetros.' },
+  { year: '2018', name: 'SENet (Squeeze-and-Excitation)', color: '#4a9eed', params: '+0.5M sobre o backbone', top1: '82.7% (top-1, ganhou ILSVRC 2017)', desc: 'Introduz "channel attention": cada bloco aprende a recalibrar a importância de cada canal de feature maps. Pequeno custo computacional extra, ganho consistente de accuracy em qualquer backbone (ResNet, Inception, etc.).' },
 ];
 
 const TimelineDiagram = () => (
@@ -60,44 +60,44 @@ const ResNetDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>ResNet — Skip Connection (Residual Block)</p>
     <svg viewBox="0 0 480 130" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr6r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
-        <marker id="arr6g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arr6r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
+        <marker id="arr6g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Plain path */}
       <text x="10" y="28" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Rede Comum (plain)</text>
-      <rect x="10" y="35" width="50" height="30" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="35" y="54" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">x</text>
-      <line x1="60" y1="50" x2="90" y2="50" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
-      <rect x="93" y="35" width="80" height="30" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="133" y="47" textAnchor="middle" fill="#f97316" fontSize="7">Conv3×3 BN ReLU</text>
-      <text x="133" y="58" textAnchor="middle" fill="#f97316" fontSize="7">Conv3×3 BN</text>
-      <line x1="173" y1="50" x2="203" y2="50" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
-      <rect x="206" y="35" width="50" height="30" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2"/>
-      <text x="231" y="54" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">F(x)</text>
+      <rect x="10" y="35" width="50" height="30" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="35" y="54" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">x</text>
+      <line x1="60" y1="50" x2="90" y2="50" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
+      <rect x="93" y="35" width="80" height="30" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="133" y="47" textAnchor="middle" fill="#4a9eed" fontSize="7">Conv3×3 BN ReLU</text>
+      <text x="133" y="58" textAnchor="middle" fill="#4a9eed" fontSize="7">Conv3×3 BN</text>
+      <line x1="173" y1="50" x2="203" y2="50" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
+      <rect x="206" y="35" width="50" height="30" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="231" y="54" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">F(x)</text>
       <text x="133" y="80" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">aprende F(x) directamente</text>
 
       {/* ResNet path */}
       <text x="10" y="105" fill="var(--text-secondary)" fontSize="8" fontWeight="700">Bloco Residual (ResNet)</text>
 
-      <rect x="260" y="35" width="50" height="30" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="285" y="54" textAnchor="middle" fill="#f97316" fontSize="7.5" fontWeight="700">x</text>
+      <rect x="260" y="35" width="50" height="30" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="285" y="54" textAnchor="middle" fill="#4a9eed" fontSize="7.5" fontWeight="700">x</text>
 
       {/* Skip connection (arc) */}
-      <path d="M 285 35 Q 380 5 448 50" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="4,2" markerEnd="url(#arr6g)"/>
-      <text x="340" y="12" fill="#f97316" fontSize="7.5" fontWeight="700">skip: +x</text>
+      <path d="M 285 35 Q 380 5 448 50" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="4,2" markerEnd="url(#arr6g)"/>
+      <text x="340" y="12" fill="#4a9eed" fontSize="7.5" fontWeight="700">skip: +x</text>
 
-      <line x1="310" y1="50" x2="338" y2="50" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
-      <rect x="341" y="35" width="80" height="30" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="381" y="47" textAnchor="middle" fill="#f97316" fontSize="7">Conv3×3 BN ReLU</text>
-      <text x="381" y="58" textAnchor="middle" fill="#f97316" fontSize="7">Conv3×3 BN</text>
-      <line x1="421" y1="50" x2="445" y2="50" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
+      <line x1="310" y1="50" x2="338" y2="50" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
+      <rect x="341" y="35" width="80" height="30" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="381" y="47" textAnchor="middle" fill="#4a9eed" fontSize="7">Conv3×3 BN ReLU</text>
+      <text x="381" y="58" textAnchor="middle" fill="#4a9eed" fontSize="7">Conv3×3 BN</text>
+      <line x1="421" y1="50" x2="445" y2="50" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr6r)"/>
 
-      <rect x="448" y="35" width="24" height="30" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2"/>
-      <text x="460" y="48" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">⊕</text>
-      <text x="460" y="59" textAnchor="middle" fill="#f97316" fontSize="6">ReLU</text>
+      <rect x="448" y="35" width="24" height="30" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="460" y="48" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">⊕</text>
+      <text x="460" y="59" textAnchor="middle" fill="#4a9eed" fontSize="6">ReLU</text>
 
-      <text x="385" y="80" textAnchor="middle" fill="#f97316" fontSize="7.5">aprende F(x)+x = residual H(x)−x</text>
+      <text x="385" y="80" textAnchor="middle" fill="#4a9eed" fontSize="7.5">aprende F(x)+x = residual H(x)−x</text>
       <text x="385" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">se F(x)≈0, a camada é a identidade — gradiente flui directamente</text>
     </svg>
   </div>
@@ -108,52 +108,52 @@ const InceptionDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Inception Module — quatro caminhos em paralelo</p>
     <svg viewBox="0 0 520 230" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrInc" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f97316"/></marker>
+        <marker id="arrInc" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Input */}
-      <rect x="200" y="5" width="120" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="260" y="23" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Input (camada anterior)</text>
+      <rect x="200" y="5" width="120" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="260" y="23" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Input (camada anterior)</text>
 
       {/* Branch lines down */}
       {[60, 180, 300, 420].map((cx, i) => (
-        <line key={i} x1="260" y1="33" x2={cx} y2="55" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+        <line key={i} x1="260" y1="33" x2={cx} y2="55" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
       ))}
 
       {/* Branch 1: 1x1 conv */}
-      <rect x="20" y="58" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="60" y="75" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Conv 1×1</text>
-      <line x1="60" y1="84" x2="60" y2="180" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="20" y="58" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="60" y="75" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Conv 1×1</text>
+      <line x1="60" y1="84" x2="60" y2="180" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
 
       {/* Branch 2: 1x1 -> 3x3 */}
-      <rect x="140" y="58" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="180" y="75" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Conv 1×1</text>
-      <line x1="180" y1="84" x2="180" y2="105" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
-      <rect x="140" y="108" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="180" y="125" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Conv 3×3</text>
-      <line x1="180" y1="134" x2="180" y2="180" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="140" y="58" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="180" y="75" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Conv 1×1</text>
+      <line x1="180" y1="84" x2="180" y2="105" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="140" y="108" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="180" y="125" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Conv 3×3</text>
+      <line x1="180" y1="134" x2="180" y2="180" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
 
       {/* Branch 3: 1x1 -> 5x5 */}
-      <rect x="260" y="58" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="300" y="75" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Conv 1×1</text>
-      <line x1="300" y1="84" x2="300" y2="105" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
-      <rect x="260" y="108" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="300" y="125" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Conv 5×5</text>
-      <line x1="300" y1="134" x2="300" y2="180" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="260" y="58" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="300" y="75" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Conv 1×1</text>
+      <line x1="300" y1="84" x2="300" y2="105" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="260" y="108" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="300" y="125" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Conv 5×5</text>
+      <line x1="300" y1="134" x2="300" y2="180" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
 
       {/* Branch 4: maxpool -> 1x1 */}
-      <rect x="380" y="58" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="420" y="75" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">MaxPool 3×3</text>
-      <line x1="420" y1="84" x2="420" y2="105" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
-      <rect x="380" y="108" width="80" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="420" y="125" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Conv 1×1</text>
-      <line x1="420" y1="134" x2="420" y2="180" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="380" y="58" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="420" y="75" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">MaxPool 3×3</text>
+      <line x1="420" y1="84" x2="420" y2="105" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <rect x="380" y="108" width="80" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="420" y="125" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Conv 1×1</text>
+      <line x1="420" y1="134" x2="420" y2="180" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
 
       {/* Concat */}
-      <rect x="50" y="183" width="400" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="260" y="202" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Concatenação (filter concat) — empilha os 4 outputs em profundidade</text>
+      <rect x="50" y="183" width="400" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="260" y="202" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Concatenação (filter concat) — empilha os 4 outputs em profundidade</text>
 
-      <line x1="260" y1="213" x2="260" y2="225" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
+      <line x1="260" y1="213" x2="260" y2="225" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrInc)"/>
     </svg>
     <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>As convoluções 1×1 nos ramos do meio reduzem o número de canais ANTES do 3×3/5×5 — "bottleneck" que poupa muito cálculo. No ramo do max pool, o 1×1 reduz canais DEPOIS do pooling.</p>
   </div>
@@ -164,7 +164,7 @@ const DenseNetDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>DenseNet — Dense Block (cada camada vê tudo o que veio antes)</p>
     <svg viewBox="0 0 480 170" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrDense" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrDense" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* 4 layer nodes */}
@@ -175,22 +175,22 @@ const DenseNetDiagram = () => (
         { cx: 420, label: 'H₃\nLayer 3' },
       ].map(({ cx, label }, i) => (
         <g key={i}>
-          <rect x={cx - 40} y="20" width="80" height="40" rx="8" fill={i === 0 ? 'rgba(249,115,22,0.10)' : 'rgba(249,115,22,0.10)'} stroke={i === 0 ? '#f97316' : '#f97316'} strokeWidth="1.5"/>
+          <rect x={cx - 40} y="20" width="80" height="40" rx="8" fill={i === 0 ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'} stroke={i === 0 ? '#4a9eed' : '#4a9eed'} strokeWidth="1.5"/>
           {label.split('\n').map((l, li) => (
-            <text key={li} x={cx} y={36 + li * 13} textAnchor="middle" fill={i === 0 ? '#f97316' : '#f97316'} fontSize="9" fontWeight="700">{l}</text>
+            <text key={li} x={cx} y={36 + li * 13} textAnchor="middle" fill={i === 0 ? '#4a9eed' : '#4a9eed'} fontSize="9" fontWeight="700">{l}</text>
           ))}
         </g>
       ))}
 
       {/* Direct sequential arrows */}
-      <line x1="100" y1="40" x2="138" y2="40" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrDense)"/>
-      <line x1="220" y1="40" x2="258" y2="40" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrDense)"/>
-      <line x1="340" y1="40" x2="378" y2="40" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrDense)"/>
+      <line x1="100" y1="40" x2="138" y2="40" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrDense)"/>
+      <line x1="220" y1="40" x2="258" y2="40" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrDense)"/>
+      <line x1="340" y1="40" x2="378" y2="40" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrDense)"/>
 
       {/* Skip arcs: x0 -> H2, x0 -> H3, H1 -> H3 */}
-      <path d="M 60 60 Q 180 110 300 60" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrDense)"/>
-      <path d="M 60 60 Q 240 150 420 60" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrDense)"/>
-      <path d="M 180 60 Q 300 130 420 60" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrDense)"/>
+      <path d="M 60 60 Q 180 110 300 60" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrDense)"/>
+      <path d="M 60 60 Q 240 150 420 60" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrDense)"/>
+      <path d="M 180 60 Q 300 130 420 60" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrDense)"/>
 
       <text x="240" y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">cada Hₗ recebe concat(x₀, x₁, ..., x_(l-1)) — não soma, CONCATENA os feature maps</text>
     </svg>
@@ -203,47 +203,47 @@ const SEDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Squeeze-and-Excitation (SE) Block</p>
     <svg viewBox="0 0 520 150" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arrSE" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker>
+        <marker id="arrSE" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed"/></marker>
       </defs>
 
       {/* Input feature map */}
-      <rect x="10" y="40" width="70" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="45" y="65" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Feature</text>
-      <text x="45" y="78" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">maps</text>
-      <text x="45" y="92" textAnchor="middle" fill="#f97316" fontSize="7">H×W×C</text>
+      <rect x="10" y="40" width="70" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="45" y="65" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Feature</text>
+      <text x="45" y="78" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">maps</text>
+      <text x="45" y="92" textAnchor="middle" fill="#4a9eed" fontSize="7">H×W×C</text>
 
-      <line x1="80" y1="70" x2="118" y2="70" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
+      <line x1="80" y1="70" x2="118" y2="70" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
 
       {/* Squeeze: global avg pool */}
-      <rect x="121" y="50" width="90" height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="166" y="66" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Squeeze</text>
-      <text x="166" y="78" textAnchor="middle" fill="#f97316" fontSize="7">Global Avg Pool</text>
+      <rect x="121" y="50" width="90" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="166" y="66" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Squeeze</text>
+      <text x="166" y="78" textAnchor="middle" fill="#4a9eed" fontSize="7">Global Avg Pool</text>
       <text x="166" y="105" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">→ vector 1×1×C</text>
 
-      <line x1="211" y1="70" x2="249" y2="70" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
+      <line x1="211" y1="70" x2="249" y2="70" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
 
       {/* Excitation: FC -> ReLU -> FC -> Sigmoid */}
-      <rect x="252" y="50" width="120" height="40" rx="6" fill="rgba(249,115,22,0.14)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="312" y="64" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">Excitation</text>
-      <text x="312" y="76" textAnchor="middle" fill="#f97316" fontSize="7">FC→ReLU→FC→Sigmoid</text>
+      <rect x="252" y="50" width="120" height="40" rx="6" fill="rgba(74,158,237,0.14)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="312" y="64" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">Excitation</text>
+      <text x="312" y="76" textAnchor="middle" fill="#4a9eed" fontSize="7">FC→ReLU→FC→Sigmoid</text>
       <text x="312" y="105" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">→ pesos s ∈ (0,1) por canal</text>
 
-      <line x1="372" y1="70" x2="410" y2="70" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
+      <line x1="372" y1="70" x2="410" y2="70" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
 
       {/* Scale */}
-      <rect x="413" y="40" width="34" height="60" rx="4" fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="2"/>
-      <text x="430" y="73" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">⊗</text>
+      <rect x="413" y="40" width="34" height="60" rx="4" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="2"/>
+      <text x="430" y="73" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">⊗</text>
       <text x="430" y="113" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">Scale</text>
 
       {/* skip from input to scale */}
-      <path d="M 45 40 Q 45 5 430 5 Q 470 5 470 40" fill="none" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrSE)"/>
-      <text x="280" y="20" textAnchor="middle" fill="#f97316" fontSize="7.5">feature maps originais (H×W×C)</text>
+      <path d="M 45 40 Q 45 5 430 5 Q 470 5 470 40" fill="none" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrSE)"/>
+      <text x="280" y="20" textAnchor="middle" fill="#4a9eed" fontSize="7.5">feature maps originais (H×W×C)</text>
 
-      <line x1="447" y1="70" x2="480" y2="70" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
-      <rect x="483" y="40" width="30" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="498" y="65" textAnchor="middle" fill="#f97316" fontSize="7" fontWeight="700">Output</text>
-      <text x="498" y="80" textAnchor="middle" fill="#f97316" fontSize="7">recali-</text>
-      <text x="498" y="92" textAnchor="middle" fill="#f97316" fontSize="7">brado</text>
+      <line x1="447" y1="70" x2="480" y2="70" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrSE)"/>
+      <rect x="483" y="40" width="30" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="498" y="65" textAnchor="middle" fill="#4a9eed" fontSize="7" fontWeight="700">Output</text>
+      <text x="498" y="80" textAnchor="middle" fill="#4a9eed" fontSize="7">recali-</text>
+      <text x="498" y="92" textAnchor="middle" fill="#4a9eed" fontSize="7">brado</text>
 
       <text x="260" y="135" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">cada canal c é multiplicado pelo seu peso sₐ — canais úteis amplificados, irrelevantes atenuados</text>
     </svg>
@@ -253,13 +253,13 @@ const SEDiagram = () => (
 export default function CV6() {
   const [sel, setSel] = useState(0);
   const archs = [
-    { name: 'LeNet-5', year: '1998', color: '#f97316', layers: '5 camadas (2 conv + 3 FC)', params: '60K', input: '32×32 greyscale', activations: 'Tanh / Sigmoid', pooling: 'Average pooling', key: 'Primeira CNN moderna. Prova de conceito para reconhecimento de escrita. Usada em produção em leitores de cheques nos EUA nos anos 90.', limit: 'Sem ReLU, sem GPU, sem grandes datasets. Ficou irrelevante até 2012.' },
-    { name: 'AlexNet', year: '2012', color: '#f97316', layers: '8 camadas (5 conv + 3 FC)', params: '60M', input: '227×227 RGB', activations: 'ReLU (novidade!)', pooling: 'Max pooling com overlap', key: 'Treinou em 2 GPUs GTX 580. Introduziu ReLU, dropout (0.5 nas FC), augmentation (crops + flips), LRN. Ganhou ImageNet com 63.3% vs 74.3% do 2º lugar.', limit: 'Muito parâmetros nas FC (43M de 60M). Arquitectura ad hoc — não há princípio de design claro.' },
-    { name: 'VGGNet', year: '2014', color: '#f97316', layers: '16 ou 19 camadas', params: '138M (VGG-16)', input: '224×224 RGB', activations: 'ReLU', pooling: 'Max pooling 2×2', key: 'Princípio: só filtros 3×3, profundidade é o que conta. 2 filtros 3×3 = receptive field de 5×5 mas com menos parâmetros e mais não-linearidade. Ainda muito usado como backbone.', limit: '138M parâmetros — maioria nas FC (102M). Treinar do zero é muito caro. Inferência lenta.' },
-    { name: 'GoogLeNet', year: '2014', color: '#f97316', layers: '22 camadas (9 Inception modules)', params: '6.8M', input: '224×224 RGB', activations: 'ReLU', pooling: 'Global Average Pooling + max pool nos módulos', key: 'Inception modules: ramos paralelos de 1×1, 3×3, 5×5 e max pool, concatenados. Convoluções 1×1 como "bottleneck" reduzem custo computacional drasticamente. Classificadores auxiliares ajudam o gradiente a propagar em redes profundas.', limit: 'Arquitectura complexa e heterogénea — muitos hiperparâmetros desenhados manualmente. Difícil de modificar/escalar de forma sistemática.' },
-    { name: 'ResNet', year: '2015', color: '#f97316', layers: '50, 101 ou 152 camadas', params: '25M (ResNet-50)', input: '224×224 RGB', activations: 'ReLU + Identity', pooling: 'Global Average Pooling', key: 'Skip connections resolvem vanishing gradient. H(x) = F(x) + x — aprender o residual é mais fácil que aprender a função completa. Desempenho sobre-humano em ImageNet.', limit: 'Bottleneck blocks necessários para redes profundas. Largura fixa por estágio — menos flexível que EfficientNet.' },
-    { name: 'DenseNet', year: '2017', color: '#f97316', layers: '121, 169, 201 ou 264 camadas', params: '8M (DenseNet-121)', input: '224×224 RGB', activations: 'ReLU + BN', pooling: 'Average pooling entre dense blocks (transition layers)', key: 'Dense connections: cada camada recebe a concatenação de TODOS os feature maps anteriores no bloco. Reuso extremo de features, gradientes chegam directamente a qualquer camada, muito eficiente em parâmetros face à accuracy.', limit: 'Concatenar tudo cresce a memória rapidamente — feature maps acumulam-se e precisam ficar em memória durante o forward/backward. Mais lento na prática que ResNet apesar de menos parâmetros.' },
-    { name: 'SENet', year: '2018', color: '#f97316', layers: 'Módulo plugável (ex.: SE-ResNet-50)', params: '+0.5M sobre o backbone (~+10%)', input: '224×224 RGB', activations: 'ReLU + Sigmoid (no SE block)', pooling: 'Global Average Pooling (squeeze) + pooling normal do backbone', key: 'Channel attention: "squeeze" (global average pooling) resume cada canal a um escalar; "excitation" (MLP pequeno) aprende pesos por canal que recalibram os feature maps. Ganho de accuracy quase grátis em qualquer arquitectura existente.', limit: 'Atenção apenas ao nível de canal — não captura relações espaciais (resolvido depois por CBAM e mecanismos de self-attention/Vision Transformers).' },
+    { name: 'LeNet-5', year: '1998', color: '#4a9eed', layers: '5 camadas (2 conv + 3 FC)', params: '60K', input: '32×32 greyscale', activations: 'Tanh / Sigmoid', pooling: 'Average pooling', key: 'Primeira CNN moderna. Prova de conceito para reconhecimento de escrita. Usada em produção em leitores de cheques nos EUA nos anos 90.', limit: 'Sem ReLU, sem GPU, sem grandes datasets. Ficou irrelevante até 2012.' },
+    { name: 'AlexNet', year: '2012', color: '#4a9eed', layers: '8 camadas (5 conv + 3 FC)', params: '60M', input: '227×227 RGB', activations: 'ReLU (novidade!)', pooling: 'Max pooling com overlap', key: 'Treinou em 2 GPUs GTX 580. Introduziu ReLU, dropout (0.5 nas FC), augmentation (crops + flips), LRN. Ganhou ImageNet com 63.3% vs 74.3% do 2º lugar.', limit: 'Muito parâmetros nas FC (43M de 60M). Arquitectura ad hoc — não há princípio de design claro.' },
+    { name: 'VGGNet', year: '2014', color: '#4a9eed', layers: '16 ou 19 camadas', params: '138M (VGG-16)', input: '224×224 RGB', activations: 'ReLU', pooling: 'Max pooling 2×2', key: 'Princípio: só filtros 3×3, profundidade é o que conta. 2 filtros 3×3 = receptive field de 5×5 mas com menos parâmetros e mais não-linearidade. Ainda muito usado como backbone.', limit: '138M parâmetros — maioria nas FC (102M). Treinar do zero é muito caro. Inferência lenta.' },
+    { name: 'GoogLeNet', year: '2014', color: '#4a9eed', layers: '22 camadas (9 Inception modules)', params: '6.8M', input: '224×224 RGB', activations: 'ReLU', pooling: 'Global Average Pooling + max pool nos módulos', key: 'Inception modules: ramos paralelos de 1×1, 3×3, 5×5 e max pool, concatenados. Convoluções 1×1 como "bottleneck" reduzem custo computacional drasticamente. Classificadores auxiliares ajudam o gradiente a propagar em redes profundas.', limit: 'Arquitectura complexa e heterogénea — muitos hiperparâmetros desenhados manualmente. Difícil de modificar/escalar de forma sistemática.' },
+    { name: 'ResNet', year: '2015', color: '#4a9eed', layers: '50, 101 ou 152 camadas', params: '25M (ResNet-50)', input: '224×224 RGB', activations: 'ReLU + Identity', pooling: 'Global Average Pooling', key: 'Skip connections resolvem vanishing gradient. H(x) = F(x) + x — aprender o residual é mais fácil que aprender a função completa. Desempenho sobre-humano em ImageNet.', limit: 'Bottleneck blocks necessários para redes profundas. Largura fixa por estágio — menos flexível que EfficientNet.' },
+    { name: 'DenseNet', year: '2017', color: '#4a9eed', layers: '121, 169, 201 ou 264 camadas', params: '8M (DenseNet-121)', input: '224×224 RGB', activations: 'ReLU + BN', pooling: 'Average pooling entre dense blocks (transition layers)', key: 'Dense connections: cada camada recebe a concatenação de TODOS os feature maps anteriores no bloco. Reuso extremo de features, gradientes chegam directamente a qualquer camada, muito eficiente em parâmetros face à accuracy.', limit: 'Concatenar tudo cresce a memória rapidamente — feature maps acumulam-se e precisam ficar em memória durante o forward/backward. Mais lento na prática que ResNet apesar de menos parâmetros.' },
+    { name: 'SENet', year: '2018', color: '#4a9eed', layers: 'Módulo plugável (ex.: SE-ResNet-50)', params: '+0.5M sobre o backbone (~+10%)', input: '224×224 RGB', activations: 'ReLU + Sigmoid (no SE block)', pooling: 'Global Average Pooling (squeeze) + pooling normal do backbone', key: 'Channel attention: "squeeze" (global average pooling) resume cada canal a um escalar; "excitation" (MLP pequeno) aprende pesos por canal que recalibram os feature maps. Ganho de accuracy quase grátis em qualquer arquitectura existente.', limit: 'Atenção apenas ao nível de canal — não captura relações espaciais (resolvido depois por CBAM e mecanismos de self-attention/Vision Transformers).' },
   ];
   const a = archs[sel];
 
@@ -269,14 +269,13 @@ export default function CV6() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 6</div>
         <h1 style={S.h1}>Evolução das Arquitecturas CNN</h1>
-        <p style={S.lead}>De 1998 a 2018, as arquitecturas CNN evoluíram de 60K a 138M parâmetros, de 5 a centenas de camadas, e de ~1% de erro em MNIST a desempenho sobre-humano em ImageNet. Cada geração resolveu o(s) problema(s) da anterior introduzindo um princípio de design novo — princípios que continuam a aparecer (com variações) nas arquitecturas modernas, incluindo nos Vision Transformers.</p>
 
         <TimelineDiagram />
 
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>Comparação Detalhada</h2>
+          <h2 style={S.h2}>1. Comparação Detalhada</h2>
           <p style={S.p}>Cada arquitectura representa uma resposta a uma limitação concreta da anterior. Usa o explorador abaixo para comparar camadas, número de parâmetros, escolhas de design e limitações de cada uma — desde o LeNet de 1998 até ao SENet de 2018.</p>
           <div style={S.diagram}>
             <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
@@ -294,8 +293,8 @@ export default function CV6() {
                 ))}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.85rem' }}>
-                <div><strong style={{ color: '#f97316' }}>Contribuição chave:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.key}</p></div>
-                <div><strong style={{ color: '#f97316' }}>Limitação:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.limit}</p></div>
+                <div><strong style={{ color: '#4a9eed' }}>Contribuição chave:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.key}</p></div>
+                <div><strong style={{ color: '#4a9eed' }}>Limitação:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.limit}</p></div>
               </div>
             </div>
           </div>
@@ -322,7 +321,7 @@ export default function CV6() {
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>Inception / GoogLeNet em Detalhe</h2>
+          <h2 style={S.h2}>2. Inception / GoogLeNet em Detalhe</h2>
           <p style={S.p}>Antes do GoogLeNet (2014), a tendência era simplesmente aumentar profundidade e largura (mais camadas, mais filtros) — como fez a VGGNet. Mas isto traz dois problemas: (1) explosão do número de parâmetros e risco de overfitting, e (2) custo computacional que cresce quadraticamente com o número de filtros.</p>
           <p style={S.p}>A pergunta dos autores (Szegedy et al.) foi: porquê escolher entre um filtro 1×1, 3×3 ou 5×5 numa camada, se diferentes escalas capturam informação diferente (detalhes finos vs. padrões mais largos)? A resposta: aplicar todos em paralelo, e deixar a rede aprender a combinar a informação.</p>
 
@@ -335,8 +334,8 @@ export default function CV6() {
               <strong>Redução dimensional ("bottleneck")</strong>
               <p style={{ fontSize: '0.88rem', margin: '0.4rem 0 0', color: 'var(--text-secondary)' }}>Antes de aplicar um 3×3 ou 5×5 caro, um 1×1 reduz o número de canais (ex.: de 256 para 64). O 3×3/5×5 caro opera depois sobre muito menos canais — o custo computacional cai drasticamente.</p>
             </div>
-            <div style={{ ...S.highlight, borderColor: '#f97316', background: 'rgba(249,115,22,0.10)' }}>
-              <strong style={{ color: '#f97316' }}>Não-linearidade extra</strong>
+            <div style={{ ...S.highlight, borderColor: '#4a9eed', background: 'rgba(74,158,237,0.10)' }}>
+              <strong style={{ color: '#4a9eed' }}>Não-linearidade extra</strong>
               <p style={{ fontSize: '0.88rem', margin: '0.4rem 0 0', color: 'var(--text-secondary)' }}>Cada 1×1 vem seguido de ReLU. A rede ganha capacidade representacional adicional praticamente "de graça" em termos de custo computacional.</p>
             </div>
           </div>
@@ -351,7 +350,7 @@ export default function CV6() {
                   ['Conv 5×5 directa (192 → 32)', '≈ 120 milhões', '28×28×32×5×5×192'],
                   ['Conv 1×1 (192 → 16) + Conv 5×5 (16 → 32)', '≈ 12.4 milhões', '≈ 10× menos cálculo, accuracy preservada'],
                 ].map(([m, ops, note]) => (
-                  <tr key={m}><td style={S.td}><strong>{m}</strong></td><td style={{ ...S.td, fontFamily: 'monospace', color: '#f97316', fontWeight: 700 }}>{ops}</td><td style={S.td}>{note}</td></tr>
+                  <tr key={m}><td style={S.td}><strong>{m}</strong></td><td style={{ ...S.td, fontFamily: 'monospace', color: '#4a9eed', fontWeight: 700 }}>{ops}</td><td style={S.td}>{note}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -382,7 +381,7 @@ export default function CV6() {
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>ResNet em Detalhe — Skip Connections</h2>
+          <h2 style={S.h2}>3. ResNet em Detalhe — Skip Connections</h2>
           <p style={S.p}>O problema da degradação era paradoxal: redes de 56 camadas tinham erro de treino maior que redes de 20 camadas. Não era overfitting (seria erro de validação maior) — as redes mais profundas simplesmente eram mais difíceis de optimizar.</p>
           <p style={S.p}>A hipótese de He et al. (2015): em vez de aprender H(x) directamente, aprender o residual F(x) = H(x) − x. A soma com a identidade é feita através de uma skip connection. Se a transformação óptima for a identidade, F(x) → 0 é trivial de aprender. Na prática, as camadas focam-se em pequenas correcções à identidade.</p>
 
@@ -413,7 +412,7 @@ export default function CV6() {
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>DenseNet — Conectividade Densa</h2>
+          <h2 style={S.h2}>4. DenseNet — Conectividade Densa</h2>
           <p style={S.p}>O ResNet liga a camada l ao seu output através de uma soma: x_l = H_l(x_(l-1)) + x_(l-1). O DenseNet (Huang et al., 2017) leva esta ideia ao extremo: cada camada recebe como input a <strong>concatenação</strong> (não a soma) de todos os feature maps produzidos por todas as camadas anteriores dentro do mesmo "dense block".</p>
 
           <DenseNetDiagram />
@@ -429,8 +428,8 @@ export default function CV6() {
 
           <h3 style={S.h3}>Vantagens vs. desvantagens</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-            <div style={{ ...S.highlight, borderColor: '#f97316', background: 'rgba(249,115,22,0.10)' }}>
-              <strong style={{ color: '#f97316' }}>Vantagens</strong>
+            <div style={{ ...S.highlight, borderColor: '#4a9eed', background: 'rgba(74,158,237,0.10)' }}>
+              <strong style={{ color: '#4a9eed' }}>Vantagens</strong>
               <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.1rem', fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                 <li>Reuso máximo de features — menos redundância entre camadas</li>
                 <li>Muito eficiente em parâmetros (DenseNet-121 tem ~8M vs 25M do ResNet-50, com accuracy comparável)</li>
@@ -452,7 +451,7 @@ export default function CV6() {
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>SENet — Squeeze-and-Excitation (Channel Attention)</h2>
+          <h2 style={S.h2}>5. SENet — Squeeze-and-Excitation (Channel Attention)</h2>
           <p style={S.p}>Todas as arquitecturas anteriores tratam todos os canais de um feature map de forma igual — cada filtro contribui com o seu output, e a rede combina-os linearmente nas camadas seguintes. O SENet (Hu et al., 2018, vencedor do ILSVRC 2017) introduz a ideia de que nem todos os canais são igualmente importantes para uma dada imagem, e que a rede deveria aprender a "prestar mais atenção" a uns canais do que a outros — dinamicamente, dependendo do input.</p>
 
           <SEDiagram />
@@ -475,7 +474,7 @@ export default function CV6() {
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>Lições de Design — o que persiste até hoje</h2>
+          <h2 style={S.h2}>6. Lições de Design — o que persiste até hoje</h2>
           <p style={S.p}>Cada geração de arquitecturas introduziu pelo menos um princípio de design que continua presente — em forma adaptada — nas redes modernas, incluindo nos Vision Transformers e em arquitecturas híbridas CNN-Transformer.</p>
           <div style={{ overflowX: 'auto' }}>
             <table style={S.table}>
@@ -498,22 +497,6 @@ export default function CV6() {
           <div style={S.note}>Padrão geral: cada avanço resolve uma limitação concreta (capacidade, custo computacional, optimização/gradientes, ou eficiência de parâmetros) sem abandonar os princípios anteriores — antes combinando-os. Arquitecturas modernas (EfficientNet, ConvNeXt, ViT híbridos) são, em larga medida, recombinações cuidadosas destes mesmos ingredientes.</div>
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-          <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>LeNet (1998): primeira CNN. Prova de conceito — tanh, average pooling, 5 camadas.</li>
-            <li>AlexNet (2012): big bang do DL. ReLU + dropout + GPU + augmentation. 10pp de margem em ImageNet.</li>
-            <li>VGG (2014): só filtros 3×3. Profundidade é o que conta. Empilhar pequenos filtros &gt; usar filtros grandes.</li>
-            <li>GoogLeNet/Inception (2014): módulos paralelos multi-escala (1×1/3×3/5×5/maxpool) + bottlenecks 1×1 para reduzir custo computacional drasticamente.</li>
-            <li>ResNet (2015): skip connections H(x) = F(x) + x. Resolve vanishing gradient. Permite 150+ camadas.</li>
-            <li>DenseNet (2017): conectividade densa — concatenação (não soma) de todas as camadas anteriores num bloco. Máximo reuso de features, muito eficiente em parâmetros, mas pesado em memória.</li>
-            <li>SENet (2018): channel attention via squeeze (global pooling) + excitation (MLP) — recalibra a importância de cada canal dinamicamente. Módulo plugável, ganho quase grátis.</li>
-            <li>Tendência geral: cada geração resolve um problema (capacidade, custo, gradientes, eficiência) com um princípio de design — não apenas empilhar camadas aleatoriamente. Estes princípios (weight sharing, filtros pequenos, multi-escala, skip connections, conectividade densa, attention) continuam presentes nas arquitecturas modernas, incluindo Vision Transformers.</li>
-          </ul>
-          </div>
-        </div>
         </div>
         </div>
       </div>

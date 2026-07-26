@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -28,11 +28,11 @@ const S = {
 // === DIAGRAM 1: Graph + Adjacency Matrix ===
 const GraphAdjacencyDiagram = () => {
   const nodes = [
-    { id: 'A', x: 90, y: 50, color: '#f97316' },
-    { id: 'B', x: 230, y: 40, color: '#fb923c' },
-    { id: 'C', x: 290, y: 150, color: '#fdba74' },
-    { id: 'D', x: 160, y: 200, color: '#fed7aa' },
-    { id: 'E', x: 40, y: 150, color: '#f59e0b' },
+    { id: 'A', x: 90, y: 50, color: '#4a9eed' },
+    { id: 'B', x: 230, y: 40, color: '#38bdf8' },
+    { id: 'C', x: 290, y: 150, color: '#bae6fd' },
+    { id: 'D', x: 160, y: 200, color: '#e0f2fe' },
+    { id: 'E', x: 40, y: 150, color: '#0284c7' },
   ];
   const edges = [['A', 'B'], ['A', 'E'], ['A', 'D'], ['B', 'C'], ['C', 'D'], ['D', 'E']];
   const idx = { A: 0, B: 1, C: 2, D: 3, E: 4 };
@@ -68,7 +68,7 @@ const GraphAdjacencyDiagram = () => {
                 <tr key={n.id}>
                   <td style={{ ...S.td, fontWeight: 700, color: n.color }}>{n.id}</td>
                   {nodes.map((m, j) => (
-                    <td key={m.id} style={{ ...S.td, textAlign: 'center', fontFamily: 'monospace', color: adj[i][j] ? '#f97316' : 'var(--text-secondary)', fontWeight: adj[i][j] ? 700 : 400 }}>{adj[i][j]}</td>
+                    <td key={m.id} style={{ ...S.td, textAlign: 'center', fontFamily: 'monospace', color: adj[i][j] ? '#4a9eed' : 'var(--text-secondary)', fontWeight: adj[i][j] ? 700 : 400 }}>{adj[i][j]}</td>
                   ))}
                 </tr>
               ))}
@@ -92,7 +92,7 @@ const GridVsGraphDiagram = () => (
         <svg viewBox="0 0 160 160" style={{ width: 160, height: 160 }}>
           {[0, 1, 2, 3].map(r => [0, 1, 2, 3].map(c => (
             <g key={`${r}-${c}`}>
-              <rect x={c * 40 + 5} y={r * 40 + 5} width="30" height="30" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
+              <rect x={c * 40 + 5} y={r * 40 + 5} width="30" height="30" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
             </g>
           )))}
         </svg>
@@ -103,7 +103,7 @@ const GridVsGraphDiagram = () => (
           {[[60, 20, 110, 50], [110, 50, 130, 110], [130, 110, 70, 140], [70, 140, 30, 90], [30, 90, 60, 20], [60, 20, 30, 90], [110, 50, 70, 140]].map(([x1, y1, x2, y2], i) => (
             <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--text-secondary)" strokeWidth="1.5" />
           ))}
-          {[[60, 20, '#f97316'], [110, 50, '#f97316'], [130, 110, '#f97316'], [70, 140, '#fdba74'], [30, 90, '#f97316']].map(([x, y, c], i) => (
+          {[[60, 20, '#4a9eed'], [110, 50, '#4a9eed'], [130, 110, '#4a9eed'], [70, 140, '#bae6fd'], [30, 90, '#4a9eed']].map(([x, y, c], i) => (
             <circle key={i} cx={x} cy={y} r="10" fill={c} opacity="0.85" />
           ))}
         </svg>
@@ -123,17 +123,17 @@ const MessagePassingDiagram = () => (
     <svg viewBox="0 0 360 220" style={{ maxWidth: 320, height: 'auto' }}>
       <defs>
         <marker id="mpArrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
-      {[[180, 110, 'A', '#f97316'], [80, 50, 'B', '#f97316'], [280, 50, 'C', '#f97316'], [80, 180, 'D', '#fdba74'], [280, 180, 'E', '#f97316']].map(([x, y, label, c]) => (
+      {[[180, 110, 'A', '#4a9eed'], [80, 50, 'B', '#4a9eed'], [280, 50, 'C', '#4a9eed'], [80, 180, 'D', '#bae6fd'], [280, 180, 'E', '#4a9eed']].map(([x, y, label, c]) => (
         label !== 'A' && (
           <g key={label}>
-            <line x1={x} y1={y} x2={180} y2={110} stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#mpArrow)" />
+            <line x1={x} y1={y} x2={180} y2={110} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#mpArrow)" />
           </g>
         )
       ))}
-      {[[180, 110, 'A', '#f97316', 26], [80, 50, 'B', '#f97316', 20], [280, 50, 'C', '#f97316', 20], [80, 180, 'D', '#fdba74', 20], [280, 180, 'E', '#f97316', 20]].map(([x, y, label, c, r]) => (
+      {[[180, 110, 'A', '#4a9eed', 26], [80, 50, 'B', '#4a9eed', 20], [280, 50, 'C', '#4a9eed', 20], [80, 180, 'D', '#bae6fd', 20], [280, 180, 'E', '#4a9eed', 20]].map(([x, y, label, c, r]) => (
         <g key={label}>
           <circle cx={x} cy={y} r={r} fill={c} opacity="0.85" />
           <text x={x} y={y + 5} textAnchor="middle" fill="white" fontSize="13" fontWeight="bold">{label}</text>
@@ -148,35 +148,6 @@ const MessagePassingDiagram = () => (
   </div>
 );
 
-// === Numeric example: mean aggregation ===
-const AggregationExample = () => (
-  <div style={S.diagram}>
-    <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Exemplo numérico: agregação por média</p>
-    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1rem', textAlign: 'left' }}>
-      Suponha que cada nó tem um feature vector de dimensão 2 (ex: [actividade, influência]). O nó A tem três vizinhos: B, D e E.
-    </p>
-    <div style={{ overflowX: 'auto' }}>
-      <table style={S.table}>
-        <thead><tr><th style={S.th}>Nó</th><th style={S.th}>h (vector)</th></tr></thead>
-        <tbody>
-          {[['A (próprio)', '[1.0, 0.5]', '#f97316'], ['B (vizinho)', '[2.0, 1.0]', '#f97316'], ['D (vizinho)', '[0.0, 3.0]', '#fdba74'], ['E (vizinho)', '[1.0, 2.0]', '#f97316']].map(([n, v, c]) => (
-            <tr key={n}><td style={{ ...S.td, color: c, fontWeight: 700 }}>{n}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{v}</td></tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <div style={S.math}>
-      <BlockMath math={`m_A = \\text{mean}(h_B, h_D, h_E) = \\frac{[2,1] + [0,3] + [1,2]}{3} = [1.0,\\ 2.0]`} />
-    </div>
-    <div style={S.math}>
-      <BlockMath math={`h_A' = \\sigma\\big(W \\cdot \\text{concat}(h_A, m_A)\\big) = \\sigma\\big(W \\cdot [1.0,\\ 0.5,\\ 1.0,\\ 2.0]\\big)`} />
-    </div>
-    <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-      W é uma matriz de pesos treinável e σ é uma não-linearidade (ex: ReLU). O novo h_A' incorpora tanto a informação do próprio nó como um resumo dos seus vizinhos diretos.
-    </p>
-  </div>
-);
-
 // === GCN numeric example ===
 const GCNExample = () => (
   <div style={S.diagram}>
@@ -184,7 +155,7 @@ const GCNExample = () => (
     <svg viewBox="0 0 220 110" style={{ maxWidth: 200, height: 'auto' }}>
       <line x1="50" y1="30" x2="170" y2="30" stroke="var(--text-secondary)" strokeWidth="2" />
       <line x1="50" y1="30" x2="110" y2="90" stroke="var(--text-secondary)" strokeWidth="2" />
-      {[[50, 30, '1', '#f97316'], [170, 30, '2', '#f97316'], [110, 90, '3', '#f97316']].map(([x, y, l, c]) => (
+      {[[50, 30, '1', '#4a9eed'], [170, 30, '2', '#4a9eed'], [110, 90, '3', '#4a9eed']].map(([x, y, l, c]) => (
         <g key={l}>
           <circle cx={x} cy={y} r="20" fill={c} opacity="0.85" />
           <text x={x} y={y + 5} textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">{l}</text>
@@ -215,15 +186,15 @@ const GATDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>GAT: pesos de atenção diferentes por aresta</p>
     <svg viewBox="0 0 320 200" style={{ maxWidth: 300, height: 'auto' }}>
       {[[160, 100, 80, 40, 0.6], [160, 100, 250, 40, 0.1], [160, 100, 60, 170, 0.2], [160, 100, 260, 170, 0.1]].map(([x1, y1, x2, y2, w], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f97316" strokeWidth={w * 10} opacity={0.3 + w} />
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4a9eed" strokeWidth={w * 10} opacity={0.3 + w} />
       ))}
-      {[[160, 100, 'A', '#f97316', 24], [80, 40, 'B', '#f97316', 18], [250, 40, 'C', '#f97316', 18], [60, 170, 'D', '#fdba74', 18], [260, 170, 'E', '#f97316', 18]].map(([x, y, l, c, r]) => (
+      {[[160, 100, 'A', '#4a9eed', 24], [80, 40, 'B', '#4a9eed', 18], [250, 40, 'C', '#4a9eed', 18], [60, 170, 'D', '#bae6fd', 18], [260, 170, 'E', '#4a9eed', 18]].map(([x, y, l, c, r]) => (
         <g key={l}>
           <circle cx={x} cy={y} r={r} fill={c} opacity="0.85" />
           <text x={x} y={y + 5} textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">{l}</text>
         </g>
       ))}
-      <text x="115" y="62" fill="#f97316" fontSize="10" fontWeight="700">α=0.60</text>
+      <text x="115" y="62" fill="#4a9eed" fontSize="10" fontWeight="700">α=0.60</text>
       <text x="210" y="62" fill="var(--text-secondary)" fontSize="10">α=0.10</text>
       <text x="80" y="145" fill="var(--text-secondary)" fontSize="10">α=0.20</text>
       <text x="225" y="145" fill="var(--text-secondary)" fontSize="10">α=0.10</text>
@@ -238,15 +209,15 @@ const GATDiagram = () => (
 const TaskDiagram = ({ title, desc, highlight }) => {
   const nodes = [[160, 40, 'A'], [70, 110, 'B'], [250, 110, 'C'], [110, 190, 'D'], [210, 190, 'E']];
   const edges = [[0, 1], [0, 2], [1, 3], [2, 4], [3, 4]];
-  const colorFor = (label) => highlight.nodes && highlight.nodes.includes(label) ? '#f97316' : '#f97316';
+  const colorFor = (label) => highlight.nodes && highlight.nodes.includes(label) ? '#4a9eed' : '#4a9eed';
   const isHighEdge = (a, b) => highlight.edge && ((highlight.edge[0] === a && highlight.edge[1] === b) || (highlight.edge[0] === b && highlight.edge[1] === a));
   return (
     <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid var(--card-border)' }}>
-      <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>{title}</div>
+      <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>{title}</div>
       <svg viewBox="0 0 320 230" style={{ width: '100%', maxWidth: 220, height: 'auto' }}>
         {edges.map(([a, b], i) => (
           <line key={i} x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
-            stroke={isHighEdge(nodes[a][2], nodes[b][2]) ? '#f97316' : 'rgba(255,255,255,0.3)'}
+            stroke={isHighEdge(nodes[a][2], nodes[b][2]) ? '#4a9eed' : 'rgba(255,255,255,0.3)'}
             strokeWidth={isHighEdge(nodes[a][2], nodes[b][2]) ? 3 : 1.5}
             strokeDasharray={isHighEdge(nodes[a][2], nodes[b][2]) ? '5,3' : 'none'} />
         ))}
@@ -256,7 +227,7 @@ const TaskDiagram = ({ title, desc, highlight }) => {
             <text x={x} y={y + 5} textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">{l}</text>
           </g>
         ))}
-        {highlight.graphLabel && <text x="160" y="225" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">{highlight.graphLabel}</text>}
+        {highlight.graphLabel && <text x="160" y="225" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">{highlight.graphLabel}</text>}
       </svg>
       <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>{desc}</p>
     </div>
@@ -268,11 +239,8 @@ export default function DL6() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 06</div>
+      <div style={S.tag}>MÓDULO 06</div>
       <h1 style={S.h1}>Graph Neural Networks (GNNs)</h1>
-      <p style={S.lead}>
-        Imagens são grelhas, frases são sequências — mas a maior parte dos dados do mundo real não tem nenhuma destas formas regulares. Moléculas, redes sociais, grafos de conhecimento, redes de estradas: todos são <strong>grafos</strong>, conjuntos de entidades ligadas por relações arbitrárias. As Graph Neural Networks (GNNs) estendem o deep learning a esta estrutura, aprendendo representações de nós, arestas e grafos inteiros através de um princípio simples e poderoso: <em>cada nó aprende com os seus vizinhos</em>.
-      </p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -323,7 +291,6 @@ export default function DL6() {
         <div style={S.math}>
           <BlockMath math={`m_v^{(k)} = \\text{AGGREGATE}\\big(\\{h_u^{(k-1)} : u \\in \\mathcal{N}(v)\\}\\big) \\qquad h_v^{(k)} = \\text{UPDATE}\\big(h_v^{(k-1)},\\ m_v^{(k)}\\big)`} />
         </div>
-        <AggregationExample />
         <h3 style={S.h3}>O alcance cresce com a profundidade</h3>
         <p style={S.p}>
           Com 1 camada, cada nó "vê" apenas os seus vizinhos directos (1-hop). Com K camadas, cada nó incorpora informação de nós a K saltos de distância — o seu <strong>campo recetivo</strong> cresce exactamente como o de uma CNN profunda, mas sobre a topologia do grafo em vez de uma grelha espacial.
@@ -404,7 +371,7 @@ export default function DL6() {
                 ['Pool (max-pool)', 'Cada vizinho passa por uma pequena MLP, depois aplica-se max-pooling elemento-a-elemento', 'Captura a feature mais "saliente" entre os vizinhos, útil para detectar outliers informativos'],
                 ['LSTM', 'Os vizinhos amostrados são ordenados aleatoriamente e processados por uma LSTM', 'Mais expressivo (não é simétrico por natureza, mas a ordem aleatória mitiga isso); mais lento a treinar'],
               ].map(([n, h, c]) => (
-                <tr key={n}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{n}</td><td style={S.td}>{h}</td><td style={S.td}>{c}</td></tr>
+                <tr key={n}><td style={{ ...S.td, fontWeight: 700, color: '#4a9eed' }}>{n}</td><td style={S.td}>{h}</td><td style={S.td}>{c}</td></tr>
               ))}
             </tbody>
           </table>
@@ -418,7 +385,7 @@ export default function DL6() {
             </p>
           </div>
           <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '1rem', border: `1px solid ${color}40` }}>
-            <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.4rem' }}>Inductive (GraphSAGE)</div>
+            <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.4rem' }}>Inductive (GraphSAGE)</div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
               O modelo aprende uma <em>função</em> de agregação parametrizada, aplicável a qualquer vizinhança — incluindo nós e grafos nunca vistos durante o treino. Essencial para grafos dinâmicos (novos utilizadores, novas moléculas).
             </p>
@@ -507,30 +474,6 @@ export default function DL6() {
           Na prática, GAT e GraphSAGE não são mutuamente exclusivos — é comum combinar atenção com amostragem (GAT-SAGE) para obter o melhor dos dois mundos: pesos adaptativos e escalabilidade a grafos enormes.
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* SYNTHESIS */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. Síntese do Módulo</h2>
-        <p style={S.p}>
-          As GNNs generalizam o deep learning a dados estruturados em grafo substituindo a convolução por <strong>message passing</strong>: cada nó agrega informação dos seus vizinhos de forma simétrica (invariante à ordem) e actualiza o seu próprio embedding. Empilhando camadas, o campo recetivo de cada nó cresce — mas com o risco de over-smoothing.
-        </p>
-        <p style={S.p}>
-          A <strong>GCN</strong> oferece uma agregação simples e eficiente baseada na normalização pelo grau; a <strong>GAT</strong> torna essa agregação adaptativa através de coeficientes de atenção aprendidos; o <strong>GraphSAGE</strong> resolve a escalabilidade e a generalização a grafos novos através de amostragem e funções de agregação inductivas. As três arquitecturas alimentam tarefas de <strong>classificação de nós</strong>, <strong>predição de arestas</strong> e <strong>classificação de grafos inteiros</strong> — desde detecção de fraude a descoberta de fármacos e sistemas de recomendação à escala global.
-        </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Um grafo é (nós + features) + (arestas / matriz de adjacência) — sem ordem nem grau fixo</li>
-            <li>Message passing = AGGREGATE (simétrico) + UPDATE, repetido em K camadas</li>
-            <li>GCN: agregação fixa normalizada pelo grau; simples, propensa a over-smoothing</li>
-            <li>GAT: atenção aprendida por aresta — analogia directa à self-attention dos Transformers</li>
-            <li>GraphSAGE: amostragem + aggregators (mean/pool/LSTM) → indutivo e escalável</li>
-            <li>Aplicações: node classification, link prediction, graph classification</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

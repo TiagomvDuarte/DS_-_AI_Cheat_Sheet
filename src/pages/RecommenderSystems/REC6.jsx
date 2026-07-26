@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './RecommenderSystems';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -10,7 +10,7 @@ const S = {
   h1: { fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.4rem' },
   sub: { color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' },
   section: { marginBottom: '2.5rem' },
-  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, marginBottom: '1rem' },
+  h2: { fontSize: '1.25rem', fontWeight: 700, color: C, borderLeft: `3px solid ${C}`, paddingLeft: '0.85rem', marginBottom: '1rem' },
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
@@ -24,7 +24,6 @@ export default function REC6() {
       <Link to="/recommender" style={S.back}>← Recommender Systems</Link>
       <div style={S.badge}>MÓDULO {modules[5].num}</div>
       <h1 style={S.h1}>{modules[5].title}</h1>
-      <p style={S.sub}>{modules[5].subtitle}</p>
 
       <div style={S.section}>
         <h2 style={S.h2}>1. Graph-Based Recommendation</h2>
@@ -48,10 +47,10 @@ export default function REC6() {
             <text x="80" y="156" textAnchor="middle" fill={C} fontSize="11" fontWeight="700">U2</text>
             <text x="80" y="168" textAnchor="middle" fill="#94a3b8" fontSize="8">utilizador</text>
             {/* Item nodes (squares) */}
-            <rect x="198" y="58" width="44" height="44" rx="6" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="198" y="58" width="44" height="44" rx="6" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="220" y="81" textAnchor="middle" fill="#e2e8f0" fontSize="11" fontWeight="700">I1</text>
             <text x="220" y="93" textAnchor="middle" fill="#475569" fontSize="8">item</text>
-            <rect x="198" y="138" width="44" height="44" rx="6" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="198" y="138" width="44" height="44" rx="6" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="220" y="161" textAnchor="middle" fill="#e2e8f0" fontSize="11" fontWeight="700">I2</text>
             <text x="220" y="173" textAnchor="middle" fill="#475569" fontSize="8">item</text>
             {/* Second user node */}
@@ -73,7 +72,7 @@ export default function REC6() {
             {/* Legend */}
             <circle cx="60" cy="198" r="6" fill={`${C}30`} stroke={C} strokeWidth="1.5" />
             <text x="72" y="202" fill="#64748b" fontSize="9">Utilizador</text>
-            <rect x="120" y="192" width="12" height="12" rx="2" fill="rgba(249,115,22,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
+            <rect x="120" y="192" width="12" height="12" rx="2" fill="rgba(74,158,237,0.06)" stroke="var(--card-border)" strokeWidth="1.5" />
             <text x="138" y="202" fill="#64748b" fontSize="9">Item</text>
             <line x1="165" y1="198" x2="185" y2="198" stroke={C} strokeWidth="2" strokeDasharray="4,2" />
             <text x="190" y="202" fill="#64748b" fontSize="9">Caminho multi-hop (U1→I1→U3→I3)</text>
@@ -122,25 +121,25 @@ export default function REC6() {
             <rect x="208" y="70" width="84" height="36" rx="6" fill={`${C}25`} stroke={C} strokeWidth="2" />
             <text x="250" y="92" textAnchor="middle" fill={C} fontSize="11" fontWeight="700">Inception</text>
             {/* Genre */}
-            <rect x="30" y="40" width="70" height="30" rx="6" fill="rgba(249,115,22,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
+            <rect x="30" y="40" width="70" height="30" rx="6" fill="rgba(74,158,237,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
             <text x="65" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="10">Sci-fi</text>
             <line x1="100" y1="55" x2="204" y2="82" stroke={`${C}60`} strokeWidth="1.2" />
             <polygon points="200,79 208,84 202,89" fill={`${C}60`} />
             <text x="148" y="62" fill="#94a3b8" fontSize="8">genre</text>
             {/* Director */}
-            <rect x="30" y="90" width="110" height="30" rx="6" fill="rgba(249,115,22,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
+            <rect x="30" y="90" width="110" height="30" rx="6" fill="rgba(74,158,237,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
             <text x="85" y="110" textAnchor="middle" fill="#e2e8f0" fontSize="10">C. Nolan</text>
             <line x1="140" y1="105" x2="204" y2="94" stroke={C} strokeWidth="1.8" />
             <polygon points="200,91 208,95 200,99" fill={C} />
             <text x="148" y="97" fill={C} fontSize="8" fontWeight="600">director</text>
             {/* Actor */}
-            <rect x="30" y="140" width="110" height="30" rx="6" fill="rgba(249,115,22,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
+            <rect x="30" y="140" width="110" height="30" rx="6" fill="rgba(74,158,237,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
             <text x="85" y="160" textAnchor="middle" fill="#e2e8f0" fontSize="10">L. DiCaprio</text>
             <line x1="140" y1="148" x2="204" y2="106" stroke={`${C}60`} strokeWidth="1.2" />
             <polygon points="200,103 208,107 202,112" fill={`${C}60`} />
             <text x="180" y="133" fill="#94a3b8" fontSize="8">actor</text>
             {/* Related item */}
-            <rect x="380" y="50" width="100" height="30" rx="6" fill="rgba(249,115,22,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
+            <rect x="380" y="50" width="100" height="30" rx="6" fill="rgba(74,158,237,0.08)" stroke={`${C}60`} strokeWidth="1.2" />
             <text x="430" y="70" textAnchor="middle" fill="#e2e8f0" fontSize="10">Interstellar</text>
             <line x1="292" y1="83" x2="376" y2="64" stroke={C} strokeWidth="1.8" strokeDasharray="5,3" />
             <polygon points="372,61 380,65 373,70" fill={C} />
@@ -171,18 +170,7 @@ export default function REC6() {
           As HINs têm aplicações naturais em recomendação académica (autores, papers, venues, tópicos), e-commerce (produtos, marcas, categorias, utilizadores, reviews) e redes sociais. Os desafios principais são a necessidade de domain knowledge para definir meta-paths manualmente e a escala computacional para grafos com biliões de nós e arestas heterogéneas.
         </p>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Graph-Based Recommendation</strong> — representa utilizadores e itens como nós num grafo bipartido; propagação de mensagens via GNN captura relações de ordem superior (amigos de amigos, items co-comprados) que CF clássico não consegue modelar.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>PinSage e GraphSAGE</strong> — PinSage (Pinterest) aplica GraphSAGE a grafos de biliões de nós com sampling de vizinhos aleatório; aprende embeddings de pins com base na sua vizinhança no grafo de engagement — referência industrial para GNN em RecSys.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Knowledge Graph Recommendation</strong> — knowledge graphs (KGs) enriquecem itens com entidades e relações semânticas (actores, géneros, directores); modelos como KGNN-LS propagam informação do KG para melhorar recomendações em domínios com conteúdo rico.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Heterogeneous Information Networks</strong> — redes com múltiplos tipos de nós (utilizadores, itens, categorias, tags) e arestas; meta-paths definem relações semânticas relevantes; HAN (Heterogeneous Attention Network) aprende pesos de atenção por meta-path.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

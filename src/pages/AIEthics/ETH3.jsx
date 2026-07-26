@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH3() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[2].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[2].title}</h1>
-      <p style={S.sub}>{modules[2].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -49,23 +48,23 @@ export default function ETH3() {
         <div style={S.diagram}>
           <svg viewBox="0 0 600 320" width="100%" style={{ display: 'block' }}>
             {/* Unacceptable — top */}
-            <polygon points="300,20 195,105 405,105" fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="300" y="63" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">INACEITÁVEL</text>
+            <polygon points="300,20 195,105 405,105" fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="300" y="63" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">INACEITÁVEL</text>
             <text x="300" y="82" textAnchor="middle" fill="var(--text-primary)" fontSize="7">Proibido — até €35M ou 7% faturação</text>
 
             {/* High Risk */}
-            <polygon points="195,105 130,188 470,188 405,105" fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="300" y="148" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">ALTO RISCO</text>
+            <polygon points="195,105 130,188 470,188 405,105" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="300" y="148" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">ALTO RISCO</text>
             <text x="300" y="166" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Conformidade obrigatória · Documentação · Supervisão humana</text>
 
             {/* Limited Risk */}
-            <polygon points="130,188 65,270 535,270 470,188" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="1.5" />
+            <polygon points="130,188 65,270 535,270 470,188" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="1.5" />
             <text x="300" y="231" textAnchor="middle" fill={C} fontSize="12" fontWeight="700">RISCO LIMITADO</text>
             <text x="300" y="249" textAnchor="middle" fill="var(--text-primary)" fontSize="10">Transparência obrigatória · Chatbots · Deep Fakes</text>
 
             {/* Minimal Risk — base */}
-            <polygon points="65,270 20,308 580,308 535,270" fill="rgba(249,115,22,0.07)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="300" y="293" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">RISCO MÍNIMO</text>
+            <polygon points="65,270 20,308 580,308 535,270" fill="rgba(74,158,237,0.07)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="300" y="293" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">RISCO MÍNIMO</text>
             <text x="300" y="306" textAnchor="middle" fill="var(--text-primary)" fontSize="10">Sem requisitos especiais · Filtros de spam · Recomendação</text>
           </svg>
         </div>
@@ -77,13 +76,13 @@ export default function ETH3() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Tiers de Risco</h2>
         <p style={S.p}>
-          <strong style={{ color: '#f97316' }}>Risco Inaceitável (Proibido):</strong> Inclui vigilância biométrica em massa em espaços
+          <strong style={{ color: '#4a9eed' }}>Risco Inaceitável (Proibido):</strong> Inclui vigilância biométrica em massa em espaços
           públicos por autoridades, social scoring por governos, manipulação subliminal, exploração de vulnerabilidades
           de grupos protegidos e sistemas de inferência de emoções em contexto laboral ou educativo.
           As sanções chegam a €35 milhões ou 7% da faturação global anual.
         </p>
         <p style={S.p}>
-          <strong style={{ color: '#f97316' }}>Alto Risco (Anexo III):</strong> Abrange infraestrutura crítica, sistemas de recrutamento,
+          <strong style={{ color: '#4a9eed' }}>Alto Risco (Anexo III):</strong> Abrange infraestrutura crítica, sistemas de recrutamento,
           avaliação de crédito, decisões de migração e asilo, admissão académica, identificação biométrica remota,
           aplicação da lei preditiva e decisões judiciais assistidas por IA. Estes sistemas requerem avaliação
           de conformidade, documentação técnica, registo na base de dados europeia e supervisão humana efetiva.
@@ -93,7 +92,7 @@ export default function ETH3() {
           claramente como IA perante os utilizadores. Deep fakes devem ser rotulados de forma visível.
         </p>
         <p style={S.p}>
-          <strong style={{ color: '#f97316' }}>Risco Mínimo:</strong> Sistemas de recomendação de conteúdo e filtros de spam não estão
+          <strong style={{ color: '#4a9eed' }}>Risco Mínimo:</strong> Sistemas de recomendação de conteúdo e filtros de spam não estão
           sujeitos a requisitos especiais, embora boas práticas éticas continuem recomendadas.
         </p>
         <div style={S.note}>
@@ -156,18 +155,7 @@ export default function ETH3() {
           abrangente de IA da América Latina.
         </p>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>EU AI Act — Visão Geral</strong> — o Regulamento Europeu de Inteligência Artificial, aprovado em 2024, é o primeiro quadro legal abrangente para a IA a nível mundial; adota uma abordagem baseada no risco e estabelece obrigações proporcionais para fornecedores e utilizadores de sistemas de IA no mercado europeu.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Tiers de Risco</strong> — o AI Act classifica os sistemas em quatro níveis: risco inaceitável (proibidos, ex.: pontuação social pelo Estado), alto risco (ex.: IA em recrutamento, crédito ou medicina, sujeitos a requisitos rigorosos), risco limitado (obrigações de transparência) e risco mínimo (sem restrições específicas).</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Conformidade e Certificação</strong> — os sistemas de alto risco devem passar por avaliações de conformidade, manter documentação técnica detalhada, garantir supervisão humana e registar-se numa base de dados da UE; a não conformidade pode implicar coimas até 35 milhões de euros ou 7% do volume de negócios global.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Comparação Internacional</strong> — enquanto a UE opta por regulação vinculativa ex-ante, os EUA privilegiam orientações voluntárias e supervisão sectorial, e a China tem regulamentação específica por domínio (recomendações algorítmicas, deep synthesis); esta fragmentação cria desafios de conformidade para empresas que operam globalmente.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

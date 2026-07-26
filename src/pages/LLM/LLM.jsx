@@ -4,64 +4,64 @@ import { ArrowRight } from 'lucide-react';
 
 export const modules = [
   {
-    id: 'llm1', num: '01', title: 'Arquitectura Transformer',
-    subtitle: 'Self-Attention, Positional Encoding, Encoder, Decoder e Scaled Dot-Product',
-    topics: ['Limitações das RNNs — vanishing gradient e sequencialidade', 'Self-Attention e Scaled Dot-Product Attention', 'Multi-Head Attention e projeções Q, K, V', 'Positional Encoding, Feed-Forward e Layer Norm'],
-    path: '/llm/lecture1', color: '#f97316',
+    id: 'llm2', num: '01', title: 'Pré-treino de LLMs',
+    subtitle: 'Transfer Learning, GPT, Dados, Scaling Laws e Codificação de Posição',
+    topics: ['GPT — causal LM e geração auto-regressiva', 'Dados de pré-treino — corpus, limpeza e deduplicação (MinHash/LSH)', 'Leis de escala — Kaplan vs. Chinchilla e compute-óptimo', 'Context window — porque é limitado (O(n²))', 'RoPE e ALiBi — codificação de posição para contextos longos'],
+    path: '/llm/lecture2', color: '#4a9eed',
   },
   {
-    id: 'llm2', num: '02', title: 'Pré-treino e Fine-tuning',
-    subtitle: 'GPT, BERT, LoRA, PEFT e RLHF — do pré-treino à especialização',
-    topics: ['Pré-treino: masked LM (BERT) vs. causal LM (GPT)', 'Fine-tuning supervisionado — task-specific heads', 'PEFT: LoRA, Adapter Layers, Prefix Tuning', 'RLHF — reward model, PPO e alinhamento'],
-    path: '/llm/lecture2', color: '#f97316',
+    id: 'llm11', num: '02', title: 'Pós-treino: SFT, RLHF e Chain of Thought',
+    subtitle: 'Pipeline de pós-treino, Instruction Tuning, RLHF/PPO/DPO (com variantes) e Chain of Thought',
+    topics: ['Pipeline de pós-treino moderno e data flywheel', 'Instruction Tuning e Supervised Fine-Tuning (SFT)', 'RLHF — reward model, PPO, reward hacking', 'DPO e variantes — IPO, KTO, ORPO, SimPO', 'Chain of Thought — STaR, SPIN e Scaling Laws'],
+    path: '/llm/lecture11', color: '#4a9eed',
   },
   {
     id: 'llm3', num: '03', title: 'Prompt Engineering',
-    subtitle: 'Zero-shot, Few-shot, Chain-of-Thought, ReAct e técnicas avançadas',
-    topics: ['Zero-shot e Few-shot prompting', 'Chain-of-Thought (CoT) — raciocínio passo a passo', 'ReAct — Reasoning + Acting em ciclo', 'Self-Consistency, Tree-of-Thought e Structured Output'],
-    path: '/llm/lecture3', color: '#f97316',
+    subtitle: 'Zero-shot, Few-shot, ReAct e técnicas avançadas',
+    topics: ['Zero-shot e Few-shot prompting', 'ReAct — Reasoning + Acting em ciclo', 'Tree-of-Thought, PAL e Structured Output', 'Parâmetros de geração e boas práticas'],
+    path: '/llm/lecture3', color: '#4a9eed',
   },
   {
     id: 'llm4', num: '04', title: 'RAG — Retrieval-Augmented Generation',
     subtitle: 'Embeddings, Vector Stores, Chunking, Reranking e Hybrid Search',
     topics: ['Motivação: hallucination e knowledge cutoff', 'Embeddings semânticos e similaridade cosine', 'Chunking, indexação e Vector Stores (FAISS, Pinecone)', 'Reranking, Hybrid Search e avaliação RAGAS'],
-    path: '/llm/lecture4', color: '#f97316',
+    path: '/llm/lecture4', color: '#4a9eed',
   },
   {
     id: 'llm5', num: '05', title: 'LangChain e Frameworks de Orquestração',
     subtitle: 'Chains, Memory, Tools, Agents e integrações com LLMs',
     topics: ['LangChain — LCEL, chains compostas, runnables', 'Memory: ConversationBuffer, Summary, VectorStore-backed', 'Tools e Tool Calling — function calling nativo', 'LlamaIndex, Haystack e comparação de frameworks'],
-    path: '/llm/lecture5', color: '#f97316',
+    path: '/llm/lecture5', color: '#4a9eed',
   },
   {
     id: 'llm6', num: '06', title: 'Sistemas Multi-Agente',
-    subtitle: 'Agentes autónomos, AutoGen, CrewAI e padrões de orquestração',
-    topics: ['Agente LLM: percepção, memória, planeamento, acção', 'Padrões: ReAct, Plan-and-Execute, Reflexion', 'AutoGen e CrewAI — agentes colaborativos', 'Avaliação, guardrails e segurança em agentes'],
-    path: '/llm/lecture6', color: '#f97316',
+    subtitle: 'Agentes autónomos, AutoGen, CrewAI, protocolos MCP & Agent2Agent',
+    topics: ['Agente LLM: percepção, memória, planeamento, acção', 'Padrões: ReAct, Plan-and-Execute, Reflexion', 'AutoGen e CrewAI — agentes colaborativos', 'MCP e Agent2Agent — protocolos modernos de interoperabilidade'],
+    path: '/llm/lecture6', color: '#4a9eed',
   },
   {
     id: 'llm7', num: '07', title: 'Alinhamento & Safety',
-    subtitle: 'RLHF aprofundado, DPO, Constitutional AI, Red-Teaming e Scalable Oversight',
-    topics: ['Outer/inner alignment — Goodhart\'s Law', 'DPO — Direct Preference Optimization', 'Constitutional AI (Anthropic) — RLAIF e HHH', 'Red-teaming, interpretabilidade e EU AI Act'],
-    path: '/llm/lecture7', color: '#f97316',
+    subtitle: 'Red-Teaming, Jailbreaks & Prompt Injection, Constitutional AI, Scalable Oversight e Interpretabilidade',
+    topics: ['Outer/inner alignment — Goodhart\'s Law', 'Constitutional AI (Anthropic) — RLAIF e HHH', 'Red-teaming, jailbreaks e prompt injection', 'Scalable Oversight, Interpretabilidade mecanística e governance'],
+    path: '/llm/lecture7', color: '#4a9eed',
   },
   {
-    id: 'llm8', num: '08', title: 'Pós-treino, Dados Sintéticos & Inferência em Escala',
-    subtitle: 'Self-Instruct, Scaling Laws, KV Cache, Quantização e Speculative Decoding',
-    topics: ['Data flywheel e pipeline de pós-treino iterativo', 'Dados sintéticos — Self-Instruct, STaR, SPIN', 'Scaling Laws (Kaplan, Chinchilla) e 3D parallelism', 'KV Cache, quantização GPTQ/AWQ e speculative decoding'],
-    path: '/llm/lecture8', color: '#f97316',
+    id: 'llm8', num: '08', title: 'Dados Sintéticos & Inferência em Escala',
+    subtitle: 'Self-Instruct, Paralelismo, KV Cache e Speculative Decoding',
+    topics: ['Dados sintéticos — Self-Instruct e destilação de conhecimento', 'Paralelismo 3D e infraestrutura de treino (ZeRO)', 'KV Cache, MHA/MQA/GQA', 'Speculative Decoding'],
+    path: '/llm/lecture8', color: '#4a9eed',
   },
   {
     id: 'llm9', num: '09', title: 'Avaliação de LLMs',
     subtitle: 'Benchmarks, LLM-as-Judge, RAGAS, Safety Eval e Avaliação em Produção',
     topics: ['MMLU, HumanEval, GSM8K, HellaSwag — benchmarks de capacidade', 'LLM-as-Judge — MT-Bench, Chatbot Arena e ELO', 'RAGAS — Faithfulness, Answer Relevancy, Context Precision', 'Safety eval, red-team metrics e avaliação em produção'],
-    path: '/llm/lecture9', color: '#f97316',
+    path: '/llm/lecture9', color: '#4a9eed',
   },
   {
     id: 'llm10', num: '10', title: 'LLMs Multimodais',
     subtitle: 'CLIP, LLaVA, GPT-4V, Gemini e Fusão Visão-Linguagem',
     topics: ['CLIP — contrastive pretraining e zero-shot classification', 'LLaVA — ViT + projecção linear + LLM', 'GPT-4V e Gemini — multimodalidade nativa', 'Patch embeddings, dynamic resolution e casos de uso'],
-    path: '/llm/lecture10', color: '#f97316',
+    path: '/llm/lecture10', color: '#4a9eed',
   },
 ];
 
@@ -78,7 +78,7 @@ export default function LLM() {
         ← Dashboard
       </Link>
       <div style={{ marginBottom: '2.5rem' }}>
-        <div style={{ display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>LLMs & AGENTS</div>
+        <div style={{ display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>LLMs & AGENTS</div>
         <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>LLMs & Agents</h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
           Da arquitectura Transformer ao pré-treino, fine-tuning, prompt engineering, RAG, frameworks de orquestração e sistemas multi-agente — os fundamentos e a engenharia dos grandes modelos de linguagem modernos.

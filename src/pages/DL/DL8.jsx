@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,7 +18,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(14,116,144,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
@@ -69,27 +69,27 @@ const CLIPDiagram = () => (
       {/* Embeddings de texto */}
       {[0, 1, 2].map(i => (
         <g key={`te${i}`}>
-          <rect x="252" y={150 + i * 30} width="56" height="22" rx="4" fill="#f59e0b" opacity="0.25" />
-          <text x="280" y={165 + i * 30} textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="700">T{i + 1}</text>
+          <rect x="252" y={150 + i * 30} width="56" height="22" rx="4" fill="#0284c7" opacity="0.25" />
+          <text x="280" y={165 + i * 30} textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="700">T{i + 1}</text>
         </g>
       ))}
 
       {/* Setas de Text Encoder */}
-      <line x1="350" y1="170" x2="312" y2="170" stroke="#f59e0b" strokeWidth="1.5" markerEnd="url(#clipArrow)" />
+      <line x1="350" y1="170" x2="312" y2="170" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#clipArrow)" />
 
       {/* Text Encoder */}
-      <rect x="350" y="130" width="100" height="80" rx="10" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="400" y="165" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Text</text>
-      <text x="400" y="180" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Encoder</text>
-      <text x="400" y="196" textAnchor="middle" fill="#f59e0b" fontSize="9">(Transformer)</text>
+      <rect x="350" y="130" width="100" height="80" rx="10" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="400" y="165" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Text</text>
+      <text x="400" y="180" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Encoder</text>
+      <text x="400" y="196" textAnchor="middle" fill="#0284c7" fontSize="9">(Transformer)</text>
 
       {/* Textos de entrada */}
       {[0, 1, 2].map(i => (
-        <rect key={`txt${i}`} x={494} y={140 + i * 28} width="46" height="22" rx="4" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1" />
+        <rect key={`txt${i}`} x={494} y={140 + i * 28} width="46" height="22" rx="4" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1" />
       ))}
       <text x="517" y="232" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">"a photo of a dog"...</text>
       {[0, 1, 2].map(i => (
-        <line key={`b${i}`} x1="494" y1={151 + i * 28} x2="454" y2="170" stroke="#f59e0b" strokeWidth="1" strokeDasharray="3,2" />
+        <line key={`b${i}`} x1="494" y1={151 + i * 28} x2="454" y2="170" stroke="#0284c7" strokeWidth="1" strokeDasharray="3,2" />
       ))}
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
@@ -171,14 +171,14 @@ const ZeroShotDiagram = () => (
 
       {/* Comparações com prompts de texto */}
       {[
-        ['"a photo of a dog"', 30, 0.92, '#f97316'],
+        ['"a photo of a dog"', 30, 0.92, '#4a9eed'],
         ['"a photo of a cat"', 90, 0.41, 'var(--text-secondary)'],
         ['"a photo of a car"', 150, 0.12, 'var(--text-secondary)'],
       ].map(([label, y, sim, c]) => (
         <g key={label}>
-          <rect x="320" y={y} width="150" height="34" rx="6" fill={c === '#f97316' ? 'rgba(249,115,22,0.10)' : 'rgba(148,163,184,0.08)'} stroke={c} strokeWidth="1.2" />
-          <text x="395" y={y + 21} textAnchor="middle" fill={c} fontSize="10" fontWeight={c === '#f97316' ? 700 : 500}>{label}</text>
-          <line x1="220" y1="100" x2="316" y2={y + 17} stroke={c} strokeWidth={c === '#f97316' ? 2 : 1} strokeDasharray={c === '#f97316' ? 'none' : '3,2'} markerEnd="url(#zsArrow)" />
+          <rect x="320" y={y} width="150" height="34" rx="6" fill={c === '#4a9eed' ? 'rgba(74,158,237,0.10)' : 'rgba(148,163,184,0.08)'} stroke={c} strokeWidth="1.2" />
+          <text x="395" y={y + 21} textAnchor="middle" fill={c} fontSize="10" fontWeight={c === '#4a9eed' ? 700 : 500}>{label}</text>
+          <line x1="220" y1="100" x2="316" y2={y + 17} stroke={c} strokeWidth={c === '#4a9eed' ? 2 : 1} strokeDasharray={c === '#4a9eed' ? 'none' : '3,2'} markerEnd="url(#zsArrow)" />
           <text x="500" y={y + 21} textAnchor="middle" fill={c} fontSize="11" fontWeight="700">{sim.toFixed(2)}</text>
         </g>
       ))}
@@ -204,25 +204,25 @@ const TextToImageDiagram = () => (
         </marker>
       </defs>
 
-      <rect x="10" y="60" width="110" height="50" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="65" y="80" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Prompt de</text>
-      <text x="65" y="96" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">texto</text>
+      <rect x="10" y="60" width="110" height="50" rx="8" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="65" y="80" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Prompt de</text>
+      <text x="65" y="96" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">texto</text>
       <line x1="120" y1="85" x2="156" y2="85" stroke={color} strokeWidth="1.5" markerEnd="url(#t2iArrow)" />
 
-      <rect x="160" y="60" width="110" height="50" rx="8" fill="rgba(14,116,144,0.12)" stroke={color} strokeWidth="1.5" />
-      <text x="215" y="80" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Text Encoder</text>
-      <text x="215" y="96" textAnchor="middle" fill={color} fontSize="9">(embedding condicional)</text>
+      <rect x="160" y="60" width="110" height="50" rx="8" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" strokeWidth="1.5" />
+      <text x="215" y="80" textAnchor="middle" fill="#38bdf8" fontSize="11" fontWeight="700">Text Encoder</text>
+      <text x="215" y="96" textAnchor="middle" fill="#38bdf8" fontSize="9">(embedding condicional)</text>
       <line x1="270" y1="85" x2="306" y2="85" stroke={color} strokeWidth="1.5" markerEnd="url(#t2iArrow)" />
 
-      <rect x="310" y="50" width="130" height="70" rx="8" fill="rgba(167,139,250,0.12)" stroke="#fbbf24" strokeWidth="1.5" />
-      <text x="375" y="75" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="700">Modelo gerador</text>
-      <text x="375" y="92" textAnchor="middle" fill="#fbbf24" fontSize="9">diffusion / autoregressive</text>
-      <text x="375" y="107" textAnchor="middle" fill="#fbbf24" fontSize="9">condicionado por cross-attn</text>
+      <rect x="310" y="50" width="130" height="70" rx="8" fill="rgba(125,211,252,0.12)" stroke="#7dd3fc" strokeWidth="1.5" />
+      <text x="375" y="75" textAnchor="middle" fill="#7dd3fc" fontSize="11" fontWeight="700">Modelo gerador</text>
+      <text x="375" y="92" textAnchor="middle" fill="#7dd3fc" fontSize="9">diffusion / autoregressive</text>
+      <text x="375" y="107" textAnchor="middle" fill="#7dd3fc" fontSize="9">condicionado por cross-attn</text>
       <line x1="440" y1="85" x2="476" y2="85" stroke={color} strokeWidth="1.5" markerEnd="url(#t2iArrow)" />
 
-      <rect x="480" y="55" width="100" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="530" y="80" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Imagem</text>
-      <text x="530" y="96" textAnchor="middle" fill="#f97316" fontSize="9">final (pixels)</text>
+      <rect x="480" y="55" width="100" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="530" y="80" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Imagem</text>
+      <text x="530" y="96" textAnchor="middle" fill="#4a9eed" fontSize="9">final (pixels)</text>
 
       {/* iterações de denoising */}
       <text x="375" y="148" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">T passos de "denoising" iterativo (no caso difusivo)</text>
@@ -234,6 +234,84 @@ const TextToImageDiagram = () => (
     </p>
   </div>
 );
+
+// ── Diagrama: arquitectura U-Net ──
+const UNetDiagram = () => {
+  const enc = [
+    { x: 20, y: 20, w: 70, h: 34, label: '64×64' },
+    { x: 100, y: 45, w: 60, h: 30, label: '32×32' },
+    { x: 170, y: 68, w: 50, h: 26, label: '16×16' },
+  ];
+  const bottleneck = { x: 228, y: 84, w: 44, h: 22, label: '8×8' };
+  const dec = [
+    { x: 280, y: 68, w: 50, h: 26, label: '16×16' },
+    { x: 338, y: 45, w: 60, h: 30, label: '32×32' },
+    { x: 406, y: 20, w: 70, h: 34, label: '64×64' },
+  ];
+  return (
+    <div style={S.diagram}>
+      <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Arquitectura U-Net (forma em "U")</p>
+      <svg viewBox="0 0 500 190" style={{ maxWidth: '100%', height: 'auto' }}>
+        <defs>
+          <marker id="unetArr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill={color} />
+          </marker>
+        </defs>
+
+        {/* Encoder blocks (contracting path) */}
+        {enc.map((b, i) => (
+          <g key={`e${i}`}>
+            <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="6" fill="rgba(74,158,237,0.15)" stroke={color} strokeWidth="1.5" />
+            <text x={b.x + b.w / 2} y={b.y + b.h / 2 + 4} textAnchor="middle" fill={color} fontSize="10" fontWeight="700">{b.label}</text>
+          </g>
+        ))}
+        {/* Bottleneck */}
+        <rect x={bottleneck.x} y={bottleneck.y} width={bottleneck.w} height={bottleneck.h} rx="6" fill="rgba(74,158,237,0.3)" stroke={color} strokeWidth="2" />
+        <text x={bottleneck.x + bottleneck.w / 2} y={bottleneck.y + bottleneck.h / 2 + 4} textAnchor="middle" fill={color} fontSize="9" fontWeight="700">{bottleneck.label}</text>
+        {/* Decoder blocks (expanding path) */}
+        {dec.map((b, i) => (
+          <g key={`d${i}`}>
+            <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="6" fill="rgba(125,211,252,0.15)" stroke="#7dd3fc" strokeWidth="1.5" />
+            <text x={b.x + b.w / 2} y={b.y + b.h / 2 + 4} textAnchor="middle" fill="#7dd3fc" fontSize="10" fontWeight="700">{b.label}</text>
+          </g>
+        ))}
+
+        {/* Down-sampling arrows (encoder) */}
+        {[0, 1].map(i => (
+          <line key={`da${i}`} x1={enc[i].x + enc[i].w} y1={enc[i].y + enc[i].h / 2} x2={enc[i + 1].x} y2={enc[i + 1].y + enc[i + 1].h / 2}
+            stroke={color} strokeWidth="1.3" markerEnd="url(#unetArr)" />
+        ))}
+        <line x1={enc[2].x + enc[2].w} y1={enc[2].y + enc[2].h / 2} x2={bottleneck.x} y2={bottleneck.y + bottleneck.h / 2}
+          stroke={color} strokeWidth="1.3" markerEnd="url(#unetArr)" />
+        {/* Up-sampling arrows (decoder) */}
+        <line x1={bottleneck.x + bottleneck.w} y1={bottleneck.y + bottleneck.h / 2} x2={dec[0].x} y2={dec[0].y + dec[0].h / 2}
+          stroke="#7dd3fc" strokeWidth="1.3" markerEnd="url(#unetArr)" />
+        {[0, 1].map(i => (
+          <line key={`ua${i}`} x1={dec[i].x + dec[i].w} y1={dec[i].y + dec[i].h / 2} x2={dec[i + 1].x} y2={dec[i + 1].y + dec[i + 1].h / 2}
+            stroke="#7dd3fc" strokeWidth="1.3" markerEnd="url(#unetArr)" />
+        ))}
+
+        {/* Skip connections (dashed, horizontal, same resolution) */}
+        {[0, 1, 2].map(i => (
+          <path key={`sk${i}`}
+            d={`M ${enc[i].x + enc[i].w / 2} ${enc[i].y + enc[i].h} C ${enc[i].x + enc[i].w / 2} ${140 + i * 6}, ${dec[2 - i].x + dec[2 - i].w / 2} ${140 + i * 6}, ${dec[2 - i].x + dec[2 - i].w / 2} ${dec[2 - i].y + dec[2 - i].h}`}
+            fill="none" stroke="var(--text-secondary)" strokeWidth="1.2" strokeDasharray="4,3" />
+        ))}
+        <text x="250" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">skip connections — copiam detalhe espacial directamente do encoder para o decoder</text>
+
+        <text x="60" y="12" fill={color} fontSize="9" fontWeight="700">Encoder (contrai)</text>
+        <text x="440" y="12" textAnchor="end" fill="#7dd3fc" fontSize="9" fontWeight="700">Decoder (expande)</text>
+      </svg>
+      <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+        O encoder reduz progressivamente a resolução espacial (mais contexto, menos detalhe); o decoder
+        faz o inverso, aumentando a resolução de volta ao tamanho original. As <strong>skip connections</strong>{' '}
+        (linhas tracejadas) copiam directamente os mapas de features do encoder para a camada do decoder com a
+        mesma resolução — sem elas, o decoder teria de reconstruir todo o detalhe fino apenas a partir do
+        "resumo" comprimido no bottleneck, o que degradaria a qualidade espacial da saída.
+      </p>
+    </div>
+  );
+};
 
 // ── Diagrama: VLM (LLaVA-style) ──
 const VLMDiagram = () => (
@@ -256,32 +334,32 @@ const VLMDiagram = () => (
       <text x="210" y="56" textAnchor="middle" fill={color} fontSize="9">(ViT pré-treinado, ex. CLIP)</text>
       <line x1="270" y1="45" x2="306" y2="45" stroke={color} strokeWidth="1.5" markerEnd="url(#vlmArrow)" />
 
-      <rect x="310" y="15" width="110" height="60" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="365" y="40" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">Projector</text>
-      <text x="365" y="56" textAnchor="middle" fill="#f59e0b" fontSize="9">MLP → espaço do LLM</text>
-      <line x1="365" y1="75" x2="365" y2="111" stroke="#f59e0b" strokeWidth="1.5" markerEnd="url(#vlmArrow)" />
+      <rect x="310" y="15" width="110" height="60" rx="8" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="365" y="40" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">Projector</text>
+      <text x="365" y="56" textAnchor="middle" fill="#0284c7" fontSize="9">MLP → espaço do LLM</text>
+      <line x1="365" y1="75" x2="365" y2="111" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#vlmArrow)" />
 
       {/* Visual tokens */}
       {[0, 1, 2, 3].map(i => (
-        <rect key={`vt${i}`} x={290 + i * 30} y="116" width="24" height="22" rx="4" fill="#f59e0b" opacity="0.3" />
+        <rect key={`vt${i}`} x={290 + i * 30} y="116" width="24" height="22" rx="4" fill="#0284c7" opacity="0.3" />
       ))}
-      <text x="365" y="155" textAnchor="middle" fill="#f59e0b" fontSize="9">visual tokens</text>
+      <text x="365" y="155" textAnchor="middle" fill="#0284c7" fontSize="9">visual tokens</text>
 
       {/* Text tokens */}
-      <rect x="20" y="116" width="180" height="22" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="110" y="131" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="600">"What is in this image?" (text tokens)</text>
-      <text x="110" y="155" textAnchor="middle" fill="#f97316" fontSize="9">prompt do utilizador</text>
+      <rect x="20" y="116" width="180" height="22" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="110" y="131" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="600">"What is in this image?" (text tokens)</text>
+      <text x="110" y="155" textAnchor="middle" fill="#4a9eed" fontSize="9">prompt do utilizador</text>
 
       {/* Concatenação para o LLM */}
-      <line x1="110" y1="138" x2="200" y2="172" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#vlmArrow)" />
-      <line x1="365" y1="138" x2="280" y2="172" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#vlmArrow)" />
+      <line x1="110" y1="138" x2="200" y2="172" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#vlmArrow)" />
+      <line x1="365" y1="138" x2="280" y2="172" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#vlmArrow)" />
 
-      <rect x="170" y="170" width="260" height="26" rx="6" fill="rgba(167,139,250,0.15)" stroke="#fbbf24" strokeWidth="1.5" />
-      <text x="300" y="187" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="700">LLM (ex. LLaMA, Mistral) — sequência mista</text>
-      <line x1="430" y1="183" x2="466" y2="183" stroke="#fbbf24" strokeWidth="1.5" markerEnd="url(#vlmArrow)" />
+      <rect x="170" y="170" width="260" height="26" rx="6" fill="rgba(167,139,250,0.15)" stroke="#7dd3fc" strokeWidth="1.5" />
+      <text x="300" y="187" textAnchor="middle" fill="#7dd3fc" fontSize="11" fontWeight="700">LLM (ex. LLaMA, Mistral) — sequência mista</text>
+      <line x1="430" y1="183" x2="466" y2="183" stroke="#7dd3fc" strokeWidth="1.5" markerEnd="url(#vlmArrow)" />
 
-      <rect x="470" y="168" width="120" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="530" y="187" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Resposta gerada</text>
+      <rect x="470" y="168" width="120" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="530" y="187" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Resposta gerada</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
       Os "visual tokens" (saída do projector) são tratados pelo LLM exactamente como tokens de texto —
@@ -306,16 +384,16 @@ const FusionDiagram = () => (
       <text x="100" y="18" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Early Fusion</text>
       <rect x="40" y="28" width="50" height="24" rx="4" fill="rgba(14,116,144,0.15)" stroke={color} strokeWidth="1" />
       <text x="65" y="44" textAnchor="middle" fill={color} fontSize="9">Imagem</text>
-      <rect x="110" y="28" width="50" height="24" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1" />
-      <text x="135" y="44" textAnchor="middle" fill="#f59e0b" fontSize="9">Texto</text>
+      <rect x="110" y="28" width="50" height="24" rx="4" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1" />
+      <text x="135" y="44" textAnchor="middle" fill="#0284c7" fontSize="9">Texto</text>
       <line x1="65" y1="52" x2="100" y2="78" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
       <line x1="135" y1="52" x2="100" y2="78" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
-      <rect x="50" y="82" width="100" height="36" rx="6" fill="rgba(167,139,250,0.12)" stroke="#fbbf24" strokeWidth="1.2" />
-      <text x="100" y="98" textAnchor="middle" fill="#fbbf24" fontSize="9" fontWeight="700">Concatenação</text>
-      <text x="100" y="111" textAnchor="middle" fill="#fbbf24" fontSize="9">de features cruas</text>
+      <rect x="50" y="82" width="100" height="36" rx="6" fill="rgba(167,139,250,0.12)" stroke="#7dd3fc" strokeWidth="1.2" />
+      <text x="100" y="98" textAnchor="middle" fill="#7dd3fc" fontSize="9" fontWeight="700">Concatenação</text>
+      <text x="100" y="111" textAnchor="middle" fill="#7dd3fc" fontSize="9">de features cruas</text>
       <line x1="100" y1="118" x2="100" y2="138" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
-      <rect x="50" y="142" width="100" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="100" y="161" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Modelo único</text>
+      <rect x="50" y="142" width="100" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="100" y="161" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Modelo único</text>
       <text x="100" y="195" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">Interações ricas, mas</text>
       <text x="100" y="207" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">sensível a escala/ruído</text>
 
@@ -323,18 +401,18 @@ const FusionDiagram = () => (
       <text x="300" y="18" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Late Fusion</text>
       <rect x="240" y="28" width="50" height="24" rx="4" fill="rgba(14,116,144,0.15)" stroke={color} strokeWidth="1" />
       <text x="265" y="44" textAnchor="middle" fill={color} fontSize="9">Imagem</text>
-      <rect x="310" y="28" width="50" height="24" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1" />
-      <text x="335" y="44" textAnchor="middle" fill="#f59e0b" fontSize="9">Texto</text>
+      <rect x="310" y="28" width="50" height="24" rx="4" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1" />
+      <text x="335" y="44" textAnchor="middle" fill="#0284c7" fontSize="9">Texto</text>
       <line x1="265" y1="52" x2="265" y2="78" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
       <line x1="335" y1="52" x2="335" y2="78" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
       <rect x="240" y="82" width="50" height="36" rx="6" fill="rgba(14,116,144,0.1)" stroke={color} strokeWidth="1.2" />
       <text x="265" y="103" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Modelo A</text>
-      <rect x="310" y="82" width="50" height="36" rx="6" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" strokeWidth="1.2" />
-      <text x="335" y="103" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">Modelo B</text>
+      <rect x="310" y="82" width="50" height="36" rx="6" fill="rgba(2,132,199,0.1)" stroke="#0284c7" strokeWidth="1.2" />
+      <text x="335" y="103" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">Modelo B</text>
       <line x1="265" y1="118" x2="295" y2="142" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
       <line x1="335" y1="118" x2="305" y2="142" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#fuArrow)" />
-      <rect x="250" y="142" width="100" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="300" y="161" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Combina predições</text>
+      <rect x="250" y="142" width="100" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="300" y="161" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Combina predições</text>
       <text x="300" y="195" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">Robusto, simples, mas</text>
       <text x="300" y="207" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">perde interações finas</text>
 
@@ -342,19 +420,19 @@ const FusionDiagram = () => (
       <text x="500" y="18" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Cross-Attention Fusion</text>
       <rect x="440" y="28" width="50" height="24" rx="4" fill="rgba(14,116,144,0.15)" stroke={color} strokeWidth="1" />
       <text x="465" y="44" textAnchor="middle" fill={color} fontSize="9">Imagem</text>
-      <rect x="510" y="28" width="50" height="24" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1" />
-      <text x="535" y="44" textAnchor="middle" fill="#f59e0b" fontSize="9">Texto</text>
+      <rect x="510" y="28" width="50" height="24" rx="4" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1" />
+      <text x="535" y="44" textAnchor="middle" fill="#0284c7" fontSize="9">Texto</text>
       <line x1="465" y1="52" x2="465" y2="78" stroke={color} strokeWidth="1" markerEnd="url(#fuArrow)" />
-      <line x1="535" y1="52" x2="535" y2="78" stroke="#f59e0b" strokeWidth="1" markerEnd="url(#fuArrow)" />
+      <line x1="535" y1="52" x2="535" y2="78" stroke="#0284c7" strokeWidth="1" markerEnd="url(#fuArrow)" />
       <rect x="440" y="82" width="50" height="36" rx="6" fill="rgba(14,116,144,0.1)" stroke={color} strokeWidth="1.2" />
       <text x="465" y="98" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Keys/</text>
       <text x="465" y="110" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Values</text>
-      <rect x="510" y="82" width="50" height="36" rx="6" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" strokeWidth="1.2" />
-      <text x="535" y="103" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700">Queries</text>
+      <rect x="510" y="82" width="50" height="36" rx="6" fill="rgba(2,132,199,0.1)" stroke="#0284c7" strokeWidth="1.2" />
+      <text x="535" y="103" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="700">Queries</text>
       <line x1="465" y1="118" x2="495" y2="142" stroke={color} strokeWidth="1" markerEnd="url(#fuArrow)" />
-      <line x1="535" y1="118" x2="505" y2="142" stroke="#f59e0b" strokeWidth="1" markerEnd="url(#fuArrow)" />
-      <rect x="450" y="142" width="100" height="30" rx="6" fill="rgba(167,139,250,0.12)" stroke="#fbbf24" strokeWidth="1.2" />
-      <text x="500" y="161" textAnchor="middle" fill="#fbbf24" fontSize="9" fontWeight="700">Attention(Q,K,V)</text>
+      <line x1="535" y1="118" x2="505" y2="142" stroke="#0284c7" strokeWidth="1" markerEnd="url(#fuArrow)" />
+      <rect x="450" y="142" width="100" height="30" rx="6" fill="rgba(167,139,250,0.12)" stroke="#7dd3fc" strokeWidth="1.2" />
+      <text x="500" y="161" textAnchor="middle" fill="#7dd3fc" fontSize="9" fontWeight="700">Attention(Q,K,V)</text>
       <text x="500" y="195" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">Cada modalidade "consulta"</text>
       <text x="500" y="207" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">a outra dinamicamente</text>
     </svg>
@@ -366,16 +444,8 @@ export default function DL8() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 08</div>
+      <div style={S.tag}>MÓDULO 08</div>
       <h1 style={S.h1}>Multimodal Learning</h1>
-      <p style={S.lead}>
-        Os modelos mais marcantes da última década deixaram de operar numa única modalidade. Texto,
-        imagem, áudio e vídeo são hoje processados em conjunto, num espaço de representação comum,
-        abrindo caminho a sistemas capazes de "ver", "ler" e gerar conteúdo entre modalidades —
-        descrever uma fotografia, gerar uma imagem a partir de uma frase, ou responder a perguntas
-        sobre um gráfico. Neste módulo exploramos o CLIP, a geração texto→imagem, os Vision-Language
-        Models e as estratégias de fusão que tornam tudo isto possível.
-      </p>
 
       {/* ── 1. O que é Multimodal Learning ── */}
       <div style={S.section}>
@@ -429,6 +499,15 @@ export default function DL8() {
           alinhamento imagem-texto em larga escala. Foi treinado em cerca de 400 milhões de pares
           (imagem, legenda) recolhidos da internet — sem qualquer anotação manual de classes.
         </p>
+
+        <div style={S.highlight}>
+          <strong>O que o CLIP faz, concretamente:</strong> não gera nada — só{' '}
+          <strong>pontua o quão bem uma imagem e um texto combinam</strong>. Dá-se-lhe uma imagem e
+          um (ou vários) textos candidatos; o CLIP devolve um número (similaridade cosseno) por par
+          imagem-texto — quanto mais alto, mais o texto descreve bem a imagem. Não devolve uma frase
+          nova (não é captioning) nem uma imagem nova (não é geração). É uma <em>função de
+          comparação</em>: entra (imagem, texto), sai um score de compatibilidade.
+        </div>
 
         <h3 style={S.h3}>Arquitectura dual-encoder</h3>
         <p style={S.p}>
@@ -574,14 +653,94 @@ export default function DL8() {
               vocabulário de "patches" visuais.
             </p>
           </div>
-          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid #fbbf2430' }}>
-            <div style={{ fontWeight: 700, color: '#fbbf24', marginBottom: '0.5rem' }}>Difusivo (DALL-E 2, Stable Diffusion, Imagen)</div>
+          <div style={{ background: 'var(--bg-secondary)', borderRadius: 10, padding: '1rem', border: '1px solid #7dd3fc30' }}>
+            <div style={{ fontWeight: 700, color: '#7dd3fc', marginBottom: '0.5rem' }}>Difusivo (DALL-E 2, Stable Diffusion, Imagen)</div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>
               Parte-se de ruído aleatório e aplica-se iterativamente um modelo que prevê e remove
               ruído, condicionado pelo embedding do texto via cross-attention. Após dezenas de
               passos, o ruído converge numa imagem coerente com o prompt.
             </p>
           </div>
+        </div>
+
+        <h3 style={S.h3}>O que é uma U-Net?</h3>
+        <p style={S.p}>
+          A U-Net (Ronneberger et al., 2015, originalmente para segmentação de imagens médicas) é
+          uma CNN em forma de "U": um <strong>encoder</strong> que vai reduzindo a resolução espacial
+          da imagem por várias camadas (extraindo cada vez mais contexto, cada vez menos detalhe
+          fino), seguido de um <strong>decoder</strong> que faz o percurso inverso, aumentando a
+          resolução de volta ao tamanho original. A sua marca distintiva são as{' '}
+          <strong>skip connections</strong>: ligações directas entre cada camada do encoder e a
+          camada do decoder com a mesma resolução, que copiam detalhe espacial que de outra forma se
+          perderia na compressão.
+        </p>
+        <UNetDiagram />
+        <p style={S.p}>
+          Na difusão, a U-Net é usada de forma diferente do seu propósito original: em vez de
+          produzir uma segmentação, a entrada e a saída têm exactamente as <em>mesmas</em> dimensões
+          (um tensor ruidoso entra, uma previsão de ruído do mesmo tamanho sai) — a forma em U com
+          skip connections é ideal para isto porque preserva a estrutura espacial fina do tensor de
+          entrada, algo essencial quando se está a prever ruído pixel-a-pixel (ou latente-a-latente).
+        </p>
+
+        <h3 style={S.h3}>Como funciona, passo a passo, a via difusiva (Stable Diffusion)</h3>
+        <p style={S.p}>
+          É a família dominante hoje, por isso vale a pena desmontá-la em detalhe. A ideia central,
+          em uma frase: <strong>o modelo nunca aprende a desenhar a imagem</strong> — aprende apenas
+          a olhar para um tensor ruidoso e adivinhar "que ruído foi adicionado aqui". Repetir essa
+          adivinhação e subtraí-la muitas vezes, a partir de ruído puro, é o que acaba por revelar
+          uma imagem.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.25rem' }}>
+          {[
+            ['1. Treino: aprender a prever ruído', 'Pega-se numa imagem real do dataset e adiciona-se-lhe ruído gaussiano numa quantidade conhecida e aleatória. Pede-se a uma U-Net que, vendo apenas a versão ruidosa, preveja exactamente o ruído que foi adicionado — um simples problema de regressão (erro quadrático médio). É a única coisa que a rede aprende a fazer.'],
+            ['2. Treino: condicionar pelo texto', 'Durante o mesmo treino, a legenda da imagem é codificada (por CLIP ou T5) e injectada na U-Net via cross-attention. A rede aprende então a prever o ruído condicionalmente ao texto — associando "este tipo de ruído/imagem" a "este tipo de descrição".'],
+            ['3. Inferência: codificar o novo prompt', 'Já com a rede treinada, o texto do utilizador passa pelo mesmo text encoder, produzindo a sequência de embeddings que vai guiar todo o processo seguinte.'],
+            ['4. Inferência: partir de ruído puro', 'Gera-se um tensor de ruído gaussiano aleatório — sem qualquer conteúdo — no espaço latente comprimido (ex.: 64×64×4, em vez de 512×512×3 pixels).'],
+            ['5. Inferência: prever e subtrair ruído, repetidamente', 'A cada passo t = T…1, a U-Net treinada recebe o tensor actual + o prompt (via cross-attention) e prevê o ruído presente; esse ruído previsto é subtraído (parcialmente, segundo o scheduler), deixando o tensor ligeiramente "mais limpo". Repete-se isto 20–50 vezes.'],
+            ['6. Inferência: descodificar para pixels', 'O tensor latente final, já sem ruído, passa pelo decoder do autoencoder (a mesma rede que originalmente o comprimiu) e é convertido na imagem RGB final.'],
+          ].map(([step, desc]) => (
+            <div key={step} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+              <div style={{ color: '#7dd3fc', fontWeight: 700, fontSize: '0.85rem', minWidth: '11rem' }}>{step}</div>
+              <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{desc}</div>
+            </div>
+          ))}
+        </div>
+        <div style={S.highlight}>
+          <strong>Porque é que prever ruído gera imagens novas:</strong> o treino (passos 1–2) e a
+          geração (passos 3–6) usam a <em>mesma</em> rede na direcção oposta. No treino, parte-se de
+          uma imagem real e caminha-se em direcção ao ruído (fácil de simular). Na geração, parte-se
+          de ruído e caminha-se, passo a passo, na direcção inversa — em direcção a "menos ruído" —
+          guiado pelo texto. Como a rede nunca viu a imagem final durante nenhum passo individual, o
+          resultado é sempre uma imagem nova, não uma cópia do treino.
+        </div>
+
+        <h3 style={S.h3}>Como funciona, passo a passo, a via autoregressiva (DALL-E 1)</h3>
+        <p style={S.p}>
+          Antes da difusão dominar, o DALL-E 1 (2021) tratou a geração de imagens exactamente como
+          um problema de modelação de linguagem — só que sobre um "vocabulário" visual.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.25rem' }}>
+          {[
+            ['1. Treino: criar um vocabulário visual', 'Um autoencoder discreto (VQ-VAE) é treinado à parte para comprimir qualquer imagem numa grelha de, por exemplo, 32×32 "tokens visuais", cada um escolhido de um dicionário fixo de ~8192 tokens possíveis — tal como uma frase é uma sequência de tokens de um vocabulário de palavras.'],
+            ['2. Treino: converter cada imagem em tokens', 'Todas as imagens do dataset são passadas pelo encoder do VQ-VAE, produzindo para cada uma uma sequência fixa de 1024 tokens visuais (32×32). A legenda correspondente é tokenizada normalmente, como texto.'],
+            ['3. Treino: concatenar texto + imagem numa única sequência', 'Cria-se uma sequência única: [tokens de texto] seguidos de [tokens visuais]. Um Transformer autoregressivo (como um GPT) é treinado a prever o próximo token dessa sequência — exactamente a mesma tarefa de um modelo de linguagem, apenas com um vocabulário misto texto+imagem.'],
+            ['4. Inferência: fornecer o prompt', 'Dá-se ao Transformer apenas a parte de texto do prompt do utilizador, já tokenizada.'],
+            ['5. Inferência: gerar tokens visuais um a um', 'O Transformer prevê o primeiro token visual (condicionado no texto), depois o segundo (condicionado no texto + no token já gerado), e assim sucessivamente até completar os 1024 tokens — sequencialmente, tal como gera palavras.'],
+            ['6. Inferência: descodificar para pixels', 'A sequência completa de tokens visuais gerados é passada pelo decoder do VQ-VAE (passo 1), que a converte de volta numa imagem em pixels.'],
+          ].map(([step, desc]) => (
+            <div key={step} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+              <div style={{ color, fontWeight: 700, fontSize: '0.85rem', minWidth: '11rem' }}>{step}</div>
+              <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{desc}</div>
+            </div>
+          ))}
+        </div>
+        <div style={S.note}>
+          A diferença essencial face à difusão: aqui cada token visual é gerado de uma vez, na
+          ordem, e nunca mais é revisto — se o token 200 sair "errado", os restantes 824 são gerados
+          a partir desse erro. Na difusão, a imagem inteira é refinada em conjunto a cada passo, o
+          que tende a produzir resultados mais coerentes globalmente, à custa de mais passos de
+          computação.
         </div>
 
         <table style={S.table}>
@@ -727,7 +886,8 @@ export default function DL8() {
           A diferença essencial face a modelos como o DALL-E é a direcção do fluxo: os VLMs
           consomem imagem e produzem texto (compreensão), enquanto modelos como o DALL-E consomem
           texto e produzem imagem (geração). Modelos "any-to-any" mais recentes procuram fazer
-          ambos no mesmo modelo.
+          ambos no mesmo modelo. O curso de LLMs &amp; Agents, módulo "LLMs Multimodais", aprofunda
+          LLaVA, GPT-4V e Gemini com mais detalhe (vision tokens, dynamic resolution, limitações).
         </div>
       </div>
 
@@ -838,39 +998,6 @@ export default function DL8() {
           </tbody>
         </table>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ── Síntese ── */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        <p style={S.p}>
-          O Multimodal Learning constrói pontes entre representações de natureza muito diferente —
-          discretas e sequenciais (texto), contínuas e espaciais (imagem), contínuas e temporais
-          (áudio). O CLIP demonstrou que um espaço de embedding partilhado pode ser aprendido apenas
-          com aprendizagem contrastiva sobre pares (imagem, texto) recolhidos da web, sem anotação
-          manual, e que esse espaço suporta classificação zero-shot competitiva com modelos
-          supervisionados.
-        </p>
-        <p style={S.p}>
-          Os modelos generativos (DALL-E, Stable Diffusion, Imagen) usam embeddings de texto para
-          condicionar processos generativos — autoregressivos ou difusivos — capazes de sintetizar
-          imagens fiéis ao prompt. Os VLMs (LLaVA, GPT-4V, Gemini, Claude) invertem a direção:
-          tratam representações visuais como "tokens" adicionais que um LLM consegue ler e sobre os
-          quais consegue raciocinar em linguagem natural.
-        </p>
-        <div style={S.highlight}>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Multimodal learning constrói espaços de embedding onde conceitos equivalentes em modalidades diferentes ficam próximos</li>
-            <li>CLIP usa um dual-encoder + contrastive loss (InfoNCE) para alinhar imagem e texto à escala da web</li>
-            <li>Zero-shot transfer transforma classificação em retrieval: comparar a imagem com embeddings de prompts de texto candidatos</li>
-            <li>Modelos texto→imagem dividem-se em autoregressivos (tokens visuais sequenciais) e difusivos (denoising iterativo condicionado)</li>
-            <li>VLMs como o LLaVA injetam visual tokens (via projector) na sequência de entrada de um LLM</li>
-            <li>A fusão multimodal pode ocorrer cedo (early), tarde (late) ou através de cross-attention dinâmica</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

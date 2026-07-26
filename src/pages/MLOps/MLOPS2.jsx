@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -38,51 +38,51 @@ const DataValidationPipelineDiagram = () => (
           <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--text-secondary)" />
         </marker>
         <marker id="arr-pass" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
-          <path d="M0,0 L7,3.5 L0,7 Z" fill="#f97316" />
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#4a9eed" />
         </marker>
         <marker id="arr-fail" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
-          <path d="M0,0 L7,3.5 L0,7 Z" fill="#f97316" />
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#4a9eed" />
         </marker>
       </defs>
 
       {/* Raw Data */}
-      <rect x="10" y="75" width="100" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.8" />
+      <rect x="10" y="75" width="100" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.8" />
       <text x="60" y="97" textAnchor="middle" fill={color} fontSize="10" fontWeight="800">Raw Data</text>
       <text x="60" y="112" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">CSV / DB / S3</text>
       <path d="M110 100 L145 100" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-dvp)" />
 
       {/* Validation Gate */}
-      <rect x="145" y="65" width="120" height="70" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <rect x="145" y="65" width="120" height="70" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="205" y="88" textAnchor="middle" fill={color} fontSize="10" fontWeight="800">Data Validation</text>
       <text x="205" y="102" textAnchor="middle" fill={color} fontSize="8.5">Great Expectations</text>
       <text x="205" y="116" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Expectation Suite</text>
       <text x="205" y="128" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Checkpoint run</text>
 
       {/* Decision diamond */}
-      <polygon points="310,85 340,100 310,115 280,100" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1.8" />
-      <text x="310" y="104" textAnchor="middle" fill="#f59e0b" fontSize="8" fontWeight="800">PASS?</text>
+      <polygon points="310,85 340,100 310,115 280,100" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1.8" />
+      <text x="310" y="104" textAnchor="middle" fill="#0284c7" fontSize="8" fontWeight="800">PASS?</text>
       <path d="M265 100 L278 100" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-dvp)" />
 
       {/* PASS branch — right */}
-      <path d="M342 100 L378 100" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-pass)" />
-      <text x="360" y="93" textAnchor="middle" fill="#f97316" fontSize="8" fontWeight="700">✓ PASS</text>
+      <path d="M342 100 L378 100" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-pass)" />
+      <text x="360" y="93" textAnchor="middle" fill="#4a9eed" fontSize="8" fontWeight="700">✓ PASS</text>
 
       {/* Feature Engineering */}
-      <rect x="378" y="75" width="110" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="433" y="97" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Feature Eng.</text>
+      <rect x="378" y="75" width="110" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="433" y="97" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Feature Eng.</text>
       <text x="433" y="112" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Transform + encode</text>
       <path d="M488 100 L518 100" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-dvp)" />
 
       {/* Model Training */}
-      <rect x="518" y="75" width="90" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="563" y="97" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Training</text>
+      <rect x="518" y="75" width="90" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="563" y="97" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Training</text>
       <text x="563" y="112" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">sklearn / torch</text>
 
       {/* FAIL branch — down */}
-      <path d="M310 117 L310 160" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-fail)" />
-      <text x="330" y="142" fill="#f97316" fontSize="8" fontWeight="700">✗ FAIL</text>
-      <rect x="195" y="162" width="235" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-      <text x="312" y="180" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Pipeline interrompido — alertas enviados</text>
+      <path d="M310 117 L310 160" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-fail)" />
+      <text x="330" y="142" fill="#4a9eed" fontSize="8" fontWeight="700">✗ FAIL</text>
+      <rect x="195" y="162" width="235" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+      <text x="312" y="180" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Pipeline interrompido — alertas enviados</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       O Validation Gate é a ideia central: o pipeline só avança se os dados passarem no contrato de
@@ -107,7 +107,7 @@ const GreatExpectationsDiagram = () => (
 
       {/* Mini data table on the left */}
       <text x="10" y="20" fill={color} fontSize="10" fontWeight="800">Dados de entrada</text>
-      <rect x="10" y="28" width="220" height="25" rx="4" fill="rgba(249,115,22,0.10)" />
+      <rect x="10" y="28" width="220" height="25" rx="4" fill="rgba(74,158,237,0.10)" />
       <text x="20" y="44" fill={color} fontSize="9" fontWeight="700">customer_id</text>
       <text x="95" y="44" fill={color} fontSize="9" fontWeight="700">age</text>
       <text x="140" y="44" fill={color} fontSize="9" fontWeight="700">email</text>
@@ -122,9 +122,9 @@ const GreatExpectationsDiagram = () => (
         <g key={ri}>
           <rect x="10" y={56 + ri * 24} width="220" height="22" rx="2" fill={ri % 2 === 0 ? 'var(--bg-primary)' : 'transparent'} />
           <text x="20" y={72 + ri * 24} fill="var(--text-primary)" fontSize="9">{id}</text>
-          <text x="95" y={72 + ri * 24} fill={ok[1] ? 'var(--text-primary)' : '#f97316'} fontSize="9" fontWeight={ok[1] ? '400' : '700'}>{age}</text>
-          <text x="140" y={72 + ri * 24} fill={ok[2] ? 'var(--text-primary)' : '#f97316'} fontSize="9" fontWeight={ok[2] ? '400' : '700'}>{email}</text>
-          <text x="195" y={72 + ri * 24} fill={ok[3] ? 'var(--text-primary)' : '#f97316'} fontSize="9" fontWeight={ok[3] ? '400' : '700'}>{status}</text>
+          <text x="95" y={72 + ri * 24} fill={ok[1] ? 'var(--text-primary)' : '#4a9eed'} fontSize="9" fontWeight={ok[1] ? '400' : '700'}>{age}</text>
+          <text x="140" y={72 + ri * 24} fill={ok[2] ? 'var(--text-primary)' : '#4a9eed'} fontSize="9" fontWeight={ok[2] ? '400' : '700'}>{email}</text>
+          <text x="195" y={72 + ri * 24} fill={ok[3] ? 'var(--text-primary)' : '#4a9eed'} fontSize="9" fontWeight={ok[3] ? '400' : '700'}>{status}</text>
         </g>
       ))}
 
@@ -133,7 +133,7 @@ const GreatExpectationsDiagram = () => (
 
       {/* Expectation Suite box */}
       <text x="272" y="20" fill={color} fontSize="10" fontWeight="800">Expectation Suite</text>
-      <rect x="272" y="28" width="200" height="165" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="272" y="28" width="200" height="165" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       {(() => {
         const rules = [
           { text: 'not_null(customer_id)', lines: 1 },
@@ -174,8 +174,8 @@ const GreatExpectationsDiagram = () => (
           const h = lines > 1 ? 34 : 22;
           const g = (
             <g key={i}>
-              <rect x="514" y={yOff} width="95" height={h} rx="4" fill={ok ? 'rgba(16,185,129,0.12)' : 'rgba(249,115,22,0.10)'} stroke="#f97316" strokeWidth="1" />
-              <text x="561" y={yOff + h/2 + 4} textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">{ok ? '✓ PASS' : '✗ FAIL'}</text>
+              <rect x="514" y={yOff} width="95" height={h} rx="4" fill={ok ? 'rgba(74,158,237,0.10)' : 'rgba(74,158,237,0.10)'} stroke="#4a9eed" strokeWidth="1" />
+              <text x="561" y={yOff + h/2 + 4} textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">{ok ? '✓ PASS' : '✗ FAIL'}</text>
             </g>
           );
           yOff += h + 6;
@@ -184,9 +184,9 @@ const GreatExpectationsDiagram = () => (
       })()}
 
       {/* Overall result */}
-      <rect x="514" y="190" width="95" height="30" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="561" y="202" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="800">SUITE FAILED</text>
-      <text x="561" y="212" textAnchor="middle" fill="#f97316" fontSize="8">3 expectations</text>
+      <rect x="514" y="190" width="95" height="30" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="561" y="202" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="800">SUITE FAILED</text>
+      <text x="561" y="212" textAnchor="middle" fill="#4a9eed" fontSize="8">3 expectations</text>
 
       <text x="310" y="245" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">GE gera relatório HTML detalhado + DataValidationError para o pipeline</text>
     </svg>
@@ -210,15 +210,15 @@ const FeatureStoreDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
         </marker>
         <marker id="arr-fs-g" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
         <marker id="arr-fs-o" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
         </marker>
       </defs>
 
       {/* Raw Data Sources */}
-      <rect x="10" y="90" width="120" height="80" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="10" y="90" width="120" height="80" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="70" y="112" textAnchor="middle" fill={color} fontSize="10" fontWeight="800">Raw Sources</text>
       <text x="70" y="128" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">• Databases (SQL)</text>
       <text x="70" y="140" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">• Kafka streams</text>
@@ -227,45 +227,45 @@ const FeatureStoreDiagram = () => (
       <path d="M130 130 L168 130" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-fs)" />
 
       {/* Feature Pipeline */}
-      <rect x="170" y="105" width="110" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="170" y="105" width="110" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="225" y="120" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">Feature</text>
       <text x="225" y="132" textAnchor="middle" fill={color} fontSize="10" fontWeight="700">Pipeline</text>
       <text x="225" y="145" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">transform + compute</text>
       <path d="M280 130 L318 130" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-fs)" />
 
       {/* Feature Store central */}
-      <rect x="320" y="60" width="130" height="140" rx="10" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2.5" />
+      <rect x="320" y="60" width="130" height="140" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2.5" />
       <text x="385" y="82" textAnchor="middle" fill={color} fontSize="12" fontWeight="800">Feature</text>
       <text x="385" y="97" textAnchor="middle" fill={color} fontSize="12" fontWeight="800">Store</text>
       <text x="385" y="115" textAnchor="middle" fill={color} fontSize="8.5" fontWeight="700">Feast / Tecton / Hopsworks</text>
 
       {/* Offline Store sub-box */}
-      <rect x="330" y="122" width="110" height="34" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="385" y="136" textAnchor="middle" fill="#f97316" fontSize="8.5" fontWeight="700">Offline Store</text>
+      <rect x="330" y="122" width="110" height="34" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="385" y="136" textAnchor="middle" fill="#4a9eed" fontSize="8.5" fontWeight="700">Offline Store</text>
       <text x="385" y="149" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">Parquet / BigQuery / S3</text>
 
       {/* Online Store sub-box */}
-      <rect x="330" y="162" width="110" height="30" rx="5" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="1" />
-      <text x="385" y="176" textAnchor="middle" fill="#f59e0b" fontSize="8.5" fontWeight="700">Online Store</text>
+      <rect x="330" y="162" width="110" height="30" rx="5" fill="rgba(2,132,199,0.15)" stroke="#0284c7" strokeWidth="1" />
+      <text x="385" y="176" textAnchor="middle" fill="#0284c7" fontSize="8.5" fontWeight="700">Online Store</text>
       <text x="385" y="188" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">Redis / DynamoDB</text>
 
       {/* Arrow to Training */}
-      <path d="M450 139 L490 100" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arr-fs-g)" />
-      <rect x="490" y="70" width="120" height="50" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="550" y="85" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Model Training</text>
+      <path d="M450 139 L490 100" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-fs-g)" />
+      <rect x="490" y="70" width="120" height="50" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="550" y="85" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Model Training</text>
       <text x="550" y="97" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">batch features</text>
       <text x="550" y="107" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">histórico completo</text>
 
       {/* Arrow to Serving */}
-      <path d="M450 177 L490 185" stroke="#f59e0b" strokeWidth="1.5" markerEnd="url(#arr-fs-o)" />
-      <rect x="490" y="165" width="120" height="50" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x="550" y="180" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="800">Inference Serving</text>
+      <path d="M450 177 L490 185" stroke="#0284c7" strokeWidth="1.5" markerEnd="url(#arr-fs-o)" />
+      <rect x="490" y="165" width="120" height="50" rx="8" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="550" y="180" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="800">Inference Serving</text>
       <text x="550" y="195" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">online features</text>
       <text x="550" y="208" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">latência &lt; 10ms</text>
 
       {/* Label arrows */}
-      <text x="468" y="130" fill="#f97316" fontSize="7.5" fontStyle="italic">batch / histórico</text>
-      <text x="456" y="158" fill="#f59e0b" fontSize="7.5" fontStyle="italic">real-time lookup</text>
+      <text x="468" y="130" fill="#4a9eed" fontSize="7.5" fontStyle="italic">batch / histórico</text>
+      <text x="456" y="158" fill="#0284c7" fontSize="7.5" fontStyle="italic">real-time lookup</text>
 
       <text x="310" y="248" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">
         Mesma feature definition → treino e serving sempre consistentes
@@ -288,20 +288,20 @@ const TestingPyramidDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Pirâmide de Testes para Sistemas ML</p>
     <svg viewBox="0 0 580 290" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* Base — Unit Tests */}
-      <polygon points="50,250 530,250 430,170 150,170" fill="rgba(16,185,129,0.18)" stroke="#f97316" strokeWidth="2" />
-      <text x="290" y="205" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="800">Unit Tests</text>
-      <text x="290" y="222" textAnchor="middle" fill="#f97316" fontSize="9">schema validation • column types • null checks • value ranges</text>
+      <polygon points="50,250 530,250 430,170 150,170" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="290" y="205" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="800">Unit Tests</text>
+      <text x="290" y="222" textAnchor="middle" fill="#4a9eed" fontSize="9">schema validation • column types • null checks • value ranges</text>
       <text x="290" y="236" textAnchor="middle" fill="var(--text-secondary)" fontSize="8.5">Great Expectations, Pandera, pytest-dataframes</text>
-      <text x="70" y="245" fill="#f97316" fontSize="9" fontWeight="700">Muitos · Rápidos · Baratos</text>
+      <text x="70" y="245" fill="#4a9eed" fontSize="9" fontWeight="700">Muitos · Rápidos · Baratos</text>
 
       {/* Middle — Integration Tests */}
-      <polygon points="150,168 430,168 360,100 220,100" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="290" y="130" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="800">Integration Tests</text>
-      <text x="290" y="147" textAnchor="middle" fill="#f97316" fontSize="8">pipeline end-to-end • feature transforms • data contracts</text>
+      <polygon points="150,168 430,168 360,100 220,100" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="290" y="130" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="800">Integration Tests</text>
+      <text x="290" y="147" textAnchor="middle" fill="#4a9eed" fontSize="8">pipeline end-to-end • feature transforms • data contracts</text>
       <text x="290" y="162" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">pytest + dados sintéticos + mock de APIs externas</text>
 
       {/* Top — System Tests */}
-      <polygon points="220,98 360,98 310,40 270,40" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+      <polygon points="220,98 360,98 310,40 270,40" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
       <text x="290" y="68" textAnchor="middle" fill={color} fontSize="10" fontWeight="800">System Tests</text>
       <text x="290" y="82" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">model perf • holdout</text>
 
@@ -311,8 +311,8 @@ const TestingPyramidDiagram = () => (
       <text x="10" y="64" fill={color} fontSize="8.5" fontWeight="700">Caros</text>
       <line x1="42" y1="40" x2="42" y2="250" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4,3" />
       <text x="575" y="40" textAnchor="end" fill={color} fontSize="8.5">Alto custo</text>
-      <text x="575" y="150" textAnchor="end" fill="#f97316" fontSize="8.5">Médio custo</text>
-      <text x="575" y="240" textAnchor="end" fill="#f97316" fontSize="8.5">Baixo custo</text>
+      <text x="575" y="150" textAnchor="end" fill="#4a9eed" fontSize="8.5">Médio custo</text>
+      <text x="575" y="240" textAnchor="end" fill="#4a9eed" fontSize="8.5">Baixo custo</text>
 
       <text x="290" y="278" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontStyle="italic">
         Investir pesado na base — unit tests baratos detectam 80% dos problemas
@@ -340,8 +340,8 @@ const ModularityDiagram = () => (
       </defs>
 
       {/* LEFT — Monolith */}
-      <text x="100" y="18" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="800">Monolito ML (train.py)</text>
-      <rect x="20" y="26" width="165" height="185" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
+      <text x="100" y="18" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="800">Monolito ML (train.py)</text>
+      <rect x="20" y="26" width="165" height="185" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
       {[
         '# load data',
         '# clean data',
@@ -352,28 +352,28 @@ const ModularityDiagram = () => (
         '# save model',
         '# 800 lines...',
       ].map((line, i) => (
-        <text key={i} x="35" y={45 + i * 21} fill={i === 7 ? '#f97316' : 'var(--text-secondary)'} fontSize="8.5" fontFamily="monospace">{line}</text>
+        <text key={i} x="35" y={45 + i * 21} fill={i === 7 ? '#4a9eed' : 'var(--text-secondary)'} fontSize="8.5" fontFamily="monospace">{line}</text>
       ))}
-      <text x="102" y="224" textAnchor="middle" fill="#f97316" fontSize="8">Impossível testar isoladamente</text>
+      <text x="102" y="224" textAnchor="middle" fill="#4a9eed" fontSize="8">Impossível testar isoladamente</text>
 
       {/* Divider */}
       <text x="210" y="122" textAnchor="middle" fill="var(--text-secondary)" fontSize="20">→</text>
 
       {/* RIGHT — Modular */}
-      <text x="430" y="18" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="800">Pipeline Modular MLOps</text>
+      <text x="430" y="18" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="800">Pipeline Modular MLOps</text>
       {[
-        { label: 'ingest.py', sub: 'load_data()', c: '#f97316', x: 235, y: 35 },
+        { label: 'ingest.py', sub: 'load_data()', c: '#4a9eed', x: 235, y: 35 },
         { label: 'validate.py', sub: 'run_checkpoint()', c: color, x: 335, y: 35 },
-        { label: 'transform.py', sub: 'feature_engineer()', c: '#f97316', x: 440, y: 35 },
-        { label: 'train.py', sub: 'fit_model()', c: '#f97316', x: 540, y: 35 },
-        { label: 'evaluate.py', sub: 'compute_metrics()', c: '#f97316', x: 335, y: 145 },
-        { label: 'register.py', sub: 'mlflow.register()', c: '#f97316', x: 440, y: 145 },
+        { label: 'transform.py', sub: 'feature_engineer()', c: '#4a9eed', x: 440, y: 35 },
+        { label: 'train.py', sub: 'fit_model()', c: '#4a9eed', x: 540, y: 35 },
+        { label: 'evaluate.py', sub: 'compute_metrics()', c: '#4a9eed', x: 335, y: 145 },
+        { label: 'register.py', sub: 'mlflow.register()', c: '#4a9eed', x: 440, y: 145 },
       ].map(({ label, sub, c, x, y }, i) => (
         <g key={i}>
           <rect x={x - 45} y={y} width="90" height="50" rx="7" fill={`${c}15`} stroke={c} strokeWidth="1.5" />
           <text x={x} y={y + 20} textAnchor="middle" fill={c} fontSize="9" fontWeight="800">{label}</text>
           <text x={x} y={y + 35} textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5" fontFamily="monospace">{sub}</text>
-          <rect x={x - 18} y={y + 43} width="36" height="12" rx="3" fill="#f97316" opacity="0.8" />
+          <rect x={x - 18} y={y + 43} width="36" height="12" rx="3" fill="#4a9eed" opacity="0.8" />
           <text x={x} y={y + 52} textAnchor="middle" fill="white" fontSize="7" fontWeight="700">✓ testável</text>
         </g>
       ))}
@@ -385,7 +385,7 @@ const ModularityDiagram = () => (
       <path d="M540 85 L540 120 L380 120 L380 145" fill="none" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-mod)" />
       <path d="M380 195 L440 195" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-mod)" />
 
-      <text x="430" y="228" textAnchor="middle" fill="#f97316" fontSize="8">Cada módulo = 1 função pura + 1 ficheiro de testes</text>
+      <text x="430" y="228" textAnchor="middle" fill="#4a9eed" fontSize="8">Cada módulo = 1 função pura + 1 ficheiro de testes</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       A transição do monolito para o pipeline modular é uma das mudanças culturais mais importantes
@@ -410,19 +410,19 @@ const TrainingServingSkewDiagram = () => (
       </defs>
 
       {/* WITHOUT Feature Store */}
-      <text x="145" y="15" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Sem Feature Store — SKEW</text>
-      <rect x="10" y="22" width="110" height="45" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="65" y="42" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Data Warehouse</text>
+      <text x="145" y="15" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Sem Feature Store — SKEW</text>
+      <rect x="10" y="22" width="110" height="45" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="65" y="42" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Data Warehouse</text>
       <text x="65" y="56" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">SQL features</text>
-      <path d="M120 40 L145 65" stroke="#f97316" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
-      <path d="M120 48 L145 90" stroke="#f97316" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
+      <path d="M120 40 L145 65" stroke="#4a9eed" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
+      <path d="M120 48 L145 90" stroke="#4a9eed" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
 
-      <rect x="125" y="58" width="155" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="202" y="75" textAnchor="middle" fill="#f97316" fontSize="8.5">Training: avg_7d = pandas.mean()</text>
-      <rect x="125" y="90" width="155" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="202" y="107" textAnchor="middle" fill="#f97316" fontSize="8.5">Serving: avg_7d = redis.get()?</text>
+      <rect x="125" y="58" width="155" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="202" y="75" textAnchor="middle" fill="#4a9eed" fontSize="8.5">Training: avg_7d = pandas.mean()</text>
+      <rect x="125" y="90" width="155" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="202" y="107" textAnchor="middle" fill="#4a9eed" fontSize="8.5">Serving: avg_7d = redis.get()?</text>
 
-      <text x="205" y="135" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Resultados diferentes!</text>
+      <text x="205" y="135" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Resultados diferentes!</text>
       <text x="205" y="148" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Modelo recebe features diferentes em treino vs. produção</text>
 
       {/* Divider */}
@@ -430,20 +430,20 @@ const TrainingServingSkewDiagram = () => (
       <text x="295" y="180" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">vs.</text>
 
       {/* WITH Feature Store */}
-      <text x="450" y="15" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="800">Com Feature Store — CONSISTENTE</text>
-      <rect x="310" y="60" width="120" height="65" rx="8" fill="rgba(16,185,129,0.12)" stroke="#f97316" strokeWidth="1.8" />
-      <text x="370" y="80" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="800">Feature Store</text>
+      <text x="450" y="15" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="800">Com Feature Store — CONSISTENTE</text>
+      <rect x="310" y="60" width="120" height="65" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.8" />
+      <text x="370" y="80" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="800">Feature Store</text>
       <text x="370" y="95" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">avg_7d definido uma vez</text>
       <text x="370" y="108" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">em Python / SQL</text>
       <text x="370" y="122" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">Feast FeatureView</text>
 
-      <path d="M430 80 L458 65" stroke="#f97316" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
-      <path d="M430 107 L458 127" stroke="#f97316" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
-      <rect x="458" y="47" width="130" height="28" rx="5" fill="rgba(16,185,129,0.10)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="523" y="65" textAnchor="middle" fill="#f97316" fontSize="8.5">Training: Feature Store (batch)</text>
-      <rect x="458" y="113" width="130" height="28" rx="5" fill="rgba(16,185,129,0.10)" stroke="#f97316" strokeWidth="1.3" />
-      <text x="523" y="131" textAnchor="middle" fill="#f97316" fontSize="8.5">Serving: Feature Store (online)</text>
-      <text x="523" y="155" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">Resultados idênticos!</text>
+      <path d="M430 80 L458 65" stroke="#4a9eed" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
+      <path d="M430 107 L458 127" stroke="#4a9eed" strokeWidth="1.3" markerEnd="url(#arr-skw)" />
+      <rect x="458" y="47" width="130" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="523" y="65" textAnchor="middle" fill="#4a9eed" fontSize="8.5">Training: Feature Store (batch)</text>
+      <rect x="458" y="113" width="130" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.3" />
+      <text x="523" y="131" textAnchor="middle" fill="#4a9eed" fontSize="8.5">Serving: Feature Store (online)</text>
+      <text x="523" y="155" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">Resultados idênticos!</text>
     </svg>
   </div>
 );
@@ -456,14 +456,14 @@ const GEExplorer = () => {
   const checks = [
     {
       name: 'Not Null',
-      color: '#f97316',
+      color: '#4a9eed',
       code: 'expect_column_values_to_not_be_null(\n  column="customer_id"\n)',
       desc: 'Verifica que a coluna não tem valores nulos. Um dos testes mais básicos mas mais importantes — dados nulos em campos chave corrompem silenciosamente os resultados do modelo.',
       when: 'Usar em todas as colunas que são chave primária, identificador ou obrigatórias para o modelo.',
     },
     {
       name: 'Between',
-      color: '#f97316',
+      color: '#4a9eed',
       code: 'expect_column_values_to_be_between(\n  column="age",\n  min_value=0,\n  max_value=120\n)',
       desc: 'Garante que os valores estão dentro de um intervalo fisicamente aceitável. Detecta outliers impossíveis (idade negativa, temperatura de -500°C, preço de €0.00 em produto premium).',
       when: 'Usar em variáveis numéricas contínuas onde existem limites físicos ou de negócio conhecidos.',
@@ -477,14 +477,14 @@ const GEExplorer = () => {
     },
     {
       name: 'Regex',
-      color: '#f97316',
+      color: '#4a9eed',
       code: 'expect_column_values_to_match_regex(\n  column="email",\n  regex=r"^[^@]+@[^@]+\\.[^@]+$"\n)',
       desc: 'Valida o formato de strings com expressões regulares. Útil para emails, IBANs, códigos postais, datas em formato string — qualquer campo com formato predefinido.',
       when: 'Usar quando campos string têm formato obrigatório que pode ser codificado como regex.',
     },
     {
       name: 'In Set',
-      color: '#f97316',
+      color: '#4a9eed',
       code: 'expect_column_values_to_be_in_set(\n  column="status",\n  value_set=["active","inactive","pending"]\n)',
       desc: 'Restringe os valores a um conjunto conhecido. Detecta novos valores categóricos que o modelo nunca viu durante o treino — um sinal precoce de concept drift em features categóricas.',
       when: 'Usar em todas as variáveis categóricas para detectar novas categorias antes que cheguem ao modelo.',
@@ -520,15 +520,6 @@ export default function MLOPS2() {
 
       <div style={S.tag}>MÓDULO 02</div>
       <h1 style={S.h1}>Model Development &amp; Validação de Dados</h1>
-      <p style={S.lead}>
-        O desenvolvimento de modelos de ML começa muito antes do primeiro <code>model.fit()</code>.
-        A qualidade dos dados que entram no pipeline determina o tecto de qualidade de tudo o que
-        se segue — e o MLOps tem ferramentas específicas para garantir essa qualidade de forma
-        automática, repetível e auditável. Neste módulo exploramos o pipeline de desenvolvimento
-        modular, a validação de dados com Great Expectations, o conceito de Feature Store, a
-        pirâmide de testes para ML, e os princípios de modularidade que transformam scripts ad-hoc
-        em sistemas de produção.
-      </p>
 
       {/* ===== SECTION 1 ===== */}
       <div style={S.section}>
@@ -563,7 +554,7 @@ export default function MLOPS2() {
                 <tr key={p}>
                   <td style={{ ...S.td, fontWeight: 700, color }}>{p}</td>
                   <td style={S.td}>{d}</td>
-                  <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem', fontStyle: 'italic' }}>{a}</td>
+                  <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem', fontStyle: 'italic' }}>{a}</td>
                 </tr>
               ))}
             </tbody>
@@ -628,7 +619,7 @@ export default function MLOPS2() {
                   <td style={{ ...S.td, fontWeight: 700, color }}>{p}</td>
                   <td style={S.td}>{a}</td>
                   <td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{o}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem', color: '#f97316' }}>{c}</td>
+                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem', color: '#4a9eed' }}>{c}</td>
                 </tr>
               ))}
             </tbody>
@@ -685,8 +676,8 @@ export default function MLOPS2() {
               ].map(([a, off, on]) => (
                 <tr key={a}>
                   <td style={{ ...S.td, fontWeight: 700 }}>{a}</td>
-                  <td style={{ ...S.td, color: '#f97316' }}>{off}</td>
-                  <td style={{ ...S.td, color: '#f97316' }}>{on}</td>
+                  <td style={{ ...S.td, color: '#4a9eed' }}>{off}</td>
+                  <td style={{ ...S.td, color: '#4a9eed' }}>{on}</td>
                 </tr>
               ))}
             </tbody>
@@ -752,7 +743,7 @@ export default function MLOPS2() {
                 <tr key={l}>
                   <td style={{ ...S.td, fontWeight: 700, color }}>{l}</td>
                   <td style={S.td}>{w}</td>
-                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem', color: '#f97316' }}>{e}</td>
+                  <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.8rem', color: '#4a9eed' }}>{e}</td>
                   <td style={{ ...S.td, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{f}</td>
                   <td style={{ ...S.td, fontSize: '0.85rem' }}>{freq}</td>
                 </tr>
@@ -816,7 +807,7 @@ export default function MLOPS2() {
                 <tr key={p}>
                   <td style={{ ...S.td, fontWeight: 700, color }}>{p}</td>
                   <td style={S.td}>{a}</td>
-                  <td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{b}</td>
+                  <td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{b}</td>
                 </tr>
               ))}
             </tbody>
@@ -825,18 +816,18 @@ export default function MLOPS2() {
         <h3 style={S.h3}>Estrutura de Projecto MLOps Recomendada</h3>
         <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 10, padding: '1.25rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 2, overflowX: 'auto' }}>
           <div style={{ color }}><strong>project/</strong></div>
-          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#f97316' }}>data/</span>          &nbsp;&nbsp;&nbsp;# DVC-tracked, nunca em Git</div>
-          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#f97316' }}>src/</span></div>
-          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#f97316' }}>ingest.py</span>      # load_data() → DataFrame</div>
-          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#f97316' }}>validate.py</span>    # run_ge_checkpoint() → bool</div>
-          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#f97316' }}>features.py</span>    # engineer_features() → DataFrame</div>
-          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#f97316' }}>train.py</span>       # fit_model(X, y, params) → Model</div>
-          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#f97316' }}>evaluate.py</span>    # compute_metrics(model, X_test) → dict</div>
-          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   └── <span style={{ color: '#f97316' }}>register.py</span>    # mlflow_register(model, metrics)</div>
-          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#f97316' }}>tests/</span>         &nbsp;&nbsp;&nbsp;# pytest, uma pasta espelho de src/</div>
-          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#f97316' }}>params.yaml</span>    # todos os hiperparâmetros</div>
-          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#f97316' }}>dvc.yaml</span>       # pipeline stages + dependencies</div>
-          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>└── <span style={{ color: '#f97316' }}>great_expectations/</span>  # GE context</div>
+          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#4a9eed' }}>data/</span>          &nbsp;&nbsp;&nbsp;# DVC-tracked, nunca em Git</div>
+          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#4a9eed' }}>src/</span></div>
+          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#4a9eed' }}>ingest.py</span>      # load_data() → DataFrame</div>
+          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#4a9eed' }}>validate.py</span>    # run_ge_checkpoint() → bool</div>
+          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#4a9eed' }}>features.py</span>    # engineer_features() → DataFrame</div>
+          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#4a9eed' }}>train.py</span>       # fit_model(X, y, params) → Model</div>
+          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   ├── <span style={{ color: '#4a9eed' }}>evaluate.py</span>    # compute_metrics(model, X_test) → dict</div>
+          <div style={{ paddingLeft: '2.5rem', color: 'var(--text-secondary)' }}>│   └── <span style={{ color: '#4a9eed' }}>register.py</span>    # mlflow_register(model, metrics)</div>
+          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#4a9eed' }}>tests/</span>         &nbsp;&nbsp;&nbsp;# pytest, uma pasta espelho de src/</div>
+          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#4a9eed' }}>params.yaml</span>    # todos os hiperparâmetros</div>
+          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>├── <span style={{ color: '#4a9eed' }}>dvc.yaml</span>       # pipeline stages + dependencies</div>
+          <div style={{ paddingLeft: '1.25rem', color: 'var(--text-secondary)' }}>└── <span style={{ color: '#4a9eed' }}>great_expectations/</span>  # GE context</div>
         </div>
         <p style={S.p}>
           Esta estrutura separa completamente dados (<code>data/</code>, gerido por DVC),
@@ -857,33 +848,6 @@ export default function MLOPS2() {
           </ul>
         </div>
       </div>
-
-      <hr style={S.divider} />
-
-      {/* ===== SYNTHESIS ===== */}
-      <div style={S.section}>
-        <h2 style={S.h2}>6. Síntese do Módulo</h2>
-        <p style={S.p}>
-          O desenvolvimento de modelos ML em contexto de produção requer uma mudança fundamental
-          de mentalidade: do notebook exploratório para o pipeline de software disciplinado.
-          Esta transição não é apenas técnica — é cultural, e envolve adoptar princípios de
-          engenharia de software (modularidade, testes, separação de responsabilidades) adaptados
-          às especificidades dos sistemas de ML (dados que mudam, modelos que degradam,
-          features que precisam de ser consistentes entre treino e produção).
-        </p>
-        
-          <strong>Pontos-chave a reter:</strong>
-          <ul style={{ paddingLeft: '1.25rem', marginTop: '0.75rem', lineHeight: 2 }}>
-            <li>O Validation Gate com Great Expectations é o padrão para garantir qualidade de dados antes do treino — falhar ruidosamente cedo é sempre melhor do que silenciosamente tarde</li>
-            <li>A Expectation Suite define um contrato formal dos dados: <InlineMath math="\text{valid}(D) = \bigwedge_j e_j(D)" /> — o pipeline só avança se todos os contratos passarem</li>
-            <li>A Feature Store elimina o training-serving skew ao garantir que a mesma definição de feature é usada em treino (Offline Store) e produção (Online Store)</li>
-            <li>A pirâmide de testes para ML investe pesado na base (unit tests de dados = baratos + rápidos) e usa system tests de performance parcimoniosamente (caros + lentos)</li>
-            <li>Modularidade significa: uma função pública por módulo, parâmetros injectados, sem side effects, com interface contracts explícitos</li>
-            <li>Testes específicos de ML (data leakage, baseline comparison, metamorphic, fairness) não têm equivalente em software tradicional e são igualmente obrigatórios</li>
-            <li>A estrutura de projecto MLOps separa dados (DVC), código (src/), testes (tests/) e configuração (params.yaml) — reprodutível com <code>dvc repro</code></li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

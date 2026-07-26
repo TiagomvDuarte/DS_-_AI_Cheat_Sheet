@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,17 +15,17 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
-  svgBox: { background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
+  svgBox: { background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 10, padding: '1rem', margin: '1.2rem 0', overflowX: 'auto' },
 };
 
 function GeneratorPipelineSVG() {
   return (
     <svg width="780" height="180" viewBox="0 0 780 180" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
-      <rect x="10" y="20" width="140" height="140" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="10" y="20" width="140" height="140" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="80" y="48" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>LIST</text>
       <text x="80" y="66" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">range(1M)</text>
       {[0,1,2,3,4,5,6,7].map(i => (
@@ -42,7 +42,7 @@ function GeneratorPipelineSVG() {
 
       <text x="200" y="95" textAnchor="middle" fontSize="20" fill="var(--text-secondary)">vs</text>
 
-      <rect x="240" y="20" width="170" height="140" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <rect x="240" y="20" width="170" height="140" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="325" y="48" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>GENERATOR</text>
       <text x="325" y="66" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">generator expression</text>
       <rect x="300" y="80" width="50" height="22" rx="5" fill={color} opacity="0.8" />
@@ -54,14 +54,14 @@ function GeneratorPipelineSVG() {
       <line x1="430" y1="90" x2="460" y2="90" stroke={color} strokeWidth="1.5" strokeDasharray="4,3" />
       <text x="445" y="82" textAnchor="middle" fontSize="9" fill={color}>next()</text>
 
-      <rect x="460" y="60" width="100" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="460" y="60" width="100" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="510" y="84" textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>Pipeline</text>
       <text x="510" y="100" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">filter</text>
       <text x="510" y="113" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">map</text>
 
       <line x1="560" y1="90" x2="590" y2="90" stroke={color} strokeWidth="1.5" strokeDasharray="4,3" />
 
-      <rect x="590" y="60" width="120" height="60" rx="6" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="590" y="60" width="120" height="60" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="650" y="84" textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>Consumidor</text>
       <text x="650" y="100" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">sum() / list()</text>
       <text x="650" y="113" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">for loop</text>
@@ -87,13 +87,13 @@ function MemoryBarSVG() {
 
 function ResourceLifecycleSVG() {
   const stages = ['open()', 'use', 'close()'];
-  const colors = [color, 'var(--text-secondary)', '#f97316'];
+  const colors = [color, 'var(--text-secondary)', '#4a9eed'];
   return (
     <svg width="600" height="140" viewBox="0 0 600 140" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       <text x="300" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--text-primary)">Ciclo de vida de recurso com context manager</text>
       {stages.map((s, i) => (
         <g key={s}>
-          <rect x={60 + i * 160} y="35" width="110" height="44" rx="8" fill="rgba(249,115,22,0.10)" stroke={i === 2 ? '#f97316' : color} strokeWidth="1.5" />
+          <rect x={60 + i * 160} y="35" width="110" height="44" rx="8" fill="rgba(74,158,237,0.10)" stroke={i === 2 ? '#4a9eed' : color} strokeWidth="1.5" />
           <text x={115 + i * 160} y="60" textAnchor="middle" fontSize="12" fontWeight="700" fill={colors[i]}>{s}</text>
           <text x={115 + i * 160} y="74" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">
             {i === 0 ? '__enter__' : i === 1 ? 'bloco with' : '__exit__'}
@@ -106,8 +106,8 @@ function ResourceLifecycleSVG() {
           <path d="M0,0 L0,6 L8,3 z" fill={color} />
         </marker>
       </defs>
-      <rect x="60" y="95" width="480" height="22" rx="5" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-      <text x="300" y="110" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="600">Garantido mesmo em caso de exce&#231;&#227;o &#8212; __exit__ &#233; sempre chamado</text>
+      <rect x="60" y="95" width="480" height="22" rx="5" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="300" y="110" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="600">Garantido mesmo em caso de exce&#231;&#227;o &#8212; __exit__ &#233; sempre chamado</text>
     </svg>
   );
 }
@@ -115,15 +115,15 @@ function ResourceLifecycleSVG() {
 function ConcurrencyComparisonSVG() {
   const cols = [
     { label: 'Threading', sub: 'I/O-bound', items: ['GIL liberto em I/O', 'Thread pool', 'Simples', 'concurrent.futures'], color: color },
-    { label: 'Multiprocessing', sub: 'CPU-bound', items: ['Processos separados', 'Sem GIL', 'Mais mem&#243;ria', 'ProcessPoolExecutor'], color: '#f97316' },
-    { label: 'Asyncio', sub: 'Alta concorr&#234;ncia', items: ['Single thread', 'Event loop', 'async/await', 'aiohttp, aiopg'], color: '#f97316' },
+    { label: 'Multiprocessing', sub: 'CPU-bound', items: ['Processos separados', 'Sem GIL', 'Mais mem&#243;ria', 'ProcessPoolExecutor'], color: '#4a9eed' },
+    { label: 'Asyncio', sub: 'Alta concorr&#234;ncia', items: ['Single thread', 'Event loop', 'async/await', 'aiohttp, aiopg'], color: '#4a9eed' },
   ];
   return (
     <svg width="700" height="220" viewBox="0 0 700 220" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       <text x="350" y="18" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--text-primary)">Modelos de Concorr&#234;ncia em Python</text>
       {cols.map((col, ci) => (
         <g key={col.label}>
-          <rect x={20 + ci * 225} y="30" width="210" height="175" rx="8" fill="rgba(249,115,22,0.10)" stroke={col.color} strokeWidth="1.5" />
+          <rect x={20 + ci * 225} y="30" width="210" height="175" rx="8" fill="rgba(74,158,237,0.10)" stroke={col.color} strokeWidth="1.5" />
           <rect x={20 + ci * 225} y="30" width="210" height="38" rx="8" fill={col.color} opacity="0.85" />
           <rect x={20 + ci * 225} y="52" width="210" height="16" fill={col.color} opacity="0.85" />
           <text x={125 + ci * 225} y="45" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fff">{col.label}</text>
@@ -151,16 +151,16 @@ function AsyncTimelineSVG() {
       <line x1="80" y1="68" x2="360" y2="68" stroke={color} strokeWidth="1" />
       <text x="360" y="64" fontSize="9" fill={color}>~3s total</text>
 
-      <text x="10" y="108" fontSize="10" fontWeight="600" fill="#f97316">Ass&#237;ncrono</text>
-      <rect x="80" y="96" width="90" height="22" rx="4" fill="#f97316" opacity="0.7" />
+      <text x="10" y="108" fontSize="10" fontWeight="600" fill="#4a9eed">Ass&#237;ncrono</text>
+      <rect x="80" y="96" width="90" height="22" rx="4" fill="#4a9eed" opacity="0.7" />
       <text x="125" y="112" textAnchor="middle" fontSize="9" fill="#fff">req 1 (1s)</text>
-      <rect x="80" y="96" width="90" height="22" rx="4" fill="none" stroke="#f97316" strokeWidth="1" />
-      <rect x="82" y="122" width="90" height="22" rx="4" fill="#f97316" opacity="0.7" />
+      <rect x="80" y="96" width="90" height="22" rx="4" fill="none" stroke="#4a9eed" strokeWidth="1" />
+      <rect x="82" y="122" width="90" height="22" rx="4" fill="#4a9eed" opacity="0.7" />
       <text x="127" y="138" textAnchor="middle" fontSize="9" fill="#fff">req 2 (1s)</text>
-      <rect x="84" y="148" width="90" height="22" rx="4" fill="#f97316" opacity="0.7" />
+      <rect x="84" y="148" width="90" height="22" rx="4" fill="#4a9eed" opacity="0.7" />
       <text x="129" y="164" textAnchor="middle" fontSize="9" fill="#fff">req 3 (1s)</text>
-      <line x1="80" y1="178" x2="178" y2="178" stroke="#f97316" strokeWidth="1" />
-      <text x="182" y="174" fontSize="9" fill="#f97316">~1s total (concurrent)</text>
+      <line x1="80" y1="178" x2="178" y2="178" stroke="#4a9eed" strokeWidth="1" />
+      <text x="182" y="174" fontSize="9" fill="#4a9eed">~1s total (concurrent)</text>
 
       <text x="340" y="195" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">asyncio.gather() executa coroutines em paralelo no mesmo thread</text>
     </svg>
@@ -169,13 +169,13 @@ function AsyncTimelineSVG() {
 
 function TypeCheckPipelineSVG() {
   const steps = ['Source .py', 'mypy', 'Erros de tipo', 'Runtime seguro'];
-  const stepColors = ['var(--text-secondary)', color, '#f97316', '#f97316'];
+  const stepColors = ['var(--text-secondary)', color, '#4a9eed', '#4a9eed'];
   return (
     <svg width="620" height="100" viewBox="0 0 620 100" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       <text x="310" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--text-primary)">Pipeline de verifica&#231;&#227;o de tipos</text>
       {steps.map((s, i) => (
         <g key={s}>
-          <rect x={20 + i * 148} y="28" width="120" height="40" rx="7" fill="rgba(249,115,22,0.10)" stroke={stepColors[i]} strokeWidth="1.5" />
+          <rect x={20 + i * 148} y="28" width="120" height="40" rx="7" fill="rgba(74,158,237,0.10)" stroke={stepColors[i]} strokeWidth="1.5" />
           <text x={80 + i * 148} y="53" textAnchor="middle" fontSize="10" fontWeight="600" fill={stepColors[i]}>{s}</text>
           {i < steps.length - 1 && (
             <line x1={140 + i * 148} y1="48" x2={165 + i * 148} y2="48" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#a2)" />
@@ -211,12 +211,12 @@ function ExceptionHierarchySVG() {
       ].map(([x, label]) => (
         <g key={label}>
           <line x1={x} y1="116" x2={x} y2="130" stroke={color} strokeWidth="1" />
-          <rect x={x - 55} y="130" width="110" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+          <rect x={x - 55} y="130" width="110" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
           <text x={x} y="148" textAnchor="middle" fontSize="9" fill="var(--text-primary)">{label}</text>
         </g>
       ))}
       <line x1="80" y1="156" x2="80" y2="170" stroke={color} strokeWidth="1" />
-      <rect x="10" y="170" width="140" height="26" rx="5" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1" />
+      <rect x="10" y="170" width="140" height="26" rx="5" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
       <text x="80" y="188" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">ZeroDivisionError</text>
       <text x="340" y="220" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">SystemExit e KeyboardInterrupt herdam de BaseException (n&#227;o de Exception)</text>
     </svg>
@@ -273,8 +273,8 @@ function SemanticVersionSVG() {
 
 function TDDCycleSVG() {
   const phases = [
-    { x: 160, y: 90, r: 44, label: 'RED', sub: 'escrever teste\nque falha', fill: '#f97316' },
-    { x: 340, y: 165, r: 44, label: 'GREEN', sub: 'fazer passar\no teste', fill: '#f97316' },
+    { x: 160, y: 90, r: 44, label: 'RED', sub: 'escrever teste\nque falha', fill: '#4a9eed' },
+    { x: 340, y: 165, r: 44, label: 'GREEN', sub: 'fazer passar\no teste', fill: '#4a9eed' },
     { x: 160, y: 240, r: 44, label: 'REFACTOR', sub: 'melhorar\no código', fill: color },
   ];
   return (
@@ -289,12 +289,12 @@ function TDDCycleSVG() {
           ))}
         </g>
       ))}
-      <path d="M195,115 Q290,90 315,135" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#ra)" />
-      <path d="M315,193 Q280,250 200,250" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#ga)" />
+      <path d="M195,115 Q290,90 315,135" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#ra)" />
+      <path d="M315,193 Q280,250 200,250" fill="none" stroke="#4a9eed" strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#ga)" />
       <path d="M120,235 Q80,165 130,110" fill="none" stroke={color} strokeWidth="2" strokeDasharray="5,3" markerEnd="url(#aa)" />
       <defs>
-        <marker id="ra" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f97316" /></marker>
-        <marker id="ga" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f97316" /></marker>
+        <marker id="ra" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker>
+        <marker id="ga" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" /></marker>
         <marker id="aa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill={color} /></marker>
       </defs>
     </svg>
@@ -333,13 +333,13 @@ function FlameGraphSVG() {
 
 function CIPipelineSVG() {
   const steps = ['black', 'isort', 'flake8', 'mypy', 'pytest', 'deploy'];
-  const stepColors = [color, color, color, '#f97316', '#f97316', '#f97316'];
+  const stepColors = [color, color, color, '#4a9eed', '#4a9eed', '#4a9eed'];
   return (
     <svg width="660" height="100" viewBox="0 0 660 100" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
       <text x="330" y="16" textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--text-primary)">Pipeline CI/CD com ferramentas de qualidade</text>
       {steps.map((s, i) => (
         <g key={s}>
-          <rect x={10 + i * 107} y="26" width="90" height="36" rx="7" fill="rgba(249,115,22,0.10)" stroke={stepColors[i]} strokeWidth="1.5" />
+          <rect x={10 + i * 107} y="26" width="90" height="36" rx="7" fill="rgba(74,158,237,0.10)" stroke={stepColors[i]} strokeWidth="1.5" />
           <text x={55 + i * 107} y="49" textAnchor="middle" fontSize="11" fontWeight="600" fill={stepColors[i]}>{s}</text>
           {i < steps.length - 1 && (
             <line x1={100 + i * 107} y1="44" x2={112 + i * 107} y2="44" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#ci)" />
@@ -358,10 +358,10 @@ function CIPipelineSVG() {
 
 function LearningPathSVG() {
   const milestones = [
-    { label: 'Iniciante', items: 'syntax, loops,\nfunctions, lists', color: '#f97316' },
+    { label: 'Iniciante', items: 'syntax, loops,\nfunctions, lists', color: '#4a9eed' },
     { label: 'Intermédio', items: 'OOP, decorators,\ntype hints, testing', color: color },
-    { label: 'Avançado', items: 'async, meta-\nprogramming, perf', color: '#f97316' },
-    { label: 'Expert', items: 'C extensions,\npackaging, CI/CD', color: '#f97316' },
+    { label: 'Avançado', items: 'async, meta-\nprogramming, perf', color: '#4a9eed' },
+    { label: 'Expert', items: 'C extensions,\npackaging, CI/CD', color: '#4a9eed' },
   ];
   return (
     <svg width="700" height="150" viewBox="0 0 700 150" style={{ display: 'block', maxWidth: '100%', margin: '0 auto' }}>
@@ -386,13 +386,8 @@ export default function PfDS10() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <div style={S.tag}>MÓDULO 10</div>
-      <h1 style={S.h1}>Python Avan&#231;ado &amp; Boas Pr&#225;ticas</h1>
-      <p style={S.lead}>
-        Este m&#243;dulo cobre funcionalidades avan&#231;adas de Python: generators, context managers,
-        concorr&#234;ncia, asyncio, type hints, tratamento de erros, metaprograma&#231;&#227;o,
-        packaging, testing, performance e boas pr&#225;ticas de c&#243;digo.
-      </p>
+      <div style={S.tag}>MÓDULO 04</div>
+      <h1 style={S.h1}>Python Avan&#231;ado</h1>
 
       {/* 1. Generators e Iterators */}
       <div style={S.section}>
@@ -1064,130 +1059,6 @@ numba_sum(arr)  # compila na 1a chamada, muito mais rapido depois
         </table>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* 11. Boas Praticas */}
-      <div style={S.section}>
-        <h2 style={S.h2}>11. Boas Pr&#225;ticas &#8212; PEP 8 e Beyond</h2>
-        <p style={S.p}>
-          PEP 8 define o style guide oficial do Python. Ferramentas autom&#225;ticas como
-          {' '}<code>black</code> formatam o c&#243;digo, <code>isort</code> ordena imports,
-          <code>flake8</code>/<code>ruff</code> detectam problemas de estilo e <code>mypy</code>
-          verifica tipos.
-        </p>
-        <div style={S.svgBox}>
-          <CIPipelineSVG />
-        </div>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Conven&#231;&#227;o</th>
-              <th style={S.th}>Uso</th>
-              <th style={S.th}>Exemplo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['snake_case', 'variables, funcoes, modulos', 'user_name, get_data()'],
-              ['PascalCase', 'classes', 'DataProcessor, UserModel'],
-              ['UPPER_CASE', 'constantes', 'MAX_RETRIES, DEFAULT_TIMEOUT'],
-              ['_privado', 'atributo privado (convencao)', '_internal_state'],
-              ['__dunder__', 'metodos especiais', '__init__, __repr__'],
-              ['_leading', 'modulo-privado (nao exportado)', '_helper_function'],
-            ].map(([conv, uso, ex]) => (
-              <tr key={conv}>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{conv}</td>
-                <td style={S.td}>{uso}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{ex}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.code}>{`# black — formatador opinionado (88 caracteres)
-# pip install black
-# black src/ tests/
-
-# isort — ordenar imports
-# pip install isort
-# isort src/
-
-# ruff — linting ultra-rapido (substitui flake8 + isort)
-# pip install ruff
-# ruff check .
-# ruff format .
-
-# mypy — verificacao de tipos
-# pip install mypy
-# mypy --strict src/
-
-# pre-commit — executar automaticamente antes de cada commit
-# .pre-commit-config.yaml:
-# repos:
-#   - repo: https://github.com/psf/black
-#     hooks: [{id: black}]
-#   - repo: https://github.com/astral-sh/ruff-pre-commit
-#     hooks: [{id: ruff}]`}</div>
-        <div style={S.highlight}>
-          <p style={S.p}><strong>Code Review Checklist:</strong></p>
-          <p style={S.p}>&#10003; Funcoes com uma responsabilidade clara (SRP)</p>
-          <p style={S.p}>&#10003; Nomes descritivos (sem x, temp, data gen&#233;ricos)</p>
-          <p style={S.p}>&#10003; Type hints em todas as fun&#231;&#245;es p&#250;blicas</p>
-          <p style={S.p}>&#10003; Testes para casos normais, edge cases e erros</p>
-          <p style={S.p}>&#10003; Sem c&#243;digo morto (unused imports, variables)</p>
-          <p style={{ ...S.p, marginBottom: 0 }}>&#10003; Docstring em m&#243;dulos, classes e fun&#231;&#245;es p&#250;blicas</p>
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* 12. Sintese */}
-      <div style={S.section}>
-        <h2 style={S.h2}>12. S&#237;ntese do Módulo</h2>
-        <div style={S.svgBox}>
-          <LearningPathSVG />
-        </div>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>T&#243;pico</th>
-              <th style={S.th}>Quando usar</th>
-              <th style={S.th}>Alternativa simples</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Generators', 'dados grandes, streaming', 'list comprehension'],
-              ['Context managers', 'recursos que precisam de cleanup', 'try/finally manual'],
-              ['Threading', 'I/O concorrente simples', 'sequencial se pouco I/O'],
-              ['Asyncio', 'alta concorrencia I/O (1000+)', 'threading para poucos'],
-              ['Multiprocessing', 'CPU-bound paralelo', 'numpy vectorization'],
-              ['Type hints + mypy', 'codebases grandes, APIs publicas', 'comentarios de tipo'],
-              ['Metaclasses', 'frameworks, ORMs', 'decorators de classe'],
-              ['Profiling', 'antes de qualquer optimizacao', 'timeit para micro-bench'],
-              ['pytest', 'sempre', 'unittest (mais verbose)'],
-              ['pyproject.toml', 'qualquer pacote distribuivel', 'setup.py (legacy)'],
-            ].map(([t, w, a]) => (
-              <tr key={t}>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{t}</td>
-                <td style={S.td}>{w}</td>
-                <td style={S.td}>{a}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.highlight}>
-          <p style={S.p}><strong>Generators:</strong> lazy, mem&#243;ria O(1), ideal para pipelines de dados.</p>
-          <p style={S.p}><strong>Context managers:</strong> garantia de cleanup; usar contextlib.contextmanager.</p>
-          <p style={S.p}><strong>Asyncio:</strong> event loop single-thread para alta concorr&#234;ncia I/O.</p>
-          <p style={S.p}><strong>Type hints:</strong> Optional, Union, Generic, Protocol; verificar com mypy.</p>
-          <p style={S.p}><strong>Error handling:</strong> exce&#231;&#245;es custom, logging, raise from, suppress.</p>
-          <p style={S.p}><strong>Metaprograma&#231;&#227;o:</strong> descriptors e metaclasses para frameworks.</p>
-          <p style={S.p}><strong>Packaging:</strong> pyproject.toml + src layout + twine para PyPI.</p>
-          <p style={S.p}><strong>Testing:</strong> pytest, fixtures, parametrize, mock, hypothesis, coverage.</p>
-          <p style={S.p}><strong>Performance:</strong> medir primeiro (cProfile), depois Numba/Cython se necess&#225;rio.</p>
-          <p style={{ ...S.p, marginBottom: 0 }}><strong>Boas pr&#225;ticas:</strong> black + ruff + mypy no CI; nomes descritivos; SRP.</p>
-        </div>
-      </div>
         </div>
   );
 }

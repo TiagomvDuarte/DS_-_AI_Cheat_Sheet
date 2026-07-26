@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -31,12 +31,6 @@ export default function DV4() {
 
         <div style={S.tag}>MÓDULO 04</div>
         <h1 style={S.h1}>Matplotlib &amp; Seaborn</h1>
-        <p style={S.lead}>
-          Matplotlib é o motor de visualização estática do ecossistema Python — extremamente poderoso e flexível,
-          mas verboso. Seaborn é uma camada de alto nível construída sobre o Matplotlib que produz visualizações
-          estatísticas elegantes com muito menos código, integrando directamente com DataFrames do pandas.
-          Dominar os dois é fundamental para qualquer trabalho sério de análise de dados.
-        </p>
 
         {/* ── Secção 1 ── */}
         <div style={S.section}>
@@ -65,22 +59,22 @@ export default function DV4() {
               <rect x="10" y="10" width="380" height="240" rx="10" fill="none" stroke={color} strokeWidth="2" />
               <text x="20" y="30" fontSize="13" fontWeight="700" fill={color}>Figure</text>
               {/* Axes */}
-              <rect x="30" y="40" width="340" height="195" rx="8" fill="none" stroke="#f97316" strokeWidth="1.5" />
-              <text x="40" y="58" fontSize="12" fontWeight="700" fill="#f97316">Axes (subplot)</text>
+              <rect x="30" y="40" width="340" height="195" rx="8" fill="none" stroke="#4a9eed" strokeWidth="1.5" />
+              <text x="40" y="58" fontSize="12" fontWeight="700" fill="#4a9eed">Axes (subplot)</text>
               {/* Title */}
-              <rect x="50" y="65" width="100" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+              <rect x="50" y="65" width="100" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               <text x="100" y="84" fontSize="10" textAnchor="middle" fill="var(--text-primary)">Title</text>
               {/* XLabel */}
-              <rect x="165" y="65" width="100" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+              <rect x="165" y="65" width="100" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               <text x="215" y="84" fontSize="10" textAnchor="middle" fill="var(--text-primary)">XLabel / YLabel</text>
               {/* Line */}
-              <rect x="50" y="115" width="100" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+              <rect x="50" y="115" width="100" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               <text x="100" y="134" fontSize="10" textAnchor="middle" fill="var(--text-primary)">Line2D</text>
               {/* Patch */}
-              <rect x="165" y="115" width="100" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+              <rect x="165" y="115" width="100" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               <text x="215" y="134" fontSize="10" textAnchor="middle" fill="var(--text-primary)">Patch (rect/circle)</text>
               {/* Legend */}
-              <rect x="280" y="115" width="75" height="28" rx="5" fill="rgba(249,115,22,0.10)" stroke="rgba(249,115,22,0.10)" strokeWidth="1" />
+              <rect x="280" y="115" width="75" height="28" rx="5" fill="rgba(74,158,237,0.10)" stroke="rgba(74,158,237,0.10)" strokeWidth="1" />
               <text x="317" y="134" fontSize="10" textAnchor="middle" fill="var(--text-primary)">Legend</text>
               {/* Artist label */}
               <text x="100" y="175" fontSize="10" fill="var(--text-secondary)" textAnchor="middle">Artists</text>
@@ -241,22 +235,22 @@ export default function DV4() {
 
               {/* Violino A — distribuição estreita, centrada */}
               <path d="M90,240 C90,200 70,160 80,130 C85,115 95,100 100,90 C105,100 115,115 120,130 C130,160 110,200 110,240 Z"
-                fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+                fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <line x1="90" y1="155" x2="110" y2="155" stroke={color} strokeWidth="2" />
               <text x="100" y="258" fontSize="10" textAnchor="middle" fill="var(--text-secondary)">A</text>
 
               {/* Violino B — distribuição larga */}
               <path d="M190,240 C185,210 160,170 165,130 C170,105 180,85 200,75 C220,85 230,105 235,130 C240,170 215,210 210,240 Z"
-                fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-              <line x1="175" y1="145" x2="225" y2="145" stroke="#f97316" strokeWidth="2" />
+                fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+              <line x1="175" y1="145" x2="225" y2="145" stroke="#4a9eed" strokeWidth="2" />
               <text x="200" y="258" fontSize="10" textAnchor="middle" fill="var(--text-secondary)">B</text>
 
               {/* Violino C — bimodal */}
               <path d="M290,240 C290,220 275,195 278,170 C281,150 290,142 300,140 C310,142 319,150 322,170 C325,195 310,220 310,240 Z"
-                fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
+                fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
               <path d="M282,140 C279,120 282,95 290,80 C298,68 305,65 300,65 C295,65 292,68 300,80 C308,95 311,120 308,140 Z"
-                fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-              <line x1="286" y1="168" x2="314" y2="168" stroke="#f97316" strokeWidth="2" />
+                fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+              <line x1="286" y1="168" x2="314" y2="168" stroke="#4a9eed" strokeWidth="2" />
               <text x="300" y="258" fontSize="10" textAnchor="middle" fill="var(--text-secondary)">C</text>
 
               <text x="215" y="272" fontSize="9" textAnchor="middle" fill="var(--text-secondary)">— mediana</text>
@@ -325,13 +319,13 @@ export default function DV4() {
                         // Histograma simplificado na diagonal
                         [8, 22, 38, 56, 72].map((bx, bi) => (
                           <rect key={bi} x={x + bx} y={y + 88 - [30,55,75,50,35][bi]} width="12"
-                            height={[30,55,75,50,35][bi]} fill={`rgba(249,115,22,0.10)`} />
+                            height={[30,55,75,50,35][bi]} fill={`rgba(74,158,237,0.10)`} />
                         ))
                       ) : (
                         // Scatter
                         pts.map(([px, py], pi) => (
                           <circle key={pi} cx={x + px * 0.88} cy={y + py * 0.88} r="2.5"
-                            fill={row < col ? color : '#f97316'} opacity="0.7" />
+                            fill={row < col ? color : '#4a9eed'} opacity="0.7" />
                         ))
                       )}
                     </g>
@@ -367,7 +361,7 @@ export default function DV4() {
               <text x="100" y="25" fontSize="10" fontWeight="700" textAnchor="middle" fill="var(--text-secondary)">histplot</text>
               {[2,5,10,18,25,22,12,5,2,1].map((h, i) => (
                 <rect key={i} x={18 + i * 15} y={170 - h * 4} width="13" height={h * 4}
-                  fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="0.5" />
+                  fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="0.5" />
               ))}
               <line x1="16" y1="170" x2="174" y2="170" stroke="var(--text-secondary)" strokeWidth="1" />
 
@@ -375,7 +369,7 @@ export default function DV4() {
               <rect x="210" y="10" width="180" height="175" rx="5" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
               <text x="300" y="25" fontSize="10" fontWeight="700" textAnchor="middle" fill="var(--text-secondary)">kdeplot</text>
               <path d="M218,170 C225,168 235,160 250,140 C265,118 275,90 290,72 C305,55 315,50 320,52 C330,55 340,75 350,100 C360,125 368,150 375,165 L380,170 Z"
-                fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="2" />
+                fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="2" />
               <line x1="216" y1="170" x2="384" y2="170" stroke="var(--text-secondary)" strokeWidth="1" />
 
               {/* ECDF */}
@@ -419,24 +413,24 @@ export default function DV4() {
               <text x="67" y="20" fontSize="9" fontWeight="700" textAnchor="middle" fill="var(--text-secondary)">boxplot</text>
               {/* box A */}
               <line x1="40" y1="40" x2="40" y2="170" stroke={color} strokeWidth="1" strokeDasharray="2,2" />
-              <rect x="25" y="80" width="30" height="55" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+              <rect x="25" y="80" width="30" height="55" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <line x1="25" y1="110" x2="55" y2="110" stroke={color} strokeWidth="2" />
               <line x1="40" y1="40" x2="55" y2="40" stroke={color} strokeWidth="1" />
               <line x1="40" y1="170" x2="55" y2="170" stroke={color} strokeWidth="1" />
               {/* box B */}
-              <line x1="85" y1="50" x2="85" y2="160" stroke="#f97316" strokeWidth="1" strokeDasharray="2,2" />
-              <rect x="70" y="90" width="30" height="45" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-              <line x1="70" y1="105" x2="100" y2="105" stroke="#f97316" strokeWidth="2" />
+              <line x1="85" y1="50" x2="85" y2="160" stroke="#4a9eed" strokeWidth="1" strokeDasharray="2,2" />
+              <rect x="70" y="90" width="30" height="45" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+              <line x1="70" y1="105" x2="100" y2="105" stroke="#4a9eed" strokeWidth="2" />
 
               {/* violinplot */}
               <rect x="143" y="5" width="125" height="185" rx="5" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
               <text x="205" y="20" fontSize="9" fontWeight="700" textAnchor="middle" fill="var(--text-secondary)">violinplot</text>
               <path d="M175,175 C172,155 165,130 168,105 C171,88 178,78 183,72 C188,78 195,88 198,105 C201,130 194,155 191,175 Z"
-                fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+                fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
               <line x1="172" y1="118" x2="194" y2="118" stroke={color} strokeWidth="1.5" />
               <path d="M220,175 C218,160 212,140 214,115 C216,98 222,85 228,80 C234,85 240,98 242,115 C244,140 238,160 236,175 Z"
-                fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-              <line x1="216" y1="125" x2="240" y2="125" stroke="#f97316" strokeWidth="1.5" />
+                fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+              <line x1="216" y1="125" x2="240" y2="125" stroke="#4a9eed" strokeWidth="1.5" />
 
               {/* stripplot */}
               <rect x="281" y="5" width="125" height="185" rx="5" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
@@ -445,7 +439,7 @@ export default function DV4() {
                 <circle key={i} cx={320 + (i % 3) * 8} cy={y} r="3" fill={color} opacity="0.6" />
               ))}
               {[50,60,68,78,88,98,108,120,135,148].map((y, i) => (
-                <circle key={i} cx={358 + (i % 3) * 8} cy={y} r="3" fill="#f97316" opacity="0.6" />
+                <circle key={i} cx={358 + (i % 3) * 8} cy={y} r="3" fill="#4a9eed" opacity="0.6" />
               ))}
 
               {/* swarmplot */}
@@ -457,7 +451,7 @@ export default function DV4() {
               })}
               {[45,55,63,72,80,88,96,110,125,140].map((y, i) => {
                 const offsets = [8,4,0,-4,8,-6,2,6,-2,4];
-                return <circle key={i} cx={505 + offsets[i]} cy={y} r="3.5" fill="#f97316" opacity="0.65" />;
+                return <circle key={i} cx={505 + offsets[i]} cy={y} r="3.5" fill="#4a9eed" opacity="0.65" />;
               })}
             </svg>
           </div>
@@ -533,7 +527,7 @@ export default function DV4() {
                   const pts = [
                     [10,80],[22,65],[35,72],[48,55],[60,60],[72,45],[85,52],[98,38],[110,42],[120,30],
                   ];
-                  const clrs = [color, '#f97316', '#f97316'];
+                  const clrs = [color, '#4a9eed', '#4a9eed'];
                   return (
                     <g key={`${row}-${col}`}>
                       <rect x={x} y={y} width="150" height="128" rx="5" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1" />
@@ -563,60 +557,7 @@ export default function DV4() {
             em vez de dentro de cada painel — muito mais limpo quando há muitas células.
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* ── Síntese ── */}
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Síntese do Módulo</h2>
-          <p style={S.p}>
-            O Matplotlib e o Seaborn são complementares: o Seaborn produz gráficos estatísticos complexos em
-            poucas linhas, mas todas as personalizações finas continuam a ser feitas através do Matplotlib
-            subjacente. A chave é perceber a hierarquia Figure/Axes/Artist e saber aceder ao objecto certo.
-          </p>
-
-          <div style={S.highlight}>
-            <strong style={{ color }}>Pontos-chave a reter:</strong>
-            <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.2rem', fontSize: '0.95rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-              <li>Usar sempre a API OO: <code>fig, ax = plt.subplots()</code> → depois <code>ax.plot()</code>, <code>ax.set_xlabel()</code>.</li>
-              <li>Remover spines superiores e direitos: <code>ax.spines[['top','right']].set_visible(False)</code>.</li>
-              <li>Violin plot &gt; box plot quando a forma da distribuição importa (bimodalidade, assimetria).</li>
-              <li>Seaborn: <code>data=df, x="col", y="col", hue="grupo"</code> — uma linha para gráficos estatísticos completos.</li>
-              <li>Para comparar distribuições sem parâmetros a ajustar: <code>sns.ecdfplot</code> com <code>hue</code>.</li>
-              <li>Pequenos múltiplos com <code>sns.FacetGrid</code> ou <code>sns.relplot(col=...)</code> para comparar grupos.</li>
-              <li>Exportar sempre com <code>dpi=300, bbox_inches='tight'</code> para publicação e relatórios.</li>
-            </ul>
-          </div>
-
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead>
-                <tr>
-                  <th style={S.th}>Situação</th>
-                  <th style={S.th}>Ferramenta recomendada</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['Gráfico personalizado com controlo total', 'Matplotlib OO API (fig, ax)'],
-                  ['Comparar distribuições de grupos', 'sns.violinplot ou sns.boxplot com hue'],
-                  ['Ver todos os pontos de dados', 'sns.stripplot ou sns.swarmplot'],
-                  ['Explorar relações entre muitas variáveis', 'sns.pairplot(hue=...)'],
-                  ['Distribuição sem parâmetros a ajustar', 'sns.ecdfplot'],
-                  ['Comparar grupos com small multiples', 'sns.FacetGrid ou sns.relplot(col=...)'],
-                  ['Layout de subplots assimétrico', 'plt.subplot_mosaic'],
-                  ['Estilo global do notebook', 'sns.set_theme() + plt.rcParams.update()'],
-                ].map(([s, f]) => (
-                  <tr key={s}>
-                    <td style={{ ...S.td, color: 'var(--text-primary)' }}>{s}</td>
-                    <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem', color }}>{f}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+</div>
     </div>
   );
 }

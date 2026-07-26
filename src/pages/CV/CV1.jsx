@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -29,9 +29,9 @@ const PixelDiagram = () => (
       {Array.from({ length: 6 }).map((_, row) =>
         Array.from({ length: 6 }).map((_, col) => {
           const colors = [
-            ['#ea580c','#f97316','#fbbf24','#fbbf24','#f97316','#f97316'],
-            ['#c2410c','#ea580c','#f59e0b','#fb923c','#f59e0b','#fb923c'],
-            ['#ea580c','#f97316','#fbbf24','#ea580c','#fbbf24','#f59e0b'],
+            ['#0369a1','#4a9eed','#7dd3fc','#7dd3fc','#4a9eed','#4a9eed'],
+            ['#075985','#0369a1','#0284c7','#38bdf8','#0284c7','#38bdf8'],
+            ['#0369a1','#4a9eed','#7dd3fc','#0369a1','#7dd3fc','#0284c7'],
             ['#e91e63','#ff5722','#ffc107','#4caf50','#03a9f4','#673ab7'],
             ['#c62828','#bf360c','#f9a825','#1b5e20','#0277bd','#4a148c'],
             ['#ad1457','#e64a19','#f57f17','#2e7d32','#01579b','#4527a0'],
@@ -69,7 +69,7 @@ const PixelDiagram = () => (
 
       {/* Tensor label */}
       <text x="415" y="70" fill="var(--text-primary)" fontSize="11" fontWeight="700">Tensor:</text>
-      <text x="415" y="88" fill="#f97316" fontSize="11" fontWeight="700">(H × W × 3)</text>
+      <text x="415" y="88" fill="#4a9eed" fontSize="11" fontWeight="700">(H × W × 3)</text>
       <text x="415" y="106" fill="var(--text-secondary)" fontSize="8.5">altura × largura</text>
       <text x="415" y="118" fill="var(--text-secondary)" fontSize="8.5">× canais de cor</text>
       <text x="415" y="136" fill="var(--text-secondary)" fontSize="8">ex: 224×224×3</text>
@@ -82,31 +82,31 @@ const ChallengeExplorer = () => {
   const [sel, setSel] = useState(0);
   const challenges = [
     {
-      name: 'Variação de Iluminação', icon: '', color: '#f97316',
+      name: 'Variação de Iluminação', icon: '', color: '#4a9eed',
       desc: 'O mesmo objecto parece completamente diferente sob iluminações distintas. Uma maçã vermelha em luz azul parece preta. O mesmo rosto em sombra vs. luz directa pode enganar um sistema ingénuo. Mesmo pequenas mudanças — uma nuvem a passar, uma lâmpada a ligar — alteram drasticamente os valores RGB de cada píxel, sem que o conteúdo semântico da cena tenha mudado.',
       human: 'Humanos reconhecem facilmente — o sistema visual compensa automaticamente a temperatura de cor (constância de cor). O cérebro "normaliza" a iluminação ambiente e foca-se na reflectância relativa dos objectos, não no valor absoluto da luz.',
       cv: 'Os pixels mudam drasticamente. Um modelo que memoriza cores fixas falha completamente. CNNs aprendem invariância à iluminação implicitamente durante o treino com dados variados — e técnicas de data augmentation (variar brilho, contraste, saturação) ajudam a forçar essa robustez.',
     },
     {
-      name: 'Deformação', icon: '', color: '#f97316',
+      name: 'Deformação', icon: '', color: '#4a9eed',
       desc: 'Um gato pode estar sentado, deitado, a saltar, a esticar. A categoria é a mesma mas a configuração dos pixels é radicalmente diferente. A silhueta, a posição relativa das partes (cabeça, patas, cauda) e até a área ocupada na imagem variam enormemente.',
       human: 'Reconhecemos "gato" independentemente da pose — usamos forma global e partes características (bigodes, orelhas, olhos), e construímos mentalmente um modelo 3D do objecto que se mantém estável sob transformações.',
       cv: 'Modelos baseados em pixels fixos falham. CNNs aprendem detectores de partes locais (bordas, texturas, depois formas, depois partes de objecto) que são combinados hierarquicamente — podem reconhecer um gato independentemente da pose porque a presença das partes certas, mesmo reorganizadas, activa os detectores certos.',
     },
     {
-      name: 'Oclusão', icon: '', color: '#f97316',
+      name: 'Oclusão', icon: '', color: '#4a9eed',
       desc: 'Quando parte do objecto está escondida por outro (e.g., uma pessoa atrás de uma árvore, um carro parcialmente tapado por outro carro), os humanos completam mentalmente o que falta. Para um sistema de CV, faltam literalmente pixels — não há "informação em falta" explícita, apenas a ausência de evidência.',
       human: 'Usamos contexto e expectativa — sabemos que as pernas continuam atrás da parede, porque temos um modelo mental de como pessoas e objectos normalmente se apresentam (amodal completion).',
       cv: 'As CNNs profundas aprendem representações de alto nível suficientemente ricas para inferir objectos parcialmente visíveis a partir de fragmentos, mas é um dos problemas mais difíceis — especialmente em detecção de objectos densamente sobrepostos (ex: multidões).',
     },
     {
-      name: 'Variação Intra-classe', icon: '', color: '#f97316',
+      name: 'Variação Intra-classe', icon: '', color: '#4a9eed',
       desc: 'Todos são cadeiras: um banco de madeira, uma poltrona de couro, um banco de parque, uma cadeira de escritório giratória. A diversidade dentro de uma classe pode ser maior que a diferença entre classes (uma cadeira de escritório pode parecer-se mais com um banco do que com outra cadeira).',
       human: 'Classificamos por função ("serve para sentar uma pessoa") não por aparência — usamos conhecimento abstracto e contexto de uso, não apenas forma.',
       cv: 'Os modelos precisam de ver exemplos suficientemente diversos de cada classe durante o treino para que a fronteira de decisão capture a variabilidade real. Transfer learning de modelos pré-treinados em datasets massivos (ImageNet) ajuda muito, porque as features de baixo/médio nível já generalizam bem.',
     },
     {
-      name: 'Invariância de Fundo', icon: '', color: '#f97316',
+      name: 'Invariância de Fundo', icon: '', color: '#4a9eed',
       desc: 'O mesmo elefante pode aparecer na savana, num circo, numa floresta, num zoo. O fundo muda completamente mas o objecto — e a categoria correcta — é o mesmo. Em alguns datasets, o fundo está fortemente correlacionado com a classe (ex: "barco" quase sempre aparece com água), o que pode levar o modelo a aprender atalhos errados.',
       human: 'Separamos figura do fundo instintivamente (segmentação figura-fundo é uma das primeiras operações do sistema visual).',
       cv: 'Modelos treinados apenas em elefantes na savana podem falhar em elefantes em contextos diferentes — overfitting ao fundo, um exemplo de "shortcut learning". CNNs modernas com data augmentation (recortes aleatórios, mistura de fundos) e treino em dados diversos são mais robustas a esta correlação espúria.',
@@ -126,7 +126,7 @@ const ChallengeExplorer = () => {
       <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: `1.5px solid ${c.color}30` }}>
         <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '0.75rem' }}>{c.desc}</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.85rem' }}>
-          <div style={{ background: 'rgba(249,115,22,0.10)', borderRadius: 8, padding: '0.75rem' }}><strong style={{ color: '#f97316' }}> Visão humana:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{c.human}</p></div>
+          <div style={{ background: 'rgba(74,158,237,0.10)', borderRadius: 8, padding: '0.75rem' }}><strong style={{ color: '#4a9eed' }}> Visão humana:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{c.human}</p></div>
           <div style={{ background: `${c.color}08`, borderRadius: 8, padding: '0.75rem' }}><strong style={{ color: c.color }}> Computer Vision:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{c.cv}</p></div>
         </div>
       </div>
@@ -198,11 +198,11 @@ const ColorSpaceDiagram = () => (
         <line x1="420" y1="38" x2="420" y2="182" stroke="var(--text-secondary)" strokeWidth="0.7" strokeDasharray="3,2"/>
 
         {/* Labels */}
-        <text x="500" y="55" fill="#f97316" fontSize="10" fontWeight="700">H (matiz)</text>
+        <text x="500" y="55" fill="#4a9eed" fontSize="10" fontWeight="700">H (matiz)</text>
         <text x="500" y="68" fill="var(--text-secondary)" fontSize="8">ângulo 0–360°</text>
-        <text x="500" y="115" fill="#f97316" fontSize="10" fontWeight="700">S (saturação)</text>
+        <text x="500" y="115" fill="#4a9eed" fontSize="10" fontWeight="700">S (saturação)</text>
         <text x="500" y="128" fill="var(--text-secondary)" fontSize="8">distância ao eixo</text>
-        <text x="500" y="178" fill="#f97316" fontSize="10" fontWeight="700">V (valor)</text>
+        <text x="500" y="178" fill="#4a9eed" fontSize="10" fontWeight="700">V (valor)</text>
         <text x="500" y="191" fill="var(--text-secondary)" fontSize="8">altura (brilho)</text>
         <text x="345" y="100" textAnchor="end" fill="var(--text-secondary)" fontSize="8">eixo central =</text>
         <text x="345" y="111" textAnchor="end" fill="var(--text-secondary)" fontSize="8">cinzentos</text>
@@ -233,20 +233,20 @@ const ChannelExplorer = () => {
       explanation: 'Um único canal que representa apenas brilho/intensidade, tipicamente calculado como combinação ponderada dos canais RGB (ex: 0.299·R + 0.587·G + 0.114·B, que reflecte a sensibilidade do olho humano à luz verde). Reduz drasticamente o volume de dados (1 canal em vez de 3) — útil quando a cor não é informativa para a tarefa (ex: detecção de bordas, OCR clássico).',
     },
     hsv: {
-      label: 'HSV', color: '#f97316',
+      label: 'HSV', color: '#4a9eed',
       channels: [
-        { name: 'H', color: '#f97316', desc: 'Hue — matiz / "cor pura" (0–360°)' },
-        { name: 'S', color: '#f97316', desc: 'Saturation — pureza/intensidade da cor' },
-        { name: 'V', color: '#f97316', desc: 'Value — brilho/luminosidade' },
+        { name: 'H', color: '#4a9eed', desc: 'Hue — matiz / "cor pura" (0–360°)' },
+        { name: 'S', color: '#4a9eed', desc: 'Saturation — pureza/intensidade da cor' },
+        { name: 'V', color: '#4a9eed', desc: 'Value — brilho/luminosidade' },
       ],
       explanation: 'Separa a "cor" (Hue) do "brilho" (Value) e da "intensidade da cor" (Saturation). É extremamente útil para segmentação por cor: para encontrar "tudo o que é laranja", basta filtrar um intervalo de Hue, sem te preocupares com sombras ou reflexos que mudam o brilho mas não a cor base. Muito usado em visão clássica para detecção de objectos por cor (ex: bolas de desporto, sinais de trânsito, pele).',
     },
     ycbcr: {
-      label: 'YCbCr', color: '#f97316',
+      label: 'YCbCr', color: '#4a9eed',
       channels: [
         { name: 'Y', color: '#94a3b8', desc: 'Luma — luminância (brilho)' },
-        { name: 'Cb', color: '#f97316', desc: 'Crominância azul-amarelo' },
-        { name: 'Cr', color: '#f97316', desc: 'Crominância vermelho-verde' },
+        { name: 'Cb', color: '#4a9eed', desc: 'Crominância azul-amarelo' },
+        { name: 'Cr', color: '#4a9eed', desc: 'Crominância vermelho-verde' },
       ],
       explanation: 'Separa luminância (Y) de crominância (Cb, Cr) — a base da compressão JPEG e do vídeo digital. O olho humano é muito mais sensível a variações de brilho do que de cor, por isso os canais de crominância podem ser sub-amostrados (chroma subsampling, ex: 4:2:0) com perda quase imperceptível, reduzindo o tamanho do ficheiro a metade ou mais.',
     },
@@ -284,17 +284,17 @@ const BitDepthExplorer = () => {
   const [mode, setMode] = useState('uint8');
   const modes = {
     uint8: {
-      label: '8-bit (uint8)', color: '#f97316',
+      label: '8-bit (uint8)', color: '#4a9eed',
       range: '0 a 255 (256 níveis por canal)', total: '256³ ≈ 16,7 milhões de cores possíveis por píxel RGB',
       desc: 'O formato mais comum para imagens "de consumo" (JPEG, PNG standard, fotos de telemóvel). Cada canal usa 1 byte. É suficiente para a percepção humana — mas em zonas de gradiente suave (céu, sombras) pode causar "banding" (faixas visíveis em vez de transição suave), porque só há 256 valores discretos.',
     },
     uint16: {
-      label: '16-bit (uint16)', color: '#f97316',
+      label: '16-bit (uint16)', color: '#4a9eed',
       range: '0 a 65.535 (65.536 níveis por canal)', total: 'Usado em imagem médica (raio-X, ressonância), fotografia RAW, e imagem científica/satélite',
       desc: 'Maior precisão — captura diferenças subtis de intensidade que se perderiam em 8-bit. Essencial quando há processamento posterior intensivo (ex: ajustar exposição numa foto RAW) que amplificaria erros de quantização. Custa o dobro do espaço de armazenamento.',
     },
     float: {
-      label: 'Float (32-bit)', color: '#f97316',
+      label: 'Float (32-bit)', color: '#4a9eed',
       range: 'Tipicamente normalizado para [0,1] ou [-1,1]', total: 'Formato interno de qualquer rede neuronal — não é "armazenamento", é representação de cálculo',
       desc: 'Antes de entrar numa rede neuronal, os valores inteiros são convertidos para vírgula flutuante. Isto não acrescenta informação (continuam a vir de 8 ou 16 bits), mas é o formato exigido pelas operações matriciais da rede e permite normalização — essencial para que o gradiente desça de forma estável durante o treino.',
     },
@@ -330,13 +330,13 @@ const TensorLayoutExplorer = () => {
   const [layout, setLayout] = useState('nchw');
   const layouts = {
     nchw: {
-      label: 'NCHW (channels-first)', color: '#f97316',
+      label: 'NCHW (channels-first)', color: '#4a9eed',
       order: ['N', 'C', 'H', 'W'],
       desc: 'Convenção usada por PyTorch (por defeito) e pela maioria dos kernels GPU optimizados (cuDNN). Os valores de um mesmo canal ficam contíguos em memória — favorável para convoluções, que processam um canal de cada vez sobre toda a imagem.',
       example: 'Um batch de 32 imagens RGB de 224×224 → tensor de forma (32, 3, 224, 224)',
     },
     nhwc: {
-      label: 'NHWC (channels-last)', color: '#f97316',
+      label: 'NHWC (channels-last)', color: '#4a9eed',
       order: ['N', 'H', 'W', 'C'],
       desc: 'Convenção usada por TensorFlow/Keras (histórico) e que corresponde ao formato "natural" em que as imagens são lidas de ficheiro (cada píxel com os seus 3 valores RGB consecutivos). Pode ser mais eficiente em certas TPUs/CPUs modernas devido a melhor localidade de cache para operações por píxel.',
       example: 'O mesmo batch → tensor de forma (32, 224, 224, 3)',
@@ -379,17 +379,17 @@ const InterpolationExplorer = () => {
   const [method, setMethod] = useState('nearest');
   const methods = {
     nearest: {
-      label: 'Nearest Neighbour', color: '#f97316',
+      label: 'Nearest Neighbour', color: '#4a9eed',
       desc: 'Cada novo píxel copia o valor do píxel original mais próximo. É o método mais rápido e mais simples — mas produz resultados em "blocos", visivelmente pixelados quando se amplia a imagem, e pode introduzir artefactos serrilhados (aliasing) em bordas diagonais.',
       cost: 'Muito baixo', quality: 'Baixa',
     },
     bilinear: {
-      label: 'Bilinear', color: '#f97316',
+      label: 'Bilinear', color: '#4a9eed',
       desc: 'Cada novo píxel é uma média ponderada dos 4 píxeis vizinhos mais próximos na imagem original, ponderada pela distância. Produz transições suaves e é o método mais usado por defeito em pipelines de deep learning (ex: redimensionar para 224×224) — bom equilíbrio entre qualidade e custo.',
       cost: 'Baixo', quality: 'Média',
     },
     bicubic: {
-      label: 'Bicubic', color: '#f97316',
+      label: 'Bicubic', color: '#4a9eed',
       desc: 'Usa uma vizinhança maior (16 píxeis, 4×4) e ajusta uma função cúbica suave através deles. Produz resultados mais nítidos e com menos artefactos do que o bilinear, especialmente úteis ao ampliar imagens — mas é computacionalmente mais caro e pode introduzir leve "overshoot" (halos) em bordas de alto contraste.',
       cost: 'Médio', quality: 'Alta',
     },
@@ -412,14 +412,14 @@ const InterpolationExplorer = () => {
             {/* original coarse pixels */}
             {Array.from({ length: 4 }).map((_, i) => (
               <rect key={i} x={10 + i * 35} y={10} width={32} height={32}
-                fill={['#f97316','#f97316','#f97316','#f97316'][i]} opacity="0.6" stroke="var(--text-secondary)" strokeWidth="0.5"/>
+                fill={['#4a9eed','#4a9eed','#4a9eed','#4a9eed'][i]} opacity="0.6" stroke="var(--text-secondary)" strokeWidth="0.5"/>
             ))}
             <text x="80" y="58" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">original (baixa resolução)</text>
             <text x="155" y="30" fill="var(--text-secondary)" fontSize="16">→</text>
             {/* upsampled - rendering depends on method */}
             {method === 'nearest' && Array.from({ length: 8 }).map((_, i) => (
               <rect key={i} x={185 + (i % 4) * 16} y={10 + Math.floor(i / 4) * 16} width={16} height={16}
-                fill={['#f97316','#f97316','#f97316','#f97316','#f97316','#f97316','#f97316','#f97316'][i]} opacity="0.6" stroke="var(--text-secondary)" strokeWidth="0.3"/>
+                fill={['#4a9eed','#4a9eed','#4a9eed','#4a9eed','#4a9eed','#4a9eed','#4a9eed','#4a9eed'][i]} opacity="0.6" stroke="var(--text-secondary)" strokeWidth="0.3"/>
             ))}
             {method === 'bilinear' && (
               <rect x="185" y="10" width="64" height="32" fill="url(#bilinGrad)" rx="2"/>
@@ -429,10 +429,10 @@ const InterpolationExplorer = () => {
             )}
             <defs>
               <linearGradient id="bilinGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#f97316" stopOpacity="0.6"/>
-                <stop offset="35%" stopColor="#f97316" stopOpacity="0.6"/>
-                <stop offset="65%" stopColor="#fb923c" stopOpacity="0.6"/>
-                <stop offset="100%" stopColor="#f59e0b" stopOpacity="0.6"/>
+                <stop offset="0%" stopColor="#4a9eed" stopOpacity="0.6"/>
+                <stop offset="35%" stopColor="#4a9eed" stopOpacity="0.6"/>
+                <stop offset="65%" stopColor="#38bdf8" stopOpacity="0.6"/>
+                <stop offset="100%" stopColor="#0284c7" stopOpacity="0.6"/>
               </linearGradient>
             </defs>
             <text x="217" y="58" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">ampliada</text>
@@ -458,13 +458,13 @@ const CompressionDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>JPEG (com perdas) vs. PNG (sem perdas)</p>
     <svg viewBox="0 0 540 180" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* JPEG side */}
-      <text x="135" y="20" textAnchor="middle" fill="#f59e0b" fontSize="12" fontWeight="700">JPEG</text>
-      <rect x="40" y="35" width="190" height="120" rx="6" fill="#f59e0b10" stroke="#f59e0b" strokeWidth="1.2"/>
+      <text x="135" y="20" textAnchor="middle" fill="#0284c7" fontSize="12" fontWeight="700">JPEG</text>
+      <rect x="40" y="35" width="190" height="120" rx="6" fill="#0284c710" stroke="#0284c7" strokeWidth="1.2"/>
       {/* 8x8 blocks grid */}
       {Array.from({ length: 4 }).map((_, r) =>
         Array.from({ length: 4 }).map((_, c) => (
           <rect key={`${r}-${c}`} x={50 + c * 42} y={45 + r * 25} width={38} height={21}
-            fill={`hsl(${(r*4+c)*23 % 360}, 55%, 65%)`} opacity="0.55" stroke="#f59e0b" strokeWidth="0.6"/>
+            fill={`hsl(${(r*4+c)*23 % 360}, 55%, 65%)`} opacity="0.55" stroke="#0284c7" strokeWidth="0.6"/>
         ))
       )}
       <text x="135" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">blocos 8×8 → DCT → quantização</text>
@@ -473,22 +473,22 @@ const CompressionDiagram = () => (
       <text x="270" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="14">vs</text>
 
       {/* PNG side */}
-      <text x="405" y="20" textAnchor="middle" fill="#f97316" fontSize="12" fontWeight="700">PNG</text>
-      <rect x="310" y="35" width="190" height="120" rx="6" fill="#f9731610" stroke="#f97316" strokeWidth="1.2"/>
+      <text x="405" y="20" textAnchor="middle" fill="#4a9eed" fontSize="12" fontWeight="700">PNG</text>
+      <rect x="310" y="35" width="190" height="120" rx="6" fill="#4a9eed10" stroke="#4a9eed" strokeWidth="1.2"/>
       {Array.from({ length: 6 }).map((_, row) =>
         Array.from({ length: 6 }).map((_, col) => (
           <rect key={`${row}-${col}`} x={320 + col * 28} y={45 + row * 18} width={26} height={16}
-            fill={`hsl(${(row*6+col)*11 % 360}, 50%, 60%)`} opacity="0.5" stroke="#f97316" strokeWidth="0.3"/>
+            fill={`hsl(${(row*6+col)*11 % 360}, 50%, 60%)`} opacity="0.5" stroke="#4a9eed" strokeWidth="0.3"/>
         ))
       )}
       <text x="405" y="172" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">cada píxel preservado exactamente</text>
     </svg>
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginTop: '0.5rem', textAlign: 'left' }}>
-      <div style={{ background: 'rgba(245,158,11,0.08)', borderRadius: 8, padding: '0.75rem', fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>
-        <strong style={{ color: '#f97316' }}>JPEG (lossy):</strong> divide a imagem em blocos de 8×8 píxeis, aplica a Transformada Discreta de Cosseno (DCT) a cada bloco, e descarta as componentes de alta frequência (detalhe fino) que o olho percebe menos. Quanto maior a compressão, mais detalhe é descartado — visível como "blocos" e artefactos em torno de bordas nítidas (ringing).
+      <div style={{ background: 'rgba(2,132,199,0.08)', borderRadius: 8, padding: '0.75rem', fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>
+        <strong style={{ color: '#4a9eed' }}>JPEG (lossy):</strong> divide a imagem em blocos de 8×8 píxeis, aplica a Transformada Discreta de Cosseno (DCT) a cada bloco, e descarta as componentes de alta frequência (detalhe fino) que o olho percebe menos. Quanto maior a compressão, mais detalhe é descartado — visível como "blocos" e artefactos em torno de bordas nítidas (ringing).
       </div>
-      <div style={{ background: 'rgba(249,115,22,0.10)', borderRadius: 8, padding: '0.75rem', fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>
-        <strong style={{ color: '#f97316' }}>PNG (lossless):</strong> usa compressão sem perdas (DEFLATE) — cada píxel é reconstruído exactamente como no original. Ficheiros maiores, mas sem artefactos. Preferido para máscaras de segmentação, anotações e qualquer dado onde a precisão exacta dos valores importa.
+      <div style={{ background: 'rgba(74,158,237,0.10)', borderRadius: 8, padding: '0.75rem', fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>
+        <strong style={{ color: '#4a9eed' }}>PNG (lossless):</strong> usa compressão sem perdas (DEFLATE) — cada píxel é reconstruído exactamente como no original. Ficheiros maiores, mas sem artefactos. Preferido para máscaras de segmentação, anotações e qualquer dado onde a precisão exacta dos valores importa.
       </div>
     </div>
   </div>
@@ -501,7 +501,6 @@ export default function CV1() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 1</div>
         <h1 style={S.h1}>Imagem como Dado</h1>
-        <p style={S.lead}>Antes de qualquer rede neuronal, é preciso perceber o que é uma imagem do ponto de vista computacional: um tensor de números, com diferentes representações de cor, formatos de armazenamento, e desafios de variabilidade que tornam a visão uma das tarefas mais difíceis em ML.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O que é uma Imagem Digitalmente</h2>
@@ -581,7 +580,7 @@ export default function CV1() {
                   ['Uso recomendado', 'Fotos naturais, datasets grandes onde espaço importa', 'Máscaras, anotações, gráficos, qualquer dado onde o valor exacto do píxel importa'],
                   ['Re-compressão', 'Degrada a cada gravação', 'Sem perda, mesmo após múltiplas gravações'],
                 ].map(([f, j, p]) => (
-                  <tr key={f}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{f}</td><td style={S.td}>{j}</td><td style={S.td}>{p}</td></tr>
+                  <tr key={f}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{f}</td><td style={S.td}>{j}</td><td style={S.td}>{p}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -656,7 +655,7 @@ export default function CV1() {
                   ['Invariância espacial', 'Um gato no canto superior esquerdo e o mesmo gato no canto inferior direito correspondem a vectores de input completamente diferentes — a MLP teria de aprender separadamente a reconhecer "gato" em cada posição possível.', 'A mesma convolução (mesmos pesos) é aplicada em todas as posições da imagem — um detector de "orelha de gato" aprendido numa posição funciona automaticamente em qualquer outra posição (translation equivariance).'],
                   ['Estrutura local', 'Trata todos os píxeis como entradas independentes, ignorando que píxeis vizinhos estão fortemente correlacionados (formam bordas, texturas, formas).', 'Os filtros operam sobre pequenas regiões locais — exploram directamente o facto de que a informação relevante (bordas, texturas, padrões) está concentrada em vizinhanças espaciais.'],
                 ].map(([p, mlp, cnn]) => (
-                  <tr key={p}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{p}</td><td style={{ ...S.td, color: '#f97316' }}>{mlp}</td><td style={{ ...S.td, color: '#f97316' }}>{cnn}</td></tr>
+                  <tr key={p}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{p}</td><td style={{ ...S.td, color: '#4a9eed' }}>{mlp}</td><td style={{ ...S.td, color: '#4a9eed' }}>{cnn}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -665,47 +664,8 @@ export default function CV1() {
           <p style={S.p}>Há ainda um quarto argumento, mais subtil: ao fazer flatten, perde-se explicitamente a informação sobre a topologia 2D da imagem — a MLP não tem qualquer noção de que o píxel na posição (i,j) está espacialmente próximo dos píxeis (i+1,j) e (i,j+1). Toda essa informação geométrica teria de ser re-aprendida do zero a partir dos dados, em vez de ser incorporada como um "prior" estrutural na própria arquitectura — o que as CNNs (e, de outra forma, os Vision Transformers com positional encodings) fazem.</p>
         </div>
 
-        <hr style={S.divider} />
-
-        <div style={S.section}>
-          <h2 style={S.h2}>9. Datasets de Referência</h2>
-          <p style={S.p}>Datasets de referência (benchmarks) desempenharam um papel central na evolução da visão computacional — não só como medidas de progresso, mas como motores de inovação: avanços arquitectónicos importantes (AlexNet, ResNet, ViT) foram validados e popularizados precisamente por melhorarem o estado-da-arte nestes datasets.</p>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead><tr><th style={S.th}>Dataset</th><th style={S.th}>Imagens</th><th style={S.th}>Classes</th><th style={S.th}>Resolução</th><th style={S.th}>Impacto</th></tr></thead>
-              <tbody>
-                {[
-                  ['MNIST', '70.000', '10 (dígitos)', '28×28 (cinzento)', 'Benchmark introdutório — baseline de qualquer modelo de classificação. Hoje considerado "demasiado fácil" para investigação séria, mas continua útil para ensino e prototipagem rápida.'],
-                  ['CIFAR-10/100', '60.000 / 60.000', '10 / 100', '32×32 RGB', 'Primeiro benchmark popular com objectos naturais a cores, ainda que a baixa resolução. Continua a ser usado para testar ideias rapidamente devido ao seu tamanho reduzido.'],
-                  ['ImageNet (ILSVRC)', '1.2 milhões', '1.000', '~256×256 RGB', 'O benchmark que desencadeou a revolução do deep learning em 2012 (AlexNet). Modelos pré-treinados em ImageNet são a base de transfer learning em praticamente toda a visão computacional moderna.'],
-                  ['COCO', '330.000', '80 (detecção)', 'Variável', 'Detecção de objectos, segmentação de instâncias, captioning de imagens — benchmark moderno de referência para tarefas além da simples classificação, com cenas complexas e múltiplos objectos por imagem.'],
-                ].map(([d, n, c, r, i]) => (
-                  <tr key={d}><td style={{ ...S.td, fontWeight: 700, color: '#f97316' }}>{d}</td><td style={S.td}>{n}</td><td style={S.td}>{c}</td><td style={S.td}>{r}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{i}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p style={S.p}>Vale a pena notar uma tendência: ao longo do tempo, os datasets evoluíram de tarefas simples (classificação de um único objecto centrado, baixa resolução) para tarefas cada vez mais ricas e próximas de cenários reais (múltiplos objectos, oclusões, fundos complexos, várias tarefas simultâneas no mesmo dataset). Esta evolução reflecte directamente os desafios discutidos na secção 7 — à medida que os modelos foram resolvendo um nível de dificuldade, novos datasets foram desenhados para expor as limitações seguintes.</p>
-        </div>
-
-        
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>10. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Imagem = tensor (H, W, C). Para RGB: cada píxel tem 3 valores em [0,255] → normalizar para [0,1] (ou [-1,1], ou normalização ImageNet) antes de entrar na rede.</li>
-            <li>RGB não é o único espaço de cor: HSV separa matiz (cor), saturação e brilho — útil para segmentação por cor robusta a iluminação. YCbCr separa luminância de crominância — base da compressão JPEG. Grayscale reduz a 1 canal quando a cor não é informativa.</li>
-            <li>Bit depth (8-bit, 16-bit, float) determina a precisão dos valores de píxel; a conversão para float normalizado é obrigatória antes de qualquer operação de rede neuronal, por estabilidade do treino.</li>
-            <li>JPEG (com perdas, blocos DCT 8×8) introduz artefactos que podem virar atalhos espúrios para o modelo; PNG (sem perdas) é obrigatório para máscaras e anotações.</li>
-            <li>Imagens tornam-se tensores 4D em batches: (N,C,H,W) channels-first (PyTorch) vs. (N,H,W,C) channels-last (TensorFlow/Keras). Todas as imagens de um batch precisam da mesma forma — daí a necessidade de redimensionamento.</li>
-            <li>Resize usa interpolação (nearest, bilinear, bicubic) — cada uma com diferentes compromissos entre custo e qualidade; downsampling sem cuidado causa aliasing. A resolução de input propaga-se ao custo computacional e ao desenho da arquitectura.</li>
-            <li>Os desafios fundamentais da visão: iluminação, deformação, oclusão, variação intra-classe, fundo variável — todos exigem que o modelo aprenda invariâncias, frequentemente reforçadas por data augmentation.</li>
-            <li>MLP em flatten é impraticável: demasiados parâmetros, sem invariância espacial, ignora estrutura local e perde a topologia 2D. CNNs resolvem os 3 problemas: partilha de pesos, invariância à translação e exploração de estrutura local.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

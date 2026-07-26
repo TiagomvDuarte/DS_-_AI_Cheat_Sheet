@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -25,25 +25,25 @@ const AugmentationExplorer = () => {
   const [sel, setSel] = useState(0);
   const augs = [
     {
-      name: 'Geometric', color: '#f97316',
+      name: 'Geometric', color: '#4a9eed',
       transforms: ['Random Horizontal Flip', 'Random Rotation (±15°)', 'Random Crop / Resize', 'Random Affine', 'Perspective Warp'],
       what: 'Transformações que alteram a posição, orientação ou geometria da imagem. O label não muda — uma maçã virada ao contrário continua a ser uma maçã.',
       when: 'Quase sempre. Horizontal flip é universal. Rotação depende da tarefa — para dígitos, rotações grandes podem mudar o significado (6 vs 9).',
     },
     {
-      name: 'Color / Photometric', color: '#f97316',
+      name: 'Color / Photometric', color: '#4a9eed',
       transforms: ['Color Jitter (brightness, contrast, saturation, hue)', 'Grayscale aleatório', 'Gaussian Blur', 'Random Erasing'],
       what: 'Alterações nas propriedades fotométricas da imagem. Fazem o modelo robusto a variações de iluminação, câmara e condições de captura.',
       when: 'Muito útil para imagens naturais e médicas. Cuidado com tarefas onde a cor é discriminativa (e.g., classificar frutas por maturação).',
     },
     {
-      name: 'Mixing', color: '#f97316',
+      name: 'Mixing', color: '#4a9eed',
       transforms: ['Mixup: x = λx₁ + (1-λ)x₂, y = λy₁ + (1-λ)y₂', 'CutMix: substituir região rectangular por outra imagem', 'CutOut: mascarar região rectangular com zeros'],
       what: 'Combinam múltiplas imagens (ou mascaram regiões). Mixup cria imagens "híbridas" com labels interpoladas. CutMix é mais natural — a região cortada tem pixels reais.',
       when: 'Muito eficaz em ImageNet e datasets grandes. Especialmente útil com transformers (ViT). CutMix normalmente supera Mixup em classificação de imagem.',
     },
     {
-      name: 'Auto Augment', color: '#f97316',
+      name: 'Auto Augment', color: '#4a9eed',
       transforms: ['AutoAugment (Google)', 'RandAugment', 'TrivialAugment', 'AugMix'],
       what: 'Em vez de escolher manualmente as augmentations, estas abordagens aprendem ou amostram automaticamente políticas de augmentation. RandAugment simplifica: aplica N transforms aleatórias com magnitude M.',
       when: 'Estado da arte em ImageNet. RandAugment é o mais usado por ser simples (só 2 hiperparâmetros: N e M). TrivialAugment é ainda mais simples e competitivo.',
@@ -67,8 +67,8 @@ const AugmentationExplorer = () => {
             </ul>
           </div>
           <div>
-            <div style={{ marginBottom: '0.75rem' }}><strong style={{ color: '#f97316' }}>O que faz:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.what}</p></div>
-            <div><strong style={{ color: '#f97316' }}>Quando usar:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.when}</p></div>
+            <div style={{ marginBottom: '0.75rem' }}><strong style={{ color: '#4a9eed' }}>O que faz:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.what}</p></div>
+            <div><strong style={{ color: '#4a9eed' }}>Quando usar:</strong><p style={{ marginTop: '0.3rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{a.when}</p></div>
           </div>
         </div>
       </div>
@@ -80,31 +80,31 @@ const RegularizationExplorer = () => {
   const [sel, setSel] = useState(0);
   const regs = [
     {
-      name: 'Dropout', color: '#f97316',
+      name: 'Dropout', color: '#4a9eed',
       what: 'Durante o treino, cada neurónio é desactivado aleatoriamente com probabilidade p (tipicamente 0.5 em FC, 0.1-0.2 em conv). Durante inferência, todos os neurónios estão activos mas os pesos são multiplicados por (1-p).',
       why: 'Força a rede a aprender representações redundantes — cada neurónio não pode depender de outros específicos. Equivale a treinar um ensemble de 2ⁿ redes diferentes com pesos partilhados.',
       note: 'Muito eficaz em camadas FC. Em camadas conv profundas com BN, o efeito é menor — muitas redes modernas não usam dropout nas convoluções.',
     },
     {
-      name: 'Weight Decay (L2)', color: '#f97316',
+      name: 'Weight Decay (L2)', color: '#4a9eed',
       what: 'Adiciona um termo de penalização à loss: L_total = L_task + λ·Σwᵢ². Penaliza pesos grandes, mantendo os pesos próximos de zero.',
       why: 'Pesos grandes podem memorizar dados de treino. L2 mantém pesos pequenos e suaves — bias para soluções mais simples (Occam\'s Razor).',
       note: 'λ típico: 1e-4 a 5e-4. Muito importante — treinar sem weight decay em ImageNet normalmente dá resultados muito piores.',
     },
     {
-      name: 'Label Smoothing', color: '#f97316',
+      name: 'Label Smoothing', color: '#4a9eed',
       what: 'Em vez de treinar com labels one-hot (y=1 para a classe correcta), usa labels suavizadas: y = 1-ε para a classe correcta e ε/(K-1) para as restantes (tipicamente ε=0.1).',
       why: 'Evita que o modelo fique demasiado confiante. Modelos muito confiantes (logits extremos) tendem a generalizar pior e a ser menos calibrados.',
       note: 'Usado em quase todos os modelos estado-da-arte em ImageNet. Melhora a calibração das probabilidades de saída.',
     },
     {
-      name: 'Early Stopping', color: '#f97316',
+      name: 'Early Stopping', color: '#4a9eed',
       what: 'Monitorizar a loss de validação durante o treino e parar quando começa a aumentar (overfitting). Guardar o melhor checkpoint antes do overfitting.',
       why: 'Simples e muito eficaz. A capacidade do modelo é implicitamente limitada pelo número de épocas de treino.',
       note: 'Requer um conjunto de validação separado. Cuidado com a paciência (patience): parar demasiado cedo pode perder melhorias tardias.',
     },
     {
-      name: 'Stochastic Depth', color: '#f97316',
+      name: 'Stochastic Depth', color: '#4a9eed',
       what: 'Em redes muito profundas (ResNets com 100+ camadas), descarta aleatoriamente blocos residuais inteiros durante o treino, mantendo apenas a skip connection. Durante inferência, todos os blocos estão activos com escala ajustada.',
       why: 'Reduz o tempo de treino (menos camadas activas por passo) e tem um efeito regularizador semelhante ao dropout, mas a nível de blocos em vez de neurónios individuais.',
       note: 'Usado em redes profundas como ResNet-1001 e EfficientNet. A probabilidade de drop normalmente aumenta linearmente com a profundidade da camada.',
@@ -121,8 +121,8 @@ const RegularizationExplorer = () => {
       </div>
       <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1.25rem', border: `1.5px solid ${r.color}30`, fontSize: '0.85rem' }}>
         <p><strong style={{ color: r.color }}>Como funciona:</strong> {r.what}</p>
-        <p style={{ marginTop: '0.6rem' }}><strong style={{ color: '#f97316' }}>Porquê funciona:</strong> {r.why}</p>
-        <p style={{ marginTop: '0.6rem' }}><strong style={{ color: '#f97316' }}>Nota prática:</strong> {r.note}</p>
+        <p style={{ marginTop: '0.6rem' }}><strong style={{ color: '#4a9eed' }}>Porquê funciona:</strong> {r.why}</p>
+        <p style={{ marginTop: '0.6rem' }}><strong style={{ color: '#4a9eed' }}>Nota prática:</strong> {r.note}</p>
       </div>
     </div>
   );
@@ -132,21 +132,21 @@ const PrecisionExplorer = () => {
   const [sel, setSel] = useState(0);
   const formats = [
     {
-      name: 'FP32', color: '#f97316',
+      name: 'FP32', color: '#4a9eed',
       bits: '1 sinal + 8 expoente + 23 mantissa = 32 bits',
       range: '~±3.4 × 10³⁸, precisão ~7 dígitos decimais',
       desc: 'Formato "tradicional" usado em CPUs e nas primeiras gerações de treino de redes neuronais. Cada peso, activação e gradiente ocupa 4 bytes.',
       tradeoff: 'Máxima precisão, mas o dobro (ou mais) da memória e largura de banda comparado com formatos de 16 bits — e operações mais lentas em GPUs com Tensor Cores.',
     },
     {
-      name: 'FP16', color: '#f97316',
+      name: 'FP16', color: '#4a9eed',
       bits: '1 sinal + 5 expoente + 10 mantissa = 16 bits',
       range: '~±65.504, precisão ~3 dígitos decimais',
       desc: 'Metade da memória do FP32. As Tensor Cores das GPUs NVIDIA (desde Volta/V100) fazem multiplicações de matrizes em FP16 a um throughput muito superior ao FP32.',
       tradeoff: 'O expoente pequeno (5 bits) faz com que valores muito pequenos (gradientes) façam underflow para zero, e valores muito grandes façam overflow para infinito. Por isso é necessário loss scaling.',
     },
     {
-      name: 'BF16', color: '#f97316',
+      name: 'BF16', color: '#4a9eed',
       bits: '1 sinal + 8 expoente + 7 mantissa = 16 bits',
       range: '~±3.4 × 10³⁸ (mesmo range do FP32!), precisão ~2 dígitos decimais',
       desc: 'Bfloat16 mantém o mesmo número de bits de expoente do FP32 (8 bits), sacrificando mantissa. Resultado: mesmo "alcance dinâmico" do FP32, mas com metade da memória.',
@@ -166,9 +166,9 @@ const PrecisionExplorer = () => {
         <svg viewBox="0 0 320 50" style={{ maxWidth: 320, height: 'auto', marginBottom: '0.75rem' }}>
           {f.name === 'FP32' && (
             <>
-              <rect x="0" y="10" width="10" height="30" fill="#f97316" opacity="0.7" />
-              <rect x="10" y="10" width="80" height="30" fill="#f59e0b" opacity="0.7" />
-              <rect x="90" y="10" width="230" height="30" fill="#f97316" opacity="0.5" />
+              <rect x="0" y="10" width="10" height="30" fill="#4a9eed" opacity="0.7" />
+              <rect x="10" y="10" width="80" height="30" fill="#0284c7" opacity="0.7" />
+              <rect x="90" y="10" width="230" height="30" fill="#4a9eed" opacity="0.5" />
               <text x="5" y="30" textAnchor="middle" fontSize="8" fill="white">S</text>
               <text x="50" y="30" textAnchor="middle" fontSize="9" fill="white">expoente (8 bits)</text>
               <text x="205" y="30" textAnchor="middle" fontSize="9" fill="white">mantissa (23 bits)</text>
@@ -176,9 +176,9 @@ const PrecisionExplorer = () => {
           )}
           {f.name === 'FP16' && (
             <>
-              <rect x="0" y="10" width="20" height="30" fill="#f97316" opacity="0.7" />
-              <rect x="20" y="10" width="100" height="30" fill="#f59e0b" opacity="0.7" />
-              <rect x="120" y="10" width="200" height="30" fill="#f97316" opacity="0.5" />
+              <rect x="0" y="10" width="20" height="30" fill="#4a9eed" opacity="0.7" />
+              <rect x="20" y="10" width="100" height="30" fill="#0284c7" opacity="0.7" />
+              <rect x="120" y="10" width="200" height="30" fill="#4a9eed" opacity="0.5" />
               <text x="10" y="30" textAnchor="middle" fontSize="8" fill="white">S</text>
               <text x="70" y="30" textAnchor="middle" fontSize="9" fill="white">exp (5 bits)</text>
               <text x="220" y="30" textAnchor="middle" fontSize="9" fill="white">mantissa (10 bits)</text>
@@ -186,9 +186,9 @@ const PrecisionExplorer = () => {
           )}
           {f.name === 'BF16' && (
             <>
-              <rect x="0" y="10" width="20" height="30" fill="#f97316" opacity="0.7" />
-              <rect x="20" y="10" width="160" height="30" fill="#f59e0b" opacity="0.7" />
-              <rect x="180" y="10" width="140" height="30" fill="#f97316" opacity="0.5" />
+              <rect x="0" y="10" width="20" height="30" fill="#4a9eed" opacity="0.7" />
+              <rect x="20" y="10" width="160" height="30" fill="#0284c7" opacity="0.7" />
+              <rect x="180" y="10" width="140" height="30" fill="#4a9eed" opacity="0.5" />
               <text x="10" y="30" textAnchor="middle" fontSize="8" fill="white">S</text>
               <text x="100" y="30" textAnchor="middle" fontSize="9" fill="white">expoente (8 bits)</text>
               <text x="250" y="30" textAnchor="middle" fontSize="9" fill="white">mantissa (7 bits)</text>
@@ -196,9 +196,9 @@ const PrecisionExplorer = () => {
           )}
         </svg>
         <p><strong style={{ color: f.color }}>Estrutura:</strong> {f.bits}</p>
-        <p style={{ marginTop: '0.4rem' }}><strong style={{ color: '#f97316' }}>Alcance / precisão:</strong> {f.range}</p>
+        <p style={{ marginTop: '0.4rem' }}><strong style={{ color: '#4a9eed' }}>Alcance / precisão:</strong> {f.range}</p>
         <p style={{ marginTop: '0.6rem' }}>{f.desc}</p>
-        <p style={{ marginTop: '0.6rem' }}><strong style={{ color: '#f97316' }}>Trade-off:</strong> {f.tradeoff}</p>
+        <p style={{ marginTop: '0.6rem' }}><strong style={{ color: '#4a9eed' }}>Trade-off:</strong> {f.tradeoff}</p>
       </div>
     </div>
   );
@@ -214,22 +214,22 @@ const BatchSizeExplorer = () => {
     <div style={S.diagram}>
       <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Linear Scaling Rule e Gradient Accumulation</p>
       <div style={{ marginBottom: '1rem' }}>
-        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginRight: '0.75rem' }}>Batch size efectivo = <strong style={{ color: '#f97316' }}>{batch}</strong></label>
+        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginRight: '0.75rem' }}>Batch size efectivo = <strong style={{ color: '#4a9eed' }}>{batch}</strong></label>
         <input type="range" min="32" max="1024" step="32" value={batch}
           onChange={e => setBatch(parseInt(e.target.value))}
-          style={{ width: 220, accentColor: '#f97316' }} />
+          style={{ width: 220, accentColor: '#4a9eed' }} />
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-        <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: '1.5px solid #b4530930' }}>
-          <strong style={{ color: '#f97316' }}>Linear Scaling Rule</strong>
+        <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: '1.5px solid #7dd3fc30' }}>
+          <strong style={{ color: '#4a9eed' }}>Linear Scaling Rule</strong>
           <p style={{ fontSize: '0.85rem', marginTop: '0.4rem', lineHeight: 1.6 }}>Se batch base = {baseBatch} usa LR = {baseLR}, então para batch = {batch}:</p>
-          <p style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#f97316', fontWeight: 700, marginTop: '0.5rem' }}>LR ≈ {scaledLR}</p>
+          <p style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#4a9eed', fontWeight: 700, marginTop: '0.5rem' }}>LR ≈ {scaledLR}</p>
           <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>LR_novo = LR_base × (batch_novo / batch_base)</p>
         </div>
-        <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: '1.5px solid #ea580c30' }}>
-          <strong style={{ color: '#f97316' }}>Gradient Accumulation</strong>
+        <div style={{ background: 'var(--bg-primary)', borderRadius: 10, padding: '1rem', border: '1.5px solid #0369a130' }}>
+          <strong style={{ color: '#4a9eed' }}>Gradient Accumulation</strong>
           <p style={{ fontSize: '0.85rem', marginTop: '0.4rem', lineHeight: 1.6 }}>Com mini-batch físico de 32 (limite de memória GPU), para simular batch={batch}:</p>
-          <p style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#f97316', fontWeight: 700, marginTop: '0.5rem' }}>{accumSteps} passo{accumSteps > 1 ? 's' : ''} de acumulação</p>
+          <p style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#4a9eed', fontWeight: 700, marginTop: '0.5rem' }}>{accumSteps} passo{accumSteps > 1 ? 's' : ''} de acumulação</p>
           <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>Acumular gradientes de {accumSteps} mini-batches antes de actualizar os pesos (optimizer.step()).</p>
         </div>
       </div>
@@ -240,8 +240,8 @@ const BatchSizeExplorer = () => {
             const x = i * (540 / Math.min(accumSteps, 8)) + 4;
             return (
               <g key={i}>
-                <rect x={x} y="10" width={w} height="40" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.2" />
-                <text x={x + w / 2} y="34" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">mini-batch {i + 1}</text>
+                <rect x={x} y="10" width={w} height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+                <text x={x + w / 2} y="34" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">mini-batch {i + 1}</text>
               </g>
             );
           })}
@@ -251,8 +251,8 @@ const BatchSizeExplorer = () => {
               <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
             </marker>
           </defs>
-          <rect x="170" y="68" width="200" height="20" rx="6" fill="rgba(180,83,9,0.15)" stroke="#b45309" strokeWidth="1.2" />
-          <text x="270" y="82" textAnchor="middle" fontSize="10" fill="#b45309" fontWeight="700">optimizer.step() — 1 actualização</text>
+          <rect x="170" y="68" width="200" height="20" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.2" />
+          <text x="270" y="82" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">optimizer.step() — 1 actualização</text>
         </svg>
       </div>
     </div>
@@ -263,25 +263,25 @@ const TrainingCurvesDiagram = () => {
   const [sel, setSel] = useState(0);
   const cases = [
     {
-      name: 'Treino saudável', color: '#f97316',
+      name: 'Treino saudável', color: '#4a9eed',
       train: [0.95, 0.6, 0.4, 0.28, 0.2, 0.15, 0.12, 0.1, 0.09, 0.085],
       val: [0.97, 0.65, 0.45, 0.32, 0.25, 0.21, 0.19, 0.18, 0.175, 0.17],
       desc: 'Ambas as curvas descem e convergem para valores próximos. Pequeno gap entre treino e validação é normal e saudável.',
     },
     {
-      name: 'Overfitting', color: '#f97316',
+      name: 'Overfitting', color: '#4a9eed',
       train: [0.95, 0.55, 0.32, 0.18, 0.1, 0.06, 0.035, 0.02, 0.012, 0.008],
       val: [0.97, 0.62, 0.42, 0.32, 0.28, 0.27, 0.29, 0.32, 0.36, 0.41],
       desc: 'A loss de treino continua a descer, mas a validação atinge um mínimo e depois sobe. O modelo está a memorizar o conjunto de treino. Sinal para early stopping, mais regularização ou mais dados/augmentation.',
     },
     {
-      name: 'Underfitting', color: '#f97316',
+      name: 'Underfitting', color: '#4a9eed',
       train: [0.95, 0.85, 0.78, 0.74, 0.71, 0.69, 0.68, 0.67, 0.665, 0.66],
       val: [0.97, 0.87, 0.80, 0.76, 0.74, 0.72, 0.71, 0.70, 0.695, 0.69],
       desc: 'Ambas as curvas ficam "presas" num valor alto, com pouca melhoria. O modelo não tem capacidade suficiente, foi treinado por poucas épocas, ou a LR é demasiado baixa / regularização demasiado forte.',
     },
     {
-      name: 'LR demasiado alta', color: '#f97316',
+      name: 'LR demasiado alta', color: '#4a9eed',
       train: [0.95, 0.7, 1.1, 0.6, 1.4, 0.5, 0.9, 0.45, 1.2, 0.55],
       val: [0.97, 0.75, 1.15, 0.65, 1.45, 0.55, 0.95, 0.5, 1.25, 0.6],
       desc: 'A loss oscila violentamente ou explode (NaN) em vez de descer suavemente. A actualização dos pesos "ultrapassa" o mínimo a cada passo. Solução: reduzir a LR, adicionar warmup, ou usar gradient clipping.',
@@ -327,7 +327,6 @@ export default function CV5() {
         <Link to="/cv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 5</div>
         <h1 style={S.h1}>Treino de CNNs</h1>
-        <p style={S.lead}>Uma arquitectura bem desenhada é necessária mas não suficiente. O treino de CNNs envolve dezenas de decisões críticas: como aumentar artificialmente os dados, como evitar overfitting, como ajustar a learning rate ao longo do treino, como tirar partido do hardware moderno (mixed precision, múltiplas GPUs) e como diagnosticar problemas a partir das curvas de treino.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Backpropagation em CNNs</h2>
@@ -349,7 +348,7 @@ export default function CV5() {
                   ['Batch Norm', 'γ, β e input', 'Normalização diferenciável com termos adicionais para média e variância'],
                   ['Skip connection', 'Input do bloco', 'Gradiente soma-se directamente (derivada da identidade = 1) — "auto-estrada" para o gradiente'],
                 ].map(([c, g, o]) => (
-                  <tr key={`${c}-${g}`}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{c}</td><td style={S.td}>{g}</td><td style={S.td}>{o}</td></tr>
+                  <tr key={`${c}-${g}`}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{c}</td><td style={S.td}>{g}</td><td style={S.td}>{o}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -366,7 +365,7 @@ export default function CV5() {
                   ['He / Kaiming', 'Variância escalada com 2/fan_in — compensa o facto de a ReLU "matar" metade das activações (as negativas).', 'ReLU, GELU, Leaky ReLU (default em CNNs modernas)'],
                   ['Zero-init da última camada de cada bloco residual', 'Inicializar γ=0 na BN final de cada bloco, fazendo o bloco começar como identidade pura.', 'ResNets muito profundas — estabiliza o início do treino'],
                 ].map(([s, i, w]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{s}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{s}</td><td style={S.td}>{i}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -392,7 +391,7 @@ export default function CV5() {
                   ['ReduceLROnPlateau', 'Reduz LR quando a métrica de validação estagna.', 'Simples, não requer agendar à mão. Bom para fine-tuning.'],
                   ['Cosine with Warm Restarts (SGDR)', 'Cosine annealing repetido em ciclos, voltando à LR inicial no início de cada ciclo.', 'Pode escapar de mínimos locais. Permite obter "snapshots" para ensembles.'],
                 ].map(([s, h, w]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{s}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{s}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -444,7 +443,7 @@ export default function CV5() {
                   ['RMSprop', 'Média móvel exponencial dos quadrados dos gradientes para normalizar a LR por parâmetro.', 'Antecessor do Adam. Ainda usado nalgumas arquitecturas legacy (e.g., Inception).'],
                   ['LARS / LAMB', 'Learning rate adaptativa por camada (escala com a norma dos pesos / norma do gradiente).', 'Treino distribuído em larga escala (ImageNet em minutos com 1000+ GPUs, batches de 32k+).'],
                 ].map(([o, m, u]) => (
-                  <tr key={o}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{o}</td><td style={S.td}>{m}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{u}</td></tr>
+                  <tr key={o}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{o}</td><td style={S.td}>{m}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{u}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -478,7 +477,7 @@ export default function CV5() {
                   ['Precisão por valor', 'Alta (~7 dígitos)', 'Baixa (~3 dígitos)', 'Muito baixa (~2 dígitos)'],
                   ['Hardware necessário', 'Qualquer GPU', 'Volta+ (Tensor Cores)', 'Ampere+ / TPU'],
                 ].map(([a, f32, f16, bf16]) => (
-                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{a}</td><td style={S.td}>{f32}</td><td style={S.td}>{f16}</td><td style={S.td}>{bf16}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{a}</td><td style={S.td}>{f32}</td><td style={S.td}>{f16}</td><td style={S.td}>{bf16}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -509,7 +508,7 @@ export default function CV5() {
                   ['Médio (64-256)', 'Bom equilíbrio entre estabilidade do gradiente e utilização da GPU. Range mais comum em prática.', '—'],
                   ['Grande (512+)', 'Estimativa de gradiente muito estável; tira pleno partido de GPUs/clusters; menos passos por época.', 'Pode generalizar pior ("generalization gap") se a LR não for ajustada; requer warmup mais cuidadoso e optimizadores especiais (LARS/LAMB) em escalas extremas.'],
                 ].map(([b, v, d]) => (
-                  <tr key={b}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{b}</td><td style={S.td}>{v}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{d}</td></tr>
+                  <tr key={b}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{b}</td><td style={S.td}>{v}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{d}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -530,9 +529,9 @@ export default function CV5() {
             <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Progressive Resizing — Fases de Treino</p>
             <svg viewBox="0 0 540 110" style={{ maxWidth: '100%', height: 'auto' }}>
               {[
-                [30, 'Fase 1\n128×128\nmais épocas, batch grande', '#f97316'],
-                [220, 'Fase 2\n192×192\nmenos épocas', '#f97316'],
-                [400, 'Fase 3\n224-320px\nfine-tuning final', '#f97316'],
+                [30, 'Fase 1\n128×128\nmais épocas, batch grande', '#4a9eed'],
+                [220, 'Fase 2\n192×192\nmenos épocas', '#4a9eed'],
+                [400, 'Fase 3\n224-320px\nfine-tuning final', '#4a9eed'],
               ].map(([x, label, color], i) => (
                 <g key={i}>
                   <rect x={x} y="10" width="140" height="80" rx="10" fill={`${color}20`} stroke={color} strokeWidth="1.5" />
@@ -562,7 +561,7 @@ export default function CV5() {
                   ['Augmentation curriculum', 'Aumentar progressivamente a intensidade/magnitude das augmentations ao longo do treino (começar com transformações suaves, terminar com RandAugment de magnitude alta).'],
                   ['Self-paced learning', 'O próprio modelo, durante o treino, decide quais exemplos incluir no próximo batch com base na sua confiança actual — exemplos com loss muito alta são temporariamente ignorados.'],
                 ].map(([s, h]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{s}</td><td style={S.td}>{h}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{s}</td><td style={S.td}>{h}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -572,37 +571,7 @@ export default function CV5() {
         <hr style={S.divider} />
 
         <div style={S.section}>
-          <h2 style={S.h2}>9. Monitorização e Debugging do Treino</h2>
-          <p style={S.p}>Treinar uma CNN sem monitorizar as métricas certas é como conduzir de olhos fechados. As curvas de loss de treino e validação ao longo das épocas são a ferramenta de diagnóstico mais importante — diferentes "formas" destas curvas indicam problemas muito diferentes, e exigem soluções diferentes.</p>
-
-          <TrainingCurvesDiagram />
-
-          <h3 style={S.h3}>Outras Métricas a Observar</h3>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead><tr><th style={S.th}>Métrica</th><th style={S.th}>O que indica</th><th style={S.th}>Sinal de alerta</th></tr></thead>
-              <tbody>
-                {[
-                  ['Norma do gradiente (por camada)', 'Magnitude do "sinal de aprendizagem" que chega a cada camada.', 'Se for ~0 nas primeiras camadas, há vanishing gradient. Se explodir (>>1), há exploding gradient — considerar gradient clipping.'],
-                  ['Learning rate vs loss (LR range test)', 'Sensibilidade da loss à LR — usado para escolher a LR óptima antes do treino completo.', 'Loss explode muito antes do esperado → modelo/inicialização instável.'],
-                  ['Distribuição das activações por camada', 'Se as activações estão "vivas" (não saturadas em 0 ou em valores extremos).', 'Muitas activações ReLU sempre a zero → "dying ReLU". Activações com variância crescente entre camadas → possível instabilidade.'],
-                  ['Accuracy/F1 de treino vs validação', 'Desempenho real na tarefa, complementa a loss (que pode não ser directamente interpretável).', 'Gap grande entre treino e validação → overfitting, mesmo que as losses pareçam "ok".'],
-                  ['Tempo por época / utilização da GPU', 'Eficiência computacional — se a GPU está subutilizada, o treino é "data loading bound" não "compute bound".', 'GPU a &lt;50% de utilização → o data loader é o gargalo (aumentar num_workers, usar formatos de imagem mais leves).'],
-                ].map(([m, o, w]) => (
-                  <tr key={m}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{m}</td><td style={S.td}>{o}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <h3 style={S.h3}>Checklist de Debugging</h3>
-          <p style={S.p}>Quando um modelo não treina como esperado, é útil seguir uma sequência sistemática de verificações: (1) confirmar que o modelo consegue fazer <em>overfit</em> a um batch muito pequeno (e.g., 10 imagens) — se não conseguir atingir loss ≈ 0 num conjunto trivial, há um bug de implementação, não um problema de hiperparâmetros; (2) verificar se a loss inicial é consistente com a esperada (e.g., para classificação com K classes e inicialização aleatória, a loss inicial deve ser ≈ ln(K)); (3) verificar a normalização dos inputs (média/desvio-padrão correctos); (4) verificar se os gradientes estão a fluir (norma &gt; 0 em todas as camadas); (5) só depois ajustar hiperparâmetros como LR, batch size e regularização.</p>
-        </div>
-
-        <hr style={S.divider} />
-
-        <div style={S.section}>
-          <h2 style={S.h2}>10. Treino Distribuído</h2>
+          <h2 style={S.h2}>9. Treino Distribuído</h2>
           <p style={S.p}>Modelos modernos e datasets grandes frequentemente excedem a capacidade de uma única GPU — seja em memória, seja em tempo de treino aceitável. O treino distribuído divide o trabalho por múltiplas GPUs (ou múltiplas máquinas, cada uma com várias GPUs), permitindo treinar modelos maiores e/ou mais rapidamente.</p>
 
           <div style={S.diagram}>
@@ -612,12 +581,12 @@ export default function CV5() {
                 const x = 30 + i * 130;
                 return (
                   <g key={i}>
-                    <rect x={x} y="10" width="100" height="60" rx="10" fill="rgba(180,83,9,0.12)" stroke="#b45309" strokeWidth="1.5" />
-                    <text x={x + 50} y="32" textAnchor="middle" fontSize="11" fontWeight="700" fill="#b45309">GPU {i}</text>
-                    <text x={x + 50} y="48" textAnchor="middle" fontSize="9" fill="#b45309">cópia do modelo</text>
-                    <text x={x + 50} y="62" textAnchor="middle" fontSize="9" fill="#b45309">mini-batch {i + 1}/4</text>
+                    <rect x={x} y="10" width="100" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+                    <text x={x + 50} y="32" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">GPU {i}</text>
+                    <text x={x + 50} y="48" textAnchor="middle" fontSize="9" fill="#4a9eed">cópia do modelo</text>
+                    <text x={x + 50} y="62" textAnchor="middle" fontSize="9" fill="#4a9eed">mini-batch {i + 1}/4</text>
                     <line x1={x + 50} y1="70" x2={x + 50} y2="100" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDist)" />
-                    <text x={x + 50} y="115" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">grad ∇{i}</text>
+                    <text x={x + 50} y="115" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">grad ∇<tspan baselineShift="sub" fontSize="7">{i}</tspan></text>
                   </g>
                 );
               })}
@@ -626,13 +595,15 @@ export default function CV5() {
                   <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" />
                 </marker>
               </defs>
-              <rect x="120" y="135" width="300" height="35" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-              <text x="270" y="157" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">All-Reduce: ∇_médio = (∇0+∇1+∇2+∇3)/4</text>
+              <rect x="120" y="135" width="300" height="35" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+              <text x="270" y="157" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">
+                All-Reduce: ∇̄ = (∇<tspan baselineShift="sub" fontSize="8">0</tspan>+∇<tspan baselineShift="sub" fontSize="8">1</tspan>+∇<tspan baselineShift="sub" fontSize="8">2</tspan>+∇<tspan baselineShift="sub" fontSize="8">3</tspan>)/4
+              </text>
               {[0, 1, 2, 3].map(i => {
                 const x = 30 + i * 130 + 50;
                 return <line key={i} x1={x} y1="120" x2={x} y2="130" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arrDist)" />;
               })}
-              <text x="270" y="185" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">cada GPU actualiza a sua cópia com ∇_médio — todas ficam sincronizadas</text>
+              <text x="270" y="185" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">cada GPU actualiza a sua cópia com ∇̄ — todas ficam sincronizadas</text>
             </svg>
           </div>
 
@@ -647,7 +618,7 @@ export default function CV5() {
                   ['Model Parallelism', 'O próprio modelo é dividido entre GPUs — diferentes camadas (ou diferentes partes de uma camada) ficam em GPUs diferentes. Cada GPU processa o mesmo batch, mas só uma parte do modelo.', 'Necessário quando o modelo é tão grande que nem cabe numa única GPU (modelos com milhares de milhões de parâmetros). Mais complexo de implementar; comunicação entre GPUs ocorre dentro do forward/backward.'],
                   ['Pipeline Parallelism', 'Variante do model parallelism: divide o modelo em "estágios" sequenciais entre GPUs, processando vários micro-batches em pipeline para manter todas as GPUs ocupadas.', 'Combina-se frequentemente com data e model parallelism em treinos de modelos muito grandes (3D parallelism).'],
                 ].map(([s, h, w]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#f97316' }}>{s}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed' }}>{s}</td><td style={S.td}>{h}</td><td style={{ ...S.td, color: 'var(--text-secondary)', fontSize: '0.83rem' }}>{w}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -661,24 +632,7 @@ export default function CV5() {
 
         
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>11. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Backprop em CNNs: gradiente flui por conv (convolução transposta), maxpool (só para o máximo), ReLU (máscara binária); skip connections evitam vanishing gradient em redes profundas.</li>
-            <li>Learning rate schedule: cosine annealing é o padrão. Para transformers, sempre warmup antes do decay. LR range test ajuda a escolher a LR máxima.</li>
-            <li>Data augmentation: a técnica de regularização mais eficaz. Random flip + crop + color jitter é o mínimo; RandAugment + Mixup/CutMix para estado da arte. TTA melhora a inferência.</li>
-            <li>Regularização combinada (dropout, weight decay, label smoothing, stochastic depth) tem efeito superior à soma das partes — mas exige mais épocas para convergir.</li>
-            <li>Optimizador: SGD+momentum para CNNs clássicas; AdamW para transformers e fine-tuning.</li>
-            <li>Mixed precision (FP16/BF16) acelera 1.5-3× e poupa memória ao usar Tensor Cores; FP16 precisa de loss scaling, BF16 normalmente não.</li>
-            <li>Linear scaling rule: LR ∝ batch size. Gradient accumulation simula batches grandes com memória limitada.</li>
-            <li>Progressive resizing: treinar em baixa resolução primeiro acelera o treino e melhora a generalização.</li>
-            <li>Diagnóstico pelas curvas de loss: overfitting (gap treino/val cresce), underfitting (ambas estagnam alto), LR alta (oscilação/divergência).</li>
-            <li>Treino distribuído: data parallelism (cópias do modelo + gradient all-reduce) é o caso comum; model/pipeline parallelism para modelos que não cabem numa GPU. Batch size efectivo cresce com o nº de GPUs.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

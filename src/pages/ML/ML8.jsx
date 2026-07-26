@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -19,8 +19,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
@@ -29,14 +29,14 @@ const S = {
 // === Diagram: detailed history timeline ===
 const HistoryTimelineDiagram = () => {
   const events = [
-    { year: '1943', label: 'McCulloch\n& Pitts', desc: 'Neurónio lógico', x: 40, c: '#f97316' },
+    { year: '1943', label: 'McCulloch\n& Pitts', desc: 'Neurónio lógico', x: 40, c: '#4a9eed' },
     { year: '1957', label: 'Rosenblatt\nPerceptron', desc: 'Aprendizagem', x: 130, c: color },
-    { year: '1969', label: 'Minsky &\nPapert', desc: 'Crítica XOR', x: 220, c: '#f97316' },
-    { year: '1986', label: 'Rumelhart\net al.', desc: 'Backprop', x: 310, c: '#f97316' },
-    { year: '1995', label: 'Vapnik\nSVM', desc: 'Domínio SVM', x: 400, c: '#f97316' },
-    { year: '2006', label: 'Hinton\nDBN', desc: 'Ressurgimento', x: 490, c: '#f97316' },
-    { year: '2012', label: 'Krizhevsky\nAlexNet', desc: 'Deep CNNs', x: 580, c: '#f97316' },
-    { year: '2017', label: 'AlphaGo &\nTransformers', desc: 'Era moderna', x: 670, c: '#f97316' },
+    { year: '1969', label: 'Minsky &\nPapert', desc: 'Crítica XOR', x: 220, c: '#4a9eed' },
+    { year: '1986', label: 'Rumelhart\net al.', desc: 'Backprop', x: 310, c: '#4a9eed' },
+    { year: '1995', label: 'Vapnik\nSVM', desc: 'Domínio SVM', x: 400, c: '#4a9eed' },
+    { year: '2006', label: 'Hinton\nDBN', desc: 'Ressurgimento', x: 490, c: '#4a9eed' },
+    { year: '2012', label: 'Krizhevsky\nAlexNet', desc: 'Deep CNNs', x: 580, c: '#4a9eed' },
+    { year: '2017', label: 'AlphaGo &\nTransformers', desc: 'Era moderna', x: 670, c: '#4a9eed' },
   ];
   return (
     <div style={S.diagram}>
@@ -57,8 +57,8 @@ const HistoryTimelineDiagram = () => {
           </g>
         ))}
         {/* AI winter band */}
-        <rect x="220" y="140" width="90" height="22" rx="4" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-        <text x="265" y="155" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">1º Inverno da IA</text>
+        <rect x="220" y="140" width="90" height="22" rx="4" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+        <text x="265" y="155" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">1º Inverno da IA</text>
       </svg>
       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
         A história das redes neuronais não é linear: passou por dois grandes "infernos" de optimismo
@@ -94,15 +94,15 @@ const NeuronDiagram = () => (
         </g>
       ))}
       <text x={40} y={110} textAnchor="middle" fill="var(--text-secondary)" fontSize="8">...</text>
-      <text x={110} y={52} fill="#f97316" fontSize="8" fontWeight="700">w₁</text>
-      <text x={110} y={82} fill="#f97316" fontSize="8" fontWeight="700">w₂</text>
-      <text x={110} y={120} fill="#f97316" fontSize="8" fontWeight="700">wₙ</text>
+      <text x={110} y={52} fill="#4a9eed" fontSize="8" fontWeight="700">w₁</text>
+      <text x={110} y={82} fill="#4a9eed" fontSize="8" fontWeight="700">w₂</text>
+      <text x={110} y={120} fill="#4a9eed" fontSize="8" fontWeight="700">wₙ</text>
       <circle cx={210} cy={80} r={30} fill={`${color}15`} stroke={color} strokeWidth="2" />
       <text x={210} y={74} textAnchor="middle" fill={color} fontSize="8" fontWeight="700">z = wᵀx + b</text>
       <text x={210} y={86} textAnchor="middle" fill={color} fontSize="8">a = f(z)</text>
-      <circle cx={210} cy={20} r={10} fill="#f59e0b20" stroke="#f59e0b" strokeWidth="1.5" />
-      <text x={210} y={24} textAnchor="middle" fill="#f59e0b" fontSize="8" fontWeight="700">b</text>
-      <line x1={210} y1={30} x2={210} y2={50} stroke="#f59e0b" strokeWidth="1" markerEnd="url(#arr-nn)" />
+      <circle cx={210} cy={20} r={10} fill="#0284c720" stroke="#0284c7" strokeWidth="1.5" />
+      <text x={210} y={24} textAnchor="middle" fill="#0284c7" fontSize="8" fontWeight="700">b</text>
+      <line x1={210} y1={30} x2={210} y2={50} stroke="#0284c7" strokeWidth="1" markerEnd="url(#arr-nn)" />
       <line x1={240} y1={80} x2={320} y2={80} stroke={color} strokeWidth="2" markerEnd="url(#arr-nn2)" />
       <circle cx={340} cy={80} r={20} fill={`${color}20`} stroke={color} strokeWidth="2" />
       <text x={340} y={84} textAnchor="middle" fill={color} fontSize="9" fontWeight="800">ŷ</text>
@@ -139,9 +139,9 @@ const ActivationCurves = () => {
   };
 
   const plots = [
-    { name: 'Step', fn: step, yMin: -0.2, yMax: 1.2, c: '#f97316' },
-    { name: 'Sigmoid', fn: sigmoid, yMin: 0, yMax: 1, c: '#f97316' },
-    { name: 'Tanh', fn: tanh, yMin: -1, yMax: 1, c: '#f97316' },
+    { name: 'Step', fn: step, yMin: -0.2, yMax: 1.2, c: '#4a9eed' },
+    { name: 'Sigmoid', fn: sigmoid, yMin: 0, yMax: 1, c: '#4a9eed' },
+    { name: 'Tanh', fn: tanh, yMin: -1, yMax: 1, c: '#4a9eed' },
     { name: 'ReLU', fn: relu, yMin: -1, yMax: 4, c: color },
   ];
 
@@ -173,13 +173,13 @@ const LogicGateDiagram = ({ title, points, line, region }) => (
       <text x="155" y="144" fontSize="10" fill="var(--text-secondary)">x₁</text>
       <text x="10" y="10" fontSize="10" fill="var(--text-secondary)">x₂</text>
       {region && (
-        <polygon points={region} fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2" />
+        <polygon points={region} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2" />
       )}
       {line && (
         <line x1={line[0]} y1={line[1]} x2={line[2]} y2={line[3]} stroke={color} strokeWidth="1.5" strokeDasharray="5,3" />
       )}
       {!line && !region && (
-        <text x="85" y="78" textAnchor="middle" fontSize="9" fill="#f97316">sem recta separadora</text>
+        <text x="85" y="78" textAnchor="middle" fontSize="9" fill="#4a9eed">sem recta separadora</text>
       )}
       {points.map(([px, py, val, lbl], i) => (
         <g key={i}>
@@ -271,7 +271,7 @@ const GradientDescentDiagram = () => (
     <svg viewBox="0 0 480 180" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrGD" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
         </marker>
       </defs>
       <path d="M 20 30 C 100 10, 160 170, 250 160 C 340 150, 380 60, 460 40"
@@ -282,11 +282,11 @@ const GradientDescentDiagram = () => (
         [190, 150, 0.85],
         [250, 160, 1.0],
       ].map(([cx, cy, op], i) => (
-        <circle key={i} cx={cx} cy={cy - 6} r="7" fill="#f59e0b" opacity={op} />
+        <circle key={i} cx={cx} cy={cy - 6} r="7" fill="#0284c7" opacity={op} />
       ))}
-      <path d="M 65 22 Q 95 60 125 100" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
-      <path d="M 132 112 Q 160 140 185 148" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
-      <text x="250" y="175" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">mínimo (erro mínimo)</text>
+      <path d="M 65 22 Q 95 60 125 100" fill="none" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
+      <path d="M 132 112 Q 160 140 185 148" fill="none" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
+      <text x="250" y="175" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">mínimo (erro mínimo)</text>
       <text x="60" y="15" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">pesos iniciais (aleatórios)</text>
       <text x="20" y="50" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">SSE alto</text>
     </svg>
@@ -329,14 +329,14 @@ const MLPXORDiagram = () => (
         <line key={`${y1}-${y2}`} x1="66" y1={y1} x2="174" y2={y2} stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrMLP)" />
       )))}
       {/* output */}
-      <circle cx="330" cy="100" r="18" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="330" y="104" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">ŷ</text>
+      <circle cx="330" cy="100" r="18" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="330" y="104" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">ŷ</text>
       {[50, 150].map((y1) => (
         <line key={y1} x1="206" y1={y1} x2="313" y2="100" stroke="var(--text-secondary)" strokeWidth="1" markerEnd="url(#arrMLP)" />
       ))}
       <text x="50" y="190" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">input</text>
       <text x="190" y="190" textAnchor="middle" fill={color} fontSize="10">hidden (não-linear)</text>
-      <text x="330" y="190" textAnchor="middle" fill="#f97316" fontSize="10">output</text>
+      <text x="330" y="190" textAnchor="middle" fill="#4a9eed" fontSize="10">output</text>
     </svg>
     <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem', textAlign: 'left' }}>
       Cada neurónio escondido aprende a sua própria fronteira linear; por exemplo, h₁ pode aproximar-se de
@@ -352,17 +352,8 @@ export default function ML8() {
     <div style={S.page}>
       <Link to="/ml" style={S.back}><ArrowLeft size={16} /> Voltar a Machine Learning</Link>
 
-      <div style={S.tag}>Module 08</div>
+      <div style={S.tag}>Módulo 08</div>
       <h1 style={S.h1}>Redes Neuronais &amp; Perceptron</h1>
-      <p style={S.lead}>
-        Antes do "deep learning" haver redes profundas, houve um único neurónio. Neste módulo revisitamos
-        as origens históricas das redes neuronais — desde o neurónio lógico de McCulloch &amp; Pitts (1943)
-        ao Perceptron de Rosenblatt (1957) — e construímos, passo a passo, a intuição matemática completa:
-        como um neurónio agrega informação, como aprende a partir de erros (Perceptron e Adaline), porque
-        é que um único neurónio tem limites fundamentais (XOR), e como a composição de vários neurónios em
-        camadas (MLP) ultrapassa esses limites. Esta é a perspectiva "clássica" da disciplina de Machine
-        Learning — o Módulo 01 de Deep Learning aprofunda a versão moderna deste mesmo tema.
-      </p>
 
       {/* === SECTION 1: História === */}
       <div style={S.section}>
@@ -420,32 +411,6 @@ export default function ML8() {
           determinam a importância (e o sinal — positivo ou negativo) de cada entrada na decisão final.
         </p>
 
-        <h3 style={S.h3}>Exemplo Numérico</h3>
-        <p style={S.p}>
-          Considere um neurónio com 2 entradas e os pesos abaixo, usando a função Step como activação:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>Variável</th><th style={S.th}>Valor</th></tr></thead>
-            <tbody>
-              {[
-                ['x₁, x₂ (entradas)', '1, 0'],
-                ['w₁, w₂ (pesos)', '0.6, 0.6'],
-                ['b (bias)', '−1.0'],
-              ].map(([k, v]) => (
-                <tr key={k}><td style={S.td}><strong>{k}</strong></td><td style={{ ...S.td, fontFamily: 'monospace' }}>{v}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-          <BlockMath math="z = (0.6)(1) + (0.6)(0) + (-1.0) = 0.6 - 1.0 = -0.4" />
-          <BlockMath math="a = \text{step}(-0.4) = 0" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Com estes pesos e bias, o neurónio implementa a porta lógica <strong>AND</strong>: só dispara
-            (output 1) quando ambas as entradas são 1 — o único caso em que <InlineMath math="z \geq 0" />.
-          </p>
-        
       </div>
 
       <hr style={S.divider} />
@@ -570,91 +535,6 @@ export default function ML8() {
           então <InlineMath math="(y-\hat{y}) = 0" /> e os pesos não mudam.
         </p>
 
-        <h3 style={S.h3}>Exemplo Numérico Completo — Aprender a porta AND</h3>
-        <p style={S.p}>
-          Vamos treinar um perceptron com <InlineMath math="\eta = 0.1" />, pesos iniciais
-          <InlineMath math="w_1 = w_2 = 0" /> e <InlineMath math="b = 0" />, sobre os 4 exemplos da porta AND:
-        </p>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={S.table}>
-            <thead><tr><th style={S.th}>x₁</th><th style={S.th}>x₂</th><th style={S.th}>y (AND)</th></tr></thead>
-            <tbody>
-              {[['0', '0', '0'], ['0', '1', '0'], ['1', '0', '0'], ['1', '1', '1']].map(([a, b, y], i) => (
-                <tr key={i}><td style={S.td}>{a}</td><td style={S.td}>{b}</td><td style={{ ...S.td, fontWeight: 700, color }}>{y}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h3 style={S.h3}>Iteração 1 (Época 1)</h3>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            <strong>(x₁,x₂)=(0,0), y=0:</strong> <InlineMath math="z = 0, \hat{y} = \text{step}(0) = 1" />.
-            Erro = 0 − 1 = −1 → actualiza:
-          </p>
-          <BlockMath math="w_1 = 0 + 0.1(-1)(0) = 0 \quad w_2 = 0 + 0.1(-1)(0) = 0 \quad b = 0 + 0.1(-1) = -0.1" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>(x₁,x₂)=(0,1), y=0:</strong> <InlineMath math="z = -0.1, \hat{y} = \text{step}(-0.1) = 0" />.
-            Sem erro — sem actualização.
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>(x₁,x₂)=(1,0), y=0:</strong> <InlineMath math="z = -0.1, \hat{y} = 0" />. Sem erro.
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>(x₁,x₂)=(1,1), y=1:</strong> <InlineMath math="z = -0.1, \hat{y} = \text{step}(-0.1) = 0" />.
-            Erro = 1 − 0 = +1 → actualiza:
-          </p>
-          <BlockMath math="w_1 = 0 + 0.1(1)(1) = 0.1 \quad w_2 = 0 + 0.1(1)(1) = 0.1 \quad b = -0.1 + 0.1(1) = 0.0" />
-        
-
-        <h3 style={S.h3}>Iteração 2 (Época 2)</h3>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Pesos actuais: <InlineMath math="w_1=0.1, w_2=0.1, b=0.0" />.
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            <strong>(0,0), y=0:</strong> <InlineMath math="z=0, \hat{y}=\text{step}(0)=1" />. Erro = −1 →
-          </p>
-          <BlockMath math="w_1=0.1,\ w_2=0.1,\ b = 0.0 + 0.1(-1) = -0.1" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>(0,1), y=0:</strong> <InlineMath math="z=0.1-0.1=0.0, \hat{y}=1" />. Erro = −1 →
-          </p>
-          <BlockMath math="w_1=0.1,\ w_2=0.1+0.1(-1)(1)=0.0,\ b=-0.1+0.1(-1)=-0.2" />
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>(1,0), y=0:</strong> <InlineMath math="z=0.1-0.2=-0.1, \hat{y}=0" />. Sem erro.
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.5rem', marginTop: '1rem' }}>
-            <strong>(1,1), y=1:</strong> <InlineMath math="z=0.1+0.0-0.2=-0.1, \hat{y}=0" />. Erro = +1 →
-          </p>
-          <BlockMath math="w_1=0.1+0.1(1)(1)=0.2,\ w_2=0.0+0.1(1)(1)=0.1,\ b=-0.2+0.1(1)=-0.1" />
-        
-
-        <h3 style={S.h3}>Iteração 3 (Época 3) — Verificação</h3>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Pesos actuais: <InlineMath math="w_1=0.2, w_2=0.1, b=-0.1" />. Vamos testar todos os 4 exemplos:
-          </p>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={S.table}>
-              <thead><tr><th style={S.th}>(x₁,x₂)</th><th style={S.th}>z</th><th style={S.th}>ŷ</th><th style={S.th}>y</th><th style={S.th}>Correcto?</th></tr></thead>
-              <tbody>
-                {[
-                  ['(0,0)', '−0.1', '0', '0', '✓'],
-                  ['(0,1)', '0.0', '0', '0', '✓'],
-                  ['(1,0)', '0.1', '1', '0', '✗ ainda erra'],
-                  ['(1,1)', '0.2', '1', '1', '✓'],
-                ].map(([p, z, yh, y, ok], i) => (
-                  <tr key={i}><td style={S.td}>{p}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{z}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{yh}</td><td style={{ ...S.td, fontFamily: 'monospace' }}>{y}</td><td style={{ ...S.td, color: ok === '✓' ? '#f97316' : '#f97316' }}>{ok}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Ainda há um erro em (1,0) — o algoritmo continuaria a actualizar os pesos em mais algumas
-            iterações até convergir totalmente. Note como o processo é puramente <strong>incremental</strong>:
-            cada exemplo mal classificado "empurra" ligeiramente a fronteira de decisão na direcção certa.
-          </p>
-        
         <PerceptronLearningDiagram />
       </div>
 
@@ -772,19 +652,6 @@ export default function ML8() {
           mais a reduz — é precisamente o que a <strong>backpropagation</strong> faz, de forma sistemática,
           para redes com muitas camadas e milhões de parâmetros.
         </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Exemplo numérico — um passo de gradiente:</strong></p>
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}>
-            Considere <InlineMath math="w_1 = 0.2, \eta = 0.1" />, e um único exemplo
-            <InlineMath math="x_1 = 1, y = 1, z = 0.2" />. O erro é <InlineMath math="(y - z) = 0.8" />:
-          </p>
-          <BlockMath math="w_1 \leftarrow 0.2 + 0.1 \times 0.8 \times 1 = 0.2 + 0.08 = 0.28" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            O peso aumenta proporcionalmente ao erro — quanto maior o erro, maior o ajuste. Isto contrasta
-            com o Perceptron, em que a actualização teria sido sempre de magnitude fixa
-            <InlineMath math="\eta \cdot x_1" />, independentemente de quão "errado" estava <InlineMath math="z" />.
-          </p>
-        
       </div>
 
       <hr style={S.divider} />
@@ -850,28 +717,6 @@ export default function ML8() {
           o tema central do Módulo 01 de Deep Learning.
         </p>
       </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>11. Síntese do Módulo</h2>
-        <p style={S.p}>
-          O Perceptron de 1957 foi o primeiro modelo a "aprender" pesos a partir de exemplos — uma ideia
-          revolucionária, mas com limites fundamentais que só a composição em camadas (MLP) conseguiu
-          ultrapassar.
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Um neurónio artificial calcula <InlineMath math="z = \mathbf{w}\cdot\mathbf{x}+b" /> e aplica <InlineMath math="f(z)" /></li>
-            <li>Step, Sigmoid, Tanh, ReLU e Softmax são as funções de activação fundamentais, cada uma com usos próprios</li>
-            <li>O Perceptron aprende com a regra <InlineMath math="w \leftarrow w + \eta(y-\hat{y})x" />, e converge garantidamente se os dados forem linearmente separáveis</li>
-            <li>AND, OR e NOT são linearmente separáveis; XOR não é — limite fundamental de um único neurónio</li>
-            <li>O Adaline introduziu o erro contínuo e a regra LMS (Widrow-Hoff), antecipando o gradiente descendente</li>
-            <li>O MLP resolve o XOR ao adicionar camadas escondidas, compondo fronteiras lineares em fronteiras não-lineares</li>
-            <li>A história das redes neuronais teve dois "invernos" — cada um seguido de um avanço algorítmico (backprop, deep learning)</li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

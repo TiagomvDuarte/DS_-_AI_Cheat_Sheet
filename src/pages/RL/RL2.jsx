@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
@@ -50,17 +50,17 @@ const MarkovDiagram = () => (
         <line key={i} x1={88 + i*110} y1={90} x2={132 + i*110} y2={90} stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr)"/>
       ))}
       {/* long arc from S1 all the way to S4 — represents history dependency */}
-      <path d="M 60 62 Q 225 20 390 62" fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5 3" markerEnd="url(#arrd)"/>
-      <text x="225" y="38" fontSize="10" fill="#f97316" textAnchor="middle">a história influencia o futuro</text>
+      <path d="M 60 62 Q 225 20 390 62" fill="none" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5 3" markerEnd="url(#arrd)"/>
+      <text x="225" y="38" fontSize="10" fill="#4a9eed" textAnchor="middle">a história influencia o futuro</text>
 
       {/* ── Markov side ── */}
-      <text x="430" y="22" fontSize="13" fontWeight="700" fill="#f97316">Processo de Markov</text>
-      <circle cx="510" cy="90" r="28" fill="var(--bg-primary)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="510" y="94" textAnchor="middle" fontSize="12" fill="#f97316" fontWeight="600">S<tspan fontSize="9" dy="3">t</tspan></text>
-      <circle cx="650" cy="90" r="28" fill="var(--bg-primary)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="650" y="94" textAnchor="middle" fontSize="12" fill="#f97316" fontWeight="600">S<tspan fontSize="9" dy="3">t+1</tspan></text>
-      <line x1="538" y1="90" x2="622" y2="90" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrg)"/>
-      <text x="580" y="80" textAnchor="middle" fontSize="10" fill="#f97316">P(S&#x2081;|S&#x209C;)</text>
+      <text x="430" y="22" fontSize="13" fontWeight="700" fill="#4a9eed">Processo de Markov</text>
+      <circle cx="510" cy="90" r="28" fill="var(--bg-primary)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="510" y="94" textAnchor="middle" fontSize="12" fill="#4a9eed" fontWeight="600">S<tspan fontSize="9" dy="3">t</tspan></text>
+      <circle cx="650" cy="90" r="28" fill="var(--bg-primary)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="650" y="94" textAnchor="middle" fontSize="12" fill="#4a9eed" fontWeight="600">S<tspan fontSize="9" dy="3">t+1</tspan></text>
+      <line x1="538" y1="90" x2="622" y2="90" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrg)"/>
+      <text x="580" y="80" textAnchor="middle" fontSize="10" fill="#4a9eed">P(S&#x2081;|S&#x209C;)</text>
       <text x="580" y="138" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">só o estado atual importa</text>
 
       <defs>
@@ -68,10 +68,10 @@ const MarkovDiagram = () => (
           <path d="M0,0 L0,6 L8,3 z" fill="var(--text-secondary)"/>
         </marker>
         <marker id="arrd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L8,3 z" fill="#f97316"/>
+          <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed"/>
         </marker>
         <marker id="arrg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L8,3 z" fill="#f97316"/>
+          <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed"/>
         </marker>
       </defs>
     </svg>
@@ -92,8 +92,8 @@ const GridWorld = () => {
     return 'var(--bg-primary)';
   };
   const textColor = (r, c) => {
-    if (labels[r][c] === 'G') return '#f97316';
-    if (labels[r][c] === 'X') return '#f97316';
+    if (labels[r][c] === 'G') return '#4a9eed';
+    if (labels[r][c] === 'X') return '#4a9eed';
     return 'var(--text-secondary)';
   };
   return (
@@ -119,8 +119,8 @@ const GridWorld = () => {
         </svg>
         <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
           <p style={{ margin: '0 0 0.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>Legenda:</p>
-          <p style={{ margin: '0 0 0.3rem' }}><span style={{ color: '#f97316', fontWeight: 700 }}>G</span> — Estado objetivo (goal), recompensa +10</p>
-          <p style={{ margin: '0 0 0.3rem' }}><span style={{ color: '#f97316', fontWeight: 700 }}>X</span> — Obstáculo (parede intransponível)</p>
+          <p style={{ margin: '0 0 0.3rem' }}><span style={{ color: '#4a9eed', fontWeight: 700 }}>G</span> — Estado objetivo (goal), recompensa +10</p>
+          <p style={{ margin: '0 0 0.3rem' }}><span style={{ color: '#4a9eed', fontWeight: 700 }}>X</span> — Obstáculo (parede intransponível)</p>
           <p style={{ margin: '0 0 0.3rem' }}><span style={{ color: color, fontWeight: 700 }}>A</span> — Posição inicial do agente</p>
           <p style={{ margin: '0 0 0.3rem' }}>Recompensa por passo: &minus;1</p>
           <p style={{ margin: '0 0 0.3rem' }}>Ações: N, S, E, O (determinísticas)</p>
@@ -197,16 +197,16 @@ const BackupDiagramOptimality = () => (
       <text x={180} y={18} textAnchor="middle" fontSize="9" fill={color}>V*(s)</text>
 
       {/* max arc label */}
-      <text x={310} y={100} fontSize="11" fill="#f97316" fontWeight="700">max</text>
+      <text x={310} y={100} fontSize="11" fill="#4a9eed" fontWeight="700">max</text>
 
       {/* Action nodes */}
       {[100, 180, 260].map((ax, i) => (
         <g key={i}>
-          <line x1={180} y1={64} x2={ax} y2={114} stroke={i===1 ? '#f97316' : 'var(--text-secondary)'} strokeWidth={i===1 ? 2 : 1.2} markerEnd={`url(#oArr${i===1?'g':''})`}/>
+          <line x1={180} y1={64} x2={ax} y2={114} stroke={i===1 ? '#4a9eed' : 'var(--text-secondary)'} strokeWidth={i===1 ? 2 : 1.2} markerEnd={`url(#oArr${i===1?'g':''})`}/>
           <rect x={ax-20} y={114} width={40} height={24} rx={5}
-            fill={i===1 ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)'}
-            stroke={i===1 ? '#f97316' : color} strokeWidth="1.5"/>
-          <text x={ax} y={130} textAnchor="middle" fontSize="11" fontWeight="600" fill={i===1 ? '#f97316' : color}>
+            fill={i===1 ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'}
+            stroke={i===1 ? '#4a9eed' : color} strokeWidth="1.5"/>
+          <text x={ax} y={130} textAnchor="middle" fontSize="11" fontWeight="600" fill={i===1 ? '#4a9eed' : color}>
             {['a₁','a*','a₃'][i]}
           </text>
         </g>
@@ -215,7 +215,7 @@ const BackupDiagramOptimality = () => (
       {/* Next states from a* */}
       {[130, 180, 230].map((sx, i) => (
         <g key={i}>
-          <line x1={180} y1={138} x2={sx} y2={188} stroke="#f97316" strokeWidth="1.2" markerEnd="url(#oArrg)"/>
+          <line x1={180} y1={138} x2={sx} y2={188} stroke="#4a9eed" strokeWidth="1.2" markerEnd="url(#oArrg)"/>
           <circle cx={sx} cy={206} r={17} fill="var(--bg-primary)" stroke="#64748b" strokeWidth="1.5"/>
           <text x={sx} y={211} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">s'</text>
           <text x={sx} y={230} textAnchor="middle" fontSize="9" fill={color}>V*(s')</text>
@@ -227,7 +227,7 @@ const BackupDiagramOptimality = () => (
           <path d="M0,0 L0,6 L7,3 z" fill="var(--text-secondary)"/>
         </marker>
         <marker id="oArrg" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L7,3 z" fill="#f97316"/>
+          <path d="M0,0 L0,6 L7,3 z" fill="#4a9eed"/>
         </marker>
       </defs>
     </svg>
@@ -244,12 +244,6 @@ export default function RL2() {
 
       <div style={S.tag}>MÓDULO 2</div>
       <h1 style={S.h1}>MDPs e Value-Based RL Tabular</h1>
-      <p style={S.lead}>
-        O Markov Decision Process (MDP) é o framework matemático formal que fundamenta praticamente todo
-        o Reinforcement Learning moderno. Neste módulo derivamos a propriedade de Markov, a tupla formal
-        do MDP, as funções de valor, as equações de Bellman de expectação e de otimalidade, e aplicamos
-        cada conceito a um exemplo numérico concreto numa grelha 3×3.
-      </p>
 
       {/* ══════════════════════════════════════════════════════ */}
       {/* SECTION 1 — Propriedade de Markov                     */}
@@ -426,7 +420,7 @@ export default function RL2() {
             ].map(([s,v,i]) => (
               <tr key={s}>
                 <td style={S.td}><InlineMath math={s.replace(/[()]/g, m => m === '(' ? '(' : ')')}/>{s}</td>
-                <td style={{ ...S.td, color: Number(v) >= 0 ? '#f97316' : '#f97316', fontWeight: 600 }}>{v}</td>
+                <td style={{ ...S.td, color: Number(v) >= 0 ? '#4a9eed' : '#4a9eed', fontWeight: 600 }}>{v}</td>
                 <td style={S.td}>{i}</td>
               </tr>
             ))}
@@ -621,7 +615,7 @@ export default function RL2() {
                 <td style={S.td}>{s}</td>
                 <td style={S.td}>{a}</td>
                 <td style={S.td}>{ns}</td>
-                <td style={{ ...S.td, color: Number(v) >= 0 ? '#f97316' : '#f97316', fontWeight: 600 }}>{v}</td>
+                <td style={{ ...S.td, color: Number(v) >= 0 ? '#4a9eed' : '#4a9eed', fontWeight: 600 }}>{v}</td>
               </tr>
             ))}
           </tbody>
@@ -690,48 +684,6 @@ export default function RL2() {
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ══════════════════════════════════════════════════════ */}
-      {/* SECTION 8 — Síntese                                   */}
-      {/* ══════════════════════════════════════════════════════ */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-        
-          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-            <li style={{ marginBottom: '0.7rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              <strong>Propriedade de Markov:</strong>{' '}
-              <InlineMath math="\mathbb{P}[S_{t+1}|S_t] = \mathbb{P}[S_{t+1}|S_1,\ldots,S_t]"/> — o estado
-              atual é uma estatística suficiente da história.
-            </li>
-            <li style={{ marginBottom: '0.7rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              <strong>Tupla MDP</strong>{' '}
-              <InlineMath math="(\mathcal{S}, \mathcal{A}, P, R, \gamma)"/> — cada componente tem
-              papel preciso: estados, ações, transições, recompensas, desconto.
-            </li>
-            <li style={{ marginBottom: '0.7rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              <strong>Funções de valor:</strong>{' '}
-              <InlineMath math="V^\pi(s) = \mathbb{E}_\pi[G_t|S_t=s]"/> e{' '}
-              <InlineMath math="Q^\pi(s,a) = \mathbb{E}_\pi[G_t|S_t=s,A_t=a]"/>; relacionadas por{' '}
-              <InlineMath math="V^\pi(s) = \sum_a \pi(a|s) Q^\pi(s,a)"/>.
-            </li>
-            <li style={{ marginBottom: '0.7rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              <strong>Equações de Bellman de Expectação:</strong> expressam V e Q recursivamente —
-              valor presente = recompensa imediata esperada + valor futuro descontado.
-            </li>
-            <li style={{ marginBottom: '0.7rem', color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              <strong>V* e Q* (otimalidade):</strong>{' '}
-              <InlineMath math="V^*(s) = \max_a Q^*(s,a)"/>; as equações de Bellman de otimalidade
-              são não-lineares devido ao operador max.
-            </li>
-            <li style={{ color: 'var(--text-primary)', lineHeight: 1.7 }}>
-              <strong>Política ótima greedy:</strong>{' '}
-              <InlineMath math="\pi^*(s) = \arg\max_a Q^*(s,a)"/> — conhecendo Q* a política ótima
-              é imediata, sem necessidade do modelo de transição.
-            </li>
-          </ul>
-        
-      </div>
     </div>
   );
 }

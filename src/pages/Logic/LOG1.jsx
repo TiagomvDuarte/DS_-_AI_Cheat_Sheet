@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './Logic';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -14,17 +14,16 @@ const S = {
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
-  diagram: { background: '#0f172a', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
+  diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
 };
 
 export default function LOG1() {
   return (
     <div style={S.page}>
-      <Link to="/logic" style={S.back}>← Lógica & Raciocínio</Link>
-      <div style={S.badge}>{modules[0].num} — LÓGICA & RACIOCÍNIO</div>
+      <Link to="/logic" style={S.back}>← Logic</Link>
+      <div style={S.badge}>MÓDULO {modules[0].num}</div>
       <h1 style={S.h1}>{modules[0].title}</h1>
-      <p style={S.sub}>{modules[0].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -39,7 +38,7 @@ export default function LOG1() {
         <div style={S.diagram}>
           <svg viewBox="0 0 680 210" width="100%" style={{ display: 'block' }}>
             <rect width="680" height="210" fill="var(--bg-secondary)" rx="10" />
-            <rect x="10" y="10" width="660" height="32" fill="rgba(249,115,22,0.06)" rx="6" />
+            <rect x="10" y="10" width="660" height="32" fill="rgba(74,158,237,0.06)" rx="6" />
             {['p', 'q', '¬p', '¬p ∨ q', 'p → q', 'p ↔ q'].map((h, i) => (
               <text key={i} x={50 + i * 110} y="31" textAnchor="middle" fill={C} fontSize="13" fontWeight="700" fontFamily="monospace">{h}</text>
             ))}
@@ -56,7 +55,7 @@ export default function LOG1() {
                   <rect x="10" y={y - 14} width="660" height="34" fill={bg} rx="4" />
                   {row.map((v, ci) => (
                     <text key={ci} x={50 + ci * 110} y={y + 8} textAnchor="middle"
-                      fill={v === 'V' ? '#fbbf24' : '#f87171'}
+                      fill={v === 'V' ? '#bae6fd' : '#64748b'}
                       fontSize="13" fontFamily="monospace" fontWeight="600">{v}</text>
                   ))}
                 </g>
@@ -107,24 +106,24 @@ export default function LOG1() {
             <rect x="430" y="160" width="175" height="120" fill="none" stroke="var(--card-border)" strokeWidth="1" strokeDasharray="4,3" rx="6" />
             <text x="434" y="155" fill="#64748b" fontSize="9" fontFamily="sans-serif">escopo ∃y</text>
             {/* ∀x */}
-            <ellipse cx="350" cy="52" rx="32" ry="18" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="350" cy="52" rx="32" ry="18" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="1.5" />
             <text x="350" y="57" textAnchor="middle" fill={C} fontSize="13" fontFamily="monospace" fontWeight="700">∀x</text>
             {/* → */}
             <line x1="350" y1="70" x2="350" y2="105" stroke="#475569" strokeWidth="1.5" />
-            <ellipse cx="350" cy="120" rx="22" ry="16" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="350" y="125" textAnchor="middle" fill="#f97316" fontSize="13" fontFamily="monospace" fontWeight="700">→</text>
+            <ellipse cx="350" cy="120" rx="22" ry="16" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="350" y="125" textAnchor="middle" fill="#4a9eed" fontSize="13" fontFamily="monospace" fontWeight="700">→</text>
             {/* Humano(x) */}
             <line x1="332" y1="134" x2="215" y2="175" stroke="#475569" strokeWidth="1.5" />
-            <rect x="140" y="175" width="150" height="30" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" rx="6" />
-            <text x="215" y="195" textAnchor="middle" fill="#fbbf24" fontSize="12" fontFamily="monospace">Humano(x)</text>
+            <rect x="140" y="175" width="150" height="30" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" rx="6" />
+            <text x="215" y="195" textAnchor="middle" fill="#bae6fd" fontSize="12" fontFamily="monospace">Humano(x)</text>
             {/* ∃y */}
             <line x1="368" y1="134" x2="518" y2="168" stroke="#475569" strokeWidth="1.5" />
-            <ellipse cx="518" cy="185" rx="30" ry="18" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="1.5" />
+            <ellipse cx="518" cy="185" rx="30" ry="18" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="1.5" />
             <text x="518" y="190" textAnchor="middle" fill={C} fontSize="13" fontFamily="monospace" fontWeight="700">∃y</text>
             {/* MãeDe(y, x) */}
             <line x1="518" y1="203" x2="518" y2="235" stroke="#475569" strokeWidth="1.5" />
-            <rect x="438" y="235" width="160" height="28" fill="rgba(249,115,22,0.06)" stroke="#fbbf24" strokeWidth="1.5" rx="6" />
-            <text x="518" y="254" textAnchor="middle" fill="#fbbf24" fontSize="12" fontFamily="monospace">MãeDe(y, x)</text>
+            <rect x="438" y="235" width="160" height="28" fill="rgba(74,158,237,0.06)" stroke="#bae6fd" strokeWidth="1.5" rx="6" />
+            <text x="518" y="254" textAnchor="middle" fill="#bae6fd" fontSize="12" fontFamily="monospace">MãeDe(y, x)</text>
             {/* caption */}
             <text x="350" y="298" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="sans-serif">x é variável livre em MãeDe(y,x) — ligada por ∀x no topo</text>
           </svg>
@@ -176,13 +175,13 @@ export default function LOG1() {
               return (
                 <g key={i}>
                   <text x="20" y={y} fill="#64748b" fontSize="10" fontFamily="sans-serif">{step}</text>
-                  <text x="160" y={y} fill={i === 5 ? '#fbbf24' : '#e2e8f0'} fontSize="12" fontFamily="monospace">{formula}</text>
+                  <text x="160" y={y} fill={i === 5 ? '#bae6fd' : '#e2e8f0'} fontSize="12" fontFamily="monospace">{formula}</text>
                   {i < 5 && <line x1="20" y1={y + 10} x2="660" y2={y + 10} stroke="var(--card-border)" strokeWidth="1" />}
                 </g>
               );
             })}
-            <rect x="12" y="210" width="656" height="22" fill="#c2410c22" rx="4" />
-            <text x="340" y="225" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="sans-serif">2 cláusulas na CNF final — prontas para resolução ou SAT solver</text>
+            <rect x="12" y="210" width="656" height="22" fill="rgba(74,158,237,0.15)" rx="4" />
+            <text x="340" y="225" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="sans-serif">2 cláusulas na CNF final — prontas para resolução ou SAT solver</text>
           </svg>
         </div>
 
@@ -220,31 +219,31 @@ export default function LOG1() {
           <svg viewBox="0 0 680 280" width="100%" style={{ display: 'block' }}>
             <rect width="680" height="280" fill="var(--bg-secondary)" rx="10" />
             <text x="340" y="20" textAnchor="middle" fill="#94a3b8" fontSize="11" fontFamily="monospace">DPLL: (a∨b) ∧ (¬a∨c) ∧ (¬b∨¬c)</text>
-            <rect x="260" y="32" width="160" height="28" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="1.5" rx="6" />
+            <rect x="260" y="32" width="160" height="28" fill="rgba(74,158,237,0.06)" stroke={C} strokeWidth="1.5" rx="6" />
             <text x="340" y="51" textAnchor="middle" fill={C} fontSize="12" fontFamily="monospace" fontWeight="700">decide: a = V</text>
             <line x1="290" y1="60" x2="185" y2="95" stroke="#475569" strokeWidth="1.5" />
-            <text x="212" y="87" fill="#fbbf24" fontSize="10" fontFamily="sans-serif">a=V</text>
+            <text x="212" y="87" fill="#bae6fd" fontSize="10" fontFamily="sans-serif">a=V</text>
             <line x1="390" y1="60" x2="495" y2="95" stroke="#475569" strokeWidth="1.5" />
-            <text x="432" y="87" fill="#f87171" fontSize="10" fontFamily="sans-serif">a=F</text>
-            <rect x="110" y="95" width="150" height="28" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="1.5" rx="6" />
-            <text x="185" y="114" textAnchor="middle" fill="#f97316" fontSize="12" fontFamily="monospace">unit prop: c=V</text>
-            <rect x="420" y="95" width="150" height="28" fill="rgba(249,115,22,0.06)" stroke="#64748b" strokeWidth="1.5" rx="6" />
+            <text x="432" y="87" fill="#94a3b8" fontSize="10" fontFamily="sans-serif">a=F</text>
+            <rect x="110" y="95" width="150" height="28" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="1.5" rx="6" />
+            <text x="185" y="114" textAnchor="middle" fill="#4a9eed" fontSize="12" fontFamily="monospace">unit prop: c=V</text>
+            <rect x="420" y="95" width="150" height="28" fill="rgba(74,158,237,0.06)" stroke="#64748b" strokeWidth="1.5" rx="6" />
             <text x="495" y="114" textAnchor="middle" fill="#94a3b8" fontSize="12" fontFamily="monospace">unit prop: b=V</text>
             <line x1="155" y1="123" x2="110" y2="158" stroke="#475569" strokeWidth="1.5" />
-            <text x="115" y="150" fill="#fbbf24" fontSize="10">b=V</text>
+            <text x="115" y="150" fill="#bae6fd" fontSize="10">b=V</text>
             <line x1="215" y1="123" x2="260" y2="158" stroke="#475569" strokeWidth="1.5" />
-            <text x="228" y="150" fill="#f87171" fontSize="10">b=F</text>
-            <rect x="50" y="158" width="130" height="28" fill="#7f1d1d" stroke="#f87171" strokeWidth="1.5" rx="6" />
-            <text x="115" y="177" textAnchor="middle" fill="#f87171" fontSize="12" fontFamily="monospace">CONFLITO ✗</text>
+            <text x="228" y="150" fill="#94a3b8" fontSize="10">b=F</text>
+            <rect x="50" y="158" width="130" height="28" fill="rgba(148,163,184,0.08)" stroke="#64748b" strokeWidth="1.5" rx="6" />
+            <text x="115" y="177" textAnchor="middle" fill="#94a3b8" fontSize="12" fontFamily="monospace">CONFLITO ✗</text>
             <text x="85" y="196" fill="#64748b" fontSize="9" fontFamily="sans-serif">¬b∨¬c falha</text>
-            <rect x="200" y="158" width="130" height="28" fill="#c2410c" stroke="#fbbf24" strokeWidth="1.5" rx="6" />
-            <text x="265" y="177" textAnchor="middle" fill="#fbbf24" fontSize="12" fontFamily="monospace">SAT ✓</text>
+            <rect x="200" y="158" width="130" height="28" fill="rgba(74,158,237,0.15)" stroke="#bae6fd" strokeWidth="1.5" rx="6" />
+            <text x="265" y="177" textAnchor="middle" fill="#bae6fd" fontSize="12" fontFamily="monospace">SAT ✓</text>
             <text x="235" y="196" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">{'{'}a=V,b=F,c=V{'}'}</text>
             <line x1="495" y1="123" x2="495" y2="158" stroke="#475569" strokeWidth="1.5" />
-            <rect x="420" y="158" width="150" height="28" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="1.5" rx="6" />
-            <text x="495" y="177" textAnchor="middle" fill="#f97316" fontSize="12" fontFamily="monospace">decide: c=V ou F</text>
-            <rect x="370" y="218" width="120" height="28" fill="#c2410c" stroke="#fbbf24" strokeWidth="1.5" rx="6" />
-            <text x="430" y="237" textAnchor="middle" fill="#fbbf24" fontSize="11" fontFamily="monospace">SAT ✓ c=F</text>
+            <rect x="420" y="158" width="150" height="28" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="1.5" rx="6" />
+            <text x="495" y="177" textAnchor="middle" fill="#4a9eed" fontSize="12" fontFamily="monospace">decide: c=V ou F</text>
+            <rect x="370" y="218" width="120" height="28" fill="rgba(74,158,237,0.15)" stroke="#bae6fd" strokeWidth="1.5" rx="6" />
+            <text x="430" y="237" textAnchor="middle" fill="#bae6fd" fontSize="11" fontFamily="monospace">SAT ✓ c=F</text>
             <text x="400" y="254" fill="#94a3b8" fontSize="9" fontFamily="sans-serif">{'{'}a=F,b=V,c=F{'}'}</text>
             <line x1="495" y1="186" x2="430" y2="218" stroke="#475569" strokeWidth="1.5" />
             <text x="340" y="272" textAnchor="middle" fill="#64748b" fontSize="10" fontFamily="sans-serif">Unit propagation evita exploração desnecessária — poda dramática do espaço de pesquisa</text>
@@ -280,18 +279,6 @@ export default function LOG1() {
           </p>
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Lógica Proposicional</strong> — sistema formal que opera com proposições verdadeiras ou falsas ligadas por conectivos (¬, ∧, ∨, →, ↔); a base do raciocínio dedutivo e dos circuitos digitais, com semântica definida por tabelas de verdade.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Lógica de Predicados (FOL)</strong> — estende a lógica proposicional com predicados, quantificadores (∀, ∃) e termos, permitindo expressar propriedades de objectos e relações; é semi-decidível e serve de fundamento à maioria da matemática formalizada.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Formas Normais</strong> — representações padronizadas de fórmulas lógicas (CNF, DNF, prenex, clausal) que tornam possível o raciocínio automático; a transformação de Tseitin converte qualquer fórmula para CNF em tamanho linear, sendo a base de todos os SAT solvers.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>SAT, SMT e Aplicações Industriais</strong> — SAT (NP-completo) e SMT (SAT módulo teorias) são a espinha dorsal da verificação formal moderna; algoritmos DPLL e CDCL tornaram-nos industrialmente viáveis para verificação de hardware, análise de software e planeamento.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

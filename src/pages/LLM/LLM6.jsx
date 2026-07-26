@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -150,9 +152,6 @@ export default function LLM6() {
 
       <div style={S.tag}>MÓDULO 06</div>
       <h1 style={S.h1}>Sistemas Multi-Agente</h1>
-      <p style={S.lead}>
-        Os sistemas multi-agente orquestram múltiplos LLMs especializados que colaboram, criticam e verificam o trabalho uns dos outros, ultrapassando as limitações de um único modelo em tarefas complexas e de longa duração. Neste módulo exploramos o que é um agente, padrões de raciocínio, memória, frameworks AutoGen e CrewAI, padrões de orquestração, ferramentas disponíveis e avaliação com segurança.
-      </p>
 
       {/* ── SECTION 1 ── */}
       <div style={S.section}>
@@ -178,14 +177,14 @@ export default function LLM6() {
                 <path d="M0,0 L0,6 L8,3 z" fill={color} />
               </marker>
               <marker id="arrMem" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-                <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(249,115,22,0.6)" />
+                <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(74,158,237,0.6)" />
               </marker>
             </defs>
 
             {/* Three circles */}
-            <circle cx="120" cy="110" r="60" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
-            <circle cx="350" cy="110" r="60" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
-            <circle cx="580" cy="110" r="60" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="2" />
+            <circle cx="120" cy="110" r="60" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
+            <circle cx="350" cy="110" r="60" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
+            <circle cx="580" cy="110" r="60" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="2" />
 
             {/* LLM badge above Think */}
             <circle cx="350" cy="28" r="22" fill={color} />
@@ -207,13 +206,13 @@ export default function LLM6() {
             <text x="350" y="212" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">feedback loop</text>
 
             {/* Memory box — centered below all three, with dashed lines to each circle */}
-            <rect x="288" y="232" width="124" height="32" rx="8" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+            <rect x="288" y="232" width="124" height="32" rx="8" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
             <text x="350" y="252" textAnchor="middle" fontSize="11" fontWeight="600" fill={color}>Memória</text>
 
             {/* Dashed lines from each circle down to Memory */}
-            <line x1="120" y1="170" x2="300" y2="232" stroke="rgba(249,115,22,0.45)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrMem)" />
-            <line x1="350" y1="170" x2="350" y2="232" stroke="rgba(249,115,22,0.45)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrMem)" />
-            <line x1="580" y1="170" x2="400" y2="232" stroke="rgba(249,115,22,0.45)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrMem)" />
+            <line x1="120" y1="170" x2="300" y2="232" stroke="rgba(74,158,237,0.45)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrMem)" />
+            <line x1="350" y1="170" x2="350" y2="232" stroke="rgba(74,158,237,0.45)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrMem)" />
+            <line x1="580" y1="170" x2="400" y2="232" stroke="rgba(74,158,237,0.45)" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#arrMem)" />
           </svg>
         </div>
 
@@ -347,10 +346,10 @@ return resposta`}</div>
         <div style={S.diagram}>
           <svg viewBox="0 0 700 200" width="100%" style={{ display: 'block' }}>
             {/* 4 boxes */}
-            <rect x="10" y="20" width="155" height="150" rx="10" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
-            <rect x="185" y="20" width="155" height="150" rx="10" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
-            <rect x="360" y="20" width="155" height="150" rx="10" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
-            <rect x="535" y="20" width="155" height="150" rx="10" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="10" y="20" width="155" height="150" rx="10" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="185" y="20" width="155" height="150" rx="10" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="360" y="20" width="155" height="150" rx="10" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="535" y="20" width="155" height="150" rx="10" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
             {/* Titles */}
             <text x="87" y="48" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>In-Context</text>
             <text x="87" y="63" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">(Working)</text>
@@ -435,22 +434,22 @@ return resposta`}</div>
         {/* SVG AutoGen fluxo */}
         <div style={S.diagram}>
           <svg viewBox="0 0 700 160" width="100%" style={{ display: 'block' }}>
-            <rect x="10" y="60" width="100" height="40" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="10" y="60" width="100" height="40" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
             <text x="60" y="83" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>UserProxy</text>
             <path d="M112 80 L168 80" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrA)" />
-            <rect x="170" y="60" width="120" height="40" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="170" y="60" width="120" height="40" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
             <text x="230" y="83" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>GroupChatManager</text>
             <path d="M292 80 L348 50" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrA)" />
             <path d="M292 80 L348 80" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrA)" />
             <path d="M292 80 L348 115" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrA)" />
-            <rect x="350" y="30" width="90" height="32" rx="7" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1" />
+            <rect x="350" y="30" width="90" height="32" rx="7" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1" />
             <text x="395" y="50" textAnchor="middle" fontSize="11" fill={color}>Planner</text>
-            <rect x="350" y="64" width="90" height="32" rx="7" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1" />
+            <rect x="350" y="64" width="90" height="32" rx="7" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1" />
             <text x="395" y="84" textAnchor="middle" fontSize="11" fill={color}>Executor</text>
-            <rect x="350" y="98" width="90" height="32" rx="7" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1" />
+            <rect x="350" y="98" width="90" height="32" rx="7" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1" />
             <text x="395" y="118" textAnchor="middle" fontSize="11" fill={color}>Critic</text>
             <path d="M442 80 L498 80" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrA)" />
-            <rect x="500" y="60" width="100" height="40" rx="8" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1.5" />
+            <rect x="500" y="60" width="100" height="40" rx="8" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1.5" />
             <text x="550" y="78" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>Code</text>
             <text x="550" y="93" textAnchor="middle" fontSize="11" fontWeight="700" fill={color}>Executor</text>
             <path d="M550 100 Q550 140 230 140 L230 102" stroke={color} strokeWidth="1.5" fill="none" strokeDasharray="4,3" markerEnd="url(#arrA)" />
@@ -501,7 +500,7 @@ return resposta`}</div>
                 <path d="M0,0 L0,6 L8,3 z" fill={color} />
               </marker>
               <marker id="arrCd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="rgba(249,115,22,0.7)" />
+                <path d="M0,0 L0,6 L8,3 z" fill="rgba(74,158,237,0.7)" />
               </marker>
             </defs>
 
@@ -516,23 +515,23 @@ return resposta`}</div>
             <path d="M410 56 L570 102" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrC)" />
 
             {/* Researcher */}
-            <rect x="50" y="104" width="160" height="52" rx="8" fill="rgba(234,88,12,0.13)" stroke="#ea580c" strokeWidth="1.5" />
-            <text x="130" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ea580c">Researcher</text>
+            <rect x="50" y="104" width="160" height="52" rx="8" fill="rgba(3,105,161,0.13)" stroke="#0369a1" strokeWidth="1.5" />
+            <text x="130" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0369a1">Researcher</text>
             <text x="130" y="144" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">web_search tool</text>
 
             {/* Writer */}
-            <rect x="270" y="104" width="160" height="52" rx="8" fill="rgba(249,115,22,0.13)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="350" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f97316">Writer</text>
+            <rect x="270" y="104" width="160" height="52" rx="8" fill="rgba(74,158,237,0.13)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="350" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Writer</text>
             <text x="350" y="144" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">file_write tool</text>
 
             {/* Reviewer */}
-            <rect x="490" y="104" width="160" height="52" rx="8" fill="rgba(245,158,11,0.13)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="570" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f59e0b">Reviewer</text>
+            <rect x="490" y="104" width="160" height="52" rx="8" fill="rgba(2,132,199,0.13)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="570" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0284c7">Reviewer</text>
             <text x="570" y="144" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">edit tool</text>
 
             {/* Results back to Manager — dashed arcs */}
-            <path d="M130 156 Q130 185 350 185 Q570 185 570 156" stroke="rgba(249,115,22,0.55)" strokeWidth="1.5" fill="none" strokeDasharray="5,3" />
-            <path d="M350 185 L350 56" stroke="rgba(249,115,22,0.55)" strokeWidth="1.5" fill="none" strokeDasharray="5,3" markerEnd="url(#arrCd)" />
+            <path d="M130 156 Q130 185 350 185 Q570 185 570 156" stroke="rgba(74,158,237,0.55)" strokeWidth="1.5" fill="none" strokeDasharray="5,3" />
+            <path d="M350 185 L350 56" stroke="rgba(74,158,237,0.55)" strokeWidth="1.5" fill="none" strokeDasharray="5,3" markerEnd="url(#arrCd)" />
             <text x="350" y="200" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">resultados devolvidos ao manager</text>
           </svg>
         </div>
@@ -558,19 +557,19 @@ return resposta`}</div>
                 <path d="M8,0 L8,6 L0,3 z" fill={color} />
               </marker>
               <marker id="arrDb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#f59e0b" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#0284c7" />
               </marker>
               <marker id="arrDb2" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
-                <path d="M8,0 L8,6 L0,3 z" fill="#f59e0b" />
+                <path d="M8,0 L8,6 L0,3 z" fill="#0284c7" />
               </marker>
               <marker id="arrDc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#ea580c" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#0369a1" />
               </marker>
               <marker id="arrDd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#fbbf24" />
+                <path d="M0,0 L0,6 L8,3 z" fill="#7dd3fc" />
               </marker>
               <marker id="arrDd2" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
-                <path d="M8,0 L8,6 L0,3 z" fill="#fbbf24" />
+                <path d="M8,0 L8,6 L0,3 z" fill="#7dd3fc" />
               </marker>
             </defs>
 
@@ -593,54 +592,54 @@ return resposta`}</div>
             <path d="M215 70 L350 108" stroke={color} strokeWidth="1.5" fill="none" markerEnd="url(#arrD)" />
 
             {/* Workers */}
-            <rect x="38" y="110" width="82" height="34" rx="7" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+            <rect x="38" y="110" width="82" height="34" rx="7" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
             <text x="79" y="128" textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>Worker 1</text>
             <text x="79" y="140" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">pesquisa</text>
 
-            <rect x="174" y="110" width="82" height="34" rx="7" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+            <rect x="174" y="110" width="82" height="34" rx="7" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
             <text x="215" y="128" textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>Worker 2</text>
             <text x="215" y="140" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">análise</text>
 
-            <rect x="310" y="110" width="82" height="34" rx="7" fill="rgba(249,115,22,0.12)" stroke={color} strokeWidth="1.5" />
+            <rect x="310" y="110" width="82" height="34" rx="7" fill="rgba(74,158,237,0.12)" stroke={color} strokeWidth="1.5" />
             <text x="351" y="128" textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>Worker 3</text>
             <text x="351" y="140" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">escrita</text>
 
             {/* Results back */}
-            <path d="M79 144 Q79 175 215 175 Q351 175 351 144" stroke="rgba(249,115,22,0.5)" strokeWidth="1" strokeDasharray="4,3" fill="none" />
-            <path d="M215 175 L215 70" stroke="rgba(249,115,22,0.5)" strokeWidth="1" strokeDasharray="4,3" fill="none" markerEnd="url(#arrD)" />
+            <path d="M79 144 Q79 175 215 175 Q351 175 351 144" stroke="rgba(74,158,237,0.5)" strokeWidth="1" strokeDasharray="4,3" fill="none" />
+            <path d="M215 175 L215 70" stroke="rgba(74,158,237,0.5)" strokeWidth="1" strokeDasharray="4,3" fill="none" markerEnd="url(#arrD)" />
 
             <text x="215" y="197" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Delegação centralizada — orchestrator sintetiza resultados</text>
 
             {/* ══════════════════════════════════════════════════════ */}
             {/* TOP-RIGHT: Parallel Agents                            */}
             {/* ══════════════════════════════════════════════════════ */}
-            <text x="645" y="22" textAnchor="middle" fontSize="13" fontWeight="700" fill="#f59e0b">Parallel Agents</text>
+            <text x="645" y="22" textAnchor="middle" fontSize="13" fontWeight="700" fill="#0284c7">Parallel Agents</text>
 
             {/* Shared task */}
-            <rect x="495" y="34" width="300" height="34" rx="8" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="645" y="56" textAnchor="middle" fontSize="11" fontWeight="600" fill="#f59e0b">Tarefa partilhada</text>
+            <rect x="495" y="34" width="300" height="34" rx="8" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="645" y="56" textAnchor="middle" fontSize="11" fontWeight="600" fill="#0284c7">Tarefa partilhada</text>
 
             {/* Arrows down */}
-            <path d="M560 68 L560 108" stroke="#f59e0b" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
-            <path d="M645 68 L645 108" stroke="#f59e0b" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
-            <path d="M730 68 L730 108" stroke="#f59e0b" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
+            <path d="M560 68 L560 108" stroke="#0284c7" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
+            <path d="M645 68 L645 108" stroke="#0284c7" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
+            <path d="M730 68 L730 108" stroke="#0284c7" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
 
             {/* Agents */}
-            <rect x="520" y="110" width="80" height="34" rx="7" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="560" y="132" textAnchor="middle" fontSize="10" fontWeight="600" fill="#f59e0b">Agente A</text>
+            <rect x="520" y="110" width="80" height="34" rx="7" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="560" y="132" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0284c7">Agente A</text>
 
-            <rect x="605" y="110" width="80" height="34" rx="7" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="645" y="132" textAnchor="middle" fontSize="10" fontWeight="600" fill="#f59e0b">Agente B</text>
+            <rect x="605" y="110" width="80" height="34" rx="7" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="645" y="132" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0284c7">Agente B</text>
 
-            <rect x="690" y="110" width="80" height="34" rx="7" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" strokeWidth="1.5" />
-            <text x="730" y="132" textAnchor="middle" fontSize="10" fontWeight="600" fill="#f59e0b">Agente C</text>
+            <rect x="690" y="110" width="80" height="34" rx="7" fill="rgba(2,132,199,0.12)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="730" y="132" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0284c7">Agente C</text>
 
             {/* Converge to aggregator */}
-            <path d="M560 144 L645 168" stroke="#f59e0b" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
-            <path d="M645 144 L645 168" stroke="#f59e0b" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
-            <path d="M730 144 L645 168" stroke="#f59e0b" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
+            <path d="M560 144 L645 168" stroke="#0284c7" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
+            <path d="M645 144 L645 168" stroke="#0284c7" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
+            <path d="M730 144 L645 168" stroke="#0284c7" strokeWidth="1.5" fill="none" markerEnd="url(#arrDb)" />
 
-            <rect x="575" y="170" width="140" height="34" rx="8" fill="#f59e0b" />
+            <rect x="575" y="170" width="140" height="34" rx="8" fill="#0284c7" />
             <text x="645" y="192" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff">Agregador / RRF</text>
 
             <text x="645" y="212" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Paralelismo → reduz latência total</text>
@@ -648,25 +647,25 @@ return resposta`}</div>
             {/* ══════════════════════════════════════════════════════ */}
             {/* BOTTOM-LEFT: Debate Pattern                           */}
             {/* ══════════════════════════════════════════════════════ */}
-            <text x="215" y="258" textAnchor="middle" fontSize="13" fontWeight="700" fill="#ea580c">Debate Pattern</text>
+            <text x="215" y="258" textAnchor="middle" fontSize="13" fontWeight="700" fill="#0369a1">Debate Pattern</text>
 
             {/* Two opposing agents */}
-            <rect x="30" y="270" width="120" height="36" rx="8" fill="rgba(234,88,12,0.12)" stroke="#ea580c" strokeWidth="1.5" />
-            <text x="90" y="288" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ea580c">Agente A</text>
+            <rect x="30" y="270" width="120" height="36" rx="8" fill="rgba(3,105,161,0.12)" stroke="#0369a1" strokeWidth="1.5" />
+            <text x="90" y="288" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0369a1">Agente A</text>
             <text x="90" y="300" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">propõe posição</text>
 
-            <rect x="280" y="270" width="120" height="36" rx="8" fill="rgba(234,88,12,0.12)" stroke="#ea580c" strokeWidth="1.5" />
-            <text x="340" y="288" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ea580c">Agente B</text>
+            <rect x="280" y="270" width="120" height="36" rx="8" fill="rgba(3,105,161,0.12)" stroke="#0369a1" strokeWidth="1.5" />
+            <text x="340" y="288" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0369a1">Agente B</text>
             <text x="340" y="300" textAnchor="middle" fontSize="8" fill="var(--text-secondary)">contra-argumenta</text>
 
             {/* Bidirectional debate arrows */}
-            <path d="M150 283 L278 283" stroke="#ea580c" strokeWidth="2" fill="none" markerEnd="url(#arrDc)" />
-            <path d="M278 293 L150 293" stroke="#ea580c" strokeWidth="2" fill="none" markerEnd="url(#arrDc)" />
+            <path d="M150 283 L278 283" stroke="#0369a1" strokeWidth="2" fill="none" markerEnd="url(#arrDc)" />
+            <path d="M278 293 L150 293" stroke="#0369a1" strokeWidth="2" fill="none" markerEnd="url(#arrDc)" />
 
             {/* Down to moderator */}
-            <path d="M215 306 L215 338" stroke="#ea580c" strokeWidth="1.5" fill="none" markerEnd="url(#arrDc)" />
+            <path d="M215 306 L215 338" stroke="#0369a1" strokeWidth="1.5" fill="none" markerEnd="url(#arrDc)" />
 
-            <rect x="145" y="340" width="140" height="36" rx="8" fill="#ea580c" />
+            <rect x="145" y="340" width="140" height="36" rx="8" fill="#0369a1" />
             <text x="215" y="363" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff">Moderador</text>
 
             <text x="215" y="402" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Dois agentes debatem posições opostas;</text>
@@ -675,22 +674,22 @@ return resposta`}</div>
             {/* ══════════════════════════════════════════════════════ */}
             {/* BOTTOM-RIGHT: Supervisor Pattern                      */}
             {/* ══════════════════════════════════════════════════════ */}
-            <text x="645" y="258" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fbbf24">Supervisor Pattern</text>
+            <text x="645" y="258" textAnchor="middle" fontSize="13" fontWeight="700" fill="#7dd3fc">Supervisor Pattern</text>
 
             {/* Worker */}
-            <rect x="495" y="270" width="300" height="36" rx="8" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" strokeWidth="1.5" />
-            <text x="645" y="292" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fbbf24">Agente Worker</text>
+            <rect x="495" y="270" width="300" height="36" rx="8" fill="rgba(125,211,252,0.12)" stroke="#7dd3fc" strokeWidth="1.5" />
+            <text x="645" y="292" textAnchor="middle" fontSize="11" fontWeight="700" fill="#7dd3fc">Agente Worker</text>
 
             {/* Down arrow */}
-            <path d="M645 306 L645 338" stroke="#fbbf24" strokeWidth="1.5" fill="none" markerEnd="url(#arrDd)" />
+            <path d="M645 306 L645 338" stroke="#7dd3fc" strokeWidth="1.5" fill="none" markerEnd="url(#arrDd)" />
 
             {/* Supervisor */}
-            <rect x="495" y="340" width="300" height="36" rx="8" fill="#fbbf24" />
+            <rect x="495" y="340" width="300" height="36" rx="8" fill="#7dd3fc" />
             <text x="645" y="363" textAnchor="middle" fontSize="11" fontWeight="700" fill="#1a1a1a">Supervisor / Validator</text>
 
             {/* Feedback loop — Supervisor rejects → back to Worker */}
-            <path d="M795 358 Q840 358 840 288 L797 288" stroke="#fbbf24" strokeWidth="1.5" fill="none" strokeDasharray="5,3" markerEnd="url(#arrDd)" />
-            <text x="843" y="325" textAnchor="middle" fontSize="8" fill="#fbbf24" transform="rotate(90,843,325)">rejeita</text>
+            <path d="M795 358 Q840 358 840 288 L797 288" stroke="#7dd3fc" strokeWidth="1.5" fill="none" strokeDasharray="5,3" markerEnd="url(#arrDd)" />
+            <text x="843" y="325" textAnchor="middle" fontSize="8" fill="#7dd3fc" transform="rotate(90,843,325)">rejeita</text>
 
             <text x="645" y="402" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Supervisor valida cada output;</text>
             <text x="645" y="414" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">rejeita e pede revisão se o output falhar</text>
@@ -860,6 +859,9 @@ return resposta`}</div>
         <div style={S.highlight}>
           <strong>Mitigações:</strong> sanitizar e delimitar claramente o conteúdo externo no prompt (e.g., envolver em tags XML), usar um LLM dedicado a detectar injection antes de processar tool outputs, e nunca expor ferramentas destrutivas sem confirmação humana.
         </div>
+        <div style={S.note}>
+          A taxonomia geral de ataques adversariais (jailbreaks, injection directa/indirecta, many-shot, bypass multilingual) e os benchmarks de safety usados para os avaliar estão aprofundados no módulo "Alinhamento &amp; Safety".
+        </div>
 
         <h3 style={S.h3}>Guardrails e Validação de Outputs</h3>
         <p style={S.p}>
@@ -903,22 +905,73 @@ return resposta`}</div>
 
       <hr style={S.divider} />
 
-      {/* ── SÍNTESE ── */}
-              <h2 style={S.h2}>Síntese do Módulo 06</h2>
-<div style={{ ...S.section, marginBottom: '2rem' }}>
-        <div style={{ ...S.highlight, padding: '1.5rem' }}>
-          <p style={{ ...S.p, marginBottom: '0.75rem' }}>
-            Um <strong>agente LLM</strong> combina percepção, memória, planeamento e acção num ciclo iterativo Observe → Think → Act. A diferença face a um chatbot é a autonomia e o uso de ferramentas em loop. Os padrões de raciocínio disponíveis são <strong>ReAct</strong> (simples e eficiente), <strong>Plan-and-Execute</strong> (planeamento upfront), <strong>Reflexion</strong> (auto-crítica iterativa) e <strong>LATS</strong> (busca em árvore via MCTS).
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.75rem' }}>
-            A memória divide-se em quatro tipos: <strong>in-context</strong> (working memory na janela de contexto), <strong>external</strong> (vector store para RAG), <strong>episódica</strong> (eventos passados por timestamp) e <strong>semântica</strong> (factos persistentes do domínio).
-          </p>
-          <p style={{ ...S.p, marginBottom: '0.75rem' }}>
-            Os frameworks dominantes são <strong>AutoGen</strong> (conversação estruturada entre agentes, GroupChat com speaker selection) e <strong>CrewAI</strong> (crews com roles/goals/backstory, processos sequential e hierarchical). Os padrões de orquestração incluem Orchestrator-Worker, Parallel Agents, Debate Pattern e Supervisor Pattern.
-          </p>
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Os desafios críticos são <strong>prompt injection via tool results</strong>, loops infinitos, context overflow e error propagation. As mitigações incluem guardrails em inputs/outputs/tool calls, human-in-the-loop em acções irreversíveis, princípio de menor privilégio e sandboxing obrigatório para execução de código.
-          </p>
+      {/* ── SECTION 9 ── */}
+      <div style={S.section}>
+        <h2 style={S.h2}>9. Protocolos Modernos de Agentes — MCP & Agent2Agent</h2>
+        <p style={S.p}>
+          Antes destes protocolos, cada agente precisava de um integrador bespoke para cada ferramenta e para cada outro agente com que comunicava — um problema combinatório de <InlineMath math={"M \\times N"} /> integrações. MCP e A2A resolvem duas metades diferentes deste problema ao padronizar as interfaces: MCP entre agente e ferramentas/dados, A2A entre agente e agente.
+        </p>
+
+        <h3 style={S.h3}>Model Context Protocol (MCP)</h3>
+        <p style={S.p}>
+          O <strong>MCP</strong> (Anthropic, Nov 2024) é um protocolo aberto, baseado em JSON-RPC 2.0, que padroniza como um LLM/agente acede a ferramentas, dados e prompts externos — a analogia mais comum é "USB-C para aplicações de IA": qualquer cliente MCP fala com qualquer servidor MCP sem integração à medida.
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Componente</th>
+              <th style={S.th}>Papel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>Host</strong></td>
+              <td style={S.td}>A aplicação LLM (ex.: Claude Desktop, um IDE, um agente custom)</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Client</strong></td>
+              <td style={S.td}>Mantém uma ligação 1:1 com um servidor, dentro do host</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Server</strong></td>
+              <td style={S.td}>Expõe capacidades — <em>Tools</em> (funções invocáveis), <em>Resources</em> (dados só-leitura, ex.: ficheiros, linhas de BD) e <em>Prompts</em> (templates reutilizáveis)</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style={S.note}>
+          Um servidor MCP para Postgres pode expor uma <em>Resource</em> por tabela e uma <em>Tool</em> <code>run_query</code>; o mesmo servidor funciona sem alterações em Claude Desktop, num IDE ou num agente LangChain — a padronização está no protocolo, não na integração.
+        </div>
+
+        <h3 style={S.h3}>Agent2Agent (A2A)</h3>
+        <p style={S.p}>
+          O <strong>A2A</strong> (Google, Abr 2025, agora sob a Linux Foundation) resolve o problema complementar: como dois agentes autónomos — possivelmente de frameworks e fornecedores diferentes — descobrem capacidades um do outro e colaboram numa tarefa, sem partilhar memória, ferramentas ou código interno.
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Conceito</th>
+              <th style={S.th}>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><strong>Agent Card</strong></td>
+              <td style={S.td}>JSON público (ex.: <code>/.well-known/agent.json</code>) que anuncia identidade, capacidades e endpoint do agente — permite descoberta antes de qualquer interacção</td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Task</strong></td>
+              <td style={S.td}>Unidade de trabalho com ciclo de vida próprio: <code>submitted → working → input-required → completed/failed</code></td>
+            </tr>
+            <tr>
+              <td style={S.td}><strong>Message / Artifact</strong></td>
+              <td style={S.td}>Troca de conteúdo estruturado (texto, ficheiros, dados) entre agentes durante a execução da tarefa</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style={S.h3}>MCP vs. A2A — Camadas Complementares</h3>
+        <div style={S.highlight}>
+          <strong>Não competem — operam em camadas diferentes da mesma stack.</strong> Um agente orquestrador tipicamente usa <strong>MCP</strong> para aceder às suas próprias ferramentas e dados (base vectorial, APIs internas, ficheiros) e <strong>A2A</strong> para delegar sub-tarefas a outros agentes especializados, possivelmente de equipas ou fornecedores diferentes. Um sistema RAG multi-agente real combina ambos: MCP liga cada agente aos seus vector stores (Pinecone, Qdrant, Chroma, pgvector) e ferramentas; A2A liga os agentes entre si.
         </div>
       </div>
     </div>

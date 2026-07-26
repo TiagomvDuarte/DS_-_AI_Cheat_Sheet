@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,7 +15,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(29,78,216,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
@@ -40,18 +40,6 @@ export default function CV11() {
 
         <div style={S.tag}>MÓDULO 11</div>
         <h1 style={S.h1}>OpenCV — Implementação Prática</h1>
-        <p style={S.lead}>
-          Os módulos 1 a 10 construíram a teoria de Computer Vision: representação de imagens, filtros
-          clássicos, convoluções, arquitecturas CNN, treino, modelos modernos, transfer learning, detecção
-          de objectos e segmentação. Este módulo final é onde tudo se torna <strong>código real</strong>.
-          Vamos usar a <strong>OpenCV</strong> (<code>cv2</code>) — a biblioteca de visão computacional mais
-          usada na indústria — para implementar, passo a passo, os conceitos vistos até agora: ler e
-          manipular imagens, aplicar os filtros e operações morfológicas do Módulo 2, detectar edges e
-          contornos com Canny (Módulo 2), extrair e comparar features tipo SIFT/ORB, detectar faces com
-          Haar cascades, processar vídeo em tempo real, e finalmente integrar tudo com um modelo
-          <strong> PyTorch/torchvision</strong> pré-treinado — fechando o círculo entre a teoria de deep
-          learning e uma pipeline de visão computacional completa e funcional.
-        </p>
 
         {/* 1. Introdução */}
         <div style={S.section}>
@@ -805,23 +793,7 @@ cv2.imwrite('deteccoes.jpg', img_bgr)`} />
             </table>
           </div>
         </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>11. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>OpenCV lê e representa imagens em <strong>BGR</strong> — converter para RGB ao interagir com matplotlib, PIL ou PyTorch.</li>
-            <li>Operações básicas (crop, resize, flip, transformações afins) são slicing/funções NumPy/cv2 directas — a base do data augmentation.</li>
-            <li>HSV facilita segmentação por cor; thresholding (incluindo Otsu) é o primeiro passo de muitas pipelines clássicas.</li>
-            <li>Filtros (Gaussian, Sobel, Laplacian) e morfologia (erode/dilate/open/close) implementam directamente os conceitos clássicos do Módulo 2.</li>
-            <li>Canny + findContours permitem contar, medir e isolar objectos sem qualquer modelo treinado.</li>
-            <li>ORB/SIFT + matching continuam úteis para correspondência geométrica robusta (panoramas, SLAM, AR).</li>
-            <li>Haar cascades dão detecção de faces "out of the box"; <code>cv2.dnn</code> corre modelos DL (ONNX) sem PyTorch/TensorFlow.</li>
-            <li>VideoCapture/VideoWriter aplicam qualquer pipeline frame-a-frame, em tempo real.</li>
-            <li>A pipeline final — OpenCV para I/O/visualização + torchvision para inferência — une toda a teoria do curso (CV1-CV10) em código de produção.</li>
-          </ul>
-          </div>
-        </div>
+
         </div>
       </div>
       );

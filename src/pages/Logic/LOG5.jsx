@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './Logic';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -14,7 +14,7 @@ const S = {
   highlight: { background: `${C}15`, borderLeft: `3px solid ${C}`, padding: '0.85rem 1.1rem', borderRadius: '0 8px 8px 0', marginBottom: '1rem' },
   note: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', padding: '0.85rem 1.1rem', borderRadius: 8, marginBottom: '1rem' },
   p: { color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '0.85rem' },
-  diagram: { background: '#0f172a', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
+  diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', overflowX: 'auto' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 6, padding: '0.75rem 1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '1rem', overflowX: 'auto', whiteSpace: 'pre' },
 };
@@ -52,7 +52,7 @@ function SvgCSPGraph() {
       })}
       {vars.map(v => (
         <g key={v.id}>
-          <circle cx={v.x} cy={v.y} r="22" fill="rgba(249,115,22,0.06)" stroke={C} strokeWidth="2" />
+          <circle cx={v.x} cy={v.y} r="22" fill="var(--bg-secondary)" stroke={C} strokeWidth="2" />
           <text x={v.x} y={v.y - 3} textAnchor="middle" dominantBaseline="middle" fill={C} fontSize="14" fontWeight="700">{v.id}</text>
           <text x={v.x} y={v.y + 12} textAnchor="middle" dominantBaseline="middle" fill="#64748b" fontSize="8">{`{0-9}`}</text>
         </g>
@@ -95,10 +95,10 @@ function SvgAC3() {
           <g key={ri}>
             <rect x="8" y={y - 11} width="604" height="26" fill={bg} rx="3" />
             <text x="12"  y={y + 4} fill="#94a3b8" fontSize="9">{r.step}</text>
-            <text x="165" y={y + 4} fill="#f59e0b" fontSize="9" fontFamily="monospace">{r.x}</text>
-            <text x="270" y={y + 4} fill="#f97316" fontSize="9" fontFamily="monospace">{r.y}</text>
-            <text x="375" y={y + 4} fill="#fbbf24" fontSize="9" fontFamily="monospace">{r.z}</text>
-            <text x="468" y={y + 4} fill="#f59e0b" fontSize="9">{r.note}</text>
+            <text x="165" y={y + 4} fill="#7dd3fc" fontSize="9" fontFamily="monospace">{r.x}</text>
+            <text x="270" y={y + 4} fill="#4a9eed" fontSize="9" fontFamily="monospace">{r.y}</text>
+            <text x="375" y={y + 4} fill="#bae6fd" fontSize="9" fontFamily="monospace">{r.z}</text>
+            <text x="468" y={y + 4} fill="#7dd3fc" fontSize="9">{r.note}</text>
           </g>
         );
       })}
@@ -113,7 +113,7 @@ function SvgAC3() {
 function SvgBlocksworld() {
   const drawBlock = (lbl, x, y, color) => (
     <g>
-      <rect x={x - 18} y={y - 18} width="36" height="22" rx="3" fill="rgba(249,115,22,0.06)" stroke={color || C} strokeWidth="2" />
+      <rect x={x - 18} y={y - 18} width="36" height="22" rx="3" fill="rgba(74,158,237,0.06)" stroke={color || C} strokeWidth="2" />
       <text x={x} y={y - 4} textAnchor="middle" dominantBaseline="middle" fill={color || C} fontSize="13" fontWeight="700">{lbl}</text>
     </g>
   );
@@ -136,11 +136,11 @@ function SvgBlocksworld() {
       {drawBlock('B', 315, 122)}
       {drawBlock('C', 315, 98)}
       {/* Estado goal */}
-      <text x="475" y="40" textAnchor="middle" fill="#f59e0b" fontSize="9">Estado Goal</text>
+      <text x="475" y="40" textAnchor="middle" fill="#7dd3fc" fontSize="9">Estado Goal</text>
       <line x1="430" y1="128" x2="530" y2="128" stroke="var(--card-border)" strokeWidth="2" />
-      {drawBlock('A', 475, 122, '#f59e0b')}
-      {drawBlock('B', 475, 98,  '#f59e0b')}
-      {drawBlock('C', 475, 74,  '#f59e0b')}
+      {drawBlock('A', 475, 122, '#7dd3fc')}
+      {drawBlock('B', 475, 98,  '#7dd3fc')}
+      {drawBlock('C', 475, 74,  '#7dd3fc')}
       {/* Setas */}
       <defs>
         <marker id="ar5" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
@@ -148,9 +148,9 @@ function SvgBlocksworld() {
         </marker>
       </defs>
       <line x1="122" y1="94" x2="215" y2="94" stroke={C} strokeWidth="1.5" markerEnd="url(#ar5)" />
-      <text x="168" y="87" textAnchor="middle" fill="#f59e0b" fontSize="9">Unstack(A,B)</text>
+      <text x="168" y="87" textAnchor="middle" fill="#7dd3fc" fontSize="9">Unstack(A,B)</text>
       <line x1="352" y1="94" x2="432" y2="94" stroke={C} strokeWidth="1.5" markerEnd="url(#ar5)" />
-      <text x="392" y="87" textAnchor="middle" fill="#f59e0b" fontSize="9">Stack(C,B)</text>
+      <text x="392" y="87" textAnchor="middle" fill="#7dd3fc" fontSize="9">Stack(C,B)</text>
       <text x="290" y="155" textAnchor="middle" fill="#475569" fontSize="10">
         Planeamento STRIPS — PSPACE-complete no caso geral
       </text>
@@ -189,9 +189,9 @@ function SvgAStar() {
           </g>
         );
       })}
-      <circle cx={ox + 0 * cellSz + cellSz / 2 - 1} cy={oy + 0 * cellSz + cellSz / 2 - 1} r="11" fill="#f59e0b" />
+      <circle cx={ox + 0 * cellSz + cellSz / 2 - 1} cy={oy + 0 * cellSz + cellSz / 2 - 1} r="11" fill="#7dd3fc" />
       <text x={ox + 0 * cellSz + cellSz / 2 - 1} y={oy + 0 * cellSz + cellSz / 2 - 1} textAnchor="middle" dominantBaseline="middle" fill="var(--bg-secondary)" fontSize="10" fontWeight="800">S</text>
-      <circle cx={ox + 7 * cellSz + cellSz / 2 - 1} cy={oy + 7 * cellSz + cellSz / 2 - 1} r="11" fill="#f59e0b" />
+      <circle cx={ox + 7 * cellSz + cellSz / 2 - 1} cy={oy + 7 * cellSz + cellSz / 2 - 1} r="11" fill="#7dd3fc" />
       <text x={ox + 7 * cellSz + cellSz / 2 - 1} y={oy + 7 * cellSz + cellSz / 2 - 1} textAnchor="middle" dominantBaseline="middle" fill="var(--bg-secondary)" fontSize="10" fontWeight="800">G</text>
       <text x="196" y="406" textAnchor="middle" fill="#475569" fontSize="10">
         cinza=parede  |  vermelho=caminho A*  |  f = g + h  admissível
@@ -204,10 +204,9 @@ export default function LOG5() {
   const mod = modules[4];
   return (
     <div style={S.page}>
-      <Link to="/logic" style={S.back}>← Lógica &amp; Raciocínio</Link>
-      <div style={S.badge}>{mod.num} — LÓGICA &amp; RACIOCÍNIO</div>
+      <Link to="/logic" style={S.back}>← Logic</Link>
+      <div style={S.badge}>MÓDULO {mod.num}</div>
       <h1 style={S.h1}>{mod.title}</h1>
-      <p style={S.sub}>{mod.subtitle}</p>
 
       {/* ── Secção 1 ── */}
       <div style={S.section}>
@@ -413,18 +412,6 @@ AlphaGo/AlphaZero:
           superando todos os motores simbólicos em Go, xadrez e shogi.
         </div>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>CSPs — Teoria e Exemplos</strong> — um CSP define variáveis com domínios e restrições cuja solução é uma atribuição completa e consistente; heurísticas como MRV e LCV guiam o backtracking cronológico, reduzindo espaços exponenciais a pesquisas tratáveis em problemas como coloração de mapas e puzzles aritméticos.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Propagação de Restrições e Arc Consistency</strong> — o algoritmo AC-3 elimina valores inconsistentes dos domínios propagando arcos, reduzindo o espaço de pesquisa antes e durante o backtracking; restrições globais como AllDifferent e Cumulative têm propagadores eficientes que tornam o CLP(FD) prático para scheduling industrial.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Planeamento STRIPS e PDDL</strong> — STRIPS formaliza acções como triplas (pré-condições, adições, remoções) sobre estados descritos por conjuntos de predicados; PDDL é o standard de competição que estende STRIPS com acções durativas, fluentes numéricos e preferências, sendo PSPACE-completo no caso geral.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Busca Heurística: A* e Monte Carlo Tree Search</strong> — A* garante optimalidade com heurísticas admissíveis usando f=g+h; MCTS prescinde de heurística explícita usando rollouts e o critério UCT para equilibrar exploração e aproveitamento, sendo a base do AlphaGo/AlphaZero para espaços de estados com dimensões astronómicas.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

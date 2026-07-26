@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH2() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[1].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[1].title}</h1>
-      <p style={S.sub}>{modules[1].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -62,7 +61,7 @@ export default function ETH2() {
               { x: 430, label1: 'Feedback', label2: 'Loop', bias1: 'Amplificação', bias2: 'Drift' },
             ].map((s, i) => (
               <g key={i}>
-                <rect x={s.x} y="10" width="90" height="42" rx="6" fill="rgba(249,115,22,0.08)" stroke={C} strokeWidth="1.5" />
+                <rect x={s.x} y="10" width="90" height="42" rx="6" fill="rgba(74,158,237,0.08)" stroke={C} strokeWidth="1.5" />
                 <text x={s.x + 45} y="28" textAnchor="middle" fill="#f1f5f9" fontSize="9.5" fontWeight="700">{s.label1}</text>
                 <text x={s.x + 45} y="42" textAnchor="middle" fill="#f1f5f9" fontSize="9.5" fontWeight="700">{s.label2}</text>
                 <text x={s.x + 45} y="66" textAnchor="middle" fill={C} fontSize="8.5" opacity="0.85">{s.bias1}</text>
@@ -110,36 +109,36 @@ export default function ETH2() {
 
             {/* Group A */}
             <text x="120" y="40" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Grupo A</text>
-            <rect x="60" y="50" width="50" height="40" rx="3" fill="#c2410c" stroke="#f97316" strokeWidth="1" />
-            <text x="85" y="66" textAnchor="middle" fill="#fde8d8" fontSize="8" fontWeight="700">TP</text>
-            <text x="85" y="82" textAnchor="middle" fill="#fde8d8" fontSize="9">60</text>
-            <rect x="115" y="50" width="50" height="40" rx="3" fill="#7f1d1d" stroke="#f97316" strokeWidth="1" />
-            <text x="140" y="66" textAnchor="middle" fill="#fca5a5" fontSize="8" fontWeight="700">FP</text>
-            <text x="140" y="82" textAnchor="middle" fill="#fca5a5" fontSize="9">10</text>
-            <rect x="60" y="95" width="50" height="40" rx="3" fill="#7f1d1d" stroke="#f97316" strokeWidth="1" />
-            <text x="85" y="111" textAnchor="middle" fill="#fca5a5" fontSize="8" fontWeight="700">FN</text>
-            <text x="85" y="127" textAnchor="middle" fill="#fca5a5" fontSize="9">15</text>
-            <rect x="115" y="95" width="50" height="40" rx="3" fill="#c2410c" stroke="#f97316" strokeWidth="1" />
-            <text x="140" y="111" textAnchor="middle" fill="#fde8d8" fontSize="8" fontWeight="700">TN</text>
-            <text x="140" y="127" textAnchor="middle" fill="#fde8d8" fontSize="9">40</text>
+            <rect x="60" y="50" width="50" height="40" rx="3" fill="#075985" stroke="#4a9eed" strokeWidth="1" />
+            <text x="85" y="66" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">TP</text>
+            <text x="85" y="82" textAnchor="middle" fill="#bae6fd" fontSize="9">60</text>
+            <rect x="115" y="50" width="50" height="40" rx="3" fill="#1c5cab" stroke="#4a9eed" strokeWidth="1" />
+            <text x="140" y="66" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">FP</text>
+            <text x="140" y="82" textAnchor="middle" fill="#bae6fd" fontSize="9">10</text>
+            <rect x="60" y="95" width="50" height="40" rx="3" fill="#1c5cab" stroke="#4a9eed" strokeWidth="1" />
+            <text x="85" y="111" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">FN</text>
+            <text x="85" y="127" textAnchor="middle" fill="#bae6fd" fontSize="9">15</text>
+            <rect x="115" y="95" width="50" height="40" rx="3" fill="#075985" stroke="#4a9eed" strokeWidth="1" />
+            <text x="140" y="111" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">TN</text>
+            <text x="140" y="127" textAnchor="middle" fill="#bae6fd" fontSize="9">40</text>
             <text x="120" y="152" textAnchor="middle" fill="#94a3b8" fontSize="8">TPR=0.80  FPR=0.20</text>
 
-            <line x1="250" y1="40" x2="250" y2="200" stroke="rgba(249,115,22,0.3)" strokeWidth="1" strokeDasharray="4,4" />
+            <line x1="250" y1="40" x2="250" y2="200" stroke="rgba(74,158,237,0.3)" strokeWidth="1" strokeDasharray="4,4" />
 
             {/* Group B */}
             <text x="380" y="40" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Grupo B</text>
-            <rect x="320" y="50" width="50" height="40" rx="3" fill="#c2410c" stroke="#f97316" strokeWidth="1" />
-            <text x="345" y="66" textAnchor="middle" fill="#fde8d8" fontSize="8" fontWeight="700">TP</text>
-            <text x="345" y="82" textAnchor="middle" fill="#fde8d8" fontSize="9">30</text>
-            <rect x="375" y="50" width="50" height="40" rx="3" fill="#7f1d1d" stroke="#f97316" strokeWidth="1" />
-            <text x="400" y="66" textAnchor="middle" fill="#fca5a5" fontSize="8" fontWeight="700">FP</text>
-            <text x="400" y="82" textAnchor="middle" fill="#fca5a5" fontSize="9">30</text>
-            <rect x="320" y="95" width="50" height="40" rx="3" fill="#7f1d1d" stroke="#f97316" strokeWidth="1" />
-            <text x="345" y="111" textAnchor="middle" fill="#fca5a5" fontSize="8" fontWeight="700">FN</text>
-            <text x="345" y="127" textAnchor="middle" fill="#fca5a5" fontSize="9">10</text>
-            <rect x="375" y="95" width="50" height="40" rx="3" fill="#c2410c" stroke="#f97316" strokeWidth="1" />
-            <text x="400" y="111" textAnchor="middle" fill="#fde8d8" fontSize="8" fontWeight="700">TN</text>
-            <text x="400" y="127" textAnchor="middle" fill="#fde8d8" fontSize="9">55</text>
+            <rect x="320" y="50" width="50" height="40" rx="3" fill="#075985" stroke="#4a9eed" strokeWidth="1" />
+            <text x="345" y="66" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">TP</text>
+            <text x="345" y="82" textAnchor="middle" fill="#bae6fd" fontSize="9">30</text>
+            <rect x="375" y="50" width="50" height="40" rx="3" fill="#1c5cab" stroke="#4a9eed" strokeWidth="1" />
+            <text x="400" y="66" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">FP</text>
+            <text x="400" y="82" textAnchor="middle" fill="#bae6fd" fontSize="9">30</text>
+            <rect x="320" y="95" width="50" height="40" rx="3" fill="#1c5cab" stroke="#4a9eed" strokeWidth="1" />
+            <text x="345" y="111" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">FN</text>
+            <text x="345" y="127" textAnchor="middle" fill="#bae6fd" fontSize="9">10</text>
+            <rect x="375" y="95" width="50" height="40" rx="3" fill="#075985" stroke="#4a9eed" strokeWidth="1" />
+            <text x="400" y="111" textAnchor="middle" fill="#bae6fd" fontSize="8" fontWeight="700">TN</text>
+            <text x="400" y="127" textAnchor="middle" fill="#bae6fd" fontSize="9">55</text>
             <text x="380" y="152" textAnchor="middle" fill="#94a3b8" fontSize="8">TPR=0.75  FPR=0.35</text>
 
             <text x="120" y="175" textAnchor="middle" fill="#94a3b8" fontSize="8">Positivos: 70/125 = 56%</text>
@@ -203,9 +202,9 @@ export default function ETH2() {
         <div style={S.diagram}>
           <svg viewBox="0 0 500 180" width="100%" style={{ display: 'block' }}>
             {/* Pre-processing */}
-            <rect x="10" y="20" width="145" height="130" rx="8" fill="rgba(249,115,22,0.08)" stroke={C} strokeWidth="1.5" />
+            <rect x="10" y="20" width="145" height="130" rx="8" fill="rgba(74,158,237,0.08)" stroke={C} strokeWidth="1.5" />
             <text x="82" y="42" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">PRE-PROCESSING</text>
-            <line x1="20" y1="50" x2="145" y2="50" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
+            <line x1="20" y1="50" x2="145" y2="50" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
             <text x="82" y="68" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Resampling</text>
             <text x="82" y="84" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Reweighting</text>
             <text x="82" y="100" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Data Augmentation</text>
@@ -216,9 +215,9 @@ export default function ETH2() {
             <path d="M156 85 L178 85" stroke={C} strokeWidth="1.5" markerEnd="url(#arr3)" />
 
             {/* In-processing */}
-            <rect x="180" y="20" width="145" height="130" rx="8" fill="rgba(249,115,22,0.08)" stroke={C} strokeWidth="1.5" />
+            <rect x="180" y="20" width="145" height="130" rx="8" fill="rgba(74,158,237,0.08)" stroke={C} strokeWidth="1.5" />
             <text x="252" y="42" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">IN-PROCESSING</text>
-            <line x1="190" y1="50" x2="315" y2="50" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
+            <line x1="190" y1="50" x2="315" y2="50" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
             <text x="252" y="68" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Adversarial Debiasing</text>
             <text x="252" y="84" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Fairness Constraints</text>
             <text x="252" y="100" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Reductions Approach</text>
@@ -229,9 +228,9 @@ export default function ETH2() {
             <path d="M326 85 L348 85" stroke={C} strokeWidth="1.5" markerEnd="url(#arr3)" />
 
             {/* Post-processing */}
-            <rect x="350" y="20" width="145" height="130" rx="8" fill="rgba(249,115,22,0.08)" stroke={C} strokeWidth="1.5" />
+            <rect x="350" y="20" width="145" height="130" rx="8" fill="rgba(74,158,237,0.08)" stroke={C} strokeWidth="1.5" />
             <text x="422" y="42" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">POST-PROCESSING</text>
-            <line x1="360" y1="50" x2="485" y2="50" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
+            <line x1="360" y1="50" x2="485" y2="50" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
             <text x="422" y="68" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Reject Option Class.</text>
             <text x="422" y="84" textAnchor="middle" fill="#94a3b8" fontSize="8.5">• Calibrated Equalized</text>
             <text x="422" y="100" textAnchor="middle" fill="#94a3b8" fontSize="8.5">  Odds (Pleiss et al.)</text>
@@ -250,18 +249,7 @@ export default function ETH2() {
           Nenhuma técnica de mitigação é uma solução completa. Pre-processing pode remover informação preditiva legítima. In-processing pode reduzir accuracy global. Post-processing não endereça o bias na representação dos dados. A abordagem mais robusta combina auditoria de bias em todas as fases com envolvimento de stakeholders afetados na definição da métrica de fairness relevante para o contexto específico.
         </p>
       </div>
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-                            <li style={{marginBottom:"0.4rem"}}><strong>Tipos de Bias em IA</strong> — o enviesamento pode surgir nos dados (sub-representação, histórico discriminatório), no modelo (escolha de features ou função de perda) ou na forma de uso (feedback loops); identificar a origem do bias é essencial para escolher a estratégia de mitigação adequada.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Métricas de Fairness</strong> — métricas como paridade demográfica (taxas iguais entre grupos), igualdade de oportunidade (mesma taxa de verdadeiros positivos) e calibração (probabilidades consistentes entre grupos) quantificam dimensões distintas de equidade que podem ser relevantes conforme o contexto de aplicação.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Teorema da Impossibilidade</strong> — Chouldechova e Kleinberg demonstraram matematicamente que, salvo em condições muito restritas, é impossível satisfazer simultaneamente paridade demográfica, igualdade de oportunidade e calibração; qualquer sistema terá de fazer escolhas explícitas sobre qual dimensão de equidade priorizar.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Técnicas de Mitigação</strong> — as intervenções podem ocorrer antes do treino (re-amostragem ou re-ponderação dos dados), durante o treino (restrições de equidade na função de perda) ou após o treino (ajuste de limiares por grupo); cada abordagem implica trocas entre equidade, precisão e complexidade operacional.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

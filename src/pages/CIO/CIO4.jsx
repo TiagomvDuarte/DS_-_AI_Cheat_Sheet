@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -25,14 +25,14 @@ const ProblemExplorer = () => {
   const [sel, setSel] = useState(0);
   const problems = [
     {
-      name: 'Knapsack', color: '#f97316',
+      name: 'Knapsack', color: '#4a9eed',
       s: 'Vectores binários de comprimento n (igual ao número de itens). Cada posição i = 1 se o item i é incluído, 0 caso contrário. Número total de soluções possíveis: 2ⁿ — para n=50, isso é mais de 10¹⁵ possibilidades.',
       f: 'Se o peso total dos itens incluídos não excede a capacidade W, o fitness é o valor total dos itens seleccionados (queremos maximizar). Se o peso total excede W, o fitness é zero (ou uma penalização). Esta é a Regra de Ouro em acção: não se resolve o problema dentro do fitness, simplesmente avalia-se como zero as soluções infeasible.',
       n: 'Bit-flip: para cada solução corrente, os vizinhos são todos os vectores que diferem em exactamente 1 bit. Um vector binário de comprimento n tem exactamente n vizinhos. Vizinhança compacta e completamente conexa — qualquer solução é alcançável a partir de qualquer outra.',
       when: 'Problemas de selecção de itens com restrição de capacidade. Orçamentos, selecção de activos, carregamento de contentores, corte e empacotamento 1D.',
     },
     {
-      name: 'TSP', color: '#f97316',
+      name: 'TSP', color: '#4a9eed',
       s: 'Permutações de n cidades. Uma permutação [c₁, c₂, ..., cₙ] representa o percurso que visita c₁, depois c₂, ..., cₙ e regressa a c₁. Número total de soluções: (n-1)!/2 — para n=20 cidades, isso é cerca de 6 × 10¹⁶ rotas possíveis.',
       f: 'Distância total percorrida: soma das distâncias entre cidades consecutivas na permutação, incluindo o regresso à cidade inicial. Queremos minimizar. Todas as permutações são soluções válidas (não há infeasibility) — não é necessária penalização.',
       n: '2-opt swap: escolher dois arcos não adjacentes (i→i+1) e (j→j+1) e substituí-los por (i→j) e (i+1→j+1), invertendo o segmento entre eles. Uma solução de n cidades tem O(n²) vizinhos no 2-opt. Vizinhança mais rica que o bit-flip — captura estrutura da rota.',
@@ -70,15 +70,15 @@ const KnapsackDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Knapsack — representação e avaliação</p>
     <svg viewBox="0 0 520 130" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr-ks" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
+        <marker id="arr-ks" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
       </defs>
       {/* Items */}
       <text x="95" y="15" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">ITENS DISPONÍVEIS</text>
       {[
-        { x: 15, label: 'Item 1', v: 'v=4', w: 'w=2', c: '#f97316' },
-        { x: 70, label: 'Item 2', v: 'v=7', w: 'w=5', c: '#f97316' },
-        { x: 125, label: 'Item 3', v: 'v=2', w: 'w=1', c: '#f97316' },
-        { x: 180, label: 'Item 4', v: 'v=9', w: 'w=6', c: '#f97316' },
+        { x: 15, label: 'Item 1', v: 'v=4', w: 'w=2', c: '#4a9eed' },
+        { x: 70, label: 'Item 2', v: 'v=7', w: 'w=5', c: '#4a9eed' },
+        { x: 125, label: 'Item 3', v: 'v=2', w: 'w=1', c: '#4a9eed' },
+        { x: 180, label: 'Item 4', v: 'v=9', w: 'w=6', c: '#4a9eed' },
       ].map(({ x, label, v, w, c }) => (
         <g key={x}>
           <rect x={x} y="22" width="46" height="46" rx="6" fill={`${c}15`} stroke={c} strokeWidth="1.5"/>
@@ -96,27 +96,27 @@ const KnapsackDiagram = () => (
         { x: 180, val: '0', active: false },
       ].map(({ x, val, active }) => (
         <g key={x}>
-          <rect x={x + 8} y="96" width="30" height="25" rx="4" fill={active ? 'rgba(249,115,22,0.10)' : 'var(--bg-primary)'} stroke={active ? '#f97316' : 'var(--card-border)'} strokeWidth="1.5"/>
-          <text x={x + 23} y="113" textAnchor="middle" fill={active ? '#f97316' : 'var(--text-secondary)'} fontSize="12" fontWeight="700">{val}</text>
+          <rect x={x + 8} y="96" width="30" height="25" rx="4" fill={active ? 'rgba(74,158,237,0.10)' : 'var(--bg-primary)'} stroke={active ? '#4a9eed' : 'var(--card-border)'} strokeWidth="1.5"/>
+          <text x={x + 23} y="113" textAnchor="middle" fill={active ? '#4a9eed' : 'var(--text-secondary)'} fontSize="12" fontWeight="700">{val}</text>
         </g>
       ))}
       {/* Evaluation */}
       <text x="290" y="15" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">AVALIAÇÃO</text>
-      <rect x="230" y="22" width="130" height="58" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
+      <rect x="230" y="22" width="130" height="58" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
       <text x="295" y="42" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Peso total: 2+1 = 3</text>
       <text x="295" y="55" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Capacidade W = 6</text>
       <text x="295" y="68" textAnchor="middle" fill="var(--text-primary)" fontSize="9">3 ≤ 6 → feasible ✓</text>
-      <rect x="230" y="88" width="130" height="28" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="295" y="106" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">fitness = 4 + 2 = 6</text>
+      <rect x="230" y="88" width="130" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="295" y="106" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">fitness = 4 + 2 = 6</text>
 
       {/* Bad case */}
       <text x="430" y="15" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">CASO INFEASIBLE</text>
-      <rect x="370" y="22" width="130" height="58" rx="8" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
+      <rect x="370" y="22" width="130" height="58" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
       <text x="435" y="42" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Itens 1+2+3+4</text>
       <text x="435" y="55" textAnchor="middle" fill="var(--text-primary)" fontSize="9">Peso: 2+5+1+6=14</text>
-      <text x="435" y="68" textAnchor="middle" fill="#f97316" fontSize="9">14 &gt; 6 → infeasible ✗</text>
-      <rect x="370" y="88" width="130" height="28" rx="6" fill="#ef444415" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="435" y="105" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">fitness = 0 (Regra de Ouro)</text>
+      <text x="435" y="68" textAnchor="middle" fill="#4a9eed" fontSize="9">14 &gt; 6 → infeasible ✗</text>
+      <rect x="370" y="88" width="130" height="28" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="435" y="105" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">fitness = 0 (Regra de Ouro)</text>
     </svg>
   </div>
 );
@@ -126,18 +126,18 @@ const TSPDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>TSP — representação por permutação e vizinhança 2-opt</p>
     <svg viewBox="0 0 520 140" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr-tsp" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316" /></marker>
-        <marker id="arr-tsp2" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#f97316" /></marker>
+        <marker id="arr-tsp" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed" /></marker>
+        <marker id="arr-tsp2" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9eed" /></marker>
       </defs>
       {/* Original route */}
       <text x="100" y="12" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">ROTA ORIGINAL [A→B→C→D→E→A]</text>
       <polyline points="45,45 120,30 165,70 140,110 60,100 45,45" fill="none" stroke="var(--text-secondary)" strokeWidth="1.5"/>
       {[
-        { id: 'A', cx: 45, cy: 45, col: '#f97316' }, { id: 'B', cx: 120, cy: 30, col: '#fb923c' }, { id: 'C', cx: 165, cy: 70, col: '#fdba74' },
-        { id: 'D', cx: 140, cy: 110, col: '#f59e0b' }, { id: 'E', cx: 60, cy: 100, col: '#fed7aa' },
+        { id: 'A', cx: 45, cy: 45, col: '#4a9eed' }, { id: 'B', cx: 120, cy: 30, col: '#38bdf8' }, { id: 'C', cx: 165, cy: 70, col: '#bae6fd' },
+        { id: 'D', cx: 140, cy: 110, col: '#0284c7' }, { id: 'E', cx: 60, cy: 100, col: '#e0f2fe' },
       ].map(({ id, cx, cy, col }) => (
         <g key={id}>
-          <circle cx={cx} cy={cy} r={10} fill={`${col}30`} stroke={col} strokeWidth="1.5"/>
+          <circle cx={cx} cy={cy} r={10} fill="var(--bg-secondary)" stroke={col} strokeWidth="1.5"/>
           <text x={cx} y={cy + 4} textAnchor="middle" fill={col} fontSize="9" fontWeight="700">{id}</text>
         </g>
       ))}
@@ -147,15 +147,15 @@ const TSPDiagram = () => (
       <text x="310" y="12" textAnchor="middle" fill="var(--text-secondary)" fontSize="9" fontWeight="700">DEPOIS DE 2-OPT SWAP</text>
       <polyline points="255,45 330,30 350,110 375,70 270,100 255,45" fill="none" stroke="var(--text-secondary)" strokeWidth="1.5"/>
       {[
-        { id: 'A', cx: 255, cy: 45, col: '#f97316' }, { id: 'B', cx: 330, cy: 30, col: '#fb923c' }, { id: 'C', cx: 375, cy: 70, col: '#fdba74' },
-        { id: 'D', cx: 350, cy: 110, col: '#f59e0b' }, { id: 'E', cx: 270, cy: 100, col: '#fed7aa' },
+        { id: 'A', cx: 255, cy: 45, col: '#4a9eed' }, { id: 'B', cx: 330, cy: 30, col: '#38bdf8' }, { id: 'C', cx: 375, cy: 70, col: '#bae6fd' },
+        { id: 'D', cx: 350, cy: 110, col: '#0284c7' }, { id: 'E', cx: 270, cy: 100, col: '#e0f2fe' },
       ].map(({ id, cx, cy, col }) => (
         <g key={id}>
-          <circle cx={cx} cy={cy} r={10} fill={`${col}30`} stroke={col} strokeWidth="1.5"/>
+          <circle cx={cx} cy={cy} r={10} fill="var(--bg-secondary)" stroke={col} strokeWidth="1.5"/>
           <text x={cx} y={cy + 4} textAnchor="middle" fill={col} fontSize="9" fontWeight="700">{id}</text>
         </g>
       ))}
-      <text x="310" y="128" textAnchor="middle" fill="#f97316" fontSize="8">distância total: 280km — 12.5% melhoria!</text>
+      <text x="310" y="128" textAnchor="middle" fill="#4a9eed" fontSize="8">distância total: 280km — 12.5% melhoria!</text>
 
       {/* Arrow in middle */}
       <path d="M 195,70 L 225,70" fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" markerEnd="url(#arr-tsp)"/>
@@ -171,9 +171,8 @@ export default function CIO4() {
     <div style={{ padding: '2rem 1rem' }}>
       <div style={S.page}>
         <Link to="/cio" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
-        <div style={S.tag}>Module 4</div>
+        <div style={S.tag}>Módulo 5</div>
         <h1 style={S.h1}>Modelação de Problemas: Knapsack & TSP</h1>
-        <p style={S.lead}>A modelação é o passo mais importante na aplicação de algoritmos de optimização. Antes de escolher o algoritmo, é necessário responder a quatro perguntas que definem completamente o problema. A Regra de Ouro — não resolver o problema dentro da função de fitness — é o princípio guia para evitar armadilhas comuns.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. As 4 Perguntas — O Framework de Design</h2>
@@ -189,7 +188,7 @@ export default function CIO4() {
                   ['Qual é a vizinhança N(x)?', 'Para cada solução x, o conjunto de soluções "próximas" que podem ser atingidas num passo. Define a estrutura local do espaço.', 'Deve ser (1) conexa (qualquer solução acessível), (2) compacta (número de vizinhos manejável), (3) coerente com a representação.', 'Vizinhança demasiado pequena (poucos vizinhos, pesquisa lenta). Vizinhança demasiado grande (computacionalmente inviável). Vizinhança desconexa.'],
                   ['Maximizar ou minimizar?', 'O sentido de optimização: procurar o máximo ou o mínimo de f.', 'Trivialmente interconvertível (maximizar f = minimizar -f), mas importante para os critérios de aceitação e terminação.', 'Inconsistência entre a definição do problema e o operador de selecção/aceitação do algoritmo.'],
                 ].map(([q, d, c, e]) => (
-                  <tr key={q}><td style={{ ...S.td, fontWeight: 600, color: '#f97316', fontSize: '0.85rem' }}>{q}</td><td style={S.td}>{d}</td><td style={{ ...S.td, fontSize: '0.83rem' }}>{c}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.83rem' }}>{e}</td></tr>
+                  <tr key={q}><td style={{ ...S.td, fontWeight: 600, color: '#4a9eed', fontSize: '0.85rem' }}>{q}</td><td style={S.td}>{d}</td><td style={{ ...S.td, fontSize: '0.83rem' }}>{c}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.83rem' }}>{e}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -213,7 +212,7 @@ export default function CIO4() {
                   ['Scheduling: tarefa excede prazo', 'Comprimir ou remover tarefas dentro do cálculo do fitness.', 'Penalização proporcional ao atraso total. O fitness reflete a gravidade.'],
                   ['Bin packing: item não cabe no bin', 'Mover item para o bin seguinte durante a avaliação.', 'Penalizar por número de bins extras necessários. Fitness = bins usados.'],
                 ].map(([s, e, c]) => (
-                  <tr key={s}><td style={{ ...S.td, fontWeight: 600 }}>{s}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{e}</td><td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{c}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, fontWeight: 600 }}>{s}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{e}</td><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{c}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -277,18 +276,8 @@ export default function CIO4() {
           </div>
         </div>
 
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-              <li>As 4 perguntas: Qual é S? Qual é f? Qual é N? Maximizar ou minimizar? Responder a estas 4 perguntas especifica completamente o problema.</li>
-              <li>Regra de Ouro: o fitness avalia, nunca corrige. Soluções inválidas recebem fitness baixo, não são "reparadas" dentro do fitness.</li>
-              <li>Knapsack: S = {'{0,1}ⁿ'}, f = valor total se peso ≤ W (senão 0), N = bit-flip (n vizinhos). Vizinhança completamente conexa.</li>
-              <li>TSP: S = permutações, f = distância total (minimizar), N = 2-opt (O(n²) vizinhos). Sem infeasibility — todas as permutações são válidas.</li>
-              <li>A escolha da vizinhança é crítica: o 2-opt explora conhecimento geométrico do TSP e é muito superior a swaps aleatórios.</li>
-            </ul>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

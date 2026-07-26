@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -15,7 +15,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(22,163,74,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
@@ -50,19 +50,8 @@ export default function DL13() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 13</div>
+      <div style={S.tag}>MÓDULO 10</div>
       <h1 style={S.h1}>TensorFlow &amp; PyTorch</h1>
-      <p style={S.lead}>
-        Os módulos 1 a 12 construíram a teoria de Deep Learning — neurónios, backpropagation, optimização,
-        regularização, autoencoders e VAEs, GNNs, self-supervised learning, modelos multimodais, scaling laws,
-        eficiência e federated learning. Este módulo final é onde tudo se junta em <strong>código real</strong>.
-        Vamos implementar cada um destes conceitos lado a lado nos dois frameworks dominantes da indústria:
-        <strong> PyTorch</strong> (preferido em investigação, define-by-run, API "pythónica") e
-        <strong> TensorFlow / Keras</strong> (forte em produção, com a API de alto nível Keras a tornar
-        o desenvolvimento muito rápido). O objectivo não é decidir qual é "melhor", mas sim reconhecer os
-        mesmos padrões — tensores, autograd, camadas, optimizadores, ciclos de treino — em ambas as sintaxes,
-        para que possas ler e escrever código em qualquer um dos dois.
-      </p>
 
       {/* 1. Tensors */}
       <div style={S.section}>
@@ -869,17 +858,8 @@ model.fit(train_dataset, epochs=10, callbacks=[checkpoint_cb])`}
             </tr>
           </tbody>
         </table>
-        <div style={S.section}>
-          <h2 style={S.h2}>13. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <p style={{ ...S.p, marginBottom: 0 }}>
-              <strong>Conclusão do curso:</strong> os 13 módulos cobriram desde o neurónio individual
-              até modelos federados e geração de imagens com VAEs/GNNs — e agora tens o vocabulário de
-              código necessário, em ambos os frameworks, para implementar qualquer um destes conceitos
-              num projecto real.
-            </p>
-          </div>
-        </div>
+        
+
       </div>
     </div>
   );

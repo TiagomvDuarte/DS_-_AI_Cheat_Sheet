@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -30,9 +30,9 @@ const DockerLayersDiagram = () => (
       <text x="120" y="16" textAnchor="middle" fill={color} fontSize="11" fontWeight="700">Imagem (read-only)</text>
       {[
         ['FROM python:3.11-slim', '#94a3b8'],
-        ['RUN pip install -r requirements.txt', '#f97316'],
-        ['COPY . /app', '#f97316'],
-        ['CMD ["uvicorn", "main:app"]', '#f97316'],
+        ['RUN pip install -r requirements.txt', '#4a9eed'],
+        ['COPY . /app', '#4a9eed'],
+        ['CMD ["uvicorn", "main:app"]', '#4a9eed'],
       ].map(([txt, c], i) => (
         <g key={txt}>
           <rect x="20" y={26 + i * 32} width="200" height="26" rx="4" fill={`${c}1f`} stroke={c} strokeWidth="1.2"/>
@@ -47,11 +47,11 @@ const DockerLayersDiagram = () => (
       <line x1="225" y1="100" x2="270" y2="100" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-doc)"/>
       <text x="247" y="92" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">docker run</text>
 
-      <text x="380" y="16" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Container (em execução)</text>
+      <text x="380" y="16" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Container (em execução)</text>
       <rect x="280" y="26" width="200" height="128" rx="4" fill="rgba(148,163,184,0.06)" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,3"/>
       <text x="380" y="44" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">layers da imagem (read-only)</text>
-      <rect x="295" y="55" width="170" height="30" rx="4" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="1.2"/>
-      <text x="380" y="74" textAnchor="middle" fill="#f97316" fontSize="8.5">Container layer (read-write)</text>
+      <rect x="295" y="55" width="170" height="30" rx="4" fill="rgba(74,158,237,0.12)" stroke="#4a9eed" strokeWidth="1.2"/>
+      <text x="380" y="74" textAnchor="middle" fill="#4a9eed" fontSize="8.5">Container layer (read-write)</text>
       <text x="380" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">— processo isolado a correr</text>
       <text x="380" y="114" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">— filesystem efémero (perde-se</text>
       <text x="380" y="126" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">  ao remover o container)</text>
@@ -88,15 +88,15 @@ const K8sArchDiagram = () => (
       {/* Worker Nodes */}
       {[20, 215, 410].map((x, i) => (
         <g key={x}>
-          <rect x={x} y="120" width="155" height="105" rx="8" fill="rgba(249,115,22,0.06)" stroke="#f97316" strokeWidth="1.5"/>
-          <text x={x + 77} y="138" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">Worker Node {i + 1}</text>
+          <rect x={x} y="120" width="155" height="105" rx="8" fill="rgba(74,158,237,0.06)" stroke="#4a9eed" strokeWidth="1.5"/>
+          <text x={x + 77} y="138" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">Worker Node {i + 1}</text>
           <rect x={x + 10} y="146" width="65" height="22" rx="4" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1"/>
           <text x={x + 42} y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">kubelet</text>
           <rect x={x + 80} y="146" width="65" height="22" rx="4" fill="var(--bg-primary)" stroke="var(--text-secondary)" strokeWidth="1"/>
           <text x={x + 112} y="160" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">kube-proxy</text>
           {[0, 1].map(j => (
             <g key={j}>
-              <rect x={x + 10 + j * 75} y="174" width="65" height="40" rx="4" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.2"/>
+              <rect x={x + 10 + j * 75} y="174" width="65" height="40" rx="4" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.2"/>
               <text x={x + 42 + j * 75} y="190" textAnchor="middle" fill={color} fontSize="8" fontWeight="700">Pod</text>
               <text x={x + 42 + j * 75} y="202" textAnchor="middle" fill="var(--text-secondary)" fontSize="6.5">container(s)</text>
             </g>
@@ -115,14 +115,14 @@ const K8sObjectsDiagram = () => (
       <defs>
         <marker id="arr-obj" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" /></marker>
       </defs>
-      <rect x="180" y="10" width="200" height="36" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="280" y="33" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">Deployment (nginx, replicas: 3)</text>
+      <rect x="180" y="10" width="200" height="36" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="280" y="33" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">Deployment (nginx, replicas: 3)</text>
 
       <line x1="280" y1="46" x2="280" y2="66" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-obj)"/>
       <text x="340" y="60" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">cria/gere</text>
 
-      <rect x="190" y="68" width="180" height="34" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="280" y="89" textAnchor="middle" fill="#f97316" fontSize="10.5" fontWeight="700">ReplicaSet (mantém 3 réplicas)</text>
+      <rect x="190" y="68" width="180" height="34" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="280" y="89" textAnchor="middle" fill="#4a9eed" fontSize="10.5" fontWeight="700">ReplicaSet (mantém 3 réplicas)</text>
 
       <line x1="280" y1="102" x2="280" y2="120" stroke="var(--text-secondary)" strokeWidth="1.2" markerEnd="url(#arr-obj)"/>
       <text x="340" y="116" textAnchor="middle" fill="var(--text-secondary)" fontSize="7.5">cria/gere</text>
@@ -136,8 +136,8 @@ const K8sObjectsDiagram = () => (
         </g>
       ))}
 
-      <rect x="180" y="190" width="200" height="34" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5"/>
-      <text x="280" y="211" textAnchor="middle" fill="#f97316" fontSize="10.5" fontWeight="700">Service (IP estável + load balancing)</text>
+      <rect x="180" y="190" width="200" height="34" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5"/>
+      <text x="280" y="211" textAnchor="middle" fill="#4a9eed" fontSize="10.5" fontWeight="700">Service (IP estável + load balancing)</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Pods são efémeros (podem morrer e ser recriados com IPs novos) — o Service dá-lhes um ponto de acesso fixo e distribui tráfego entre as réplicas vivas.</p>
   </div>
@@ -255,7 +255,6 @@ export default function CBD7() {
         <Link to="/cloud-bigdata" style={S.back}><ArrowLeft size={16} /> Voltar a Cloud &amp; Big Data</Link>
         <div style={S.tag}>Module 7</div>
         <h1 style={S.h1}>Docker &amp; Kubernetes</h1>
-        <p style={S.lead}>Docker resolve o problema de empacotar e correr uma aplicação de forma consistente. Kubernetes resolve o problema seguinte: como correr, escalar e manter centenas desses containers em produção, em vários servidores, sem intervenção manual.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. Docker — Imagens, Containers &amp; Dockerfile</h2>
@@ -379,18 +378,6 @@ export default function CBD7() {
           <p style={S.p}>Tal como o auto-scaling de VMs (ver Módulo 2 — Cloud Computing Fundamentos), o HPA ajusta automaticamente o número de réplicas de um Deployment com base em métricas (CPU, memória, ou métricas customizadas), entre um mínimo e um máximo definidos. A diferença é a unidade: em vez de adicionar/remover VMs, adiciona/remove Pods — muito mais rápido (segundos, não minutos).</p>
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>6. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Docker</strong> — Imagem (read-only, layers cacheados) vs Container (instância em execução, layer de escrita efémera) vs Registry (onde se guardam/partilham imagens); o Dockerfile define as camadas da imagem de forma reprodutível.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Porquê Kubernetes</strong> — responde ao "e agora?" depois do docker run: restart automático, scheduling, scaling, networking e rolling updates — Deployment → ReplicaSet → Pods é a cadeia que garante que "N réplicas" é sempre verdade.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Arquitectura Kubernetes</strong> — Control Plane (API Server, etcd, Scheduler, Controller Manager) decide; Worker Nodes (kubelet, kube-proxy) executam; o etcd é a fonte de verdade do estado do cluster.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Objectos e Configuração</strong> — Service dá endereço estável a Pods efémeros; Ingress expõe múltiplos Services num único ponto de entrada; ConfigMaps (config não-sensível) e Secrets (dados sensíveis) separam configuração da imagem; HPA escala automaticamente por métricas.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

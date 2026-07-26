@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH6() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[5].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[5].title}</h1>
-      <p style={S.sub}>{modules[5].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -50,15 +49,15 @@ export default function ETH6() {
             {/* Title */}
             <text x="310" y="24" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="600">Risco de Automação por Setor (%)</text>
             {/* Y axis */}
-            <line x1="80" y1="40" x2="80" y2="220" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
+            <line x1="80" y1="40" x2="80" y2="220" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
             {/* X axis */}
-            <line x1="80" y1="220" x2="600" y2="220" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
+            <line x1="80" y1="220" x2="600" y2="220" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
             {/* Grid lines */}
             {[20, 40, 60, 80].map((v, i) => {
               const y = 220 - (v / 100) * 170;
               return (
                 <g key={v}>
-                  <line x1="80" y1={y} x2="600" y2={y} stroke="rgba(249,115,22,0.2)" strokeWidth="1" strokeDasharray="4,4" />
+                  <line x1="80" y1={y} x2="600" y2={y} stroke="rgba(74,158,237,0.2)" strokeWidth="1" strokeDasharray="4,4" />
                   <text x="72" y={y + 4} textAnchor="end" fill="#64748b" fontSize="10">{v}%</text>
                 </g>
               );
@@ -181,8 +180,8 @@ export default function ETH6() {
           <svg viewBox="0 0 620 200" width="100%" style={{ display: 'block' }}>
             <text x="310" y="22" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="600">Custo Energético de Treino vs. Setores de Benefício</text>
             {/* Left: Cost side */}
-            <rect x="30" y="40" width="240" height="140" rx="8" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
-            <text x="150" y="62" textAnchor="middle" fill="#f87171" fontSize="11" fontWeight="700">CUSTO ENERGÉTICO</text>
+            <rect x="30" y="40" width="240" height="140" rx="8" fill="rgba(74,158,237,0.08)" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
+            <text x="150" y="62" textAnchor="middle" fill="#7dd3fc" fontSize="11" fontWeight="700">CUSTO ENERGÉTICO</text>
             {[
               { label: 'GPT-3', val: '1 287 MWh / 552t CO₂' },
               { label: 'GPT-4 (est.)', val: '~5–50× GPT-3' },
@@ -199,8 +198,8 @@ export default function ETH6() {
             <polygon points="342,106 352,110 342,114" fill="#475569" />
             <text x="310" y="104" textAnchor="middle" fill="#475569" fontSize="9">trade-off</text>
             {/* Right: Benefit side */}
-            <rect x="350" y="40" width="240" height="140" rx="8" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.3)" strokeWidth="1" />
-            <text x="470" y="62" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="700">BENEFÍCIO POTENCIAL</text>
+            <rect x="350" y="40" width="240" height="140" rx="8" fill="rgba(74,158,237,0.08)" stroke="rgba(74,158,237,0.3)" strokeWidth="1" />
+            <text x="470" y="62" textAnchor="middle" fill="#7dd3fc" fontSize="11" fontWeight="700">BENEFÍCIO POTENCIAL</text>
             {[
               { label: 'Redes Elétricas', val: 'Otimização consumo energético' },
               { label: 'Baterias', val: 'Descoberta de materiais' },
@@ -222,18 +221,7 @@ export default function ETH6() {
       </div>
 
       <hr style={S.divider} />
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Automação e o Mercado de Trabalho</strong> — a IA e a robótica automatizam tarefas rotineiras cognitivas e manuais, destruindo alguns empregos mas criando outros; estudos como o de Acemoglu e Restrepo distinguem o efeito de deslocamento do efeito de produtividade, sendo o impacto líquido dependente da velocidade de adaptação das qualificações e das políticas de transição.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Desigualdade Algorítmica</strong> — sistemas de IA usados em crédito, habitação, saúde e justiça podem perpetuar ou ampliar desigualdades existentes quando treinados em dados históricos enviesados; os grupos mais vulneráveis tendem a ser os menos representados nos dados de treino e os mais afetados pelas decisões automatizadas.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Propostas de Resposta</strong> — as respostas políticas incluem requalificação profissional, rendimento básico universal, regulação de uso de IA em decisões de alto impacto e incentivos fiscais à criação de emprego intensivo em trabalho humano; a escolha entre estas abordagens reflete diferentes valores sobre equidade, eficiência e papel do Estado.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Impacto Ambiental da IA</strong> — o treino de grandes modelos de linguagem consome quantidades significativas de energia e água para arrefecimento dos centros de dados, contribuindo para emissões de carbono; métricas como o PUE (Power Usage Effectiveness) e iniciativas de carbono neutro visam reduzir a pegada ecológica da infraestrutura de IA.</li>
-            </ul>
-          </div>
-        </div>
+
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { modules } from './AIEthics';
 
-const C = '#f97316';
+const C = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2rem' },
@@ -24,7 +24,6 @@ export default function ETH8() {
       <Link to="/ai-ethics" style={S.back}>← Voltar ao curso</Link>
       <div style={S.badge}>{modules[7].num} — AI ETHICS &amp; GOVERNANCE</div>
       <h1 style={S.h1}>{modules[7].title}</h1>
-      <p style={S.sub}>{modules[7].subtitle}</p>
 
       {/* SECTION 1 */}
       <div style={S.section}>
@@ -58,7 +57,7 @@ export default function ETH8() {
             <text x="340" y="22" textAnchor="middle" fill="var(--text-secondary)" fontSize="12" fontWeight="600">Arquitetura GAN para Deepfakes</text>
 
             {/* GENERATOR */}
-            <rect x="15" y="38" width="165" height="110" rx="10" fill="rgba(249,115,22,0.12)" stroke={C} strokeWidth="2" />
+            <rect x="15" y="38" width="165" height="110" rx="10" fill="rgba(74,158,237,0.12)" stroke={C} strokeWidth="2" />
             <text x="97" y="64" textAnchor="middle" fill={C} fontSize="12" fontWeight="800">GENERATOR</text>
             <text x="97" y="83" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">ruído aleatório</text>
             <text x="97" y="98" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">→ imagem sintética</text>
@@ -66,20 +65,20 @@ export default function ETH8() {
             <text x="97" y="140" textAnchor="middle" fill="var(--text-primary)" fontSize="8">treina para enganar</text>
 
             {/* Imagem Falsa */}
-            <rect x="205" y="42" width="110" height="55" rx="8" fill="rgba(249,115,22,0.18)" stroke={C} strokeWidth="1.5" />
+            <rect x="205" y="42" width="110" height="55" rx="8" fill="rgba(74,158,237,0.18)" stroke={C} strokeWidth="1.5" />
             <text x="260" y="67" textAnchor="middle" fill="var(--text-primary)" fontSize="10" fontWeight="600">Imagem</text>
             <text x="260" y="83" textAnchor="middle" fill="var(--text-primary)" fontSize="10" fontWeight="600">Falsa</text>
             <line x1="180" y1="80" x2="203" y2="80" stroke={C} strokeWidth="1.5" markerEnd="url(#arrG)" />
 
             {/* Imagem Real */}
-            <rect x="205" y="120" width="110" height="60" rx="8" fill="rgba(249,115,22,0.18)" stroke={C} strokeWidth="1.5" />
+            <rect x="205" y="120" width="110" height="60" rx="8" fill="rgba(74,158,237,0.18)" stroke={C} strokeWidth="1.5" />
             <text x="260" y="143" textAnchor="middle" fill="var(--text-primary)" fontSize="10" fontWeight="600">Imagem</text>
             <text x="260" y="158" textAnchor="middle" fill="var(--text-primary)" fontSize="10" fontWeight="600">Real</text>
             <text x="260" y="171" textAnchor="middle" fill="var(--text-primary)" fontSize="8">(dataset)</text>
             <line x1="183" y1="148" x2="203" y2="148" stroke={C} strokeWidth="1.5" markerEnd="url(#arrG)" />
 
             {/* DISCRIMINATOR */}
-            <rect x="345" y="60" width="185" height="105" rx="10" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="2" />
+            <rect x="345" y="60" width="185" height="105" rx="10" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="2" />
             <text x="437" y="88" textAnchor="middle" fill={C} fontSize="12" fontWeight="800">DISCRIMINATOR</text>
             <text x="437" y="107" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">real ou falso?</text>
             <text x="437" y="123" textAnchor="middle" fill="var(--text-secondary)" fontSize="9">→ probabilidade [0,1]</text>
@@ -90,7 +89,7 @@ export default function ETH8() {
             <line x1="315" y1="148" x2="343" y2="130" stroke={C} strokeWidth="1.5" markerEnd="url(#arrG)" />
 
             {/* Output */}
-            <rect x="555" y="82" width="110" height="60" rx="8" fill="rgba(249,115,22,0.10)" stroke={C} strokeWidth="1.5" />
+            <rect x="555" y="82" width="110" height="60" rx="8" fill="rgba(74,158,237,0.10)" stroke={C} strokeWidth="1.5" />
             <text x="610" y="105" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">Real</text>
             <line x1="610" y1="113" x2="610" y2="121" stroke={`${C}50`} strokeWidth="1" />
             <text x="610" y="133" textAnchor="middle" fill="var(--text-secondary)" fontSize="10" fontWeight="700">Falso</text>
@@ -197,23 +196,23 @@ export default function ETH8() {
           <svg viewBox="0 0 620 230" width="100%" style={{ display: 'block' }}>
             <text x="310" y="22" textAnchor="middle" fill="#94a3b8" fontSize="12" fontWeight="600">Ecossistema de Desinformação — Fluxo e Intervenções</text>
             {/* Creators */}
-            <rect x="20" y="45" width="120" height="60" rx="8" fill="rgba(249,115,22,0.08)" stroke={C} strokeWidth="1.5" />
+            <rect x="20" y="45" width="120" height="60" rx="8" fill="rgba(74,158,237,0.08)" stroke={C} strokeWidth="1.5" />
             <text x="80" y="70" textAnchor="middle" fill={C} fontSize="10" fontWeight="700">CRIADORES</text>
             <text x="80" y="85" textAnchor="middle" fill="var(--text-primary)" fontSize="8">bots, atores humanos</text>
             <text x="80" y="98" textAnchor="middle" fill="var(--text-primary)" fontSize="8">conteúdo IA generativa</text>
             {/* Amplification */}
-            <rect x="175" y="45" width="120" height="60" rx="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="235" y="70" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">AMPLIFICAÇÃO</text>
+            <rect x="175" y="45" width="120" height="60" rx="8" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="235" y="70" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">AMPLIFICAÇÃO</text>
             <text x="235" y="85" textAnchor="middle" fill="var(--text-primary)" fontSize="8">redes coordenadas</text>
             <text x="235" y="98" textAnchor="middle" fill="var(--text-primary)" fontSize="8">astroturfing</text>
             {/* Platforms */}
-            <rect x="330" y="45" width="120" height="60" rx="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="390" y="70" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">PLATAFORMAS</text>
+            <rect x="330" y="45" width="120" height="60" rx="8" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="390" y="70" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">PLATAFORMAS</text>
             <text x="390" y="85" textAnchor="middle" fill="var(--text-primary)" fontSize="8">redes sociais, media</text>
             <text x="390" y="98" textAnchor="middle" fill="var(--text-primary)" fontSize="8">algoritmos de ranking</text>
             {/* Audiences */}
-            <rect x="485" y="45" width="120" height="60" rx="8" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5" />
-            <text x="545" y="70" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">AUDIÊNCIAS</text>
+            <rect x="485" y="45" width="120" height="60" rx="8" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5" />
+            <text x="545" y="70" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">AUDIÊNCIAS</text>
             <text x="545" y="85" textAnchor="middle" fill="var(--text-primary)" fontSize="8">utilizadores expostos</text>
             <text x="545" y="98" textAnchor="middle" fill="var(--text-primary)" fontSize="8">crenças, comportamento</text>
             {/* Flow arrows */}
@@ -254,18 +253,6 @@ export default function ETH8() {
         </div>
       </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>Deepfakes — Tecnologia</strong> — deepfakes são conteúdos sintéticos hiper-realistas gerados por modelos como GANs, difusão ou NeRF que substituem o rosto, a voz ou o corpo de uma pessoa; técnicas como face-swap, lip-sync e full-body puppeteering tornaram-se acessíveis com ferramentas open-source e hardware de consumo.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Deteção de Deepfakes</strong> — os detetores analisam artefactos visuais (piscares anómalos, inconsistências de iluminação, bordas de rosto), padrões espectrais ou inconsistências fisiológicas (frequência cardíaca via rPPG); a corrida armamentista entre geradores e detetores torna esta tarefa progressivamente mais difícil à medida que os modelos melhoram.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Regulação e Watermarking</strong> — iniciativas como o C2PA (Coalition for Content Provenance and Authenticity) e as obrigações do AI Act europeu exigem que conteúdo sintético seja marcado e rastreável; o watermarking invisível (embebido nos pixels ou no áudio) e os metadados assinados criptograficamente são as principais abordagens técnicas em desenvolvimento.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Desinformação e Plataformas</strong> — deepfakes de figuras públicas são usados para difundir desinformação política, extorsão e fraude; as plataformas digitais enfrentam o desafio de detetar e remover este conteúdo à escala, equilibrando liberdade de expressão com prevenção de danos, num contexto em que a velocidade de geração supera a capacidade de moderação.</li>
-            </ul>
-          </div>
-        </div>
     </div>
   );
 }

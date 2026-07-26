@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+const color = '#4a9eed';
 
-const color = '#f97316';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,367 +18,497 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
-  code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
+  code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
 
-/* ── helpers ─────────────────────────────────────────────────────────── */
-function toPath(pts, yMin, yMax, w, h) {
-  const sx = (i) => 10 + (i / (pts.length - 1)) * (w - 20);
-  const sy = (v) => h - 6 - ((v - yMin) / (yMax - yMin + 0.001)) * (h - 12);
-  return pts.map((v, i) => `${i === 0 ? 'M' : 'L'}${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join(' ');
-}
-
-/* raw series: trend + seasonal + noise (fixed) */
-const RAW24 = [
-  12, 15, 11, 18, 14, 19, 13, 22, 17, 24, 19, 28,
-  21, 26, 20, 30, 25, 32, 27, 35, 29, 37, 31, 40,
-];
-const TREND24 = RAW24.map((_, i) => 10 + i * 1.25);
-const SEASONAL24 = RAW24.map((_, i) => 4 * Math.sin((2 * Math.PI * i) / 4));
-const RESID24 = RAW24.map((v, i) => v - TREND24[i] - SEASONAL24[i]);
-
-/* MA helper */
-function computeMA(series, k) {
-  const half = Math.floor(k / 2);
-  return series.map((_, i) => {
-    if (i < half || i > series.length - 1 - half) return null;
-    let s = 0;
-    for (let j = -half; j <= half; j++) s += series[i + j];
-    return s / (2 * half + 1);
-  });
-}
-
-/* SES helper */
-function computeSES(series, alpha) {
-  const out = [series[0]];
-  for (let i = 1; i < series.length; i++) {
-    out.push(alpha * series[i] + (1 - alpha) * out[i - 1]);
-  }
-  return out;
-}
-
-/* Holt helper */
-function computeHolt(series, alpha, beta) {
-  let l = series[0];
-  let b = series[1] - series[0];
-  const fitted = [l + b];
-  for (let i = 1; i < series.length; i++) {
-    const lPrev = l;
-    l = alpha * series[i] + (1 - alpha) * (l + b);
-    b = beta * (l - lPrev) + (1 - beta) * b;
-    fitted.push(l + b);
-  }
-  const forecast = [];
-  for (let h = 1; h <= 6; h++) forecast.push(l + h * b);
-  return { fitted, l, b, forecast };
-}
-
-/* ── SVG panel component ─────────────────────────────────────────────── */
-function PanelChart({ series, label, strokeColor, yMin, yMax, w = 560, h = 60 }) {
-  const path = toPath(series, yMin, yMax, w, h);
+/* ── SVG 1: Frequentista vs Bayesiano ── */
+function ComparisonSVG() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-      <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', width: 80, textAlign: 'right', flexShrink: 0 }}>{label}</span>
-      <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ maxWidth: w, height: h, display: 'block' }}>
-        <path d={path} fill="none" stroke={strokeColor} strokeWidth="1.8" strokeLinejoin="round" />
-      </svg>
-    </div>
+    <svg viewBox="0 0 700 260" style={{ width: '100%', height: 'auto' }}>
+      {/* Frequentist box */}
+      <rect x="10" y="10" width="320" height="240" rx="10" fill="rgba(74,158,237,0.07)" stroke="#0284c7" strokeWidth="1.5" />
+      <text x="170" y="38" textAnchor="middle" fontSize="13" fontWeight="700" fill="#0284c7">FREQUENTISTA</text>
+      {/* bullet rows */}
+      {[
+        ['Probabilidade', 'Frequência de longo prazo'],
+        ['Parâmetros', 'Fixos e desconhecidos'],
+        ['Dados', 'Variáveis aleatórias'],
+        ['Inferência', 'p-values e IC 95%'],
+        ['Tamanho amostral', 'Precisa ser grande'],
+        ['Prior knowledge', 'Não utilizada'],
+      ].map(([k, v], i) => (
+        <g key={k} transform={`translate(20, ${55 + i * 30})`}>
+          <text fontSize="11" fontWeight="600" fill="#0284c7">{k}:</text>
+          <text x="0" y="14" fontSize="10" fill="var(--text-primary)">{v}</text>
+        </g>
+      ))}
+      {/* Bayesian box */}
+      <rect x="370" y="10" width="320" height="240" rx="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
+      <text x="530" y="38" textAnchor="middle" fontSize="13" fontWeight="700" fill={color}>BAYESIANO</text>
+      {[
+        ['Probabilidade', 'Grau de crença / incerteza'],
+        ['Parâmetros', 'Têm distribuições'],
+        ['Dados', 'Fixos (observados)'],
+        ['Inferência', 'Distribuição posterior'],
+        ['Tamanho amostral', 'Funciona com n pequeno'],
+        ['Prior knowledge', 'Incorporada explicitamente'],
+      ].map(([k, v], i) => (
+        <g key={k} transform={`translate(380, ${55 + i * 30})`}>
+          <text fontSize="11" fontWeight="600" fill={color}>{k}:</text>
+          <text x="0" y="14" fontSize="10" fill="var(--text-primary)">{v}</text>
+        </g>
+      ))}
+      {/* vs badge */}
+      <circle cx="350" cy="130" r="18" fill="#fff" stroke="var(--text-secondary)" strokeWidth="1.5" />
+      <text x="350" y="135" textAnchor="middle" fontSize="12" fontWeight="800" fill="var(--text-secondary)">VS</text>
+    </svg>
   );
 }
 
-/* ── Decomposition chart ─────────────────────────────────────────────── */
-function DecompositionChart() {
-  const w = 560;
+/* ── SVG 2: Teorema de Bayes — quatro componentes ── */
+function BayesTheoremSVG() {
+  const boxes = [
+    { x: 20, label: 'P(θ)', sub: 'Prior', desc: 'Crença inicial\nsobre θ', fill: 'rgba(74,158,237,0.10)', stroke: '#4a9eed' },
+    { x: 195, label: 'P(data|θ)', sub: 'Likelihood', desc: 'Prob. dos dados\ndado θ', fill: 'rgba(56,189,248,0.12)', stroke: '#38bdf8' },
+    { x: 370, label: 'P(data)', sub: 'Evidência', desc: 'Constante\nnormalizadora', fill: 'rgba(2,132,199,0.12)', stroke: '#0284c7' },
+    { x: 545, label: 'P(θ|data)', sub: 'Posterior', desc: 'Crença atualizada\nsobre θ', fill: 'rgba(74,158,237,0.10)', stroke: color },
+  ];
   return (
-    <div style={S.diagram}>
-      <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-        Decomposicao classica — serie original e componentes
-      </div>
-      <PanelChart series={RAW24} label="Original" strokeColor="var(--text-secondary)" yMin={8} yMax={44} w={w} h={60} />
-      <PanelChart series={TREND24} label="Tendencia" strokeColor={color} yMin={8} yMax={44} w={w} h={60} />
-      <PanelChart series={SEASONAL24} label="Sazonalidade" strokeColor="#f97316" yMin={-6} yMax={6} w={w} h={60} />
-      <PanelChart series={RESID24} label="Residuo" strokeColor="#f97316" yMin={-6} yMax={6} w={w} h={60} />
-    </div>
+    <svg viewBox="0 0 720 190" style={{ width: '100%', height: 'auto' }}>
+      <text x="360" y="22" textAnchor="middle" fontSize="14" fontWeight="700" fill="var(--text-primary)">
+        P(θ | data) = P(data | θ) × P(θ) / P(data)
+      </text>
+      {boxes.map((b, i) => (
+        <g key={b.label}>
+          <rect x={b.x} y="40" width="155" height="130" rx="8" fill={b.fill} stroke={b.stroke} strokeWidth="1.5" />
+          <text x={b.x + 77} y="68" textAnchor="middle" fontSize="15" fontWeight="800" fill={b.stroke}>{b.label}</text>
+          <text x={b.x + 77} y="88" textAnchor="middle" fontSize="10" fontWeight="700" fill={b.stroke}>{b.sub}</text>
+          {b.desc.split('\n').map((line, j) => (
+            <text key={j} x={b.x + 77} y={110 + j * 16} textAnchor="middle" fontSize="10" fill="var(--text-primary)">{line}</text>
+          ))}
+          {i < 3 && (
+            <text x={b.x + 166} y="108" textAnchor="middle" fontSize="20" fill="var(--text-secondary)">{i === 2 ? '÷' : '×'}</text>
+          )}
+        </g>
+      ))}
+    </svg>
   );
 }
 
-/* ── MA chart ────────────────────────────────────────────────────────── */
-function MAChart() {
-  const ma3 = computeMA(RAW24, 3);
-  const ma5 = computeMA(RAW24, 5);
-  const w = 560; const h = 160;
-  const yMin = 8; const yMax = 44;
-  const rawPath = toPath(RAW24, yMin, yMax, w, h);
-
-  const sx = (i) => 10 + (i / (RAW24.length - 1)) * (w - 20);
-  const sy = (v) => h - 6 - ((v - yMin) / (yMax - yMin)) * (h - 12);
-
-  let ma3Path = '';
-  let ma5Path = '';
-  ma3.forEach((v, i) => {
-    if (v === null) return;
-    const prev = ma3[i - 1];
-    ma3Path += `${(prev === null || prev === undefined) ? 'M' : 'L'}${sx(i).toFixed(1)},${sy(v).toFixed(1)} `;
-  });
-  ma5.forEach((v, i) => {
-    if (v === null) return;
-    const prev = ma5[i - 1];
-    ma5Path += `${(prev === null || prev === undefined) ? 'M' : 'L'}${sx(i).toFixed(1)},${sy(v).toFixed(1)} `;
-  });
-
+/* ── SVG 3: Updating belief flow ── */
+function BeliefUpdateSVG() {
   return (
-    <div style={S.diagram}>
-      <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-        Medias moveis MA(3) e MA(5) sobre a serie original
-      </div>
-      <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ maxWidth: w, height: h, display: 'block' }}>
-        <path d={rawPath} fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
-        <path d={ma3Path.trim()} fill="none" stroke="#f97316" strokeWidth="2.5" />
-        <path d={ma5Path.trim()} fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="8,4" />
-      </svg>
-      <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem', fontSize: '0.8rem' }}>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--text-secondary)', verticalAlign: 'middle', marginRight: 4 }} />Original</span>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: '#f97316', verticalAlign: 'middle', marginRight: 4 }} />MA(3)</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#f59e0b" strokeWidth="3" strokeDasharray="6,3"/></svg>MA(5)</span>
-      </div>
-    </div>
+    <svg viewBox="0 0 680 110" style={{ width: '100%', height: 'auto' }}>
+      {[
+        { x: 20, label: 'Prior P(θ)', color: '#0284c7', fill: 'rgba(2,132,199,0.12)', desc: 'Antes dos dados' },
+        { x: 240, label: 'Dados observados', color: '#38bdf8', fill: 'rgba(56,189,248,0.12)', desc: 'Nova evidência' },
+        { x: 460, label: 'Posterior P(θ|data)', color: '#4a9eed', fill: 'rgba(74,158,237,0.12)', desc: 'Crença atualizada' },
+      ].map((item, i) => (
+        <g key={item.label}>
+          <rect x={item.x} y="15" width="175" height="75" rx="8"
+            fill={item.fill}
+            stroke={item.color} strokeWidth="1.5" />
+          <text x={item.x + 87} y="45" textAnchor="middle" fontSize="11" fontWeight="700" fill={item.color}>{item.label}</text>
+          <text x={item.x + 87} y="65" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{item.desc}</text>
+          {i < 2 && (
+            <path d={`M ${item.x + 182} 52 L ${item.x + 205} 52`} stroke="#4a9eed" strokeWidth="2" fill="none" />
+          )}
+          {i < 2 && (
+            <polygon points={`${item.x + 205},46 ${item.x + 213},52 ${item.x + 205},58`} fill="#4a9eed" />
+          )}
+        </g>
+      ))}
+      <text x="340" y="105" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">O posterior torna-se o novo prior quando chegam mais dados</text>
+    </svg>
   );
 }
 
-/* ── STL chart ───────────────────────────────────────────────────────── */
-function STLChart() {
-  const bw = 5;
-  const loessTrend = RAW24.map((_, i) => {
-    const lo = Math.max(0, i - bw);
-    const hi = Math.min(RAW24.length - 1, i + bw);
-    let s = 0; let cnt = 0;
-    for (let j = lo; j <= hi; j++) { s += RAW24[j]; cnt++; }
-    return s / cnt;
-  });
-  const stlSeasonal = RAW24.map((v, i) => v - loessTrend[i]);
-  const stlResid = stlSeasonal.map((s, i) => s - (stlSeasonal[i % 4] + stlSeasonal[(i % 4) + 4]) / 2);
-  const w = 560;
-  return (
-    <div style={S.diagram}>
-      <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-        Decomposicao STL — tendencia suavizada via LOESS
-      </div>
-      <PanelChart series={RAW24} label="Original" strokeColor="var(--text-secondary)" yMin={8} yMax={44} w={w} h={60} />
-      <PanelChart series={loessTrend} label="LOESS trend" strokeColor={color} yMin={8} yMax={44} w={w} h={60} />
-      <PanelChart series={stlSeasonal} label="Sazonalidade" strokeColor="#f97316" yMin={-10} yMax={10} w={w} h={60} />
-      <PanelChart series={stlResid} label="Residuo" strokeColor="#f97316" yMin={-4} yMax={4} w={w} h={60} />
-    </div>
-  );
-}
+/* ── SVG 4: Beta distribution shapes ── */
+function BetaShapesSVG() {
+  // Approximate beta PDF values for display purposes
+  const betaCurves = [
+    { a: 1, b: 1, stroke: 'var(--text-secondary)', dash: '4,3', label: 'Beta(1,1) — Uniforme' },
+    { a: 2, b: 5, stroke: '#1c5cab', dash: '', label: 'Beta(2,5) — Assimétrica esq.' },
+    { a: 5, b: 2, stroke: '#3987e5', dash: '', label: 'Beta(5,2) — Assimétrica dir.' },
+    { a: 5, b: 5, stroke: '#86b6ef', dash: '', label: 'Beta(5,5) — Simétrica' },
+    { a: 0.5, b: 0.5, stroke: '#cde2fb', dash: '6,3', label: 'Beta(0.5,0.5) — Jeffreys' },
+  ];
 
-/* ── SES chart ───────────────────────────────────────────────────────── */
-function SESChart() {
-  const ses02 = computeSES(RAW24, 0.2);
-  const ses08 = computeSES(RAW24, 0.8);
-  const w = 560; const h = 160;
-  const yMin = 8; const yMax = 44;
-  const rawPath = toPath(RAW24, yMin, yMax, w, h);
-  const ses02Path = toPath(ses02, yMin, yMax, w, h);
-  const ses08Path = toPath(ses08, yMin, yMax, w, h);
-
-  const lastFitted02 = ses02[ses02.length - 1];
-  const sx = (i) => 10 + (i / (RAW24.length - 1)) * (w - 20);
-  const sy = (v) => h - 6 - ((v - yMin) / (yMax - yMin)) * (h - 12);
-  const forecastX1 = sx(RAW24.length - 1);
-  const forecastX2 = w - 2;
-  const forecastY = sy(lastFitted02);
-
-  return (
-    <div style={S.diagram}>
-      <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-        Suavizacao Exponencial Simples — efeito do parametro alfa
-      </div>
-      <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ maxWidth: w, height: h, display: 'block' }}>
-        <path d={rawPath} fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
-        <path d={ses02Path} fill="none" stroke="#f97316" strokeWidth="2.5" />
-        <path d={ses08Path} fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="8,4" />
-        <line x1={forecastX1} y1={forecastY} x2={forecastX2} y2={forecastY}
-          stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 3" />
-        <text x={forecastX2 - 4} y={forecastY - 5} textAnchor="end" fontSize="9" fill="#f59e0b">previsao</text>
-      </svg>
-      <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem', fontSize: '0.8rem' }}>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--text-secondary)', verticalAlign: 'middle', marginRight: 4 }} />Original</span>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: '#f97316', verticalAlign: 'middle', marginRight: 4 }} />SES alfa=0.2 (suave)</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#f59e0b" strokeWidth="3" strokeDasharray="6,3"/></svg>SES alfa=0.8 (reativo)</span>
-      </div>
-    </div>
-  );
-}
-
-/* ── Holt chart ──────────────────────────────────────────────────────── */
-function HoltChart() {
-  const { fitted, forecast } = computeHolt(RAW24, 0.3, 0.1);
-  const w = 560; const h = 160;
-  const n = RAW24.length;
-  const totalPts = n + forecast.length;
-  const yMin = 8; const yMax = 58;
-
-  const sx = (i) => 10 + (i / (totalPts - 1)) * (w - 20);
-  const sy = (v) => h - 6 - ((v - yMin) / (yMax - yMin)) * (h - 12);
-
-  const rawPath = RAW24.map((v, i) => `${i === 0 ? 'M' : 'L'}${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join(' ');
-  const fittedPath = fitted.map((v, i) => `${i === 0 ? 'M' : 'L'}${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join(' ');
-  const forecastPath = [`M${sx(n - 1).toFixed(1)},${sy(fitted[n - 1]).toFixed(1)}`]
-    .concat(forecast.map((v, i) => `L${sx(n + i).toFixed(1)},${sy(v).toFixed(1)}`)).join(' ');
-
-  const ciUpper = forecast.map((v, i) => v + 1.2 * (i + 1));
-  const ciLower = forecast.map((v, i) => v - 1.2 * (i + 1));
-  const fanPts = [
-    `M${sx(n - 1).toFixed(1)},${sy(fitted[n - 1]).toFixed(1)}`,
-    ...ciUpper.map((v, i) => `L${sx(n + i).toFixed(1)},${sy(v).toFixed(1)}`),
-    ...ciLower.slice().reverse().map((v, i) => `L${sx(n + forecast.length - 1 - i).toFixed(1)},${sy(v).toFixed(1)}`),
-    'Z',
-  ].join(' ');
-
-  return (
-    <div style={S.diagram}>
-      <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-        Suavizacao de Holt — previsao com tendencia e intervalo de confianca
-      </div>
-      <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ maxWidth: w, height: h, display: 'block' }}>
-        <path d={fanPts} fill="rgba(245,158,11,0.15)" stroke="none" />
-        <path d={rawPath} fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
-        <path d={fittedPath} fill="none" stroke="#f97316" strokeWidth="2.5" />
-        <path d={forecastPath} fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="8,4" />
-        <line x1={sx(n - 1)} y1={4} x2={sx(n - 1)} y2={h - 4}
-          stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3 2" />
-        <text x={sx(n - 1) + 4} y={14} fontSize="9" fill="var(--text-secondary)">previsao</text>
-      </svg>
-      <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem', fontSize: '0.8rem' }}>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--text-secondary)', verticalAlign: 'middle', marginRight: 4 }} />Original</span>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: '#f97316', verticalAlign: 'middle', marginRight: 4 }} />Holt ajustado</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#f59e0b" strokeWidth="3" strokeDasharray="6,3"/></svg>Previsao</span>
-      </div>
-    </div>
-  );
-}
-
-/* ── Holt-Winters chart ──────────────────────────────────────────────── */
-function HWChart() {
-  const period = 4;
-  const alpha = 0.3; const beta = 0.1; const gamma = 0.2;
-  let l = RAW24.slice(0, period).reduce((a, b) => a + b, 0) / period;
-  let b = (RAW24.slice(period, 2 * period).reduce((a, b) => a + b, 0) / period -
-    RAW24.slice(0, period).reduce((a, b) => a + b, 0) / period) / period;
-  const sArr = RAW24.slice(0, period).map((v) => v - l);
-  const fitted = [];
-  for (let t = 0; t < RAW24.length; t++) {
-    const si = sArr[t % period];
-    const lPrev = l;
-    l = alpha * (RAW24[t] - si) + (1 - alpha) * (l + b);
-    b = beta * (l - lPrev) + (1 - beta) * b;
-    sArr[t % period] = gamma * (RAW24[t] - lPrev - b) + (1 - gamma) * si;
-    fitted.push(l + b + sArr[t % period]);
+  function betaPDF(x, a, b) {
+    if (x <= 0 || x >= 1) return 0;
+    // unnormalized, scaled for display
+    return Math.pow(x, a - 1) * Math.pow(1 - x, b - 1);
   }
 
-  const w = 560; const h = 160;
-  const yMin = 8; const yMax = 44;
-  const rawPath = toPath(RAW24, yMin, yMax, w, h);
-  const fittedPath = toPath(fitted, yMin, yMax, w, h);
+  const padX = 40, padY = 38, plotW = 500, plotH = 130;
+
+  function getPath(a, b) {
+    const pts = [];
+    for (let i = 0; i <= 100; i++) {
+      const xv = 0.01 + i * 0.0098;
+      pts.push([xv, betaPDF(xv, a, b)]);
+    }
+    const maxY = Math.max(...pts.map(p => p[1])) || 1;
+    const svgPts = pts.map(([xv, yv]) => {
+      const sx = padX + xv * plotW;
+      const sy = padY + plotH - (yv / maxY) * (plotH - 4);
+      return `${sx},${sy}`;
+    });
+    return 'M ' + svgPts.join(' L ');
+  }
+
+  const axisY = padY + plotH;
 
   return (
-    <div style={S.diagram}>
-      <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-        Holt-Winters aditivo — ajuste sobre serie com sazonalidade
-      </div>
-      <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ maxWidth: w, height: h, display: 'block' }}>
-        <path d={rawPath} fill="none" stroke="var(--text-secondary)" strokeWidth="1.5" />
-        <path d={fittedPath} fill="none" stroke={color} strokeWidth="2" />
-      </svg>
-      <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem', fontSize: '0.8rem' }}>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--text-secondary)', verticalAlign: 'middle', marginRight: 4 }} />Original</span>
-        <span><span style={{ display: 'inline-block', width: 24, height: 3, background: color, verticalAlign: 'middle', marginRight: 4 }} />Holt-Winters ajustado</span>
-      </div>
-    </div>
+    <svg viewBox="0 0 620 240" style={{ width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}>
+      <text x="310" y="22" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">Formas da Distribuição Beta(α, β)</text>
+      {/* axes */}
+      <line x1={padX} y1={axisY} x2={padX + plotW + 5} y2={axisY} stroke="var(--text-secondary)" strokeWidth="1" />
+      <line x1={padX} y1={padY} x2={padX} y2={axisY} stroke="var(--text-secondary)" strokeWidth="1" />
+      <text x={padX + plotW / 2} y={axisY + 18} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">θ (0 a 1)</text>
+      {[0, 0.25, 0.5, 0.75, 1].map((v) => (
+        <g key={v}>
+          <text x={padX + v * plotW} y={axisY + 12} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{v}</text>
+          <line x1={padX + v * plotW} y1={axisY - 2} x2={padX + v * plotW} y2={axisY + 3} stroke="var(--text-secondary)" strokeWidth="1" />
+        </g>
+      ))}
+      {betaCurves.map((c) => (
+        <path key={c.label} d={getPath(c.a, c.b)} fill="none" stroke={c.stroke} strokeWidth="2" strokeDasharray={c.dash || ''} />
+      ))}
+      {/* legend — 3 on first row, 2 on second */}
+      {betaCurves.map((c, i) => (
+        <g key={c.label} transform={`translate(30, ${195 + Math.floor(i / 3) * 18})`}>
+          <line x1={(i % 3) * 195} y1="0" x2={(i % 3) * 195 + 20} y2="0" stroke={c.stroke} strokeWidth="2.5" />
+          <text x={(i % 3) * 195 + 25} y="4" fontSize="10" fill="var(--text-primary)">{c.label}</text>
+        </g>
+      ))}
+    </svg>
   );
 }
 
-/* ── main component ──────────────────────────────────────────────────── */
+/* ── SVG 5: Sequential Beta-Binomial updating ── */
+function SequentialUpdateSVG() {
+  function betaPDF(x, a, b) {
+    if (x <= 0 || x >= 1) return 0;
+    return Math.pow(x, a - 1) * Math.pow(1 - x, b - 1);
+  }
+
+  function getPath(a, b, color, W, H, padX, padY) {
+    const pts = [];
+    for (let i = 0; i <= 80; i++) {
+      const xv = 0.01 + i * 0.0123;
+      pts.push([xv, betaPDF(xv, a, b)]);
+    }
+    const maxY = Math.max(...pts.map(p => p[1])) || 1;
+    const svgPts = pts.map(([xv, yv]) => {
+      const sx = padX + xv * W;
+      const sy = padY + H - (yv / maxY) * (H - 5);
+      return `${sx},${sy}`;
+    });
+    return { d: 'M ' + svgPts.join(' L '), stroke: color };
+  }
+
+  const stages = [
+    { a: 1, b: 1, title: 'Prior', sub: 'Beta(1,1)', obs: '' },
+    { a: 4, b: 1, title: 'Após 3H 0C', sub: 'Beta(4,1)', obs: '+3 Heads' },
+    { a: 4, b: 3, title: 'Após 3H 2C', sub: 'Beta(4,3)', obs: '+2 Tails' },
+  ];
+  const colors = ['var(--text-secondary)', '#4a9eed', color];
+
+  const panelW = 200, panelH = 140, gap = 30, arrowW = 40;
+  const totalW = 3 * panelW + 2 * arrowW + 40;
+  const titleH = 30, obsH = 22;
+  const svgH = titleH + panelH + obsH + 20;
+
+  return (
+    <svg viewBox={`0 0 ${totalW} ${svgH}`} style={{ width: '100%', maxWidth: 740, display: 'block', margin: '0 auto', height: 'auto' }}>
+      <text x={totalW / 2} y="20" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">Atualização Sequencial: Moeda com Prior Beta</text>
+      {stages.map((s, idx) => {
+        const ox = 20 + idx * (panelW + arrowW);
+        const plotPadX = ox + 12;
+        const plotPadY = titleH + 38;
+        const plotW2 = panelW - 24;
+        const plotH2 = panelH - 50;
+        const path = getPath(s.a, s.b, colors[idx], plotW2, plotH2, plotPadX, plotPadY);
+        return (
+          <g key={s.title}>
+            <rect x={ox} y={titleH} width={panelW} height={panelH} rx="7" fill="rgba(0,0,0,0.02)" stroke="var(--text-secondary)" strokeWidth="1" />
+            <text x={ox + panelW / 2} y={titleH + 18} textAnchor="middle" fontSize="11" fontWeight="700" fill={colors[idx]}>{s.title}</text>
+            <text x={ox + panelW / 2} y={titleH + 32} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{s.sub}</text>
+            <path d={path.d} fill="none" stroke={colors[idx]} strokeWidth="2" />
+            <line x1={plotPadX} y1={plotPadY + plotH2} x2={plotPadX + plotW2} y2={plotPadY + plotH2} stroke="var(--text-secondary)" strokeWidth="1" />
+            {s.obs && (
+              <text x={ox + panelW / 2} y={titleH + panelH + 16} textAnchor="middle" fontSize="10" fontWeight="600" fill={colors[idx]}>{s.obs}</text>
+            )}
+            {idx < 2 && (
+              <g>
+                <line x1={ox + panelW + 4} y1={titleH + panelH / 2} x2={ox + panelW + arrowW - 8} y2={titleH + panelH / 2} stroke="var(--text-secondary)" strokeWidth="1.5" />
+                <polygon points={`${ox + panelW + arrowW - 8},${titleH + panelH / 2 - 4} ${ox + panelW + arrowW},${titleH + panelH / 2} ${ox + panelW + arrowW - 8},${titleH + panelH / 2 + 4}`} fill="var(--text-secondary)" />
+              </g>
+            )}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+/* ── SVG 6: Normal-Normal three curves ── */
+function NormalNormalSVG() {
+  function normalPDF(x, mu, sigma) {
+    return Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2)) / (sigma * Math.sqrt(2 * Math.PI));
+  }
+
+  function getPath(mu, sigma, col, xMin, xMax, W, H, ox, oy) {
+    const pts = [];
+    for (let i = 0; i <= 100; i++) {
+      const xv = xMin + i * (xMax - xMin) / 100;
+      pts.push([xv, normalPDF(xv, mu, sigma)]);
+    }
+    const maxY = Math.max(...pts.map(p => p[1]));
+    const svgPts = pts.map(([xv, yv]) => {
+      const sx = ox + ((xv - xMin) / (xMax - xMin)) * W;
+      const sy = oy + H - (yv / maxY) * (H - 5);
+      return `${sx},${sy}`;
+    });
+    return 'M ' + svgPts.join(' L ');
+  }
+
+  const xMin = -4, xMax = 8, W = 560, H = 120, ox = 30, oy = 40;
+
+  return (
+    <svg viewBox="0 0 620 230" style={{ width: '100%', height: 'auto' }}>
+      <text x="310" y="22" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">Modelo Normal-Normal: Prior, Likelihood e Posterior</text>
+      <line x1={ox} y1={oy + H} x2={ox + W} y2={oy + H} stroke="var(--text-secondary)" strokeWidth="1" />
+      <path d={getPath(0, 2.5, '#0284c7', xMin, xMax, W, H, ox, oy)} fill="none" stroke="#0284c7" strokeWidth="2" strokeDasharray="6,3" />
+      <path d={getPath(5, 1.5, '#38bdf8', xMin, xMax, W, H, ox, oy)} fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4,3" />
+      <path d={getPath(3.5, 1.0, '#4a9eed', xMin, xMax, W, H, ox, oy)} fill="none" stroke="#4a9eed" strokeWidth="2.5" />
+      {/* x-axis labels */}
+      {[-4, -2, 0, 2, 4, 6, 8].map(v => {
+        const sx = ox + ((v - xMin) / (xMax - xMin)) * W;
+        return (
+          <g key={v}>
+            <text x={sx} y={oy + H + 14} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{v}</text>
+            <line x1={sx} y1={oy + H} x2={sx} y2={oy + H + 4} stroke="var(--text-secondary)" strokeWidth="1" />
+          </g>
+        );
+      })}
+      {/* Legend */}
+      {[
+        { col: '#0284c7', dash: '6,3', label: 'Prior N(0, 2.5²) — crença inicial vaga' },
+        { col: '#38bdf8', dash: '4,3', label: 'Likelihood N(5, 1.5²) — dados observados' },
+        { col: '#4a9eed', dash: '', label: 'Posterior N(3.5, 1.0²) — média ponderada pela precisão' },
+      ].map((item, i) => (
+        <g key={item.label} transform={`translate(30, ${180 + i * 18})`}>
+          <line x1="0" y1="0" x2="22" y2="0" stroke={item.col} strokeWidth="2.5" strokeDasharray={item.dash} />
+          <text x="28" y="4" fontSize="10" fill="var(--text-primary)">{item.label}</text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+/* ── SVG 7: MCMC Trace Plot ── */
+function TracePlotSVG() {
+  // Simulate a trace with burn-in then mixing
+  const pts = [];
+  let val = 5;
+  for (let i = 0; i < 200; i++) {
+    if (i < 50) {
+      val = val + (2 - val) * 0.15 + (Math.sin(i * 0.3) * 1.5);
+    } else {
+      val = val + (Math.random() - 0.5) * 1.2;
+      if (val > 6) val = 6;
+      if (val < -1) val = -1;
+    }
+    pts.push(val);
+  }
+
+  const W = 560, H = 120, ox = 50, oy = 30;
+  const minV = Math.min(...pts) - 0.5;
+  const maxV = Math.max(...pts) + 0.5;
+
+  const pathD = pts.map((v, i) => {
+    const sx = ox + (i / (pts.length - 1)) * W;
+    const sy = oy + H - ((v - minV) / (maxV - minV)) * H;
+    return `${i === 0 ? 'M' : 'L'} ${sx},${sy}`;
+  }).join(' ');
+
+  const burnX = ox + (50 / 199) * W;
+
+  return (
+    <svg viewBox="0 0 660 215" style={{ width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}>
+      <text x="330" y="20" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">Trace Plot MCMC — Burn-in e Mixing</text>
+      {/* burn-in region */}
+      <rect x={ox} y={oy} width={burnX - ox} height={H} fill="rgba(74,158,237,0.10)" />
+      <line x1={burnX} y1={oy} x2={burnX} y2={oy + H} stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,3" />
+      <text x={(ox + burnX) / 2} y={oy + H + 14} textAnchor="middle" fontSize="9" fill="#4a9eed">Burn-in (descartar)</text>
+      {/* post burn-in region */}
+      <rect x={burnX} y={oy} width={W - (burnX - ox)} height={H} fill="rgba(74,158,237,0.10)" />
+      <text x={(burnX + ox + W) / 2} y={oy + H + 14} textAnchor="middle" fontSize="9" fill={color}>Amostras válidas</text>
+      {/* axes */}
+      <line x1={ox} y1={oy + H} x2={ox + W} y2={oy + H} stroke="var(--text-secondary)" strokeWidth="1" />
+      <line x1={ox} y1={oy} x2={ox} y2={oy + H} stroke="var(--text-secondary)" strokeWidth="1" />
+      {/* trace */}
+      <path d={pathD} fill="none" stroke={color} strokeWidth="1.2" />
+      <text x={ox - 10} y={oy + H / 2 + 4} textAnchor="middle" fontSize="11" fill="var(--text-secondary)" transform={`rotate(-90, ${ox - 10}, ${oy + H / 2})`}>θ</text>
+      <text x={ox + W / 2} y={oy + H + 28} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Iterações</text>
+      {/* diagnostics */}
+      <text x={ox + W / 2} y={oy + H + 50} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">R-hat: 1.002 ✓   ESS: 1847 ✓   Autocorr. lag-1: 0.12 ✓</text>
+    </svg>
+  );
+}
+
+/* ── SVG 8: Hierarchical model ── */
+function HierarchicalSVG() {
+  const groups = ['Escola A', 'Escola B', 'Escola C', 'Escola D'];
+  return (
+    <svg viewBox="0 0 620 220" style={{ width: '100%', height: 'auto' }}>
+      <text x="310" y="20" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">Modelo Hierárquico — Partial Pooling</text>
+      {/* Hyperprior */}
+      <rect x="230" y="30" width="160" height="40" rx="8" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="310" y="48" textAnchor="middle" fontSize="11" fontWeight="700" fill="#4a9eed">Hyperprior</text>
+      <text x="310" y="63" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">μ₀, τ (hiperparâmetros)</text>
+      {/* Group level */}
+      {groups.map((g, i) => {
+        const gx = 30 + i * 145;
+        return (
+          <g key={g}>
+            <line x1="310" y1="70" x2={gx + 65} y2="110" stroke="#4a9eed" strokeWidth="1" strokeDasharray="4,3" />
+            <rect x={gx} y="110" width="130" height="40" rx="6" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
+            <text x={gx + 65} y="128" textAnchor="middle" fontSize="10" fontWeight="600" fill={color}>{g}</text>
+            <text x={gx + 65} y="143" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">θᵢ ~ N(μ₀, τ²)</text>
+            {/* Observations */}
+            {[0, 1, 2].map(j => {
+              const ox2 = gx + 15 + j * 35;
+              return (
+                <g key={j}>
+                  <line x1={gx + 65} y1="150" x2={ox2 + 10} y2="178" stroke={color} strokeWidth="1" />
+                  <circle cx={ox2 + 10} cy="185" r="10" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1" />
+                  <text x={ox2 + 10} y="189" textAnchor="middle" fontSize="9" fill={color}>y</text>
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+      <text x="310" y="215" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Shrinkage: estimativas dos grupos puxadas para a média global</text>
+    </svg>
+  );
+}
+
+/* ── SVG 9: Pooling comparison ── */
+function PoolingSVG() {
+  const schools = ['A', 'B', 'C', 'D', 'E'];
+  const complete = [72, 72, 72, 72, 72];
+  const noPool = [85, 60, 78, 55, 90];
+  const partial = [80, 65, 76, 62, 85];
+  const W = 520, ox = 60, oy = 30, H = 120;
+  const minV = 40, maxV = 100;
+
+  function toY(v) { return oy + H - ((v - minV) / (maxV - minV)) * H; }
+  function toX(i) { return ox + i * (W / 4); }
+
+  return (
+    <svg viewBox="0 0 620 220" style={{ width: '100%', height: 'auto' }}>
+      <text x="310" y="20" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--text-primary)">Complete vs No Pooling vs Partial Pooling</text>
+      {/* axes */}
+      <line x1={ox} y1={oy} x2={ox} y2={oy + H} stroke="var(--text-secondary)" strokeWidth="1" />
+      <line x1={ox} y1={oy + H} x2={ox + W} y2={oy + H} stroke="var(--text-secondary)" strokeWidth="1" />
+      {[50, 60, 70, 80, 90, 100].map(v => (
+        <g key={v}>
+          <text x={ox - 6} y={toY(v) + 3} textAnchor="end" fontSize="8" fill="var(--text-secondary)">{v}</text>
+          <line x1={ox - 3} y1={toY(v)} x2={ox} y2={toY(v)} stroke="var(--text-secondary)" strokeWidth="1" />
+        </g>
+      ))}
+      {schools.map((s, i) => (
+        <text key={s} x={toX(i)} y={oy + H + 14} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Esc.{s}</text>
+      ))}
+      {/* Complete pooling line */}
+      <line x1={toX(0)} y1={toY(72)} x2={toX(4)} y2={toY(72)} stroke="var(--text-secondary)" strokeWidth="1.5" strokeDasharray="5,3" />
+      {/* No pooling points */}
+      {noPool.map((v, i) => (
+        <circle key={i} cx={toX(i)} cy={toY(v)} r="5" fill="#0284c7" fillOpacity="0.85" />
+      ))}
+      {/* Partial pooling points */}
+      {partial.map((v, i) => (
+        <circle key={i} cx={toX(i)} cy={toY(v)} r="5" fill="#4a9eed" fillOpacity="0.95" />
+      ))}
+      {/* Shrinkage arrows */}
+      {schools.map((s, i) => (
+        <line key={s} x1={toX(i)} y1={toY(noPool[i]) + (noPool[i] > partial[i] ? 6 : -6)}
+          x2={toX(i)} y2={toY(partial[i]) + (noPool[i] > partial[i] ? -6 : 6)}
+          stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="2,2" />
+      ))}
+      {/* Legend */}
+      <line x1="60" y1="178" x2="82" y2="178" stroke="var(--text-secondary)" strokeWidth="1.5" strokeDasharray="5,3" />
+      <text x="86" y="182" fontSize="10" fill="var(--text-primary)">Complete pooling</text>
+      <circle cx="220" cy="178" r="5" fill="#0284c7" fillOpacity="0.85" />
+      <text x="228" y="182" fontSize="10" fill="var(--text-primary)">No pooling</text>
+      <circle cx="330" cy="178" r="5" fill="#4a9eed" fillOpacity="0.95" />
+      <text x="338" y="182" fontSize="10" fill="var(--text-primary)">Partial pooling (Hier.)</text>
+      <text x="310" y="205" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Setas tracejadas: shrinkage das estimativas sem pooling para o modelo hierárquico</text>
+    </svg>
+  );
+}
+// ── Main component ──
 export default function ST14() {
   return (
     <div style={S.page}>
-      {/* back */}
+      {/* Back */}
       <Link to="/statistics" style={S.back}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <ArrowLeft size={16} />
         Voltar a Statistics
       </Link>
 
-      {/* header */}
+      {/* Header */}
       <div style={S.tag}>MÓDULO 14</div>
-      <h1 style={S.h1}>Decomposicao e Suavizacao Exponencial</h1>
-      <p style={S.lead}>
-        As series temporais encerram multiplos padroes sobrepostos — tendencia de longo prazo, sazonalidade
-        ciclica e ruido aleatorio. Este modulo explora como decompor esses padroes e como produzir previsoes
-        de curto prazo atraves de metodos de suavizacao exponencial, desde o modelo mais simples (SES)
-        ate ao framework ETS completo.
-      </p>
+      <h1 style={S.h1}>Estatística Bayesiana</h1>
 
-      {/* ── 1. Decomposicao Classica ─────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>1. Decomposicao Classica</h2>
+<section style={S.section}>
+        <h2 style={S.h2}>1. Frequentista vs Bayesiano</h2>
         <p style={S.p}>
-          A decomposicao classica parte do principio de que uma serie temporal <em>Y</em> pode ser expressa
-          como a combinacao de quatro componentes:
+          As duas grandes escolas da inferência estatística diferem fundamentalmente na interpretação
+          de probabilidade. Para o frequentista, probabilidade é a frequência de longo prazo de
+          eventos repetíveis. Para o bayesiano, probabilidade é um grau de crença — pode ser atribuída
+          a hipóteses únicas, parâmetros desconhecidos, ou qualquer proposição incerta.
         </p>
-        <BlockMath math="\text{Modelo Aditivo: } Y_t = T_t + S_t + C_t + I_t" />
-          <BlockMath math="\text{Modelo Multiplicativo: } Y_t = T_t \times S_t \times C_t \times I_t" />
-        <p style={S.p}>
-          Onde <strong>T</strong> e a tendencia (movimento de longo prazo), <strong>S</strong> a sazonalidade
-          (variacao periodica regular), <strong>C</strong> o ciclo (oscilacoes de medio prazo, tipicamente
-          superiores a 1 ano) e <strong>I</strong> o componente irregular ou residual (ruido aleatorio
-          nao explicado pelos outros).
-        </p>
-        <p style={S.p}>
-          O modelo aditivo e adequado quando a amplitude das flutuacoes sazonais e aproximadamente constante
-          ao longo do tempo. O modelo multiplicativo e preferido quando essa amplitude cresce proporcionalmente
-          ao nivel da serie — situacao frequente em dados economicos e de trafego.
-        </p>
-
-        <h3 style={S.h3}>Algoritmo classico de decomposicao</h3>
-        <p style={S.p}>
-          O procedimento padrao para o modelo aditivo segue tres passos principais:
-        </p>
-        <ol style={{ ...S.p, paddingLeft: '1.5rem' }}>
-          <li>Estimar a <strong>tendencia T&#x0302;</strong> atraves de uma media movel centrada de ordem igual ao periodo sazonal.</li>
-          <li>Calcular os <strong>indices sazonais</strong> como a media das diferencas (y - T&#x0302;) para cada periodo j.</li>
-          <li>Obter o <strong>residuo</strong> subtraindo a tendencia e a sazonalidade estimadas: I = y - T&#x0302; - S&#x0302;.</li>
-        </ol>
-
-        <DecompositionChart />
-
-        <div style={S.note}>
-          Para dados com sazonalidade multiplicativa, aplica-se logaritmo antes de decompor aditivamente,
-          transformando o problema num equivalente aditivo na escala logaritmica.
+        <div style={S.diagram}>
+          <ComparisonSVG />
         </div>
-
-        <h3 style={S.h3}>Escolha do modelo</h3>
+        <h3 style={S.h3}>Quando a abordagem Bayesiana vence</h3>
+        <p style={S.p}>
+          A inferência bayesiana brilha em cenários onde o tamanho amostral é pequeno (não há
+          assintótica para salvar), onde existe conhecimento especializado relevante que seria
+          desperdiçado pela abordagem frequentista, e onde a quantificação rigorosa de incerteza
+          é necessária — como em ensaios clínicos adaptativos ou sistemas de recomendação.
+        </p>
+        <div style={S.note}>
+          Bayes não é "melhor" que frequentista por definição. Em amostras grandes com priors vagos,
+          os resultados convergem. A escolha depende do problema, dos dados disponíveis e da
+          interpretação desejada.
+        </div>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Criterio</th>
-              <th style={S.th}>Aditivo</th>
-              <th style={S.th}>Multiplicativo</th>
+              <th style={S.th}>Contexto</th>
+              <th style={S.th}>Abordagem recomendada</th>
+              <th style={S.th}>Motivo</th>
             </tr>
           </thead>
           <tbody>
             {[
-              ['Amplitude sazonal', 'Constante', 'Cresce com o nivel'],
-              ['Variancia', 'Estavel', 'Proporcional ao nivel'],
-              ['Transformacao', 'Nenhuma', 'Logaritmo ou ratio'],
-              ['Interpretacao', 'Unidades originais', 'Proporcoes / percentagens'],
-              ['Exemplo tipico', 'Temperatura mensal', 'Vendas ao retalho'],
-            ].map(([a, b, c], i) => (
-              <tr key={i}>
+              ['n pequeno, prior forte', 'Bayesiana', 'Prior estabiliza estimativas'],
+              ['n grande, sem prior', 'Frequentista ou Bayesiana', 'Resultados equivalentes'],
+              ['Necessidade de P(H₁|dados)', 'Bayesiana', 'Frequentista não dá isso diretamente'],
+              ['Contexto regulatório (FDA, EMA)', 'Frequentista', 'Padrão aceito por reguladores'],
+              ['Modelos hierárquicos complexos', 'Bayesiana', 'MCMC é mais flexível'],
+              ['A/B testing com decisão contínua', 'Bayesiana', 'Permite stopping rules naturais'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
                 <td style={S.td}>{a}</td>
                 <td style={S.td}>{b}</td>
                 <td style={S.td}>{c}</td>
@@ -387,403 +518,123 @@ export default function ST14() {
         </table>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 2. Medias Moveis ─────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>2. Medias Moveis</h2>
+<section style={S.section}>
+        <h2 style={S.h2}>2. Teorema de Bayes</h2>
         <p style={S.p}>
-          A media movel de ordem k substitui cada observacao pela media aritmetica das k observacoes vizinhas,
-          suavizando as flutuacoes de curto prazo e revelando a tendencia subjacente:
+          O teorema de Bayes é a espinha dorsal de toda inferência bayesiana. Ele descreve como
+          atualizar a probabilidade de uma hipótese (ou valor de parâmetro) à luz de novos dados:
         </p>
-        <BlockMath math="\hat{T}_t = \frac{1}{k}\sum_{j=0}^{k-1} y_{t-j}" />
-        <p style={S.p}>
-          Para valores de k pares (e.g. k=4 para sazonalidade trimestral), usa-se uma media movel
-          <strong> centrada</strong>: calcula-se primeiro MA(k) e depois MA(2) sobre o resultado,
-          de modo a que o centro da janela coincida com uma observacao real e a media nao seja
-          desfasada no tempo.
-        </p>
-
-        <h3 style={S.h3}>Comparacao de ordens</h3>
-        <MAChart />
-
-        <p style={S.p}>
-          Valores maiores de k produzem linhas de tendencia mais suaves mas perdem mais observacoes
-          nas extremidades e reagem mais lentamente a mudancas de nivel. A escolha ideal de k e
-          tipicamente igual ao periodo sazonal (e.g. 4 para dados trimestrais, 12 para mensais).
-        </p>
-
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 3. Indices Sazonais ──────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>3. Indices Sazonais</h2>
-        <p style={S.p}>
-          Apos estimar a tendencia T&#x0302;<sub>t</sub>, calculam-se os indices sazonais como a media
-          das diferencas desajustadas para cada periodo j (no caso aditivo):
-        </p>
-        <BlockMath math="\bar{S}_j = \text{média de } (y_t - \hat{T}_t) \text{ para todo } t \text{ tal que } t \equiv j \pmod{m}" />
-        <p style={S.p}>
-          Para o modelo aditivo, os indices sazonais devem somar zero ao longo de um periodo completo.
-          Caso contrario, normalizam-se subtraindo a media dos proprios indices:
-        </p>
-        <BlockMath math="S^*_j = \bar{S}_j - \frac{1}{m}\sum_j \bar{S}_j" />
-
-        <h3 style={S.h3}>Exemplo — 4 trimestres</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Trimestre</th>
-              <th style={S.th}>Indice bruto</th>
-              <th style={S.th}>Indice normalizado</th>
-              <th style={S.th}>Interpretacao</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Q1', '-3.2', '-3.4', 'Abaixo da tendencia (3.4 unidades)'],
-              ['Q2', '+1.8', '+1.6', 'Ligeiramente acima'],
-              ['Q3', '+4.1', '+3.9', 'Pico sazonal'],
-              ['Q4', '-2.5', '-2.7', 'Baixa sazonal'],
-            ].map(([q, raw, norm, interp], i) => (
-              <tr key={i}>
-                <td style={S.td}><strong>{q}</strong></td>
-                <td style={S.td}>{raw}</td>
-                <td style={S.td}><strong>{norm}</strong></td>
-                <td style={S.td}>{interp}</td>
-              </tr>
-            ))}
-            <tr>
-              <td style={{ ...S.td, fontWeight: 600 }}>Soma</td>
-              <td style={S.td}>+0.2</td>
-              <td style={{ ...S.td, fontWeight: 600 }}>0.0</td>
-              <td style={S.td}>Normalizado corretamente</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style={S.note}>
-          No modelo multiplicativo, a condicao e que a media dos indices sazonais seja igual a 1 (nao a 0).
-          Normaliza-se dividindo cada indice pela media dos indices brutos.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 4. STL ───────────────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>4. STL — Decomposicao via LOESS</h2>
-        <p style={S.p}>
-          O metodo STL (<em>Seasonal and Trend decomposition using Loess</em>) supera as limitacoes
-          da decomposicao classica. Em vez de medias moveis, usa regressao localmente ponderada (LOESS)
-          para estimar tanto a tendencia como o componente sazonal, iterando ate convergencia.
-        </p>
-
         
-          <strong>LOESS:</strong> Num ponto <InlineMath math="t" />, ajusta-se um polinómio de grau <InlineMath math="d" /> usando apenas as
-          observações vizinhas, ponderadas por uma função tricúbica que atribui pesos maiores
-          às observações mais próximas.
+          <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+            <BlockMath math="P(\theta \mid \text{data}) = \frac{P(\text{data} \mid \theta) \times P(\theta)}{P(\text{data})}" />
+          </div>
+          <p style={{ ...S.p, marginBottom: 0, textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+            <InlineMath math="\text{Posterior} \propto \text{Likelihood} \times \text{Prior}" />
+          </p>
         
-
-        <h3 style={S.h3}>Vantagens do STL face a decomposicao classica</h3>
+        <div style={S.diagram}>
+          <BayesTheoremSVG />
+        </div>
+        <h3 style={S.h3}>Os quatro componentes em detalhe</h3>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Caracteristica</th>
-              <th style={S.th}>Decomposicao Classica</th>
-              <th style={S.th}>STL</th>
+              <th style={S.th}>Componente</th>
+              <th style={S.th}>Notação</th>
+              <th style={S.th}>Significado</th>
             </tr>
           </thead>
           <tbody>
             {[
-              ['Periodicidade', 'Inteira', 'Qualquer (inclui nao inteira)'],
-              ['Sazonalidade variavel', 'Nao', 'Sim (parametro s.window)'],
-              ['Robustez a outliers', 'Nao', 'Sim (opcao robust=TRUE)'],
-              ['Valores em falta', 'Problematico', 'Mais robusto com interpolacao'],
-              ['Computacao', 'Simples e rapida', 'Iterativa mas eficiente'],
-            ].map(([a, b, c], i) => (
-              <tr key={i}>
-                <td style={S.td}>{a}</td>
-                <td style={S.td}>{b}</td>
-                <td style={{ ...S.td, color }}>{c}</td>
+              ['Prior', 'P(θ)', 'Nossa crença sobre θ antes de ver os dados. Pode ser vaga (uniforme) ou informativa.'],
+              ['Likelihood', 'P(data|θ)', 'A probabilidade de observar estes dados se o parâmetro for θ. Vem do modelo.'],
+              ['Evidência (marginal)', 'P(data)', 'Constante de normalização. Integral do numerador sobre todos os θ.'],
+              ['Posterior', 'P(θ|data)', 'Crença atualizada após ver os dados. O nosso objetivo.'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
+                <td style={{ ...S.td, fontFamily: 'monospace' }}>{b}</td>
+                <td style={S.td}>{c}</td>
               </tr>
             ))}
           </tbody>
         </table>
-
-        <STLChart />
-
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 5. SES ───────────────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>5. Suavizacao Exponencial Simples (SES)</h2>
+        <h3 style={S.h3}>Atualização sequencial de crenças</h3>
         <p style={S.p}>
-          A suavizacao exponencial simples e o metodo de previsao de curto prazo mais amplamente utilizado.
-          Atribui pesos exponencialmente decrescentes as observacoes passadas, dando maior importancia
-          ao passado recente:
+          Uma propriedade elegante da inferência bayesiana é que ela é sequencialmente consistente:
+          o posterior de hoje torna-se o prior de amanhã. A ordem em que os dados chegam não altera
+          o resultado final.
         </p>
-        <BlockMath math="\ell_t = \alpha\, y_t + (1-\alpha)\,\ell_{t-1}, \quad 0 < \alpha \leq 1" />
-        <p style={S.p}>
-          A previsao h passos a frente e simplesmente o ultimo nivel estimado: y&#x0302;<sub>t+h|t</sub> = l<sub>t</sub>.
-          Expandindo a recursao, os pesos das observacoes passadas formam uma serie geometrica:
-        </p>
-
-        <h3 style={S.h3}>Pesos das observacoes com alfa = 0.3</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Observacao</th>
-              <th style={S.th}>Formula do peso</th>
-              <th style={S.th}>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[0, 1, 2, 3, 4].map((j) => {
-              const wVal = (0.3 * Math.pow(0.7, j)).toFixed(4);
-              return (
-                <tr key={j}>
-                  <td style={S.td}>y<sub>t-{j}</sub></td>
-                  <td style={S.td}>&alpha;(1-&alpha;)<sup>{j}</sup> = 0.3 x 0.7<sup>{j}</sup></td>
-                  <td style={{ ...S.td, fontWeight: j === 0 ? 700 : 400 }}>{wVal}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-
-        <SESChart />
-
-        <p style={S.p}>
-          Um valor alto de &alpha; (proximo de 1) torna o modelo muito reativo — segue de perto os dados
-          mas amplifica o ruido. Um valor baixo (proximo de 0) produz previsoes mais suaves, adequadas
-          quando o nivel da serie e relativamente estavel. O valor otimo e encontrado minimizando a
-          soma dos erros quadraticos (SSE) atraves de otimizacao numerica.
-        </p>
-
-        <div style={S.note}>
-          A SES assume que a serie nao tem tendencia nem sazonalidade significativas. Em presenca destes
-          padroes, os residuos da SES apresentarao autocorrelacao sistematica — sinal de que e necessario
-          um modelo mais complexo como Holt ou Holt-Winters.
+        <div style={S.diagram}>
+          <BeliefUpdateSVG />
         </div>
+        <h3 style={S.h3}>Exemplo: Diagnóstico médico</h3>
+        
+          <p style={S.p}>
+            Doença rara com prevalência <InlineMath math="P(D) = 0.001" />. Teste com sensibilidade <InlineMath math="P(T^+|D) = 0.99" /> e
+            especificidade <InlineMath math="P(T^-|\neg D) = 0.99" />. Qual <InlineMath math="P(D|T^+)" />?
+          </p>
+          <div style={{ margin: '0.5rem 0' }}>
+            <BlockMath math="P(D|T^+) = \frac{P(T^+|D) \cdot P(D)}{P(T^+)} = \frac{0.99 \times 0.001}{0.99 \times 0.001 + 0.01 \times 0.999} \approx 0.09" />
+          </div>
+          <p style={{ ...S.p, marginBottom: 0, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            Mesmo com teste muito preciso, a probabilidade de ter a doença após teste positivo é apenas 9%
+            — porque a doença é muito rara. A baixa prevalência (prior fraco) domina.
+          </p>
+        
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 6. Holt ──────────────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>6. Suavizacao de Holt (Dupla)</h2>
+<section style={S.section}>
+        <h2 style={S.h2}>3. Distribuições a Priori</h2>
         <p style={S.p}>
-          O metodo de Holt estende a SES adicionando um componente de tendencia. O estado do modelo e
-          descrito por dois vetores — nivel l<sub>t</sub> e declive b<sub>t</sub> — atualizados recursivamente:
+          A escolha do prior é o aspecto mais distintivo (e frequentemente debatido) da análise
+          bayesiana. Um prior deve refletir honestamente o conhecimento disponível antes de ver
+          os dados. Não é arbitrário — é uma assunção explícita, auditável e que pode ser criticada.
         </p>
-        <BlockMath math="\ell_t = \alpha\, y_t + (1-\alpha)(\ell_{t-1} + b_{t-1})" />
-          <BlockMath math="b_t = \beta(\ell_t - \ell_{t-1}) + (1-\beta)\,b_{t-1}" />
-          <BlockMath math="\hat{y}_{t+h|t} = \ell_t + h\,b_t" />
-        <p style={S.p}>
-          O parametro &alpha; controla a suavizacao do nivel e &beta; controla a suavizacao da tendencia.
-          A previsao h passos a frente segue uma linha reta a partir do ultimo nivel estimado, com
-          declive b<sub>t</sub>.
-        </p>
-
-        <h3 style={S.h3}>Variante com tendencia amortecida (Damped Trend)</h3>
-        <p style={S.p}>
-          Para horizontes de previsao longos, a extrapolacao linear pode ser excessivamente otimista.
-          O modelo de tendencia amortecida (Gardner e McKenzie, 1985) introduz um parametro de amortecimento
-          &phi; (tipicamente 0.8 a 0.98), tornando as previsoes mais conservadoras a longa distancia:
-        </p>
-        <BlockMath math="\hat{y}_{t+h|t} = \ell_t + (\phi + \phi^2 + \cdots + \phi^h)\,b_t" />
-
-        <HoltChart />
-
-        <p style={S.p}>
-          O intervalo de confianca representado e construido assumindo erros normalmente distribuidos.
-          A incerteza cresce com o horizonte de previsao h, refletindo a acumulacao de erros ao longo do tempo.
-        </p>
-
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 7. Holt-Winters ──────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>7. Holt-Winters (Tripla)</h2>
-        <p style={S.p}>
-          O metodo de Holt-Winters acrescenta ao modelo de Holt um terceiro componente para capturar a
-          sazonalidade. Existem duas variantes: aditiva (amplitude sazonal constante) e multiplicativa
-          (amplitude crescente com o nivel).
-        </p>
-
-        <h3 style={S.h3}>Equacoes — Variante Aditiva</h3>
-        <BlockMath math="\ell_t = \alpha(y_t - s_{t-m}) + (1-\alpha)(\ell_{t-1} + b_{t-1})" />
-          <BlockMath math="b_t = \beta(\ell_t - \ell_{t-1}) + (1-\beta)\,b_{t-1}" />
-          <BlockMath math="s_t = \gamma(y_t - \ell_{t-1} - b_{t-1}) + (1-\gamma)\,s_{t-m}" />
-          <BlockMath math="\hat{y}_{t+h|t} = \ell_t + h\,b_t + s_{t+h-m(k+1)}" />
-
-        <h3 style={S.h3}>Equacoes — Variante Multiplicativa</h3>
-        <BlockMath math="\ell_t = \alpha\left(\frac{y_t}{s_{t-m}}\right) + (1-\alpha)(\ell_{t-1} + b_{t-1})" />
-          <BlockMath math="s_t = \gamma\left(\frac{y_t}{\ell_{t-1} + b_{t-1}}\right) + (1-\gamma)\,s_{t-m}" />
-          <BlockMath math="\hat{y}_{t+h|t} = (\ell_t + h\,b_t)\times s_{t+h-m(k+1)}" />
-
-        <HWChart />
-
-        <h3 style={S.h3}>Parametros e inicializacao</h3>
+        <h3 style={S.h3}>Tipos de prior</h3>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Parametro</th>
-              <th style={S.th}>Papel</th>
-              <th style={S.th}>Intervalo tipico</th>
+              <th style={S.th}>Tipo</th>
+              <th style={S.th}>Quando usar</th>
+              <th style={S.th}>Exemplo</th>
             </tr>
           </thead>
           <tbody>
             {[
-              ['alfa', 'Suavizacao do nivel', '0.1 – 0.5'],
-              ['beta', 'Suavizacao da tendencia', '0.01 – 0.3'],
-              ['gamma', 'Suavizacao da sazonalidade', '0.05 – 0.5'],
-              ['m', 'Periodo sazonal', '4 (trimestral), 12 (mensal)'],
-            ].map(([a, b, c], i) => (
-              <tr key={i}>
-                <td style={S.td}>{a}</td>
+              ['Informativo', 'Conhecimento especializado sólido', 'Beta(8,2) para moeda viciada conhecida'],
+              ['Fracamente informativo', 'Regularização, evitar extremos', 'Normal(0, 10) em regressão'],
+              ['Não-informativo / Plano', 'Deixar os dados falar', 'Uniforme em [0,1], Beta(1,1)'],
+              ['Prior de Jeffreys', 'Invariância à reparametrização', 'Beta(0.5, 0.5) para proporção'],
+              ['Conjugado', 'Posteriors em forma fechada', 'Beta para likelihood Binomial'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
                 <td style={S.td}>{b}</td>
                 <td style={S.td}>{c}</td>
               </tr>
             ))}
           </tbody>
         </table>
-
-        <div style={S.note}>
-          Os parametros otimos sao estimados minimizando o SSE atraves de otimizacao numerica (tipicamente
-          L-BFGS-B). A inicializacao do nivel e tendencia e feita com as primeiras m observacoes por regressao.
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 8. ETS ───────────────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>8. Framework ETS — Estado em Espaco</h2>
-        <p style={S.p}>
-          O framework ETS (Error, Trend, Seasonal) unifica todos os modelos de suavizacao exponencial
-          numa representacao de espaco de estados, permitindo calcular intervalos de predicao formalmente
-          e selecionar automaticamente o modelo otimo por AIC.
-        </p>
-
-        <div style={S.highlight}>
-          <strong>ETS(Error, Trend, Seasonal)</strong>
-          <br />
-          Error: A (aditivo) ou M (multiplicativo)
-          <br />
-          Trend: N (nenhuma), A (aditiva), Ad (aditiva amortecida), M (multiplicativa)
-          <br />
-          Seasonal: N (nenhuma), A (aditiva), M (multiplicativa)
-        </div>
-
-        <h3 style={S.h3}>Modelos ETS comuns e equivalencias</h3>
+        <h3 style={S.h3}>Priors conjugados — pares clássicos</h3>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Modelo ETS</th>
-              <th style={S.th}>Equivalente classico</th>
-              <th style={S.th}>Componentes</th>
+              <th style={S.th}>Prior</th>
+              <th style={S.th}>Likelihood</th>
+              <th style={S.th}>Posterior</th>
+              <th style={S.th}>Aplicação</th>
             </tr>
           </thead>
           <tbody>
             {[
-              ['ETS(A,N,N)', 'SES', 'Nivel, sem tendencia, sem sazonalidade'],
-              ['ETS(A,A,N)', 'Holt linear', 'Nivel + tendencia aditiva'],
-              ['ETS(A,Ad,N)', 'Damped Holt', 'Nivel + tendencia amortecida'],
-              ['ETS(A,A,A)', 'Holt-Winters aditivo', 'Nivel + tendencia + sazonalidade aditiva'],
-              ['ETS(M,A,M)', 'Holt-Winters multiplicativo', 'Nivel + tendencia + sazonalidade mult.'],
-              ['ETS(M,Ad,M)', 'Damped HW mult.', 'Variante mais robusta para previsao longa'],
-            ].map(([a, b, c], i) => (
-              <tr key={i} style={i < 2 ? { background: 'rgba(249,115,22,0.10)' } : {}}>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontWeight: 600 }}>{a}</td>
-                <td style={S.td}>{b}</td>
-                <td style={S.td}>{c}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Selecao automatica por AIC</h3>
-        <p style={S.p}>
-          A funcao <code>ets()</code> do pacote <em>forecast</em> ajusta e compara automaticamente todos
-          os modelos ETS validos (ate 30 combinacoes possiveis), selecionando o de menor AIC:
-        </p>
-        <BlockMath math="\text{AIC} = -2\log(L) + 2k" />
-        <p style={S.p}>
-          Onde L e a verossimilhanca maximizada e k o numero de parametros estimados. O AICc (corrigido
-          para amostras pequenas) e preferido quando T / k e inferior a 40.
-        </p>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 9. Avaliacao ─────────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>9. Avaliacao e Previsao</h2>
-        <p style={S.p}>
-          A avaliacao da qualidade preditiva deve ser feita sempre num conjunto de teste nao visto durante
-          o ajuste do modelo. Para series temporais usa-se uma divisao temporal (nao aleatoria), reservando
-          os ultimos h periodos para avaliacao.
-        </p>
-
-        <h3 style={S.h3}>Metricas de erro de previsao</h3>
-        <BlockMath math="\text{MAE} = \frac{1}{n}\sum|e_t|, \quad \text{RMSE} = \sqrt{\frac{1}{n}\sum e_t^2}" />
-          <BlockMath math="\text{MAPE} = \frac{100}{n}\sum\left|\frac{e_t}{y_t}\right|, \quad \text{MASE} = \frac{\text{MAE}}{\text{MAE}_{\text{naive}}}" />
-
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Metrica</th>
-              <th style={S.th}>Escala</th>
-              <th style={S.th}>Vantagem</th>
-              <th style={S.th}>Limitacao</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['MAE', 'Original', 'Interpretavel, robusto a outliers', 'Escala dependente'],
-              ['RMSE', 'Original', 'Penaliza erros grandes', 'Sensivel a outliers'],
-              ['MAPE', 'Percentagem', 'Comparavel entre series', 'Indefinido quando y=0'],
-              ['MASE', 'Adimensional', 'Comparavel, escala livre', 'Requer naive sazonal como referencia'],
-            ].map(([a, b, c, d], i) => (
-              <tr key={i}>
-                <td style={{ ...S.td, fontWeight: 600 }}>{a}</td>
-                <td style={S.td}>{b}</td>
-                <td style={S.td}>{c}</td>
-                <td style={S.td}>{d}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Comparacao de modelos — benchmark</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Modelo</th>
-              <th style={S.th}>RMSE</th>
-              <th style={S.th}>MAE</th>
-              <th style={S.th}>MASE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['Naive (benchmark)', '14.2', '11.8', '1.00'],
-              ['Seasonal Naive', '9.7', '8.1', '0.69'],
-              ['SES', '11.3', '9.4', '0.80'],
-              ['Holt', '8.9', '7.3', '0.62'],
-              ['Holt-Winters', '5.4', '4.2', '0.36'],
-              ['ETS (auto)', '5.1', '4.0', '0.34'],
-              ['ARIMA (auto)', '5.3', '4.1', '0.35'],
-            ].map(([a, b, c, d], i) => (
-              <tr key={i} style={i === 5 ? { background: 'rgba(249,115,22,0.10)', fontWeight: 600 } : {}}>
+              ['Beta(α, β)', 'Binomial(n, θ)', 'Beta(α+k, β+n-k)', 'Proporções, taxas de sucesso'],
+              ['Normal(μ₀, τ²)', 'Normal(θ, σ²)', 'Normal (média ponderada)', 'Médias com variância conhecida'],
+              ['Gamma(α, β)', 'Poisson(λ)', 'Gamma(α+Σx, β+n)', 'Contagens, taxas de eventos'],
+              ['Dirichlet(α)', 'Multinomial', 'Dirichlet(α + contagens)', 'Distribuições sobre categorias'],
+              ['Normal-InvGamma', 'Normal(μ, σ²)', 'Normal-InvGamma', 'μ e σ² ambos desconhecidos'],
+            ].map(([a, b, c, d]) => (
+              <tr key={a}>
                 <td style={S.td}>{a}</td>
                 <td style={S.td}>{b}</td>
                 <td style={S.td}>{c}</td>
@@ -792,88 +643,267 @@ export default function ST14() {
             ))}
           </tbody>
         </table>
-
-        <h3 style={S.h3}>Intervalos de predicao</h3>
-        <p style={S.p}>
-          No framework ETS, os intervalos de predicao sao calculados analiticamente a partir da variancia
-          do processo de estado. Para um intervalo de 95%:
-        </p>
-        <BlockMath math="\left[\hat{y}_{t+h} - 1.96\,\sigma_h,\; \hat{y}_{t+h} + 1.96\,\sigma_h\right]" />
-        <p style={S.p}>
-          A variancia de previsao &sigma;<sub>h</sub><sup>2</sup> cresce com o horizonte h. Em alternativa,
-          podem usar-se intervalos bootstrap nao parametricos, especialmente quando os residuos nao sao
-          normalmente distribuidos.
-        </p>
-
+        <h3 style={S.h3}>Formas da distribuição Beta</h3>
+        <div style={S.diagram}>
+          <BetaShapesSVG />
+        </div>
         <div style={S.note}>
-          A funcao <code>accuracy()</code> do pacote forecast calcula automaticamente MAE, RMSE, MAPE e MASE
-          para os conjuntos de treino e de teste, facilitando a comparacao sistematica de modelos.
+          O prior de Jeffreys Beta(0.5, 0.5) é invariante à reparametrização: se transformarmos
+          θ → φ = log(θ/(1-θ)), o prior induzido sobre φ é igualmente não-informativo.
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── 10. Sintese ──────────────────────────────────────────────────── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Sintese do Modulo</h2>
-
-        <div style={S.highlight}>
-          <strong>Decomposicao</strong> — separar a serie nos seus componentes fundamentais (tendencia,
-          sazonalidade, residuo) e o primeiro passo para compreender e modelar qualquer serie temporal.
-          O STL e a opcao mais robusta e flexivel para uso geral.
+<section style={S.section}>
+        <h2 style={S.h2}>4. Inferência Bayesiana — Modelo Beta-Binomial</h2>
+        <p style={S.p}>
+          O modelo Beta-Binomial é o cavalo de batalha da inferência bayesiana para proporções.
+          Suponhamos que queremos estimar a probabilidade θ de cara numa moeda (possivelmente viciada).
+        </p>
+        
+          <p style={S.p}><strong>Prior:</strong> <InlineMath math="\theta \sim \text{Beta}(\alpha, \beta)" /> — encodifica crença inicial sobre θ</p>
+          <p style={S.p}><strong>Likelihood:</strong> <InlineMath math="k \mid \theta \sim \text{Binomial}(n, \theta)" /> — modelo dos dados</p>
+          <p style={{ ...S.p, marginBottom: 0 }}>
+            <strong>Posterior:</strong> <InlineMath math="\theta \mid k \sim \text{Beta}(\alpha + k,\; \beta + n - k)" />
+          </p>
+        
+        <h3 style={S.h3}>Atualização sequencial com lançamentos de moeda</h3>
+        <div style={S.diagram}>
+          <SequentialUpdateSVG />
         </div>
-        <div style={S.highlight}>
-          <strong>Suavizacao exponencial</strong> — familia de modelos parametricos que atribuem pesos
-          exponencialmente decrescentes ao passado. SES para series de nivel, Holt para tendencias
-          lineares, Holt-Winters para tendencia com sazonalidade.
-        </div>
-        <div style={S.highlight}>
-          <strong>Framework ETS</strong> — unifica todos os metodos de suavizacao numa representacao
-          de espaco de estados, permitindo selecao automatica por AIC e calculo formal de intervalos
-          de predicao probabilisticos.
-        </div>
-
-        <h3 style={S.h3}>Guia de selecao de metodo</h3>
+        <p style={S.p}>
+          Com prior <InlineMath math="\text{Beta}(1,1)" /> (uniforme), após observar 3 caras e 0 coroas, obtemos <InlineMath math="\text{Beta}(4,1)" />.
+          Após mais 2 coroas, obtemos <InlineMath math="\text{Beta}(4,3)" />. A média da <InlineMath math="\text{Beta}(\alpha,\beta)" /> é <InlineMath math="\alpha/(\alpha+\beta)" />, e a
+          variância decresce com mais dados.
+        </p>
+        <h3 style={S.h3}>Intervalo de credibilidade vs Intervalo de confiança</h3>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Situacao</th>
-              <th style={S.th}>Metodo recomendado</th>
+              <th style={S.th}>Propriedade</th>
+              <th style={S.th}>IC Frequentista 95%</th>
+              <th style={S.th}>Intervalo de Credibilidade 95%</th>
             </tr>
           </thead>
           <tbody>
             {[
-              ['Compreender a estrutura da serie', 'STL ou decomposicao classica'],
-              ['Serie sem tendencia nem sazonalidade', 'SES / ETS(A,N,N)'],
-              ['Serie com tendencia linear', 'Holt / ETS(A,A,N)'],
-              ['Previsao de longo prazo com tendencia', 'Holt amortecido / ETS(A,Ad,N)'],
-              ['Tendencia e sazonalidade constante', 'Holt-Winters aditivo / ETS(A,A,A)'],
-              ['Tendencia e sazonalidade crescente', 'Holt-Winters multiplicativo / ETS(M,A,M)'],
-              ['Selecao automatica do melhor modelo', 'ets() com selecao por AIC'],
-              ['Comparacao formal entre modelos', 'accuracy() no conjunto de teste + AICc'],
-            ].map(([s, m], i) => (
-              <tr key={i}>
-                <td style={S.td}>{s}</td>
-                <td style={{ ...S.td, color, fontWeight: 500 }}>{m}</td>
+              ['Interpretação', 'Em 95% dos experimentos repetidos, o IC contém θ', 'P(θ ∈ [a,b] | data) = 0.95'],
+              ['Parâmetro', 'Fixo (não tem probabilidade)', 'Tem distribuição de probabilidade'],
+              ['Dado n fixo', 'Não se pode dizer "95% chance que θ ∈ IC"', 'Pode-se dizer exatamente isso'],
+              ['Tipo', 'Aleatório (varia por amostra)', 'Fixo (dado estes dados)'],
+              ['Melhor para', 'Procedimentos com garantia frequentista', 'Quantificação direta de incerteza'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
+                <td style={S.td}>{b}</td>
+                <td style={S.td}>{c}</td>
               </tr>
             ))}
           </tbody>
         </table>
+      </section>
 
-        <div style={S.note}>
-          Os metodos de suavizacao exponencial e os modelos ARIMA sao complementares: os primeiros sao
-          mais intuitivos e eficientes computacionalmente; os segundos permitem capturar estruturas de
-          autocorrelacao mais complexas. Para series com padroes de nivel e tendencia claros, o ETS e
-          frequentemente competitivo ou superior ao ARIMA, com menor custo de especificacao.
-        </div>
-
-        <p style={{ ...S.p, marginTop: '2rem' }}>
-          Este modulo cobriu o ciclo completo de analise de series temporais por decomposicao e suavizacao:
-          desde a identificacao visual dos componentes, passando pelo ajuste de modelos hierarquicamente
-          mais ricos (SES, Holt, Holt-Winters, ETS), ate a avaliacao rigorosa da qualidade preditiva
-          num conjunto de teste temporal. O dominio destas ferramentas constitui a base para abordagens
-          mais avancadas como SARIMA, redes neuronais para series temporais e modelos de ensemble.
+<section style={S.section}>
+        <h2 style={S.h2}>5. Modelo Normal-Normal</h2>
+        <p style={S.p}>
+          Quando o parâmetro de interesse é uma média e temos um prior normal com variância
+          conhecida, o posterior também é normal — outra conjugação elegante. O resultado é uma
+          média ponderada pela precisão entre o prior e os dados.
         </p>
+        <h3 style={S.h3}>Caso com variância conhecida</h3>
+        
+          <p style={S.p}><strong>Prior:</strong> <InlineMath math="\theta \sim \mathcal{N}(\mu_0, \tau^2)" /></p>
+          <p style={S.p}><strong>Dados:</strong> <InlineMath math="x_i \mid \theta \sim \mathcal{N}(\theta, \sigma^2),\quad i=1,\ldots,n" /></p>
+          <p style={S.p}><strong>Posterior:</strong> <InlineMath math="\theta \mid \text{data} \sim \mathcal{N}(\mu_n, \tau_n^2)" /> onde:</p>
+          <div style={{ margin: '0.25rem 0' }}>
+            <BlockMath math="\mu_n = \frac{\mu_0/\tau^2 + n\bar{x}/\sigma^2}{1/\tau^2 + n/\sigma^2}, \qquad \frac{1}{\tau_n^2} = \frac{1}{\tau^2} + \frac{n}{\sigma^2}" />
+          </div>
+        
+        <div style={S.diagram}>
+          <NormalNormalSVG />
+        </div>
+        <p style={S.p}>
+          Quando n cresce, a precisão dos dados (<InlineMath math="n/\sigma^2" />) domina a precisão do prior (<InlineMath math="1/\tau^2" />),
+          e o posterior converge para a média amostral. Com n pequeno, o prior exerce maior influência.
+        </p>
+        <h3 style={S.h3}>Caso com variância desconhecida: Normal-InverseGamma</h3>
+        <p style={S.p}>
+          Quando tanto <InlineMath math="\mu" /> quanto <InlineMath math="\sigma^2" /> são desconhecidos, usamos o prior conjugado
+          Normal-InverseGamma: <InlineMath math="(\mu, \sigma^2) \sim \text{NIG}(\mu_0, \kappa_0, \alpha_0, \beta_0)" />.
+          O posterior é NIG com parâmetros atualizados: <InlineMath math="\mu_n,\; \kappa_n = \kappa_0 + n,\;
+          \alpha_n = \alpha_0 + n/2,\; \beta_n = \beta_0 + \text{SQ}/2 + \text{correção}" />.
+        </p>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>6. MCMC — Markov Chain Monte Carlo</h2>
+        <p style={S.p}>
+          Na maioria dos problemas reais, o posterior P(θ|data) não tem forma fechada —
+          o integral de normalização P(data) é intratável. MCMC resolve isso amostrando
+          diretamente do posterior sem precisar calcular a constante de normalização.
+        </p>
+        <div style={S.diagram}>
+          <TracePlotSVG />
+        </div>
+        <h3 style={S.h3}>Algoritmo Metropolis-Hastings</h3>
+        <p style={S.p}>
+          O MH é o algoritmo MCMC mais fundamental. A ideia: propor um novo valor θ* a partir
+          de uma distribuição proposta q(θ*|θᵗ), e aceitar ou rejeitar com probabilidade
+          min(1, r) onde r é a razão de aceitação.
+        </p>
+        <h3 style={S.h3}>Amostragem de Gibbs</h3>
+        <p style={S.p}>
+          Quando temos múltiplos parâmetros (θ₁, θ₂, ..., θₖ), o Gibbs sampling
+          amostra cada θᵢ da sua distribuição condicional completa P(θᵢ | θᱼ≠ᵢ, data),
+          ciclando pelos parâmetros. Cada condicional é tipicamente mais simples de amostrar.
+        </p>
+        <h3 style={S.h3}>Diagnósticos MCMC</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Diagnóstico</th>
+              <th style={S.th}>Meta</th>
+              <th style={S.th}>Interpretação</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['R-hat (Gelman-Rubin)', '< 1.01', 'Múltiplas cadeias convergiram para o mesmo posterior'],
+              ['ESS (Effective Sample Size)', '> 400 por parâmetro', 'Corrige para autocorrelação na cadeia'],
+              ['Trace plot', 'Aspecto de "caterpillar"', 'Boa mistura e estacionaridade'],
+              ['Autocorrelação', 'Decai rapidamente', 'Amostras quasi-independentes'],
+              ['BFMI (E-BFMI)', '> 0.3', 'Energia no HMC — detecta problemas geométricos'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
+                <td style={S.td}>{b}</td>
+                <td style={S.td}>{c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div style={S.note}>
+          O NUTS (No-U-Turn Sampler), usado em PyMC e Stan, é uma versão automática do HMC
+          (Hamiltonian Monte Carlo) que não requer ajuste manual do número de passos.
+          É dramaticamente mais eficiente que Metropolis-Hastings em modelos complexos.
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>7. Modelos Hierárquicos (Multilevel)</h2>
+        <p style={S.p}>
+          Modelos hierárquicos (ou multinível) representam situações onde as observações têm
+          estrutura de grupos — alunos dentro de escolas, medições repetidas do mesmo indivíduo,
+          ensaios clínicos em múltiplos centros. O segredo está no partial pooling.
+        </p>
+        <div style={S.diagram}>
+          <HierarchicalSVG />
+        </div>
+        <h3 style={S.h3}>Três estratégias de pooling</h3>
+        <div style={S.diagram}>
+          <PoolingSVG />
+        </div>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Estratégia</th>
+              <th style={S.th}>Como funciona</th>
+              <th style={S.th}>Problema</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Complete Pooling', 'Ignora grupos, ajusta um único modelo', 'Ignora variação entre grupos (underfitting)'],
+              ['No Pooling', 'Um modelo independente por grupo', 'Não aproveita informação entre grupos (overfitting em grupos pequenos)'],
+              ['Partial Pooling', 'Grupos compartilham hiperprior', 'Shrinkage automático: grupos pequenos ficam mais próximos da média'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
+                <td style={S.td}>{b}</td>
+                <td style={S.td}>{c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div style={S.note}>
+          Shrinkage é automático em modelos hierárquicos: grupos com poucos dados são "puxados"
+          para a média global mais fortemente do que grupos com muitos dados. Isso reduz overfitting
+          sem qualquer regularização manual.
+        </div>
+      </section>
+
+<section style={S.section}>
+        <h2 style={S.h2}>8. Contraste: Bayesiano vs Frequentista na Prática</h2>
+        <p style={S.p}>
+          A escolha entre abordagens frequentista e bayesiana não é dogmática — é pragmática.
+          Cada uma tem contextos onde brilha. Entender as diferenças concretas em problemas
+          comuns é mais valioso do que debater filosofia.
+        </p>
+        <h3 style={S.h3}>A/B Testing</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Aspecto</th>
+              <th style={S.th}>Frequentista</th>
+              <th style={S.th}>Bayesiano</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Métrica principal', 'p-value (< 0.05?)', 'P(B melhor que A | dados)'],
+              ['Decisão', 'Rejeitar H₀ ou não', 'P(uplift > threshold)'],
+              ['Stopping rules', 'Fixar n antes do experimento', 'Stopping natural (opcional)'],
+              ['Tamanho do efeito', 'Estimativa pontual com IC', 'Distribuição posterior do efeito'],
+              ['Pergunta respondida', '"Os dados são consistentes com H₀?"', '"Qual a prob. de B ser melhor?"'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
+                <td style={S.td}>{b}</td>
+                <td style={S.td}>{c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Comparação de Modelos</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Critério</th>
+              <th style={S.th}>Frequentista</th>
+              <th style={S.th}>Bayesiano</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Critério de informação', 'AIC, BIC', 'WAIC, LOO-CV'],
+              ['Teste de hipóteses', 'Likelihood ratio test', 'Bayes Factor'],
+              ['Comparação direta', 'Não (só vs modelo nulo)', 'Sim (P(M₁) vs P(M₂))'],
+              ['Penalização da complexidade', 'Número de parâmetros', 'Effective number (p_waic)'],
+            ].map(([a, b, c]) => (
+              <tr key={a}>
+                <td style={S.td}><strong>{a}</strong></td>
+                <td style={S.td}>{b}</td>
+                <td style={S.td}>{c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Bayes Factors</h3>
+        <div style={S.highlight}>
+          <p style={S.p}>
+            <strong>BF₁₀ = P(data | M₁) / P(data | M₀)</strong>
+          </p>
+          <p style={{ ...S.p, marginBottom: 0 }}>
+            BF {'>'} 10: forte evidência para M₁ |
+            BF 3-10: evidência moderada |
+            BF 1-3: evidência fraca |
+            BF {'<'} 1: evidência contra M₁
+          </p>
+        </div>
+        <div style={S.note}>
+          LOO-CV (Leave-One-Out Cross-Validation) via PSIS-LOO é o método de comparação de modelos
+          bayesianos recomendado — é mais estável que WAIC e mais interpretável que Bayes Factors
+          (que dependem fortemente dos priors).
+        </div>
       </section>
     </div>
   );

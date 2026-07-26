@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -18,8 +18,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -30,12 +30,12 @@ const PipelineSVG = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Pipeline: Do Dado ao Dashboard</p>
     <svg viewBox="0 0 670 100" style={{ maxWidth: '100%', height: 'auto' }}>
       {[
-        { x: 5,   label: 'Data Sources', sub: 'BD, APIs, Logs', c: '#f97316' },
-        { x: 119, label: 'ETL / ELT',    sub: 'dbt, Airbyte',  c: '#f97316' },
-        { x: 233, label: 'Data Warehouse', sub: 'BQ, Redshift', c: '#f97316' },
-        { x: 347, label: 'Semantic Layer', sub: 'LookML, dbt',  c: '#f97316' },
-        { x: 461, label: 'BI Tool',       sub: 'Tableau, PBI', c: '#f97316' },
-        { x: 575, label: 'Dashboard',     sub: 'Utilizador',   c: '#f97316' },
+        { x: 5,   label: 'Data Sources', sub: 'BD, APIs, Logs', c: '#4a9eed' },
+        { x: 119, label: 'ETL / ELT',    sub: 'dbt, Airbyte',  c: '#4a9eed' },
+        { x: 233, label: 'Data Warehouse', sub: 'BQ, Redshift', c: '#4a9eed' },
+        { x: 347, label: 'Semantic Layer', sub: 'LookML, dbt',  c: '#4a9eed' },
+        { x: 461, label: 'BI Tool',       sub: 'Tableau, PBI', c: '#4a9eed' },
+        { x: 575, label: 'Dashboard',     sub: 'Utilizador',   c: '#4a9eed' },
       ].map(({ x, label, sub, c }, i) => (
         <g key={label}>
           <rect x={x} y={18} width={90} height={44} rx={8} fill={`${c}22`} stroke={c} strokeWidth={1.5} />
@@ -61,10 +61,10 @@ const PowerBISVG = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Arquitectura Power BI</p>
     <svg viewBox="0 0 560 140" style={{ maxWidth: '100%', height: 'auto' }}>
       {[
-        { x: 20,  label: 'Power Query', sub: 'ETL (M Language)', c: '#f97316' },
-        { x: 155, label: 'Data Model',  sub: 'Relações + Schema', c: '#f97316' },
-        { x: 290, label: 'DAX Engine',  sub: 'Métricas calculadas', c: '#f97316' },
-        { x: 425, label: 'Report',      sub: 'Visuals + Filtros', c: '#f97316' },
+        { x: 20,  label: 'Power Query', sub: 'ETL (M Language)', c: '#4a9eed' },
+        { x: 155, label: 'Data Model',  sub: 'Relações + Schema', c: '#4a9eed' },
+        { x: 290, label: 'DAX Engine',  sub: 'Métricas calculadas', c: '#4a9eed' },
+        { x: 425, label: 'Report',      sub: 'Visuals + Filtros', c: '#4a9eed' },
       ].map(({ x, label, sub, c }, i) => (
         <g key={label}>
           <rect x={x} y={40} width={118} height={56} rx={10} fill={`${c}20`} stroke={c} strokeWidth={1.5} />
@@ -89,30 +89,30 @@ const PowerBISVG = () => (
 const StarSchemaSVG = () => (
   <div style={{ ...S.diagram, textAlign: 'center' }}>
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Star Schema no Power BI</p>
-    <svg viewBox="0 0 400 300" style={{ maxWidth: '100%', height: 'auto' }}>
+    <svg viewBox="0 0 400 300" style={{ maxWidth: 460, width: '100%', height: 'auto' }}>
       {/* Centro - Fact Table */}
       <rect x={140} y={110} width={120} height={60} rx={10} fill={`${color}22`} stroke={color} strokeWidth={2} />
       <text x={200} y={136} textAnchor="middle" fill={color} fontSize={9} fontWeight="700">Fact_Vendas</text>
       <text x={200} y={150} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>id_data, id_produto</text>
       <text x={200} y={162} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>id_cliente, valor</text>
       {/* Dim_Data - topo */}
-      <rect x={140} y={10} width={120} height={50} rx={8} fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth={1.5} />
-      <text x={200} y={32} textAnchor="middle" fill="#f97316" fontSize={8.5} fontWeight="700">Dim_Data</text>
+      <rect x={140} y={10} width={120} height={50} rx={8} fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={200} y={32} textAnchor="middle" fill="#4a9eed" fontSize={8.5} fontWeight="700">Dim_Data</text>
       <text x={200} y={48} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>ano, mês, dia</text>
       <line x1={200} y1={60} x2={200} y2={110} stroke="var(--text-secondary)" strokeWidth={1.5} strokeDasharray="4,2" />
       {/* Dim_Produto - direita */}
-      <rect x={275} y={110} width={115} height={50} rx={8} fill="rgba(249,115,22,0.08)" stroke="#fb923c" strokeWidth={1.5} />
-      <text x={332} y={132} textAnchor="middle" fill="#fb923c" fontSize={8.5} fontWeight="700">Dim_Produto</text>
+      <rect x={275} y={110} width={115} height={50} rx={8} fill="rgba(74,158,237,0.08)" stroke="#38bdf8" strokeWidth={1.5} />
+      <text x={332} y={132} textAnchor="middle" fill="#38bdf8" fontSize={8.5} fontWeight="700">Dim_Produto</text>
       <text x={332} y={148} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>nome, categoria</text>
       <line x1={260} y1={140} x2={275} y2={140} stroke="var(--text-secondary)" strokeWidth={1.5} strokeDasharray="4,2" />
       {/* Dim_Cliente - esquerda */}
-      <rect x={10} y={110} width={115} height={50} rx={8} fill="rgba(249,115,22,0.08)" stroke="#fbbf24" strokeWidth={1.5} />
-      <text x={67} y={132} textAnchor="middle" fill="#fbbf24" fontSize={8.5} fontWeight="700">Dim_Cliente</text>
+      <rect x={10} y={110} width={115} height={50} rx={8} fill="rgba(74,158,237,0.08)" stroke="#7dd3fc" strokeWidth={1.5} />
+      <text x={67} y={132} textAnchor="middle" fill="#7dd3fc" fontSize={8.5} fontWeight="700">Dim_Cliente</text>
       <text x={67} y={148} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>nome, segmento</text>
       <line x1={125} y1={140} x2={140} y2={140} stroke="var(--text-secondary)" strokeWidth={1.5} strokeDasharray="4,2" />
       {/* Dim_Loja - baixo */}
-      <rect x={140} y={240} width={120} height={50} rx={8} fill="rgba(249,115,22,0.08)" stroke="#f59e0b" strokeWidth={1.5} />
-      <text x={200} y={262} textAnchor="middle" fill="#f59e0b" fontSize={8.5} fontWeight="700">Dim_Loja</text>
+      <rect x={140} y={240} width={120} height={50} rx={8} fill="rgba(74,158,237,0.08)" stroke="#0284c7" strokeWidth={1.5} />
+      <text x={200} y={262} textAnchor="middle" fill="#0284c7" fontSize={8.5} fontWeight="700">Dim_Loja</text>
       <text x={200} y={278} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>cidade, região</text>
       <line x1={200} y1={170} x2={200} y2={240} stroke="var(--text-secondary)" strokeWidth={1.5} strokeDasharray="4,2" />
     </svg>
@@ -125,8 +125,8 @@ const LookMLSVG = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>LookML — Camada Semântica entre SQL e o Utilizador</p>
     <svg viewBox="0 0 480 180" style={{ maxWidth: '100%', height: 'auto' }}>
       {/* DW */}
-      <rect x={10} y={65} width={100} height={50} rx={8} fill="rgba(249,115,22,0.08)" stroke="#fb923c" strokeWidth={1.5} />
-      <text x={60} y={87} textAnchor="middle" fill="#fb923c" fontSize={8.5} fontWeight="700">Data Warehouse</text>
+      <rect x={10} y={65} width={100} height={50} rx={8} fill="rgba(74,158,237,0.08)" stroke="#38bdf8" strokeWidth={1.5} />
+      <text x={60} y={87} textAnchor="middle" fill="#38bdf8" fontSize={8.5} fontWeight="700">Data Warehouse</text>
       <text x={60} y={102} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>BigQuery / Redshift</text>
       {/* LookML */}
       <rect x={175} y={50} width={130} height={80} rx={10} fill={`${color}22`} stroke={color} strokeWidth={2} />
@@ -135,8 +135,8 @@ const LookMLSVG = () => (
       <text x={240} y={110} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>measures, explores</text>
       <text x={240} y={124} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>single source of truth</text>
       {/* Utilizador */}
-      <rect x={370} y={65} width={100} height={50} rx={8} fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth={1.5} />
-      <text x={420} y={87} textAnchor="middle" fill="#f97316" fontSize={8.5} fontWeight="700">Utilizador</text>
+      <rect x={370} y={65} width={100} height={50} rx={8} fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth={1.5} />
+      <text x={420} y={87} textAnchor="middle" fill="#4a9eed" fontSize={8.5} fontWeight="700">Utilizador</text>
       <text x={420} y={102} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>Explore / Dashboard</text>
       {/* Setas */}
       <path d="M112,90 L173,90" stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#arr3)" fill="none" />
@@ -151,66 +151,6 @@ const LookMLSVG = () => (
   </div>
 );
 
-// ─── SVG: Grafana Dashboard Mockup ───────────────────────────────────────────
-const GrafanaSVG = () => (
-  <div style={{ ...S.diagram, textAlign: 'center' }}>
-    <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Mockup de Dashboard Grafana — Observabilidade</p>
-    <svg viewBox="0 0 560 300" style={{ maxWidth: '100%', height: 'auto' }}>
-      {/* Fundo do painel */}
-      <rect x={0} y={0} width={560} height={300} rx={12} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1} />
-      {/* Título */}
-      <text x={16} y={22} fill="#F46800" fontSize={10} fontWeight="700">Grafana — Infrastructure Overview</text>
-      <line x1={0} y1={30} x2={560} y2={30} stroke="var(--text-secondary)" strokeWidth={1} />
-
-      {/* Gauge CPU */}
-      <rect x={10} y={38} width={155} height={100} rx={8} fill="#1a1a2e" stroke="#F4680033" strokeWidth={1} />
-      <text x={87} y={56} textAnchor="middle" fill="#aaa" fontSize={7}>CPU %</text>
-      <circle cx={87} cy={96} r={32} fill="none" stroke="#333" strokeWidth={8} />
-      <circle cx={87} cy={96} r={32} fill="none" stroke="#F46800" strokeWidth={8} strokeDasharray="100 101" strokeLinecap="round" transform="rotate(-90 87 96)" />
-      <text x={87} y={100} textAnchor="middle" fill="#F46800" fontSize={11} fontWeight="700">62%</text>
-      <text x={87} y={122} textAnchor="middle" fill="#aaa" fontSize={6.5}>threshold: 80%</text>
-
-      {/* Gauge Memória */}
-      <rect x={172} y={38} width={155} height={100} rx={8} fill="#1a1a2e" stroke="#f9731633" strokeWidth={1} />
-      <text x={249} y={56} textAnchor="middle" fill="#aaa" fontSize={7}>Memória %</text>
-      <circle cx={249} cy={96} r={32} fill="none" stroke="#333" strokeWidth={8} />
-      <circle cx={249} cy={96} r={32} fill="none" stroke="#94a3b8" strokeWidth={8} strokeDasharray="78 101" strokeLinecap="round" transform="rotate(-90 249 96)" />
-      <text x={249} y={100} textAnchor="middle" fill="#94a3b8" fontSize={11} fontWeight="700">78%</text>
-      <text x={249} y={122} textAnchor="middle" fill="#aaa" fontSize={6.5}>threshold: 85%</text>
-
-      {/* Gauge Latência */}
-      <rect x={334} y={38} width={216} height={100} rx={8} fill="#1a1a2e" stroke="#f9731633" strokeWidth={1} />
-      <text x={442} y={56} textAnchor="middle" fill="#aaa" fontSize={7}>Latência p99 (ms)</text>
-      <circle cx={442} cy={96} r={32} fill="none" stroke="#333" strokeWidth={8} />
-      <circle cx={442} cy={96} r={32} fill="none" stroke="#f97316" strokeWidth={8} strokeDasharray="40 101" strokeLinecap="round" transform="rotate(-90 442 96)" />
-      <text x={442} y={100} textAnchor="middle" fill="#f97316" fontSize={11} fontWeight="700">120ms</text>
-      <text x={442} y={122} textAnchor="middle" fill="#aaa" fontSize={6.5}>threshold: 300ms</text>
-
-      {/* Time series */}
-      <rect x={10} y={148} width={540} height={148} rx={8} fill="#1a1a2e" stroke="#F4680033" strokeWidth={1} />
-      <text x={40} y={165} fill="#aaa" fontSize={7}>Requests / segundo — últimas 3 horas</text>
-
-      {/* Zona de alerta */}
-      <rect x={390} y={160} width={150} height={80} fill="#ef444420" />
-      <text x={485} y={175} textAnchor="middle" fill="#f97316" fontSize={6.5}>ALERTA: spike</text>
-
-      {/* Linha de série temporal */}
-      <polyline
-        points="20,240 60,220 100,215 140,210 180,218 220,205 260,200 300,212 340,208 370,205 390,190 410,165 430,168 450,172 480,195 520,210 545,215"
-        fill="none" stroke="#F46800" strokeWidth={2} />
-
-      {/* Linha de threshold */}
-      <line x1={20} y1={180} x2={545} y2={180} stroke="#f97316" strokeWidth={1} strokeDasharray="4,3" />
-      <text x={528} y={193} fill="#f97316" fontSize={6}>SLO</text>
-
-      {/* Eixo Y */}
-      <line x1={20} y1={160} x2={20} y2={275} stroke="#444" strokeWidth={1} />
-      <text x={18} y={165} textAnchor="end" fill="#666" fontSize={6}>1000</text>
-      <text x={18} y={220} textAnchor="end" fill="#666" fontSize={6}>500</text>
-      <text x={18} y={275} textAnchor="end" fill="#666" fontSize={6}>0</text>
-    </svg>
-  </div>
-);
 
 // ─── SVG: Arquitectura Superset ──────────────────────────────────────────────
 const SupersetSVG = () => (
@@ -218,17 +158,17 @@ const SupersetSVG = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Arquitectura Apache Superset</p>
     <svg viewBox="0 0 570 120" style={{ maxWidth: '100%', height: 'auto' }}>
       {[
-        { x: 10,  label: 'Browser', sub: 'React UI', c: '#f97316' },
-        { x: 153, label: 'Flask API', sub: 'Superset Backend', c: '#f97316' },
-        { x: 296, label: 'SQLAlchemy', sub: 'ORM / Dialects', c: '#f97316' },
-        { x: 439, label: 'Database', sub: 'BQ, Trino, DuckDB...', c: '#f97316' },
+        { x: 10,  label: 'Browser', sub: 'React UI', c: '#4a9eed' },
+        { x: 153, label: 'Flask API', sub: 'Superset Backend', c: '#4a9eed' },
+        { x: 296, label: 'SQLAlchemy', sub: 'ORM / Dialects', c: '#4a9eed' },
+        { x: 439, label: 'Database', sub: 'BQ, Trino, DuckDB...', c: '#4a9eed' },
       ].map(({ x, label, sub, c }, i) => (
         <g key={label}>
           <rect x={x} y={30} width={120} height={56} rx={8} fill={`${c}20`} stroke={c} strokeWidth={1.5} />
           <text x={x + 60} y={56} textAnchor="middle" fill={c} fontSize={9} fontWeight="700">{label}</text>
           <text x={x + 60} y={73} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>{sub}</text>
           {i < 3 && (
-            <path d={`M${x + 122},58 L${x + 151},58`} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#arr4)" fill="none" />
+            <path d={`M${x + 122},58 L${x + 141},58`} stroke="var(--text-secondary)" strokeWidth={1.5} markerEnd="url(#arr4)" fill="none" />
           )}
         </g>
       ))}
@@ -242,46 +182,6 @@ const SupersetSVG = () => (
   </div>
 );
 
-// ─── SVG: Embedded Analytics ─────────────────────────────────────────────────
-const EmbeddedSVG = () => (
-  <div style={{ ...S.diagram, textAlign: 'center' }}>
-    <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Embedded Analytics — Dashboard dentro de uma Aplicação Web</p>
-    <svg viewBox="0 0 480 220" style={{ maxWidth: '100%', height: 'auto' }}>
-      {/* Outer app */}
-      <rect x={5} y={5} width={470} height={210} rx={12} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1.5} />
-      <text x={20} y={26} fill="var(--text-secondary)" fontSize={8.5} fontWeight="700">Aplicação Web (cliente)</text>
-      {/* Navbar */}
-      <rect x={5} y={5} width={470} height={30} rx={12} fill={`${color}18`} stroke="none" />
-
-      {/* Sidebar */}
-      <rect x={5} y={35} width={80} height={180} rx={0} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1} />
-      <text x={45} y={60} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>Dashboard</text>
-      <text x={45} y={76} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>Relatórios</text>
-      <text x={45} y={92} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>Definições</text>
-
-      {/* iframe container */}
-      <rect x={95} y={42} width={375} height={165} rx={8} fill="#00000010" stroke={color} strokeWidth={1.5} strokeDasharray="5,3" />
-      <text x={283} y={60} textAnchor="middle" fill={color} fontSize={7.5} fontWeight="700">{'<iframe> — Dashboard Embebido'}</text>
-
-      {/* Mini dashboard inside */}
-      <rect x={105} y={66} width={170} height={130} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1} />
-      <text x={190} y={84} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>Gráfico 1</text>
-      <polyline points="115,140 135,120 155,130 175,110 195,125 215,108 255,115" fill="none" stroke={color} strokeWidth={1.5} />
-
-      <rect x={285} y={66} width={175} height={60} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1} />
-      <text x={372} y={84} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>KPI Cards</text>
-      <rect x={295} y={92} width={50} height={24} rx={4} fill={`${color}20`} stroke={color} strokeWidth={1} />
-      <text x={320} y={107} textAnchor="middle" fill={color} fontSize={8} fontWeight="700">1.2M</text>
-      <rect x={355} y={92} width={50} height={24} rx={4} fill={`${color}20`}  stroke="#f97316" strokeWidth={1} />
-      <text x={380} y={107} textAnchor="middle" fill="#f97316" fontSize={8} fontWeight="700">94%</text>
-
-      <rect x={285} y={136} width={175} height={60} rx={6} fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth={1} />
-      <text x={372} y={154} textAnchor="middle" fill="var(--text-secondary)" fontSize={7}>Tabela (RLS: só dados do user)</text>
-      <line x1={295} y1={165} x2={450} y2={165} stroke="var(--text-secondary)" strokeWidth={1} />
-      <text x={320} y={178} textAnchor="middle" fill="var(--text-secondary)" fontSize={6.5}>Utilizador A — 3 linhas</text>
-    </svg>
-  </div>
-);
 
 // ─── SVG: Pipeline Real-Time ─────────────────────────────────────────────────
 const RealTimeSVG = () => (
@@ -289,11 +189,11 @@ const RealTimeSVG = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Pipeline Real-Time: Kafka → Flink → ClickHouse → Grafana</p>
     <svg viewBox="0 0 640 120" style={{ maxWidth: '100%', height: 'auto' }}>
       {[
-        { x: 8,   label: 'Kafka',      sub: 'Event Stream',      c: '#f97316' },
-        { x: 136, label: 'Flink',      sub: 'Stream Processing', c: '#fb923c' },
-        { x: 264, label: 'ClickHouse', sub: 'OLAP Store',        c: '#fbbf24' },
-        { x: 392, label: 'Grafana',    sub: 'Dashboards',        c: '#F46800' },
-        { x: 520, label: 'Browser',    sub: 'Utilizador',        c: '#f97316' },
+        { x: 8,   label: 'Kafka',      sub: 'Event Stream',      c: '#4a9eed' },
+        { x: 136, label: 'Flink',      sub: 'Stream Processing', c: '#38bdf8' },
+        { x: 264, label: 'ClickHouse', sub: 'OLAP Store',        c: '#7dd3fc' },
+        { x: 392, label: 'Grafana',    sub: 'Dashboards',        c: '#4a9eed' },
+        { x: 520, label: 'Browser',    sub: 'Utilizador',        c: '#4a9eed' },
       ].map(({ x, label, sub, c }, i) => (
         <g key={label}>
           <rect x={x} y={30} width={108} height={52} rx={8} fill={`${c}22`} stroke={c} strokeWidth={1.5} />
@@ -322,12 +222,6 @@ export default function DV9() {
         <Link to="/dv" style={S.back}><ArrowLeft size={16} /> Voltar</Link>
         <div style={S.tag}>MÓDULO 09</div>
         <h1 style={S.h1}>Plataformas de BI &amp; Visualização Enterprise</h1>
-        <p style={S.lead}>
-          Além de Python e Jupyter, existe um ecossistema rico de plataformas que democratizam o acesso a dados para
-          equipas não-técnicas, automatizam relatórios e monitorizam sistemas em produção em tempo real. Tableau,
-          Power BI, Looker, Grafana, Superset e Metabase servem audiências e casos de uso distintos — compreender
-          onde cada um se encaixa é essencial para qualquer engenheiro ou analista de dados moderno.
-        </p>
 
         {/* ── Secção 1 ── */}
         <div style={S.section}>
@@ -505,8 +399,6 @@ export default function DV9() {
             </table>
           </div>
 
-          <GrafanaSVG />
-
           <h3 style={S.h3}>Alertas no Grafana</h3>
           <p style={S.p}>
             Grafana tem um sistema de alertas nativo que avalia queries periodicamente e envia notificações quando
@@ -589,8 +481,6 @@ export default function DV9() {
             de forma a que os utilizadores finais nunca saiam do produto para consultar dados. A ferramenta de BI
             fica invisível — o utilizador experiencia os gráficos como parte natural da aplicação.
           </p>
-          <EmbeddedSVG />
-
           <h3 style={S.h3}>Métodos de Embedding</h3>
           <div style={{ overflowX: 'auto' }}>
             <table style={S.table}>
@@ -779,34 +669,7 @@ export default function DV9() {
             dashboards versionados em git. Este stack é 100% open-source e cover a maioria dos casos.
           </div>
         </div>
-
-        <hr style={S.divider} />
-
-        {/* ── Síntese ── */}
-        <div style={S.section}>
-          <h2 style={S.h2}> 9. Síntese do Módulo</h2>
-          <p style={S.p}>
-            Este módulo fechou o percurso do curso DV com uma visão do ecossistema de plataformas que complementam
-            as competências de programação. Saber construir visualizações em Python/D3 é poderoso, mas na prática
-            profissional é igualmente importante saber integrar essas competências com as plataformas que as
-            organizações já usam.
-          </p>
-
-          <div style={S.highlight}>
-            <strong>Pontos essenciais do Módulo 09:</strong>
-            <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.92rem', color: 'var(--text-primary)', lineHeight: 2 }}>
-              <li><strong>Pipeline BI:</strong> todo o dado percorre Data Sources → ETL → Warehouse → Semantic Layer → BI Tool → Dashboard. Cada etapa tem ferramentas especializadas.</li>
-              <li><strong>Power BI + DAX:</strong> o stack Microsoft dominante em corporações; DAX é poderoso mas requer compreensão de filter context vs. row context.</li>
-              <li><strong>Looker + LookML:</strong> a única abordagem verdadeiramente code-first para métricas; elimina inconsistências de definições a nível organizacional.</li>
-              <li><strong>Grafana:</strong> não é BI — é observabilidade. Usar para monitorizar pipelines, APIs, modelos em produção e infraestrutura, não para relatórios de negócio.</li>
-              <li><strong>Superset:</strong> a melhor alternativa open-source ao Tableau para equipas técnicas com SQL forte; suporta DuckDB, Trino e ClickHouse nativamente.</li>
-              <li><strong>Embedded analytics:</strong> dashboards dentro de produtos SaaS requerem RLS, JWT e modelo de preços por capacidade — não por seat.</li>
-              <li><strong>Real-time:</strong> Kafka + Flink + ClickHouse + Grafana é o stack de referência; mas polling simples serve 90% dos casos a uma fracção do custo.</li>
-              <li><strong>Governança:</strong> definir métricas em código (LookML, dbt), versionar dashboards em git e documentar no catálogo é o que separa equipas maduras de dados das restantes.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+</div>
     </div>
   );
 }

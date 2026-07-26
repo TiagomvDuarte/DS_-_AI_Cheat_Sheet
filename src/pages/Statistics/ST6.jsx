@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -79,60 +79,17 @@ function DecomposicaoSVG() {
       <circle cx={xi} cy={yhat} r="3.5" fill="none" stroke={color} strokeWidth="1.5" />
       {/* setas decomposição */}
       {/* SST: yᵢ a ȳ */}
-      <line x1={xi - 18} y1={yi} x2={xi - 18} y2={ybar} stroke="#f97316" strokeWidth="2" markerEnd="url(#arr)" />
-      <text x={xi - 32} y={(yi + ybar) / 2} fontSize="7.5" fill="#f97316" textAnchor="middle">SST</text>
+      <line x1={xi - 18} y1={yi} x2={xi - 18} y2={ybar} stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arr)" />
+      <text x={xi - 32} y={(yi + ybar) / 2} fontSize="7.5" fill="#4a9eed" textAnchor="middle">SST</text>
       {/* SSR: ŷᵢ a ȳ */}
-      <line x1={xi + 18} y1={yhat} x2={xi + 18} y2={ybar} stroke="#f97316" strokeWidth="2" />
-      <text x={xi + 32} y={(yhat + ybar) / 2} fontSize="7.5" fill="#f97316">SSR</text>
+      <line x1={xi + 18} y1={yhat} x2={xi + 18} y2={ybar} stroke="#4a9eed" strokeWidth="2" />
+      <text x={xi + 32} y={(yhat + ybar) / 2} fontSize="7.5" fill="#4a9eed">SSR</text>
       {/* SSE: yᵢ a ŷᵢ */}
-      <line x1={xi} y1={yi} x2={xi} y2={yhat} stroke="#f97316" strokeWidth="2" strokeDasharray="3,2" />
-      <text x={xi + 6} y={(yi + yhat) / 2} fontSize="7.5" fill="#f97316">SSE</text>
+      <line x1={xi} y1={yi} x2={xi} y2={yhat} stroke="#4a9eed" strokeWidth="2" strokeDasharray="3,2" />
+      <text x={xi + 6} y={(yi + yhat) / 2} fontSize="7.5" fill="#4a9eed">SSE</text>
       {/* labels */}
       <text x={xi + 5} y={yi - 5} fontSize="8" fill={color}>yᵢ</text>
       <text x={xi + 5} y={yhat - 4} fontSize="8" fill={color}>ŷᵢ</text>
-    </svg>
-  );
-}
-
-/* ── SVG: Grafos de diagnóstico 2x2 ── */
-function DiagnosticoSVG() {
-  return (
-    <svg viewBox="0 0 420 290" style={{ width: '100%', maxWidth: 520, display: 'block', margin: '0 auto' }}>
-      {/* Painel 1: Resíduos vs Fitted */}
-      <rect x="10" y="10" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="102" y="24" textAnchor="middle" fontSize="8" fontWeight="700" fill="var(--text-primary)">Resíduos vs Fitted</text>
-      <line x1="20" y1="80" x2="185" y2="80" stroke="var(--text-secondary)" strokeWidth="0.8" strokeDasharray="3,2" />
-      {[[40,65],[60,90],[80,72],[100,85],[120,75],[140,88],[160,70],[175,82]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r="2.5" fill={color} fillOpacity="0.7" />
-      ))}
-      <text x="102" y="122" textAnchor="middle" fontSize="7" fill="#f97316">OK — banda horizontal</text>
-
-      {/* Painel 2: QQ-Plot */}
-      <rect x="225" y="10" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="317" y="24" textAnchor="middle" fontSize="8" fontWeight="700" fill="var(--text-primary)">QQ-Plot dos Resíduos</text>
-      <line x1="245" y1="115" x2="395" y2="25" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="3,2" />
-      {[[250,110],[265,98],[280,86],[295,74],[315,62],[335,50],[355,40],[375,30]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r="2.5" fill={color} fillOpacity="0.7" />
-      ))}
-      <text x="317" y="122" textAnchor="middle" fontSize="7" fill="#f97316">OK — pontos na diagonal</text>
-
-      {/* Painel 3: Scale-Location */}
-      <rect x="10" y="148" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="102" y="162" textAnchor="middle" fontSize="8" fontWeight="700" fill="var(--text-primary)">Scale-Location</text>
-      <line x1="20" y1="218" x2="185" y2="218" stroke="var(--text-secondary)" strokeWidth="0.8" strokeDasharray="3,2" />
-      {[[40,210],[60,215],[80,212],[100,208],[120,214],[140,210],[160,216],[175,211]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r="2.5" fill={color} fillOpacity="0.7" />
-      ))}
-      <text x="102" y="260" textAnchor="middle" fontSize="7" fill="#f97316">OK — variância constante</text>
-
-      {/* Painel 4: Cook's Distance */}
-      <rect x="225" y="148" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="317" y="162" textAnchor="middle" fontSize="8" fontWeight="700" fill="var(--text-primary)">Distância de Cook</text>
-      {[[235,255],[250,252],[265,250],[280,252],[295,254],[315,248],[335,253],[375,210]].map(([x,y],i)=>(
-        <rect key={i} x={x} y={y} width="8" height={265-y} fill={i===7 ? '#f97316' : color} fillOpacity={i===7 ? 0.9 : 0.5} />
-      ))}
-      <line x1="225" y1="235" x2="410" y2="235" stroke="#f97316" strokeWidth="1" strokeDasharray="3,2" />
-      <text x="317" y="275" textAnchor="middle" fontSize="7" fill="#f97316">outlier influente (ponto vermelho)</text>
     </svg>
   );
 }
@@ -149,66 +106,24 @@ function ConfundimentoSVG() {
           <path d="M0,0 L0,6 L8,3 z" fill={color} />
         </marker>
         <marker id="arrowZ" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
+          <path d="M0,0 L0,6 L8,3 z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* nós */}
-      <circle cx="130" cy="35" r="22" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="130" y="39" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Z</text>
-      <circle cx="50" cy="120" r="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="130" cy="35" r="22" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="130" y="39" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">Z</text>
+      <circle cx="50" cy="120" r="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="50" y="124" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>X</text>
-      <circle cx="210" cy="120" r="22" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="210" cy="120" r="22" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="210" y="124" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Y</text>
       {/* setas */}
-      <line x1="115" y1="53" x2="68" y2="100" stroke="#f97316" strokeWidth="1.8" markerEnd="url(#arrowZ)" />
-      <line x1="145" y1="53" x2="192" y2="100" stroke="#f97316" strokeWidth="1.8" markerEnd="url(#arrowZ)" />
+      <line x1="115" y1="53" x2="68" y2="100" stroke="#4a9eed" strokeWidth="1.8" markerEnd="url(#arrowZ)" />
+      <line x1="145" y1="53" x2="192" y2="100" stroke="#4a9eed" strokeWidth="1.8" markerEnd="url(#arrowZ)" />
       <line x1="72" y1="120" x2="186" y2="120" stroke={color} strokeWidth="2" markerEnd="url(#arrowX)" />
       {/* labels */}
-      <text x="50" y="78" fontSize="8" fill="#f97316">confunde</text>
+      <text x="50" y="78" fontSize="8" fill="#4a9eed">confunde</text>
       <text x="130" y="113" textAnchor="middle" fontSize="8" fill={color}>correlação observada</text>
       <text x="130" y="150" textAnchor="middle" fontSize="7.5" fill="var(--text-secondary)">Z causa tanto X como Y (variável omitida)</text>
-    </svg>
-  );
-}
-
-/* ── SVG: 4 painéis de padrões de resíduos ── */
-function PadroesResiduosSVG() {
-  return (
-    <svg viewBox="0 0 420 280" style={{ width: '100%', maxWidth: 520, display: 'block', margin: '0 auto' }}>
-      {/* Painel 1: OK */}
-      <rect x="10" y="10" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="102" y="24" textAnchor="middle" fontSize="8" fontWeight="700" fill="#f97316">Dispersão Aleatória (OK)</text>
-      <line x1="20" y1="70" x2="185" y2="70" stroke="var(--text-secondary)" strokeWidth="0.8" strokeDasharray="3,2" />
-      {[[35,55],[50,82],[65,60],[80,75],[95,63],[110,80],[130,58],[150,74],[165,61],[178,78]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r="2.5" fill="#f97316" fillOpacity="0.8" />
-      ))}
-
-      {/* Painel 2: Heterocedasticidade */}
-      <rect x="225" y="10" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="317" y="24" textAnchor="middle" fontSize="8" fontWeight="700" fill="#f97316">Heterocedasticidade</text>
-      <line x1="235" y1="70" x2="400" y2="70" stroke="var(--text-secondary)" strokeWidth="0.8" strokeDasharray="3,2" />
-      {[[245,68],[260,72],[275,64],[290,78],[305,55],[320,88],[340,45],[360,95],[380,35],[395,100]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r="2.5" fill="#f97316" fillOpacity="0.8" />
-      ))}
-      <text x="317" y="122" textAnchor="middle" fontSize="7" fill="#f97316">padrão em funil</text>
-
-      {/* Painel 3: Não-linearidade */}
-      <rect x="10" y="148" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="102" y="162" textAnchor="middle" fontSize="8" fontWeight="700" fill="#f97316">Não-linearidade</text>
-      <line x1="20" y1="208" x2="185" y2="208" stroke="var(--text-secondary)" strokeWidth="0.8" strokeDasharray="3,2" />
-      {[[35,225],[55,215],[75,200],[95,192],[115,192],[135,198],[155,210],[175,222]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r="2.5" fill="#f97316" fillOpacity="0.8" />
-      ))}
-      <text x="102" y="260" textAnchor="middle" fontSize="7" fill="#f97316">padrão em U — modelo mal especificado</text>
-
-      {/* Painel 4: Outlier */}
-      <rect x="225" y="148" width="185" height="120" rx="6" fill="none" stroke="var(--text-secondary)" strokeWidth="1" />
-      <text x="317" y="162" textAnchor="middle" fontSize="8" fontWeight="700" fill="#f97316">Outlier / Alta Alavancagem</text>
-      <line x1="235" y1="208" x2="400" y2="208" stroke="var(--text-secondary)" strokeWidth="0.8" strokeDasharray="3,2" />
-      {[[245,210],[265,205],[285,212],[305,207],[325,209],[345,204],[365,211],[390,165]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r={i===7?5:2.5} fill={i===7?"#f97316":color} fillOpacity="0.8" />
-      ))}
-      <text x="317" y="260" textAnchor="middle" fontSize="7" fill="#f97316">ponto afastado com alta influência</text>
     </svg>
   );
 }
@@ -227,12 +142,6 @@ export default function ST6() {
       {/* Cabeçalho */}
       <div style={S.tag}>MÓDULO ST6</div>
       <h1 style={S.h1}>Regressão Linear Simples &amp; Múltipla</h1>
-      <p style={S.lead}>
-        A regressão linear é uma das ferramentas mais poderosas e amplamente utilizadas em econometria e ciência de dados.
-        Permite modelar relações entre variáveis, fazer previsões e, com as devidas cautelas, inferir relações causais.
-        Neste módulo abordamos os fundamentos teóricos, as assunções do CLRM, a extensão para múltiplas variáveis e os
-        principais cuidados na interpretação dos resultados.
-      </p>
 
       <hr style={S.divider} />
 
@@ -311,7 +220,7 @@ export default function ST6() {
         <BlockMath math="\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}} = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}" />
           <BlockMath math="\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \cdot \bar{x}" />
         <p style={S.p}>
-          onde Sxy é a covariância amostral (não normalizada) entre X e Y, e Sxx é a variância amostral (não normalizada) de X.
+          onde <InlineMath math="S_{xy}" /> é a covariância amostral (não normalizada) entre X e Y, e <InlineMath math="S_{xx}" /> é a variância amostral (não normalizada) de X.
           Geometricamente, o OLS minimiza a soma dos quadrados das <em>distâncias verticais</em> de cada ponto à linha ajustada.
         </p>
 
@@ -465,14 +374,6 @@ export default function ST6() {
           </tbody>
         </table>
 
-        <h3 style={S.h3}>Gráficos de Diagnóstico</h3>
-        <p style={S.p}>
-          Em R, o comando <code>plot(modelo)</code> gera automaticamente quatro gráficos de diagnóstico que permitem
-          avaliar visualmente as assunções do modelo:
-        </p>
-        <div style={S.diagram}>
-          <DiagnosticoSVG />
-        </div>
       </section>
 
       <hr style={S.divider} />
@@ -657,104 +558,6 @@ export default function ST6() {
         </div>
       </section>
 
-      <hr style={S.divider} />
-
-      {/* ── Secção 8: Análise de Resíduos ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>8. Análise de Resíduos</h2>
-        <p style={S.p}>
-          Os resíduos são a "impressão digital" do modelo. A sua inspecção visual é o primeiro passo para diagnosticar
-          violações das assunções do CLRM. Abaixo ilustram-se quatro padrões típicos:
-        </p>
-        <div style={S.diagram}>
-          <PadroesResiduosSVG />
-        </div>
-
-        <h3 style={S.h3}>Checklist de Diagnóstico</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Padrão</th>
-              <th style={S.th}>Problema</th>
-              <th style={S.th}>Solução</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Dispersão aleatória em torno de zero</td>
-              <td style={S.td}>Nenhum — modelo adequado</td>
-              <td style={S.td}>—</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Padrão em funil (variância cresce)</td>
-              <td style={S.td}>Heterocedasticidade</td>
-              <td style={S.td}>Transformação log(Y), erros robustos, WLS</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Padrão em U ou curva</td>
-              <td style={S.td}>Não-linearidade</td>
-              <td style={S.td}>Adicionar X², transformação logarítmica</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Ponto muito afastado</td>
-              <td style={S.td}>Outlier / alta alavancagem</td>
-              <td style={S.td}>Verificar erro de dados, modelos robustos</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Padrão ondulatório (séries temporais)</td>
-              <td style={S.td}>Autocorrelação</td>
-              <td style={S.td}>Modelo ARMA, erros de Newey-West</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Medidas de Influência</h3>
-        <p style={S.p}>
-          Nem todos os outliers são problemáticos. O que importa é a <em>alavancagem</em> (leverage) — o quanto o ponto
-          afasta-se do centro dos X — e a <em>influência</em> — o quanto a estimativa muda ao remover a observação.
-        </p>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <div style={{ ...S.highlight, flex: 1, minWidth: 200 }}>
-            <div style={{ fontWeight: 700, color }}>Distância de Cook</div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
-              Mede a influência total de uma observação. Regra: D &gt; 4/n é sinal de alerta.
-            </div>
-          </div>
-          <div style={{ ...S.highlight, flex: 1, minWidth: 200 }}>
-            <div style={{ fontWeight: 700, color }}>Hat Values (hᵢᵢ)</div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
-              Medem a alavancagem. Alto quando hᵢᵢ &gt; 2(k+1)/n.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Secção 9: Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>9. Síntese do Módulo</h2>
-        <p style={S.p}>
-          A regressão linear é muito mais do que uma fórmula — é um quadro conceptual que estrutura a forma como
-          pensamos sobre relações entre variáveis. Dominar este módulo implica compreender:
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
-          {[
-            { titulo: 'Modelo e Estimação', texto: 'OLS minimiza a soma dos quadrados dos resíduos. As fórmulas fechadas para β̂ dependem apenas de médias, variâncias e covariâncias amostrais.' },
-            { titulo: 'Qualidade do Ajustamento', texto: 'R² mede a fracção da variância explicada. O R² ajustado penaliza regressores adicionais e é preferível na regressão múltipla.' },
-            { titulo: 'Assunções e Diagnóstico', texto: 'O Teorema de Gauss-Markov garante BLUE quando as 5 assunções se verificam. Os resíduos são o principal instrumento de diagnóstico.' },
-            { titulo: 'Regressão Múltipla', texto: 'Permite isolar efeitos ceteris paribus. Atenção à multicolinearidade (VIF) e à selecção de variáveis (AIC, BIC, teoria económica).' },
-            { titulo: 'Transformações', texto: 'Modelos log-log, log-level, level-log e polinomiais permitem capturar relações não-lineares mantendo a estimação por OLS.' },
-            { titulo: 'Causalidade', texto: 'OLS estima associações, não causas. OVB, endogeneidade e confundimento requerem estratégias de identificação (IV, DiD, RD, RCT).' },
-          ].map((item, i) => (
-            <div key={i} style={{ ...S.highlight, margin: 0 }}>
-              <div style={{ fontWeight: 700, color, marginBottom: '0.4rem', fontSize: '0.95rem' }}>{item.titulo}</div>
-              <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{item.texto}</div>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

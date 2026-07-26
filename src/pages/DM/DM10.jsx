@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -19,24 +19,18 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: `rgba(249,115,22,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: `rgba(74,158,237,0.10)`, borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
   math: { background: 'var(--bg-secondary)', borderRadius: 10, padding: '1.25rem', textAlign: 'center', margin: '1.5rem 0', overflowX: 'auto' },
 };
-
 export default function DM10() {
   return (
     <div style={S.page}>
       <Link to="/dm" style={S.back}><ArrowLeft size={16} /> Voltar a Data Mining</Link>
       <div style={S.tag}>MÓDULO 06</div>
       <h1 style={S.h1}>Clustering Baseado em Densidade, HDBSCAN e Local Outlier Factor (LOF)</h1>
-      <p style={S.lead}>
-        Os métodos baseados em densidade descobrem clusters como regiões de alta concentração de pontos separadas por regiões esparsas.
-        Ao contrário do k-Means, não impõem formas esféricas nem requerem especificar o número de clusters. O DBSCAN e o HDBSCAN identificam
-        automaticamente outliers, e o LOF quantifica o grau de anomalia de cada ponto com base na sua densidade local relativa aos vizinhos.
-      </p>
 
       {/* ─────────────────────────────────────────────────────────── DBSCAN DEFINIÇÃO */}
       <div style={S.section}>
@@ -67,13 +61,15 @@ export default function DM10() {
           </thead>
           <tbody>
             {[
-              ['Core Point', '|N_ε(p)| ≥ MinPts, onde N_ε(p) são os vizinhos de p no raio ε', 'Interior do cluster; expande o cluster para os seus vizinhos'],
-              ['Border Point', '|N_ε(p)| < MinPts mas p ∈ N_ε(q) para algum core q', 'Fronteira do cluster; atribuído ao cluster do core mais próximo'],
-              ['Noise Point', 'Não é core nem border — não é diretamente atingível por nenhum core', 'Outlier; etiquetado como −1'],
-            ].map(([a, b, c]) => (
+              ['Core Point', '|N_\\varepsilon(p)| \\geq MinPts', 'onde N_ε(p) são os vizinhos de p no raio ε', 'Interior do cluster; expande o cluster para os seus vizinhos'],
+              ['Border Point', '|N_\\varepsilon(p)| < MinPts', 'mas p ∈ N_ε(q) para algum core q', 'Fronteira do cluster; atribuído ao cluster do core mais próximo'],
+              ['Noise Point', null, 'Não é core nem border — não é diretamente atingível por nenhum core', 'Outlier; etiquetado como −1'],
+            ].map(([a, formula, b, c]) => (
               <tr key={a}>
                 <td style={{ ...S.td, fontWeight: 700, color }}>{a}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.85rem' }}>{b}</td>
+                <td style={{ ...S.td, fontSize: '0.85rem' }}>
+                  {formula && <InlineMath math={formula} />}{formula ? ', ' : ''}{b}
+                </td>
                 <td style={S.td}>{c}</td>
               </tr>
             ))}
@@ -123,45 +119,45 @@ export default function DM10() {
             <rect x="0" y="0" width="500" height="300" fill="none" />
 
             {/* ε circles around core points */}
-            <circle cx="150" cy="140" r="55" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="6 3" />
-            <circle cx="210" cy="170" r="55" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="6 3" />
-            <circle cx="180" cy="110" r="55" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="6 3" />
+            <circle cx="150" cy="140" r="55" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="6 3" />
+            <circle cx="210" cy="170" r="55" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="6 3" />
+            <circle cx="180" cy="110" r="55" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" strokeDasharray="6 3" />
 
             {/* ε circle for second cluster core */}
-            <circle cx="360" cy="130" r="50" fill="rgba(14,165,233,0.07)" stroke="#f97316" strokeWidth="1.5" strokeDasharray="6 3" />
+            <circle cx="360" cy="130" r="50" fill="rgba(14,165,233,0.07)" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="6 3" />
 
             {/* ── CLUSTER 1 — Core Points (filled dark circles) */}
-            <circle cx="150" cy="140" r="9" fill="#f97316" stroke="#fff" strokeWidth="2" />
-            <text x="150" y="125" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">C1</text>
+            <circle cx="150" cy="140" r="9" fill="#4a9eed" stroke="#fff" strokeWidth="2" />
+            <text x="150" y="125" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">C1</text>
 
-            <circle cx="210" cy="170" r="9" fill="#f97316" stroke="#fff" strokeWidth="2" />
-            <text x="210" y="155" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">C2</text>
+            <circle cx="210" cy="170" r="9" fill="#4a9eed" stroke="#fff" strokeWidth="2" />
+            <text x="210" y="155" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">C2</text>
 
-            <circle cx="180" cy="110" r="9" fill="#f97316" stroke="#fff" strokeWidth="2" />
-            <text x="180" y="96" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">C3</text>
+            <circle cx="180" cy="110" r="9" fill="#4a9eed" stroke="#fff" strokeWidth="2" />
+            <text x="180" y="96" textAnchor="middle" fontSize="11" fill="#4a9eed" fontWeight="700">C3</text>
 
             {/* ── CLUSTER 1 — Border Points (half-filled: outer ring different) */}
-            <circle cx="110" cy="125" r="8" fill="#fff" stroke={color} strokeWidth="2.5" />
-            <path d="M110,117 A8,8,0,0,1,110,133 Z" fill={color} />
-            <text x="95" y="115" textAnchor="middle" fontSize="10" fill={color}>B1</text>
+            <circle cx="102" cy="118" r="8" fill="#fff" stroke={color} strokeWidth="2.5" />
+            <path d="M102,110 A8,8,0,0,1,102,126 Z" fill={color} />
+            <text x="87" y="108" textAnchor="middle" fontSize="10" fill={color}>B1</text>
 
             <circle cx="230" cy="215" r="8" fill="#fff" stroke={color} strokeWidth="2.5" />
             <path d="M230,207 A8,8,0,0,1,230,223 Z" fill={color} />
             <text x="247" y="222" textAnchor="middle" fontSize="10" fill={color}>B2</text>
 
             {/* ── CLUSTER 2 — Core Point (blue cluster) */}
-            <circle cx="360" cy="130" r="9" fill="#fb923c" stroke="#fff" strokeWidth="2" />
-            <text x="360" y="116" textAnchor="middle" fontSize="11" fill="#fb923c" fontWeight="700">C4</text>
+            <circle cx="360" cy="130" r="9" fill="#38bdf8" stroke="#fff" strokeWidth="2" />
+            <text x="360" y="116" textAnchor="middle" fontSize="11" fill="#38bdf8" fontWeight="700">C4</text>
 
             {/* ── Extra nearby points in cluster 2 */}
-            <circle cx="330" cy="155" r="6" fill="#f97316" stroke="#fff" strokeWidth="1.5" />
-            <circle cx="385" cy="110" r="6" fill="#f97316" stroke="#fff" strokeWidth="1.5" />
-            <circle cx="350" cy="105" r="6" fill="#f97316" stroke="#fff" strokeWidth="1.5" />
+            <circle cx="330" cy="155" r="6" fill="#4a9eed" stroke="#fff" strokeWidth="1.5" />
+            <circle cx="385" cy="110" r="6" fill="#4a9eed" stroke="#fff" strokeWidth="1.5" />
+            <circle cx="350" cy="105" r="6" fill="#4a9eed" stroke="#fff" strokeWidth="1.5" />
 
             {/* ── NOISE POINT — X mark */}
-            <line x1="418" y1="230" x2="434" y2="246" stroke="#f97316" strokeWidth="3" strokeLinecap="round" />
-            <line x1="434" y1="230" x2="418" y2="246" stroke="#f97316" strokeWidth="3" strokeLinecap="round" />
-            <text x="426" y="260" textAnchor="middle" fontSize="10" fill="#f97316" fontWeight="700">Ruído</text>
+            <line x1="418" y1="230" x2="434" y2="246" stroke="#4a9eed" strokeWidth="3" strokeLinecap="round" />
+            <line x1="434" y1="230" x2="418" y2="246" stroke="#4a9eed" strokeWidth="3" strokeLinecap="round" />
+            <text x="426" y="260" textAnchor="middle" fontSize="10" fill="#4a9eed" fontWeight="700">Ruído</text>
 
             {/* ε label */}
             <text x="150" y="200" textAnchor="middle" fontSize="10" fill={color}>ε</text>
@@ -170,15 +166,15 @@ export default function DM10() {
             {/* Legend */}
             <rect x="10" y="240" width="480" height="50" rx="6" fill="rgba(0,0,0,0.04)" stroke="var(--text-secondary)" strokeWidth="1" />
             {/* Core legend */}
-            <circle cx="35" cy="265" r="7" fill="#f97316" stroke="#fff" strokeWidth="1.5" />
+            <circle cx="35" cy="265" r="7" fill="#4a9eed" stroke="#fff" strokeWidth="1.5" />
             <text x="48" y="269" fontSize="11" fill="var(--text-primary)">Core point</text>
             {/* Border legend */}
             <circle cx="135" cy="265" r="7" fill="#fff" stroke={color} strokeWidth="2" />
             <path d="M135,258 A7,7,0,0,1,135,272 Z" fill={color} />
             <text x="148" y="269" fontSize="11" fill="var(--text-primary)">Border point</text>
             {/* Noise legend */}
-            <line x1="252" y1="261" x2="262" y2="271" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
-            <line x1="262" y1="261" x2="252" y2="271" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="252" y1="261" x2="262" y2="271" stroke="#4a9eed" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="262" y1="261" x2="252" y2="271" stroke="#4a9eed" strokeWidth="2.5" strokeLinecap="round" />
             <text x="270" y="269" fontSize="11" fill="var(--text-primary)">Noise point</text>
             {/* ε circle legend */}
             <circle cx="355" cy="265" r="7" fill="none" stroke={color} strokeWidth="1.5" strokeDasharray="4 2" />
@@ -449,212 +445,58 @@ expandirCluster(p, N, id, ε, MinPts):
         <div style={S.diagram}>
           <svg viewBox="0 0 500 280" width="100%" style={{ display: 'block' }}>
             {/* ── Dense cluster (left) */}
-            <text x="110" y="30" textAnchor="middle" fontSize="11" fill="#fb923c" fontWeight="700">Cluster Denso</text>
+            <text x="110" y="30" textAnchor="middle" fontSize="11" fill="#38bdf8" fontWeight="700">Cluster Denso</text>
             {[
               [95, 60], [105, 75], [115, 60], [100, 85], [120, 80],
               [90, 72], [110, 65], [125, 70], [100, 55], [118, 88],
               [92, 90], [130, 62], [108, 95], [85, 80],
             ].map(([cx, cy], i) => (
-              <circle key={i} cx={cx} cy={cy} r="5" fill="#f97316" opacity="0.85" stroke="#fff" strokeWidth="1" />
+              <circle key={i} cx={cx} cy={cy} r="5" fill="#4a9eed" opacity="0.85" stroke="#fff" strokeWidth="1" />
             ))}
 
             {/* ── Sparse cluster (right-center) */}
-            <text x="310" y="30" textAnchor="middle" fontSize="11" fill="#f97316" fontWeight="700">Cluster Esparso</text>
+            <text x="310" y="30" textAnchor="middle" fontSize="11" fill="#7dd3fc" fontWeight="700">Cluster Esparso</text>
             {[
               [260, 100], [310, 80], [360, 120], [290, 155], [350, 170],
               [320, 130], [270, 175],
             ].map(([cx, cy], i) => (
-              <circle key={i} cx={cx} cy={cy} r="5" fill="#f97316" opacity="0.85" stroke="#fff" strokeWidth="1" />
+              <circle key={i} cx={cx} cy={cy} r="5" fill="#7dd3fc" opacity="0.85" stroke="#fff" strokeWidth="1" />
             ))}
 
             {/* ── Outlier point */}
-            <circle cx="400" cy="200" r="8" fill={color} stroke="#fff" strokeWidth="2" />
-            <text x="400" y="220" textAnchor="middle" fontSize="11" fill={color} fontWeight="700">Outlier</text>
-            <text x="400" y="233" textAnchor="middle" fontSize="10" fill={color}>LOF = 3.8</text>
+            <circle cx="400" cy="200" r="8" fill="#1e3a8a" stroke="#fff" strokeWidth="2" />
+            <text x="400" y="220" textAnchor="middle" fontSize="11" fill="#1e3a8a" fontWeight="700">Outlier</text>
+            <text x="400" y="233" textAnchor="middle" fontSize="10" fill="#1e3a8a">LOF = 3.8</text>
 
             {/* ── k-NN lines from outlier to nearest sparse cluster members */}
-            <line x1="400" y1="200" x2="350" y2="170" stroke={color} strokeWidth="1.2" strokeDasharray="5 3" opacity="0.6" />
-            <line x1="400" y1="200" x2="360" y2="120" stroke={color} strokeWidth="1.2" strokeDasharray="5 3" opacity="0.6" />
+            <line x1="400" y1="200" x2="350" y2="170" stroke="#1e3a8a" strokeWidth="1.2" strokeDasharray="5 3" opacity="0.6" />
+            <line x1="400" y1="200" x2="360" y2="120" stroke="#1e3a8a" strokeWidth="1.2" strokeDasharray="5 3" opacity="0.6" />
 
             {/* ── lrd annotation */}
-            <rect x="155" y="110" width="90" height="36" rx="6" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1" />
-            <text x="200" y="128" textAnchor="middle" fontSize="10" fill="#f97316">lrd(vizinhos) alto</text>
-            <text x="200" y="141" textAnchor="middle" fontSize="10" fill="#f97316">(região esparsa)</text>
+            <rect x="155" y="110" width="90" height="36" rx="6" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1" />
+            <text x="200" y="128" textAnchor="middle" fontSize="10" fill="#4a9eed">lrd(vizinhos) alto</text>
+            <text x="200" y="141" textAnchor="middle" fontSize="10" fill="#4a9eed">(região esparsa)</text>
 
-            <rect x="155" y="155" width="90" height="36" rx="6" fill={`rgba(249,115,22,0.10)`} stroke={color} strokeWidth="1" />
+            <rect x="155" y="155" width="90" height="36" rx="6" fill={`rgba(74,158,237,0.10)`} stroke={color} strokeWidth="1" />
             <text x="200" y="173" textAnchor="middle" fontSize="10" fill={color}>lrd(outlier) baixo</text>
             <text x="200" y="186" textAnchor="middle" fontSize="10" fill={color}>→ LOF ≫ 1</text>
 
             {/* ── LOF scores annotation for dense cluster */}
-            <rect x="20" y="108" width="60" height="22" rx="5" fill="rgba(14,165,233,0.1)" stroke="#f97316" strokeWidth="1" />
-            <text x="50" y="123" textAnchor="middle" fontSize="10" fill="#fb923c">LOF ≈ 1.0</text>
+            <rect x="20" y="108" width="60" height="22" rx="5" fill="rgba(14,165,233,0.1)" stroke="#4a9eed" strokeWidth="1" />
+            <text x="50" y="123" textAnchor="middle" fontSize="10" fill="#38bdf8">LOF ≈ 1.0</text>
 
             {/* Legend */}
             <rect x="10" y="245" width="480" height="28" rx="5" fill="rgba(0,0,0,0.03)" stroke="var(--text-secondary)" strokeWidth="1" />
-            <circle cx="35" cy="259" r="5" fill="#f97316" />
+            <circle cx="35" cy="259" r="5" fill="#4a9eed" />
             <text x="46" y="263" fontSize="10" fill="var(--text-primary)">Cluster denso (LOF≈1)</text>
-            <circle cx="180" cy="259" r="5" fill="#f97316" />
+            <circle cx="180" cy="259" r="5" fill="#7dd3fc" />
             <text x="191" y="263" fontSize="10" fill="var(--text-primary)">Cluster esparso (LOF≈1)</text>
-            <circle cx="335" cy="259" r="6" fill={color} />
+            <circle cx="335" cy="259" r="6" fill="#1e3a8a" />
             <text x="347" y="263" fontSize="10" fill="var(--text-primary)">Outlier (LOF≫1)</text>
           </svg>
         </div>
       </div>
 
-      <hr style={S.divider} />
-
-      {/* ─────────────────────────────────────────────────────────── LOF EXEMPLO NUMÉRICO */}
-      <div style={S.section}>
-        <h2 style={S.h2}>8. LOF — Exemplo Numérico (k = 2)</h2>
-        <p style={S.p}>
-          Consideremos 6 pontos numa linha (1D) com as seguintes posições. Vamos calcular o LOF do ponto P com k = 2.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Ponto</th>
-              <th style={S.th}>Posição (x)</th>
-              <th style={S.th}>Descrição</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['A', '1.0', 'Cluster denso'],
-              ['B', '1.5', 'Cluster denso'],
-              ['C', '2.0', 'Cluster denso'],
-              ['D', '8.0', 'Cluster esparso'],
-              ['E', '9.5', 'Cluster esparso'],
-              ['P', '11.5', 'Ponto a avaliar (possível outlier)'],
-            ].map(([a, b, c]) => (
-              <tr key={a}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{a}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace' }}>{b}</td>
-                <td style={S.td}>{c}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Passo 1 — k-distances (k = 2)</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Ponto</th>
-              <th style={S.th}>2-NN</th>
-              <th style={S.th}>2-distance</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['D', 'E, P', '|9.5−8| = 1.5'],
-              ['E', 'D, P', '|11.5−9.5| = 2.0'],
-              ['P', 'E, D', '|11.5−9.5| = 2.0'],
-            ].map(([a, b, c]) => (
-              <tr key={a}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{a}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace' }}>{b}</td>
-                <td style={{ ...S.td, fontFamily: 'monospace' }}>{c}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Passo 2 — Reachability Distances de P</h3>
-        <div style={S.math}>
-          <BlockMath math="\text{reach-dist}_2(P, E) = \max(2\text{-dist}(E),\; d(P,E)) = \max(2.0,\; 2.0) = 2.0" />
-        </div>
-        <div style={S.math}>
-          <BlockMath math="\text{reach-dist}_2(P, D) = \max(2\text{-dist}(D),\; d(P,D)) = \max(1.5,\; 3.5) = 3.5" />
-        </div>
-
-        <h3 style={S.h3}>Passo 3 — lrd de P e dos seus vizinhos</h3>
-        <div style={S.math}>
-          <BlockMath math="\text{lrd}_2(P) = \frac{1}{\frac{2.0 + 3.5}{2}} = \frac{1}{2.75} \approx 0.364" />
-        </div>
-        <p style={S.p}>Para D (vizinhos: E a 1.5, P a 3.5):</p>
-        <div style={S.math}>
-          <BlockMath math="\text{reach-dist}_2(D,E) = \max(2.0, 1.5) = 2.0,\quad \text{reach-dist}_2(D,P) = \max(2.0, 3.5) = 3.5" />
-        </div>
-        <div style={S.math}>
-          <BlockMath math="\text{lrd}_2(D) = \frac{1}{(2.0+3.5)/2} = \frac{1}{2.75} \approx 0.364" />
-        </div>
-        <p style={S.p}>Para E (vizinhos: D a 1.5, P a 2.0):</p>
-        <div style={S.math}>
-          <BlockMath math="\text{lrd}_2(E) = \frac{1}{(\max(1.5,1.5)+\max(2.0,2.0))/2} = \frac{1}{(1.5+2.0)/2} = \frac{1}{1.75} \approx 0.571" />
-        </div>
-
-        <h3 style={S.h3}>Passo 4 — LOF de P</h3>
-        <div style={S.math}>
-          <BlockMath math="\text{LOF}_2(P) = \frac{1}{|N_2(P)|} \sum_{o \in \{E,D\}} \frac{\text{lrd}_2(o)}{\text{lrd}_2(P)} = \frac{1}{2}\left(\frac{0.571}{0.364} + \frac{0.364}{0.364}\right) \approx \frac{1}{2}(1.57 + 1.00) = 1.28" />
-        </div>
-        <div style={S.note}>
-          LOF(P) ≈ 1.28 — ligeiramente acima de 1, indicando que P está numa região um pouco menos densa que os seus vizinhos, mas
-          não drasticamente. Com k maior e um cluster mais denso como referência, o LOF de P seria substancialmente maior.
-        </div>
-
-        <h3 style={S.h3}>Implementação em Python</h3>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ─────────────────────────────────────────────────────────── COMPARAÇÃO */}
-      <div style={S.section}>
-        <h2 style={S.h2}>9. Comparação de Métodos de Clustering e Anomalia</h2>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Método</th>
-              <th style={S.th}>Formas de clusters</th>
-              <th style={S.th}>Ruído / Outliers</th>
-              <th style={S.th}>Requer k?</th>
-              <th style={S.th}>Assunção de densidade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['k-Means', 'Esféricas / convexas', 'Não — atribui todos os pontos', 'Sim — k fixo', 'Uniforme dentro do cluster'],
-              ['Hierarchical (Ward)', 'Variadas (depende do linkage)', 'Não (pode cortar depois)', 'Não (corte no dendrograma)', 'Não assume'],
-              ['DBSCAN', 'Arbitrárias', 'Sim — pontos noise como −1', 'Não — usa ε e MinPts', 'Uniforme (ε único)'],
-              ['HDBSCAN', 'Arbitrárias', 'Sim — mais robusto', 'Não — min_cluster_size', 'Variável — nativo'],
-              ['LOF', 'N/A (deteção anomalia)', 'Sim — score contínuo LOF', 'Sim — k vizinhos', 'Local — relativo à vizinhança'],
-            ].map(([a, b, c, d, e]) => (
-              <tr key={a}>
-                <td style={{ ...S.td, fontWeight: 700, color }}>{a}</td>
-                <td style={S.td}>{b}</td>
-                <td style={S.td}>{c}</td>
-                <td style={S.td}>{d}</td>
-                <td style={S.td}>{e}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div style={S.note}>
-          LOF não é um algoritmo de clustering — é um algoritmo de deteção de anomalias (anomaly detection). Pode ser combinado
-          com DBSCAN/HDBSCAN: usar DBSCAN para identificar clusters e LOF para pontuar os pontos noise ou border.
-        </div>
-      </div>
-
-      <hr style={S.divider} />
-
-      {/* ─────────────────────────────────────────────────────────── SÍNTESE */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <div style={S.highlight}>
-          <strong style={{ color }}>Conceitos fundamentais a reter:</strong>
-          <ul style={{ color: 'var(--text-primary)', lineHeight: 2.2, paddingLeft: '1.25rem', margin: '0.75rem 0 0' }}>
-            <li><strong>DBSCAN:</strong> clusters = regiões densas (≥ MinPts pontos em raio ε); core / border / noise</li>
-            <li><strong>Escolha de ε:</strong> k-distance plot — cotovelo da curva com k = MinPts − 1</li>
-            <li><strong>Density-reachable:</strong> cadeia de core points; density-connected: base da definição de cluster DBSCAN</li>
-            <li><strong>HDBSCAN:</strong> mutual reachability distance → MST → condensed tree → clusters mais estáveis</li>
-            <li><strong>HDBSCAN vs DBSCAN:</strong> sem ε, suporta densidades variáveis, soft clustering, hierarquia</li>
-            <li><strong>LOF:</strong> compara lrd(p) com lrd dos vizinhos; LOF ≈ 1 = inlier, LOF ≫ 1 = outlier</li>
-            <li><strong>reach-dist:</strong> suaviza distâncias em regiões densas, tornando o LOF mais estável</li>
-            <li><strong>lrd(p):</strong> inverso da média das reach-dist de p aos seus k vizinhos</li>
-            <li><strong>Quando usar LOF:</strong> dados com clusters de densidades muito diferentes onde métodos globais falham</li>
-            <li><strong>Todos:</strong> clusters de forma arbitrária; DBSCAN/HDBSCAN identificam outliers automaticamente</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+</div>
   );
 }

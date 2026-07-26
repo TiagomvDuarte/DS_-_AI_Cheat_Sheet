@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -18,7 +18,7 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
   note: { background: 'rgba(79,70,229,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
@@ -35,28 +35,28 @@ const NeuronComparisonDiagram = () => (
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
         <marker id="arrN1g" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
 
       {/* Biological neuron */}
       <text x="150" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="12" fontWeight="700">Neurónio Biológico</text>
       {[60, 90, 120].map((y, i) => (
-        <line key={i} x1="20" y1={y} x2="80" y2="100" stroke="#f97316" strokeWidth="1.5" />
+        <line key={i} x1="20" y1={y} x2="80" y2="100" stroke="#4a9eed" strokeWidth="1.5" />
       ))}
-      <text x="35" y="50" fill="#f97316" fontSize="10">dendrites</text>
-      <ellipse cx="110" cy="100" rx="35" ry="28" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="110" y="104" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="700">soma</text>
-      <line x1="145" y1="100" x2="220" y2="100" stroke="#f97316" strokeWidth="2" markerEnd="url(#arrN1g)" />
-      <text x="180" y="90" textAnchor="middle" fill="#f97316" fontSize="10">axónio</text>
-      <circle cx="225" cy="100" r="5" fill="#f97316" />
-      <text x="225" y="125" textAnchor="middle" fill="#f97316" fontSize="10">sinapse</text>
+      <text x="35" y="50" fill="#4a9eed" fontSize="10">dendrites</text>
+      <ellipse cx="110" cy="100" rx="35" ry="28" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="110" y="104" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="700">soma</text>
+      <line x1="145" y1="100" x2="220" y2="100" stroke="#4a9eed" strokeWidth="2" markerEnd="url(#arrN1g)" />
+      <text x="180" y="90" textAnchor="middle" fill="#4a9eed" fontSize="10">axónio</text>
+      <circle cx="225" cy="100" r="5" fill="#4a9eed" />
+      <text x="225" y="125" textAnchor="middle" fill="#4a9eed" fontSize="10">sinapse</text>
 
       <line x1="300" y1="20" x2="300" y2="200" stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="4,3" />
 
       {/* Artificial neuron */}
       <text x="450" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="12" fontWeight="700">Neurónio Artificial</text>
-      <circle cx="460" cy="100" r="32" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="460" cy="100" r="32" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       {[60, 90, 120, 150].map((y, i) => {
         const dx = 460 - 370, dy = 100 - y;
         const len = Math.sqrt(dx * dx + dy * dy);
@@ -111,20 +111,20 @@ const SingleNeuronDiagram = () => (
         </g>
       ))}
 
-      <text x="120" y="40" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="700">bias b</text>
-      <line x1="150" y1="44" x2="195" y2="100" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3,2" markerEnd="url(#arrN2)" />
+      <text x="120" y="40" textAnchor="middle" fill="#0284c7" fontSize="11" fontWeight="700">bias b</text>
+      <line x1="150" y1="44" x2="195" y2="100" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="3,2" markerEnd="url(#arrN2)" />
 
-      <circle cx="225" cy="110" r="35" fill="rgba(249,115,22,0.10)" stroke={color} strokeWidth="1.5" />
+      <circle cx="225" cy="110" r="35" fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth="1.5" />
       <text x="225" y="106" textAnchor="middle" fill={color} fontSize="13" fontWeight="700">z</text>
       <text x="225" y="122" textAnchor="middle" fill={color} fontSize="9">Σwᵢxᵢ + b</text>
 
       <line x1="260" y1="110" x2="320" y2="110" stroke={color} strokeWidth="1.5" markerEnd="url(#arrN2)" />
 
-      <rect x="320" y="80" width="80" height="60" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="360" y="106" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">f(z)</text>
-      <text x="360" y="122" textAnchor="middle" fill="#f97316" fontSize="9">activação</text>
+      <rect x="320" y="80" width="80" height="60" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="360" y="106" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">f(z)</text>
+      <text x="360" y="122" textAnchor="middle" fill="#4a9eed" fontSize="9">activação</text>
 
-      <line x1="400" y1="110" x2="450" y2="110" stroke="#f97316" strokeWidth="1.5" markerEnd="url(#arrN2)" />
+      <line x1="400" y1="110" x2="450" y2="110" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arrN2)" />
       <text x="455" y="105" textAnchor="start" fill="var(--text-primary)" fontSize="12" fontWeight="700">a</text>
       <text x="455" y="120" textAnchor="start" fill="var(--text-secondary)" fontSize="9">output</text>
     </svg>
@@ -137,7 +137,7 @@ const MLPDiagram = () => {
     { x: 50, n: 3, label: 'Input\n(3)', color: 'var(--text-secondary)' },
     { x: 190, n: 4, label: 'Hidden 1\n(4)', color: color },
     { x: 330, n: 3, label: 'Hidden 2\n(3)', color: color },
-    { x: 470, n: 1, label: 'Output\n(1)', color: '#f97316' },
+    { x: 470, n: 1, label: 'Output\n(1)', color: '#4a9eed' },
   ];
   const ys = (n) => {
     const spacing = 40;
@@ -167,7 +167,7 @@ const MLPDiagram = () => {
           return (
             <g key={li}>
               {ys(layer.n).map((y, i) => (
-                <circle key={i} cx={layer.x} cy={y} r={r} fill="rgba(249,115,22,0.10)" stroke={layer.color} strokeWidth="1.5" />
+                <circle key={i} cx={layer.x} cy={y} r={r} fill="rgba(74,158,237,0.10)" stroke={layer.color} strokeWidth="1.5" />
               ))}
               {isOutput
                 ? layer.label.split('\n').map((l, li2) => (
@@ -214,8 +214,8 @@ const ActivationCurves = () => {
   };
 
   const plots = [
-    { name: 'Sigmoid', fn: sigmoid, yMin: 0, yMax: 1, c: '#f97316' },
-    { name: 'Tanh', fn: tanh, yMin: -1, yMax: 1, c: '#f97316' },
+    { name: 'Sigmoid', fn: sigmoid, yMin: 0, yMax: 1, c: '#4a9eed' },
+    { name: 'Tanh', fn: tanh, yMin: -1, yMax: 1, c: '#4a9eed' },
     { name: 'ReLU', fn: relu, yMin: -1, yMax: 4, c: color },
   ];
 
@@ -249,11 +249,11 @@ const HierarchyDiagram = () => (
         </marker>
       </defs>
       {[
-        [60, 'Pixels\n(input)', '#f97316'],
-        [190, 'Camadas\niniciais:\narestas, cores', '#f97316'],
+        [60, 'Pixels\n(input)', '#4a9eed'],
+        [190, 'Camadas\niniciais:\narestas, cores', '#4a9eed'],
         [320, 'Camadas\nintermédias:\nformas, texturas', color],
-        [450, 'Camadas\nprofundas:\npartes (olhos, rodas)', '#f97316'],
-        [580, 'Output:\n"gato" / "carro"', '#f97316'],
+        [450, 'Camadas\nprofundas:\npartes (olhos, rodas)', '#4a9eed'],
+        [580, 'Output:\n"gato" / "carro"', '#4a9eed'],
       ].map(([cx, label, col], i, arr) => (
         <g key={i}>
           <rect x={cx - 50} y="30" width="100" height="80" rx="10" fill={`${col}1A`} stroke={col} strokeWidth="1.2" />
@@ -288,12 +288,12 @@ const XORDiagram = () => (
           <line x1="20" y1="140" x2="20" y2="10" stroke="var(--text-secondary)" strokeWidth="1" />
           <text x="155" y="144" fontSize="10" fill="var(--text-secondary)">x₁</text>
           <text x="10" y="10" fontSize="10" fill="var(--text-secondary)">x₂</text>
-          <line x1="15" y1="80" x2="155" y2="80" stroke="#f97316" strokeWidth="1.5" strokeDasharray="5,3" />
-          <text x="125" y="74" fontSize="9" fill="#f97316">recta? ✗</text>
-          <circle cx="20" cy="140" r="7" fill="#f97316" /><text x="20" y="155" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(0,0)→0</text>
-          <circle cx="130" cy="20" r="7" fill="#f97316" /><text x="130" y="14" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(1,1)→0</text>
-          <circle cx="20" cy="20" r="7" fill="#f59e0b" /><text x="20" y="14" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(0,1)→1</text>
-          <circle cx="130" cy="140" r="7" fill="#f59e0b" /><text x="130" y="155" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(1,0)→1</text>
+          <line x1="15" y1="80" x2="155" y2="80" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="5,3" />
+          <text x="125" y="74" fontSize="9" fill="#4a9eed">recta? ✗</text>
+          <circle cx="20" cy="140" r="7" fill="#4a9eed" /><text x="20" y="155" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(0,0)→0</text>
+          <circle cx="130" cy="20" r="7" fill="#4a9eed" /><text x="130" y="14" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(1,1)→0</text>
+          <circle cx="20" cy="20" r="7" fill="#0284c7" /><text x="20" y="14" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(0,1)→1</text>
+          <circle cx="130" cy="140" r="7" fill="#0284c7" /><text x="130" y="155" fontSize="8" textAnchor="middle" fill="var(--text-secondary)">(1,0)→1</text>
         </svg>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>1 perceptron: nenhuma linha recta separa as classes</p>
       </div>
@@ -303,12 +303,12 @@ const XORDiagram = () => (
           <line x1="20" y1="140" x2="20" y2="10" stroke="var(--text-secondary)" strokeWidth="1" />
           <text x="155" y="144" fontSize="10" fill="var(--text-secondary)">x₁</text>
           <text x="10" y="10" fontSize="10" fill="var(--text-secondary)">x₂</text>
-          <polygon points="20,80 75,20 130,80 75,140" fill="rgba(245,158,11,0.18)" stroke="#f59e0b" strokeWidth="1.5" />
-          <text x="75" y="84" fontSize="9" textAnchor="middle" fill="#f59e0b" fontWeight="700">região "1"</text>
-          <circle cx="20" cy="140" r="7" fill="#f97316" />
-          <circle cx="130" cy="20" r="7" fill="#f97316" />
-          <circle cx="20" cy="20" r="7" fill="#f59e0b" />
-          <circle cx="130" cy="140" r="7" fill="#f59e0b" />
+          <polygon points="20,80 75,20 130,80 75,140" fill="rgba(2,132,199,0.18)" stroke="#0284c7" strokeWidth="1.5" />
+          <text x="75" y="84" fontSize="9" textAnchor="middle" fill="#0284c7" fontWeight="700">região "1"</text>
+          <circle cx="20" cy="140" r="7" fill="#4a9eed" />
+          <circle cx="130" cy="20" r="7" fill="#4a9eed" />
+          <circle cx="20" cy="20" r="7" fill="#0284c7" />
+          <circle cx="130" cy="140" r="7" fill="#0284c7" />
         </svg>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>MLP (1 camada escondida): fronteira não-linear separa correctamente</p>
       </div>
@@ -333,7 +333,7 @@ const GradientDescentDiagram = () => (
     <svg viewBox="0 0 480 180" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
         <marker id="arrGD" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
         </marker>
       </defs>
       <path d="M 20 40 C 100 20, 140 160, 220 150 C 300 140, 320 60, 400 50 C 430 46, 450 60, 460 70"
@@ -344,11 +344,11 @@ const GradientDescentDiagram = () => (
         [180, 145, 0.85],
         [220, 150, 1.0],
       ].map(([cx, cy, op], i) => (
-        <circle key={i} cx={cx} cy={cy - 6} r="7" fill="#f59e0b" opacity={op} />
+        <circle key={i} cx={cx} cy={cy - 6} r="7" fill="#0284c7" opacity={op} />
       ))}
-      <path d="M 65 32 Q 90 60 115 88" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
-      <path d="M 122 90 Q 150 130 175 142" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
-      <text x="220" y="170" textAnchor="middle" fill="#f97316" fontSize="11" fontWeight="700">mínimo (loss baixa)</text>
+      <path d="M 65 32 Q 90 60 115 88" fill="none" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
+      <path d="M 122 90 Q 150 130 175 142" fill="none" stroke="#0284c7" strokeWidth="1.2" strokeDasharray="3,2" markerEnd="url(#arrGD)" />
+      <text x="220" y="170" textAnchor="middle" fill="#4a9eed" fontSize="11" fontWeight="700">mínimo (loss baixa)</text>
       <text x="60" y="20" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">início (pesos aleatórios)</text>
       <text x="20" y="170" textAnchor="middle" fill="var(--text-secondary)" fontSize="10">loss alta</text>
     </svg>
@@ -403,17 +403,8 @@ export default function DL1() {
     <div style={S.page}>
       <Link to="/dl" style={S.back}><ArrowLeft size={16} /> Voltar a Deep Learning</Link>
 
-      <div style={S.tag}>Module 01</div>
+      <div style={S.tag}>MÓDULO 01</div>
       <h1 style={S.h1}>O Que É Uma Rede Neuronal?</h1>
-      <p style={S.lead}>
-        Antes de mergulharmos em backpropagation, optimizadores ou arquitecturas avançadas, precisamos de
-        construir uma intuição sólida sobre o bloco fundamental de tudo isto: o <strong>neurónio artificial</strong>.
-        Neste módulo vamos desconstruir uma rede neuronal peça por peça — desde a inspiração biológica, passando
-        pelas funções de activação que introduzem não-linearidade, até à arquitectura em camadas (MLP) e a um
-        exemplo numérico completo de forward pass. Vamos também perceber porque é que precisamos de "profundidade"
-        e camadas escondidas (com o clássico problema XOR), e terminar com uma intuição visual sobre como uma
-        rede aprende — preparando o terreno para o Módulo 02, onde exploraremos backpropagation em detalhe.
-      </p>
 
       {/* === SECTION 1: Inspiração biológica === */}
       <div style={S.section}>
@@ -843,29 +834,6 @@ export default function DL1() {
           Isto motiva, mais uma vez, a preferência por arquitecturas profundas em vez de apenas largas.
         </p>
       </div>
-
-      {/* === SYNTHESIS === */}
-      <div style={S.section}>
-        <h2 style={S.h2}>10. Síntese do Módulo</h2>
-        <p style={S.p}>
-          Uma rede neuronal não é mais do que uma composição de funções simples — somas ponderadas seguidas
-          de não-linearidades — organizadas em camadas. A "inteligência" da rede emerge da forma como estas
-          transformações simples se combinam para construir representações cada vez mais abstractas dos dados.
-        </p>
-        
-          <p style={{ ...S.p, marginBottom: '0.5rem' }}><strong>Pontos-chave a reter:</strong></p>
-          <ul style={{ ...S.p, paddingLeft: '1.5rem', marginBottom: 0 }}>
-            <li>Um neurónio artificial calcula <InlineMath math="z = \mathbf{w} \cdot \mathbf{x} + b" /> e aplica uma função de activação <InlineMath math="f(z)" /></li>
-            <li>Sem funções de activação não-lineares, qualquer rede colapsa numa única transformação linear</li>
-            <li>ReLU é a escolha padrão para camadas escondidas; sigmoid/softmax para outputs de classificação</li>
-            <li>Um MLP organiza neurónios em camadas (input → hidden → output), totalmente ligadas (fully-connected)</li>
-            <li>O forward pass calcula a previsão camada a camada, partindo das entradas até ao output</li>
-            <li>Camadas escondidas são essenciais para resolver problemas não-linearmente separáveis (ex.: XOR)</li>
-            <li>O treino ajusta pesos e bias via gradiente descendente para minimizar a função de perda</li>
-            <li>O Universal Approximation Theorem garante que MLPs suficientemente largas podem aproximar qualquer função contínua</li>
-          </ul>
-        
-      </div>
-    </div>
+</div>
   );
 }

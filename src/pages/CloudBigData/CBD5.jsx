@@ -5,19 +5,19 @@ import { ArrowLeft } from 'lucide-react';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
-  tag: { display: 'inline-block', background: 'transparent', color: '#f97316', border: '1.5px solid #f97316', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
+  tag: { display: 'inline-block', background: 'transparent', color: '#4a9eed', border: '1.5px solid #4a9eed', fontSize: '0.75rem', fontWeight: 700, padding: '0.25rem 0.75rem', borderRadius: 20, marginBottom: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' },
   h1: { fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.5rem', color: 'var(--text-primary)' },
   lead: { fontSize: '1.05rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: 1.7 },
   section: { marginBottom: '3.5rem' },
-  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#f97316', borderLeft: '3px solid #f97316', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
+  h2: { fontSize: '1.4rem', fontWeight: 700, color: '#4a9eed', borderLeft: '3px solid #4a9eed', paddingLeft: '0.85rem', marginBottom: '1.2rem' },
   h3: { fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.8rem', marginTop: '1.6rem' },
   p: { fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.8, marginBottom: '1rem' },
   diagram: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 12, padding: '1.5rem', margin: '1.5rem 0', textAlign: 'center' },
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.06)', borderLeft: '3px solid #f97316', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: '3px solid #4a9eed', borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
 };
 
@@ -25,28 +25,28 @@ const CloudComparison = () => {
   const [active, setActive] = useState(0);
   const platforms = [
     {
-      name: 'Databricks', color: '#f97316',
+      name: 'Databricks', color: '#4a9eed',
       desc: 'Plataforma unificada Data + AI criada pelos autores do Apache Spark em 2013. Adiciona ao Spark open-source o Photon Engine (re-implementação do Spark em C++ — 2-5× mais rápido), Delta Lake com ACID, Unity Catalog para governance, e MLflow integrado para MLOps. O "premium" do ecossistema Spark.',
       stack: ['Delta Lake (ACID + Time Travel)', 'Unity Catalog (governance)', 'MLflow integrado nativamente', 'Photon Engine (C++, 2-5× mais rápido)', 'Notebooks colaborativos em tempo real', 'Auto-scaling inteligente'],
       usecase: 'Pipelines complexos de Data Engineering + ML numa plataforma unificada. Especialmente vantajoso quando os dados e modelos precisam de governança centralizada.',
       cost: 'DBU (Databricks Unit) + cloud infra. Mais caro que open-source mas mais produtivo.',
     },
     {
-      name: 'AWS EMR', color: '#ff9900',
+      name: 'AWS EMR', color: '#4a9eed',
       desc: 'Elastic MapReduce — serviço gerido da AWS para clusters Hadoop/Spark desde 2009. O EMRFS (EMR File System) permite aceder a S3 de forma transparente como se fosse HDFS. Spot Instances reduzem custo até 90% para workloads tolerantes a interrupção. Integra nativamente com o ecossistema AWS.',
       stack: ['EMRFS (S3 como HDFS)', 'Spot Instances (até 90% desconto)', 'Auto-scaling baseado em métricas', 'AWS Glue Catalog (metastore)', 'Integração Redshift, Athena, SageMaker', 'EMR Serverless (sem gerir clusters)'],
       usecase: 'Organizações AWS-first com workloads batch e streaming variáveis. Ideal quando já existe investimento em S3, IAM, e outros serviços AWS.',
       cost: 'EC2 + EMR surcharge (~$0.015/hora por nó). Spot Instances tornam EMR muito competitivo em custo.',
     },
     {
-      name: 'Google Dataproc', color: '#f97316', 
+      name: 'Google Dataproc', color: '#4a9eed', 
       desc: 'Clusters Spark/Hadoop geridos no Google Cloud Platform. Diferencia-se pelo startup extremamente rápido (< 90 segundos), facturação por segundo, e clusters efémeros — criar um cluster por job e destruir no fim elimina o custo de clusters idle. Integração nativa com BigQuery e Vertex AI.',
       stack: ['Startup < 90 segundos', 'Facturação por segundo', 'Clusters efémeros por job', 'BigQuery Storage connector', 'Vertex AI (MLOps) integrado', 'Dataproc Serverless disponível'],
       usecase: 'GCP-first com pipelines episódicos onde pagar apenas durante a execução é crítico. Integração bigquery + vertex AI nativa.',
       cost: 'GCE VMs + Dataproc surcharge (~$0.01/hora). Clusters efémeros eliminam custo idle.',
     },
     {
-      name: 'Spark em K8s', color: '#f97316',
+      name: 'Spark em K8s', color: '#4a9eed',
       desc: 'Spark 2.3+ suporta submeter jobs directamente ao Kubernetes API. O Driver e os Executors correm como Pods efémeros. Cloud-agnostic — corre em GKE, EKS, AKS, ou Kubernetes on-premises. Sem vendor lock-in mas requer maturidade em DevOps/Kubernetes.',
       stack: ['Cloud-agnostic (qualquer K8s)', 'Driver + Executor como Pods K8s', 'spark-submit com --master k8s://', 'Sem vendor lock-in', 'Integração com Helm charts', 'Suporte multi-cloud nativo'],
       usecase: 'Multi-cloud, on-premises, ou equipas DevOps maduras que precisam de portabilidade total e controlo sobre scheduling.',
@@ -81,25 +81,25 @@ const ShuffleDiagram = () => (
     <p style={{ fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>Shuffle — O Custo Oculto do Spark</p>
     <svg viewBox="0 0 560 160" style={{ maxWidth: '100%', height: 'auto' }}>
       <defs>
-        <marker id="arr-sh" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316" /></marker>
+        <marker id="arr-sh" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" /></marker>
       </defs>
-      <rect x="10" y="30" width="110" height="100" rx="7" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="65" y="50" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="600">Executor 1</text>
-      <rect x="20" y="58" width="90" height="20" rx="4" fill="rgba(249,115,22,0.20)" />
-      <text x="65" y="72" textAnchor="middle" fill="#f97316" fontSize="8">Partition A (USA, EU)</text>
-      <rect x="20" y="82" width="90" height="20" rx="4" fill="rgba(249,115,22,0.13)" />
-      <text x="65" y="96" textAnchor="middle" fill="#f97316" fontSize="8">Partition B (USA, AS)</text>
+      <rect x="10" y="30" width="110" height="100" rx="7" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="65" y="50" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="600">Executor 1</text>
+      <rect x="20" y="58" width="90" height="20" rx="4" fill="rgba(74,158,237,0.20)" />
+      <text x="65" y="72" textAnchor="middle" fill="#4a9eed" fontSize="8">Partition A (USA, EU)</text>
+      <rect x="20" y="82" width="90" height="20" rx="4" fill="rgba(74,158,237,0.13)" />
+      <text x="65" y="96" textAnchor="middle" fill="#4a9eed" fontSize="8">Partition B (USA, AS)</text>
       <text x="65" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">1. Escreve para disco</text>
-      <line x1="120" y1="68" x2="440" y2="68" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-sh)" />
-      <line x1="120" y1="92" x2="440" y2="108" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-sh)" />
-      <text x="280" y="52" textAnchor="middle" fill="#f97316" fontSize="9" fontWeight="700">2. Transferência de rede (LENTO)</text>
+      <line x1="120" y1="68" x2="440" y2="68" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-sh)" />
+      <line x1="120" y1="92" x2="440" y2="108" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" markerEnd="url(#arr-sh)" />
+      <text x="280" y="52" textAnchor="middle" fill="#4a9eed" fontSize="9" fontWeight="700">2. Transferência de rede (LENTO)</text>
       <text x="280" y="125" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">hash("USA") → Executor 2 | hash("EU") → Executor 3</text>
-      <rect x="442" y="30" width="110" height="100" rx="7" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="497" y="50" textAnchor="middle" fill="#f97316" fontSize="10" fontWeight="600">Executor 2</text>
-      <rect x="452" y="58" width="90" height="20" rx="4" fill="rgba(249,115,22,0.10)" />
-      <text x="497" y="72" textAnchor="middle" fill="#f97316" fontSize="8">USA: [1000, 2000, ...]</text>
-      <rect x="452" y="82" width="90" height="20" rx="4" fill="rgba(249,115,22,0.10)" />
-      <text x="497" y="96" textAnchor="middle" fill="#f97316" fontSize="8">EU: [500, 800, ...]</text>
+      <rect x="442" y="30" width="110" height="100" rx="7" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="497" y="50" textAnchor="middle" fill="#4a9eed" fontSize="10" fontWeight="600">Executor 2</text>
+      <rect x="452" y="58" width="90" height="20" rx="4" fill="rgba(74,158,237,0.10)" />
+      <text x="497" y="72" textAnchor="middle" fill="#4a9eed" fontSize="8">USA: [1000, 2000, ...]</text>
+      <rect x="452" y="82" width="90" height="20" rx="4" fill="rgba(74,158,237,0.10)" />
+      <text x="497" y="96" textAnchor="middle" fill="#4a9eed" fontSize="8">EU: [500, 800, ...]</text>
       <text x="497" y="118" textAnchor="middle" fill="var(--text-secondary)" fontSize="7">3. Lê e processa por chave</text>
     </svg>
     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Shuffle = escrita em disco + transferência de rede + leitura em disco. Operações que causam shuffle: groupBy, join, orderBy, distinct, repartition.</p>
@@ -110,7 +110,7 @@ const JoinExplainer = () => {
   const [join, setJoin] = useState(0);
   const joins = [
     {
-      name: 'Broadcast Hash Join', color: '#f97316',
+      name: 'Broadcast Hash Join', color: '#4a9eed',
       quando: 'Uma das tabelas é suficientemente pequena para caber em memória de cada executor (por defeito < 10 MB, configurável).',
       como: 'A tabela pequena é serializada e enviada (broadcast) para cada executor via P2P directo. Cada executor junta localmente sem qualquer shuffle. Zero movimentação da tabela grande.',
       vantagens: ['Sem shuffle da tabela grande', 'Paralelismo total', 'Latência muito baixa', 'Catalyst escolhe automaticamente'],
@@ -118,7 +118,7 @@ const JoinExplainer = () => {
       perf: 'O join mais rápido possível — único custo é o broadcast inicial da tabela pequena.',
     },
     {
-      name: 'Sort Merge Join', color: '#f97316',
+      name: 'Sort Merge Join', color: '#4a9eed',
       quando: 'Ambas as tabelas são grandes — nenhuma cabe em memória para broadcast. É o join default do Spark para tabelas grandes.',
       como: 'Ambas as tabelas são shuffled pela chave de join (todos os registos com a mesma chave vão para o mesmo executor). Depois são sorted dentro de cada executor. Finalmente, um merge linear combina os registos ordenados.',
       vantagens: ['Correcto para qualquer tamanho', 'Memória eficiente (streaming merge)', 'Suporta todos os tipos de join (inner, outer, left, right)'],
@@ -126,7 +126,7 @@ const JoinExplainer = () => {
       perf: 'Mais lento que Broadcast mas o único correcto para dois datasets grandes.',
     },
     {
-      name: 'Salting (Skew Join)', color: '#f97316',
+      name: 'Salting (Skew Join)', color: '#4a9eed',
       quando: 'Uma chave domina os dados — ex: "USA" tem 80% dos registos. Um único executor fica sobrecarregado enquanto os outros ficam idle (straggler problem).',
       como: 'Adiciona um sufixo aleatório 0-N à chave skewed: "USA_0", "USA_1", ..., "USA_N". Distribui os registos "USA" por N partições artificiais. A tabela pequena é replicada N vezes para corresponder ao salting.',
       vantagens: ['Elimina o straggler problem', 'Distribui carga uniformemente', 'Sem mudança de lógica de negócio'],
@@ -147,8 +147,8 @@ const JoinExplainer = () => {
           <div><span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Como funciona</span><p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', margin: '0.25rem 0 0' }}>{j.como}</p></div>
         </div>
         <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-          <div><div style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Vantagens</div>{j.vantagens.map(v => <div key={v} style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>✓ {v}</div>)}</div>
-          <div><div style={{ fontSize: '0.72rem', color: '#f97316', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Limitações</div>{j.limitacoes.map(l => <div key={l} style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>✗ {l}</div>)}</div>
+          <div><div style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Vantagens</div>{j.vantagens.map(v => <div key={v} style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>✓ {v}</div>)}</div>
+          <div><div style={{ fontSize: '0.72rem', color: '#4a9eed', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Limitações</div>{j.limitacoes.map(l => <div key={l} style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>✗ {l}</div>)}</div>
         </div>
         <div style={{ fontSize: '0.83rem', color: j.color, fontWeight: 600, marginTop: '0.5rem' }}> {j.perf}</div>
       </div>
@@ -163,7 +163,6 @@ export default function CBD5() {
         <Link to="/cloud-bigdata" style={S.back}><ArrowLeft size={16} /> Voltar a Cloud &amp; Big Data</Link>
         <div style={S.tag}>Module 5</div>
         <h1 style={S.h1}>Spark na Cloud & Optimização de Performance</h1>
-        <p style={S.lead}>Como escolher a plataforma cloud certa para Spark. Optimizar jobs eliminando shuffles, usando formatos columnar com partition pruning, broadcast joins para tabelas pequenas, e Adaptive Query Execution. Diagnosticar e resolver data skew.</p>
 
         <div style={S.section}>
           <h2 style={S.h2}>1. O Problema do On-Premise</h2>
@@ -186,7 +185,7 @@ export default function CBD5() {
                   ['Data + AI unificado', 'Databricks (Photon + Delta + MLflow)', 'Plataforma unificada engenharia + ciência de dados'],
                   ['Queries ad-hoc sobre S3/GCS', 'AWS Athena ou BigQuery (Serverless)', 'Pay-per-query, zero clusters, SQL directo sobre object storage'],
                 ].map(([s, r, ra]) => (
-                  <tr key={s}><td style={S.td}>{s}</td><td style={{ ...S.td, color: '#f97316', fontWeight: 600 }}>{r}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{ra}</td></tr>
+                  <tr key={s}><td style={S.td}>{s}</td><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600 }}>{r}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{ra}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -203,14 +202,14 @@ export default function CBD5() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              { n: '1. Disk I/O', c: '#f97316', desc: 'Ler ficheiros CSV de 1 TB vs. Parquet equivalente de 100 GB. Usar formatos columnar com compressão é a optimização mais impactante e mais fácil de implementar.', tip: 'Converter CSV→Parquet uma vez poupa 10× em cada query futura.' },
-              { n: '2. Network (Shuffle)', c: '#f97316', desc: 'Dados transferidos entre executors durante groupBy, join, orderBy. O custo mais variável — pode ser zero (broadcast join) ou dominar completamente o tempo do job.', tip: 'Filtrar e seleccionar colunas antes de qualquer operação que cause shuffle.' },
-              { n: '3. CPU', c: '#f97316', desc: 'Computação de expressões, sort, hash. Geralmente não é o bottleneck — Tungsten + vectorized processing tornam o CPU muito eficiente. Excepção: UDFs Python (serialização Python↔JVM).', tip: 'Substituir UDFs Python por funções nativas do Spark SQL quando possível.' },
+              { n: '1. Disk I/O', c: '#4a9eed', desc: 'Ler ficheiros CSV de 1 TB vs. Parquet equivalente de 100 GB. Usar formatos columnar com compressão é a optimização mais impactante e mais fácil de implementar.', tip: 'Converter CSV→Parquet uma vez poupa 10× em cada query futura.' },
+              { n: '2. Network (Shuffle)', c: '#4a9eed', desc: 'Dados transferidos entre executors durante groupBy, join, orderBy. O custo mais variável — pode ser zero (broadcast join) ou dominar completamente o tempo do job.', tip: 'Filtrar e seleccionar colunas antes de qualquer operação que cause shuffle.' },
+              { n: '3. CPU', c: '#4a9eed', desc: 'Computação de expressões, sort, hash. Geralmente não é o bottleneck — Tungsten + vectorized processing tornam o CPU muito eficiente. Excepção: UDFs Python (serialização Python↔JVM).', tip: 'Substituir UDFs Python por funções nativas do Spark SQL quando possível.' },
             ].map(({ n, c, desc, tip }) => (
               <div key={n} style={{ background: `${c}08`, border: `1px solid ${c}25`, borderRadius: 8, padding: '0.9rem' }}>
                 <div style={{ fontWeight: 700, color: c, marginBottom: '0.35rem' }}>{n}</div>
                 <p style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>{desc}</p>
-                <p style={{ fontSize: '0.78rem', color: c, margin: 0 }}>💡 {tip}</p>
+                <p style={{ fontSize: '0.78rem', color: c, margin: 0 }}>{tip}</p>
               </div>
             ))}
           </div>
@@ -220,8 +219,8 @@ export default function CBD5() {
           <h3 style={S.h3}>Parquet vs. CSV — Porquê o Formato Importa</h3>
           <p style={S.p}>A diferença entre CSV e Parquet não é apenas de espaço em disco — é de como os dados são lidos durante uma query. Parquet é um formato orientado a colunas: os valores de cada coluna são armazenados juntos, comprimidos com codificações específicas para cada tipo. Uma query que lê 5 de 50 colunas apenas desserializa 10% dos dados — as outras 45 colunas nunca são lidas do disco.</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>CSV — Row-based</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>CSV — Row-based</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>Lê TODAS as colunas mesmo que query use só 2</li>
                 <li>Schema inferido em cada leitura (lento)</li>
@@ -230,8 +229,8 @@ export default function CBD5() {
                 <li>SELECT name FROM table (50 cols) → lê 100% dos dados</li>
               </ul>
             </div>
-            <div style={{ background: 'rgba(249,115,22,0.10)', border: '1px solid rgba(249,115,22,0.10)', borderRadius: 8, padding: '1rem' }}>
-              <div style={{ fontWeight: 700, color: '#f97316', marginBottom: '0.5rem' }}>Parquet — Columnar ✅</div>
+            <div style={{ background: 'rgba(74,158,237,0.10)', border: '1px solid rgba(74,158,237,0.10)', borderRadius: 8, padding: '1rem' }}>
+              <div style={{ fontWeight: 700, color: '#4a9eed', marginBottom: '0.5rem' }}>Parquet — Columnar</div>
               <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.9 }}>
                 <li>Lê APENAS as colunas pedidas (column pruning)</li>
                 <li>Schema embebido — zero inferência</li>
@@ -266,7 +265,7 @@ export default function CBD5() {
                   ['GroupBy lento com resultado pequeno', 'Muitas chaves com poucos valores vs. poucas chaves com muitos valores', 'Filtrar antes do groupBy; pre-aggregate com Combiner/mapPartitions'],
                   ['Join lento com tabela grande × pequena', 'Não está a usar Broadcast Join', 'Forçar broadcast: broadcast(small_df) ou aumentar threshold'],
                 ].map(([s, d, sol]) => (
-                  <tr key={s}><td style={{ ...S.td, color: '#f97316', fontSize: '0.85rem' }}>{s}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: '#f97316' }}>{sol}</td></tr>
+                  <tr key={s}><td style={{ ...S.td, color: '#4a9eed', fontSize: '0.85rem' }}>{s}</td><td style={S.td}>{d}</td><td style={{ ...S.td, color: '#4a9eed' }}>{sol}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -276,9 +275,9 @@ export default function CBD5() {
           <p style={S.p}>Antes do Spark 3.0, o plano de execução era fixo — o Catalyst optimizava com base em estatísticas estáticas antes da execução. O problema: estatísticas de tabela podem estar desactualizadas, e o volume real de dados após filtros é muitas vezes imprevisível. O AQE (Adaptive Query Execution) resolve isto re-optimizando o plano durante a execução, usando estatísticas reais dos stages já concluídos.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
             {[
-              { n: 'Coalescing Shuffle Partitions', c: '#f97316', desc: 'Depois do shuffle, se as partições forem pequenas, o AQE combina-as automaticamente. Evita overhead de muitas tasks pequenas sem configuração manual de spark.sql.shuffle.partitions.' },
-              { n: 'Converting Sort-Merge to Broadcast', c: '#f97316', desc: 'Se depois do shuffle um lado do join for suficientemente pequeno, o AQE converte automaticamente o Sort-Merge Join num Broadcast Hash Join — sem necessidade de hints no código.' },
-              { n: 'Skew Join Optimization', c: '#f97316', desc: 'Detecta partições skewed automaticamente e divide-as em sub-partições, duplicando as partições do outro lado para corresponder. Resolve skew sem key salting manual.' },
+              { n: 'Coalescing Shuffle Partitions', c: '#4a9eed', desc: 'Depois do shuffle, se as partições forem pequenas, o AQE combina-as automaticamente. Evita overhead de muitas tasks pequenas sem configuração manual de spark.sql.shuffle.partitions.' },
+              { n: 'Converting Sort-Merge to Broadcast', c: '#4a9eed', desc: 'Se depois do shuffle um lado do join for suficientemente pequeno, o AQE converte automaticamente o Sort-Merge Join num Broadcast Hash Join — sem necessidade de hints no código.' },
+              { n: 'Skew Join Optimization', c: '#4a9eed', desc: 'Detecta partições skewed automaticamente e divide-as em sub-partições, duplicando as partições do outro lado para corresponder. Resolve skew sem key salting manual.' },
             ].map(({ n, c, desc }) => (
               <div key={n} style={{ background: `${c}08`, border: `1px solid ${c}25`, borderRadius: 8, padding: '0.9rem' }}>
                 <div style={{ fontWeight: 700, color: c, marginBottom: '0.35rem', fontSize: '0.88rem' }}>{n}</div>
@@ -300,7 +299,7 @@ export default function CBD5() {
                   ['spark.sql.adaptive.enabled', 'true (Spark 3.2+)', 'AQE activo', 'Manter true — optimizações automáticas sem custo'],
                   ['spark.sql.files.maxPartitionBytes', '128 MB', 'Tamanho máximo de partição ao ler ficheiros', 'Aumentar para 256 MB se tasks são demasiado pequenas e rápidas'],
                 ].map(([c, d, i, r]) => (
-                  <tr key={c}><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem', color: '#f97316' }}>{c}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{d}</td><td style={S.td}>{i}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{r}</td></tr>
+                  <tr key={c}><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem', color: '#4a9eed' }}>{c}</td><td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem' }}>{d}</td><td style={S.td}>{i}</td><td style={{ ...S.td, fontSize: '0.83rem', color: 'var(--text-secondary)' }}>{r}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -325,7 +324,7 @@ export default function CBD5() {
                   ['Muitas partições pequenas', 'Overhead de scheduling e GC domina o tempo de execução', 'coalesce() ou repartition() para reduzir antes de escrever'],
                   ['Ignorar o Spark UI', 'Não ver gargalos — optimizar às cegas', 'Analisar Stage Details: task times, shuffle read/write, GC time'],
                 ].map(([a, p, s]) => (
-                  <tr key={a}><td style={{ ...S.td, color: '#f97316', fontWeight: 600, fontSize: '0.85rem' }}>{a}</td><td style={S.td}>{p}</td><td style={{ ...S.td, color: '#f97316' }}>{s}</td></tr>
+                  <tr key={a}><td style={{ ...S.td, color: '#4a9eed', fontWeight: 600, fontSize: '0.85rem' }}>{a}</td><td style={S.td}>{p}</td><td style={{ ...S.td, color: '#4a9eed' }}>{s}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -335,28 +334,16 @@ export default function CBD5() {
         <div style={S.highlight}>
           <strong>Checklist de Performance:</strong>
           <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>✅ Usar Parquet ou ORC com compressão Snappy — 5-10× menos dados para ler</li>
-            <li>✅ Filtrar e seleccionar colunas o mais cedo possível no pipeline</li>
-            <li>✅ Broadcast Join para tabelas pequenas (&lt; 50 MB no executor)</li>
-            <li>✅ Particionar por colunas de baixa cardinalidade usadas em filtros frequentes</li>
-            <li>✅ Activar AQE (spark.sql.adaptive.enabled=true) — optimiza automaticamente shuffle e joins</li>
-            <li>✅ Cache apenas DataFrames reutilizados múltiplas vezes; unpersist() quando terminado</li>
-            <li>✅ Verificar Spark UI após cada job — identificar tasks lentas e shuffles grandes</li>
+            <li>Usar Parquet ou ORC com compressão Snappy — 5-10× menos dados para ler</li>
+            <li>Filtrar e seleccionar colunas o mais cedo possível no pipeline</li>
+            <li>Broadcast Join para tabelas pequenas (&lt; 50 MB no executor)</li>
+            <li>Particionar por colunas de baixa cardinalidade usadas em filtros frequentes</li>
+            <li>Activar AQE (spark.sql.adaptive.enabled=true) — optimiza automaticamente shuffle e joins</li>
+            <li>Cache apenas DataFrames reutilizados múltiplas vezes; unpersist() quando terminado</li>
+            <li>Verificar Spark UI após cada job — identificar tasks lentas e shuffles grandes</li>
           </ul>
         </div>
 
-        <hr style={S.divider} />
-        <div style={S.section}>
-          <h2 style={S.h2}>5. Síntese do Módulo</h2>
-          <div style={S.highlight}>
-            <ul style={{paddingLeft:'1.2rem', margin:0}}>
-              <li style={{marginBottom:"0.4rem"}}><strong>O Problema do On-Premise</strong> — clusters fixos forçam over-provisioning para o pico; na cloud o compute é efémero (paga-se por uso) e o storage desacopla do compute — o modelo S3 + Spot Instances reduz custos drasticamente.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Os 3 Custos Dominantes no Spark</strong> — Shuffle (transferência de dados entre nós), Spill (transbordamento para disco quando a memória esgota) e GC pressure (garbage collection JVM); minimizá-los é a base da optimização de performance.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Joins, Data Skew e AQE</strong> — Broadcast Join evita shuffle para tabelas pequenas; Data Skew concentra trabalho em poucos executors (solução: salting); AQE (Adaptive Query Execution) re-optimiza o plano em runtime com estatísticas reais.</li>
-              <li style={{marginBottom:"0.4rem"}}><strong>Anti-patterns e Checklist</strong> — evitar collect() em datasets grandes, usar cache() apenas em dados reutilizados, preferir DataFrames a UDFs Python (quebram o Catalyst), particionar por colunas de filtro frequente, e monitorizar com Spark UI.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

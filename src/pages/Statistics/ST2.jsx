@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -20,8 +20,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(249,115,22,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.10)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0' },
 };
@@ -74,7 +74,7 @@ function PMFCDFChart() {
   for (const p of probs) { acc += p; cdf.push(acc); }
 
   const barColor = color;
-  const stepColor = '#f97316';
+  const stepColor = '#4a9eed';
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', maxWidth: '100%' }} aria-label="PMF e CDF">
@@ -167,7 +167,7 @@ function BernoulliChart() {
               const by = padT + chartH - barH;
               return (
                 <g key={x}>
-                  <rect x={cx - barW / 2} y={by} width={barW} height={barH} fill={x === 1 ? color : '#f97316'} opacity="0.85" rx="2" />
+                  <rect x={cx - barW / 2} y={by} width={barW} height={barH} fill={x === 1 ? color : '#4a9eed'} opacity="0.85" rx="2" />
                   <text x={cx} y={by - 3} textAnchor="middle" fontSize="8" fill="var(--text-secondary)">{v.toFixed(2)}</text>
                   <text x={cx} y={padT + chartH + 12} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{x === 0 ? '0' : '1'}</text>
                 </g>
@@ -246,14 +246,14 @@ function BinomialChart() {
           <polyline
             points={overlayPoints.join(' ')}
             fill="none"
-            stroke="#f97316"
+            stroke="#4a9eed"
             strokeWidth="2"
             strokeDasharray="4,2"
             opacity="0.9"
           />
         )}
         {n * pVal >= 5 && (
-          <text x={W - padR - 2} y={padT + 10} textAnchor="end" fontSize="8" fill="#f97316">≈ Normal</text>
+          <text x={W - padR - 2} y={padT + 10} textAnchor="end" fontSize="8" fill="#4a9eed">≈ Normal</text>
         )}
         <text x={padL + chartW / 2} y={H - 2} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">k (sucessos em 10 ensaios)</text>
       </svg>
@@ -319,12 +319,6 @@ export default function ST2() {
       {/* Header */}
       <div style={S.tag}>MÓDULO 02</div>
       <h1 style={S.h1}>Distribuições Discretas</h1>
-      <p style={S.lead}>
-        Uma variável aleatória discreta toma valores num conjunto contável. As distribuições discretas descrevem
-        a probabilidade de cada valor possível e são fundamentais em contagem, ensaios repetidos e modelação de
-        eventos raros. Neste módulo estudamos a PMF, CDF, valor esperado, variância e as distribuições mais
-        importantes: Bernoulli, Binomial, Poisson, Geométrica e Hipergeométrica.
-      </p>
 
       {/* ── 1. PMF e CDF ── */}
       <section style={S.section}>
@@ -767,62 +761,6 @@ export default function ST2() {
           </tbody>
         </table>
       </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 8. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>8. Síntese do Módulo</h2>
-
-        <p style={S.p}>
-          As distribuições discretas são ferramentas fundamentais da probabilidade aplicada. Neste módulo
-          percorremos os conceitos essenciais e as distribuições mais usadas em estatística, ciência de dados
-          e investigação operacional.
-        </p>
-
-        <div style={S.diagram}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <th style={S.th}>Conceito</th>
-                <th style={S.th}>Fórmula chave</th>
-                <th style={S.th}>Observação</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['PMF', 'p(x) = P(X = x)', 'Σ p(x) = 1'],
-                ['CDF', 'F(x) = Σ p(k), k ≤ x', 'Função em escada'],
-                ['E[X]', 'Σ x·p(x)', 'Centro de massa'],
-                ['Var(X)', 'E[X²] − (E[X])²', 'Sempre ≥ 0'],
-                ['Bernoulli(p)', 'E=p, Var=p(1−p)', 'Um ensaio'],
-                ['Binomial(n,p)', 'E=np, Var=np(1−p)', 'n ensaios indep.'],
-                ['Poisson(λ)', 'E=Var=λ', 'Eventos raros'],
-                ['Geométrica(p)', 'E=1/p, Var=(1−p)/p²', 'Sem memória'],
-                ['Hipergeométrica(N,K,n)', 'E=nK/N', 'Sem reposição'],
-              ].map(([c, f, o]) => (
-                <tr key={c}>
-                  <td style={{ ...S.td, fontWeight: 600, color }}>{c}</td>
-                  <td style={S.td}>{f}</td>
-                  <td style={S.td}>{o}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div style={S.highlight}>
-          <strong>Relações entre distribuições:</strong>
-          <ul style={{ margin: '0.5rem 0 0 1.2rem', lineHeight: 2 }}>
-            <li>Bernoulli(p) é um caso especial de Binomial com n = 1</li>
-            <li>Binomial(n, p) → Poisson(λ) quando n → ∞, p → 0, np = λ</li>
-            <li>Binomial(n, p) → Normal(np, np(1−p)) quando np ≥ 5 e n(1−p) ≥ 5</li>
-            <li>Hipergeométrica(N,K,n) → Binomial(n, K/N) quando n/N → 0</li>
-            <li>Geométrica é a única distribuição discreta sem memória</li>
-          </ul>
-        </div>
-
-      </section>
-    </div>
+</div>
   );
 }

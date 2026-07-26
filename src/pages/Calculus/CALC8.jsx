@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const color = '#f97316';
+const color = '#4a9eed';
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
   back: { display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '2.5rem' },
@@ -17,1142 +17,952 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(245,158,11,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(74,158,237,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
 
-// SVG 1: sin(x) with polynomial approximations of order 1,3,5,7
-function SinApproxSVG() {
-  const W = 520, H = 240;
-  const ox = 260, oy = 120;
-  const sx = 45, sy = 80;
-
-  function makePath(fn, xMin, xMax, steps) {
-    const pts = [];
-    for (let i = 0; i <= steps; i++) {
-      const x = xMin + (xMax - xMin) * i / steps;
-      const y = fn(x);
-      if (!isFinite(y) || Math.abs(y) > 4) continue;
-      pts.push([ox + x * sx, oy - y * sy]);
+// SVG 1: 2D vector field
+function VectorFieldSVG() {
+  const W = 480, H = 260;
+  const cx = W / 2, cy = H / 2;
+  const arrows = [];
+  for (let i = 0; i < 7; i++) {
+    for (let j = 0; j < 6; j++) {
+      const x = 40 + i * 65;
+      const y = 30 + j * 40;
+      const dx = (x - cx) * 0.12;
+      const dy = (y - cy) * 0.12;
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      const scale = Math.min(22, len);
+      const ux = (dx / len) * scale;
+      const uy = (dy / len) * scale;
+      const ex = x + ux;
+      const ey = y + uy;
+      const alpha = 0.3 + 0.7 * (scale / 22);
+      arrows.push({ x, y, ex, ey, alpha });
     }
-    return pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
   }
-
-  const sinFn = x => Math.sin(x);
-  const t1 = x => x;
-  const t3 = x => x - x ** 3 / 6;
-  const t5 = x => x - x ** 3 / 6 + x ** 5 / 120;
-  const t7 = x => x - x ** 3 / 6 + x ** 5 / 120 - x ** 7 / 5040;
-
-  const dSin = makePath(sinFn, -5, 5, 300);
-  const d1 = makePath(t1, -3, 3, 200);
-  const d3 = makePath(t3, -4, 4, 200);
-  const d5 = makePath(t5, -5, 5, 200);
-  const d7 = makePath(t7, -5, 5, 200);
-
-  const xTicks = [-4, -3, -2, -1, 0, 1, 2, 3, 4];
-  const yTicks = [-1, 0, 1];
-
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
-      <rect width={W} height={H} fill="var(--bg-secondary)" rx="8" />
-      {/* Grid */}
-      {xTicks.map(v => (
-        <line key={v} x1={ox + v * sx} y1={20} x2={ox + v * sx} y2={H - 20} stroke="var(--text-secondary)" strokeWidth="0.5" />
-      ))}
-      {yTicks.map(v => (
-        <line key={v} x1={20} y1={oy - v * sy} x2={W - 20} y2={oy - v * sy} stroke="var(--text-secondary)" strokeWidth="0.5" />
-      ))}
-      {/* Axes */}
-      <line x1={20} y1={oy} x2={W - 20} y2={oy} stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1={ox} y1={20} x2={ox} y2={H - 20} stroke="var(--text-secondary)" strokeWidth="1" />
-      {/* Tick labels */}
-      {[-3, -2, -1, 1, 2, 3].map(v => (
-        <text key={v} x={ox + v * sx} y={oy + 14} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{v}</text>
-      ))}
-      {/* Approximations */}
-      <path d={d1} fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4 2" />
-      <path d={d3} fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 2" />
-      <path d={d5} fill="none" stroke="#fb923c" strokeWidth="1.5" strokeDasharray="4 2" />
-      <path d={d7} fill="none" stroke={color} strokeWidth="1.5" strokeDasharray="4 2" />
-      {/* True sin */}
-      <path d={dSin} fill="none" stroke="#f97316" strokeWidth="2.5" />
-      {/* Legend */}
-      <rect x={W - 130} y={12} width={118} height={88} rx="4" fill="var(--bg-primary)" fillOpacity="0.85" />
-      <line x1={W - 124} y1={26} x2={W - 108} y2={26} stroke="#f97316" strokeWidth="2.5" />
-      <text x={W - 104} y={30} fontSize="9" fill="var(--text-primary)">sin(x)</text>
-      <line x1={W - 124} y1={42} x2={W - 108} y2={42} stroke="#f97316" strokeWidth="1.5" strokeDasharray="4 2" />
-      <text x={W - 104} y={46} fontSize="9" fill="var(--text-primary)">Ordem 1</text>
-      <line x1={W - 124} y1={58} x2={W - 108} y2={58} stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 2" />
-      <text x={W - 104} y={62} fontSize="9" fill="var(--text-primary)">Ordem 3</text>
-      <line x1={W - 124} y1={74} x2={W - 108} y2={74} stroke="#fb923c" strokeWidth="1.5" strokeDasharray="4 2" />
-      <text x={W - 104} y={78} fontSize="9" fill="var(--text-primary)">Ordem 5</text>
-      <line x1={W - 124} y1={90} x2={W - 108} y2={90} stroke={color} strokeWidth="1.5" strokeDasharray="4 2" />
-      <text x={W - 104} y={94} fontSize="9" fill="var(--text-primary)">Ordem 7</text>
-      <text x={ox} y={H - 6} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Aproximações de Maclaurin de sin(x) em torno de x=0</text>
-    </svg>
-  );
-}
-
-// SVG 2: Convergence interval illustration
-function ConvergenceSVG() {
-  const W = 480, H = 120;
-  const cx = 240, lineY = 60;
-  const R = 140;
-
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
-      <rect width={W} height={H} fill="var(--bg-secondary)" rx="8" />
-      {/* Number line */}
-      <line x1={40} y1={lineY} x2={W - 40} y2={lineY} stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <polygon points={`${W-40},${lineY} ${W-48},${lineY-4} ${W-48},${lineY+4}`} fill="var(--text-secondary)" />
-      {/* Convergence interval */}
-      <rect x={cx - R} y={lineY - 14} width={R * 2} height={28} rx="4" fill={color} fillOpacity="0.18" />
-      <line x1={cx - R} y1={lineY - 18} x2={cx - R} y2={lineY + 18} stroke={color} strokeWidth="2" />
-      <line x1={cx + R} y1={lineY - 18} x2={cx + R} y2={lineY + 18} stroke={color} strokeWidth="2" />
-      {/* Center mark */}
-      <circle cx={cx} cy={lineY} r="4" fill={color} />
-      {/* Labels */}
-      <text x={cx - R} y={lineY + 34} textAnchor="middle" fontSize="11" fill="var(--text-primary)">a - R</text>
-      <text x={cx} y={lineY + 34} textAnchor="middle" fontSize="11" fill={color}>a</text>
-      <text x={cx + R} y={lineY + 34} textAnchor="middle" fontSize="11" fill="var(--text-primary)">a + R</text>
-      {/* Bracket labels */}
-      <text x={cx - R - 8} y={lineY + 4} textAnchor="end" fontSize="16" fill={color}>(</text>
-      <text x={cx + R + 8} y={lineY + 4} textAnchor="start" fontSize="16" fill={color}>)</text>
-      {/* Arrow label */}
-      <text x={cx} y={lineY - 22} textAnchor="middle" fontSize="10" fill={color}>Intervalo de Convergência  2R</text>
-      {/* Diverge labels */}
-      <text x={cx - R - 38} y={lineY + 20} textAnchor="middle" fontSize="9" fill="#f97316">diverge</text>
-      <text x={cx + R + 38} y={lineY + 20} textAnchor="middle" fontSize="9" fill="#f97316">diverge</text>
-      <text x={W - 36} y={lineY - 8} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">x</text>
-    </svg>
-  );
-}
-
-// SVG 3: Error vs order bar chart
-function ErrorOrderSVG() {
-  const W = 480, H = 280;
-  const padL = 60, padB = 50, padT = 20, padR = 20;
-  const chartW = W - padL - padR;
-  const chartH = H - padB - padT;
-
-  const orders = [1, 2, 3, 4, 5, 6, 7, 8];
-  // log10 of approximate error at x=1 for sin(x)
-  const errors = [0.46, -0.22, -1.05, -1.95, -3.06, -4.31, -5.64, -7.02];
-  const minErr = -8, maxErr = 1;
-  const range = maxErr - minErr;
-  const barW = (chartW / orders.length) * 0.6;
-  const barGap = chartW / orders.length;
-
-  return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
-      <rect width={W} height={H} fill="var(--bg-secondary)" rx="8" />
-      {/* Axes */}
-      <line x1={padL} y1={padT} x2={padL} y2={H - padB} stroke="var(--text-secondary)" strokeWidth="1.5" />
-      <line x1={padL} y1={H - padB} x2={W - padR} y2={H - padB} stroke="var(--text-secondary)" strokeWidth="1.5" />
-      {/* y grid + labels */}
-      {[-8, -6, -4, -2, 0].map(v => {
-        const y = padT + chartH * (1 - (v - minErr) / range);
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {arrows.map((a, i) => {
+        const headLen = 5;
+        const angle = Math.atan2(a.ey - a.y, a.ex - a.x);
+        const h1x = a.ex - headLen * Math.cos(angle - 0.4);
+        const h1y = a.ey - headLen * Math.sin(angle - 0.4);
+        const h2x = a.ex - headLen * Math.cos(angle + 0.4);
+        const h2y = a.ey - headLen * Math.sin(angle + 0.4);
         return (
-          <g key={v}>
-            <line x1={padL} y1={y} x2={W - padR} y2={y} stroke="var(--text-secondary)" strokeWidth="0.5" />
-            <text x={padL - 6} y={y + 4} textAnchor="end" fontSize="9" fill="var(--text-secondary)">{v}</text>
+          <g key={i} opacity={a.alpha}>
+            <line x1={a.x} y1={a.y} x2={a.ex} y2={a.ey} stroke={color} strokeWidth={1.5} />
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${a.ex.toFixed(1)},${a.ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={1.5} />
           </g>
         );
       })}
-      {/* Bars */}
-      {orders.map((ord, i) => {
-        const errV = errors[i];
-        const barTop = padT + chartH * (1 - (errV - minErr) / range);
-        const zeroY = padT + chartH * (1 - (0 - minErr) / range);
-        const barH = Math.abs(zeroY - barTop);
-        const bx = padL + i * barGap + (barGap - barW) / 2;
-        const alpha = 0.4 + 0.08 * i;
+      <circle cx={cx} cy={cy} r={5} fill={color} />
+      <text x={cx} y={cy - 12} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>origem</text>
+      <text x={W / 2} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">Campo radial F(x,y) = (x, y)</text>
+    </svg>
+  );
+}
+
+// SVG 2: Nabla operator — three operations illustrated
+function NablaSVG() {
+  // Extra viewBox padding around the actual content (rather than shrinking the
+  // outer container) is what makes the boxes/text genuinely render smaller,
+  // since the SVG still fills its container width at 100%.
+  const W = 640, H = 190;
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* Gradient */}
+      <rect x={100} y={42} width={130} height={50} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
+      <text x={165} y={64} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Gradiente</text>
+      <text x={165} y={82} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">escalar → vector</text>
+      {/* Divergence */}
+      <rect x={255} y={42} width={130} height={50} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
+      <text x={320} y={64} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Divergência</text>
+      <text x={320} y={82} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">vector → escalar</text>
+      {/* Curl */}
+      <rect x={410} y={42} width={130} height={50} rx={8} fill="rgba(74,158,237,0.10)" stroke={color} strokeWidth={1} />
+      <text x={475} y={64} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Rotacional</text>
+      <text x={475} y={82} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">vector → vector</text>
+      {/* Laplacian */}
+      <rect x={255} y={104} width={130} height={44} rx={8} fill="rgba(74,158,237,0.07)" stroke={color} strokeWidth={1} strokeDasharray="4 2" />
+      <text x={320} y={123} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>Laplaciano</text>
+      <text x={320} y={139} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">∇²f = ∇·(∇f)</text>
+      {/* arrows */}
+      <line x1={230} y1={67} x2={255} y2={67} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3 2" />
+      <line x1={385} y1={67} x2={410} y2={67} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3 2" />
+      <line x1={320} y1={92} x2={320} y2={104} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="3 2" />
+    </svg>
+  );
+}
+
+// SVG 3: Contour map with gradient vectors
+function GradientContourSVG() {
+  const W = 640, H = 340;
+  const cx = W / 2, cy = H / 2;
+  // Draw elliptical contours
+  const contours = [30, 60, 90, 120];
+  // Gradient vectors at several points on a contour
+  const gradVectors = [
+    { ox: cx, oy: cy - 60, dx: 0, dy: -28 },
+    { ox: cx + 70, oy: cy - 30, dx: 22, dy: -18 },
+    { ox: cx + 80, oy: cy + 20, dx: 24, dy: 12 },
+    { ox: cx, oy: cy + 60, dx: 0, dy: 28 },
+    { ox: cx - 70, oy: cy + 20, dx: -24, dy: 12 },
+    { ox: cx - 80, oy: cy - 30, dx: -22, dy: -18 },
+  ];
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {contours.map((r, i) => (
+        <ellipse key={i} cx={cx} cy={cy} rx={r * 1.3} ry={r} fill="none" stroke={color} strokeWidth={1} opacity={0.25 + i * 0.18} />
+      ))}
+      {gradVectors.map((v, i) => {
+        const ex = v.ox + v.dx;
+        const ey = v.oy + v.dy;
+        const angle = Math.atan2(v.dy, v.dx);
+        const h1x = ex - 6 * Math.cos(angle - 0.4);
+        const h1y = ey - 6 * Math.sin(angle - 0.4);
+        const h2x = ex - 6 * Math.cos(angle + 0.4);
+        const h2y = ey - 6 * Math.sin(angle + 0.4);
         return (
-          <rect key={ord} x={bx} y={barTop} width={barW} height={barH} rx="2"
-            fill={color} fillOpacity={Math.min(alpha, 1)} />
+          <g key={i}>
+            <line x1={v.ox} y1={v.oy} x2={ex} y2={ey} stroke="#7dd3fc" strokeWidth={2} />
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke="#7dd3fc" strokeWidth={2} />
+          </g>
         );
       })}
-      {/* x labels */}
-      {orders.map((ord, i) => {
-        const bx = padL + i * barGap + barGap / 2;
+      <circle cx={cx} cy={cy} r={5} fill={color} />
+      <text x={cx} y={cy + 16} textAnchor="middle" fontSize={11} fill={color}>mínimo</text>
+      {/* gradient descent path */}
+      <path d={`M${cx + 130},${cy - 60} Q${cx + 100},${cy - 40} ${cx + 70},${cy - 10} Q${cx + 35},${cy + 15} ${cx},${cy}`} fill="none" stroke="#4a9eed" strokeWidth={2} strokeDasharray="5 3" />
+      <text x={cx + 135} y={cy - 64} fontSize={11} fill="#4a9eed" textAnchor="start">−∇f</text>
+      <text x={W / 2} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">curvas de nível (azul) e vectores gradiente (azul claro) — descida: azul tracejado</text>
+    </svg>
+  );
+}
+
+// SVG 4: Source vs Sink divergence
+function DivergenceSVG() {
+  const W = 480, H = 200;
+  // source on left, sink on right
+  const srcX = 120, snkX = 360, midY = 100;
+  const dirs = [0, 45, 90, 135, 180, 225, 270, 315];
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* source */}
+      {dirs.map((deg, i) => {
+        const rad = (deg * Math.PI) / 180;
+        const ex = srcX + 34 * Math.cos(rad);
+        const ey = midY + 34 * Math.sin(rad);
+        const angle = rad;
+        const h1x = ex - 6 * Math.cos(angle - 0.4);
+        const h1y = ey - 6 * Math.sin(angle - 0.4);
+        const h2x = ex - 6 * Math.cos(angle + 0.4);
+        const h2y = ey - 6 * Math.sin(angle + 0.4);
         return (
-          <text key={ord} x={bx} y={H - padB + 14} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">{ord}</text>
+          <g key={i}>
+            <line x1={srcX} y1={midY} x2={ex} y2={ey} stroke={color} strokeWidth={1.5} />
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={1.5} />
+          </g>
         );
       })}
-      <text x={padL + chartW / 2} y={H - 4} textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Ordem da Aproximação</text>
-      <text x={12} y={H / 2} textAnchor="middle" fontSize="10" fill="var(--text-secondary)" transform={`rotate(-90,12,${H / 2})`}>log₁₀(Erro)</text>
+      <circle cx={srcX} cy={midY} r={5} fill={color} />
+      <text x={srcX} y={midY + 52} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>fonte (∇·F &gt; 0)</text>
+      {/* sink */}
+      {dirs.map((deg, i) => {
+        const rad = (deg * Math.PI) / 180;
+        const sx2 = snkX + 34 * Math.cos(rad);
+        const sy2 = midY + 34 * Math.sin(rad);
+        const angle = Math.atan2(midY - sy2, snkX - sx2);
+        const ex2 = snkX - 8 * Math.cos(rad);
+        const ey2 = midY - 8 * Math.sin(rad);
+        const h1x = ex2 - 6 * Math.cos(angle - 0.4);
+        const h1y = ey2 - 6 * Math.sin(angle - 0.4);
+        const h2x = ex2 - 6 * Math.cos(angle + 0.4);
+        const h2y = ey2 - 6 * Math.sin(angle + 0.4);
+        return (
+          <g key={i}>
+            <line x1={sx2} y1={sy2} x2={ex2} y2={ey2} stroke="#4a9eed" strokeWidth={1.5} />
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex2.toFixed(1)},${ey2.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke="#4a9eed" strokeWidth={1.5} />
+          </g>
+        );
+      })}
+      <circle cx={snkX} cy={midY} r={5} fill="#4a9eed" />
+      <text x={snkX} y={midY + 52} textAnchor="middle" fontSize={12} fill="#4a9eed" fontWeight={700}>sorvedouro (∇·F &lt; 0)</text>
+      <line x1={240} y1={20} x2={240} y2={180} stroke="var(--text-secondary)" strokeWidth={1} strokeDasharray="4 3" />
     </svg>
   );
 }
 
-// SVG 4: Quadratic bowl for 2nd-order Taylor
-function QuadraticBowlSVG() {
-  const W = 540, H = 220;
-  const ox = 240, oy = 180;
-  const sx = 50, sy = 40;
-
-  function parabola(x) { return x * x; }
-
-  const pts = [];
-  for (let i = -50; i <= 50; i++) {
-    const x = i * 0.08;
-    const y = parabola(x);
-    if (y > 4.5) continue;
-    pts.push([ox + x * sx, oy - y * sy]);
-  }
-  const dParab = pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
-
-  // Point x0 = 1.5
-  const x0 = 1.5;
-  const y0 = parabola(x0);
-  const grad = 2 * x0;
-  const hess = 2;
-  // Taylor approx at x0: Q(x) = y0 + grad*(x-x0) + 0.5*hess*(x-x0)^2
-  const qPts = [];
-  for (let i = -50; i <= 50; i++) {
-    const x = i * 0.08;
-    const dx = x - x0;
-    const y = y0 + grad * dx + 0.5 * hess * dx * dx;
-    if (y < 0 || y > 5) continue;
-    qPts.push([ox + x * sx, oy - y * sy]);
-  }
-  const dQ = qPts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
-
-  // Newton step: x_new = x0 - grad/hess
-  const xNew = x0 - grad / hess;
-
-  const px0 = ox + x0 * sx;
-  const py0 = oy - y0 * sy;
-  const pxNew = ox + xNew * sx;
-  const pyNew = oy - parabola(xNew) * sy;
-
-  // Gradient arrow (tangent line segment)
-  const tlLen = 0.8;
-  const txA = ox + (x0 - tlLen) * sx;
-  const tyA = oy - (y0 + grad * (-tlLen)) * sy;
-  const txB = ox + (x0 + tlLen) * sx;
-  const tyB = oy - (y0 + grad * (tlLen)) * sy;
-
+// SVG 5: Curl / rotation arrows
+function CurlSVG() {
+  const W = 480, H = 200;
+  const cx = 240, cy = 100;
+  // rotating arrows around a centre
+  const pts = 8;
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
-      <rect width={W} height={H} fill="var(--bg-secondary)" rx="8" />
-      {/* Axes */}
-      <line x1={40} y1={oy} x2={W - 20} y2={oy} stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1={ox} y1={20} x2={ox} y2={H - 10} stroke="var(--text-secondary)" strokeWidth="1" />
-      {/* Parabola */}
-      <path d={dParab} fill="none" stroke="#f97316" strokeWidth="2.5" />
-      {/* Quadratic approx overlay */}
-      <path d={dQ} fill="none" stroke={color} strokeWidth="1.8" strokeDasharray="5 3" />
-      {/* Tangent line */}
-      <line x1={txA} y1={tyA} x2={txB} y2={tyB} stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 2" />
-      {/* x0 point */}
-      <circle cx={px0} cy={py0} r="5" fill={color} />
-      <line x1={px0} y1={py0} x2={px0} y2={oy} stroke={color} strokeWidth="1" strokeDasharray="3 2" />
-      <text x={px0} y={oy + 14} textAnchor="middle" fontSize="10" fill={color}>x₀</text>
-      {/* Newton step point */}
-      <circle cx={pxNew} cy={pyNew} r="5" fill="#fb923c" />
-      <line x1={pxNew} y1={pyNew} x2={pxNew} y2={oy} stroke="#fb923c" strokeWidth="1" strokeDasharray="3 2" />
-      <text x={pxNew} y={oy + 14} textAnchor="middle" fontSize="10" fill="#fb923c">x*</text>
-      {/* Arrow x0 -> xNew */}
-      <defs>
-        <marker id="arrowG" markerWidth="7" markerHeight="7" refX="4" refY="2" orient="auto">
-          <path d="M0,0 L0,4 L6,2 z" fill="#fb923c" />
-        </marker>
-      </defs>
-      <line x1={px0} y1={oy + 26} x2={pxNew + 2} y2={oy + 26} stroke="#fb923c" strokeWidth="1.5" markerEnd="url(#arrowG)" />
-      <text x={(px0 + pxNew) / 2} y={oy + 38} textAnchor="middle" fontSize="9" fill="#fb923c">Passo Newton</text>
-      {/* Labels */}
-      <text x={W - 20} y={oy - 6} textAnchor="end" fontSize="10" fill="#f97316">f(x) = x²</text>
-      <text x={W - 20} y={oy - 18} textAnchor="end" fontSize="10" fill={color}>T₂(x)</text>
-      <text x={W - 20} y={oy - 30} textAnchor="end" fontSize="10" fill="#f59e0b">Tangente</text>
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* circular arrow path hint */}
+      <circle cx={cx} cy={cy} r={55} fill="none" stroke={color} strokeWidth={1} opacity={0.2} />
+      {Array.from({ length: pts }).map((_, i) => {
+        const ang = (i / pts) * 2 * Math.PI;
+        const ox = cx + 55 * Math.cos(ang);
+        const oy = cy + 55 * Math.sin(ang);
+        // tangent direction (counter-clockwise)
+        const tx = -Math.sin(ang) * 22;
+        const ty = Math.cos(ang) * 22;
+        const ex = ox + tx;
+        const ey = oy + ty;
+        const headAng = Math.atan2(ty, tx);
+        const h1x = ex - 6 * Math.cos(headAng - 0.4);
+        const h1y = ey - 6 * Math.sin(headAng - 0.4);
+        const h2x = ex - 6 * Math.cos(headAng + 0.4);
+        const h2y = ey - 6 * Math.sin(headAng + 0.4);
+        return (
+          <g key={i}>
+            <line x1={ox} y1={oy} x2={ex} y2={ey} stroke={color} strokeWidth={2} />
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={2} />
+          </g>
+        );
+      })}
+      {/* central curl symbol */}
+      <path d="M230,90 Q240,78 250,90 Q260,102 250,110 Q240,118 230,110" fill="none" stroke={color} strokeWidth={2} />
+      <text x={cx} y={cy + 5} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>∇×F ≠ 0</text>
+      {/* irrotational box */}
+      <rect x={370} y={50} width={90} height={70} rx={6} fill="rgba(74,158,237,0.07)" stroke={color} strokeWidth={1} strokeDasharray="4 2" />
+      <text x={415} y={80} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>irrotacional</text>
+      <text x={415} y={98} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">∇×F = 0</text>
+      <text x={415} y={112} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">conservativo</text>
+      <text x={W / 2 - 60} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">campo rotacional — ∇×F aponta para fora do plano (eixo z)</text>
     </svg>
   );
 }
 
-// SVG 5: Square wave Fourier approximation (Gibbs phenomenon)
-function FourierSVG() {
-  const W = 520, H = 200;
-  const ox = 30, oy = 100;
-  const sx = 70, sy = 70;
-
-  function squareWave(x) {
-    const xMod = ((x % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-    return xMod < Math.PI ? 1 : -1;
-  }
-
-  function fourierApprox(x, N) {
-    let sum = 0;
-    for (let k = 0; k < N; k++) {
-      const n = 2 * k + 1;
-      sum += Math.sin(n * x) / n;
-    }
-    return (4 / Math.PI) * sum;
-  }
-
-  function makePath(fn, steps) {
-    const pts = [];
-    for (let i = 0; i <= steps; i++) {
-      const x = -Math.PI + (2 * Math.PI) * i / steps;
-      const y = fn(x);
-      pts.push([ox + (x + Math.PI) * sx, oy - y * sy]);
-    }
-    return pts.map((p, i) => (i === 0 ? `M${p[0].toFixed(1)},${p[1].toFixed(1)}` : `L${p[0].toFixed(1)},${p[1].toFixed(1)}`)).join(' ');
-  }
-
-  const dSquare = makePath(squareWave, 800);
-  const d3 = makePath(x => fourierApprox(x, 3), 400);
-  const d10 = makePath(x => fourierApprox(x, 10), 800);
-  const d50 = makePath(x => fourierApprox(x, 50), 2000);
-
-  const xVals = [0, Math.PI / 2, Math.PI, 3 * Math.PI / 2, 2 * Math.PI];
-  const xLabels = ['0', 'π/2', 'π', '3π/2', '2π'];
-
+// SVG 6: Laplacian — bowl, hill, harmonic
+function LaplacianSVG() {
+  const W = 480, H = 200;
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
-      <rect width={W} height={H} fill="var(--bg-secondary)" rx="8" />
-      {/* Axes */}
-      <line x1={ox} y1={oy} x2={W - 10} y2={oy} stroke="var(--text-secondary)" strokeWidth="1" />
-      <line x1={ox} y1={20} x2={ox} y2={H - 30} stroke="var(--text-secondary)" strokeWidth="1" />
-      {/* x ticks */}
-      {xVals.map((v, i) => (
-        <text key={i} x={ox + v * sx} y={H - 16} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">{xLabels[i]}</text>
-      ))}
-      {/* y ticks */}
-      {[-1, 0, 1].map(v => (
-        <text key={v} x={ox - 6} y={oy - v * sy + 4} textAnchor="end" fontSize="9" fill="var(--text-secondary)">{v}</text>
-      ))}
-      {/* Square wave */}
-      <path d={dSquare} fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4 2" />
-      {/* Fourier approximations */}
-      <path d={d3} fill="none" stroke="#f97316" strokeWidth="1.5" />
-      <path d={d10} fill="none" stroke="#fb923c" strokeWidth="1.5" />
-      <path d={d50} fill="none" stroke={color} strokeWidth="2" />
-      {/* Gibbs label */}
-      <text x={ox + Math.PI * sx + 4} y={oy - sy * 1.18} fontSize="8" fill={color}>Gibbs</text>
-      {/* Legend */}
-      <rect x={30} y={10} width={108} height={66} rx="4" fill="var(--bg-primary)" fillOpacity="0.85" />
-      <line x1={34} y1={24} x2={50} y2={24} stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4 2" />
-      <text x={54} y={28} fontSize="9" fill="var(--text-primary)">Onda quadrada</text>
-      <line x1={34} y1={40} x2={50} y2={40} stroke="#f97316" strokeWidth="1.5" />
-      <text x={54} y={44} fontSize="9" fill="var(--text-primary)">N=3</text>
-      <line x1={34} y1={56} x2={50} y2={56} stroke="#fb923c" strokeWidth="1.5" />
-      <text x={54} y={60} fontSize="9" fill="var(--text-primary)">N=10</text>
-      <line x1={34} y1={70} x2={50} y2={70} stroke={color} strokeWidth="2" />
-      <text x={54} y={74} fontSize="9" fill="var(--text-primary)">N=50</text>
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* bowl ∇²f > 0 */}
+      <path d="M30,80 Q80,160 130,80" fill="none" stroke={color} strokeWidth={2} />
+      <circle cx={80} cy={155} r={4} fill={color} />
+      <text x={80} y={175} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>∇²f &gt; 0</text>
+      <text x={80} y={190} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">mínimo local</text>
+      {/* hill ∇²f < 0 */}
+      <path d="M175,160 Q225,40 275,160" fill="none" stroke="#4a9eed" strokeWidth={2} />
+      <circle cx={225} cy={45} r={4} fill="#4a9eed" />
+      <text x={225} y={175} textAnchor="middle" fontSize={11} fill="#4a9eed" fontWeight={700}>∇²f &lt; 0</text>
+      <text x={225} y={190} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">máximo local</text>
+      {/* harmonic ∇²f = 0 */}
+      <path d="M320,130 Q360,80 400,100 Q420,110 450,90" fill="none" stroke="#7dd3fc" strokeWidth={2} />
+      <text x={385} y={175} textAnchor="middle" fontSize={11} fill="#7dd3fc" fontWeight={700}>∇²f = 0</text>
+      <text x={385} y={190} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">função harmónica</text>
     </svg>
   );
 }
 
-// SVG 6: Multivariate Taylor loss landscape (contour)
-function LossLandscapeSVG() {
+// SVG 7: Line integral — two paths between same endpoints
+function LineIntegralSVG() {
+  const W = 480, H = 228;
+  const ax = 80, ay = 160, bx = 400, by = 60;
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* path 1: curved */}
+      <path d={`M${ax},${ay} Q180,40 ${bx},${by}`} fill="none" stroke={color} strokeWidth={2.5} />
+      <text x={210} y={55} fontSize={11} fill={color} fontWeight={700}>caminho C1</text>
+      {/* path 2: straight-ish */}
+      <path d={`M${ax},${ay} Q260,180 ${bx},${by}`} fill="none" stroke="#7dd3fc" strokeWidth={2.5} />
+      <text x={365} y={108} fontSize={11} fill="#7dd3fc" fontWeight={700}>caminho C2</text>
+      {/* endpoints */}
+      <circle cx={ax} cy={ay} r={6} fill={color} />
+      <text x={ax - 10} y={ay + 18} fontSize={12} fill="var(--text-primary)" fontWeight={700}>A</text>
+      <circle cx={bx} cy={by} r={6} fill={color} />
+      <text x={bx + 8} y={by - 4} fontSize={12} fill="var(--text-primary)" fontWeight={700}>B</text>
+      {/* annotation — placed below both curves so it never overlaps them */}
+      <rect x={110} y={178} width={260} height={40} rx={6} fill="rgba(74,158,237,0.10)" />
+      <text x={240} y={194} textAnchor="middle" fontSize={11} fill={color}>campo conservativo: ∫C1 F·dr = ∫C2 F·dr</text>
+      <text x={240} y={209} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">independência do caminho</text>
+    </svg>
+  );
+}
+
+// SVG 8: Flux through a closed surface
+function FluxSVG() {
+  const W = 640, H = 300;
+  const cx = W / 2, cy = H / 2;
+  const rx = 90, ry = 60;
+  const fluxPts = [
+    { ang: 0 }, { ang: 45 }, { ang: 90 }, { ang: 135 },
+    { ang: 180 }, { ang: 225 }, { ang: 270 }, { ang: 315 },
+  ];
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="rgba(74,158,237,0.06)" stroke={color} strokeWidth={2} />
+      {fluxPts.map((fp, i) => {
+        const rad = (fp.ang * Math.PI) / 180;
+        const ox = cx + rx * Math.cos(rad);
+        const oy = cy + ry * Math.sin(rad);
+        const normX = Math.cos(rad);
+        const normY = Math.sin(rad) * (ry / rx);
+        const len2 = Math.sqrt(normX * normX + normY * normY);
+        const nx = (normX / len2) * 28;
+        const ny = (normY / len2) * 28;
+        const ex = ox + nx;
+        const ey = oy + ny;
+        const headAng = Math.atan2(ny, nx);
+        const h1x = ex - 6 * Math.cos(headAng - 0.4);
+        const h1y = ey - 6 * Math.sin(headAng - 0.4);
+        const h2x = ex - 6 * Math.cos(headAng + 0.4);
+        const h2y = ey - 6 * Math.sin(headAng + 0.4);
+        return (
+          <g key={i}>
+            <line x1={ox} y1={oy} x2={ex} y2={ey} stroke={color} strokeWidth={1.8} />
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={1.8} />
+          </g>
+        );
+      })}
+      <text x={cx} y={cy + 4} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>∯ F·dS</text>
+      <text x={cx} y={cy + 20} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">= ∭ ∇·F dV</text>
+      <text x={W / 2} y={H - 8} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">Teorema de Gauss: fluxo superficial = integral de volume da divergência</text>
+    </svg>
+  );
+}
+
+// SVG 9: Grid deformation by Jacobian
+function JacobianSVG() {
   const W = 480, H = 220;
-  const cx = 190, cy = 110;
-
-  function ellipseR(a, b, theta) {
-    return { rx: a, ry: b };
-  }
-
-  const contours = [10, 22, 36, 52, 70, 90].map((r, i) => {
-    const rx = r * 1.6;
-    const ry = r * 0.9;
-    return { rx, ry, alpha: 0.08 + i * 0.04 };
-  });
-
-  // Gradient descent path (zigzag toward minimum)
-  const gdPts = [
-    [cx - 100, cy - 55],
-    [cx - 60, cy + 20],
-    [cx - 30, cy - 15],
-    [cx - 12, cy + 8],
-    [cx - 4, cy - 3],
-    [cx, cy],
-  ];
-  const gdPath = gdPts.map((p, i) => (i === 0 ? `M${p[0]},${p[1]}` : `L${p[0]},${p[1]}`)).join(' ');
-
-  // Newton path (direct)
-  const newtonPts = [
-    [cx - 100, cy - 55],
-    [cx - 30, cy - 5],
-    [cx, cy],
-  ];
-  const newtonPath = newtonPts.map((p, i) => (i === 0 ? `M${p[0]},${p[1]}` : `L${p[0]},${p[1]}`)).join(' ');
-
   return (
-    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%' }}>
-      <rect width={W} height={H} fill="var(--bg-secondary)" rx="8" />
-      {/* Contours */}
-      {contours.map((c, i) => (
-        <ellipse key={i} cx={cx} cy={cy} rx={c.rx} ry={c.ry}
-          fill={color} fillOpacity={c.alpha} stroke={color} strokeOpacity="0.3" strokeWidth="0.8" />
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* regular grid left */}
+      {[0, 1, 2, 3, 4].map(i => (
+        <line key={'gh' + i} x1={30} y1={30 + i * 35} x2={180} y2={30 + i * 35} stroke="var(--text-secondary)" strokeWidth={0.8} opacity={0.4} />
       ))}
-      {/* GD path */}
-      <defs>
-        <marker id="arrowGD" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#f97316" />
-        </marker>
-        <marker id="arrowN" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#fb923c" />
-        </marker>
-      </defs>
-      <path d={gdPath} fill="none" stroke="#f97316" strokeWidth="2" markerEnd="url(#arrowGD)" />
-      <path d={newtonPath} fill="none" stroke="#fb923c" strokeWidth="2" strokeDasharray="5 2" markerEnd="url(#arrowN)" />
-      {/* Minimum */}
-      <circle cx={cx} cy={cy} r="5" fill={color} />
-      <text x={cx + 8} y={cy + 4} fontSize="10" fill={color}>min</text>
-      {/* Start point */}
-      <circle cx={cx - 100} cy={cy - 55} r="4" fill="var(--text-secondary)" />
-      <text x={cx - 100} y={cy - 60} textAnchor="middle" fontSize="9" fill="var(--text-secondary)">início</text>
-      {/* Legend */}
-      <rect x={W - 175} y={H - 46} width={168} height={36} rx="4" fill="var(--bg-primary)" fillOpacity="0.85" />
-      <line x1={W - 171} y1={H - 32} x2={W - 155} y2={H - 32} stroke="#f97316" strokeWidth="2" />
-      <text x={W - 151} y={H - 28} fontSize="9" fill="var(--text-primary)">Grad. Descent (1ª ordem)</text>
-      <line x1={W - 171} y1={H - 18} x2={W - 155} y2={H - 18} stroke="#fb923c" strokeWidth="2" strokeDasharray="5 2" />
-      <text x={W - 151} y={H - 14} fontSize="9" fill="var(--text-primary)">Newton (2ª ordem)</text>
+      {[0, 1, 2, 3, 4].map(i => (
+        <line key={'gv' + i} x1={30 + i * 37} y1={30} x2={30 + i * 37} y2={170} stroke="var(--text-secondary)" strokeWidth={0.8} opacity={0.4} />
+      ))}
+      <text x={105} y={195} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">espaço z (original)</text>
+      {/* arrow */}
+      <path d="M200,100 Q240,90 280,100" fill="none" stroke={color} strokeWidth={2} />
+      <polyline points="274,94 280,100 274,106" fill="none" stroke={color} strokeWidth={2} />
+      <text x={240} y={86} textAnchor="middle" fontSize={11} fill={color} fontWeight={700}>f (bijecção)</text>
+      <text x={240} y={115} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">|det J|</text>
+      {/* deformed grid right */}
+      {[0, 1, 2, 3, 4].map(i => {
+        const y1d = 30 + i * 35 + (i - 2) * 6;
+        const y2d = 30 + i * 35 - (i - 2) * 6;
+        return <line key={'dh' + i} x1={300} y1={y1d} x2={450} y2={y2d} stroke={color} strokeWidth={0.9} opacity={0.5} />;
+      })}
+      {[0, 1, 2, 3, 4].map(i => {
+        const x1d = 300 + i * 37 + (i - 2) * 4;
+        const x2d = 300 + i * 37 - (i - 2) * 4;
+        return <line key={'dv' + i} x1={x1d} y1={30} x2={x2d} y2={170} stroke={color} strokeWidth={0.9} opacity={0.5} />;
+      })}
+      <text x={375} y={195} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">espaço x (transformado)</text>
     </svg>
   );
 }
 
-export default function CALC8() {
+// SVG 10: Normalizing flows — 2D distribution transform
+function NormalizingFlowSVG() {
+  const W = 480, H = 200;
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {/* simple gaussian blob left */}
+      {[0.35, 0.6, 0.85].map((r, i) => (
+        <ellipse key={i} cx={110} cy={100} rx={r * 55} ry={r * 40} fill="none" stroke={color} strokeWidth={1} opacity={0.3 + i * 0.25} />
+      ))}
+      <text x={110} y={165} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>p(z) — Gaussiana</text>
+      {/* arrow */}
+      <path d="M185,100 Q240,80 295,100" fill="none" stroke="#7dd3fc" strokeWidth={2} />
+      <polyline points="289,94 295,100 289,106" fill="none" stroke="#7dd3fc" strokeWidth={2} />
+      <text x={240} y={66} textAnchor="middle" fontSize={11} fill="#7dd3fc" fontWeight={700}>f invertível</text>
+      <text x={240} y={80} textAnchor="middle" fontSize={10} fill="var(--text-secondary)">+ log|det J|</text>
+      {/* complex blob right */}
+      <path d="M370,75 Q410,55 440,90 Q460,115 440,145 Q415,165 380,155 Q345,145 340,120 Q330,90 370,75 Z" fill="none" stroke={color} strokeWidth={1.5} opacity={0.5} />
+      <path d="M375,82 Q408,66 432,96 Q450,118 432,143 Q410,158 382,150 Q352,140 347,118 Q338,92 375,82 Z" fill="rgba(74,158,237,0.10)" />
+      <text x={392} y={175} textAnchor="middle" fontSize={12} fill={color} fontWeight={700}>p(x) — complexa</text>
+      {/* formula */}
+      <text x={240} y={192} textAnchor="middle" fontSize={11} fill="var(--text-secondary)">log p(x) = log p(z) + log|det J|</text>
+    </svg>
+  );
+}
+
+// SVG 11: Small graph with Laplacian
+function GraphLaplacianSVG() {
+  const W = 480, H = 230;
+  const nodes = [
+    { id: 0, x: 120, y: 60, label: '0' },
+    { id: 1, x: 240, y: 40, label: '1' },
+    { id: 2, x: 360, y: 80, label: '2' },
+    { id: 3, x: 100, y: 160, label: '3' },
+    { id: 4, x: 260, y: 150, label: '4' },
+    { id: 5, x: 380, y: 170, label: '5' },
+  ];
+  const edges = [[0,1],[1,2],[0,3],[1,4],[2,5],[3,4],[4,5]];
+  const msgArrows = [[1,0],[4,1],[4,3],[5,4]];
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', maxWidth: '100%', margin: '1.2rem auto' }} overflow="visible">
+      <rect width={W} height={H} rx={10} fill="var(--bg-secondary)" />
+      {edges.map(([a, b], i) => {
+        const na = nodes[a], nb = nodes[b];
+        return <line key={i} x1={na.x} y1={na.y} x2={nb.x} y2={nb.y} stroke="var(--text-secondary)" strokeWidth={1.8} />;
+      })}
+      {msgArrows.map(([a, b], i) => {
+        const na = nodes[a], nb = nodes[b];
+        const angle = Math.atan2(nb.y - na.y, nb.x - na.x);
+        const midX = (na.x + nb.x) / 2;
+        const midY = (na.y + nb.y) / 2;
+        const ex = midX + 10 * Math.cos(angle);
+        const ey = midY + 10 * Math.sin(angle);
+        const h1x = ex - 7 * Math.cos(angle - 0.4);
+        const h1y = ey - 7 * Math.sin(angle - 0.4);
+        const h2x = ex - 7 * Math.cos(angle + 0.4);
+        const h2y = ey - 7 * Math.sin(angle + 0.4);
+        return (
+          <g key={i}>
+            <polyline points={`${h1x.toFixed(1)},${h1y.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)} ${h2x.toFixed(1)},${h2y.toFixed(1)}`} fill="none" stroke={color} strokeWidth={2} />
+          </g>
+        );
+      })}
+      {nodes.map(n => (
+        <g key={n.id}>
+          <circle cx={n.x} cy={n.y} r={16} fill="var(--bg-secondary)" />
+          <circle cx={n.x} cy={n.y} r={16} fill="rgba(74,158,237,0.18)" stroke={color} strokeWidth={1.8} />
+          <text x={n.x} y={n.y + 5} textAnchor="middle" fontSize={13} fill={color} fontWeight={700}>{n.label}</text>
+        </g>
+      ))}
+      <text x={W / 2} y={210} textAnchor="middle" fontSize={12} fill="var(--text-secondary)">grafo — setas verdes: message passing (GNN)</text>
+    </svg>
+  );
+}
+
+export default function CALC9() {
   return (
     <div style={S.page}>
       <Link to="/calculus" style={S.back}><ArrowLeft size={16} /> Voltar a Cálculo</Link>
       <div style={S.tag}>MÓDULO 08</div>
-      <h1 style={S.h1}>Séries de Taylor &amp; Aproximações</h1>
-      <p style={S.lead}>
-        As séries de Taylor permitem representar funções complexas como somas infinitas de monómios.
-        Em ML, esta ideia é omnipresente: gradient descent é uma aproximação de 1ª ordem,
-        o método de Newton usa a 2ª ordem, e activações como GELU são aproximadas por polinómios.
-        Dominar Taylor é dominar a linguagem da otimização.
-      </p>
+      <h1 style={S.h1}>Cálculo Vetorial</h1>
 
-      {/* ── 1. Motivação ── */}
+      {/* ── Section 1 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>1. Motivação</h2>
+        <h2 style={S.h2}>1. Campos Escalares e Vectoriais</h2>
         <p style={S.p}>
-          Porque trabalhar com sin(x) quando podemos trabalhar com x? Polinómios são fáceis de
-          derivar, integrar e avaliar numericamente. A ideia de Taylor é encontrar o polinómio
-          que coincide com f numa vizinhança de um ponto, igualando todas as derivadas.
+          Um <strong>campo escalar</strong> <InlineMath math="f: \mathbb{R}^n \to \mathbb{R}" /> associa um número real a cada ponto do espaço.
+          Exemplos em ML: função de perda <InlineMath math="L(\theta)" />, probabilidade <InlineMath math="\log p(x)" />, função de valor <InlineMath math="V(s)" />.
         </p>
-        <SinApproxSVG />
-        <p style={{ ...S.p, marginTop: '0.75rem' }}>
-          Com apenas 7 termos de Maclaurin, a aproximação de sin(x) é praticamente perfeita
-          no intervalo [-5, 5]. Cada termo extra adiciona um nó de oscilação e alarga o alcance.
+        <p style={S.p}>
+          Um <strong>campo vectorial</strong> <InlineMath math="F: \mathbb{R}^n \to \mathbb{R}^n" /> associa um vector a cada ponto.
+          Exemplos em ML: gradiente <InlineMath math="\nabla L(\theta)" />, campo de velocidade de um fluxo, forças num simulador físico.
         </p>
+        <VectorFieldSVG />
+        
+          <strong>Notação:</strong> campo escalar <InlineMath math="f(x,y)" />, campo vectorial <InlineMath math="F(x,y) = (P(x,y), Q(x,y))" />.
+          Em <InlineMath math="\mathbb{R}^3" />: <InlineMath math="F = (P, Q, R)" />.
+        
         <div style={S.note}>
-          Regra prática: para aproximar sin(x) com erro abaixo de <InlineMath math="10^{-6}" /> em <InlineMath math="|x| \leq \pi" />,
-          bastam 7 termos. Para <InlineMath math="|x| \leq 10" />, precisamos de ~15 termos.
+          Em ML, os parâmetros <InlineMath math="\theta \in \mathbb{R}^n" /> definem um campo escalar de perda. O optimizador navega este campo
+          usando o gradiente — um campo vectorial.
+        </div>
+        <h3 style={S.h3}>Exemplos comuns</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Tipo</th>
+              <th style={S.th}>Domínio → Contradomínio</th>
+              <th style={S.th}>Exemplo ML</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Escalar</td>
+              <td style={S.td}>ℝⁿ → ℝ</td>
+              <td style={S.td}>função de perda, log-verossimilhança</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Vectorial</td>
+              <td style={S.td}>ℝⁿ → ℝⁿ</td>
+              <td style={S.td}>gradiente, campo de atenção, score function</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Tensorial</td>
+              <td style={S.td}>ℝⁿ → ℝⁿˣⁿ</td>
+              <td style={S.td}>Hessiana, Jacobiano</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ── Section 2 ── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>2. Operador Nabla <InlineMath math="\nabla" /></h2>
+        <p style={S.p}>
+          O operador nabla <InlineMath math="\nabla" /> (ou "del") é o vector de derivadas parciais:
+        </p>
+        <BlockMath math="\nabla = \left(\frac{\partial}{\partial x_1}, \frac{\partial}{\partial x_2}, \ldots, \frac{\partial}{\partial x_n}\right)" />
+        <p style={S.p}>
+          Aplicado de três formas diferentes, gera os três operadores fundamentais do cálculo vetorial:
+        </p>
+        <NablaSVG />
+        <h3 style={S.h3}>Gradiente: <InlineMath math="\nabla f" /></h3>
+        <p style={S.p}>
+          Aplicar <InlineMath math="\nabla" /> a um campo escalar f produz um campo vectorial: <InlineMath math="\nabla f = \left(\frac{\partial f}{\partial x_1}, \ldots, \frac{\partial f}{\partial x_n}\right)" />.
+          O gradiente aponta na direcção de maior crescimento de f.
+        </p>
+        <h3 style={S.h3}>Divergência: <InlineMath math="\nabla \cdot F" /></h3>
+        <p style={S.p}>
+          O produto escalar de <InlineMath math="\nabla" /> com um campo vectorial <InlineMath math="F = (F_1, \ldots, F_n)" /> é:
+          {' '}<InlineMath math="\nabla \cdot F = \frac{\partial F_1}{\partial x_1} + \frac{\partial F_2}{\partial x_2} + \cdots + \frac{\partial F_n}{\partial x_n}" />. Resultado: escalar.
+        </p>
+        <h3 style={S.h3}>Rotacional: <InlineMath math="\nabla \times F" /> (em <InlineMath math="\mathbb{R}^3" />)</h3>
+        <p style={S.p}>
+          O produto vetorial de <InlineMath math="\nabla" /> com F mede a "rotação" local do campo. Resultado: vector.
+        </p>
+        <h3 style={S.h3}>Laplaciano: <InlineMath math="\nabla^2 f = \nabla \cdot (\nabla f)" /></h3>
+        <BlockMath math="\nabla^2 f = \frac{\partial^2 f}{\partial x_1^2} + \frac{\partial^2 f}{\partial x_2^2} + \cdots + \frac{\partial^2 f}{\partial x_n^2}" />
+        <div style={S.note}>
+          O Laplaciano combina divergência e gradiente: mede a curvatura média de f.
+          Função harmónica: <InlineMath math="\nabla^2 f = 0" /> — sem máximos nem mínimos no interior.
         </div>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── 2. Definição ── */}
+      {/* ── Section 3 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>2. Definição Formal</h2>
+        <h2 style={S.h2}>3. Gradiente como Campo</h2>
         <p style={S.p}>
-          A série de Taylor de f em torno do ponto a é:
+          Para uma função <InlineMath math="f: \mathbb{R}^n \to \mathbb{R}" />, o gradiente <InlineMath math="\nabla f" /> é um campo vectorial que em cada ponto indica
+          a direcção e magnitude do maior crescimento de f.
         </p>
-        <BlockMath math="f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots" />
-          <BlockMath math="f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n" />
+        <GradientContourSVG />
+        
+          <strong>Propriedade fundamental:</strong> <InlineMath math="\nabla f" /> é sempre perpendicular às curvas de nível de f.
+          A descida de gradiente segue <InlineMath math="-\nabla f" />.
+        
+        <h3 style={S.h3}>Gradient Descent</h3>
         <p style={S.p}>
-          Quando a = 0, chamamos <strong>Série de Maclaurin</strong>. As séries mais úteis em ML:
+          A actualização de parâmetros <InlineMath math="\theta \leftarrow \theta - \eta \cdot \nabla L(\theta)" /> move-se na direcção oposta ao gradiente,
+          descendo a superfície de perda. O passo <InlineMath math="\eta" /> (learning rate) controla a magnitude do movimento.
         </p>
+                <h3 style={S.h3}>Regra da Cadeia Vectorial</h3>
+        <p style={S.p}>
+          Para <InlineMath math="f = g \circ h" /> com <InlineMath math="h: \mathbb{R}^n \to \mathbb{R}^m" /> e <InlineMath math="g: \mathbb{R}^m \to \mathbb{R}" />:
+        </p>
+        <BlockMath math="\nabla f(x) = J_h(x)^\top \cdot \nabla g(h(x))" />
+        <p style={S.p}>
+          onde <InlineMath math="J_h" /> é o Jacobiano de h. É a base do algoritmo de backpropagation em redes neurais.
+        </p>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ── Section 4 ── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>4. Divergência</h2>
+        <p style={S.p}>
+          A divergência <InlineMath math="\nabla \cdot F" /> mede a taxa de "expansão" ou "contracção" de um campo vectorial num ponto.
+          Intuitivamente: quanta "substância" está a fluir para fora de uma região infinitesimal?
+        </p>
+        <BlockMath math="\nabla \cdot F = \frac{\partial F_1}{\partial x_1} + \frac{\partial F_2}{\partial x_2} + \frac{\partial F_3}{\partial x_3}" />
+        <DivergenceSVG />
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Função</th>
-              <th style={S.th}>Série de Maclaurin</th>
-              <th style={S.th}>Raio de Conv.</th>
+              <th style={S.th}>Sinal</th>
+              <th style={S.th}>Interpretação</th>
+              <th style={S.th}>Exemplo físico</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}><InlineMath math="e^x" /></td>
-              <td style={S.td}><InlineMath math="1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\infty" /></td>
+              <td style={S.td}><InlineMath math="\nabla \cdot F > 0" /></td>
+              <td style={S.td}>fonte — fluxo a sair</td>
+              <td style={S.td}>nascente de água, carga eléctrica positiva</td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="\sin(x)" /></td>
-              <td style={S.td}><InlineMath math="x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\infty" /></td>
+              <td style={S.td}><InlineMath math="\nabla \cdot F < 0" /></td>
+              <td style={S.td}>sorvedouro — fluxo a entrar</td>
+              <td style={S.td}>dreno, carga negativa</td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="\cos(x)" /></td>
-              <td style={S.td}><InlineMath math="1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\infty" /></td>
+              <td style={S.td}><InlineMath math="\nabla \cdot F = 0" /></td>
+              <td style={S.td}>campo solenoidal</td>
+              <td style={S.td}>campo magnético, fluido incompressível</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Ligação a Normalizing Flows</h3>
+        <p style={S.p}>
+          Em normalizing flows contínuos (Neural ODEs, FFJORD), a evolução da log-densidade ao longo
+          do tempo segue:
+        </p>
+        <BlockMath math="\frac{d \log p(x(t))}{dt} = -\nabla \cdot f(x(t), t)" />
+        <p style={S.p}>
+          O traço do Jacobiano (= divergência) determina como a densidade muda ao longo da trajectória.
+          Computar o traço exacto é custoso — FFJORD usa estimadores de Hutchinson para O(n) custo.
+        </p>
+              </section>
+
+      <hr style={S.divider} />
+
+      {/* ── Section 5 ── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>5. Rotacional</h2>
+        <p style={S.p}>
+          O rotacional <InlineMath math="\nabla \times F" /> mede a rotação local de um campo vectorial em <InlineMath math="\mathbb{R}^3" />.
+          Em cada ponto, indica o eixo e velocidade angular da rotação infinitesimal.
+        </p>
+        <BlockMath math="\nabla \times F = \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z},\; \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x},\; \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)" />
+        <CurlSVG />
+        <h3 style={S.h3}>Campos Conservativos e Irrotacionais</h3>
+        <p style={S.p}>
+          Um campo F é <strong>conservativo</strong> se existe um potencial escalar φ tal que <InlineMath math="F = \nabla \varphi" />.
+          Equivalentemente (em domínios simplesmente conexos):
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Condição</th>
+              <th style={S.th}>Equivalência</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}><InlineMath math="F = \nabla \varphi" /> (existe potencial)</td>
+              <td style={S.td}>conservativo</td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="\frac{1}{1-x}" /></td>
-              <td style={S.td}><InlineMath math="1 + x + x^2 + x^3 + \cdots" /></td>
-              <td style={S.td}><InlineMath math="|x| < 1" /></td>
+              <td style={S.td}><InlineMath math="\nabla \times F = 0" /></td>
+              <td style={S.td}>irrotacional</td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="\ln(1+x)" /></td>
-              <td style={S.td}><InlineMath math="x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots" /></td>
-              <td style={S.td}><InlineMath math="|x| \leq 1,\; x \neq -1" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\arctan(x)" /></td>
-              <td style={S.td}><InlineMath math="x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots" /></td>
-              <td style={S.td}><InlineMath math="|x| \leq 1" /></td>
+              <td style={S.td}><InlineMath math="\oint_C F \cdot dr = 0" /> (todo C fechado)</td>
+              <td style={S.td}>independência do caminho</td>
             </tr>
           </tbody>
         </table>
         <div style={S.note}>
-          A série de <InlineMath math="e^x" /> é especialmente importante: <InlineMath math="e^x = \sum x^n/n!" /> converge para todo <InlineMath math="x" /> real.
-          Isto torna o softmax numericamente instável para <InlineMath math="x" /> grandes — veremos como contornar isso.
+          Em ML: a função de perda <InlineMath math="L(\theta)" /> define um campo gradiente <InlineMath math="\nabla L" />. Campos gradiente são sempre
+          conservativos — o "trabalho" de descer do ponto A ao ponto B é sempre o mesmo,
+          independente do caminho do optimizador.
         </div>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── 3. Raio de Convergência ── */}
+      {/* ── Section 6 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>3. Raio de Convergência</h2>
+        <h2 style={S.h2}>6. Laplaciano</h2>
         <p style={S.p}>
-          Uma série de potências <InlineMath math="\sum c_n (x-a)^n" /> converge apenas dentro de um intervalo centrado em a.
-          O raio de convergência R é calculado pelo <strong>teste da razão</strong>:
+          O Laplaciano <InlineMath math="\nabla^2 f = \nabla \cdot (\nabla f)" /> combina gradiente e divergência. Mede a curvatura média de f:
+          a diferença entre o valor de f num ponto e a sua média numa vizinhança.
         </p>
-        
-          <BlockMath math="R = \lim_{n \to \infty} \left|\frac{c_n}{c_{n+1}}\right|" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Converge para <InlineMath math="|x - a| < R" />, Diverge para <InlineMath math="|x - a| > R" />
-          </p>
-        
-        <ConvergenceSVG />
-        <h3 style={S.h3}>Exemplos de raios</h3>
+        <BlockMath math="\nabla^2 f = \frac{\partial^2 f}{\partial x_1^2} + \frac{\partial^2 f}{\partial x_2^2} + \cdots + \frac{\partial^2 f}{\partial x_n^2}" />
+        <LaplacianSVG />
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Série</th>
-              <th style={S.th}><InlineMath math="c_n" /></th>
-              <th style={S.th}>R</th>
+              <th style={S.th}>Sinal de <InlineMath math="\nabla^2 f" /></th>
+              <th style={S.th}>Geometria</th>
+              <th style={S.th}>ML / Física</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}><InlineMath math="e^x = \sum x^n/n!" /></td>
-              <td style={S.td}><InlineMath math="1/n!" /></td>
-              <td style={S.td}><InlineMath math="\infty" /> (converge sempre)</td>
+              <td style={S.td}><InlineMath math="\nabla^2 f > 0" /></td>
+              <td style={S.td}>bowl / mínimo local</td>
+              <td style={S.td}>função de perda convexa localmente</td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="\ln(1+x) = \sum (-1)^{n+1} x^n/n" /></td>
-              <td style={S.td}><InlineMath math="(-1)^{n+1}/n" /></td>
-              <td style={S.td}>1</td>
+              <td style={S.td}><InlineMath math="\nabla^2 f < 0" /></td>
+              <td style={S.td}>colina / máximo local</td>
+              <td style={S.td}>ponto de sela instável</td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="1/(1-x) = \sum x^n" /></td>
-              <td style={S.td}>1</td>
-              <td style={S.td}>1</td>
+              <td style={S.td}><InlineMath math="\nabla^2 f = 0" /></td>
+              <td style={S.td}>harmónica</td>
+              <td style={S.td}>solução da equação de Laplace</td>
             </tr>
           </tbody>
         </table>
-        <div style={S.note}>
-          Em ML com precisão float32, mesmo séries de raio infinito têm problemas numéricos
-          para valores grandes. O raio de convergência indica onde a convergência é rápida.
+        <h3 style={S.h3}>Laplaciano em Graph Neural Networks</h3>
+        <p style={S.p}>
+          O Laplaciano de grafo <InlineMath math="L = D - A" /> (onde D é a matriz de graus e A a matriz de adjacência)
+          é o análogo discreto do operador <InlineMath math="\nabla^2" />. Os seus auto-vectores formam a base de Fourier do
+          grafo, permitindo convolução espectral:
+        </p>
+        <BlockMath math="L = U \Lambda U^\top \quad \text{(decomposição espectral)}" />
+                <div style={S.note}>
+          A normalização <InlineMath math="L_{\text{sym}} = D^{-1/2} L D^{-1/2}" /> é usada em GCN (Kipf &amp; Welling, 2017).
+          O filtro passa-baixo (smooth) corresponde aos auto-vectores de menor auto-valor.
         </div>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── 4. Resto e Erro ── */}
+      {/* ── Section 7 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>4. Resto e Erro — Forma de Lagrange</h2>
+        <h2 style={S.h2}>7. Integral de Linha</h2>
         <p style={S.p}>
-          Ao truncar em ordem N, cometemos um erro controlado pelo <strong>resto de Lagrange</strong>:
+          A integral de linha de um campo vectorial F ao longo de uma curva C mede o "trabalho total"
+          efectuado pelo campo ao longo da trajectória:
         </p>
-        
-          <BlockMath math="R_N(x) = \frac{f^{(N+1)}(c) \cdot (x-a)^{N+1}}{(N+1)!}" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            onde <InlineMath math="c" /> é algum ponto entre <InlineMath math="a" /> e <InlineMath math="x" /> (não sabemos qual exatamente).
-          </p>
-        
+        <BlockMath math="\int_C F \cdot dr = \int_a^b F(r(t)) \cdot r'(t)\, dt" />
+        <LineIntegralSVG />
+        <h3 style={S.h3}>Independência do Caminho</h3>
         <p style={S.p}>
-          Para majorar o erro: se <InlineMath math="|f^{(N+1)}(x)| \leq M" /> em [a, x], então <InlineMath math="|R_N(x)| \leq \frac{M|x-a|^{N+1}}{(N+1)!}" />
+          Se F é conservativo (<InlineMath math="F = \nabla \varphi" />), então <InlineMath math="\int_C F \cdot dr = \varphi(B) - \varphi(A)" /> para qualquer caminho C de
+          A a B. O resultado depende apenas dos extremos, não do caminho.
         </p>
-        <ErrorOrderSVG />
-        <p style={{ ...S.p, marginTop: '0.75rem' }}>
-          O gráfico mostra o log do erro de sin(x) em x=1 à medida que aumentamos a ordem.
-          A cada dois termos, o erro cai cerca de 100× — convergência super-exponencial.
-        </p>
-        <h3 style={S.h3}>Estimativas práticas</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Função</th>
-              <th style={S.th}>Majorante <InlineMath math="|f^{(n)}|" /></th>
-              <th style={S.th}>Erro com N=3 em <InlineMath math="|x| \leq 1" /></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>sin(x), cos(x)</td>
-              <td style={S.td}>1 para todo n</td>
-              <td style={S.td}><InlineMath math="\leq 1/4! \approx 0.042" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="e^x" /></td>
-              <td style={S.td}>e para n par/ímpar</td>
-              <td style={S.td}><InlineMath math="\leq e/4! \approx 0.113" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}>ln(1+x)</td>
-              <td style={S.td}><InlineMath math="(n-1)!" /> para <InlineMath math="n \geq 1" /></td>
-              <td style={S.td}><InlineMath math="\leq 1/4 = 0.25" /> em x=1</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 5. Expansões em ML ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>5. Expansões Chave em Machine Learning</h2>
+        <h3 style={S.h3}>Teorema de Green (em ℝ²)</h3>
         <p style={S.p}>
-          Estas aproximações aparecem recorrentemente em derivações teóricas e otimizações numéricas de ML:
+          Para uma região D com fronteira C orientada positivamente:
         </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Expressão</th>
-              <th style={S.th}>Expansão</th>
-              <th style={S.th}>Uso em ML</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>log(1+x)</td>
-              <td style={S.td}>x − x²/2 + x³/3 − ⋯</td>
-              <td style={S.td}>Cross-entropy, KL divergence para p≈q</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\sigma(x) = 1/(1+e^{-x})" /></td>
-              <td style={S.td}><InlineMath math="\frac{1}{2} + \frac{x}{4} - \frac{x^3}{48} + \cdots" /></td>
-              <td style={S.td}>Análise de saturação, inicialização</td>
-            </tr>
-            <tr>
-              <td style={S.td}>(1+x)^α</td>
-              <td style={S.td}>1 + αx + α(α−1)x²/2! + ⋯</td>
-              <td style={S.td}>Normalização de batch, análise de perturbação</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\sqrt{1+x}" /></td>
-              <td style={S.td}><InlineMath math="1 + x/2 - x^2/8 + x^3/16 - \cdots" /></td>
-              <td style={S.td}>Adam optimizer (<InlineMath math="\sqrt{\hat{v}}" />) para <InlineMath math="\hat{v} \approx 1" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}>log-sum-exp</td>
-              <td style={S.td}><InlineMath math="\max(x) + \log(1 + \sum_{i} e^{x_i - \max}) \approx \max + \sum e_i" /></td>
-              <td style={S.td}>Softmax numericamente estável</td>
-            </tr>
-            <tr>
-              <td style={S.td}>tanh(x)</td>
-              <td style={S.td}>x − x³/3 + 2x⁵/15 − ⋯</td>
-              <td style={S.td}>RNN, análise de saturação</td>
-            </tr>
-          </tbody>
-        </table>
+        <BlockMath math="\oint_C (P\,dx + Q\,dy) = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA" />
+        <p style={S.p}>
+          Equivalentemente: integral de linha na fronteira = integral duplo do rotacional no interior.
+          É um caso especial do Teorema de Stokes.
+        </p>
         <div style={S.note}>
-          A aproximação σ(x) ≈ ½ + x/4 é usada em privacidade diferencial para linearizar
-          o mecanismo exponencial. Com apenas dois termos, o erro é &lt; 1% para <InlineMath math="|x| \leq 1" />.
+          Interpretação: o "trabalho" ao longo de um contorno fechado mede a "rotação total"
+          do campo no interior — ligação directa ao rotacional.
         </div>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── 6. Aproximações 1ª e 2ª Ordem ── */}
+      {/* ── Section 8 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>6. Aproximações de 1ª e 2ª Ordem</h2>
+        <h2 style={S.h2}>8. Teoremas de Gauss e Stokes</h2>
         <p style={S.p}>
-          As duas aproximações de Taylor mais usadas em otimização são a linear e a quadrática.
-          Elas correspondem diretamente a dois algoritmos de otimização clássicos.
+          Os dois grandes teoremas do cálculo vectorial relacionam integrais em domínios com integrais
+          nas suas fronteiras — generalizações do Teorema Fundamental do Cálculo.
         </p>
-        <h3 style={S.h3}>Aproximação Linear (1ª ordem)</h3>
-        
-          <BlockMath math="f(x + h) \approx f(x) + f'(x) \cdot h" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Minimizar <InlineMath math="h" />: <InlineMath math="h^* = -\alpha \cdot f'(x)" /> → Gradient Descent com passo <InlineMath math="\alpha" />
-          </p>
-        
-        <h3 style={S.h3}>Aproximação Quadrática (2ª ordem)</h3>
-        
-          <BlockMath math="f(x + h) \approx f(x) + f'(x) h + \tfrac{1}{2} f''(x) h^2" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Minimizar em <InlineMath math="h" />: <InlineMath math="h^* = -f'(x)/f''(x)" /> → Método de Newton (passo exato para f quadrática)
-          </p>
-        
-        <QuadraticBowlSVG />
-        <p style={{ ...S.p, marginTop: '0.75rem' }}>
-          O método de Newton converge em 1 passo para funções quadráticas. Para funções gerais,
-          converge quadraticamente perto do mínimo (número de dígitos corretos duplica a cada iteração).
-          O custo é calcular e inverter a Hessiana — O(d³) para d parâmetros.
+        <h3 style={S.h3}>Teorema de Gauss (Divergência)</h3>
+        <BlockMath math="\oiint_S F \cdot dS = \iiint_V (\nabla \cdot F)\, dV" />
+        <p style={S.p}>
+          O fluxo total de F através de uma superfície fechada S é igual ao integral da divergência
+          de F no volume V por ela delimitado.
         </p>
-        <h3 style={S.h3}>Comparação de Algoritmos</h3>
+        <FluxSVG />
+        <h3 style={S.h3}>Teorema de Stokes</h3>
+        <BlockMath math="\oint_C F \cdot dr = \iint_S (\nabla \times F) \cdot dS" />
+        <p style={S.p}>
+          A circulação de F ao longo da fronteira C de uma superfície S é igual ao fluxo do
+          rotacional de F através de S.
+        </p>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Algoritmo</th>
-              <th style={S.th}>Ordem Taylor</th>
-              <th style={S.th}>Passo</th>
-              <th style={S.th}>Custo/iter</th>
+              <th style={S.th}>Teorema</th>
+              <th style={S.th}>Operador</th>
+              <th style={S.th}>Fronteira → Interior</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}>SGD</td>
-              <td style={S.td}>1ª</td>
-              <td style={S.td}><InlineMath math="-\alpha \nabla f" /></td>
-              <td style={S.td}>O(d)</td>
+              <td style={S.td}>TFC (1D)</td>
+              <td style={S.td}><InlineMath math="d/dx" /></td>
+              <td style={S.td}><InlineMath math="\int_a^b f'\,dx = f(b) - f(a)" /></td>
             </tr>
             <tr>
-              <td style={S.td}>Momentum</td>
-              <td style={S.td}>1ª + histórico</td>
-              <td style={S.td}><InlineMath math="-\alpha \nabla f + \beta v" /></td>
-              <td style={S.td}>O(d)</td>
+              <td style={S.td}>Green (2D)</td>
+              <td style={S.td}>rotacional 2D</td>
+              <td style={S.td}><InlineMath math="\oint_C = \iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}" /></td>
             </tr>
             <tr>
-              <td style={S.td}>Adam</td>
-              <td style={S.td}>1ª + curvatura diagonal</td>
-              <td style={S.td}><InlineMath math="-\alpha \nabla f / \sqrt{\hat{v}}" /></td>
-              <td style={S.td}>O(d)</td>
+              <td style={S.td}>Stokes (3D surf)</td>
+              <td style={S.td}><InlineMath math="\nabla \times F" /></td>
+              <td style={S.td}><InlineMath math="\oint_C = \iint_S (\nabla \times F) \cdot dS" /></td>
             </tr>
             <tr>
-              <td style={S.td}>Newton</td>
-              <td style={S.td}>2ª</td>
-              <td style={S.td}><InlineMath math="-H^{-1} \nabla f" /></td>
-              <td style={S.td}>O(d³)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>L-BFGS</td>
-              <td style={S.td}>2ª aproximada</td>
-              <td style={S.td}><InlineMath math="-B^{-1} \nabla f \; (B \approx H)" /></td>
-              <td style={S.td}>O(md)</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 7. Taylor Multivariável ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>7. Taylor Multivariável</h2>
-        <p style={S.p}>
-          Para <InlineMath math="f : \mathbb{R}^d \to \mathbb{R}" />, a expansão de Taylor em torno de x é:
-        </p>
-        
-          <BlockMath math="f(x + h) = f(x) + \nabla f(x)^\top h + \tfrac{1}{2} h^\top H(x) h + O(\|h\|^3)" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            <InlineMath math="\nabla f \in \mathbb{R}^d" /> é o gradiente, <InlineMath math="H \in \mathbb{R}^{d \times d}" /> é a Hessiana (<InlineMath math="H_{ij} = \partial^2 f / \partial x_i \partial x_j" />)
-          </p>
-        
-        <LossLandscapeSVG />
-        <h3 style={S.h3}>Propriedades da Hessiana</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Condição H</th>
-              <th style={S.th}>Interpretação geométrica</th>
-              <th style={S.th}>Tipo de ponto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>H positiva definida</td>
-              <td style={S.td}>Bowl (elipsoide convexo)</td>
-              <td style={S.td}>Mínimo local</td>
-            </tr>
-            <tr>
-              <td style={S.td}>H negativa definida</td>
-              <td style={S.td}>Bowl invertido</td>
-              <td style={S.td}>Máximo local</td>
-            </tr>
-            <tr>
-              <td style={S.td}>H indefinida</td>
-              <td style={S.td}>Sela</td>
-              <td style={S.td}>Ponto de sela</td>
-            </tr>
-            <tr>
-              <td style={S.td}>H semi-definida</td>
-              <td style={S.td}>Ridge/vale plano</td>
-              <td style={S.td}>Direção não determinada</td>
+              <td style={S.td}>Gauss (3D vol)</td>
+              <td style={S.td}><InlineMath math="\nabla \cdot F" /></td>
+              <td style={S.td}><InlineMath math="\oiint_S = \iiint_V (\nabla \cdot F)\, dV" /></td>
             </tr>
           </tbody>
         </table>
         <div style={S.note}>
-          Nas redes neurais profundas, a Hessiana tem dimensão d×d com d ≈ 10⁸ parâmetros.
-          Computar H explicitamente é impossível — daí Adam usar apenas a diagonal (curvatura por eixo).
+          Todos estes teoremas são casos especiais do Teorema de Stokes Generalizado:
+          {' '}<InlineMath math="\int_M d\omega = \int_{\partial M} \omega" />, expresso em linguagem de formas diferenciais.
         </div>
-        <h3 style={S.h3}>Curvatura e Taxa de Aprendizagem</h3>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ── Section 9 ── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>9. Mudança de Variáveis e Jacobiano</h2>
         <p style={S.p}>
-          O número de condição κ = λmax/λmin da Hessiana mede a "elongação" do bowl.
-          Para SGD convergir sem oscilações, o passo ótimo é <InlineMath math="\alpha \leq 2/(\lambda_{\max} + \lambda_{\min})" />.
-          Com κ = 1000, as oscilações são devastadoras — aí precondicionamento ajuda.
+          Quando se transforma um integral por uma mudança de variáveis <InlineMath math="x = f(u)" />, o Jacobiano
+          da transformação mede como os volumes locais se expandem ou contraem:
+        </p>
+        <BlockMath math="\int_D g(x)\,dx = \int_{f^{-1}(D)} g(f(u))\,|\det J_f(u)|\,du" />
+        <JacobianSVG />
+        <h3 style={S.h3}>Transformações comuns</h3>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Transformação</th>
+              <th style={S.th}>Jacobiano <InlineMath math="|\det J|" /></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>Polar: <InlineMath math="(r, \theta) \to (r\cos\theta, r\sin\theta)" /></td>
+              <td style={S.td}><InlineMath math="r" /></td>
+            </tr>
+            <tr>
+              <td style={S.td}>Cilíndrica: <InlineMath math="(r, \theta, z)" /></td>
+              <td style={S.td}><InlineMath math="r" /></td>
+            </tr>
+            <tr>
+              <td style={S.td}>Esférica: <InlineMath math="(\rho, \varphi, \theta)" /></td>
+              <td style={S.td}><InlineMath math="\rho^2 \sin\varphi" /></td>
+            </tr>
+            <tr>
+              <td style={S.td}>Linear: <InlineMath math="x = Au" /></td>
+              <td style={S.td}><InlineMath math="|\det A|" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Fórmula de Mudança de Densidade</h3>
+        <p style={S.p}>
+          Se <InlineMath math="X = f(Z)" /> e <InlineMath math="Z \sim p_Z" />, então a densidade de X é:
+        </p>
+        <BlockMath math="p_X(x) = p_Z(f^{-1}(x)) \cdot |\det J_{f^{-1}}(x)|" />
+        <p style={S.p}>
+          Em forma logarítmica: <InlineMath math="\log p_X(x) = \log p_Z(z) - \log |\det J_f(z)|" />, com <InlineMath math="z = f^{-1}(x)" />.
+          Esta é a equação central dos normalizing flows.
         </p>
       </section>
 
       <hr style={S.divider} />
 
-      {/* ── 8. Activações e Taylor ── */}
+      {/* ── Section 10 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>8. Activações e Aproximações Polinomiais</h2>
+        <h2 style={S.h2}>10. Normalizing Flows</h2>
         <p style={S.p}>
-          Activações não-lineares são frequentemente aproximadas por polinómios de Taylor
-          para análise teórica, computação em hardware restrito, ou inferência homomórfica.
+          Normalizing flows aprendem uma bijecção invertível <InlineMath math="f: \mathcal{Z} \to \mathcal{X}" /> que transforma uma
+          distribuição simples <InlineMath math="p_Z" /> (e.g., gaussiana) numa distribuição complexa <InlineMath math="p_X" />.
         </p>
-        <h3 style={S.h3}>GELU — Aproximação com Tanh</h3>
-        
-          <BlockMath math="\text{GELU}(x) = x \cdot \Phi(x) \approx 0.5x \cdot \left(1 + \tanh\!\left(\sqrt{\tfrac{2}{\pi}} \cdot (x + 0.044715x^3)\right)\right)" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Esta aproximação usa o facto de que <InlineMath math="\tanh(x) \approx x - x^3/3" /> para <InlineMath math="x" /> pequeno.
-            A série de Taylor de GELU em <InlineMath math="x=0" /> começa: <InlineMath math="x/2 + \cdots + O(x^3)" />
-          </p>
-        
-        <h3 style={S.h3}>Polinómios de Chebyshev</h3>
+        <NormalizingFlowSVG />
+        <BlockMath math="\log p_X(x) = \log p_Z(f^{-1}(x)) + \log |\det J_{f^{-1}}(x)|" />
+        <h3 style={S.h3}>O problema do determinante</h3>
         <p style={S.p}>
-          Os polinómios de Chebyshev <InlineMath math="T_0, T_1, T_2, \ldots" /> minimizam o erro de máximo (norma <InlineMath math="L^\infty" />)
-          numa aproximação polinomial, ao contrário da série de Taylor que é local.
-          Para activações de redes neurais em computação homomórfica (FHE), usa-se tipicamente
-          Chebyshev de grau 15–63.
+          Calcular <InlineMath math="\det(J)" /> para uma transformação geral custa <InlineMath math="O(n^3)" />. Normalizing flows contornam
+          isto com arquitecturas cujo Jacobiano é triangular:
         </p>
         <table style={S.table}>
           <thead>
             <tr>
-              <th style={S.th}>Polinómio</th>
+              <th style={S.th}>Modelo</th>
+              <th style={S.th}>Truque</th>
+              <th style={S.th}>Custo log-det</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={S.td}>NICE</td>
+              <td style={S.td}>additive coupling layers</td>
+              <td style={S.td}><InlineMath math="O(n)" /> — det = 1</td>
+            </tr>
+            <tr>
+              <td style={S.td}>RealNVP</td>
+              <td style={S.td}>affine coupling layers</td>
+              <td style={S.td}><InlineMath math="O(n)" /> — diagonal J</td>
+            </tr>
+            <tr>
+              <td style={S.td}>Glow</td>
+              <td style={S.td}>1×1 invertible conv</td>
+              <td style={S.td}><InlineMath math="O(c^3)" /> por camada</td>
+            </tr>
+            <tr>
+              <td style={S.td}>FFJORD</td>
+              <td style={S.td}>Neural ODE + Hutchinson</td>
+              <td style={S.td}><InlineMath math="O(n)" /> estocástico</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style={S.h3}>Coupling Layer (RealNVP)</h3>
+                <div style={S.note}>
+          A triangularidade do Jacobiano permite calcular o log-determinante em O(n) —
+          a chave para treinar normalizing flows com máxima verossimilhança exacta.
+        </div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* ── Section 11 ── */}
+      <section style={S.section}>
+        <h2 style={S.h2}>11. Cálculo em Grafos</h2>
+        <p style={S.p}>
+          O cálculo vectorial tem análogos discretos em grafos <InlineMath math="G = (V, E)" />, substituindo derivadas
+          por diferenças ao longo de arestas.
+        </p>
+        <GraphLaplacianSVG />
+        <h3 style={S.h3}>Operadores de Grafo</h3>
+        <p style={S.p}>
+          Para um sinal <InlineMath math="f: V \to \mathbb{R}" /> (valor em cada nó) e um fluxo <InlineMath math="g: E \to \mathbb{R}" /> (valor em cada aresta):
+        </p>
+        <table style={S.table}>
+          <thead>
+            <tr>
+              <th style={S.th}>Operador contínuo</th>
+              <th style={S.th}>Análogo em grafo</th>
               <th style={S.th}>Definição</th>
-              <th style={S.th}>Propriedade</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={S.td}><InlineMath math="T_0(x)" /></td>
-              <td style={S.td}>1</td>
-              <td style={S.td}>Constante</td>
+              <td style={S.td}>Gradiente <InlineMath math="\nabla f" /></td>
+              <td style={S.td}>Gradiente de grafo</td>
+              <td style={S.td}><InlineMath math="(\nabla_G f)(e_{ij}) = f(j) - f(i)" /></td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="T_1(x)" /></td>
-              <td style={S.td}><InlineMath math="x" /></td>
-              <td style={S.td}>Identidade</td>
+              <td style={S.td}>Divergência <InlineMath math="\nabla \cdot F" /></td>
+              <td style={S.td}>Divergência de grafo</td>
+              <td style={S.td}><InlineMath math="(\text{div}\, g)(i) = \sum_j g(e_{ij})" /></td>
             </tr>
             <tr>
-              <td style={S.td}><InlineMath math="T_2(x)" /></td>
-              <td style={S.td}><InlineMath math="2x^2 - 1" /></td>
-              <td style={S.td}>Oscilação de amplitude 1 em [-1,1]</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="T_n(x)" /></td>
-              <td style={S.td}><InlineMath math="\cos(n \cdot \arccos(x))" /></td>
-              <td style={S.td}>Recorrência: <InlineMath math="T_n = 2x T_{n-1} - T_{n-2}" /></td>
+              <td style={S.td}>Laplaciano <InlineMath math="\nabla^2 f" /></td>
+              <td style={S.td}>Laplaciano de grafo L</td>
+              <td style={S.td}><InlineMath math="(Lf)(i) = \sum_j (f(i) - f(j))" /></td>
             </tr>
           </tbody>
         </table>
-                <h3 style={S.h3}>Activações com Estrutura Polinomial</h3>
+        <BlockMath math="L = D - A \qquad L_{\text{sym}} = D^{-1/2} L D^{-1/2} \qquad L_{\text{rw}} = D^{-1} L" />
+        <h3 style={S.h3}>Graph Fourier Transform</h3>
         <p style={S.p}>
-          Redes polinomiais (Kolmogorov-Arnold Networks, KAN) usam directamente bases de
-          B-spline ou Chebyshev como activações aprendíveis. A conexão com séries de Taylor
-          é direta: cada activação é um polinómio treinável da entrada.
+          Como L é simétrica positiva semi-definida, <InlineMath math="L = U \Lambda U^\top" />. Os auto-vectores U formam a
+          base de Fourier do grafo: frequências baixas (auto-valor pequeno) = sinais suaves;
+          frequências altas = sinais oscilatórios.
         </p>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 9. Log e Exp Numérico ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>9. Estabilidade Numérica: Log e Exp</h2>
+        <h3 style={S.h3}>GNN como Convolução no Grafo</h3>
         <p style={S.p}>
-          A série <InlineMath math="e^x" /> diverge para x grande em aritmética de ponto flutuante.
-          Os truques numéricos mais usados em ML derivam directamente de Taylor.
+          Graph Convolutional Networks (GCN) implementam uma convolução espectral aproximada:
         </p>
-        <h3 style={S.h3}>Log-Sum-Exp Estável</h3>
-        
-          <BlockMath math="\log\!\left(\sum_i e^{x_i}\right) = m + \log\!\left(\sum_i e^{x_i - m}\right), \quad m = \max(x_i)" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Expandindo: <InlineMath math="\log(1 + \sum_{i \neq m} e^{x_i - m}) \approx \sum_{i \neq m} e^{x_i - m}" /> quando <InlineMath math="x_i \ll m" />
-          </p>
-        
-                <h3 style={S.h3}>Softplus e a sua Derivada</h3>
-        <p style={S.p}>
-          softplus(x) = <InlineMath math="\log(1 + e^x)" /> é uma suavização de ReLU.
-          A sua derivada é exactamente <InlineMath math="\sigma(x) = 1/(1+e^{-x})" />. Isto segue de Taylor:
-        </p>
-        
-          <BlockMath math="\frac{d}{dx}\log(1 + e^x) = \frac{e^x}{1 + e^x} = \frac{1}{1 + e^{-x}} = \sigma(x)" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Para <InlineMath math="x \to +\infty" />: softplus<InlineMath math="(x) \to x" /> (comportamento de ReLU)
-          </p>
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Para <InlineMath math="x \to -\infty" />: softplus<InlineMath math="(x) \to 0" /> (comportamento de ReLU)
-          </p>
-        
-        <h3 style={S.h3}>Redução de Alcance (Range Reduction)</h3>
-        <p style={S.p}>
-          Para calcular <InlineMath math="e^x" /> com precisão total, decompomos <InlineMath math="x = k \cdot \ln 2 + r" /> com <InlineMath math="|r| \leq \ln 2/2" />,
-          então <InlineMath math="e^x = 2^k \cdot e^r" /> e usamos a série para <InlineMath math="e^r" /> com r pequeno.
-          Esta técnica é usada em todas as bibliotecas de matemática de hardware.
-        </p>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 10. Análise de Perturbação ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>10. Análise de Perturbação e Funções de Influência</h2>
-        <p style={S.p}>
-          A aproximação linear de Taylor permite quantificar o efeito de pequenas perturbações
-          nos parâmetros ou nos dados de treino.
-        </p>
-        <h3 style={S.h3}>Sensibilidade dos Parâmetros</h3>
-        
-          <BlockMath math="\Delta f \approx \nabla_\theta f \cdot \Delta\theta \quad \text{(1ª ordem)}" />
-          <BlockMath math="\Delta f \approx \nabla_\theta f \cdot \Delta\theta + \tfrac{1}{2} \Delta\theta^\top H \Delta\theta \quad \text{(2ª ordem)}" />
-          <p style={{ ...S.p, marginBottom: 0 }}>
-            Útil para: pruning de pesos, análise de robustez, design de ataques adversariais.
-          </p>
-        
-        <h3 style={S.h3}>Funções de Influência</h3>
-        <p style={S.p}>
-          Como mudaria o parâmetro <InlineMath math="\theta^*" /> se removêssemos o ponto de treino <InlineMath math="z_i" />?
-          Usando a aproximação de 1ª ordem na solução dos mínimos:
-        </p>
-        <BlockMath math="\Delta\theta \approx -H^{-1} \nabla_\theta L(z_i, \theta) \cdot \frac{1}{n}" />
-        <p style={S.p}>
-          Isto permite estimar a importância de cada exemplo de treino sem retreinar o modelo.
-          É a base de técnicas de interpretabilidade como TracIn e DataMaps.
-        </p>
-        <h3 style={S.h3}>Privacidade Diferencial</h3>
-        <p style={S.p}>
-          A sensibilidade global Δf = max|f(D) − f(D′)| sobre vizinhos D, D′ é majorada pela
-          norma do gradiente via Taylor:
-        </p>
-        <BlockMath math="|f(D) - f(D')| \leq \|\nabla f\| \cdot \|D - D'\| \approx \|\nabla f\| \cdot \frac{1}{n}" />
-        <p style={S.p}>
-          Em DP-SGD, a clip do gradiente garante <InlineMath math="\|\nabla f\| \leq C" />, limitando a sensibilidade a C/n.
-          O ruído gaussiano adicionado tem desvio padrão σC para garantir (ε, δ)-DP.
-        </p>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 11. Séries de Fourier ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Séries de Fourier — Generalização Ortogonal</h2>
-        <p style={S.p}>
-          Taylor expande em potências (1, x, x², …). Fourier expande em funções ortogonais
-          (senos e cossenos). Ambas são casos de expansão em bases de funções:
-        </p>
-        <BlockMath math="f(x) = \frac{a_0}{2} + \sum_n (a_n \cos(nx) + b_n \sin(nx))" />
-          <BlockMath math="a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\,dx" />
-          <BlockMath math="b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(nx)\,dx" />
-        <FourierSVG />
-        <p style={{ ...S.p, marginTop: '0.75rem' }}>
-          O <strong>fenómeno de Gibbs</strong> mostra que perto de descontinuidades,
-          a aproximação sempre oscila ~9% acima/abaixo — independentemente de quantos
-          termos se usem. Isto é relevante para sinais discretizados em ML.
-        </p>
-        <h3 style={S.h3}>Conexão com Positional Encodings (Transformers)</h3>
-        <p style={S.p}>
-          O positional encoding de "Attention is All You Need" usa exactamente a base de Fourier:
-        </p>
-        <BlockMath math="\text{PE}(\text{pos}, 2i) = \sin\!\left(\frac{\text{pos}}{10000^{2i/d}}\right)" />
-          <BlockMath math="\text{PE}(\text{pos}, 2i+1) = \cos\!\left(\frac{\text{pos}}{10000^{2i/d}}\right)" />
-        <p style={S.p}>
-          Cada dimensão do embedding corresponde a uma frequência diferente —
-          exactamente como diferentes harmónicos na série de Fourier.
-          O modelo pode aprender combinações lineares para representar relações de distância.
-        </p>
-        <h3 style={S.h3}>Taylor vs Fourier — Quando Usar Qual</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Critério</th>
-              <th style={S.th}>Taylor</th>
-              <th style={S.th}>Fourier</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>Tipo de approximação</td>
-              <td style={S.td}>Local (em torno de um ponto)</td>
-              <td style={S.td}>Global (em toda a periodicidade)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Base</td>
-              <td style={S.td}><InlineMath math="x^n" /> (monómios)</td>
-              <td style={S.td}>sin/cos (ortogonais)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Funções descontinuas</td>
-              <td style={S.td}>Não convergem bem</td>
-              <td style={S.td}>Convergem (Gibbs na discontinuidade)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>Uso em otimização</td>
-              <td style={S.td}>Gradiente, Newton, análise local</td>
-              <td style={S.td}>Sinais, positional encodings, espectral</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── 12. Síntese ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <h3 style={S.h3}>Séries de Maclaurin Essenciais</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>f(x)</th>
-              <th style={S.th}>Expansão (primeiros termos)</th>
-              <th style={S.th}>Raio R</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><InlineMath math="e^x" /></td>
-              <td style={S.td}><InlineMath math="1 + x + x^2/2! + x^3/3! + x^4/4! + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\infty" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}>sin(x)</td>
-              <td style={S.td}><InlineMath math="x - x^3/6 + x^5/120 - x^7/5040 + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\infty" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}>cos(x)</td>
-              <td style={S.td}><InlineMath math="1 - x^2/2 + x^4/24 - x^6/720 + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\infty" /></td>
-            </tr>
-            <tr>
-              <td style={S.td}>ln(1+x)</td>
-              <td style={S.td}><InlineMath math="x - x^2/2 + x^3/3 - x^4/4 + \cdots" /></td>
-              <td style={S.td}>1</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="1/(1-x)" /></td>
-              <td style={S.td}><InlineMath math="1 + x + x^2 + x^3 + \cdots" /></td>
-              <td style={S.td}>1</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\sqrt{1+x}" /></td>
-              <td style={S.td}><InlineMath math="1 + x/2 - x^2/8 + x^3/16 - \cdots" /></td>
-              <td style={S.td}>1</td>
-            </tr>
-            <tr>
-              <td style={S.td}>arctan(x)</td>
-              <td style={S.td}>x − x³/3 + x⁵/5 − x⁷/7 + ⋯</td>
-              <td style={S.td}>1</td>
-            </tr>
-            <tr>
-              <td style={S.td}>tanh(x)</td>
-              <td style={S.td}><InlineMath math="x - x^3/3 + 2x^5/15 - 17x^7/315 + \cdots" /></td>
-              <td style={S.td}><InlineMath math="\pi/2" /></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Ordem de Aproximação → Algoritmo ML</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Ordem</th>
-              <th style={S.th}>Informação usada</th>
-              <th style={S.th}>Algoritmo</th>
-              <th style={S.th}>Convergência</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}>0</td>
-              <td style={S.td}>f(x) (só o valor)</td>
-              <td style={S.td}>Evolutionary/Random Search</td>
-              <td style={S.td}>Sub-linear</td>
-            </tr>
-            <tr>
-              <td style={S.td}>1</td>
-              <td style={S.td}><InlineMath math="\nabla f" /> (gradiente)</td>
-              <td style={S.td}>SGD, Adam, Adagrad</td>
-              <td style={S.td}>Linear</td>
-            </tr>
-            <tr>
-              <td style={S.td}>1.5</td>
-              <td style={S.td}><InlineMath math="\nabla f + \text{diag}(H)" /></td>
-              <td style={S.td}>RMSProp, Adam</td>
-              <td style={S.td}>Linear melhorado</td>
-            </tr>
-            <tr>
-              <td style={S.td}>2</td>
-              <td style={S.td}><InlineMath math="\nabla f + H" /> (Hessiana)</td>
-              <td style={S.td}>Newton, L-BFGS</td>
-              <td style={S.td}>Quadrática</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\infty" /></td>
-              <td style={S.td}>Função completa</td>
-              <td style={S.td}>Exact minimization</td>
-              <td style={S.td}>1 passo</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style={S.h3}>Exemplos de Código</h3>
-        
-        <div style={S.note}>
-          Regra prática para ML: use SGD (1ª ordem) durante treino large-scale, L-BFGS (2ª ordem
-          aproximada) para fine-tuning ou problemas de dimensão moderada, e Newton para
-          regressão logística com poucas features onde d² é tratável.
+                <div style={S.note}>
+          Message passing = aplicar o operador Laplaciano normalizado: cada nó agrega informação
+          dos vizinhos, suavizando o sinal sobre o grafo (filtro passa-baixo).
         </div>
-
-        <h3 style={S.h3}>Identidades Rápidas para Usar no Exame</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Identidade</th>
-              <th style={S.th}>Como lembrar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={S.td}><InlineMath math="e^x \approx 1 + x" /> para x ≈ 0</td>
-              <td style={S.td}>Linearizar qualquer exponencial pequena</td>
-            </tr>
-            <tr>
-              <td style={S.td}>ln(1+x) ≈ x  para x ≈ 0</td>
-              <td style={S.td}>Simplificar cross-entropy perto do ótimo</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\sqrt{1+x} \approx 1 + x/2" /> para x ≈ 0</td>
-              <td style={S.td}>Adam com <InlineMath math="\hat{v}" /> perto de 1</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="(1+x)^n \approx 1 + nx" /> para x ≈ 0</td>
-              <td style={S.td}>Binomial de 1ª ordem (e.g. learning rate schedules)</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\sigma(x) \approx \frac{1}{2} + \frac{x}{4}" /> para x ≈ 0</td>
-              <td style={S.td}>Sigmoid linear perto de zero (inicialização)</td>
-            </tr>
-            <tr>
-              <td style={S.td}>sin(x) ≈ x  para x ≈ 0</td>
-              <td style={S.td}>Ângulos pequenos em geometria esférica</td>
-            </tr>
-            <tr>
-              <td style={S.td}><InlineMath math="\cos(x) \approx 1 - x^2/2" /> para x ≈ 0</td>
-              <td style={S.td}>Positional encoding, erro de aproximação angular</td>
-            </tr>
-            <tr>
-              <td style={S.td}>1/(1+x) ≈ 1 − x  para x ≈ 0</td>
-              <td style={S.td}>Inversa de Woodbury (1ª ordem)</td>
-            </tr>
-          </tbody>
-        </table>
       </section>
-      
+
     </div>
   );
 }

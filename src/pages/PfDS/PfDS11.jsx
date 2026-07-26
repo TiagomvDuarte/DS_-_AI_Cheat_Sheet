@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-const color = '#f97316';
+const color = '#4a9eed';
 
 const S = {
   page: { maxWidth: 860, margin: '0 auto', padding: '0 1rem 4rem' },
@@ -17,8 +17,8 @@ const S = {
   table: { width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', marginBottom: '1rem' },
   th: { background: 'var(--bg-secondary)', padding: '0.6rem 0.8rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '2px solid var(--card-border)' },
   td: { padding: '0.55rem 0.8rem', borderBottom: '1px solid var(--card-border)', color: 'var(--text-primary)' },
-  highlight: { background: 'rgba(249,115,22,0.10)', border: '1px solid #f97316', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
-  note: { background: 'rgba(245,158,11,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
+  highlight: { background: 'rgba(74,158,237,0.10)', border: '1px solid #4a9eed', borderRadius: 8, padding: '1rem 1.25rem', marginBottom: '1.2rem' },
+  note: { background: 'rgba(2,132,199,0.06)', borderLeft: `3px solid ${color}`, borderRadius: '0 8px 8px 0', padding: '0.75rem 1rem', fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '1rem 0' },
   divider: { border: 'none', borderTop: '1px solid var(--card-border)', margin: '2.5rem 0' },
   code: { background: 'var(--bg-secondary)', border: '1px solid var(--card-border)', borderRadius: 8, padding: '1rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-primary)', overflowX: 'auto', margin: '1rem 0', whiteSpace: 'pre' },
 };
@@ -28,31 +28,31 @@ function SvgWhyGit() {
   return (
     <svg viewBox="0 0 760 180" style={{ width: '100%', height: 'auto', display: 'block' }}>
       {/* Without Git box */}
-      <rect x="20" y="20" width="330" height="145" rx="10" fill="rgba(249,115,22,0.08)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="185" y="45" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Sem Git</text>
-      <rect x="35" y="55" width="290" height="24" rx="4" fill="rgba(249,115,22,0.12)" />
+      <rect x="20" y="20" width="330" height="145" rx="10" fill="rgba(74,158,237,0.08)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="185" y="45" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">Sem Git</text>
+      <rect x="35" y="55" width="290" height="24" rx="4" fill="rgba(74,158,237,0.12)" />
       <text x="180" y="71" textAnchor="middle" fontSize="10" fill="var(--text-primary)">{'report_final.xlsx'}</text>
-      <rect x="35" y="84" width="290" height="24" rx="4" fill="rgba(249,115,22,0.12)" />
+      <rect x="35" y="84" width="290" height="24" rx="4" fill="rgba(74,158,237,0.12)" />
       <text x="180" y="100" textAnchor="middle" fontSize="10" fill="var(--text-primary)">{'report_final_v2.xlsx'}</text>
-      <rect x="35" y="113" width="290" height="24" rx="4" fill="rgba(249,115,22,0.12)" />
+      <rect x="35" y="113" width="290" height="24" rx="4" fill="rgba(74,158,237,0.12)" />
       <text x="180" y="129" textAnchor="middle" fontSize="10" fill="var(--text-primary)">{'report_final_v3_FINAL2.xlsx'}</text>
-      <rect x="35" y="142" width="290" height="17" rx="4" fill="rgba(249,115,22,0.35)" />
+      <rect x="35" y="142" width="290" height="17" rx="4" fill="rgba(74,158,237,0.35)" />
       <text x="180" y="154" textAnchor="middle" fontSize="9" fill="var(--text-primary)">{'report_final_v3_FINAL2_USE_THIS.xlsx'}</text>
 
       {/* With Git box */}
-      <rect x="410" y="20" width="330" height="145" rx="10" fill="rgba(249,115,22,0.08)" stroke="#fdba74" strokeWidth="1.5" />
-      <text x="575" y="45" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fdba74">Com Git</text>
+      <rect x="410" y="20" width="330" height="145" rx="10" fill="rgba(74,158,237,0.08)" stroke="#bae6fd" strokeWidth="1.5" />
+      <text x="575" y="45" textAnchor="middle" fontSize="12" fontWeight="700" fill="#bae6fd">Com Git</text>
       {[0, 1, 2, 3].map(i => (
         <g key={i}>
-          <circle cx="445" cy={65 + i * 28} r="7" fill="#fdba74" />
+          <circle cx="445" cy={65 + i * 28} r="7" fill="#bae6fd" />
           <text x="445" y={65 + i * 28 + 3} textAnchor="middle" fontSize="8" fill="#1c1917" dominantBaseline="middle">{i + 1}</text>
-          <rect x="460" y={56 + i * 28} width="260" height="18" rx="4" fill="rgba(253,186,116,0.20)" />
+          <rect x="460" y={56 + i * 28} width="260" height="18" rx="4" fill="rgba(186,230,253,0.20)" />
           <text x="590" y={68 + i * 28} textAnchor="middle" fontSize="9" fill="var(--text-primary)">
             {i === 0 ? 'commit a1b2c3 — Análise inicial' : i === 1 ? 'commit d4e5f6 — Adicionar gráficos' : i === 2 ? 'commit g7h8i9 — Corrigir outliers' : 'commit j0k1l2 — Versão final (HEAD)'}
           </text>
         </g>
       ))}
-      <line x1="445" y1="72" x2="445" y2="158" stroke="#fdba74" strokeWidth="1.5" strokeDasharray="3,2" />
+      <line x1="445" y1="72" x2="445" y2="158" stroke="#bae6fd" strokeWidth="1.5" strokeDasharray="3,2" />
 
       {/* Arrow between */}
       <path d="M355 92 L405 92" stroke={color} strokeWidth="2" fill="none" markerEnd="url(#arrow1)" />
@@ -75,23 +75,23 @@ function SvgThreeTree() {
         </marker>
       </defs>
       {/* Working Directory */}
-      <rect x="20" y="30" width="190" height="100" rx="10" fill="rgba(245,158,11,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x="20" y="30" width="190" height="100" rx="10" fill="rgba(2,132,199,0.08)" stroke={color} strokeWidth="1.5" />
       <text x="115" y="52" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Working Directory</text>
       <text x="115" y="72" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Ficheiros no disco</text>
       <text x="115" y="90" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">model.py (modificado)</text>
       <text x="115" y="106" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">data.csv (novo)</text>
-      <text x="115" y="118" textAnchor="middle" fontSize="8" fill="#f97316">git add →</text>
+      <text x="115" y="118" textAnchor="middle" fontSize="8" fill="#4a9eed">git add →</text>
 
       {/* Staging Area */}
-      <rect x="285" y="30" width="190" height="100" rx="10" fill="rgba(245,158,11,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x="285" y="30" width="190" height="100" rx="10" fill="rgba(2,132,199,0.08)" stroke={color} strokeWidth="1.5" />
       <text x="380" y="52" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Index (Staging)</text>
       <text x="380" y="72" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Preparado para commit</text>
-      <text x="380" y="90" textAnchor="middle" fontSize="9" fill="#f97316">model.py (staged)</text>
-      <text x="380" y="106" textAnchor="middle" fontSize="9" fill="#f97316">data.csv (staged)</text>
-      <text x="380" y="118" textAnchor="middle" fontSize="8" fill="#f97316">git commit →</text>
+      <text x="380" y="90" textAnchor="middle" fontSize="9" fill="#4a9eed">model.py (staged)</text>
+      <text x="380" y="106" textAnchor="middle" fontSize="9" fill="#4a9eed">data.csv (staged)</text>
+      <text x="380" y="118" textAnchor="middle" fontSize="8" fill="#4a9eed">git commit →</text>
 
       {/* Repository */}
-      <rect x="550" y="30" width="190" height="100" rx="10" fill="rgba(245,158,11,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x="550" y="30" width="190" height="100" rx="10" fill="rgba(2,132,199,0.08)" stroke={color} strokeWidth="1.5" />
       <text x="645" y="52" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Repository (.git)</text>
       <text x="645" y="72" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Commits permanentes</text>
       <text x="645" y="90" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">blobs / trees / commits</text>
@@ -108,25 +108,24 @@ function SvgThreeTree() {
 function SvgStatus() {
   return (
     <svg viewBox="0 0 760 200" style={{ width: '100%', height: 'auto', display: 'block' }}>
-      <rect x="20" y="10" width="720" height="180" rx="10" fill="#1e1e1e" />
       <text x="40" y="35" fontSize="11" fontFamily="monospace" fill="#6b7280">$ git status</text>
       <text x="40" y="55" fontSize="11" fontFamily="monospace" fill="#e5e7eb">On branch main</text>
       <text x="40" y="73" fontSize="11" fontFamily="monospace" fill="#e5e7eb">Changes to be committed:</text>
-      <rect x="36" y="78" width="8" height="8" fill="#f97316" rx="1" />
-      <text x="50" y="87" fontSize="11" fontFamily="monospace" fill="#f97316">  modified: {'   '}analysis.py</text>
+      <rect x="36" y="78" width="8" height="8" fill="#4a9eed" rx="1" />
+      <text x="50" y="87" fontSize="11" fontFamily="monospace" fill="#4a9eed">  modified: {'   '}analysis.py</text>
       <text x="40" y="107" fontSize="11" fontFamily="monospace" fill="#e5e7eb">Changes not staged for commit:</text>
-      <rect x="36" y="112" width="8" height="8" fill="#f59e0b" rx="1" />
-      <text x="50" y="121" fontSize="11" fontFamily="monospace" fill="#f59e0b">  modified: {'   '}notebook.ipynb</text>
+      <rect x="36" y="112" width="8" height="8" fill="#0284c7" rx="1" />
+      <text x="50" y="121" fontSize="11" fontFamily="monospace" fill="#0284c7">  modified: {'   '}notebook.ipynb</text>
       <text x="40" y="141" fontSize="11" fontFamily="monospace" fill="#e5e7eb">Untracked files:</text>
-      <rect x="36" y="146" width="8" height="8" fill="#f97316" rx="1" />
-      <text x="50" y="155" fontSize="11" fontFamily="monospace" fill="#f97316">  new file: {'    '}raw_data.csv</text>
+      <rect x="36" y="146" width="8" height="8" fill="#4a9eed" rx="1" />
+      <text x="50" y="155" fontSize="11" fontFamily="monospace" fill="#4a9eed">  new file: {'    '}raw_data.csv</text>
 
       {/* Legend */}
-      <rect x="480" y="60" width="12" height="12" fill="#f97316" rx="2" />
+      <rect x="480" y="60" width="12" height="12" fill="#4a9eed" rx="2" />
       <text x="498" y="71" fontSize="10" fill="#9ca3af">Staged (pronto para commit)</text>
-      <rect x="480" y="82" width="12" height="12" fill="#f59e0b" rx="2" />
+      <rect x="480" y="82" width="12" height="12" fill="#0284c7" rx="2" />
       <text x="498" y="93" fontSize="10" fill="#9ca3af">Modified (não staged)</text>
-      <rect x="480" y="104" width="12" height="12" fill="#f97316" rx="2" />
+      <rect x="480" y="104" width="12" height="12" fill="#4a9eed" rx="2" />
       <text x="498" y="115" fontSize="10" fill="#9ca3af">Untracked (novo)</text>
     </svg>
   );
@@ -144,13 +143,13 @@ function SvgBranch() {
           <path d="M0,0 L6,3 L0,6 Z" fill={color} />
         </marker>
         <marker id="arrowE" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#f97316" />
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4a9eed" />
         </marker>
       </defs>
       {/* Commits on main */}
       {[0, 1, 2].map(i => (
         <g key={i}>
-          <circle cx={80 + i * 130} cy="110" r="22" fill="rgba(249,115,22,0.25)" stroke={color} strokeWidth="2" />
+          <circle cx={80 + i * 130} cy="110" r="22" fill="rgba(74,158,237,0.25)" stroke={color} strokeWidth="2" />
           <text x={80 + i * 130} y="114" textAnchor="middle" fontSize="9" fill="var(--text-primary)" fontWeight="700">
             {i === 0 ? 'c1a2b3' : i === 1 ? 'd4e5f6' : 'g7h8i9'}
           </text>
@@ -161,9 +160,9 @@ function SvgBranch() {
       <path d="M232 110 L318 110" stroke={color} strokeWidth="1.5" fill="none" markerEnd="url(#arrowC)" />
 
       {/* Feature branch commit */}
-      <circle cx="470" cy="60" r="22" fill="rgba(249,115,22,0.25)" stroke="#f97316" strokeWidth="2" />
+      <circle cx="470" cy="60" r="22" fill="rgba(74,158,237,0.25)" stroke="#4a9eed" strokeWidth="2" />
       <text x="470" y="64" textAnchor="middle" fontSize="9" fill="var(--text-primary)" fontWeight="700">j0k1l2</text>
-      <path d="M352 95 L450 72" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#arrowE)" />
+      <path d="M352 95 L450 72" stroke="#4a9eed" strokeWidth="1.5" fill="none" markerEnd="url(#arrowE)" />
 
       {/* main label */}
       <rect x="295" y="140" width="70" height="22" rx="4" fill={color} />
@@ -171,14 +170,14 @@ function SvgBranch() {
       <path d="M330 140 L340 132" stroke={color} strokeWidth="1.5" fill="none" />
 
       {/* feature label */}
-      <rect x="440" y="12" width="90" height="22" rx="4" fill="#f97316" />
+      <rect x="440" y="12" width="90" height="22" rx="4" fill="#4a9eed" />
       <text x="485" y="26" textAnchor="middle" fontSize="10" fontWeight="700" fill="#fff">feature/ml</text>
-      <path d="M470 40 L470 34" stroke="#f97316" strokeWidth="1.5" fill="none" />
+      <path d="M470 40 L470 34" stroke="#4a9eed" strokeWidth="1.5" fill="none" />
 
       {/* HEAD label */}
-      <rect x="580" y="95" width="55" height="22" rx="4" fill="#f97316" />
+      <rect x="580" y="95" width="55" height="22" rx="4" fill="#4a9eed" />
       <text x="607" y="110" textAnchor="middle" fontSize="10" fontWeight="700" fill="#fff">HEAD</text>
-      <path d="M580 106 L360 106" stroke="#f97316" strokeWidth="1.5" strokeDasharray="4,2" fill="none" markerEnd="url(#arrowD)" />
+      <path d="M580 106 L360 106" stroke="#4a9eed" strokeWidth="1.5" strokeDasharray="4,2" fill="none" markerEnd="url(#arrowD)" />
     </svg>
   );
 }
@@ -190,18 +189,18 @@ function SvgMergeRebase() {
       {/* Merge side */}
       <text x="185" y="20" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>git merge (preserva história)</text>
       {/* main commits */}
-      <circle cx="50" cy="80" r="18" fill="rgba(245,158,11,0.2)" stroke={color} strokeWidth="1.5" />
+      <circle cx="50" cy="80" r="18" fill="rgba(2,132,199,0.2)" stroke={color} strokeWidth="1.5" />
       <text x="50" y="84" textAnchor="middle" fontSize="8" fill={color}>A</text>
-      <circle cx="120" cy="80" r="18" fill="rgba(245,158,11,0.2)" stroke={color} strokeWidth="1.5" />
+      <circle cx="120" cy="80" r="18" fill="rgba(2,132,199,0.2)" stroke={color} strokeWidth="1.5" />
       <text x="120" y="84" textAnchor="middle" fontSize="8" fill={color}>B</text>
-      <circle cx="190" cy="80" r="18" fill="rgba(245,158,11,0.2)" stroke={color} strokeWidth="1.5" />
+      <circle cx="190" cy="80" r="18" fill="rgba(2,132,199,0.2)" stroke={color} strokeWidth="1.5" />
       <text x="190" y="84" textAnchor="middle" fontSize="8" fill={color}>C</text>
       {/* feature commit */}
-      <circle cx="155" cy="145" r="18" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="155" y="149" textAnchor="middle" fontSize="8" fill="#f97316">F</text>
+      <circle cx="155" cy="145" r="18" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="155" y="149" textAnchor="middle" fontSize="8" fill="#4a9eed">F</text>
       {/* merge commit */}
-      <circle cx="260" cy="80" r="20" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="2" />
-      <text x="260" y="84" textAnchor="middle" fontSize="8" fill="#f97316" fontWeight="700">M</text>
+      <circle cx="260" cy="80" r="20" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="2" />
+      <text x="260" y="84" textAnchor="middle" fontSize="8" fill="#4a9eed" fontWeight="700">M</text>
       <defs>
         <marker id="arrowM" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
           <path d="M0,0 L5,3 L0,6 Z" fill="#6b7280" />
@@ -210,8 +209,8 @@ function SvgMergeRebase() {
       <path d="M68 80 L102 80" stroke="#6b7280" strokeWidth="1.2" fill="none" markerEnd="url(#arrowM)" />
       <path d="M138 80 L172 80" stroke="#6b7280" strokeWidth="1.2" fill="none" markerEnd="url(#arrowM)" />
       <path d="M208 80 L240 80" stroke="#6b7280" strokeWidth="1.2" fill="none" markerEnd="url(#arrowM)" />
-      <path d="M173 145 L243 95" stroke="#f97316" strokeWidth="1.2" fill="none" markerEnd="url(#arrowM)" />
-      <path d="M120 98 L140 130" stroke="#f97316" strokeWidth="1.2" strokeDasharray="3,2" fill="none" />
+      <path d="M173 145 L243 95" stroke="#4a9eed" strokeWidth="1.2" fill="none" markerEnd="url(#arrowM)" />
+      <path d="M120 98 L140 130" stroke="#4a9eed" strokeWidth="1.2" strokeDasharray="3,2" fill="none" />
       <text x="155" y="195" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Merge commit visível no log</text>
 
       {/* Rebase side */}
@@ -219,10 +218,10 @@ function SvgMergeRebase() {
       {[0, 1, 2, 3, 4].map(i => (
         <g key={i}>
           <circle cx={390 + i * 70} cy="80" r="18"
-            fill={i < 3 ? 'rgba(245,158,11,0.2)' : 'rgba(249,115,22,0.10)'}
-            stroke={i < 3 ? color : '#f97316'} strokeWidth="1.5" />
+            fill={i < 3 ? 'rgba(2,132,199,0.2)' : 'rgba(74,158,237,0.10)'}
+            stroke={i < 3 ? color : '#4a9eed'} strokeWidth="1.5" />
           <text x={390 + i * 70} y="84" textAnchor="middle" fontSize="8"
-            fill={i < 3 ? color : '#f97316'}>
+            fill={i < 3 ? color : '#4a9eed'}>
             {i === 0 ? 'A' : i === 1 ? 'B' : i === 2 ? 'C' : i === 3 ? "F'" : "G'"}
           </text>
           {i < 4 && (
@@ -239,11 +238,8 @@ function SvgMergeRebase() {
 function SvgConflict() {
   return (
     <svg viewBox="0 0 760 210" style={{ width: '100%', height: 'auto', display: 'block' }}>
-      {/* Background */}
-      <rect x="20" y="10" width="720" height="190" rx="10" fill="#1e1e1e" />
-
       {/* HEAD section highlight */}
-      <rect x="30" y="60" width="540" height="42" rx="4" fill="rgba(249,115,22,0.12)" />
+      <rect x="30" y="60" width="540" height="42" rx="4" fill="rgba(74,158,237,0.12)" />
       {/* Merge section highlight */}
       <rect x="30" y="118" width="540" height="42" rx="4" fill="rgba(96,165,250,0.10)" />
 
@@ -251,26 +247,26 @@ function SvgConflict() {
       <text x="45" y="34" fontSize="11" fontFamily="monospace" fill="#6b7280"># model.py — conflito detetado</text>
       <text x="45" y="52" fontSize="11" fontFamily="monospace" fill="#e5e7eb">def train_model(data):</text>
 
-      <text x="45" y="74" fontSize="11" fontFamily="monospace" fill="#fb923c">{'<<<<<<< HEAD'}</text>
-      <text x="45" y="94" fontSize="11" fontFamily="monospace" fill="#fdba74">{'    return RandomForest(n_estimators=100)'}</text>
+      <text x="45" y="74" fontSize="11" fontFamily="monospace" fill="#38bdf8">{'<<<<<<< HEAD'}</text>
+      <text x="45" y="94" fontSize="11" fontFamily="monospace" fill="#bae6fd">{'    return RandomForest(n_estimators=100)'}</text>
 
       <text x="45" y="114" fontSize="11" fontFamily="monospace" fill="#94a3b8">{'======='}</text>
 
-      <text x="45" y="132" fontSize="11" fontFamily="monospace" fill="#fbbf24">{'    return GradientBoosting(n_estimators=200)'}</text>
-      <text x="45" y="152" fontSize="11" fontFamily="monospace" fill="#fbbf24">{'>>>>>>> feature/new-model'}</text>
+      <text x="45" y="132" fontSize="11" fontFamily="monospace" fill="#7dd3fc">{'    return GradientBoosting(n_estimators=200)'}</text>
+      <text x="45" y="152" fontSize="11" fontFamily="monospace" fill="#7dd3fc">{'>>>>>>> feature/new-model'}</text>
 
       {/* Labels on the right */}
-      <rect x="585" y="62" width="145" height="38" rx="6" fill="rgba(249,115,22,0.18)" stroke="#f97316" strokeWidth="1" />
-      <text x="657" y="78" textAnchor="middle" fontSize="9" fontWeight="700" fill="#f97316">A tua versão</text>
-      <text x="657" y="92" textAnchor="middle" fontSize="9" fill="#fb923c">(HEAD)</text>
+      <rect x="585" y="62" width="145" height="38" rx="6" fill="rgba(74,158,237,0.18)" stroke="#4a9eed" strokeWidth="1" />
+      <text x="657" y="78" textAnchor="middle" fontSize="9" fontWeight="700" fill="#4a9eed">A tua versão</text>
+      <text x="657" y="92" textAnchor="middle" fontSize="9" fill="#38bdf8">(HEAD)</text>
 
-      <rect x="585" y="120" width="145" height="38" rx="6" fill="rgba(96,165,250,0.15)" stroke="#fb923c" strokeWidth="1" />
-      <text x="657" y="136" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fbbf24">Versão a fazer merge</text>
-      <text x="657" y="150" textAnchor="middle" fontSize="9" fill="#fbbf24">feature/new-model</text>
+      <rect x="585" y="120" width="145" height="38" rx="6" fill="rgba(96,165,250,0.15)" stroke="#38bdf8" strokeWidth="1" />
+      <text x="657" y="136" textAnchor="middle" fontSize="9" fontWeight="700" fill="#7dd3fc">Versão a fazer merge</text>
+      <text x="657" y="150" textAnchor="middle" fontSize="9" fill="#7dd3fc">feature/new-model</text>
 
       {/* Connector lines */}
-      <line x1="575" y1="81" x2="585" y2="81" stroke="#f97316" strokeWidth="1" strokeDasharray="3 2" />
-      <line x1="575" y1="139" x2="585" y2="139" stroke="#fb923c" strokeWidth="1" strokeDasharray="3 2" />
+      <line x1="575" y1="81" x2="585" y2="81" stroke="#4a9eed" strokeWidth="1" strokeDasharray="3 2" />
+      <line x1="575" y1="139" x2="585" y2="139" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 2" />
     </svg>
   );
 }
@@ -288,23 +284,23 @@ function SvgRemote() {
         </marker>
       </defs>
       {/* Local */}
-      <rect x="30" y="50" width="170" height="90" rx="10" fill="rgba(245,158,11,0.08)" stroke={color} strokeWidth="1.5" />
+      <rect x="30" y="50" width="170" height="90" rx="10" fill="rgba(2,132,199,0.08)" stroke={color} strokeWidth="1.5" />
       <text x="115" y="75" textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>Repo Local</text>
       <text x="115" y="95" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Working Dir</text>
       <text x="115" y="112" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Staging + .git</text>
       <text x="115" y="130" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">origin/main (tracking)</text>
 
       {/* GitHub */}
-      <rect x="295" y="30" width="170" height="120" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="380" y="58" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">GitHub / GitLab</text>
+      <rect x="295" y="30" width="170" height="120" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="380" y="58" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">GitHub / GitLab</text>
       <text x="380" y="78" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">origin (remote)</text>
       <text x="380" y="98" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Servidor centralizado</text>
       <text x="380" y="115" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">PRs, Issues, Actions</text>
       <text x="380" y="135" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">Backup na cloud</text>
 
       {/* Other devs */}
-      <rect x="560" y="50" width="170" height="90" rx="10" fill="rgba(249,115,22,0.10)" stroke="#f97316" strokeWidth="1.5" />
-      <text x="645" y="75" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f97316">Outros Devs</text>
+      <rect x="560" y="50" width="170" height="90" rx="10" fill="rgba(74,158,237,0.10)" stroke="#4a9eed" strokeWidth="1.5" />
+      <text x="645" y="75" textAnchor="middle" fontSize="12" fontWeight="700" fill="#4a9eed">Outros Devs</text>
       <text x="645" y="95" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Repo Local B</text>
       <text x="645" y="112" textAnchor="middle" fontSize="10" fill="var(--text-secondary)">Repo Local C</text>
       <text x="645" y="130" textAnchor="middle" fontSize="9" fill="var(--text-secondary)">pull / push</text>
@@ -312,10 +308,12 @@ function SvgRemote() {
       {/* Arrows */}
       <path d="M203 82 L292 72" stroke={color} strokeWidth="1.8" fill="none" markerEnd="url(#arrowR)" />
       <text x="247" y="68" textAnchor="middle" fontSize="9" fill={color}>push</text>
-      <path d="M292 100 L203 108" stroke={color} strokeWidth="1.8" fill="none" markerEnd="url(#arrowRL)" />
+      <path d="M292 100 L203 108" stroke={color} strokeWidth="1.8" fill="none" markerEnd="url(#arrowR)" />
       <text x="247" y="116" textAnchor="middle" fontSize="9" fill={color}>pull/fetch</text>
-      <path d="M468 72 L558 82" stroke="#f97316" strokeWidth="1.8" fill="none" markerEnd="url(#arrowR)" />
-      <path d="M558 100 L468 108" stroke="#f97316" strokeWidth="1.8" fill="none" markerEnd="url(#arrowRL)" />
+      <path d="M558 72 L468 82" stroke="#4a9eed" strokeWidth="1.8" fill="none" markerEnd="url(#arrowR)" />
+      <text x="513" y="68" textAnchor="middle" fontSize="9" fill="#4a9eed">push</text>
+      <path d="M468 100 L558 108" stroke="#4a9eed" strokeWidth="1.8" fill="none" markerEnd="url(#arrowR)" />
+      <text x="513" y="116" textAnchor="middle" fontSize="9" fill="#4a9eed">pull/fetch</text>
     </svg>
   );
 }
@@ -333,7 +331,7 @@ function SvgPRFlow() {
       </defs>
       {steps.map((label, i) => (
         <g key={i}>
-          <circle cx={cols[i]} cy="60" r="28" fill="rgba(245,158,11,0.12)" stroke={color} strokeWidth="1.8" />
+          <circle cx={cols[i]} cy="60" r="28" fill="rgba(2,132,199,0.12)" stroke={color} strokeWidth="1.8" />
           <text x={cols[i]} y={label.includes('\n') ? "55" : "64"} textAnchor="middle" fontSize="9" fontWeight="700" fill={color}>
             {label.split('\n')[0]}
           </text>
@@ -363,11 +361,11 @@ function SvgGitFlow() {
       </defs>
       {/* Branch labels */}
       {[
-        { label: 'main', y: 30, color: '#f97316' },
-        { label: 'hotfix', y: 65, color: '#f97316' },
-        { label: 'release', y: 100, color: '#f97316' },
-        { label: 'develop', y: 135, color: '#f97316' },
-        { label: 'feature', y: 170, color: '#f97316' },
+        { label: 'main', y: 30, color: '#4a9eed' },
+        { label: 'hotfix', y: 65, color: '#4a9eed' },
+        { label: 'release', y: 100, color: '#4a9eed' },
+        { label: 'develop', y: 135, color: '#4a9eed' },
+        { label: 'feature', y: 170, color: '#4a9eed' },
       ].map(({ label, y, color: c }) => (
         <g key={label}>
           <rect x="10" y={y - 10} width="65" height="20" rx="4" fill={c} fillOpacity="0.15" />
@@ -378,12 +376,12 @@ function SvgGitFlow() {
 
       {/* Commit dots */}
       {[
-        { x: 110, y: 30, c: '#f97316' }, { x: 350, y: 30, c: '#f97316' }, { x: 600, y: 30, c: '#f97316' }, { x: 720, y: 30, c: '#f97316' },
-        { x: 200, y: 65, c: '#f97316' }, { x: 300, y: 65, c: '#f97316' },
-        { x: 450, y: 100, c: '#f97316' }, { x: 550, y: 100, c: '#f97316' },
-        { x: 110, y: 135, c: '#f97316' }, { x: 250, y: 135, c: '#f97316' }, { x: 400, y: 135, c: '#f97316' }, { x: 500, y: 135, c: '#f97316' }, { x: 620, y: 135, c: '#f97316' }, { x: 720, y: 135, c: '#f97316' },
-        { x: 150, y: 170, c: '#f97316' }, { x: 220, y: 170, c: '#f97316' },
-        { x: 480, y: 170, c: '#f97316' }, { x: 560, y: 170, c: '#f97316' },
+        { x: 110, y: 30, c: '#4a9eed' }, { x: 350, y: 30, c: '#4a9eed' }, { x: 600, y: 30, c: '#4a9eed' }, { x: 720, y: 30, c: '#4a9eed' },
+        { x: 200, y: 65, c: '#4a9eed' }, { x: 300, y: 65, c: '#4a9eed' },
+        { x: 450, y: 100, c: '#4a9eed' }, { x: 550, y: 100, c: '#4a9eed' },
+        { x: 110, y: 135, c: '#4a9eed' }, { x: 250, y: 135, c: '#4a9eed' }, { x: 400, y: 135, c: '#4a9eed' }, { x: 500, y: 135, c: '#4a9eed' }, { x: 620, y: 135, c: '#4a9eed' }, { x: 720, y: 135, c: '#4a9eed' },
+        { x: 150, y: 170, c: '#4a9eed' }, { x: 220, y: 170, c: '#4a9eed' },
+        { x: 480, y: 170, c: '#4a9eed' }, { x: 560, y: 170, c: '#4a9eed' },
       ].map(({ x, y, c }, i) => (
         <circle key={i} cx={x} cy={y} r="7" fill={c} fillOpacity="0.3" stroke={c} strokeWidth="1.5" />
       ))}
@@ -405,18 +403,17 @@ function SvgGitFlow() {
 function SvgCommitMsg() {
   return (
     <svg viewBox="0 0 760 200" style={{ width: '100%', height: 'auto', display: 'block' }}>
-      <rect x="20" y="10" width="720" height="180" rx="10" fill="#1e1e1e" />
       <text x="40" y="35" fontSize="11" fontFamily="monospace" fill="#6b7280">$ git commit</text>
-      <rect x="30" y="42" width="440" height="20" rx="3" fill="rgba(249,115,22,0.10)" />
-      <text x="40" y="56" fontSize="11" fontFamily="monospace" fill="#fde8d8">feat: adicionar validação cruzada ao pipeline de treino</text>
-      <text x="480" y="55" fontSize="9" fill="#f97316">← 50 chars máx.</text>
+      <rect x="30" y="42" width="440" height="20" rx="3" fill="rgba(74,158,237,0.10)" />
+      <text x="40" y="56" fontSize="11" fontFamily="monospace" fill="var(--text-primary)">feat: adicionar validação cruzada ao pipeline de treino</text>
+      <text x="480" y="55" fontSize="9" fill="#4a9eed">← 50 chars máx.</text>
       <text x="40" y="80" fontSize="11" fontFamily="monospace" fill="#6b7280">(linha em branco obrigatória)</text>
-      <rect x="30" y="90" width="600" height="60" rx="3" fill="rgba(249,115,22,0.08)" />
-      <text x="40" y="108" fontSize="11" fontFamily="monospace" fill="#f97316">Implementar k-fold cross-validation (k=5) para evitar</text>
-      <text x="40" y="124" fontSize="11" fontFamily="monospace" fill="#f97316">overfitting. Adicionar métricas de val ao relatório.</text>
-      <text x="40" y="140" fontSize="11" fontFamily="monospace" fill="#f97316">Closes #42</text>
-      <text x="640" y="120" fontSize="9" fill="#f97316">← Corpo</text>
-      <text x="640" y="135" fontSize="9" fill="#f97316">72 chars/linha</text>
+      <rect x="30" y="90" width="600" height="60" rx="3" fill="rgba(74,158,237,0.08)" />
+      <text x="40" y="108" fontSize="11" fontFamily="monospace" fill="#4a9eed">Implementar k-fold cross-validation (k=5) para evitar</text>
+      <text x="40" y="124" fontSize="11" fontFamily="monospace" fill="#4a9eed">overfitting. Adicionar métricas de val ao relatório.</text>
+      <text x="40" y="140" fontSize="11" fontFamily="monospace" fill="#4a9eed">Closes #42</text>
+      <text x="640" y="120" fontSize="9" fill="#4a9eed">← Corpo</text>
+      <text x="640" y="135" fontSize="9" fill="#4a9eed">72 chars/linha</text>
     </svg>
   );
 }
@@ -424,12 +421,12 @@ function SvgCommitMsg() {
 // SVG 11: Daily workflow
 function SvgDailyWorkflow() {
   const steps = [
-    { label: 'git pull\norigin main', color: '#f97316' },
-    { label: 'git checkout\n-b feature/x', color: '#f97316' },
-    { label: 'Editar\nficheiros', color: '#f97316' },
+    { label: 'git pull\norigin main', color: '#4a9eed' },
+    { label: 'git checkout\n-b feature/x', color: '#4a9eed' },
+    { label: 'Editar\nficheiros', color: '#4a9eed' },
     { label: 'git add\ngit commit', color: color },
-    { label: 'git push\norigin', color: '#f97316' },
-    { label: 'Abrir\nPull Request', color: '#f97316' },
+    { label: 'git push\norigin', color: '#4a9eed' },
+    { label: 'Abrir\nPull Request', color: '#4a9eed' },
   ];
   return (
     <svg viewBox="0 0 760 140" style={{ width: '100%', height: 'auto', display: 'block' }}>
@@ -467,13 +464,8 @@ export default function PfDS11() {
     <div style={S.page}>
       <Link to="/pfds" style={S.back}><ArrowLeft size={16} /> Voltar a Programming for Data Science</Link>
 
-      <span style={S.tag}>MÓDULO 11</span>
+      <span style={S.tag}>MÓDULO 09</span>
       <h1 style={S.h1}>Git & Version Control para Data Scientists</h1>
-      <p style={S.lead}>
-        Dominar Git é uma das competências mais valiosas de um data scientist moderno.
-        Reprodutibilidade, colaboração e rastreabilidade de experiências dependem de um bom controlo de versões.
-        Este módulo cobre desde os conceitos fundamentais até fluxos de trabalho avançados com aplicação direta em projetos de dados.
-      </p>
 
       {/* Section 1 */}
       <section style={S.section}>
@@ -1126,88 +1118,8 @@ git rebase -i HEAD~3
       <hr style={S.divider} />
 
       {/* Section 12 */}
-      <section style={S.section}>
-        <h2 style={S.h2}>12. Síntese do Módulo</h2>
-        <h3 style={S.h3}>Workflow Diário Recomendado</h3>
-        <div style={S.diagram}>
-          <SvgDailyWorkflow />
-        </div>
-        <div style={S.code}>{`# Workflow completo num dia típico
-git switch main
-git pull                                    # 1. Atualizar local
+      
 
-git switch -c feature/analise-cluster       # 2. Nova branch
-
-# ... editar ficheiros ...
-
-git status                                  # 3. Ver o que mudou
-git add -p                                  # 4. Staged seletivo
-git commit -m "feat: clustering k-means"   # 5. Commit
-
-git push -u origin feature/analise-cluster # 6. Push
-# Abrir PR no GitHub                        # 7. Pull Request`}</div>
-
-        <h3 style={S.h3}>Cheat Sheet — 25 Comandos Essenciais</h3>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Comando</th>
-              <th style={S.th}>O que faz</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['git init', 'Inicializa repositório'],
-              ['git clone <url>', 'Clona repositório remoto'],
-              ['git status', 'Estado atual do repositório'],
-              ['git add <file>', 'Adiciona à staging area'],
-              ['git add -p', 'Adiciona interativamente por hunk'],
-              ['git commit -m "msg"', 'Cria commit'],
-              ['git commit --amend', 'Edita último commit (não partilhado!)'],
-              ['git log --oneline --graph', 'Histórico visual compacto'],
-              ['git diff', 'Diferenças working dir vs staged'],
-              ['git diff --staged', 'Diferenças staged vs HEAD'],
-              ['git branch -a', 'Lista todas as branches'],
-              ['git switch -c <branch>', 'Cria e muda para nova branch'],
-              ['git merge <branch>', 'Integra branch no atual'],
-              ['git rebase <branch>', 'Reaplica commits sobre outra base'],
-              ['git stash push -m "msg"', 'Guarda trabalho temporariamente'],
-              ['git stash pop', 'Recupera último stash'],
-              ['git remote add origin <url>', 'Liga ao repositório remoto'],
-              ['git push -u origin main', 'Push com tracking configurado'],
-              ['git fetch origin', 'Busca atualizações sem integrar'],
-              ['git pull', 'Busca e integra atualizações'],
-              ['git tag v1.0.0', 'Cria tag de versão'],
-              ['git revert <hash>', 'Desfaz commit de forma segura'],
-              ['git reset --soft HEAD~1', 'Desfaz commit, mantém staged'],
-              ['git cherry-pick <hash>', 'Aplica commit específico'],
-              ['git bisect start', 'Inicia pesquisa binária de bug'],
-            ].map(([cmd, desc]) => (
-              <tr key={cmd}>
-                <td style={{ ...S.td, fontFamily: 'monospace', fontSize: '0.82rem', color: color }}>{cmd}</td>
-                <td style={S.td}>{desc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div style={S.highlight}>
-          <strong style={{ color: color }}>Princípios para levar:</strong>
-          <ul style={{ margin: '0.5rem 0 0', paddingLeft: '1.2rem', color: 'var(--text-primary)', lineHeight: 1.9 }}>
-            <li>Commit cedo, commit frequente — commits pequenos são mais fáceis de reverter e rever</li>
-            <li>Nunca commita credenciais, dados sensíveis ou ficheiros gerados</li>
-            <li>Uma branch por funcionalidade ou tarefa — isolamento é proteção</li>
-            <li>Mensagens de commit como documentação — o porquê é mais valioso que o o quê</li>
-            <li>Nunca reescreves histórico partilhado — é a regra de ouro do trabalho em equipa</li>
-            <li>Em projetos ML, combina Git com DVC e registo de experimentos (MLflow, W&B)</li>
-          </ul>
-        </div>
-
-        <div style={S.note}>
-          Recursos adicionais: Pro Git Book (gratuito em git-scm.com/book), Oh My Git! (jogo interativo),
-          Learn Git Branching (learngitbranching.js.org), GitHub Skills (skills.github.com).
-        </div>
-      </section>
     </div>
   );
 }
