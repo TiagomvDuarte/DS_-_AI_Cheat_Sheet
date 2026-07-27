@@ -481,7 +481,6 @@ export default function LA1() {
             <tr><td style={S.td}>Distributividade (soma de escalares)</td><td style={S.td}>(c + d)a = ca + da</td></tr>
           </tbody>
         </table>
-        <h3 style={S.h3}>NumPy</h3>
       </section>
 
       <hr style={S.divider} />

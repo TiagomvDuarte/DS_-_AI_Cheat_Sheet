@@ -282,7 +282,6 @@ function App() {
             <BookOpen className="logo-icon" size={32} />
             <div>
               <h1 className="title" style={{ color: 'var(--text-primary)' }}>DS & AI Cheat Sheet</h1>
-              <p className="subtitle">Your quick reference for everything data and AI</p>
             </div>
           </Link>
           <button 

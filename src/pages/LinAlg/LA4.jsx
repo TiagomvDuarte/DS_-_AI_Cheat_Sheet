@@ -821,14 +821,20 @@ export default function LA4() {
         <NeuralNetSVG />
         <h3 style={S.h3}>Cada Camada como Transformação Afim</h3>
         <p style={S.p}>
-          Uma camada densa transforma o input x ∈ ℝⁿ em h ∈ ℝᵐ por h = σ(Wx + b), onde W ∈ ℝᵐˣⁿ é a matriz de pesos, b ∈ ℝᵐ é o bias, e σ é a activação. A parte Wx + b é afim; σ introduz a não-linearidade essencial.
+          Uma camada densa transforma o input <InlineMath math="x \in \mathbb{R}^n" /> em <InlineMath math="h \in \mathbb{R}^m" /> por <InlineMath math="h = \sigma(Wx + b)" />, onde <InlineMath math="W \in \mathbb{R}^{m \times n}" /> é a matriz de pesos, <InlineMath math="b \in \mathbb{R}^m" /> é o bias, e <InlineMath math="\sigma" /> é a activação. A parte <InlineMath math="Wx + b" /> é afim; <InlineMath math="\sigma" /> introduz a não-linearidade essencial.
         </p>
         <p style={S.p}>
           Geometricamente, a parte afim faz: rotação/shear (pelos vetores próprios de W), escalonamento (pelos valores singulares de W), e translação (pelo bias b). A activação "dobra" o espaço, criando fronteiras de decisão não-lineares.
         </p>
         <h3 style={S.h3}>Profundidade e Composição</h3>
         <p style={S.p}>
-          Uma rede com L camadas computa h_L = σ_L(W_L · σ_(L-1)(... σ₁(W₁x + b₁) ...) + b_L). Esta composição profunda permite representar funções arbitrariamente complexas. A retropropagação calcula gradientes usando a regra da cadeia — multiplicação de Jacobianos (matrizes de derivadas parciais), que são exactamente as matrizes das transformações lineares das camadas.
+          Uma rede com L camadas computa:
+        </p>
+        <div style={S.highlight}>
+          <BlockMath math="h_L = \sigma_L\big(W_L \cdot \sigma_{L-1}(\dots \sigma_1(W_1 x + b_1) \dots) + b_L\big)" />
+        </div>
+        <p style={S.p}>
+          Esta composição profunda permite representar funções arbitrariamente complexas. A retropropagação calcula gradientes usando a regra da cadeia — multiplicação de Jacobianos (matrizes de derivadas parciais), que são exactamente as matrizes das transformações lineares das camadas.
         </p>
         <h3 style={S.h3}>Atenção como Transformação</h3>
         <p style={S.p}>
@@ -838,7 +844,7 @@ export default function LA4() {
           <BlockMath math="\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d}}\right) \cdot V" />
         </div>
         <p style={S.p}>
-          Onde Q = XW_Q, K = XW_K, V = XW_V são transformações lineares do input X. O produto QKᵀ mede similaridade entre tokens (produto interno no espaço de queries/keys), normalizado por √d (dimensão) para estabilidade numérica. O softmax cria pesos de atenção e V é agregado com esses pesos — uma combinação convexa das linhas de V, ou seja, mais uma transformação linear (ponderada).
+          Onde <InlineMath math="Q = XW_Q" />, <InlineMath math="K = XW_K" />, <InlineMath math="V = XW_V" /> são transformações lineares do input <InlineMath math="X" />. O produto <InlineMath math="QK^T" /> mede similaridade entre tokens (produto interno no espaço de queries/keys), normalizado por <InlineMath math="\sqrt{d}" /> (dimensão) para estabilidade numérica. O softmax cria pesos de atenção e <InlineMath math="V" /> é agregado com esses pesos — uma combinação convexa das linhas de <InlineMath math="V" />, ou seja, mais uma transformação linear (ponderada).
         </p>
       </section>
 

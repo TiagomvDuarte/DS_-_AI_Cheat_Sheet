@@ -688,65 +688,7 @@ export default function LA2() {
 
       {/* ── Section 10 ── */}
       <section style={S.section}>
-        <h2 style={S.h2}>10. Matrizes em Redes Neuronais</h2>
-        <p style={S.p}>
-          Redes neuronais profundas são essencialmente composições de transformações afim e não-linearidades.
-          Cada camada densa é uma multiplicação matricial seguida de uma activação.
-        </p>
-        <NeuralLayerSVG />
-        <h3 style={S.h3}>Forward pass: uma amostra vs batch</h3>
-        <div style={S.highlight}>
-          <strong>Uma amostra:</strong> <InlineMath math="y = Wx+b" />, onde W ∈ ℝ^(d_out × d_in), x ∈ ℝ^(d_in), b ∈ ℝ^(d_out)<br />
-          <strong>Batch:</strong> <InlineMath math="Y = XW^T+b" />, onde X ∈ ℝ^(n × d_in), W ∈ ℝ^(d_out × d_in), Y ∈ ℝ^(n × d_out)
-        </div>
-        <h3 style={S.h3}>Inicialização de pesos (Xavier / Glorot)</h3>
-        <p style={S.p}>
-          Para evitar vanishing/exploding gradients, os pesos são inicializados com variância cuidadosa.
-          Xavier initialisation: σ = sqrt(2 / (n_in + n_out)).
-          He initialisation para ReLU: σ = sqrt(2 / n_in).
-        </p>
-        <h3 style={S.h3}>Mecanismo de Atenção (Transformers)</h3>
-        <p style={S.p}>
-          O self-attention usa três matrizes de projecção Q, K, V e computa:
-          Attention(Q,K,V) = softmax(QKᵀ / sqrt(d_k)) × V.
-          A divisão por sqrt(d_k) previne gradientes muito pequenos quando d_k é grande.
-        </p>
-        <h3 style={S.h3}>Eficiência computacional</h3>
-        <p style={S.p}>
-          BLAS (Basic Linear Algebra Subprograms) optimiza matmul para CPUs com SIMD e cache tiling.
-          cuBLAS faz o mesmo para GPUs NVIDIA. PyTorch e JAX chamam estas routines automaticamente —
-          a abstracção de tensores esconde chamadas a kernels optimizados.
-        </p>
-        <table style={S.table}>
-          <thead>
-            <tr>
-              <th style={S.th}>Operação</th>
-              <th style={S.th}>Complexidade</th>
-              <th style={S.th}>GPU speedup típico</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ['matmul (m×k)×(k×n)','O(mnk)','100–1000×'],
-              ['Batch matmul (b×m×k)×(b×k×n)','O(bmnk)','100–1000×'],
-              ['Softmax (n)','O(n)','10–50×'],
-              ['Element-wise','O(n)','10–100×'],
-            ].map(([op,c,s]) => (
-              <tr key={op}>
-                <td style={S.td}>{op}</td>
-                <td style={S.td}>{c}</td>
-                <td style={S.td}>{s}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      <hr style={S.divider} />
-
-      {/* ── Section 11 ── */}
-      <section style={S.section}>
-        <h2 style={S.h2}>11. Decomposições — Visão Geral</h2>
+        <h2 style={S.h2}>10. Decomposições — Visão Geral</h2>
         <p style={S.p}>
           Toda a potência da álgebra linear aplicada reside em decompor matrizes em factores
           com estrutura especial. As quatro decomposições fundamentais são LU, QR, Eigen e SVD.

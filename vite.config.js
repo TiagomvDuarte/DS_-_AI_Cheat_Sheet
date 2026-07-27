@@ -5,6 +5,12 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/DS_-_AI_Cheat_Sheet/',
+  build: {
+    // esbuild's minifier corrupts KaTeX's tokenizer regex (multi-letter
+    // commands like \cdot, \sum, \theta get truncated to their first
+    // letter), so use terser for a correct production build.
+    minify: 'terser',
+  },
   plugins: [
     react(),
     VitePWA({
