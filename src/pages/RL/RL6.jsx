@@ -184,10 +184,10 @@ const TargetNetDiagram = () => (
       <text x="430" y="44" textAnchor="middle" fill={color} fontSize="7">θ⁻←θ</text>
       <text x="510" y="44" textAnchor="middle" fill={color} fontSize="7">θ⁻←θ</text>
       <text x="570" y="44" textAnchor="middle" fill={color} fontSize="7">θ⁻←θ</text>
-      <text x="490" y="175" textAnchor="middle" fill="#4a9eed" fontSize="9">Convergência Estavel</text>
+      <text x="490" y="175" textAnchor="middle" fill="#4a9eed" fontSize="9">Convergência Estável</text>
     </svg>
     <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-      As linhas verticais representam os momentos em que a target network e sincronizada com a rede online (a cada C steps).
+      As linhas verticais representam os momentos em que a target network é sincronizada com a rede online (a cada C steps).
     </p>
   </div>
 );
@@ -223,7 +223,7 @@ const DuelingDiagram = () => (
       <line x1="265" y1="127" x2="340" y2="100" stroke="#4a9eed" strokeWidth="1.5" markerEnd="url(#arr-duel)" />
       {/* Aggregation */}
       <rect x="340" y="65" width="120" height="50" rx="8" fill={`${color}14`} stroke={color} strokeWidth="1.5" />
-      <text x="400" y="85" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Agregacao</text>
+      <text x="400" y="85" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Agregação</text>
       <text x="400" y="100" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Q=V+A-mean(A)</text>
       {/* Arrow to output */}
       <line x1="460" y1="90" x2="510" y2="90" stroke={color} strokeWidth="1.5" markerEnd="url(#arr-duel)" />
@@ -231,10 +231,10 @@ const DuelingDiagram = () => (
       <rect x="510" y="55" width="95" height="70" rx="8" fill={`${color}18`} stroke={color} strokeWidth="1.5" />
       <text x="557" y="79" textAnchor="middle" fill={color} fontSize="9" fontWeight="700">Q(s,a; θ)</text>
       <text x="557" y="94" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">Q para cada</text>
-      <text x="557" y="107" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">acao</text>
+      <text x="557" y="107" textAnchor="middle" fill="var(--text-secondary)" fontSize="8">ação</text>
     </svg>
     <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-      Separar V(s) e A(s,a) permite aprender o valor do estado independentemente das acoes — especialmente util quando muitas acoes sao equivalentes.
+      Separar V(s) e A(s,a) permite aprender o valor do estado independentemente das ações — especialmente útil quando muitas ações são equivalentes.
     </p>
   </div>
 );
@@ -244,66 +244,66 @@ export default function RL6() {
     <div style={S.page}>
       <Link to="/rl" style={S.back}><ArrowLeft size={16} /> Voltar a RL</Link>
 
-      <div style={S.tag}>Modulo 6</div>
+      <div style={S.tag}>Módulo 6</div>
       <h1 style={S.h1}>Value Function Approximation e Deep RL</h1>
 
       {/* ───────────────────────── SECTION 1 ───────────────────────── */}
       <div style={S.section}>
-        <h2 style={S.h2}>1. De Tabular a Aproximacao de Funcoes</h2>
+        <h2 style={S.h2}>1. De Tabular a Aproximação de Funções</h2>
         <p style={S.p}>
-          Os metodos tabulares — Q-tables, tabelas de valor de estado — armazenam explicitamente
+          Os métodos tabulares — Q-tables, tabelas de valor de estado — armazenam explicitamente
           um valor para cada par (s, a). Funcionam perfeitamente para MDPs pequenos, mas falham
-          catastroficamente em dominios realistas:
+          catastroficamente em domínios realistas:
         </p>
         <ul style={S.ul}>
           <li style={S.li}>
             <strong>Atari (pixels brutos):</strong> 210 x 160 x 3 canais de cor, cada pixel com 256
-            niveis → aprox. <InlineMath math="10^{500}" /> estados distintos possiveis.
-            Uma tabela Q com 18 acoes ocuparia mais atomos do que existem no universo observavel.
+            níveis → aprox. <InlineMath math="10^{500}" /> estados distintos possíveis.
+            Uma tabela Q com 18 ações ocuparia mais átomos do que existem no universo observável.
           </li>
           <li style={S.li}>
-            <strong>Robotica continua:</strong> posicao e velocidade de cada junta em <InlineMath math="\mathbb{R}^n" /> —
-            espaco de estados infinito nao discretizavel de forma eficiente.
+            <strong>Robótica continua:</strong> posição e velocidade de cada junta em <InlineMath math="\mathbb{R}^n" /> —
+            espaço de estados infinito não discretizável de forma eficiente.
           </li>
           <li style={S.li}>
-            <strong>Sem generalizacao:</strong> aprender <InlineMath math="Q(s,a)" /> nao transmite informacao
+            <strong>Sem generalização:</strong> aprender <InlineMath math="Q(s,a)" /> não transmite informação
             sobre <InlineMath math="Q(s', a)" /> mesmo que <InlineMath math="s \approx s'" />.
           </li>
           <li style={S.li}>
-            <strong>Estados nao visitados:</strong> a maioria dos estados nunca e visitada durante o treino — a tabela fica vazia.
+            <strong>Estados não visitados:</strong> a maioria dos estados nunca é visitada durante o treino — a tabela fica vazia.
           </li>
         </ul>
         
-          <strong>Solucao — Aproximacao de Funcoes:</strong> em vez de uma tabela, aprendemos uma funcao parametrizada:
+          <strong>Solução — Aproximação de Funções:</strong> em vez de uma tabela, aprendemos uma função parametrizada:
           <div style={S.math}>
             <BlockMath math="Q(s, a;\, \theta) \approx Q^*(s, a)" />
           </div>
-          onde <InlineMath math="\theta" /> sao parametros aprendidos (pesos de uma rede neuronal).
-          A funcao generaliza automaticamente entre estados similares.
+          onde <InlineMath math="\theta" /> são parâmetros aprendidos (pesos de uma rede neuronal).
+          A função generaliza automaticamente entre estados similares.
         
-        <h3 style={S.h3}>Aproximacao Linear</h3>
+        <h3 style={S.h3}>Aproximação Linear</h3>
         <p style={S.p}>
-          A forma mais simples usa uma combinacao linear de features extraidas do estado:
+          A forma mais simples usa uma combinação linear de features extraidas do estado:
         </p>
         <div style={S.math}>
           <BlockMath math="Q(s, a;\, \theta) = \theta^\top \phi(s, a) = \sum_i \theta_i \phi_i(s, a)" />
         </div>
         <p style={S.p}>
-          <InlineMath math="\phi(s,a)" /> e o vetor de features — uma representacao manual do estado e da acao
-          (e.g., posicao, velocidade, distancia ao objetivo). A aproximacao linear tem garantias teoricas fortes:
-          convergencia garantida com as features corretas, estabilidade numerica, e solucao unica (minimo global).
-          A limitacao e que as features <InlineMath math="\phi(s,a)" /> tem de ser definidas manualmente.
+          <InlineMath math="\phi(s,a)" /> e o vetor de features — uma representação manual do estado e da ação
+          (e.g., posição, velocidade, distância ao objetivo). A aproximação linear tem garantias teóricas fortes:
+          convergência garantida com as features corretas, estabilidade numérica, e solução única (mínimo global).
+          A limitação é que as features <InlineMath math="\phi(s,a)" /> têm de ser definidas manualmente.
         </p>
         <h3 style={S.h3}>Redes Neuronais como Aproximadores Universais</h3>
         <p style={S.p}>
           O Universal Approximation Theorem garante que uma rede neuronal com pelo menos uma camada
-          oculta suficientemente larga pode aproximar qualquer funcao continua com precisao arbitraria.
-          Na pratica, redes profundas (com multiplas camadas) aprendem representacoes hierarquicas
+          oculta suficientemente larga pode aproximar qualquer função continua com precisão arbitrária.
+          Na prática, redes profundas (com múltiplas camadas) aprendem representações hierárquicas
           automaticamente — de pixels a bordas, a formas, a objetos, a conceitos de jogo.
         </p>
         <div style={S.note}>
-          Generalizacao e a chave: se o agente aprende que "bola perto do bordo direito a alta velocidade"
-          e um estado mau, deve tambem reconhecer que "bola ligeiramente mais longe do bordo, velocidade semelhante"
+          Generalização é a chave: se o agente aprende que "bola perto do bordo direito a alta velocidade"
+          e um estado mau, deve também reconhecer que "bola ligeiramente mais longe do bordo, velocidade semelhante"
           e igualmente mau — sem precisar de visitar esse estado especifico.
         </div>
       </div>
@@ -314,8 +314,8 @@ export default function RL6() {
       <div style={S.section}>
         <h2 style={S.h2}>2. Gradient Descent para Q</h2>
         <p style={S.p}>
-          Para treinar <InlineMath math="Q(s,a;\theta)" /> queremos minimizar o erro quadratico entre
-          a previsao atual e o target de Bellman. A funcao de perda e:
+          Para treinar <InlineMath math="Q(s,a;\theta)" /> queremos minimizar o erro quadrático entre
+          a previsão atual é o target de Bellman. A função de perda e:
         </p>
         <div style={S.math}>
           <BlockMath math="L(\theta) = \mathbb{E}_{\,(s,a,r,s') \sim \mathcal{D}}\!\left[\left(r + \gamma \max_{a'} Q(s', a';\, \theta) - Q(s, a;\, \theta)\right)^2\right]" />
@@ -327,31 +327,31 @@ export default function RL6() {
           <BlockMath math="\theta \leftarrow \theta - \alpha \, \nabla_\theta L(\theta)" />
         </div>
         <p style={S.p}>
-          onde o gradiente e calculado apenas em relacao a <InlineMath math="\theta" /> na previsao
-          (o target e tratado como constante durante cada update):
+          onde o gradiente é calculado apenas em relação a <InlineMath math="\theta" /> na previsão
+          (o target é tratado como constante durante cada update):
         </p>
         <div style={S.math}>
           <BlockMath math="\nabla_\theta L(\theta) = -2\,\underbrace{\left(r + \gamma \max_{a'} Q(s',a';\theta) - Q(s,a;\theta)\right)}_{\delta \text{ (TD error)}} \nabla_\theta Q(s,a;\theta)" />
         </div>
         <h3 style={S.h3}>A "Deadly Triad" — Tríade Mortal</h3>
         <p style={S.p}>
-          Tsitsiklis e Van Roy (1997) identificaram que a combinacao de tres elementos pode causar
-          instabilidade grave ou divergencia:
+          Tsitsiklis e Van Roy (1997) identificaram que a combinação de três elementos pode causar
+          instabilidade grave ou divergência:
         </p>
         <div style={S.diagram}>
           <table style={S.table}>
             <thead>
               <tr>
                 <th style={S.th}>Elemento</th>
-                <th style={S.th}>Descricao</th>
+                <th style={S.th}>Descrição</th>
                 <th style={S.th}>Problema que cria</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style={S.td}><strong>Aproximacao de Funcoes</strong></td>
+                <td style={S.td}><strong>Aproximação de Funções</strong></td>
                 <td style={S.td}>Rede neuronal para Q(s,a;θ)</td>
-                <td style={S.td}>Erros de generalizacao, gradientes instáveis</td>
+                <td style={S.td}>Erros de generalização, gradientes instáveis</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Bootstrapping</strong></td>
@@ -360,14 +360,14 @@ export default function RL6() {
               </tr>
               <tr>
                 <td style={S.td}><strong>Off-Policy Learning</strong></td>
-                <td style={S.td}>Dados gerados por politica diferente da alvo</td>
-                <td style={S.td}>Distribuicao dos dados muda durante o treino</td>
+                <td style={S.td}>Dados gerados por política diferente da alvo</td>
+                <td style={S.td}>Distribuição dos dados muda durante o treino</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div style={S.note}>
-          DQN usa todos os tres elementos — e so consegue convergir gracas as inovacoes de Experience Replay
+          DQN usa todos os três elementos — e só consegue convergir graças as inovações de Experience Replay
           e Target Network que estabilizam o processo de treino.
         </div>
       </div>
@@ -379,21 +379,21 @@ export default function RL6() {
         <h2 style={S.h2}>3. DQN — Deep Q-Network (DeepMind, 2015)</h2>
         <p style={S.p}>
           O artigo "Human-level control through deep reinforcement learning" (Mnih et al., 2015) foi
-          um marco historico: um unico algoritmo, com a mesma arquitetura e os mesmos hiperparametros,
-          aprendeu a jogar 49 jogos Atari ao nivel humano ou superior, a partir de pixels brutos.
-          As contribuicoes chave foram duas inovacoes que tornaram o treino com redes profundas estavel.
+          um marco histórico: um único algoritmo, com a mesma arquitetura e os mesmos hiperparâmetros,
+          aprendeu a jogar 49 jogos Atari ao nível humano ou superior, a partir de pixels brutos.
+          As contribuições chave foram duas inovações que tornaram o treino com redes profundas estável.
         </p>
         <h3 style={S.h3}>Arquitetura CNN para Atari</h3>
         <p style={S.p}>
           A rede recebe como input <strong>4 frames consecutivos</strong> em escala de cinzentos (84x84 pixels
           cada), produzindo um tensor de entrada 84x84x4. A escolha de 4 frames permite ao agente inferir
-          velocidade e direcao dos objetos — informacao ausente num unico frame.
+          velocidade e direção dos objetos — informação ausente num único frame.
         </p>
         <CNNDiagram />
         <div style={S.highlight}>
-          <strong>Vantagem de output multi-acao:</strong> ao produzir Q(s,aᵢ) para todas as acoes i numa
-          unica passagem forward, o DQN e muito mais eficiente do que calcular Q para cada acao separadamente.
-          Para Atari com 18 acoes possiveis, isto representa um speedup de 18x por step.
+          <strong>Vantagem de output multi-ação:</strong> ao produzir Q(s,aᵢ) para todas as ações i numa
+          única passagem forward, o DQN é muito mais eficiente do que calcular Q para cada ação separadamente.
+          Para Atari com 18 ações possíveis, isto representa um speedup de 18x por step.
         </div>
       </div>
 
@@ -403,34 +403,34 @@ export default function RL6() {
       <div style={S.section}>
         <h2 style={S.h2}>4. Experience Replay</h2>
         <p style={S.p}>
-          A primeira inovacao chave do DQN e o <strong>Experience Replay</strong>: em vez de atualizar
-          a rede imediatamente apos cada transicao, armazenamos as transicoes num buffer e amostramos
+          A primeira inovação chave do DQN é o <strong>Experience Replay</strong>: em vez de atualizar
+          a rede imediatamente após cada transição, armazenamos as transições num buffer e amostramos
           minibatches aleatorios para treino.
         </p>
         <h3 style={S.h3}>Mecanismo</h3>
         <ul style={S.ul}>
-          <li style={S.li}>Manter um replay buffer <InlineMath math="\mathcal{D}" /> de capacidade fixa (tipicamente 100 000 transicoes)</li>
-          <li style={S.li}>Cada transicao <InlineMath math="(s, a, r, s', \text{done})" /> e armazenada em <InlineMath math="\mathcal{D}" /></li>
-          <li style={S.li}>Quando <InlineMath math="|\mathcal{D}|" /> excede a capacidade, as transicoes mais antigas sao removidas (FIFO)</li>
-          <li style={S.li}>A cada step, amostrar um minibatch aleatorio de tamanho <InlineMath math="B" /> (tipicamente 32)</li>
+          <li style={S.li}>Manter um replay buffer <InlineMath math="\mathcal{D}" /> de capacidade fixa (tipicamente 100 000 transições)</li>
+          <li style={S.li}>Cada transição <InlineMath math="(s, a, r, s', \text{done})" /> é armazenada em <InlineMath math="\mathcal{D}" /></li>
+          <li style={S.li}>Quando <InlineMath math="|\mathcal{D}|" /> excede a capacidade, as transições mais antigas são removidas (FIFO)</li>
+          <li style={S.li}>A cada step, amostrar um minibatch aleatório de tamanho <InlineMath math="B" /> (tipicamente 32)</li>
         </ul>
         <ReplayBufferDiagram />
-        <h3 style={S.h3}>Funcao de Perda sobre o Minibatch</h3>
+        <h3 style={S.h3}>Função de Perda sobre o Minibatch</h3>
         <div style={S.math}>
           <BlockMath math="L(\theta) = \frac{1}{B} \sum_{i=1}^{B} \left( y_i - Q(s_i, a_i;\, \theta) \right)^2" />
         </div>
         <p style={S.p}>
           onde <InlineMath math="y_i = r_i + \gamma \max_{a'} Q(s'_i, a';\, \theta^-) \cdot (1 - \text{done}_i)" />.
         </p>
-        <h3 style={S.h3}>Beneficios do Experience Replay</h3>
+        <h3 style={S.h3}>Benefícios do Experience Replay</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>Quebra de correlacao temporal:</strong> amostras consecutivas do ambiente sao altamente correlacionadas (frames vizinhos sao quase identicos). A amostragem aleatoria garante independencia aproximada entre amostras do minibatch.</li>
-          <li style={S.li}><strong>Eficiencia amostral:</strong> cada transicao pode ser usada multiplas vezes para treino antes de ser descartada.</li>
-          <li style={S.li}><strong>Distribuicao estavel:</strong> o buffer suaviza mudancas rapidas na distribuicao de dados.</li>
+          <li style={S.li}><strong>Quebra de correlação temporal:</strong> amostras consecutivas do ambiente são altamente correlacionadas (frames vizinhos são quase idênticos). A amostragem aleatória garante independência aproximada entre amostras do minibatch.</li>
+          <li style={S.li}><strong>Eficiência amostral:</strong> cada transição pode ser usada múltiplas vezes para treino antes de ser descartada.</li>
+          <li style={S.li}><strong>Distribuição estável:</strong> o buffer suaviza mudanças rápidas na distribuição de dados.</li>
         </ul>
         <div style={S.note}>
-          Experience Replay foi originalmente proposto por Lin (1992) mas so se tornou pratico com a
-          capacidade computacional e de memoria disponivel na era moderna.
+          Experience Replay foi originalmente proposto por Lin (1992) mas só se tornou prático com a
+          capacidade computacional e de memória disponivel na era moderna.
         </div>
       </div>
 
@@ -440,9 +440,9 @@ export default function RL6() {
       <div style={S.section}>
         <h2 style={S.h2}>5. Target Network</h2>
         <p style={S.p}>
-          A segunda inovacao chave e a <strong>Target Network</strong>: uma copia separada da rede Q,
-          com parametros <InlineMath math="\theta^-" />, usada exclusivamente para calcular os targets TD.
-          Os seus pesos sao mantidos fixos durante varios steps e sincronizados periodicamente:
+          A segunda inovação chave é a <strong>Target Network</strong>: uma copia separada da rede Q,
+          com parâmetros <InlineMath math="\theta^-" />, usada exclusivamente para calcular os targets TD.
+          Os seus pesos são mantidos fixos durante vários steps e sincronizados periodicamente:
         </p>
         <div style={S.math}>
           <BlockMath math="\text{A cada } C \text{ steps:} \quad \theta^- \leftarrow \theta" />
@@ -452,22 +452,22 @@ export default function RL6() {
           <BlockMath math="y_i = r_i + \gamma \max_{a'} Q(s'_i, a';\, \theta^-)" />
         </div>
         <p style={S.p}>
-          Sem a target network, o problema e que ao atualizar <InlineMath math="\theta" />, o proprio
+          Sem a target network, o problema é que ao atualizar <InlineMath math="\theta" />, o próprio
           target <InlineMath math="y" /> muda simultaneamente — como tentar acertar num alvo em movimento.
           A target network "fixa" o alvo durante <InlineMath math="C" /> steps, tornando o problema
-          localmente supervisionado e muito mais estavel.
+          localmente supervisionado e muito mais estável.
         </p>
         <TargetNetDiagram />
         <h3 style={S.h3}>Escolha de C</h3>
         <ul style={S.ul}>
-          <li style={S.li}><strong>C muito pequeno:</strong> target network quase identica a rede online — instabilidade persiste</li>
+          <li style={S.li}><strong>C muito pequeno:</strong> target network quase idêntica a rede online — instabilidade persiste</li>
           <li style={S.li}><strong>C muito grande:</strong> targets desatualizados — aprendizagem muito lenta</li>
-          <li style={S.li}><strong>Tipicamente C = 1 000 a 10 000 steps</strong> — equilibrio empiricamente validado</li>
+          <li style={S.li}><strong>Tipicamente C = 1 000 a 10 000 steps</strong> — equilíbrio empiricamente validado</li>
         </ul>
         <div style={S.note}>
           Alternativa moderna: <strong>soft updates</strong> — em vez de copiar completamente,
           misturar gradualmente: <InlineMath math="\theta^- \leftarrow \tau\theta + (1-\tau)\theta^-" />
-          com <InlineMath math="\tau = 0.005" />. Mais suave e frequentemente mais estavel.
+          com <InlineMath math="\tau = 0.005" />. Mais suave e frequentemente mais estável.
         </div>
       </div>
 
@@ -477,36 +477,36 @@ export default function RL6() {
       <div style={S.section}>
         <h2 style={S.h2}>6. DQN Training Loop Completo</h2>
         <p style={S.p}>
-          O loop de treino integra todas as componentes — inicializacao, coleta de experiencias,
-          replay buffer, gradient updates e sincronizacao da target network:
+          O loop de treino integra todas as componentes — inicialização, coleta de experiências,
+          replay buffer, gradient updates e sincronização da target network:
         </p>
-        <div style={S.code}>{`# DQN Training Loop (pseudocodigo)
+        <div style={S.code}>{`# DQN Training Loop (pseudocódigo)
 # ─────────────────────────────────────────────────────────
 
-# 1. Inicializacao
+# 1. Inicialização
 Inicializar rede online Q(s, a; θ) com pesos aleatórios θ
 Inicializar target network Q(s, a; θ⁻) com θ⁻ = θ
 Inicializar replay buffer D com capacidade N = 100 000
-ε = 1.0  (exploracao maxima no inicio)
+ε = 1.0  (exploração máxima no início)
 
-# 2. Loop de episodios
-para cada episodio:
+# 2. Loop de episódios
+para cada episódio:
     s = stack de 4 frames iniciais (preprocessados: cinzento, 84×84)
 
     # 3. Loop de steps
     para t = 1, 2, ..., T:
 
-        # Selecao de acao (ε-greedy)
+        # Seleção de ação (ε-greedy)
         se random() < ε:
-            a = acao aleatoria           # exploracao
-        senao:
-            a = argmax_a Q(s, a; θ)     # exploitacao
+            a = ação aleatória           # exploração
+        senão:
+            a = argmax_a Q(s, a; θ)     # exploitação
 
-        # Executar acao no ambiente
+        # Executar ação no ambiente
         r, s_next, done = env.step(a)
         s_next = stack novos 4 frames
 
-        # Armazenar transicao no replay buffer
+        # Armazenar transição no replay buffer
         D.add((s, a, r, s_next, done))
         s = s_next
 
@@ -516,7 +516,7 @@ para cada episodio:
             para cada (sᵢ, aᵢ, rᵢ, s'ᵢ, doneᵢ) em batch:
                 se doneᵢ:
                     yᵢ = rᵢ
-                senao:
+                senão:
                     yᵢ = rᵢ + γ · max_{a'} Q(s'ᵢ, a'; θ⁻)
 
             # Gradient step
@@ -532,12 +532,12 @@ para cada episodio:
 
         se done: break`}</div>
         <div style={S.highlight}>
-          <strong>Detalhes de implementacao importantes:</strong>
+          <strong>Detalhes de implementação importantes:</strong>
           <ul style={{ ...S.ul, marginTop: '0.5rem' }}>
-            <li style={S.li}>Recompensas sao <strong>clipped</strong> para [-1, +1] para estabilidade entre jogos</li>
-            <li style={S.li}>Frames sao preprocessados: conversao para cinzento + resize para 84x84 + normalizacao [0,1]</li>
-            <li style={S.li}>Epsilon decai de 1.0 para 0.1 ao longo de 1 milhao de frames</li>
-            <li style={S.li}>Treino inicia apenas apos 50 000 transicoes no buffer (warm-up)</li>
+            <li style={S.li}>Recompensas são <strong>clipped</strong> para [-1, +1] para estabilidade entre jogos</li>
+            <li style={S.li}>Frames são preprocessados: conversao para cinzento + resize para 84x84 + normalização [0,1]</li>
+            <li style={S.li}>Epsilon decai de 1.0 para 0.1 ao longo de 1 milhão de frames</li>
+            <li style={S.li}>Treino inicia apenas após 50 000 transições no buffer (warm-up)</li>
             <li style={S.li}>Gradient clipping: norma do gradiente limitada a 10 para evitar explosao</li>
           </ul>
         </div>
@@ -550,15 +550,15 @@ para cada episodio:
         <h2 style={S.h2}>7. DQN — Resultados e Impacto</h2>
         <p style={S.p}>
           DQN foi avaliado em 49 jogos Atari 2600 usando exatamente a mesma arquitetura,
-          os mesmos hiperparametros e o mesmo algoritmo de treino — sem qualquer conhecimento
-          especifico de cada jogo. O resultado foi notavel:
+          os mesmos hiperparâmetros e o mesmo algoritmo de treino — sem qualquer conhecimento
+          especifico de cada jogo. O resultado foi notável:
         </p>
         <div style={S.highlight}>
           <strong>DQN superou performance humana em 29 dos 49 jogos</strong>, e superou todos
-          os metodos anteriores de RL em 43 dos 49 jogos. Uma conquista especialmente notavel
-          dado que o input e apenas pixels brutos — sem acesso ao estado interno do jogo.
+          os métodos anteriores de RL em 43 dos 49 jogos. Uma conquista especialmente notável
+          dado que o input é apenas pixels brutos — sem acesso ao estado interno do jogo.
         </div>
-        <h3 style={S.h3}>Pontuacoes Selecionadas (DQN vs Humano)</h3>
+        <h3 style={S.h3}>Pontuações Selecionadas (DQN vs Humano)</h3>
         <div style={S.diagram}>
           <table style={S.table}>
             <thead>
@@ -604,14 +604,14 @@ para cada episodio:
           </table>
         </div>
         <p style={S.p}>
-          Os insucessos do DQN (como Montezuma's Revenge) revelaram limitacoes importantes:
-          jogos que exigem exploracao a longo prazo, planeamento profundo, ou memoria de longa
-          duracao continuaram a ser dificeis. Estes desafios motivaram investigacao futura em
-          exploracao intrinseca, memoria e planeamento hierarquico.
+          Os insucessos do DQN (como Montezuma's Revenge) revelaram limitações importantes:
+          jogos que exigem exploração a longo prazo, planeamento profundo, ou memória de longa
+          duração continuaram a ser dificeis. Estes desafios motivaram investigação futura em
+          exploração intrínseca, memória e planeamento hierárquico.
         </p>
         <div style={S.note}>
-          O impacto historico do DQN vai alem dos resultados: demonstrou que e possivel aprender
-          politicas complexas de ponta-a-ponta a partir de inputs brutos, abrindo a era do Deep RL
+          O impacto histórico do DQN vai além dos resultados: demonstrou que e possível aprender
+          políticas complexas de ponta-a-ponta a partir de inputs brutos, abrindo a era do Deep RL
           e inspirando centenas de trabalhos subsequentes.
         </div>
       </div>
@@ -622,47 +622,47 @@ para cada episodio:
       <div style={S.section}>
         <h2 style={S.h2}>8. Extensoes do DQN</h2>
         <p style={S.p}>
-          Apos o DQN original, varios trabalhos identificaram e resolveram limitacoes especificas.
-          Cada extensao e um contributo independente que pode ser combinado com as outras.
+          Após o DQN original, vários trabalhos identificaram e resolveram limitações especificas.
+          Cada extensão é um contributo independente que pode ser combinado com as outras.
         </p>
 
         <h3 style={S.h3}>Double DQN (Van Hasselt et al., 2016)</h3>
         <p style={S.p}>
           O DQN original sofre de <strong>overestimation</strong> dos valores Q: ao usar
-          <InlineMath math="\max_{a'} Q(s',a';\theta^-)" />, a rede tende a selecionar acoes
-          com valores Q sobrestimados. Double DQN desacopla a selecao de acao da avaliacao:
+          <InlineMath math="\max_{a'} Q(s',a';\theta^-)" />, a rede tende a selecionar ações
+          com valores Q sobrestimados. Double DQN desacopla a seleção de ação da avaliação:
         </p>
         <div style={S.math}>
           <BlockMath math="y_i^{\text{DDQN}} = r + \gamma \, Q\!\left(s',\, \underbrace{\arg\max_{a'} Q(s',a';\theta)}_{\text{rede online seleciona}}\,;\, \underbrace{\theta^-}_{\text{target avalia}}\right)" />
         </div>
         <p style={S.p}>
-          A rede online seleciona qual a melhor acao, mas a avaliacao do seu valor e feita pela
-          target network — reducindo o vies positivo sistematico.
+          A rede online seleciona qual a melhor ação, mas a avaliação do seu valor e feita pela
+          target network — reduzindo o viés positivo sistemático.
         </p>
 
         <h3 style={S.h3}>Dueling Networks (Wang et al., 2016)</h3>
         <p style={S.p}>
-          Em muitos estados, o valor das acoes individuais e muito semelhante — o que importa e o
-          valor do estado em si. Dueling DQN decompoe Q em dois streams separados:
+          Em muitos estados, o valor das ações individuais é muito semelhante — o que importa e o
+          valor do estado em si. Dueling DQN decompõe Q em dois streams separados:
         </p>
         <div style={S.math}>
-          <BlockMath math="Q(s, a;\, \theta, \alpha, \beta) = \underbrace{V(s;\, \theta, \beta)}_{\text{valor do estado}} + \underbrace{A(s, a;\, \theta, \alpha)}_{\text{vantagem da acao}} - \underbrace{\frac{1}{|\mathcal{A}|} \sum_{a'} A(s, a';\, \theta, \alpha)}_{\text{normalizacao}}" />
+          <BlockMath math="Q(s, a;\, \theta, \alpha, \beta) = \underbrace{V(s;\, \theta, \beta)}_{\text{valor do estado}} + \underbrace{A(s, a;\, \theta, \alpha)}_{\text{vantagem da ação}} - \underbrace{\frac{1}{|\mathcal{A}|} \sum_{a'} A(s, a';\, \theta, \alpha)}_{\text{normalização}}" />
         </div>
         <DuelingDiagram />
 
         <h3 style={S.h3}>Prioritized Experience Replay — PER (Schaul et al., 2016)</h3>
         <p style={S.p}>
-          O replay buffer padrao amostras uniformemente — mas nem todas as transicoes sao
+          O replay buffer padrão amostras uniformemente — mas nem todas as transições são
           igualmente informativas. PER amostras com probabilidade proporcional ao TD error:
         </p>
         <div style={S.math}>
           <BlockMath math="P(i) = \frac{|\delta_i|^\alpha + \epsilon}{\sum_k (|\delta_k|^\alpha + \epsilon)}" />
         </div>
         <p style={S.p}>
-          onde <InlineMath math="|\delta_i|" /> e o TD error absoluto da transicao <InlineMath math="i" />,
-          <InlineMath math="\alpha" /> controla o grau de prioritizacao (0 = uniforme, 1 = totalmente prioritizado),
-          e <InlineMath math="\epsilon" /> garante que todas as transicoes tem probabilidade positiva.
-          Para corrigir o vies introduzido pela amostragem nao uniforme, usa-se importance sampling weights
+          onde <InlineMath math="|\delta_i|" /> é o TD error absoluto da transição <InlineMath math="i" />,
+          <InlineMath math="\alpha" /> controla o grau de priorização (0 = uniforme, 1 = totalmente priorizado),
+          e <InlineMath math="\epsilon" /> garante que todas as transições têm probabilidade positiva.
+          Para corrigir o viés introduzido pela amostragem não uniforme, usa-se importance sampling weights
           <InlineMath math="w_i = (N \cdot P(i))^{-\beta}" />.
         </p>
         <div style={S.diagram}>
@@ -672,37 +672,37 @@ para cada episodio:
                 <th style={S.th}>Extensao</th>
                 <th style={S.th}>Problema resolvido</th>
                 <th style={S.th}>Mecanismo chave</th>
-                <th style={S.th}>Melhoria tipica</th>
+                <th style={S.th}>Melhoria típica</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style={S.td}><strong>Double DQN</strong></td>
                 <td style={S.td}>Overestimation dos Q-values</td>
-                <td style={S.td}>Desacoplar selecao e avaliacao</td>
-                <td style={S.td}>+15% em media</td>
+                <td style={S.td}>Desacoplar seleção e avaliação</td>
+                <td style={S.td}>+15% em média</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Dueling DQN</strong></td>
                 <td style={S.td}>Aprendizagem ineficiente de V(s)</td>
                 <td style={S.td}>Streams separados V e A</td>
-                <td style={S.td}>+20% em jogos com acoes equivalentes</td>
+                <td style={S.td}>+20% em jogos com ações equivalentes</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>PER</strong></td>
-                <td style={S.td}>Amostragem uniforme desperdicada</td>
+                <td style={S.td}>Amostragem uniforme desperdiçada</td>
                 <td style={S.td}>Prioridade proporcional a |δ|</td>
-                <td style={S.td}>+50% eficiencia amostral</td>
+                <td style={S.td}>+50% eficiência amostral</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Noisy Networks</strong></td>
-                <td style={S.td}>Exploracao ε-greedy ineficiente</td>
-                <td style={S.td}>Ruido nos pesos para exploracao</td>
+                <td style={S.td}>Exploração ε-greedy ineficiente</td>
+                <td style={S.td}>Ruído nos pesos para exploração</td>
                 <td style={S.td}>Melhor em jogos esparsos</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Rainbow</strong></td>
-                <td style={S.td}>Todas as limitacoes acima</td>
+                <td style={S.td}>Todas as limitações acima</td>
                 <td style={S.td}>Combina todas as extensoes</td>
                 <td style={S.td}>SOTA com 7x menos dados</td>
               </tr>
@@ -715,7 +715,7 @@ para cada episodio:
 
       {/* ───────────────────────── SECTION 9 ───────────────────────── */}
       <div style={S.section}>
-        <h2 style={S.h2}>9. Comparacao — Tabular Q vs DQN</h2>
+        <h2 style={S.h2}>9. Comparação — Tabular Q vs DQN</h2>
         <div style={S.diagram}>
           <table style={S.table}>
             <thead>
@@ -727,28 +727,28 @@ para cada episodio:
             </thead>
             <tbody>
               <tr>
-                <td style={S.td}><strong>Espaco de estados</strong></td>
-                <td style={S.td}>Pequeno e discreto (|S| &lt; milhoes)</td>
+                <td style={S.td}><strong>Espaço de estados</strong></td>
+                <td style={S.td}>Pequeno e discreto (|S| &lt; milhões)</td>
                 <td style={S.td}>Enorme ou continuo (pixels, sensores)</td>
               </tr>
               <tr>
-                <td style={S.td}><strong>Garantias de convergencia</strong></td>
-                <td style={S.td}>Convergencia teorica garantida</td>
-                <td style={S.td}>Sem garantias formais; estavel na pratica</td>
+                <td style={S.td}><strong>Garantias de convergência</strong></td>
+                <td style={S.td}>Convergência teórica garantida</td>
+                <td style={S.td}>Sem garantias formais; estável na prática</td>
               </tr>
               <tr>
-                <td style={S.td}><strong>Eficiencia amostral</strong></td>
-                <td style={S.td}>Alta para espacos pequenos</td>
-                <td style={S.td}>Requer milhoes de interacoes</td>
+                <td style={S.td}><strong>Eficiência amostral</strong></td>
+                <td style={S.td}>Alta para espaços pequenos</td>
+                <td style={S.td}>Requer milhões de interações</td>
               </tr>
               <tr>
-                <td style={S.td}><strong>Generalizacao</strong></td>
+                <td style={S.td}><strong>Generalização</strong></td>
                 <td style={S.td}>Nenhuma — cada estado independente</td>
                 <td style={S.td}>Automatica — estados similares → Q similares</td>
               </tr>
               <tr>
                 <td style={S.td}><strong>Custo computacional</strong></td>
-                <td style={S.td}>Baixo — operacoes de tabela O(1)</td>
+                <td style={S.td}>Baixo — operações de tabela O(1)</td>
                 <td style={S.td}>Alto — forward/backward pass de CNN</td>
               </tr>
               <tr>
@@ -757,23 +757,23 @@ para cada episodio:
                 <td style={S.td}>Aprende features automaticamente</td>
               </tr>
               <tr>
-                <td style={S.td}><strong>Aplicavel a Atari</strong></td>
-                <td style={S.td}>Nao — inviavel (10^500 estados)</td>
+                <td style={S.td}><strong>Aplicável a Atari</strong></td>
+                <td style={S.td}>Não — inviável (10^500 estados)</td>
                 <td style={S.td}>Sim — demonstrado em 49 jogos</td>
               </tr>
               <tr>
-                <td style={S.td}><strong>Aplicavel a espaco continuo</strong></td>
-                <td style={S.td}>Nao sem discretizacao grosseira</td>
-                <td style={S.td}>Sim (com discretizacao de acoes)</td>
+                <td style={S.td}><strong>Aplicável a espaço continuo</strong></td>
+                <td style={S.td}>Não sem discretização grosseira</td>
+                <td style={S.td}>Sim (com discretização de ações)</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div style={S.note}>
-          A escolha entre metodos tabulares e DQN depende do problema: para MDPs pequenos com
-          espaco de estados discreto, metodos tabulares sao mais simples, mais eficientes e
-          tem garantias teoricas. DQN e necessario quando o espaco de estados e demasiado grande
-          ou quando o input e bruto (pixels, sons, texto).
+          A escolha entre métodos tabulares e DQN depende do problema: para MDPs pequenos com
+          espaço de estados discreto, métodos tabulares são mais simples, mais eficientes e
+          tem garantias teóricas. DQN é necessário quando o espaço de estados e demasiado grande
+          ou quando o input é bruto (pixels, sons, texto).
         </div>
       </div>
 
